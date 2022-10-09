@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class TipoDeIngreso extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'descripcion'
+    ];
+
+    public function entradas(){
+        return $this->hasMany(Entrada::class);
+    }
 }
