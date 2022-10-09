@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Familia extends Model
+class CategoriasFamilia extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'familias_id',
         'nombre',
         'descripcion',
         'es_activo'
     ];
 
-    public function categoriasFamilias(){
-        return $this->hasMany(CategoriasFamilia::class);
+    public function familias(){
+        return $this->belongsToMany(Familia::class);
     }
 }

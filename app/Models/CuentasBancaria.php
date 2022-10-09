@@ -16,7 +16,6 @@ class CuentasBancaria extends Model
         'cuenta',
         'clabe',
         'tarjeta',
-        'es_activo',
         'es_activo'
     ];
     
