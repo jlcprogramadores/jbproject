@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class TipoDeDireccione extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'es_fiscal'
+    ];
+
+    public function direcciones(){
+        return $this->hasMany(Direccione::class);
+    }
 }
