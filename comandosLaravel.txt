@@ -1,0 +1,5 @@
+php artisan make:model TipoDeDireccione -mc = HACES UN NUEVO MODELO Y CONTROLADOR
+php artisan migrate = HACES LAS MIGRACIONES
+php artisan migrate:update = HACES LAS MIGRACIONES ACTUALIZADAS
+php artisan migrate:rollback = HACES ROLLBACK A LAS MIGRACIONES
+php artisan serve = CORRER EL PROYECTO
