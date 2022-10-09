@@ -15,7 +15,24 @@ class CreateFinanzasTable extends Migration
     {
         Schema::create('finanzas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('salidas_id')->nullable();
+            $table->integer('entradas_id')->nullable();
+            $table->integer('factura_id')->nullable();
+            $table->integer('categoria_id')->nullable();
+            $table->integer('iva_id');
+            $table->string('no');
+            $table->dateTime('fecha_creacion');
+            $table->dateTime('fecha_entrada');
+            $table->string('descripcion');
+            $table->float('cantidad');
+            $table->integer('unidad_id');
+            $table->float('costo_unitario');
+            $table->float('retencion');
+            $table->float('monto_a_pagar');
+            $table->dateTime('fecha_de_pago');
+            $table->string('metodo_de_pago');
+            $table->string('entregado_material_a');
+            $table->string('comentario');
         });
     }
 
