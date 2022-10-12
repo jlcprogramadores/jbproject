@@ -15,11 +15,13 @@ use App\Http\Controllers\ClienteController;
 |
 */
 
-Route::view('/', 'login')->name('login');
-Route::view('home', 'home')->name('home');
 
+Route::view('/', 'home')->name('home');
+Route::view('menu', 'menu')->name('menu');
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
 
-// Route::get('/users', [UserController::class, 'index']);
-// // or
-// Route::get('/users', 'App\Http\Controllers\UserController@index');
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

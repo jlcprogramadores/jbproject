@@ -11,7 +11,6 @@
     <h3>Menu Layout</h3>
 
     <ul>
-        <li><a href="{{ route('login') }}">Login</a></li>
         <li><a href="{{ route('home') }}">Home</a></li>
         <li><a href="{{ route('cliente.tabla') }}">Cliente</a></li>
     </ul>
