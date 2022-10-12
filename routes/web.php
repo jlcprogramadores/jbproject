@@ -18,10 +18,11 @@ use App\Http\Controllers\ClienteController;
 
 Route::view('/', 'home')->name('home');
 Route::view('menu', 'menu')->name('menu');
+
+Route::resource('familias', App\Http\Controllers\FamiliaController::class);
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
 
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
