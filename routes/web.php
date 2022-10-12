@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'login')->name('login');
 Route::view('home', 'home')->name('home');
+
+Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
+
+// Route::get('/users', [UserController::class, 'index']);
+// // or
+// Route::get('/users', 'App\Http\Controllers\UserController@index');
