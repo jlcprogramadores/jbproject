@@ -29,19 +29,28 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('familias.index') }}">{{ __('Familias') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="{{ route('categorias-familias.index') }}">{{ __('Categorías Familias') }}</a>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Administración
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item"  href="{{ route('familias.index') }}">
+                                    {{ __('Familias') }}
+                                </a>  
+                                <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
+                                    {{ __('Categorías Familias') }}
+                                </a> 
+                                </form>
+                            </div>
                         </li>
                     </ul>
                     
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
