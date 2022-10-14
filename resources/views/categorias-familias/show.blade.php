@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Categorias Familia</span>
+                            <span class="card-title">Mostar Categorías Familias</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('categorias-familias.index') }}"> Back</a>
