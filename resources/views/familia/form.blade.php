@@ -20,6 +20,6 @@
     </div>
     <div class="box-footer mt20">
         <br>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>

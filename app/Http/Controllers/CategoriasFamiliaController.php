@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoriasFamilia;
+use App\Models\Familia;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +20,6 @@ class CategoriasFamiliaController extends Controller
     public function index()
     {
         $categoriasFamilias = CategoriasFamilia::paginate();
-
         return view('categorias-familias.index', compact('categoriasFamilias'))
             ->with('i', (request()->input('page', 1) - 1) * $categoriasFamilias->perPage());
     }
@@ -32,7 +32,8 @@ class CategoriasFamiliaController extends Controller
     public function create()
     {
         $categoriasFamilia = new CategoriasFamilia();
-        return view('categorias-familias.create', compact('categoriasFamilia'));
+        $familia = Familia::pluck('nombre','id');
+        return view('categorias-familias.create', compact('categoriasFamilia','familia'));
     }
 
     /**
@@ -73,8 +74,8 @@ class CategoriasFamiliaController extends Controller
     public function edit($id)
     {
         $categoriasFamilia = CategoriasFamilia::find($id);
-
-        return view('categorias-familias.edit', compact('categoriasFamilia'));
+        $familia = Familia::pluck('nombre','id');
+        return view('categorias-familias.edit', compact('categoriasFamilia','familia'));
     }
 
     /**

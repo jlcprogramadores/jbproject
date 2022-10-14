@@ -1,11 +1,12 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
             {{ Form::label('familia_id') }}
-            {{ Form::text('familia_id', $categoriasFamilia->familia_id, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Familia Id']) }}
+            {{ Form::select('familia_id',$familia ,$categoriasFamilia->familia_id, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Familia Id']) }}
             {!! $errors->first('familia_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
             {{ Form::label('nombre') }}
             {{ Form::text('nombre', $categoriasFamilia->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
@@ -24,6 +25,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
