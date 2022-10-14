@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{ route('familias.index') }}">{{ __('Familias') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="{{ route('categorias-familias.index') }}">{{ __('Categorías Familias') }}</a>
+                        </li>
                     </ul>
                     
 

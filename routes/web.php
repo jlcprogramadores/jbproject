@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClienteController;
 
 
 /*
@@ -20,6 +19,8 @@ Route::view('/', 'home')->name('home');
 Route::view('menu', 'menu')->name('menu');
 
 Route::resource('familias', App\Http\Controllers\FamiliaController::class);
+Route::resource('categorias-familias', App\Http\Controllers\CategoriasFamiliaController::class);
+
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
 
 
