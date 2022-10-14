@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $categoriasFamilia->familia_id }}</td>
+											<td>{{ $categoriasFamilia->familia->nombre }}</td>
 											<td>{{ $categoriasFamilia->nombre }}</td>
 											<td>{{ $categoriasFamilia->descripcion }}</td>
 											<td>{{ $categoriasFamilia->es_activo }}</td>
