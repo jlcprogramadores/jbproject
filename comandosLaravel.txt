@@ -3,3 +3,10 @@ php artisan migrate = HACES LAS MIGRACIONES
 php artisan migrate:update = HACES LAS MIGRACIONES ACTUALIZADAS
 php artisan migrate:rollback = HACES ROLLBACK A LAS MIGRACIONES
 php artisan serve = CORRER EL PROYECTO
+
+
+para que jale 
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install
+npm run dev
