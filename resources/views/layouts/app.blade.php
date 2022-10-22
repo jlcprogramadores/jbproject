@@ -46,6 +46,21 @@
                                 <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
                                     {{ __('Categorías Familias') }}
                                 </a> 
+                                <a class="dropdown-item" href="{{ route('ivas.index') }}">
+                                    {{ __('Ivas') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('unidades.index') }}">
+                                    {{ __('Unidades') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('proyectos.index') }}">
+                                    {{ __('Proyectos') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    {{ __('Clientes') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('telefonos.index') }}">
+                                    {{ __('Telefonos') }}
+                                </a> 
                                 </form>
                             </div>
                         </li>

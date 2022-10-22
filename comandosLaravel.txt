@@ -10,3 +10,7 @@ composer require laravel/ui
 php artisan ui bootstrap --auth
 npm install
 npm run dev
+composer require ibex/crud-generator --dev
+publish --tag=laravel-assets --ansi
+php artisan vendor:publish --tag=crud
+php artisan make:crud "nombre de tabla"
