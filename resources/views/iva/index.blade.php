@@ -3,7 +3,9 @@
 @section('template_title')
     Iva
 @endsection
-
+@section('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -31,7 +33,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table" id="table-iva">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -39,7 +41,7 @@
 										<th>Nombre</th>
 										<th>Descripcion</th>
 
-                                        <th></th>
+                                        <th>buttons</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,3 +73,28 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#table-iva').DataTable({
+                responsive:true,
+                autoWidth: false,   
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Nothing found - sorry",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+
+
+                }
+            });
+        });
+    </script>
+@endpush
