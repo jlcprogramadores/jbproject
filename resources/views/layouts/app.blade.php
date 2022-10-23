@@ -72,7 +72,10 @@
                                 </a> 
                                 <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
                                     {{ __('Tipo de Ingresos') }}
-                                </a>                                 
+                                </a>     
+                                <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
+                                    {{ __('Categorías de entrada') }}
+                                </a>
                                 </form>
                             </div>
                         </li>
