@@ -10,9 +10,12 @@
 
     <title>@yield('title')</title>
 
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon"  href="{{ asset('images/favicon.png') }}">
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
