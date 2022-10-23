@@ -33,7 +33,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table" id="table-iva">
+                            <table class="table" id="table">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -77,7 +77,7 @@
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#table-iva').DataTable({
+            $('#table').DataTable({
                 responsive:true,
                 autoWidth: false,   
                 "language": {
@@ -91,8 +91,6 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-
-
                 }
             });
         });
