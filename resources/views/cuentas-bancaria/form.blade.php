@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('proveedore_id') }}
-            {{ Form::text('proveedore_id', $cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedore Id']) }}
+            {{ Form::select('proveedore_id',$proveedore,$cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor']) }}
             {!! $errors->first('proveedore_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

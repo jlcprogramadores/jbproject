@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Salida;
 use Illuminate\Http\Request;
+use App\Models\Proveedore;
 
 /**
  * Class SalidaController
@@ -32,7 +33,9 @@ class SalidaController extends Controller
     public function create()
     {
         $salida = new Salida();
-        return view('salida.create', compact('salida'));
+        $proveedore = Proveedore::pluck('nombre','id');
+
+        return view('salida.create', compact('salida','proveedore'));
     }
 
     /**
@@ -73,8 +76,9 @@ class SalidaController extends Controller
     public function edit($id)
     {
         $salida = Salida::find($id);
+        $proveedore = Proveedore::pluck('nombre','id');
 
-        return view('salida.edit', compact('salida'));
+        return view('salida.edit', compact('salida','proveedore'));
     }
 
     /**

@@ -3,12 +3,12 @@
         
         <div class="form-group">
             {{ Form::label('cliente_id') }}
-            {{ Form::text('cliente_id', $telefono->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Cliente Id']) }}
+            {{ Form::select('cliente_id', $cliente,$telefono->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Cliente Id']) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('proveedor_id') }}
-            {{ Form::text('proveedor_id', $telefono->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor Id']) }}
+            {{ Form::select('proveedor_id',$proveedore,$telefono->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor Id']) }}
             {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

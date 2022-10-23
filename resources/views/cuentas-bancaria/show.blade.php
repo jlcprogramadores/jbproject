@@ -21,7 +21,7 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Proveedore Id:</strong>
+                            <strong>Proveedor:</strong>
                             {{ $cuentasBancaria->proveedore_id }}
                         </div>
                         <div class="form-group">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CuentasBancaria;
 use Illuminate\Http\Request;
+use App\Models\Proveedore;
 
 /**
  * Class CuentasBancariaController
@@ -32,7 +33,9 @@ class CuentasBancariaController extends Controller
     public function create()
     {
         $cuentasBancaria = new CuentasBancaria();
-        return view('cuentas-bancaria.create', compact('cuentasBancaria'));
+        $proveedore = Proveedore::pluck('nombre','id');
+
+        return view('cuentas-bancaria.create', compact('cuentasBancaria','proveedore'));
     }
 
     /**
@@ -73,8 +76,9 @@ class CuentasBancariaController extends Controller
     public function edit($id)
     {
         $cuentasBancaria = CuentasBancaria::find($id);
+        $proveedore = Proveedore::pluck('nombre','id');
 
-        return view('cuentas-bancaria.edit', compact('cuentasBancaria'));
+        return view('cuentas-bancaria.edit', compact('cuentasBancaria','proveedore'));
     }
 
     /**

@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Proveedore Id</th>
+										<th>Proveedor</th>
 										<th>Banco</th>
 										<th>Titular Banco</th>
 										<th>Cuenta</th>

@@ -82,6 +82,9 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
                                 </a>  
+                                <a class="dropdown-item" href="{{ route('proveedores.index') }}">
+                                    {{ __('Proveedores') }}
+                                </a>  
                                 <a class="dropdown-item" href="{{ route('cuentas-bancarias.index') }}">
                                     {{ __('Cuentas Bancarias') }}
                                 </a>  

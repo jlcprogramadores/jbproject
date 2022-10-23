@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Telefono;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+use App\Models\Proveedore;
 
 /**
  * Class TelefonoController
@@ -32,7 +34,10 @@ class TelefonoController extends Controller
     public function create()
     {
         $telefono = new Telefono();
-        return view('telefono.create', compact('telefono'));
+        $cliente = Cliente::pluck('nombre','id');
+        $proveedore = Proveedore::pluck('nombre','id');
+
+        return view('telefono.create', compact('telefono','cliente','proveedore'));
     }
 
     /**
@@ -73,8 +78,10 @@ class TelefonoController extends Controller
     public function edit($id)
     {
         $telefono = Telefono::find($id);
+        $cliente = Cliente::pluck('nombre','id');
+        $proveedore = Proveedore::pluck('nombre','id');
 
-        return view('telefono.edit', compact('telefono'));
+        return view('telefono.edit', compact('telefono','cliente','proveedore'));
     }
 
     /**
