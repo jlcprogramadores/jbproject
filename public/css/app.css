@@ -73,7 +73,10 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
-
+#card_title{
+  /* font-weight: bold;  */
+  font-size: x-large;
+}
 *,
 *::before,
 *::after {

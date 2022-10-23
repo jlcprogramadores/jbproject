@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $categoriasDeEntrada->name ?? 'Show Categorias De Entrada' }}
+    {{ $categoriasDeEntrada->name ?? 'Mostar Categorias De Entrada' }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Categorias De Entrada</span>
+                            <span class="card-title">Mostar Categorias De Entradas</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('categorias-de-entradas.index') }}"> Back</a>
