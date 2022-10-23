@@ -3,17 +3,17 @@
         
         <div class="form-group">
             {{ Form::label('tipo_de_direccione_id') }}
-            {{ Form::text('tipo_de_direccione_id', $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Tipo De Direccione Id']) }}
+            {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Tipo De Direccione Id']) }}
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cliente_id') }}
-            {{ Form::text('cliente_id', $direccione->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Cliente Id']) }}
+            {{ Form::select('cliente_id',$cliente, $direccione->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Cliente Id']) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('proveedor_id') }}
-            {{ Form::text('proveedor_id', $direccione->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor Id']) }}
+            {{ Form::select('proveedor_id',$proveedores, $direccione->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor Id']) }}
             {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

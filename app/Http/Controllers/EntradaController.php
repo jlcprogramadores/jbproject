@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Entrada;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+use App\Models\TipoDeIngreso;
+use App\Models\CategoriasDeEntrada;
+use App\Models\Proyecto;
 
 /**
  * Class EntradaController
@@ -32,7 +36,12 @@ class EntradaController extends Controller
     public function create()
     {
         $entrada = new Entrada();
-        return view('entrada.create', compact('entrada'));
+        $cliente = Cliente::pluck('nombre','id');
+        $tipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $categoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+
+        return view('entrada.create', compact('entrada','cliente','tipodeingreso','categoriasdeentrada','proyecto'));
     }
 
     /**
@@ -73,8 +82,12 @@ class EntradaController extends Controller
     public function edit($id)
     {
         $entrada = Entrada::find($id);
-
-        return view('entrada.edit', compact('entrada'));
+        $cliente = Cliente::pluck('nombre','id');
+        $tipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $categoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+        
+        return view('entrada.edit', compact('entrada','cliente','tipodeingreso','categoriasdeentrada','proyecto'));
     }
 
     /**

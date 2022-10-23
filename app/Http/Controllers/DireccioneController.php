@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Direccione;
 use Illuminate\Http\Request;
+use App\Models\Proveedore;
+use App\Models\Cliente;
+use App\Models\TipoDeDireccione;
 
 /**
  * Class DireccioneController
@@ -32,7 +35,11 @@ class DireccioneController extends Controller
     public function create()
     {
         $direccione = new Direccione();
-        return view('direccione.create', compact('direccione'));
+        $proveedores = Proveedore::pluck('nombre','id');
+        $cliente = Cliente::pluck('nombre','id');
+        $tipodedireccione = TipoDeDireccione::pluck('nombre','id');
+
+        return view('direccione.create', compact('direccione','proveedores','cliente','tipodedireccione'));
     }
 
     /**
@@ -73,8 +80,11 @@ class DireccioneController extends Controller
     public function edit($id)
     {
         $direccione = Direccione::find($id);
+        $proveedores = Proveedore::pluck('nombre','id');
+        $cliente = Cliente::pluck('nombre','id');
+        $tipodedireccione = TipoDeDireccione::pluck('nombre','id');
 
-        return view('direccione.edit', compact('direccione'));
+        return view('direccione.edit', compact('direccione','proveedores','cliente','tipodedireccione'));
     }
 
     /**
