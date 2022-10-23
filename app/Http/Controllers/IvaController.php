@@ -48,7 +48,7 @@ class IvaController extends Controller
         $iva = Iva::create($request->all());
 
         return redirect()->route('ivas.index')
-            ->with('success', 'Iva created successfully.');
+            ->with('success', 'Iva creado exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class IvaController extends Controller
         $iva->update($request->all());
 
         return redirect()->route('ivas.index')
-            ->with('success', 'Iva updated successfully');
+            ->with('success', 'Iva actualizado correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class IvaController extends Controller
         $iva = Iva::find($id)->delete();
 
         return redirect()->route('ivas.index')
-            ->with('success', 'Iva deleted successfully');
+            ->with('success', 'Iva eliminado exitosamente.');
     }
 }

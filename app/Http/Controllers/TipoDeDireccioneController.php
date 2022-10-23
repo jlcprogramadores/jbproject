@@ -48,7 +48,7 @@ class TipoDeDireccioneController extends Controller
         $tipoDeDireccione = TipoDeDireccione::create($request->all());
 
         return redirect()->route('tipo-de-direcciones.index')
-            ->with('success', 'TipoDeDireccione created successfully.');
+            ->with('success', 'Tipo de Direccion creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class TipoDeDireccioneController extends Controller
         $tipoDeDireccione->update($request->all());
 
         return redirect()->route('tipo-de-direcciones.index')
-            ->with('success', 'TipoDeDireccione updated successfully');
+            ->with('success', 'Tipo de Direccion actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class TipoDeDireccioneController extends Controller
         $tipoDeDireccione = TipoDeDireccione::find($id)->delete();
 
         return redirect()->route('tipo-de-direcciones.index')
-            ->with('success', 'TipoDeDireccione deleted successfully');
+            ->with('success', 'Tipo de Direccion eliminada exitosamente.');
     }
 }

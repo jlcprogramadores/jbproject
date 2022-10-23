@@ -48,7 +48,7 @@ class CuentasBancariaController extends Controller
         $cuentasBancaria = CuentasBancaria::create($request->all());
 
         return redirect()->route('cuentas-bancarias.index')
-            ->with('success', 'CuentasBancaria created successfully.');
+            ->with('success', 'Cuenta bancaria creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class CuentasBancariaController extends Controller
         $cuentasBancaria->update($request->all());
 
         return redirect()->route('cuentas-bancarias.index')
-            ->with('success', 'CuentasBancaria updated successfully');
+            ->with('success', 'Cuenta Bancaria actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class CuentasBancariaController extends Controller
         $cuentasBancaria = CuentasBancaria::find($id)->delete();
 
         return redirect()->route('cuentas-bancarias.index')
-            ->with('success', 'CuentasBancaria deleted successfully');
+            ->with('success', 'Cuenta Bancaria eliminada exitosamente.');
     }
 }

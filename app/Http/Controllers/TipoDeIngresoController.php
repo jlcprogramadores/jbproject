@@ -48,7 +48,7 @@ class TipoDeIngresoController extends Controller
         $tipoDeIngreso = TipoDeIngreso::create($request->all());
 
         return redirect()->route('tipo-de-ingresos.index')
-            ->with('success', 'TipoDeIngreso created successfully.');
+            ->with('success', 'Tipo de Ingreso creado exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class TipoDeIngresoController extends Controller
         $tipoDeIngreso->update($request->all());
 
         return redirect()->route('tipo-de-ingresos.index')
-            ->with('success', 'TipoDeIngreso updated successfully');
+            ->with('success', 'Tipo de Ingreso actualizado correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class TipoDeIngresoController extends Controller
         $tipoDeIngreso = TipoDeIngreso::find($id)->delete();
 
         return redirect()->route('tipo-de-ingresos.index')
-            ->with('success', 'TipoDeIngreso deleted successfully');
+            ->with('success', 'Tipo de Ingreso eliminado exitosamente.');
     }
 }

@@ -48,7 +48,7 @@ class FinanzaController extends Controller
         $finanza = Finanza::create($request->all());
 
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza created successfully.');
+            ->with('success', 'Finanza creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class FinanzaController extends Controller
         $finanza->update($request->all());
 
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza updated successfully');
+            ->with('success', 'Finanza actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class FinanzaController extends Controller
         $finanza = Finanza::find($id)->delete();
 
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza deleted successfully');
+            ->with('success', 'Finanza eliminada exitosamente.');
     }
 }

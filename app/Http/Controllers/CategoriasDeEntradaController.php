@@ -48,7 +48,7 @@ class CategoriasDeEntradaController extends Controller
         $categoriasDeEntrada = CategoriasDeEntrada::create($request->all());
 
         return redirect()->route('categorias-de-entradas.index')
-            ->with('success', 'CategoriasDeEntrada created successfully.');
+            ->with('success', 'Categoria de Entrada creado exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class CategoriasDeEntradaController extends Controller
         $categoriasDeEntrada->update($request->all());
 
         return redirect()->route('categorias-de-entradas.index')
-            ->with('success', 'CategoriasDeEntrada updated successfully');
+            ->with('success', 'Categoria de Entrada actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class CategoriasDeEntradaController extends Controller
         $categoriasDeEntrada = CategoriasDeEntrada::find($id)->delete();
 
         return redirect()->route('categorias-de-entradas.index')
-            ->with('success', 'CategoriasDeEntrada deleted successfully');
+            ->with('success', 'Categoria de Entrada eliminada exitosamente.');
     }
 }
