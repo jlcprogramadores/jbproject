@@ -35,7 +35,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Proveedor Id</th>
+										<th>Proveedor</th>
 
                                         <th></th>
                                     </tr>
