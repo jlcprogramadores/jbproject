@@ -48,7 +48,7 @@ class EntradaController extends Controller
         $entrada = Entrada::create($request->all());
 
         return redirect()->route('entradas.index')
-            ->with('success', 'Entrada created successfully.');
+            ->with('success', 'Entrada creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class EntradaController extends Controller
         $entrada->update($request->all());
 
         return redirect()->route('entradas.index')
-            ->with('success', 'Entrada updated successfully');
+            ->with('success', 'Entrada actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class EntradaController extends Controller
         $entrada = Entrada::find($id)->delete();
 
         return redirect()->route('entradas.index')
-            ->with('success', 'Entrada deleted successfully');
+            ->with('success', 'Entrada eliminada exitosamente.');
     }
 }

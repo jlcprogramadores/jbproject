@@ -48,7 +48,7 @@ class TelefonoController extends Controller
         $telefono = Telefono::create($request->all());
 
         return redirect()->route('telefonos.index')
-            ->with('success', 'Telefono created successfully.');
+            ->with('success', 'Telefono creado exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class TelefonoController extends Controller
         $telefono->update($request->all());
 
         return redirect()->route('telefonos.index')
-            ->with('success', 'Telefono updated successfully');
+            ->with('success', 'Telefono actualizado correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class TelefonoController extends Controller
         $telefono = Telefono::find($id)->delete();
 
         return redirect()->route('telefonos.index')
-            ->with('success', 'Telefono deleted successfully');
+            ->with('success', 'Telefono eliminado exitosamente.');
     }
 }

@@ -48,7 +48,7 @@ class FamiliaController extends Controller
         $familia = Familia::create($request->all());
 
         return redirect()->route('familias.index')
-            ->with('success', 'Familia created successfully.');
+            ->with('success', 'Familia creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class FamiliaController extends Controller
         $familia->update($request->all());
 
         return redirect()->route('familias.index')
-            ->with('success', 'Familia updated successfully');
+            ->with('success', 'Familia actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class FamiliaController extends Controller
         $familia = Familia::find($id)->delete();
 
         return redirect()->route('familias.index')
-            ->with('success', 'Familia deleted successfully');
+            ->with('success', 'Familia eliminada exitosamente.');
     }
 }

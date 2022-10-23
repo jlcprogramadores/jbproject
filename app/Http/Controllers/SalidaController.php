@@ -48,7 +48,7 @@ class SalidaController extends Controller
         $salida = Salida::create($request->all());
 
         return redirect()->route('salidas.index')
-            ->with('success', 'Salida created successfully.');
+            ->with('success', 'Salida creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class SalidaController extends Controller
         $salida->update($request->all());
 
         return redirect()->route('salidas.index')
-            ->with('success', 'Salida updated successfully');
+            ->with('success', 'Salida actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class SalidaController extends Controller
         $salida = Salida::find($id)->delete();
 
         return redirect()->route('salidas.index')
-            ->with('success', 'Salida deleted successfully');
+            ->with('success', 'Salida eliminada exitosamente.');
     }
 }

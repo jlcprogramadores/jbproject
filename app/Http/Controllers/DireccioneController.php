@@ -48,7 +48,7 @@ class DireccioneController extends Controller
         $direccione = Direccione::create($request->all());
 
         return redirect()->route('direcciones.index')
-            ->with('success', 'Direccione created successfully.');
+            ->with('success', 'Direccion creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class DireccioneController extends Controller
         $direccione->update($request->all());
 
         return redirect()->route('direcciones.index')
-            ->with('success', 'Direccione updated successfully');
+            ->with('success', 'Direccion actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class DireccioneController extends Controller
         $direccione = Direccione::find($id)->delete();
 
         return redirect()->route('direcciones.index')
-            ->with('success', 'Direccione deleted successfully');
+            ->with('success', 'Direccion eliminada exitosamente.');
     }
 }

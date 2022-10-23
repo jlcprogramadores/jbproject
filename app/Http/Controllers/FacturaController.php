@@ -48,7 +48,7 @@ class FacturaController extends Controller
         $factura = Factura::create($request->all());
 
         return redirect()->route('facturas.index')
-            ->with('success', 'Factura created successfully.');
+            ->with('success', 'Factura creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class FacturaController extends Controller
         $factura->update($request->all());
 
         return redirect()->route('facturas.index')
-            ->with('success', 'Factura updated successfully');
+            ->with('success', 'Factura actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class FacturaController extends Controller
         $factura = Factura::find($id)->delete();
 
         return redirect()->route('facturas.index')
-            ->with('success', 'Factura deleted successfully');
+            ->with('success', 'Factura eliminada exitosamente.');
     }
 }

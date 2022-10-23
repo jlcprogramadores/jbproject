@@ -49,7 +49,7 @@ class CategoriasFamiliaController extends Controller
         $categoriasFamilia = CategoriasFamilia::create($request->all());
 
         return redirect()->route('categorias-familias.index')
-            ->with('success', 'CategoriasFamilia created successfully.');
+            ->with('success', 'Categoria Familia creada exitosamente.');
     }
 
     /**
@@ -92,7 +92,7 @@ class CategoriasFamiliaController extends Controller
         $categoriasFamilia->update($request->all());
 
         return redirect()->route('categorias-familias.index')
-            ->with('success', 'CategoriasFamilia updated successfully');
+            ->with('success', 'Categoria Familia actualizada correctamente.');
     }
 
     /**
@@ -105,6 +105,6 @@ class CategoriasFamiliaController extends Controller
         $categoriasFamilia = CategoriasFamilia::find($id)->delete();
 
         return redirect()->route('categorias-familias.index')
-            ->with('success', 'CategoriasFamilia deleted successfully');
+            ->with('success', 'Categoria Familia eliminada exitosamente.');
     }
 }
