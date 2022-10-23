@@ -76,6 +76,9 @@
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
                                     {{ __('Categorías de entrada') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('finanzas.index') }}">
+                                    {{ __('Finanzas') }}
+                                </a>        
                                 </form>
                             </div>
                         </li>

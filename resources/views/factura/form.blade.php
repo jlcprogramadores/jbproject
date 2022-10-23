@@ -16,14 +16,16 @@
             {{ Form::text('url', $factura->url, ['class' => 'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'placeholder' => 'Url']) }}
             {!! $errors->first('url', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <br>
         <div class="form-group">
             {{ Form::label('fecha_creacion') }}
-            {{ Form::date('fecha_creacion', $factura->fecha_creacion, ['class' => 'form-control' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+            {{ Form::date('fecha_creacion', $factura->fecha_creacion, ['class' => 'form-control-sm' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
             {!! $errors->first('fecha_creacion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <br>
         <div class="form-group">
             {{ Form::label('fecha_factura') }}
-            {{ Form::date('fecha_factura', $factura->fecha_factura, ['class' => 'form-control' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
+            {{ Form::date('fecha_factura', $factura->fecha_factura, ['class' => 'form-control-sm' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
             {!! $errors->first('fecha_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

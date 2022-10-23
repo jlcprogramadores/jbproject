@@ -31,6 +31,7 @@ Route::resource('salidas', App\Http\Controllers\SalidaController::class);
 Route::resource('facturas', App\Http\Controllers\FacturaController::class);
 Route::resource('tipo-de-ingresos', App\Http\Controllers\TipoDeIngresoController::class);
 Route::resource('categorias-de-entradas', App\Http\Controllers\CategoriasDeEntradaController::class);
+Route::resource('finanzas', App\Http\Controllers\FinanzaController::class);
 
 
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');

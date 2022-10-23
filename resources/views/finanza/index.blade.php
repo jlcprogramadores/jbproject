@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    S A L I D A
+    Finanza
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('S A L I D A') }}
+                                {{ __('Finanza') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('s-a-l-i-d-a-s.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('finanzas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,22 +36,56 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Proveedor Id</th>
+										<th>Salidas Id</th>
+										<th>Entradas Id</th>
+										<th>Factura Id</th>
+										<th>Categoria Id</th>
+										<th>Iva Id</th>
+										<th>No</th>
+										<th>Fecha Creacion</th>
+										<th>Fecha Entrada</th>
+										<th>Descripcion</th>
+										<th>Cantidad</th>
+										<th>Unidad Id</th>
+										<th>Costo Unitario</th>
+										<th>Retencion</th>
+										<th>Monto A Pagar</th>
+										<th>Fecha De Pago</th>
+										<th>Metodo De Pago</th>
+										<th>Entregado Material A</th>
+										<th>Comentario</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($sALIDAS as $sALIDA)
+                                    @foreach ($finanzas as $finanza)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $sALIDA->proveedor_id }}</td>
+											<td>{{ $finanza->salidas_id }}</td>
+											<td>{{ $finanza->entradas_id }}</td>
+											<td>{{ $finanza->factura_id }}</td>
+											<td>{{ $finanza->categoria_id }}</td>
+											<td>{{ $finanza->iva_id }}</td>
+											<td>{{ $finanza->no }}</td>
+											<td>{{ $finanza->fecha_creacion }}</td>
+											<td>{{ $finanza->fecha_entrada }}</td>
+											<td>{{ $finanza->descripcion }}</td>
+											<td>{{ $finanza->cantidad }}</td>
+											<td>{{ $finanza->unidad_id }}</td>
+											<td>{{ $finanza->costo_unitario }}</td>
+											<td>{{ $finanza->retencion }}</td>
+											<td>{{ $finanza->monto_a_pagar }}</td>
+											<td>{{ $finanza->fecha_de_pago }}</td>
+											<td>{{ $finanza->metodo_de_pago }}</td>
+											<td>{{ $finanza->entregado_material_a }}</td>
+											<td>{{ $finanza->comentario }}</td>
 
                                             <td>
-                                                <form action="{{ route('s-a-l-i-d-a-s.destroy',$sALIDA->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('s-a-l-i-d-a-s.show',$sALIDA->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('s-a-l-i-d-a-s.edit',$sALIDA->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -64,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $sALIDAS->links() !!}
+                {!! $finanzas->links() !!}
             </div>
         </div>
     </div>

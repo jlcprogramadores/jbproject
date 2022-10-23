@@ -1,25 +1,26 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create S A L I D A
+    Update Finanza
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create S A L I D A</span>
+                        <span class="card-title">Update Finanza</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('s-a-l-i-d-a-s.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('finanzas.update', $finanza->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('s-a-l-i-d-a.form')
+                            @include('finanza.form')
 
                         </form>
                     </div>
