@@ -25,6 +25,12 @@ Route::resource('unidades', App\Http\Controllers\UnidadeController::class);
 Route::resource('proyectos', App\Http\Controllers\ProyectoController::class);
 Route::resource('clientes', App\Http\Controllers\ClienteController::class);
 Route::resource('telefonos', App\Http\Controllers\TelefonoController::class);
+Route::resource('tipo-de-direcciones', App\Http\Controllers\TipoDeDireccioneController::class);
+Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class);
+Route::resource('salidas', App\Http\Controllers\SalidaController::class);
+Route::resource('facturas', App\Http\Controllers\FacturaController::class);
+Route::resource('tipo-de-ingresos', App\Http\Controllers\TipoDeIngresoController::class);
+
 
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
 

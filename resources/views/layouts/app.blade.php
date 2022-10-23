@@ -61,6 +61,18 @@
                                 <a class="dropdown-item" href="{{ route('telefonos.index') }}">
                                     {{ __('Telefonos') }}
                                 </a> 
+                                <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
+                                    {{ __('Tipo de Direcciones') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('salidas.index') }}">
+                                    {{ __('Salidas') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('facturas.index') }}">
+                                    {{ __('Facturas') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
+                                    {{ __('Tipo de Ingresos') }}
+                                </a>                                 
                                 </form>
                             </div>
                         </li>
