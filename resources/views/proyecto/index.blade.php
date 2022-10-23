@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Proyecto')
+@section('title','Proyectos')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -12,7 +12,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Proyecto') }}
+                                {{ __('Proyectos') }}
                             </span>
 
                              <div class="float-right">
