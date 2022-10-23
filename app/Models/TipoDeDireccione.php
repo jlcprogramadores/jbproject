@@ -32,14 +32,11 @@ class TipoDeDireccione extends Model
      */
     protected $fillable = ['nombre','es_fiscal'];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function direcciones()
     {
-        return $this->hasMany('App\Models\Direccione', 'tipo_de_direccione_id', 'id');
+        return $this->hasMany('App\Models\Direccione', 'direcciones_id', 'id');
     }
-    
-
 }

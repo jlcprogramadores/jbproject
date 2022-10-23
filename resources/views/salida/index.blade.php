@@ -45,7 +45,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $salida->proveedor_id }}</td>
+											<td>{{ $salida->proveedore->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('salidas.destroy',$salida->id) }}" method="POST">

@@ -51,7 +51,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $cuentasBancaria->proveedore_id }}</td>
+											<td>{{ $cuentasBancaria->proveedor->nombre }}</td>
 											<td>{{ $cuentasBancaria->banco }}</td>
 											<td>{{ $cuentasBancaria->titular_banco }}</td>
 											<td>{{ $cuentasBancaria->cuenta }}</td>

@@ -54,10 +54,24 @@ class Direccione extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function tipoDeDireccione()
+    public function tipodedirecciones()
     {
         return $this->hasOne('App\Models\TipoDeDireccione', 'id', 'tipo_de_direccione_id');
     }
-    
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cliente()
+    {
+        return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proveedor()
+    {
+        return $this->hasOne('App\Models\Proveedore', 'id', 'proveedor_id');
+    }
 }

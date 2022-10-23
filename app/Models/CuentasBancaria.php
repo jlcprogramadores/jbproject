@@ -44,7 +44,7 @@ class CuentasBancaria extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function proveedore()
+    public function proveedor()
     {
         return $this->hasOne('App\Models\Proveedore', 'id', 'proveedore_id');
     }

@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Familia Id</th>
+										<th>Familia</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Es Activo</th>

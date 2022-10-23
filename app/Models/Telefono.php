@@ -31,6 +31,19 @@ class Telefono extends Model
      */
     protected $fillable = ['cliente_id','proveedor_id','telefono'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cliente()
+    {
+        return $this->hasOne('App\Models\cliente', 'id', 'cliente_id');
+    }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proveedore()
+    {
+        return $this->hasOne('App\Models\proveedore', 'id', 'proveedor_id');
+    }
 }

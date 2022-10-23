@@ -41,7 +41,7 @@ class Entrada extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function categoriasDeEntrada()
+    public function categoriadeentrada()
     {
         return $this->hasOne('App\Models\CategoriasDeEntrada', 'id', 'categorias_de_entrada_id');
     }
@@ -57,7 +57,7 @@ class Entrada extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function tipoDeIngreso()
+    public function tipodeingreso()
     {
         return $this->hasOne('App\Models\TipoDeIngreso', 'id', 'tipodeingreso_id');
     }

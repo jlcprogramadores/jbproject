@@ -35,9 +35,9 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Tipo De Direccione Id</th>
-										<th>Cliente Id</th>
-										<th>Proveedor Id</th>
+										<th>Tipo De Direccion</th>
+										<th>Cliente</th>
+										<th>Proveedor</th>
 										<th>Calle</th>
 										<th>Num Int</th>
 										<th>Num Ext</th>
@@ -56,9 +56,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $direccione->tipo_de_direccione_id }}</td>
-											<td>{{ $direccione->cliente_id }}</td>
-											<td>{{ $direccione->proveedor_id }}</td>
+											<td>{{ $direccione->tipodedirecciones->nombre }}</td>
+											<td>{{ $direccione->cliente->nombre }}</td>
+											<td>{{ $direccione->proveedor->nombre }}</td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
 											<td>{{ $direccione->num_ext }}</td>

@@ -48,9 +48,9 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $entrada->cliente_id }}</td>
-											<td>{{ $entrada->tipodeingreso_id }}</td>
-											<td>{{ $entrada->categorias_de_entrada_id }}</td>
+											<td>{{ $entrada->cliente->nombre }}</td>
+											<td>{{ $entrada->tipodeingreso->nombre }}</td>
+											<td>{{ $entrada->categoriadeentrada->nombre }}</td>
 											<td>{{ $entrada->proyecto_id }}</td>
 
                                             <td>

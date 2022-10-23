@@ -29,5 +29,11 @@ class Salida extends Model
     protected $fillable = ['proveedor_id'];
 
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proveedore()
+    {
+        return $this->hasOne('App\Models\proveedore', 'id', 'proveedor_id');
+    }
 }

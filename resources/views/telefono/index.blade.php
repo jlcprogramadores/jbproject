@@ -35,8 +35,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Cliente Id</th>
-										<th>Proveedor Id</th>
+										<th>Cliente</th>
+										<th>Proveedor</th>
 										<th>Telefono</th>
 
                                         <th></th>
@@ -45,10 +45,10 @@
                                 <tbody>
                                     @foreach ($telefonos as $telefono)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             
-											<td>{{ $telefono->cliente_id }}</td>
-											<td>{{ $telefono->proveedor_id }}</td>
+                                            <td>{{ ++$i }}</td>
+											<td>{{ $telefono->cliente->nombre }}</td>
+											<td>{{ $telefono->proveedore->nombre}}</td>
 											<td>{{ $telefono->telefono }}</td>
 
                                             <td>
