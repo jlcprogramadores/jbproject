@@ -26,10 +26,14 @@
                             {{ $categoriasDeEntrada->descripcion }}
                         </div>
                         <div class="form-group">
-                            <strong>Es Activo:</strong>
-                            {{ $categoriasDeEntrada->es_activo }}
-                        </div>
+                            <strong>Estado:</strong>
+                            @if($categoriasDeEntrada->es_activo  == 1 )
+                                <p class="text-success">Activo</p>
+                            @else
+                                <p class="text-danger">Inactivo</p>
 
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

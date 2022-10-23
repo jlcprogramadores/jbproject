@@ -27,8 +27,13 @@
                             {{ $familia->descripcion }}
                         </div>
                         <div class="form-group">
-                            <strong>Es Activo:</strong>
-                            {{ $familia->es_activo }}
+                            <strong>Estado:</strong>
+                            @if($familia->es_activo  == 1 )
+                                <p class="text-success">Activo</p>
+                            @else
+                                <p class="text-danger">Inactivo</p>
+
+                            @endif
                         </div>
 
                     </div>

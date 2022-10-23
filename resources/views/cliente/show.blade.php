@@ -35,10 +35,14 @@
                             {{ $cliente->rfc }}
                         </div>
                         <div class="form-group">
-                            <strong>Es Activo:</strong>
-                            {{ $cliente->es_activo }}
-                        </div>
+                            <strong>Estado:</strong>
+                            @if($cliente->es_activo  == 1 )
+                                <p class="text-success">Activo</p>
+                            @else
+                                <p class="text-danger">Inactivo</p>
 
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

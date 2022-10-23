@@ -56,9 +56,9 @@
             {{ Form::text('pais', $direccione->pais, ['class' => 'form-control' . ($errors->has('pais') ? ' is-invalid' : ''), 'placeholder' => 'Pais']) }}
             {!! $errors->first('pais', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('es_activo') }}
-            {{ Form::text('es_activo', $direccione->es_activo, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
+            {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
