@@ -32,6 +32,9 @@ Route::resource('facturas', App\Http\Controllers\FacturaController::class);
 Route::resource('tipo-de-ingresos', App\Http\Controllers\TipoDeIngresoController::class);
 Route::resource('categorias-de-entradas', App\Http\Controllers\CategoriasDeEntradaController::class);
 Route::resource('finanzas', App\Http\Controllers\FinanzaController::class);
+Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaController::class);
+Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
+Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 
 
 Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');

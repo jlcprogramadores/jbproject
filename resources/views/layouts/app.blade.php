@@ -78,7 +78,16 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
-                                </a>        
+                                </a>  
+                                <a class="dropdown-item" href="{{ route('cuentas-bancarias.index') }}">
+                                    {{ __('Cuentas Bancarias') }}
+                                </a>  
+                                <a class="dropdown-item" href="{{ route('direcciones.index') }}">
+                                    {{ __('Direcciones') }}
+                                </a>   
+                                <a class="dropdown-item" href="{{ route('entradas.index') }}">
+                                    {{ __('Entradas') }}
+                                </a>     
                                 </form>
                             </div>
                         </li>

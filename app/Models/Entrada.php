@@ -2,29 +2,65 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Entrada
+ *
+ * @property $id
+ * @property $cliente_id
+ * @property $tipodeingreso_id
+ * @property $categorias_de_entrada_id
+ * @property $proyecto_id
+ *
+ * @property CategoriasDeEntrada $categoriasDeEntrada
+ * @property Cliente $cliente
+ * @property TipoDeIngreso $tipoDeIngreso
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Entrada extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'cliente_id',
-        'tipodeingreso_id',
-        'categorias_de_entrada_id',
-        'proyecto_id '
+    public $timestamps = false; 
+    static $rules = [
+		'cliente_id' => 'required',
+		'tipodeingreso_id' => 'required',
+		'categorias_de_entrada_id' => 'required',
     ];
 
-    public function clientes(){
-        return $this->belongsToMany(Cliente::class);
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['cliente_id','tipodeingreso_id','categorias_de_entrada_id','proyecto_id'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function categoriasDeEntrada()
+    {
+        return $this->hasOne('App\Models\CategoriasDeEntrada', 'id', 'categorias_de_entrada_id');
     }
     
-    public function tipoDeIngresos(){
-        return $this->belongsToMany(TipoDeIngreso::class);
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cliente()
+    {
+        return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function tipoDeIngreso()
+    {
+        return $this->hasOne('App\Models\TipoDeIngreso', 'id', 'tipodeingreso_id');
+    }
+    
 
-    public function categoriasDeEntrada(){
-        return $this->belongsToMany(CategoriasDeEntrada::class);
-    }
 }
