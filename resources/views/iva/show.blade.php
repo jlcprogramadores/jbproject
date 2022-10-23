@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $iva->name ?? 'Show Iva' }}
-@endsection
+@section('title','Mostrar Iva')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Iva</span>
+                            <span class="card-title">Mostrar Iva</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('ivas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('ivas.index') }}"> Atrás</a>
                         </div>
                     </div>
 

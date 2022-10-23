@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $familia->name ?? 'Show Familia' }}
-@endsection
+@section('title','Mostrar Familia')
 
 @section('content')
     <section class="content container-fluid">
@@ -14,7 +12,7 @@
                             <span class="card-title">Mostrar Familia</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('familias.index') }}"> Regresar</a>
+                            <a class="btn btn-primary" href="{{ route('familias.index') }}"> Atrás</a>
                         </div>
                     </div>
 

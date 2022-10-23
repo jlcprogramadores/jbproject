@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('familias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Nueva Familia') }}
+                                  {{ __('Crear Familia') }}
                                 </a>
                               </div>
                         </div>

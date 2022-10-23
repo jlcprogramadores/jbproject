@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Tipo De Ingreso
-@endsection
+@section('title','Crear Tipo De Ingreso')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Tipo De Ingreso</span>
+                        <span class="card-title">Crear Tipo De Ingreso</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('tipo-de-ingresos.store') }}"  role="form" enctype="multipart/form-data">

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Proveedore
-@endsection
+@section('title','Crear Proveedor')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Proveedore</span>
+                        <span class="card-title">Crear Proveedor</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('proveedores.store') }}"  role="form" enctype="multipart/form-data">

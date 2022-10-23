@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Familia
-@endsection
+@section('title','Crear Familia')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Nueva Familia</span>
+                        <span class="card-title">Crear Familia</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('familias.store') }}"  role="form" enctype="multipart/form-data">

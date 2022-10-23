@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Factura
-@endsection
+@section('title','Crear Factura')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Factura</span>
+                        <span class="card-title">Crear Factura</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('facturas.store') }}"  role="form" enctype="multipart/form-data">

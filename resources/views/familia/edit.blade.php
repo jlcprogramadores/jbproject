@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Familia
-@endsection
+@section('title','Actualizar Familia')
 
 @section('content')
     <section class="content container-fluid">
@@ -14,9 +12,6 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Actualizar Familia</span>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('familias.index') }}"> Regresar</a>
-                        </div>
                     </div>
                     
                     <div class="card-body">

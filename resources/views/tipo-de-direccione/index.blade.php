@@ -17,7 +17,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('tipo-de-direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Tipo De Direccion') }}
                                 </a>
                               </div>
                         </div>
