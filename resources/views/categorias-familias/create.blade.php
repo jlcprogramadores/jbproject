@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear Categoria De Familia')
+@section('title','Crear Categoría De Familia')
 @section('content')
     <section class="content container-fluid">
         <div class="row">

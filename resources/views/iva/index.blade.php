@@ -17,7 +17,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('ivas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create Iva') }}
+                                  {{ __('Crear Iva') }}
                                 </a>
                               </div>
                         </div>

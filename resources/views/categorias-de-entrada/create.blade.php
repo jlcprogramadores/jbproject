@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear Categorias De Entradas')
+@section('title','Crear Categorías De Entradas')
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -9,7 +9,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Categorias De Entrada</span>
+                        <span class="card-title">Crear Categorías De Entrada</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categorias-de-entradas.store') }}"  role="form" enctype="multipart/form-data">
