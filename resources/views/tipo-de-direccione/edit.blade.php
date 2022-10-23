@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Actualizar Tipo De Direccion')
+@section('title','Actualizar Tipo De Dirección')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar Tipo De Direccion</span>
+                        <span class="card-title">Actualizar Tipo De Dirección</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('tipo-de-direcciones.update', $tipoDeDireccione->id) }}"  role="form" enctype="multipart/form-data">

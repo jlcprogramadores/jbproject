@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Tipo De Direccion')
+@section('title','Mostrar Tipo De Dirección')
 
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Tipo De Direccione</span>
+                            <span class="card-title">Mostrar Tipo De Dirección</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('tipo-de-direcciones.index') }}"> Atrás</a>

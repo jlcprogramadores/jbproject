@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Telefonos')
+@section('title','Teléfonos')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -12,12 +12,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Telefonos') }}
+                                {{ __('Teléfonos') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('telefonos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Telefono') }}
+                                  {{ __('Crear Teléfono') }}
                                 </a>
                               </div>
                         </div>
@@ -37,7 +37,7 @@
                                         
 										<th>Cliente</th>
 										<th>Proveedor</th>
-										<th>Telefono</th>
+										<th>Teléfono</th>
 
                                         <th></th>
                                     </tr>

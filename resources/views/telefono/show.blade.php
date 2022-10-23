@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Telefono')
+@section('title','Mostrar Teléfono')
 
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Telefono</span>
+                            <span class="card-title">Mostrar Teléfono</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('telefonos.index') }}"> Atrás</a>
