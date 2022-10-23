@@ -17,7 +17,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('categorias-de-entradas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear nuevo') }}
+                                  {{ __('Crear Categoria De Entrada') }}
                                 </a>
                               </div>
                         </div>

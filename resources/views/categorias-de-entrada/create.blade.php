@@ -1,9 +1,5 @@
 @extends('layouts.app')
-
-@section('template_title')
-    Crear Categorias De Entradas
-@endsection
-
+@section('title','Crear Categorias De Entradas')
 @section('content')
     <section class="content container-fluid">
         <div class="row">

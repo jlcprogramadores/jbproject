@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Cuentas Bancaria
-@endsection
+@section('title','Crear Cuenta Bancaria')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Cuentas Bancaria</span>
+                        <span class="card-title">Crear Cuenta Bancaria</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('cuentas-bancarias.store') }}"  role="form" enctype="multipart/form-data">

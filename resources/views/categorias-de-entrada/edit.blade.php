@@ -1,9 +1,5 @@
 @extends('layouts.app')
-
-@section('template_title')
-    Actualizar Categorias De Entradas
-@endsection
-
+@section('title','Actualizar Categorias De Entradas')
 @section('content')
     <section class="content container-fluid">
         <div class="">

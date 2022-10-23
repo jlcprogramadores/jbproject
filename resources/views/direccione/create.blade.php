@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Direccione
-@endsection
+@section('title','Crear Dirección')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Direccione</span>
+                        <span class="card-title">Crear Dirección</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('direcciones.store') }}"  role="form" enctype="multipart/form-data">

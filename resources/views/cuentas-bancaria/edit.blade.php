@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Cuentas Bancaria
-@endsection
+@section('title','Actualizar Cuenta Bancaria')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Cuentas Bancaria</span>
+                        <span class="card-title">Actualizar Cuenta Bancaria</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('cuentas-bancarias.update', $cuentasBancaria->id) }}"  role="form" enctype="multipart/form-data">

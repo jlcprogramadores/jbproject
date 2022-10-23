@@ -1,9 +1,5 @@
 @extends('layouts.app')
-
-@section('template_title')
-    Create Categorias Familia
-@endsection
-
+@section('title','Crear Categoria De Familia')
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -13,7 +9,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Nueva Categoría Familia</span>
+                        <span class="card-title">Crear Categoría De Familia</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categorias-familias.store') }}"  role="form" enctype="multipart/form-data">
