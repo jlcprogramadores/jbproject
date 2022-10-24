@@ -51,10 +51,13 @@
                             {{ $proveedore->rfc }}
                         </div>
                         <div class="form-group">
-                            <strong>Es Activo:</strong>
-                            {{ $proveedore->es_activo }}
+                            <strong>Estado:</strong>
+                            @if($proveedore->es_activo  == 1 )
+                                <p class="text-success">Activo</p>
+                            @else
+                                <p class="text-danger">Inactivo</p>
+                            @endif
                         </div>
-
                     </div>
                 </div>
             </div>

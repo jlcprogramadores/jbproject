@@ -43,7 +43,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('es_activo') }}
-            {{ Form::text('es_activo', $proveedore->es_activo, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
+            {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
