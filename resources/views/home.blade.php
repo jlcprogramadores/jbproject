@@ -15,7 +15,6 @@
                     @endif
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('cliente.tabla') }}">Cliente</a></li>
                     </ul>
                     {{ __('¡Estas loggeado!') }}
                 </div>

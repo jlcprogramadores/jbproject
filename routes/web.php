@@ -36,10 +36,6 @@ Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaControl
 Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 
-
-Route::get('/cliente', 'App\Http\Controllers\ClienteController@index')->name('cliente.tabla');
-
-
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
