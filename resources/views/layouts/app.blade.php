@@ -50,6 +50,9 @@
                                 <a class="dropdown-item" href="{{ url('/') }}"">
                                     {{ __('Ingresos') }}
                                 </a> 
+                                <a class="dropdown-item" href="{{ url('/') }}"">
+                                    {{ __('Gráficas') }}
+                                </a> 
                                 
                                 </form>
                             </div>
@@ -60,10 +63,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item"  href="{{ url('/') }}"">
-                                    {{ __('Egresos') }}
+                                    {{ __('Plantilla') }}
                                 </a>  
                                 <a class="dropdown-item" href="{{ url('/') }}"">
-                                    {{ __('Ingresos') }}
+                                    {{ __('Currículums') }}
                                 </a> 
                                 
                                 </form>
