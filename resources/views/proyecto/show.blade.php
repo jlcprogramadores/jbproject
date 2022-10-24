@@ -27,7 +27,7 @@
                             {{ $proyecto->descripcion }}
                         </div>
                         <div class="form-group">
-                            <strong>Numero De Proyecto:</strong>
+                            <strong>Número De Proyecto:</strong>
                             {{ $proyecto->numero_de_proyecto }}
                         </div>
                         <div class="form-group">

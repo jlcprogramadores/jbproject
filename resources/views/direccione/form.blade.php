@@ -3,17 +3,17 @@
         
         <div class="form-group">
             {{ Form::label('tipo_de_direccione_id') }}
-            {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Tipo De Direccione Id']) }}
+            {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Direccione']) }}
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('cliente_id') }}
-            {{ Form::select('cliente_id',$cliente, $direccione->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Cliente Id']) }}
+            {{ Form::select('cliente_id',$cliente, $direccione->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('proveedor_id') }}
-            {{ Form::select('proveedor_id',$proveedores, $direccione->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor Id']) }}
+            {{ Form::select('proveedor_id',$proveedores, $direccione->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
             {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -23,17 +23,17 @@
         </div>
         <div class="form-group">
             {{ Form::label('num_int') }}
-            {{ Form::text('num_int', $direccione->num_int, ['class' => 'form-control' . ($errors->has('num_int') ? ' is-invalid' : ''), 'placeholder' => 'Num Int']) }}
+            {{ Form::number('num_int', $direccione->num_int, ['class' => 'form-control' . ($errors->has('num_int') ? ' is-invalid' : ''), 'placeholder' => 'Num Int']) }}
             {!! $errors->first('num_int', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('num_ext') }}
-            {{ Form::text('num_ext', $direccione->num_ext, ['class' => 'form-control' . ($errors->has('num_ext') ? ' is-invalid' : ''), 'placeholder' => 'Num Ext']) }}
+            {{ Form::number('num_ext', $direccione->num_ext, ['class' => 'form-control' . ($errors->has('num_ext') ? ' is-invalid' : ''), 'placeholder' => 'Num Ext']) }}
             {!! $errors->first('num_ext', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('codigo_postal') }}
-            {{ Form::text('codigo_postal', $direccione->codigo_postal, ['class' => 'form-control' . ($errors->has('codigo_postal') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Postal']) }}
+            {{ Form::number('codigo_postal', $direccione->codigo_postal, ['class' => 'form-control' . ($errors->has('codigo_postal') ? ' is-invalid' : ''), 'placeholder' => 'Codigo Postal']) }}
             {!! $errors->first('codigo_postal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

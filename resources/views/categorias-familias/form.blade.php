@@ -3,7 +3,7 @@
 
         <div class="form-group">
             {{ Form::label('familia_id') }}
-            {{ Form::select('familia_id',$familia ,$categoriasFamilia->familia_id, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Familia Id']) }}
+            {{ Form::select('familia_id',$familia ,$categoriasFamilia->familia_id, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
             {!! $errors->first('familia_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

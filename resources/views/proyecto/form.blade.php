@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('numero_de_proyecto') }}
-            {{ Form::text('numero_de_proyecto', $proyecto->numero_de_proyecto, ['class' => 'form-control' . ($errors->has('numero_de_proyecto') ? ' is-invalid' : ''), 'placeholder' => 'Numero De Proyecto']) }}
+            {{ Form::number('numero_de_proyecto', $proyecto->numero_de_proyecto, ['class' => 'form-control' . ($errors->has('numero_de_proyecto') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
             {!! $errors->first('numero_de_proyecto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">

@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('proveedore_id') }}
-            {{ Form::select('proveedore_id',$proveedore,$cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : ''), 'placeholder' => 'Proveedor']) }}
+            {{ Form::select('proveedore_id',$proveedore,$cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
             {!! $errors->first('proveedore_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -23,12 +23,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('clabe') }}
-            {{ Form::text('clabe', $cuentasBancaria->clabe, ['class' => 'form-control' . ($errors->has('clabe') ? ' is-invalid' : ''), 'placeholder' => 'Clabe']) }}
+            {{ Form::number('clabe', $cuentasBancaria->clabe, ['class' => 'form-control' . ($errors->has('clabe') ? ' is-invalid' : ''), 'placeholder' => 'Clabe']) }}
             {!! $errors->first('clabe', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('tarjeta') }}
-            {{ Form::text('tarjeta', $cuentasBancaria->tarjeta, ['class' => 'form-control' . ($errors->has('tarjeta') ? ' is-invalid' : ''), 'placeholder' => 'Tarjeta']) }}
+            {{ Form::number('tarjeta', $cuentasBancaria->tarjeta, ['class' => 'form-control' . ($errors->has('tarjeta') ? ' is-invalid' : ''), 'placeholder' => 'Tarjeta']) }}
             {!! $errors->first('tarjeta', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">

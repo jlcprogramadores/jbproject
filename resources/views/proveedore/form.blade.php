@@ -18,12 +18,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('dias_de_credito') }}
-            {{ Form::text('dias_de_credito', $proveedore->dias_de_credito, ['class' => 'form-control' . ($errors->has('dias_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Dias De Credito']) }}
+            {{ Form::number('dias_de_credito', $proveedore->dias_de_credito, ['class' => 'form-control' . ($errors->has('dias_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Dias De Credito']) }}
             {!! $errors->first('dias_de_credito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('monto_de_credito') }}
-            {{ Form::text('monto_de_credito', $proveedore->monto_de_credito, ['class' => 'form-control' . ($errors->has('monto_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Monto De Credito']) }}
+            {{ Form::number('monto_de_credito', $proveedore->monto_de_credito, ['class' => 'form-control' . ($errors->has('monto_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Monto De Credito','step'=>'any']) }}
             {!! $errors->first('monto_de_credito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('mail') }}
-            {{ Form::text('mail', $proveedore->mail, ['class' => 'form-control' . ($errors->has('mail') ? ' is-invalid' : ''), 'placeholder' => 'Mail']) }}
+            {{ Form::email('mail', $proveedore->mail, ['class' => 'form-control' . ($errors->has('mail') ? ' is-invalid' : ''), 'placeholder' => 'Mail']) }}
             {!! $errors->first('mail', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

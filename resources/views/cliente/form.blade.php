@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('mail') }}
-            {{ Form::text('mail', $cliente->mail, ['class' => 'form-control' . ($errors->has('mail') ? ' is-invalid' : ''), 'placeholder' => 'Mail']) }}
+            {{ Form::email('mail', $cliente->mail, ['class' => 'form-control' . ($errors->has('mail') ? ' is-invalid' : ''), 'placeholder' => 'Mail']) }}
             {!! $errors->first('mail', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
