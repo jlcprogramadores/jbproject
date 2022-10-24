@@ -62,5 +62,12 @@ class Entrada extends Model
         return $this->hasOne('App\Models\TipoDeIngreso', 'id', 'tipodeingreso_id');
     }
     
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proyecto()
+    {
+        return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
+    }
 
 }

@@ -35,10 +35,10 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Cliente Id</th>
-										<th>Tipodeingreso Id</th>
-										<th>Categorias De Entrada Id</th>
-										<th>Proyecto Id</th>
+										<th>Cliente</th>
+										<th>Tipo de ingreso</th>
+										<th>Categorias De Entrada</th>
+										<th>Proyecto</th>
 
                                         <th></th>
                                     </tr>
@@ -51,7 +51,7 @@
 											<td>{{ $entrada->cliente->nombre }}</td>
 											<td>{{ $entrada->tipodeingreso->nombre }}</td>
 											<td>{{ $entrada->categoriadeentrada->nombre }}</td>
-											<td>{{ $entrada->proyecto_id }}</td>
+											<td>{{ $entrada->proyecto->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('entradas.destroy',$entrada->id) }}" method="POST">

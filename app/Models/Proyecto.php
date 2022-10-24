@@ -35,6 +35,12 @@ class Proyecto extends Model
      */
     protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo'];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function entrada()
+    {
+        return $this->hasMany('App\Models\Entrada', 'entrada_id', 'id');
+    }
 
 }
