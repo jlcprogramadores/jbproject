@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter subject" class="form-control"/>
+                        <input type="text" name="addMoreInputFields[0][subject]" placeholder="Ingresa el número" class="form-control"/>
                     </td>
                     <td>
                         <button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar el número</button>
