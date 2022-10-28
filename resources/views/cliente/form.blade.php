@@ -21,14 +21,48 @@
             {{ Form::text('rfc', $cliente->rfc, ['class' => 'form-control' . ($errors->has('rfc') ? ' is-invalid' : ''), 'placeholder' => 'Rfc']) }}
             {!! $errors->first('rfc', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            <table class="table" id="dynamicAddRemove">
+                <tr>
+                    <th>{{ Form::label('Telefono(s)') }}</th>
+                    <th>Acción</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter subject" class="form-control"/>
+                    </td>
+                    <td>
+                        <button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar el número</button>
+                    </td>
+                </tr>
+            </table>
+            {{ Form::text('rfc', $cliente->rfc, ['class' => 'form-control' . ($errors->has('rfc') ? ' is-invalid' : ''), 'placeholder' => 'Rfc']) }}
+            {!! $errors->first('rfc', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         <div class="form-group d-none">
             {{ Form::label('es_activo') }}
             {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group d-none">
+            <input type="text" class= "form-control">
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+    var i = 0;
+    $("#dynamic-ar").click(function () {
+        ++i;
+        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
+            '][subject]" placeholder="Ingresa el número" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td></tr>'
+            );
+    });
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('tr').remove();
+    });
+</script>
