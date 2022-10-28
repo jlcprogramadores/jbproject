@@ -76,7 +76,7 @@ class Proveedore extends Model
      */
     public function direcciones()
     {
-        return $this->hasMany('App\Models\Direccione', 'id', 'id');
+        return $this->hasMany('App\Models\Direccione', 'proveedor_id', 'id');
     }
 
 }
