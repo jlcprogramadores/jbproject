@@ -24,7 +24,7 @@
         <div class="form-group">
             <table class="table" id="dynamicAddRemove">
                 <tr>
-                    <th>{{ Form::label('Telefono(s)') }}</th>
+                    <th>{{ Form::label('Teléfono(s)') }}</th>
                     <th>Acción</th>
                 </tr>
                 <tr>
