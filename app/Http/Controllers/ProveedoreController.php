@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proveedore;
+use App\Models\Direccione;
 use Illuminate\Http\Request;
 
 /**

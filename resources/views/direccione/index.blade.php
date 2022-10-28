@@ -58,7 +58,7 @@
                                             
 											<td>{{ $direccione->tipodedirecciones->nombre }}</td>
 											<td>{{ $direccione->cliente->nombre }}</td>
-											<td>{{ $direccione->proveedor->nombre}}</td>
+											<td>{{ $direccione->proveedor->nombre }}</td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
 											<td>{{ $direccione->num_ext }}</td>

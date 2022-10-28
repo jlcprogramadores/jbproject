@@ -37,6 +37,7 @@
                                         
 										<th>Nombre</th>
 										<th>Razon Social</th>
+                                        <th>Dirección</th>
 										<th>Estado</th>
 										<th>Dias De Credito</th>
 										<th>Monto De Credito</th>
@@ -55,6 +56,8 @@
                                             
 											<td>{{ $proveedore->nombre }}</td>
 											<td>{{ $proveedore->razon_social }}</td>
+                                            <td>{{ $proveedore->direcciones[0]->calle . ' ' . $proveedore->direcciones[0]->num_int}}</td>
+               
 											<td>{{ $proveedore->estado }}</td>
 											<td>{{ $proveedore->dias_de_credito }}</td>
 											<td>{{ $proveedore->monto_de_credito }}</td>
