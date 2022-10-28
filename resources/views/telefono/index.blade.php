@@ -48,7 +48,7 @@
                                             
                                             <td>{{ ++$i }}</td>
 											<td>{{ $telefono->cliente->nombre }}</td>
-											<td>{{ $telefono->proveedore->nombre}}</td>
+											<td>{{ $telefono->proveedor->nombre}}</td>
 											<td>{{ $telefono->telefono }}</td>
 
                                             <td>

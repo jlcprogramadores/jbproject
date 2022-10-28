@@ -42,7 +42,7 @@ class Telefono extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function proveedore()
+    public function proveedor()
     {
         return $this->hasOne('App\Models\proveedore', 'id', 'proveedor_id');
     }
