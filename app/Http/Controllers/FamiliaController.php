@@ -105,5 +105,16 @@ class FamiliaController extends Controller
 
         return redirect()->route('familias.index')
             ->with('success', 'Familia eliminada exitosamente.');
+    }   
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function delete($id)
+    {
+        $project = Familia::find($id);
+
+        return back();
     }
 }

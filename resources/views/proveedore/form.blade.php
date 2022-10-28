@@ -28,7 +28,6 @@
         </div>
         <div class="form-group ">
             {{ Form::label('es_facturable') }}
-            <!-- {{ Form::text('es_facturable', $proveedore->es_facturable, ['class' => 'form-control' . ($errors->has('es_facturable') ? ' is-invalid' : ''), 'placeholder' => 'Es Facturable']) }} -->
             {{ Form::select('es_facturable', array(
                 '0' => 'No',
                 '1' => 'Si',

@@ -60,7 +60,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('categorias-familias.edit',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -95,6 +95,34 @@
                     }
                 }
             });
+        });
+        $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'advertencia',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, bórralo!',
+            cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // si se cumple el formulario lanza el swal
+                    if (form.submit()) {
+                        Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Su registro ha sido eliminado.',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })    
+                    }
+                }
+            })
         });
     </script>
 @endpush
