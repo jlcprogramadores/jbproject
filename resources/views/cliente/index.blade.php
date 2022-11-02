@@ -41,8 +41,10 @@
 										<th>Rfc</th>
                                         <th>Direccion</th>
 										<th>Es Activo</th>
-
-                                        <th></th>
+                                        <th>Teléfono</th>
+                                        <th>Datos</th>
+                                        <th>Acciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,7 +73,12 @@
                                                 @endforeach
                                             </td>
 											<td>{{ $cliente->es_activo }}</td>
-
+                                            <td>{{ $cliente->es_activo }}</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
+                                                <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
+                                            </td>
+                                           
                                             <td>
                                                 <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -79,8 +86,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    <a class="btn btn-sm btn-info" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Direcciones</
-                                                </form>
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach

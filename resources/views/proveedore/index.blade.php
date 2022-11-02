@@ -45,8 +45,8 @@
                                     <th>Mail</th>
                                     <th>Rfc</th>
                                     <th>Es Activo</th>
-
-                                    <th></th>
+                                    <th>Datos</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,7 +81,10 @@
                                     <td>{{ $proveedore->mail }}</td>
                                     <td>{{ $proveedore->rfc }}</td>
                                     <td>{{ $proveedore->es_activo }}</td>
-
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccionproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
+                                        <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
+                                    </td>
                                     <td>
                                         <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
                                             <a class="btn btn-sm btn-primary " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -89,7 +92,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                            <a class="btn btn-sm btn-info" href="{{ route('direcciones.direccionproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Direcciones</a>
+                                            
                                         </form>
                                     </td>
                                 </tr>

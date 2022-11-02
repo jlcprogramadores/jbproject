@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Direcciones')
+@section('title','Teléfonos')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -12,15 +12,15 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Direcciones de Cliente' ) }}
+                                {{ __('Teléfonos de Proveedor') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('proveedores.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
-                                <a href="{{ route('direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Dirección') }}
+                                <a href="{{ route('telefonos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Teléfono') }}
                                 </a>
                               </div>
                         </div>
@@ -37,42 +37,27 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-										<th>ENTREEEEEEEEE</th>
-										<th>Nombre</th>
-										<th>Calle</th>
-										<th>Num Int</th>
-										<th>Num Ext</th>
-										<th>Codigo Postal</th>
-										<th>Colonia</th>
-										<th>Municipio</th>
-										<th>Estado</th>
-										<th>Pais</th>
-										<th>Es Activo</th>
+                                        
+										<th>Cliente</th>
+										<th>Proveedor</th>
+										<th>Teléfono</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($direcciones as $direccione)
+                                    @foreach ($telefonos as $telefono)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             
-											<td>{{ $direccione->calle}}</td>
-											<td>{{ $direccione->cliente->nombre }}</td>
-											<td>{{ $direccione->calle }}</td>
-											<td>{{ $direccione->num_int }}</td>
-											<td>{{ $direccione->num_ext }}</td>
-											<td>{{ $direccione->codigo_postal }}</td>
-											<td>{{ $direccione->colonia }}</td>
-											<td>{{ $direccione->municipio }}</td>
-											<td>{{ $direccione->estado }}</td>
-											<td>{{ $direccione->pais }}</td>
-											<td>{{ $direccione->es_activo }}</td>
+                                            <td>{{ ++$i }}</td>
+											<td>{{ $telefono->cliente->nombre }}</td>
+											<td>{{ $telefono->proveedor->nombre}}</td>
+											<td>{{ $telefono->telefono }}</td>
 
                                             <td>
-                                                <form action="{{ route('direcciones.destroy',$direccione->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('direcciones.show',$direccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('direcciones.edit',$direccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('telefonos.show',$telefono->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('telefonos.edit',$telefono->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
@@ -85,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $direcciones->links() !!}
+                {!! $telefonos->links() !!}
             </div>
         </div>
     </div>

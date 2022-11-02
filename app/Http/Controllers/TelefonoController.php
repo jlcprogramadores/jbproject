@@ -26,6 +26,32 @@ class TelefonoController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $telefonos->perPage());
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function telefonocliente($id)
+    {
+        $telefonos = Telefono::where('cliente_id', $id)->paginate();
+
+        return view('telefono.telefonocliente', compact('telefonos'))
+            ->with('i', (request()->input('page', 1) - 1) * $telefonos->perPage());
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function telefonoproveedor($id)
+    {
+        $telefonos = Telefono::where('proveedor_id', $id)->paginate();
+
+        return view('telefono.telefonoproveedor', compact('telefonos'))
+            ->with('i', (request()->input('page', 1) - 1) * $telefonos->perPage());
+    }
     /**
      * Show the form for creating a new resource.
      *

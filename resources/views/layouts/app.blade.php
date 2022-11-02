@@ -96,9 +96,6 @@
                                 <a class="dropdown-item" href="{{ route('clientes.index') }}">
                                     {{ __('Clientes') }}
                                 </a> 
-                                <a class="dropdown-item" href="{{ route('telefonos.index') }}">
-                                    {{ __('Telefonos') }}
-                                </a> 
                                 <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
                                     {{ __('Tipo de Direcciones') }}
                                 </a> 
@@ -122,10 +119,7 @@
                                 </a>  
                                 <a class="dropdown-item" href="{{ route('cuentas-bancarias.index') }}">
                                     {{ __('Cuentas Bancarias') }}
-                                </a>  
-                                <a class="dropdown-item" href="{{ route('direcciones.index') }}">
-                                    {{ __('Direcciones') }}
-                                </a>   
+                                </a>    
                                 <a class="dropdown-item" href="{{ route('entradas.index') }}">
                                     {{ __('Entradas') }}
                                 </a>     
