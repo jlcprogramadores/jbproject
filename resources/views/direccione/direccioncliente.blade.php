@@ -12,10 +12,13 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('DIRECCIONES DE CLIENTE') }}
+                                {{ __('Direcciones de Cliente' ) }}
                             </span>
 
                              <div class="float-right">
+                                <a href="{{ route('clientes.index') }}" class="btn btn-danger btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
+                                </a>
                                 <a href="{{ route('direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Dirección') }}
                                 </a>
