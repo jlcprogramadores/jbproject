@@ -10821,3 +10821,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* lienas custom jbindustrial */
+.truncate{
+  width: 180px;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.truncate:hover{
+  -webkit-line-clamp: unset; /* number of lines to show */
+}
