@@ -89,7 +89,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                            <a class="btn btn-sm btn-info" href="{{ route('direcciones.index2',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Direcciones</a>
+                                            <a class="btn btn-sm btn-info" href="{{ route('direcciones.index2', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Direcciones</a>
                                         </form>
                                     </td>
                                 </tr>

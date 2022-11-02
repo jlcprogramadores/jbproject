@@ -27,24 +27,14 @@ class DireccioneController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
 
-    // public function index($product_id)
-    // {
-    //     $product = Product::where('user_id', Auth::id())->where('id', $product_id)->firstOrFail();
-    //     $projects = Project::where('product_id', $product->id))->latest()->paginate(20);
-
-    //     return view('projects.index', compact('projects'))
-    //         ->with('i', (request()->input('page', 1) - 1) * 5);
-    // }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index2()
+    public function index2($idProveedor)
     {   
-        $direcciones = Direccione::where('proveedor_id', 1)->paginate();
-        
+        $direcciones = Direccione::where('proveedor_id', $idProveedor)->paginate();
         return view('direccione.index2', compact('direcciones'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
