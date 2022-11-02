@@ -54,10 +54,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>
-                                                <?php 
-                                                    $nombre = isset($direccione->cliente->nombre)  ? $direccione->cliente->nombre: $direccione->proveedor->nombre;                                                
-                                                ?>
-                                                {{ $nombre }}
+                                                {{ $direccione->proveedor->nombre }}
                                             </td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
