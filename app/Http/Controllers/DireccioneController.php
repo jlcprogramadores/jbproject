@@ -33,9 +33,9 @@ class DireccioneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function direccionproveedor($id)
-    {   
+    {    
         $direcciones = Direccione::where('proveedor_id', $id)->paginate();
-        return view('direccione.direccionproveedor', compact('direcciones'))
+        return view('direccione.direccionproveedor', compact('direcciones','id'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
 
