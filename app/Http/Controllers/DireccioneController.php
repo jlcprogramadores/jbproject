@@ -43,11 +43,9 @@ class DireccioneController extends Controller
      */
     public function index2()
     {   
-        $proveedores = Proveedore::pluck('nombre','id');
-        // $direcciones = Direccione::paginate();
-        $direcciones = Direccione::where('proveedor_id', 2)->paginate();
-
-        return view('direccione.index2', compact('direcciones','proveedores'))
+        $direcciones = Direccione::where('proveedor_id', 1)->paginate();
+        
+        return view('direccione.index2', compact('direcciones'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
     /**

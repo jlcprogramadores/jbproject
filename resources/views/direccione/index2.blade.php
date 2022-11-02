@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $proveedores}}</td>
+											<td>{{ $direccione->calle}}</td>
 											<td>{{ $direccione->cliente->nombre }}</td>
 											<td>{{ $direccione->proveedor->nombre }}</td>
 											<td>{{ $direccione->calle }}</td>
