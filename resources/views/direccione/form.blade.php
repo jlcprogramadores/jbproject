@@ -7,14 +7,24 @@
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('cliente_id') }}
-            {{ Form::select('cliente_id',$cliente, $direccione->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
+            <?php 
+                if(isset($direccione->cliente_id)){
+                    $label = 'cliente_id';
+                    $placeholder = 'Selecciona Cliente';
+                    $select2 = $cliente;
+                    $direcciones = $direccione->cliente_id;
+                    
+                }else{
+                    $label = 'proveedor_id';
+                    $placeholder = 'Selecciona Proveedor';
+                    $select2 = $proveedores;
+                    $direcciones = $direccione->proveedor_id;
+
+                }
+            ?>
+            {{ Form::label($label) }}
+            {{ Form::select($label ,$select2, $direcciones, ['class' => 'form-control' . ($errors->has('$label') ? ' is-invalid' : ''), 'placeholder' => $placeholder]) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('proveedor_id') }}
-            {{ Form::select('proveedor_id',$proveedores, $direccione->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
-            {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('calle') }}

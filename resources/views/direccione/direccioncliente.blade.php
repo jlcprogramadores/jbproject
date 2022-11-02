@@ -38,8 +38,7 @@
                                     <tr>
                                         <th>No</th>
 										<th>ENTREEEEEEEEE</th>
-										<th>Cliente</th>
-										<th>Proveedor</th>
+										<th>Nombre</th>
 										<th>Calle</th>
 										<th>Num Int</th>
 										<th>Num Ext</th>
@@ -60,7 +59,6 @@
                                             
 											<td>{{ $direccione->calle}}</td>
 											<td>{{ $direccione->cliente->nombre }}</td>
-											<td>{{ $direccione->proveedor->nombre }}</td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
 											<td>{{ $direccione->num_ext }}</td>
