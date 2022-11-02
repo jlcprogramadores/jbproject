@@ -35,7 +35,7 @@ Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)
 Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaController::class);
 Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
-Route::get('/index2/{idProveedor}', 'App\Http\Controllers\DireccioneController@index2')->name('direcciones.index2');
+Route::get('/index2/{id}', 'App\Http\Controllers\DireccioneController@index2')->name('direcciones.index2');
 
 
 Auth::routes();

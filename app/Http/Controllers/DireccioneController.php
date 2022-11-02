@@ -32,9 +32,9 @@ class DireccioneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index2($idProveedor)
+    public function index2($id)
     {   
-        $direcciones = Direccione::where('proveedor_id', $idProveedor)->paginate();
+        $direcciones = Direccione::where('proveedor_id', $id)->paginate();
         return view('direccione.index2', compact('direcciones'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
