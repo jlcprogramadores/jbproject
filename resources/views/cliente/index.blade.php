@@ -39,6 +39,7 @@
 										<th>Razon Social</th>
 										<th>Mail</th>
 										<th>Rfc</th>
+                                        <th>Direccion</th>
 										<th>Es Activo</th>
 
                                         <th></th>
@@ -53,6 +54,22 @@
 											<td>{{ $cliente->razon_social }}</td>
 											<td>{{ $cliente->mail }}</td>
 											<td>{{ $cliente->rfc }}</td>
+											<td>@foreach($cliente->direcciones as $iterDireccion)
+                                                <?php
+                                                // iteramos y formamos las las dirreciones s
+                                                $direccion = "";
+                                                $direccion .= $iterDireccion->calle ? 'Calle: ' . $iterDireccion->calle : '';
+                                                $direccion .= $iterDireccion->num_ext ? ' Num ext: ' . $iterDireccion->num_ext : '';
+                                                $direccion .= $iterDireccion->num_int ? ' Num int: ' . $iterDireccion->num_int : '';
+                                                $direccion .= $iterDireccion->colonia ? ' Col: ' . $iterDireccion->colonia : '';
+                                                $direccion .= $iterDireccion->codigo_postal ? ' CP: ' . $iterDireccion->codigo_postal : '';
+                                                $direccion .= $iterDireccion->municipio ? ' Municipio: ' . $iterDireccion->municipio : '';
+                                                $direccion .= $iterDireccion->estado ? ' Estado: ' . $iterDireccion->estado : '';
+                                                $direccion .= ",";
+                                                ?>
+                                                {{$direccion}}
+                                                @endforeach
+                                            </td>
 											<td>{{ $cliente->es_activo }}</td>
 
                                             <td>
@@ -94,7 +111,14 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                columnDefs: [{
+                    // espeificamos que columna sera afectada
+                    targets: [5],
+                    render: function(data, type, full, meta) {    
+                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
+                    }
+                }]
             });
         });
         $('.show_confirm').click(function(event) {

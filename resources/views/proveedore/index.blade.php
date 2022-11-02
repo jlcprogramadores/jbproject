@@ -71,7 +71,7 @@
                                         $direccion .= $iterDireccion->estado ? ' Estado: ' . $iterDireccion->estado : '';
                                         $direccion .= ",";
                                         ?>
-                                        {{ $direccion}}
+                                        {{$direccion}}
                                         @endforeach
                                     </td>
                                     <td>{{ $proveedore->estado }}</td>
