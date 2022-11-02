@@ -46,6 +46,7 @@
                                     <th>Rfc</th>
                                     <th>Es Activo</th>
 
+<<<<<<< Updated upstream
                                     <th></th>
                                 </tr>
                             </thead>
@@ -95,6 +96,23 @@
                                 @endforeach
                             </tbody>
                         </table>
+=======
+                                            <td>
+                                                <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('proveedores.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <a class="btn btn-sm btn-info" href="{{ route('direcciones.index2') }}"><i class="fa fa-fw fa-edit"></i> Direcciones</a>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
