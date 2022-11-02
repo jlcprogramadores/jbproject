@@ -28,7 +28,7 @@ class DireccioneController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the supplier.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,6 +38,19 @@ class DireccioneController extends Controller
         return view('direccione.direccionproveedor', compact('direcciones'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
+
+    /**
+     * Display a listing of clients.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function direccioncliente($id)
+    {   
+        $direcciones = Direccione::where('cliente_id', $id)->paginate();
+        return view('direccione.direccioncliente', compact('direcciones'))
+            ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
+    }
+
     /**
      * Show the form for creating a new resource.
      *

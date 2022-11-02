@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Clientes')
+@section('title','Direcciones')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -12,12 +12,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Clientes') }}
+                                {{ __('DIRECCIONES DE CLIENTE') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('clientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Cliente') }}
+                                <a href="{{ route('direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Dirección') }}
                                 </a>
                               </div>
                         </div>
@@ -34,52 +34,47 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Nombre</th>
-										<th>Razon Social</th>
-										<th>Mail</th>
-										<th>Rfc</th>
-                                        <th>Direccion</th>
+										<th>ENTREEEEEEEEE</th>
+										<th>Cliente</th>
+										<th>Proveedor</th>
+										<th>Calle</th>
+										<th>Num Int</th>
+										<th>Num Ext</th>
+										<th>Codigo Postal</th>
+										<th>Colonia</th>
+										<th>Municipio</th>
+										<th>Estado</th>
+										<th>Pais</th>
 										<th>Es Activo</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($clientes as $cliente)
+                                    @foreach ($direcciones as $direccione)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $cliente->nombre }}</td>
-											<td>{{ $cliente->razon_social }}</td>
-											<td>{{ $cliente->mail }}</td>
-											<td>{{ $cliente->rfc }}</td>
-											<td>@foreach($cliente->direcciones as $iterDireccion)
-                                                <?php
-                                                // iteramos y formamos las las dirreciones s
-                                                $direccion = "";
-                                                $direccion .= $iterDireccion->calle ? 'Calle: ' . $iterDireccion->calle : '';
-                                                $direccion .= $iterDireccion->num_ext ? ' Num ext: ' . $iterDireccion->num_ext : '';
-                                                $direccion .= $iterDireccion->num_int ? ' Num int: ' . $iterDireccion->num_int : '';
-                                                $direccion .= $iterDireccion->colonia ? ' Col: ' . $iterDireccion->colonia : '';
-                                                $direccion .= $iterDireccion->codigo_postal ? ' CP: ' . $iterDireccion->codigo_postal : '';
-                                                $direccion .= $iterDireccion->municipio ? ' Municipio: ' . $iterDireccion->municipio : '';
-                                                $direccion .= $iterDireccion->estado ? ' Estado: ' . $iterDireccion->estado : '';
-                                                $direccion .= ",";
-                                                ?>
-                                                {{$direccion}}
-                                                @endforeach
-                                            </td>
-											<td>{{ $cliente->es_activo }}</td>
+											<td>{{ $direccione->calle}}</td>
+											<td>{{ $direccione->cliente->nombre }}</td>
+											<td>{{ $direccione->proveedor->nombre }}</td>
+											<td>{{ $direccione->calle }}</td>
+											<td>{{ $direccione->num_int }}</td>
+											<td>{{ $direccione->num_ext }}</td>
+											<td>{{ $direccione->codigo_postal }}</td>
+											<td>{{ $direccione->colonia }}</td>
+											<td>{{ $direccione->municipio }}</td>
+											<td>{{ $direccione->estado }}</td>
+											<td>{{ $direccione->pais }}</td>
+											<td>{{ $direccione->es_activo }}</td>
 
                                             <td>
-                                                <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('direcciones.destroy',$direccione->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('direcciones.show',$direccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('direcciones.edit',$direccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    <a class="btn btn-sm btn-info" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Direcciones</
                                                 </form>
                                             </td>
                                         </tr>
@@ -89,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $clientes->links() !!}
+                {!! $direcciones->links() !!}
             </div>
         </div>
     </div>
@@ -112,14 +107,7 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                },
-                columnDefs: [{
-                    // espeificamos que columna sera afectada
-                    targets: [5],
-                    render: function(data, type, full, meta) {    
-                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
-                    }
-                }]
+                }
             });
         });
         $('.show_confirm').click(function(event) {
