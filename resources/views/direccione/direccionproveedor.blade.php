@@ -34,9 +34,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-										<th>ENTREEEEEEEEE</th>
-										<th>Cliente</th>
-										<th>Proveedor</th>
+										<th>Nombre</th>
 										<th>Calle</th>
 										<th>Num Int</th>
 										<th>Num Ext</th>
@@ -55,9 +53,12 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $direccione->calle}}</td>
-											<td>{{ $direccione->cliente->nombre }}</td>
-											<td>{{ $direccione->proveedor->nombre }}</td>
+											<td>
+                                                <?php 
+                                                    $nombre = isset($direccione->cliente->nombre)  ? $direccione->cliente->nombre: $direccione->proveedor->nombre;                                                
+                                                ?>
+                                                {{ $nombre }}
+                                            </td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
 											<td>{{ $direccione->num_ext }}</td>
