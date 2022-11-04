@@ -25,6 +25,17 @@ class FinanzaController extends Controller
     }
 
     /**
+     * Display a listing of the supplier.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ingreso()
+    {      
+        $finanza = new Finanza();
+        return view('finanza.createIngreso', compact('finanza'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
