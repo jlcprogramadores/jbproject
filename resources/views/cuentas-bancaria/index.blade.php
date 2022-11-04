@@ -41,7 +41,6 @@
 										<th>Cuenta</th>
 										<th>Clabe</th>
 										<th>Tarjeta</th>
-										<th>Es Activo</th>
 
                                         <th></th>
                                     </tr>
@@ -57,7 +56,6 @@
 											<td>{{ $cuentasBancaria->cuenta }}</td>
 											<td>{{ $cuentasBancaria->clabe }}</td>
 											<td>{{ $cuentasBancaria->tarjeta }}</td>
-											<td>{{ $cuentasBancaria->es_activo }}</td>
 
                                             <td>
                                                 <form action="{{ route('cuentas-bancarias.destroy',$cuentasBancaria->id) }}" method="POST">

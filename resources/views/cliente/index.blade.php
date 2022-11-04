@@ -41,8 +41,6 @@
 										<th>Rfc</th>
                                         <th>Direccion</th>
                                         <th>Teléfono</th>
-										<th>Es Activo</th>
-                                        <th>Teléfono</th>
                                         <th>Datos</th>
                                         <th>Acciones</th>
                                         
@@ -86,13 +84,10 @@
                                                 {{$telefono}}
                                                 @endforeach
                                             </td>
-											<td>{{ $cliente->es_activo }}</td>
-                                            <td>{{ $cliente->es_activo }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
                                             </td>
-                                           
                                             <td>
                                                 <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

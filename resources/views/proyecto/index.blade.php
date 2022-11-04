@@ -38,7 +38,6 @@
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Numero De Proyecto</th>
-										<th>Es Activo</th>
 
                                         <th></th>
                                     </tr>
@@ -51,7 +50,6 @@
 											<td>{{ $proyecto->nombre }}</td>
 											<td>{{ $proyecto->descripcion }}</td>
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
-											<td>{{ $proyecto->es_activo }}</td>
 
                                             <td>
                                                 <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">

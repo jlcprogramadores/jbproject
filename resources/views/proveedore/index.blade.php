@@ -45,7 +45,6 @@
                                     <th>Es Facturable</th>
                                     <th>Mail</th>
                                     <th>Rfc</th>
-                                    <th>Es Activo</th>
                                     <th>Datos</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -94,7 +93,6 @@
                                     <td>{{ $proveedore->es_facturable }}</td>
                                     <td>{{ $proveedore->mail }}</td>
                                     <td>{{ $proveedore->rfc }}</td>
-                                    <td>{{ $proveedore->es_activo }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccionproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
                                         <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>

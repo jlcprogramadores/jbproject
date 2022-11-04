@@ -37,7 +37,6 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Es Activo</th>
 
                                         <th></th>
                                     </tr>
@@ -49,7 +48,6 @@
                                             
 											<td>{{ $categoriasDeEntrada->nombre }}</td>
 											<td>{{ $categoriasDeEntrada->descripcion }}</td>
-											<td>{{ $categoriasDeEntrada->es_activo }}</td>
 
                                             <td>
                                                 <form action="{{ route('categorias-de-entradas.destroy',$categoriasDeEntrada->id) }}" method="POST">

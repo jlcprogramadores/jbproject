@@ -38,7 +38,6 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Es Activo</th>
 
                                         <th></th>
                                     </tr>
@@ -50,7 +49,6 @@
                                             
 											<td>{{ $familia->nombre }}</td>
 											<td>{{ $familia->descripcion }}</td>
-											<td>{{ $familia->es_activo }}</td>
 
                                             <td>
                                                 <form action="{{ route('familias.destroy',$familia->id) }}" method="POST">
