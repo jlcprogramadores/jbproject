@@ -3,7 +3,7 @@
 
         <div class="form-group">
             {{ Form::label('tipo_de_direccion') }}
-            {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Direccione']) }}
+            {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona tipo']) }}
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -12,17 +12,17 @@
                 if(request()->tipo != ''){
                     // si crea una nueva direccion desde un proveedor o un cliente se asignas sus id desde el inicio
                     // place holder se deja en null para que se seleccione la primera opcion en select
-                    if(request()->tipo == 'Cliente'){
+                    if(request()->tipo == 'cliente'){
                         $nombre = 'cliente';
                         $nombreForm = 'cliente_id';
                         $placeholder = null;
-                        $select2 = [request()->id => 'seleccionado'];
+                        $select2 = [request()->id => request()->nombre];
                         $direcciones = $direccione->cliente_id;
-                    }else{
+                    }elseif(request()->tipo == 'proveedor'){
                         $nombre = 'proveedor';
                         $nombreForm = 'proveedor_id';
                         $placeholder = null;
-                        $select2 = [request()->id => 'seleccionado'];
+                        $select2 = [request()->id => request()->nombre];
                         $direcciones = $direccione->proveedor_id;
                     }
                 }else{
@@ -31,13 +31,13 @@
                     if(isset($direccione->cliente_id)){
                         $nombre = 'cliente';
                         $nombreForm = 'cliente_id';
-                        $placeholder = 'Selecciona Cliente';
+                        $placeholder = null;
                         $select2 = $cliente;
                         $direcciones = $direccione->cliente_id;
                     }else{
                         $nombre = 'proveedor';
                         $nombreForm = 'proveedor_id';
-                        $placeholder = 'Selecciona Proveedor';
+                        $placeholder = null;
                         $select2 = $proveedores;
                         $direcciones = $direccione->proveedor_id;
                     }

@@ -35,7 +35,9 @@ class DireccioneController extends Controller
     public function direccionproveedor($id)
     {    
         $direcciones = Direccione::where('proveedor_id', $id)->paginate();
-        return view('direccione.direccionproveedor', compact('direcciones','id'))
+        // encuentra el nombre del primer proveedor
+        $nombre = Proveedore::pluck('nombre','id')->first();
+        return view('direccione.direccionproveedor', compact('direcciones','id','nombre'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
 
@@ -47,7 +49,9 @@ class DireccioneController extends Controller
     public function direccioncliente($id)
     {   
         $direcciones = Direccione::where('cliente_id', $id)->paginate();
-        return view('direccione.direccioncliente', compact('direcciones'))
+        // encuentra el nombre del primer cliente
+        $nombre = Cliente::pluck('nombre','id')->first();
+        return view('direccione.direccioncliente', compact('direcciones','id','nombre'))
             ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
     }
 
