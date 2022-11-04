@@ -38,6 +38,7 @@
                                     <th>Nombre</th>
                                     <th>Razon Social</th>
                                     <th>Dirección</th>
+                                    <th>Teléfono</th>
                                     <th>Estado</th>
                                     <th>Dias De Credito</th>
                                     <th>Monto De Credito</th>
@@ -72,6 +73,19 @@
                                         $direccion .= ",";
                                         ?>
                                         {{$direccion}}
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <?php $itel=0; ?>
+                                        @foreach($proveedore->telefonos as $iterTelefono)
+                                        <?php   
+                                        ++$itel; 
+                                        // iteramos y formamos las las dirreciones s
+                                        $telefono = "";
+                                        $telefono .= $iterTelefono->telefono ? 'Tel' . $itel . ': ' . $iterTelefono->telefono : '';
+                                        $telefono .= ",";
+                                        ?>
+                                        {{$telefono}}
                                         @endforeach
                                     </td>
                                     <td>{{ $proveedore->estado }}</td>
@@ -128,7 +142,7 @@
                 },
                 columnDefs: [{
                     // espeificamos que columna sera afectada
-                    targets: [3],
+                    targets: [3,4],
                     render: function(data, type, full, meta) {    
                         return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
                     }
