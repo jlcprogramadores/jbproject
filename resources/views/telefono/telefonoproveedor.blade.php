@@ -19,7 +19,7 @@
                                 <a href="{{ route('proveedores.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
-                                <a href="{{ route('telefonos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('telefonos.create', ['id' => $id, 'tipo' => 'proveedor', 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Teléfono') }}
                                 </a>
                               </div>
@@ -38,7 +38,6 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Cliente</th>
 										<th>Proveedor</th>
 										<th>Teléfono</th>
 
@@ -50,7 +49,6 @@
                                         <tr>
                                             
                                             <td>{{ ++$i }}</td>
-											<td>{{ $telefono->cliente->nombre }}</td>
 											<td>{{ $telefono->proveedor->nombre}}</td>
 											<td>{{ $telefono->telefono }}</td>
 

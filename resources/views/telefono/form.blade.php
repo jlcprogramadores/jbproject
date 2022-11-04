@@ -1,15 +1,45 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
         <div class="form-group">
-            {{ Form::label('cliente_id') }}
-            {{ Form::select('cliente_id', $cliente,$telefono->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
+            <?php 
+                // si esta vacio significa que no se reciobio nada en la request
+                if(request()->tipo != ''){
+                    // si crea una nueva direccion desde un proveedor o un cliente se asignas sus id desde el inicio
+                    // place holder se deja en null para que se seleccione la primera opcion en select
+                    if(request()->tipo == 'cliente'){
+                        $nombre = 'cliente';
+                        $nombreForm = 'cliente_id';
+                        $placeholder = null;
+                        $select2 = [request()->id => request()->nombre];
+                        $telefonos = $telefono->cliente_id;
+                    }elseif(request()->tipo == 'proveedor'){
+                        $nombre = 'proveedor';
+                        $nombreForm = 'proveedor_id';
+                        $placeholder = null;
+                        $select2 = [request()->id => request()->nombre];
+                        $telefonos = $telefono->proveedor_id;
+                    }
+                }else{
+                    // Estas opciones estan acuvoas para cuando se edite el formulario
+                    // Consiste en mestar corresponditne mente si se edita desde provedores o desde clientes
+                    if(isset($telefono->cliente_id)){
+                        $nombre = 'cliente';
+                        $nombreForm = 'cliente_id';
+                        $placeholder = null;
+                        $select2 = $cliente;
+                        $telefonos = $telefono->cliente_id;
+                    }else{
+                        $nombre = 'proveedor';
+                        $nombreForm = 'proveedor_id';
+                        $placeholder = null;
+                        $select2 = $proveedore;
+                        $telefonos = $telefono->proveedor_id;
+                    }
+                }
+            ?>
+            {{ Form::label($nombre) }}
+            {{ Form::select($nombreForm ,$select2, $telefonos, ['class' => 'form-control' . ($errors->has('$nombreForm') ? ' is-invalid' : ''), 'placeholder' => $placeholder]) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('proveedor_id') }}
-            {{ Form::select('proveedor_id',$proveedore,$telefono->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
-            {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('telefono') }}
