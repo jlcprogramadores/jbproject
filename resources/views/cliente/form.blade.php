@@ -21,7 +21,8 @@
             {{ Form::text('rfc', $cliente->rfc, ['class' => 'form-control' . ($errors->has('rfc') ? ' is-invalid' : ''), 'placeholder' => 'Rfc']) }}
             {!! $errors->first('rfc', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <!-- telefonos dinamicos
+            <div class="form-group">
             <table class="table" id="dynamicAddRemove">
                 <tr>
                     <th>{{ Form::label('Teléfono(s)') }}</th>
@@ -38,7 +39,7 @@
             </table>
             {{ Form::text('rfc', $cliente->rfc, ['class' => 'form-control' . ($errors->has('rfc') ? ' is-invalid' : ''), 'placeholder' => 'Rfc']) }}
             {!! $errors->first('rfc', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> -->
         <div class="form-group d-none">
             {{ Form::label('es_activo') }}
             {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
@@ -54,14 +55,15 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-    var i = 0;
-    $("#dynamic-ar").click(function () {
-        ++i;
-        $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
-            '][subject]" placeholder="Ingresa el número" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td></tr>'
-            );
-    });
-    $(document).on('click', '.remove-input-field', function () {
-        $(this).parents('tr').remove();
-    });
+    // telefonos dinamicos
+    // var i = 0;
+    // $("#dynamic-ar").click(function () {
+    //     ++i;
+    //     $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
+    //         '][subject]" placeholder="Ingresa el número" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td></tr>'
+    //         );
+    // });
+    // $(document).on('click', '.remove-input-field', function () {
+    //     $(this).parents('tr').remove();
+    // });
 </script>
