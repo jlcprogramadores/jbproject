@@ -1,0 +1,23 @@
+----------------------------------------------------------------------------------------------------------------
+Ruta para mandar id y tipo al form
+
+1-Se recibe el id desde web.php
+
+Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
+
+2-Y se usa en DireccioneController.php
+
+public function direccionproveedor($id)
+{    
+	$direcciones = Direccione::where('proveedor_id', $id)->paginate();
+        return view('direccione.direccionproveedor', compact('direcciones','id'))
+            ->with('i', (request()->input('page', 1) - 1) * $direcciones->perPage());
+}
+
+3-Llega a direccionproveedor.blade.php y lo envíamos a create.blade por medio de esta línea
+<a href="{{ route('direcciones.create', ['id' => $id, 'tipo' => 'proveedor']) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+
+4-Por último se uas en create.blade
+{{ request()->tipo}}
+{{ request()->id}}
+----------------------------------------------------------------------------------------------------------------
