@@ -18,8 +18,7 @@ class CreateCuentasBancariasTable extends Migration
             $table->unsignedBigInteger('proveedore_id');
             $table->foreign('proveedore_id')
                 ->references('id')
-                ->on('proveedores')
-                ->onDelete('cascade');
+                ->on('proveedores');
             $table->string('banco');
             $table->string('titular_banco');
             $table->integer('cuenta');

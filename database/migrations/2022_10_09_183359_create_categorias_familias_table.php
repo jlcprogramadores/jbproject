@@ -18,8 +18,7 @@ class CreateCategoriasFamiliasTable extends Migration
             $table->unsignedBigInteger('familia_id');
             $table->foreign('familia_id')
                 ->references('id')
-                ->on('familias')
-                ->onDelete('cascade');
+                ->on('familias');
             $table->string('nombre');
             $table->string('descripcion');
             $table->boolean('es_activo');

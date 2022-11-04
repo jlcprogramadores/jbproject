@@ -18,18 +18,15 @@ class CreateEntradasTable extends Migration
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')
                 ->references('id')
-                ->on('clientes')
-                ->onDelete('cascade');
+                ->on('clientes');
             $table->unsignedBigInteger('tipodeingreso_id');
             $table->foreign('tipodeingreso_id')
                 ->references('id')
-                ->on('tipo_de_ingresos')
-                ->onDelete('cascade');
+                ->on('tipo_de_ingresos');
             $table->unsignedBigInteger('categorias_de_entrada_id');
             $table->foreign('categorias_de_entrada_id')
                 ->references('id')
-                ->on('categorias_de_entradas')
-                ->onDelete('cascade');       
+                ->on('categorias_de_entradas');       
             $table->integer('proyecto_id')->nullable();
         });
     }

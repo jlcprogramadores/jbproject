@@ -18,8 +18,7 @@ class CreateDireccionesTable extends Migration
             $table->unsignedBigInteger('tipo_de_direccione_id');
             $table->foreign('tipo_de_direccione_id')
                 ->references('id')
-                ->on('tipo_de_direcciones')
-                ->onDelete('cascade');
+                ->on('tipo_de_direcciones');
             $table->integer('cliente_id')->nullable();
             $table->integer('proveedor_id')->nullable();
             $table->string('calle');
