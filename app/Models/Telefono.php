@@ -44,6 +44,6 @@ class Telefono extends Model
      */
     public function proveedor()
     {
-        return $this->hasOne('App\Models\proveedore', 'id', 'proveedor_id');
+        return $this->hasOne('App\Models\Proveedore', 'id', 'proveedor_id');
     }
 }

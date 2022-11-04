@@ -63,4 +63,11 @@ class Cliente extends Model
         return $this->hasMany('App\Models\Direccione', 'cliente_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function telefonos()
+    {
+        return $this->hasMany('App\Models\Telefono', 'cliente_id', 'id');
+    }
 }

@@ -55,20 +55,20 @@ class Proveedore extends Model
         return $this->hasMany('App\Models\CuentasBancaria', 'proveedore_id', 'id');
     }
     
-   /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function telefono()
-    {
-        return $this->hasMany('App\Models\Telefono', 'telefono_id', 'id');
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function salida()
     {
         return $this->hasMany('App\Models\Salida', 'salida_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function telefonos()
+    {
+        return $this->hasMany('App\Models\Telefono', 'proveedor_id', 'id');
     }
 
     /**
