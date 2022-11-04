@@ -48,10 +48,10 @@
                                 <a class="dropdown-item"  href="{{ url('/') }}">
                                     {{ __('Egresos') }}
                                 </a>  
-                                <a class="dropdown-item" href="{{ url('/') }}"">
+                                <a class="dropdown-item" href="{{ url('/') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
-                                <a class="dropdown-item" href="{{ url('/') }}"">
+                                <a class="dropdown-item" href="{{ url('/') }}">
                                     {{ __('Gráficas') }}
                                 </a> 
                                 

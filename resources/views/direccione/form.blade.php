@@ -1,29 +1,50 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
-            {{ Form::label('tipo_de_direccione_id') }}
+            {{ Form::label('tipo_de_direccion') }}
             {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Direccione']) }}
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             <?php 
-                if(isset($direccione->cliente_id)){
-                    $label = 'cliente_id';
-                    $placeholder = 'Selecciona Cliente';
-                    $select2 = $cliente;
-                    $direcciones = $direccione->cliente_id;
-                    
+                // si esta vacio significa que no se reciobio nada en la request
+                if(request()->tipo != ''){
+                    // si crea una nueva direccion desde un proveedor o un cliente se asignas sus id desde el inicio
+                    // place holder se deja en null para que se seleccione la primera opcion en select
+                    if(request()->tipo == 'Cliente'){
+                        $nombre = 'cliente';
+                        $nombreForm = 'cliente_id';
+                        $placeholder = null;
+                        $select2 = [request()->id => 'seleccionado'];
+                        $direcciones = $direccione->cliente_id;
+                    }else{
+                        $nombre = 'proveedor';
+                        $nombreForm = 'proveedor_id';
+                        $placeholder = null;
+                        $select2 = [request()->id => 'seleccionado'];
+                        $direcciones = $direccione->proveedor_id;
+                    }
                 }else{
-                    $label = 'proveedor_id';
-                    $placeholder = 'Selecciona Proveedor';
-                    $select2 = $proveedores;
-                    $direcciones = $direccione->proveedor_id;
-
+                    // Estas opciones estan acuvoas para cuando se edite el formulario
+                    // Consiste en mestar corresponditne mente si se edita desde provedores o desde clientes
+                    if(isset($direccione->cliente_id)){
+                        $nombre = 'cliente';
+                        $nombreForm = 'cliente_id';
+                        $placeholder = 'Selecciona Cliente';
+                        $select2 = $cliente;
+                        $direcciones = $direccione->cliente_id;
+                    }else{
+                        $nombre = 'proveedor';
+                        $nombreForm = 'proveedor_id';
+                        $placeholder = 'Selecciona Proveedor';
+                        $select2 = $proveedores;
+                        $direcciones = $direccione->proveedor_id;
+                    }
                 }
             ?>
-            {{ Form::label($label) }}
-            {{ Form::select($label ,$select2, $direcciones, ['class' => 'form-control' . ($errors->has('$label') ? ' is-invalid' : ''), 'placeholder' => $placeholder]) }}
+            {{ Form::label($nombre) }}
+            {{ Form::select($nombreForm ,$select2, $direcciones, ['class' => 'form-control' . ($errors->has('$nombreForm') ? ' is-invalid' : ''), 'placeholder' => $placeholder]) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -61,9 +82,9 @@
             {{ Form::text('estado', $direccione->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('pais') }}
-            {{ Form::text('pais', $direccione->pais, ['class' => 'form-control' . ($errors->has('pais') ? ' is-invalid' : ''), 'placeholder' => 'Pais']) }}
+            {{ Form::text('pais', "Mexico", ['class' => 'form-control' . ($errors->has('pais') ? ' is-invalid' : '')]) }}
             {!! $errors->first('pais', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">
