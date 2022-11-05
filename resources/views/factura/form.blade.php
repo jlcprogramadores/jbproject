@@ -18,14 +18,28 @@
         </div>
         <br>
         <div class="form-group">
+            <?php // si tenia auna fecha guardada la recupera
+                if(isset($factura->fecha_creacion)){
+                    $fechaCreacion = Carbon\Carbon::parse($factura->fecha_creacion)->format('Y-m-d');
+                }else{
+                    $fechaCreacion = $factura->fecha_creacion;
+                }
+            ?>
             {{ Form::label('fecha_creacion') }}
-            {{ Form::date('fecha_creacion', $factura->fecha_creacion, ['class' => 'form-control-sm' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+            {{ Form::date('fecha_creacion', $fechaCreacion, ['class' => 'form-control-sm' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''),'value' => date("m-d-Y")]) }}
             {!! $errors->first('fecha_creacion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <br>
         <div class="form-group">
+            <?php // si tenia auna fecha guardada la recupera
+                if(isset($factura->fecha_factura)){
+                    $fechaFactura = Carbon\Carbon::parse($factura->fecha_factura)->format('Y-m-d');
+                }else{
+                    $fechaFactura = $factura->fecha_factura;
+                }
+            ?>
             {{ Form::label('fecha_factura') }}
-            {{ Form::date('fecha_factura', $factura->fecha_factura, ['class' => 'form-control-sm' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
+            {{ Form::date('fecha_factura', $fechaFactura, ['class' => 'form-control-sm' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
             {!! $errors->first('fecha_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
