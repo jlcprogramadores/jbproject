@@ -59,6 +59,12 @@ class Finanza extends Model
      */
     protected $fillable = ['salidas_id','entradas_id','factura_id','categoria_id','iva_id','no','fecha_creacion','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
 
-
+	/**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function entrada()
+    {
+        return $this->hasOne('App\Models\Entrada', 'id', 'entradas_id');
+    }
 
 }

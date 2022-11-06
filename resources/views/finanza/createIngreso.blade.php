@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Crear Finanza')
+@section('title','Crear Ingreso')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Finanza</span>
+                        <span class="card-title">Crear Ingreso</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('finanzas.store') }}"  role="form" enctype="multipart/form-data">

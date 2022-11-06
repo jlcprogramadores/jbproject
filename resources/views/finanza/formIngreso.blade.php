@@ -1,19 +1,38 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
         <div class="form-group">
-            {{ Form::label('salidas_idx') }}
-            {{ Form::text('salidas_idx', $finanza->salidas_id, ['class' => 'form-control' . ($errors->has('salidas_id') ? ' is-invalid' : ''), 'placeholder' => 'Salidas Idx']) }}
-            {!! $errors->first('salidas_id', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('tipodeingreso_id') }}
+            {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Tipo de ingreso']) }}
+            {!! $errors->first('tipodeingreso_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('entradas_id') }}
-            {{ Form::text('entradas_id', $finanza->entradas_id, ['class' => 'form-control' . ($errors->has('entradas_id') ? ' is-invalid' : ''), 'placeholder' => 'Entradas Id']) }}
+            {{ Form::label('proyecto_id') }}
+            {{ Form::select('proyecto_id',$datosproyecto,$entrada->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+            {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('categorias_de_entrada_id') }}
+            {{ Form::select('categorias_de_entrada_id',$datoscategoriasdeentrada, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Categoria de entrada']) }}
+            {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('Familia') }}
+            {{ Form::select('Selecciona Familia',$datosfamilia, $entrada->entradas_id, ['class' => 'form-control' . ($errors->has('entradas_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
             {!! $errors->first('entradas_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            {{ Form::label('Categoría de Familia') }}
+            {{ Form::select('Selecciona Categoría de Familia',$datoscategoriasfamilia, $entrada->entradas_id, ['class' => 'form-control' . ($errors->has('entradas_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Categoría de Familia']) }}
+            {!! $errors->first('entradas_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('cliente_id') }}
+            {{ Form::select('cliente_id',$datoscliente, $entrada->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
+            {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('factura_id') }}
-            {{ Form::text('factura_id', $finanza->factura_id, ['class' => 'form-control' . ($errors->has('factura_id') ? ' is-invalid' : ''), 'placeholder' => 'Factura Id']) }}
+            {{ Form::select('factura_id',$datosfactura, $finanza->factura_id, ['class' => 'form-control' . ($errors->has('factura_id') ? ' is-invalid' : ''), 'placeholder' => 'Factura Id']) }}
             {!! $errors->first('factura_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -23,9 +42,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('iva_id') }}
-            {{ Form::text('iva_id', $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Iva Id']) }}
+            {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Iva Id']) }}
             {!! $errors->first('iva_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+
+
         <div class="form-group">
             {{ Form::label('no') }}
             {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'No']) }}
@@ -55,7 +77,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('unidad_id') }}
-            {{ Form::text('unidad_id', $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Unidad Id']) }}
+            {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Unidad Id']) }}
             {!! $errors->first('unidad_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
