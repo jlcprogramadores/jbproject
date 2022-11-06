@@ -38,6 +38,7 @@ class Finanza extends Model
 		'proyecto_id' => 'required',
 		'iva_id' => 'required',
 		'no' => 'required',
+        'vence' => 'required',
 		'fecha_salida' => 'required',
 		'fecha_entrada' => 'required',
 		'descripcion' => 'required',
@@ -59,7 +60,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','factura_id','categoria_id','iva_id','no','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','factura_id','categoria_id','iva_id','no','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
