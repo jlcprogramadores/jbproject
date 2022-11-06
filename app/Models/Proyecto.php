@@ -43,4 +43,11 @@ class Proyecto extends Model
         return $this->hasMany('App\Models\Entrada', 'entrada_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function finanza()
+    {
+        return $this->hasMany('App\Models\Finanza', 'proyecto_id', 'id');
+    }
 }

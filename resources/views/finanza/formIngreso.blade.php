@@ -5,9 +5,10 @@
             {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Tipo de ingreso']) }}
             {!! $errors->first('tipodeingreso_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+      
         <div class="form-group">
             {{ Form::label('proyecto_id') }}
-            {{ Form::select('proyecto_id',$datosproyecto,$entrada->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+            {{ Form::select('proyecto_id',$datosproyecto, $entrada->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

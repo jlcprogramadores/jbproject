@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $factura_id
  * @property $categoria_id
  * @property $iva_id
+ * @property $proyecto_id
  * @property $no
  * @property $fecha_creacion
  * @property $fecha_entrada
@@ -34,6 +35,7 @@ class Finanza extends Model
 {
 	public $timestamps = false; 
     static $rules = [
+		'proyecto_id' => 'required',
 		'iva_id' => 'required',
 		'no' => 'required',
 		'fecha_creacion' => 'required',
@@ -57,7 +59,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','factura_id','categoria_id','iva_id','no','fecha_creacion','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','factura_id','categoria_id','iva_id','no','fecha_creacion','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -65,6 +67,14 @@ class Finanza extends Model
     public function entrada()
     {
         return $this->hasOne('App\Models\Entrada', 'id', 'entradas_id');
+    }
+
+	/**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proyecto()
+    {
+        return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
     }
 
 }
