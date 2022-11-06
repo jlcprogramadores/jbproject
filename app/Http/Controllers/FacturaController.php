@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Factura;
 use Illuminate\Http\Request;
+use App\Models\Finanza;
 
 /**
  * Class FacturaController
@@ -32,7 +33,8 @@ class FacturaController extends Controller
     public function create()
     {
         $factura = new Factura();
-        return view('factura.create', compact('factura'));
+        $datofinanza = Finanza::pluck('descripcion','id');
+        return view('factura.create', compact('factura','datofinanza'));
     }
 
     /**

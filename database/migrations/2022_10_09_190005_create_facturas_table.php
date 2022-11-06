@@ -15,6 +15,10 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('finanza_id');
+            $table->foreign('finanza_id')
+                ->references('id')
+                ->on('finanzas');
             $table->string('referencia_factura');
             $table->longText('factura_base64')->nullable();
             $table->string('url')->nullable();

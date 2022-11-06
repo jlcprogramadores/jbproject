@@ -78,4 +78,12 @@ class Finanza extends Model
         return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function factura()
+    {
+        return $this->hasMany('App\Models\Factura', 'finanza_id', 'id');
+    }
+
 }

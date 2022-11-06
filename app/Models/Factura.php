@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Factura
  *
  * @property $id
+ * @property $finanza_id
  * @property $referencia_factura
  * @property $factura_base64
  * @property $url
@@ -33,8 +34,15 @@ class Factura extends Model
      *
      * @var array
      */
-    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura'];
+    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function ingreso()
+    {
+        return $this->hasOne('App\Models\Finanza', 'id', 'finanza_id');
+    }
 
 
 }
