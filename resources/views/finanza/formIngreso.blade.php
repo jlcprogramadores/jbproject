@@ -56,9 +56,9 @@
         </div>
         <br>
         <div class="form-group">
-            {{ Form::label('fecha_creacion') }}
-            {{ Form::date('fecha_creacion', $finanza->fecha_creacion, ['class' => 'form-control-sm' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
-            {!! $errors->first('fecha_creacion', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('fecha_salida') }}
+            {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control-sm' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+            {!! $errors->first('fecha_salida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <br>
         <div class="form-group">

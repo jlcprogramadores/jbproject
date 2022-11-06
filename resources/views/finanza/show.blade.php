@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Fecha Creacion:</strong>
-                            {{ $finanza->fecha_creacion }}
+                            {{ $finanza->fecha_salida }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Entrada:</strong>

@@ -68,7 +68,7 @@
 											<td>{{ $finanza->categoria_id }}</td>
 											<td>{{ $finanza->iva_id }}</td>
 											<td>{{ $finanza->no }}</td>
-											<td>{{ $finanza->fecha_creacion }}</td>
+											<td>{{ $finanza->fecha_salida }}</td>
 											<td>{{ $finanza->fecha_entrada }}</td>
 											<td>{{ $finanza->descripcion }}</td>
 											<td>{{ $finanza->cantidad }}</td>

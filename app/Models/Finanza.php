@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $iva_id
  * @property $proyecto_id
  * @property $no
- * @property $fecha_creacion
+ * @property $fecha_salida
  * @property $fecha_entrada
  * @property $descripcion
  * @property $cantidad
@@ -38,7 +38,7 @@ class Finanza extends Model
 		'proyecto_id' => 'required',
 		'iva_id' => 'required',
 		'no' => 'required',
-		'fecha_creacion' => 'required',
+		'fecha_salida' => 'required',
 		'fecha_entrada' => 'required',
 		'descripcion' => 'required',
 		'cantidad' => 'required',
@@ -59,7 +59,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','factura_id','categoria_id','iva_id','no','fecha_creacion','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','factura_id','categoria_id','iva_id','no','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

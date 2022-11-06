@@ -25,7 +25,7 @@ class CreateFinanzasTable extends Migration
                 ->on('proyectos');
             $table->integer('iva_id');
             $table->string('no');
-            $table->dateTime('fecha_creacion');
+            $table->dateTime('fecha_salida');
             $table->dateTime('fecha_entrada');
             $table->string('descripcion');
             $table->float('cantidad');
