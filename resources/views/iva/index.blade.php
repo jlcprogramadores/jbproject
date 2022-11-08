@@ -35,7 +35,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre</th>
+										<th>Porcentaje</th>
 										<th>Descripcion</th>
 
                                         <th>buttons</th>
@@ -46,7 +46,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $iva->nombre }}</td>
+											<td>{{ $iva->porcentaje }}</td>
 											<td>{{ $iva->descripcion }}</td>
 
                                             <td>

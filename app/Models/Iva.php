@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Iva
  *
  * @property $id
- * @property $nombre
+ * @property $porcentaje
  * @property $descripcion
  *
  * @package App
@@ -18,7 +18,7 @@ class Iva extends Model
 {
     public $timestamps = false;
     static $rules = [
-		'nombre' => 'required',
+		'porcentaje' => 'required',
 		'descripcion' => 'required',
     ];
 
@@ -29,7 +29,7 @@ class Iva extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion'];
+    protected $fillable = ['porcentaje','descripcion'];
 
 
 

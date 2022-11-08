@@ -54,7 +54,7 @@ class FinanzaController extends Controller
         $datoscliente = Cliente::pluck('nombre','id');
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
-        $datosiva = Iva::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
         return view('finanza.createIngreso', compact('finanza','entrada','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscliente','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
     }

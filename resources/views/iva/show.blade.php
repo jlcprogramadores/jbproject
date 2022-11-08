@@ -19,8 +19,8 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $iva->nombre }}
+                            <strong>Porcentaje:</strong>
+                            {{ $iva->porcentaje }}
                         </div>
                         <div class="form-group">
                             <strong>Descripcion:</strong>
