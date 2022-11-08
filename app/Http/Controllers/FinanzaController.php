@@ -13,6 +13,9 @@ use App\Models\Iva;
 use App\Models\Factura;
 use App\Models\CategoriasFamilia;
 use App\Models\CategoriasDeEntrada;
+// para la salida se requiere lo siguiente\
+use App\Models\Salida;
+use App\Models\Proveedore;
 
 
 
@@ -57,6 +60,26 @@ class FinanzaController extends Controller
         $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
         return view('finanza.createIngreso', compact('finanza','entrada','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscliente','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+    }
+    /**
+     * Display a listing of the supplier.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function egreso()
+    {      
+        $salida = new Salida();
+        $finanza = new Finanza();   
+        
+        $datosproveedor = Proveedore::pluck('nombre','id');
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+        return view('finanza.createEgreso', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
     }
 
     /**

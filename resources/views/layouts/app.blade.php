@@ -45,9 +45,9 @@
                                 Finanzas
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"  href="{{ url('/') }}">
+                                <a class="dropdown-item" href="{{ route('finanzas.egreso') }}">
                                     {{ __('Egresos') }}
-                                </a>  
+                                </a> 
                                 <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
