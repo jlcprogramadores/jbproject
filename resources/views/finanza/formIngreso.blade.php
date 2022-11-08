@@ -134,12 +134,6 @@
                 {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <br>
-        <!-- En este apartado se requiere crear facturas de forma dinamica -->
-            <div class="form-group">
-                {{ Form::label('factura_id') }}
-                {{ Form::select('factura_id',$datosfactura, $finanza->factura_id, ['class' => 'form-control' . ($errors->has('factura_id') ? ' is-invalid' : ''), 'placeholder' => 'Factura Id']) }}
-                {!! $errors->first('factura_id', '<div class="invalid-feedback">:message</div>') !!}
-            </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Aceptar</button>

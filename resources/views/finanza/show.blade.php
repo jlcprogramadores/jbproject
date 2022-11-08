@@ -27,10 +27,6 @@
                             {{ $finanza->entradas_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Factura Id:</strong>
-                            {{ $finanza->factura_id }}
-                        </div>
-                        <div class="form-group">
                             <strong>Categoria Id:</strong>
                             {{ $finanza->categoria_id }}
                         </div>

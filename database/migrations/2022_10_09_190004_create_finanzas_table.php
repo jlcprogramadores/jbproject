@@ -17,7 +17,6 @@ class CreateFinanzasTable extends Migration
             $table->id();
             $table->integer('salidas_id')->nullable();
             $table->integer('entradas_id')->nullable();
-            $table->integer('factura_id')->nullable();
             $table->integer('categoria_id')->nullable();
             $table->integer('vence');
             $table->unsignedBigInteger('proyecto_id');

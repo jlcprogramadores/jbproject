@@ -12,11 +12,6 @@
             {!! $errors->first('entradas_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('factura_id') }}
-            {{ Form::text('factura_id', $finanza->factura_id, ['class' => 'form-control' . ($errors->has('factura_id') ? ' is-invalid' : ''), 'placeholder' => 'Factura Id']) }}
-            {!! $errors->first('factura_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
             {{ Form::label('categoria_id') }}
             {{ Form::text('categoria_id', $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
             {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}

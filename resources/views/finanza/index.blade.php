@@ -37,7 +37,6 @@
                                         
 										<th>Salidas Id</th>
 										<th>Entradas Id</th>
-										<th>Factura Id</th>
                                         <th>Vence</th>
 										<th>Categoria Id</th>
                                         <th>Proyecto Id</th>
@@ -66,7 +65,6 @@
                                             
 											<td>{{ $finanza->salidas_id }}</td>
 											<td>{{ $finanza->entradas_id }}</td>
-											<td>{{ $finanza->factura_id }}</td>
                                             <td>{{ $finanza->vence }}</td>
 											<td>{{ $finanza->categoria_id }}</td>
                                             <td>{{ $finanza->proyecto_id }}</td>
