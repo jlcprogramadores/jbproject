@@ -14,7 +14,7 @@
                         <span class="card-title">Crear Egreso</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('finanzas.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('finanzas.storeEgreso') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('finanza.formEgreso')

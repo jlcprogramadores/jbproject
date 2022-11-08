@@ -16,12 +16,12 @@
             selecionar una familia, para que cargen las categorias de dicha familia -->
             <div class="col-sm p-1 form-group">
                 {{ Form::label('familia') }}
-                {{ Form::select('Selecciona Familia',$datosfamilia, $entrada->entradas_id, ['class' => 'form-control' . ($errors->has('entradas_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
-                {!! $errors->first('entradas_id', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::select('Selecciona Familia',$datosfamilia, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
+                {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-sm p-1 form-group">
                 {{ Form::label('Categoria') }}
-                {{ Form::text('categoria_id', $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
+                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
@@ -35,8 +35,8 @@
                     {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('no') }}
-                    {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'No']) }}
+                    {{ Form::label('folio') }}
+                    {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'Folio']) }}
                     {!! $errors->first('no', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('monto_a_pagar') }}
-                    {{ Form::text('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto A Pagar']) }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto A Pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">

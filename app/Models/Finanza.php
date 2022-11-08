@@ -39,9 +39,6 @@ class Finanza extends Model
 		'iva_id' => 'required',
 		'no' => 'required',
         'vence' => 'required',
-		'fecha_salida' => 'required',
-		'fecha_entrada' => 'required',
-        'fecha_facturacion' => 'required', 
 		'descripcion' => 'required',
 		'cantidad' => 'required',
 		'unidad_id' => 'required',
@@ -69,6 +66,14 @@ class Finanza extends Model
     public function entrada()
     {
         return $this->hasOne('App\Models\Entrada', 'id', 'entradas_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function salida()
+    {
+        return $this->hasOne('App\Models\Salida', 'id', 'salidas_id');
     }
 
 	/**

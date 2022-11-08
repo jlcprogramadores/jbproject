@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('porcentaje') }}
-            {{ Form::text('porcentaje', $iva->porcentaje, ['class' => 'form-control' . ($errors->has('porcentaje') ? ' is-invalid' : ''), 'placeholder' => 'Porcentaje']) }}
+            {{ Form::number('porcentaje', $iva->porcentaje, ['class' => 'form-control' . ($errors->has('porcentaje') ? ' is-invalid' : ''), 'placeholder' => 'Porcentaje']) }}
             {!! $errors->first('porcentaje', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

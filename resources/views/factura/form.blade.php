@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('finanza_id') }}
-            {{ Form::select('finanza_id',$datofinanza ,$factura->finanza_id, ['class' => 'form-control' . ($errors->has('finanza_id') ? ' is-invalid' : ''), 'placeholder' => 'Referencia Factura']) }}
+            {{ Form::select('finanza_id',$datofinanza ,$factura->finanza_id, ['class' => 'form-control' . ($errors->has('finanza_id') ? ' is-invalid' : ''), 'placeholder' => 'Referencia Finanza']) }}
             {!! $errors->first('finanza_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

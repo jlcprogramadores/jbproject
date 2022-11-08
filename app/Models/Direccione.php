@@ -32,7 +32,6 @@ class Direccione extends Model
 		'tipo_de_direccione_id' => 'required',
 		'calle' => 'required',
 		'num_int' => 'required',
-		'num_ext' => 'required',
 		'codigo_postal' => 'required',
 		'colonia' => 'required',
 		'municipio' => 'required',

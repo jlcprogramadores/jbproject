@@ -21,9 +21,9 @@ class CreateCuentasBancariasTable extends Migration
                 ->on('proveedores');
             $table->string('banco');
             $table->string('titular_banco');
-            $table->integer('cuenta');
-            $table->integer('clabe')->nullable();
-            $table->integer('tarjeta')->nullable();
+            $table->bigInteger('cuenta');
+            $table->bigInteger('clabe')->nullable();
+            $table->bigInteger('tarjeta')->nullable();
             $table->boolean('es_activo');
         });
     }

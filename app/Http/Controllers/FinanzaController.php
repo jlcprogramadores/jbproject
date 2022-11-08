@@ -100,12 +100,29 @@ class FinanzaController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeIngreso(Request $request)
     {
         request()->validate(Finanza::$rules);
 
         $finanza = Finanza::create($request->all());
         $entrada = Entrada::create($request->all());
+
+        return redirect()->route('finanzas.index')
+            ->with('success', 'Finanza creada exitosamente.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeEgreso(Request $request)
+    {
+        request()->validate(Finanza::$rules);
+
+        $finanza = Finanza::create($request->all());
+        $salida = Salida::create($request->all());
 
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza creada exitosamente.');

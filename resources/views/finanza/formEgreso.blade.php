@@ -25,9 +25,9 @@
             <!-- datos de ingreso -->
             <div class="col-sm">
                 <div class="p-1 form-group">
-                    {{ Form::label('cliente') }}
-                    {{ Form::select('priveedore_id',$datosproveedor, $salida->proveedore_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
-                    {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('proveedor') }}
+                    {{ Form::select('proveedor_id',$datosproveedor, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
+                    {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('no') }}
