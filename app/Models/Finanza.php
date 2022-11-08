@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $no
  * @property $fecha_salida
  * @property $fecha_entrada
+ * @property $fecha_facturacion
  * @property $descripcion
  * @property $cantidad
  * @property $unidad_id
@@ -40,6 +41,7 @@ class Finanza extends Model
         'vence' => 'required',
 		'fecha_salida' => 'required',
 		'fecha_entrada' => 'required',
+        'fecha_facturacion' => 'required', 
 		'descripcion' => 'required',
 		'cantidad' => 'required',
 		'unidad_id' => 'required',
@@ -59,7 +61,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

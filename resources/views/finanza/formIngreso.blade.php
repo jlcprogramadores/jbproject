@@ -44,11 +44,10 @@
                     {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control-sm' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
                     {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <!-- ocupa el campo de fecha facturacion no de salida -->
                 <div class="p-1 form-group">
-                    {{ Form::label('fecha_salida') }}
-                    {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control-sm' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
-                    {!! $errors->first('fecha_salida', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('fecha_facturacion') }}
+                    {{ Form::date('fecha_facturacion', $finanza->fecha_facturacion, ['class' => 'form-control-sm' . ($errors->has('fecha_facturacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Facturacion']) }}
+                    {!! $errors->first('fecha_facturacion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('vence') }}

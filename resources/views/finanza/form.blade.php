@@ -34,6 +34,12 @@
         </div>
         <br>
         <div class="form-group">
+            {{ Form::label('fecha_facturacion') }}
+            {{ Form::date('fecha_facturacion', $finanza->fecha_facturacion, ['class' => 'form-control-sm' . ($errors->has('fecha_facturacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+            {!! $errors->first('fecha_facturacion', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        
+        <div class="form-group">
             {{ Form::label('vence') }}
             {{ Form::text('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''), 'placeholder' => 'vence']) }}
             {!! $errors->first('vence', '<div class="invalid-feedback">:message</div>') !!}

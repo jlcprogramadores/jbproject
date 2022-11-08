@@ -40,6 +40,10 @@
                         </div>
                         <div class="form-group">
                             <strong>Fecha Creacion:</strong>
+                            {{ $finanza->fecha_facturacion }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Fecha Creacion:</strong>
                             {{ $finanza->fecha_salida }}
                         </div>
                         <div class="form-group">
