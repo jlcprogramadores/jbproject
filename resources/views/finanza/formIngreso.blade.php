@@ -1,3 +1,4 @@
+@if(\Auth::check())
 <div class="box box-info padding-1">
     <div class="container">
         <!-- estilo a partir de balsmiq  -->
@@ -130,3 +131,4 @@
         </div>
     </div>
 </div>
+@endif

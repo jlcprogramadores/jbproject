@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Crear Ingreso')
-
+@if(\Auth::check())
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -26,3 +26,4 @@
         </div>
     </section>
 @endsection
+@endif

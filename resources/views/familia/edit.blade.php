@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Actualizar Familia')
-
+@if(\Auth::check())
 @section('content')
     <section class="content container-fluid">
         <div class="">
@@ -28,3 +28,4 @@
         </div>
     </section>
 @endsection
+@endif

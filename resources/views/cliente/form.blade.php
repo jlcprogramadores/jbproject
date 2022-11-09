@@ -1,3 +1,4 @@
+@if(\Auth::check())
 <div class="box box-info padding-1">
     <div class="box-body">
         
@@ -69,3 +70,4 @@
     //     $(this).parents('tr').remove();
     // });
 </script>
+@endif

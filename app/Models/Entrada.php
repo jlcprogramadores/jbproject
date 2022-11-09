@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 class Entrada extends Model
 {
     static $rules = [
+        'proyecto_id' => 'required',
 		'cliente_id' => 'required',
 		'tipodeingreso_id' => 'required',
 		'categorias_de_entrada_id' => 'required',
