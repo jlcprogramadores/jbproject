@@ -178,8 +178,13 @@ class FinanzaController extends Controller
      */
     public function destroy($id)
     {
+        // si tienes entrada borra tambien entrada y si tienes salida tambien la salida
+        if(isset(Finanza::find($id)->entradas_id)){
+            Entrada::find(Finanza::find($id)->entradas_id)->delete();
+        }elseif(isset(Finanza::find($id)->salidas_id)){
+            Salida::find(Finanza::find($id)->salidas_id)->delete();
+        }
         $finanza = Finanza::find($id)->delete();
-
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza eliminada exitosamente.');
     }
