@@ -7,8 +7,9 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php $boleano = [ '1' => 'Si', '0' => 'No']; ?>
             {{ Form::label('es_fiscal') }}
-            {{ Form::text('es_fiscal', $tipoDeDireccione->es_fiscal, ['class' => 'form-control' . ($errors->has('es_fiscal') ? ' is-invalid' : ''), 'placeholder' => 'Es Fiscal']) }}
+            {{ Form::select('es_fiscal', $boleano,$tipoDeDireccione->es_fiscal, ['class' => 'form-control' . ($errors->has('es_fiscal') ? ' is-invalid' : ''), 'placeholder' => 'Es Fiscal']) }}
             {!! $errors->first('es_fiscal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
