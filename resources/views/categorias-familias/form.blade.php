@@ -25,6 +25,8 @@
 
     </div>
     <div class="box-footer mt20">
+        <br>
+        <a href="{{ route('categorias-familias.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>

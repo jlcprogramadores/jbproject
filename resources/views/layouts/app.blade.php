@@ -77,52 +77,52 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Administración
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"  href="{{ route('familias.index') }}">
-                                    {{ __('Familias') }}
-                                </a>  
-                                <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
-                                    {{ __('Categorías Familias') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('ivas.index') }}">
-                                    {{ __('Ivas') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('unidades.index') }}">
-                                    {{ __('Unidades') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('proyectos.index') }}">
-                                    {{ __('Proyectos') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('clientes.index') }}">
-                                    {{ __('Clientes') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
-                                    {{ __('Tipo de Direcciones') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('salidas.index') }}">
-                                    {{ __('Salidas') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('facturas.index') }}">
-                                    {{ __('Facturas') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
-                                    {{ __('Tipo de Ingresos') }}
-                                </a>     
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
                                     {{ __('Categorías de entrada') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
+                                    {{ __('Categorías Familias') }}
+                                </a>  
+                                <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    {{ __('Clientes') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('cuentas-bancarias.index') }}">
+                                    {{ __('Cuentas Bancarias') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('entradas.index') }}">
+                                    {{ __('Entradas') }}
+                                </a>  
+                                <a class="dropdown-item" href="{{ route('facturas.index') }}">
+                                    {{ __('Facturas') }}
+                                </a>   
+                                <a class="dropdown-item"  href="{{ route('familias.index') }}">
+                                    {{ __('Familias') }}
+                                </a>  
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
                                 </a>  
+                                <a class="dropdown-item" href="{{ route('ivas.index') }}">
+                                    {{ __('Ivas') }}
+                                </a> 
                                 <a class="dropdown-item" href="{{ route('proveedores.index') }}">
                                     {{ __('Proveedores') }}
+                                </a> 
+                                <a class="dropdown-item" href="{{ route('proyectos.index') }}">
+                                    {{ __('Proyectos') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('salidas.index') }}">
+                                    {{ __('Salidas') }}
+                                </a>   
+                                <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
+                                    {{ __('Tipo de Direcciones') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
+                                    {{ __('Tipo de Ingresos') }}
                                 </a>  
-                                <a class="dropdown-item" href="{{ route('cuentas-bancarias.index') }}">
-                                    {{ __('Cuentas Bancarias') }}
+                                <a class="dropdown-item" href="{{ route('unidades.index') }}">
+                                    {{ __('Unidades') }}
                                 </a>    
-                                <a class="dropdown-item" href="{{ route('entradas.index') }}">
-                                    {{ __('Entradas') }}
-                                </a>     
                                 </form>
                             </div>
                         </li>

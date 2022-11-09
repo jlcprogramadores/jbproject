@@ -17,8 +17,10 @@
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
+    
     <div class="box-footer mt20">
         <br>
+        <a href="{{ route('familias.index') }}" class="btn btn-danger ">{{ __('Cancelar') }}</a>
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
