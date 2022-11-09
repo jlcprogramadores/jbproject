@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
 @section('title','Mostrar Unidad')
-
+@if(\Auth::check())
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -33,3 +32,4 @@
         </div>
     </section>
 @endsection
+@endif

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Actualizar Proyecto')
-
+@if(\Auth::check())
 @section('content')
     <section class="content container-fluid">
         <div class="">
@@ -27,3 +27,4 @@
         </div>
     </section>
 @endsection
+@endif

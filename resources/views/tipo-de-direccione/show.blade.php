@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Mostrar Tipo De Dirección')
-
+@if(\Auth::check())
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -33,3 +33,4 @@
         </div>
     </section>
 @endsection
+@endif
