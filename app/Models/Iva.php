@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Iva extends Model
 {
-    public $timestamps = false;
     static $rules = [
 		'porcentaje' => 'required',
 		'descripcion' => 'required',

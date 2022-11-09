@@ -27,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Direccione extends Model
 {
-    public $timestamps = false;
     static $rules = [
 		'tipo_de_direccione_id' => 'required',
 		'calle' => 'required',

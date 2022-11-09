@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CuentasBancaria extends Model
 {
-    public $timestamps = false;
     static $rules = [
 		'proveedore_id' => 'required',
 		'banco' => 'required',

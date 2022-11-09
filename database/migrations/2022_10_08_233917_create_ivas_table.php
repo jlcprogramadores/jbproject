@@ -17,6 +17,7 @@ class CreateIvasTable extends Migration
             $table->id();
             $table->integer('porcentaje');
             $table->string('descripcion');
+            $table->timestamps();
         });
     }
 

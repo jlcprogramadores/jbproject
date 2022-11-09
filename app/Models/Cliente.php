@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cliente extends Model
 {
-    public $timestamps = false;
+
     static $rules = [
 		'nombre' => 'required',
 		'razon_social' => 'required',

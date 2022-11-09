@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TipoDeDireccione extends Model
 {
-    public $timestamps = false;  
     static $rules = [
 		'nombre' => 'required',
 		'es_fiscal' => 'required',

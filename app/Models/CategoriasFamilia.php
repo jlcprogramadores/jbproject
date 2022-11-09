@@ -19,12 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CategoriasFamilia extends Model
 {
-    public $timestamps = false;
     static $rules = [
 		'familia_id' => 'required',
 		'nombre' => 'required',
 		'descripcion' => 'required',
-		'es_activo' => 'required',
+		'es_activo' => 'required',   
     ];
 
     protected $perPage = 20;

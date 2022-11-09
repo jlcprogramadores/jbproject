@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Unidade extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
     static $rules = [
 		'nombre' => 'required',
 		'descripcion' => 'required',

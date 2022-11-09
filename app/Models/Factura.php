@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Factura extends Model
 {
-    public $timestamps = false; 
     static $rules = [
 		'referencia_factura' => 'required',
 		'fecha_creacion' => 'required',

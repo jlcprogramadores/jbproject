@@ -24,6 +24,7 @@ class CreateFacturasTable extends Migration
             $table->string('url')->nullable();
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_factura');
+            $table->timestamps();
         });
     }
 

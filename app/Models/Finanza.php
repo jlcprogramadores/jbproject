@@ -33,7 +33,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Finanza extends Model
 {
-	public $timestamps = false; 
     static $rules = [
 		'proyecto_id' => 'required',
 		'iva_id' => 'required',

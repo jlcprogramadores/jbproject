@@ -28,6 +28,7 @@ class CreateEntradasTable extends Migration
                 ->references('id')
                 ->on('categorias_de_entradas');       
             $table->integer('proyecto_id')->nullable();
+            $table->timestamps();
         });
     }
 

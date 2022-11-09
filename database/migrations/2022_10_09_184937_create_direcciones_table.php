@@ -30,6 +30,7 @@ class CreateDireccionesTable extends Migration
             $table->string('estado');
             $table->string('pais');
             $table->boolean('es_activo');
+            $table->timestamps();
         });
     }
 
