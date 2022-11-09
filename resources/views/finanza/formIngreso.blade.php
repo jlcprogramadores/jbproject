@@ -114,9 +114,7 @@
                     {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    <?php 
-                        $metodo = ['Efectivo', 'Cheque', 'Transferencia', 'Tarjeta de credito', 'Tarjetas digitales', 'Condonación', 'Cancelación'];
-                    ?>
+                    <?php $metodo = ['Efectivo', 'Cheque', 'Transferencia', 'Tarjeta de credito', 'Tarjetas digitales', 'Condonación', 'Cancelación'];?>
                     {{ Form::label('metodo_de_pago') }}
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Metodo De Pago']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">:message</div>') !!}
