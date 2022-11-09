@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Entrada extends Model
 {
-    public $timestamps = false; 
     static $rules = [
 		'cliente_id' => 'required',
 		'tipodeingreso_id' => 'required',

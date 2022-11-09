@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Telefono extends Model
 {
-    public $timestamps = false;   
     static $rules = [
 		'telefono' => 'required',
     ];

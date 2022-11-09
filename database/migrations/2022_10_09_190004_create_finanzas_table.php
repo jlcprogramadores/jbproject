@@ -38,6 +38,7 @@ class CreateFinanzasTable extends Migration
             $table->string('metodo_de_pago');
             $table->string('entregado_material_a');
             $table->string('comentario');
+            $table->timestamps();
         });
     }
 

@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TipoDeIngreso extends Model
 {
-    public $timestamps = false;
     static $rules = [
 		'nombre' => 'required',
 		'descripcion' => 'required',

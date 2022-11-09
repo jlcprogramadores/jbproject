@@ -18,6 +18,7 @@ class CreateFamiliasTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->boolean('es_activo');
+            $table->timestamps();
         });
     }
 

@@ -16,6 +16,7 @@ class CreateSalidasTable extends Migration
         Schema::create('salidas', function (Blueprint $table) {
             $table->id();
             $table->integer('proveedor_id')->nullable();
+            $table->timestamps();
         });
     }
 

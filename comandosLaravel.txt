@@ -18,3 +18,6 @@ php artisan make:crud "nombre de tabla"
 # alert Swal
 npm install sweetalert2
 npm run dev
+
+
+#Si se modificia el archivo app.php para ver reflejados los cambios se usa php artisan config:clear

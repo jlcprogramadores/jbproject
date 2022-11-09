@@ -17,6 +17,7 @@ class CreateTipoDeDireccionesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->boolean('es_fiscal');
+            $table->timestamps();
         });
     }
 

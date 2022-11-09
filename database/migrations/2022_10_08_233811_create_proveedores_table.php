@@ -24,6 +24,7 @@ class CreateProveedoresTable extends Migration
             $table->string('mail');
             $table->string('rfc');
             $table->boolean('es_activo');
+            $table->timestamps();
         });
     }
 
