@@ -7,8 +7,17 @@
             {!! $errors->first('proveedore_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php 
+                $nombreBanco = ['ABC Capital','American Express Bank (México)','Banca Afirme','Banca Mifel','Banco Actinver','Banco Autofin México','Banco Azteca',
+                'Banco Bancrea','Banco Base','Banco Covalto','Banco Compartamos','Banco Credit Suisse (México)','Banco de Inversión Afirme','Banco del Bajío','Banco Forjadores',
+                'Banco Inbursa','Banco Inmobiliario Mexicano','Banco Invex','Banco JP Morgan','Banco KEB Hana México','Banco Monex','Banco Multiva','Banco PagaTodo',
+                'Banco Regional de Monterrey','Banco S3 Caceis México','Banco Sabadell','Banco Santander','Banco Shinhan de México','Banco Ve por Más','BanCoppel',
+                'Bank of America Mexico','Bank of China Mexico','Bankaool','Banorte','Bansí','Barclays Bank México','BBVA México','BNP Paribas','Citibanamex',
+                'CIBanco','Consubanco','Deutsche Bank México','Fundación Dondé Banco','HSBC México','Industrial and Commercial Bank of China','Intercam Banco',
+                'Mizuho Bank','MUFG Bank Mexico','Scotiabank'];
+            ?>
             {{ Form::label('banco') }}
-            {{ Form::text('banco', $cuentasBancaria->banco, ['class' => 'form-control' . ($errors->has('banco') ? ' is-invalid' : ''), 'placeholder' => 'Banco']) }}
+            {{ Form::select('banco', $nombreBanco, $cuentasBancaria->banco, ['class' => 'form-control' . ($errors->has('banco') ? ' is-invalid' : ''), 'placeholder' => 'Banco']) }}
             {!! $errors->first('banco', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
