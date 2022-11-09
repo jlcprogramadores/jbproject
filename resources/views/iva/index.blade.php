@@ -37,8 +37,8 @@
                                         
 										<th>Porcentaje</th>
 										<th>Descripcion</th>
-
-                                        <th>buttons</th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,7 +48,7 @@
                                             
 											<td>{{ $iva->porcentaje }}</td>
 											<td>{{ $iva->descripcion }}</td>
-
+                                            <td>{{ $iva->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('ivas.destroy',$iva->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('ivas.show',$iva->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

@@ -45,6 +45,7 @@
 										<th>Fecha Creacion</th>
 										<th>Fecha Entrada</th>
                                         <th>Fecha Facturacion</th>
+                                        <th>Actualización</th>
 										<th>Descripcion</th>
 										<th>Cantidad</th>
 										<th>Unidad Id</th>
@@ -73,6 +74,7 @@
 											<td>{{ $finanza->no }}</td>
 											<td>{{ $finanza->fecha_salida }}</td>
 											<td>{{ $finanza->fecha_entrada }}</td>
+                                            <td>{{ $finanza->updated_at }}</td>
                                             <td>{{ $finanza->fecha_facturacion }}</td>
 											<td>{{ $finanza->descripcion }}</td>
 											<td>{{ $finanza->cantidad }}</td>

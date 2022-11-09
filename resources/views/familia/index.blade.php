@@ -38,8 +38,8 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-
-                                        <th></th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,7 @@
                                             
 											<td>{{ $familia->nombre }}</td>
 											<td>{{ $familia->descripcion }}</td>
-
+                                            <td>{{ $familia->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('familias.destroy',$familia->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('familias.show',$familia->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

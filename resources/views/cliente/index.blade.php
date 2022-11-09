@@ -41,7 +41,8 @@
 										<th>Rfc</th>
                                         <th>Direccion</th>
                                         <th>Teléfono</th>
-                                        <th>Datos</th>
+                                        <th>Actualización</th>
+                                        <th>Datos</th>    
                                         <th>Acciones</th>
                                         
                                     </tr>
@@ -71,6 +72,7 @@
                                                 {{$direccion}}
                                                 @endforeach
                                             </td>
+                                            
                                             <td>
                                                 <?php $itel=0; ?>
                                                 @foreach($cliente->telefonos as $iterTelefono)
@@ -84,6 +86,7 @@
                                                 {{$telefono}}
                                                 @endforeach
                                             </td>
+                                            <td>{{ $cliente->updated_at }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>

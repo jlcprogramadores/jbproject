@@ -41,7 +41,7 @@
 										<th>Cuenta</th>
 										<th>Clabe</th>
 										<th>Tarjeta</th>
-
+                                        <th>Actualización</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -56,7 +56,7 @@
 											<td>{{ $cuentasBancaria->cuenta }}</td>
 											<td>{{ $cuentasBancaria->clabe }}</td>
 											<td>{{ $cuentasBancaria->tarjeta }}</td>
-
+                                            <td>{{ $cuentasBancaria->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('cuentas-bancarias.destroy',$cuentasBancaria->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('cuentas-bancarias.show',$cuentasBancaria->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
