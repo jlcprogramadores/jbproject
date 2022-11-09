@@ -34,18 +34,21 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Salidas Id</th>
-										<th>Entradas Id</th>
+
+										<th>Fecha Entrada</th>
+										<th>Fecha Salida</th>
                                         <th>Vence</th>
+                                        <th>Fecha vencimineto</th>
+                                        <th>Días</th>
+                                        <th>Estado</th>
+										<th>Tipo E&S</th>    
+
 										<th>Categoria Id</th>
+                                        
                                         <th>Proyecto Id</th>
 										<th>Iva Id</th>
 										<th>No</th>
-										<th>Fecha Creacion</th>
-										<th>Fecha Entrada</th>
                                         <th>Fecha Facturacion</th>
-                                        <th>Actualización</th>
 										<th>Descripcion</th>
 										<th>Cantidad</th>
 										<th>Unidad Id</th>
@@ -56,6 +59,7 @@
 										<th>Metodo De Pago</th>
 										<th>Entregado Material A</th>
 										<th>Comentario</th>
+                                        <th>Fecha Actualización</th>
 
                                         <th></th>
                                     </tr>
@@ -64,17 +68,26 @@
                                     @foreach ($finanzas as $finanza)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $finanza->salidas_id }}</td>
-											<td>{{ $finanza->entradas_id }}</td>
+
+											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
+											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
                                             <td>{{ $finanza->vence }}</td>
+											<td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>
+                                            <?php 
+                                                $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
+                                                $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
+                                                $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
+                                            ?>
+                                            <td>{{ $diferencia_en_dias }}</td>
+                                            <td>{{$diferencia_en_dias <= 0 ? 'Vencido' : 'Por vencer' }}</td>
+                                            <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
+											<td>{{ $tipoFinanza }}</td>
+
 											<td>{{ $finanza->categoria_id }}</td>
+
                                             <td>{{ $finanza->proyecto_id }}</td>
 											<td>{{ $finanza->iva_id }}</td>
 											<td>{{ $finanza->no }}</td>
-											<td>{{ $finanza->fecha_salida }}</td>
-											<td>{{ $finanza->fecha_entrada }}</td>
-                                            <td>{{ $finanza->updated_at }}</td>
                                             <td>{{ $finanza->fecha_facturacion }}</td>
 											<td>{{ $finanza->descripcion }}</td>
 											<td>{{ $finanza->cantidad }}</td>
@@ -86,7 +99,8 @@
 											<td>{{ $finanza->metodo_de_pago }}</td>
 											<td>{{ $finanza->entregado_material_a }}</td>
 											<td>{{ $finanza->comentario }}</td>
-
+                                            <td>{{ $finanza->updated_at }}</td>
+                                            
                                             <td>
                                                 <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
