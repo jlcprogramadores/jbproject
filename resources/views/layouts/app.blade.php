@@ -84,10 +84,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
                                 <a class="dropdown-item" href="{{ route('clientes.index') }}">
                                     {{ __('Clientes') }}
-                                </a> 
-                                <a class="dropdown-item" href="{{ route('facturas.index') }}">
-                                    {{ __('Facturas') }}
-                                </a>   
+                                </a>  
                                 <a class="dropdown-item" href="{{ route('proveedores.index') }}">
                                     {{ __('Proveedores') }}
                                 </a> 
