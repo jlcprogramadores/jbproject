@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Teléfono</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('telefonos.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -30,7 +27,9 @@
                             <strong>Telefono:</strong>
                             {{ $telefono->telefono }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('telefonos.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

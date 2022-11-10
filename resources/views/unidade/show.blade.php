@@ -10,9 +10,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Unidad</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('unidades.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -25,7 +22,9 @@
                             <strong>Descripcion:</strong>
                             {{ $unidade->descripcion }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('unidades.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

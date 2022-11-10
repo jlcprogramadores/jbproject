@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Finanza</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -90,7 +87,9 @@
                             <strong>Comentario:</strong>
                             {{ $finanza->comentario }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

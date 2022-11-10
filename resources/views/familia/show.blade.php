@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Familia</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('familias.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -35,7 +32,9 @@
 
                             @endif
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('familias.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

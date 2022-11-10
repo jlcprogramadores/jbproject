@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Factura</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('facturas.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -38,7 +35,9 @@
                             <strong>Fecha Factura:</strong>
                             {{ $factura->fecha_factura }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('facturas.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

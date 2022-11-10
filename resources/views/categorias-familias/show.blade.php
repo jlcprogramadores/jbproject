@@ -12,9 +12,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostar Categorías De Familias</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('categorias-familias.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -39,6 +36,9 @@
                                 <p class="text-danger">Inactivo</p>
 
                             @endif
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('categorias-familias.index') }}"> Atrás</a>
                         </div>
                     </div>
                 </div>

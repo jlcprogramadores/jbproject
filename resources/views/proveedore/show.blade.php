@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Proveedor</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('proveedores.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -57,6 +54,9 @@
                             @else
                                 <p class="text-danger">Inactivo</p>
                             @endif
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('proveedores.index') }}"> Atrás</a>
                         </div>
                     </div>
                 </div>

@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Iva</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('ivas.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -26,7 +23,9 @@
                             <strong>Descripcion:</strong>
                             {{ $iva->descripcion }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('ivas.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

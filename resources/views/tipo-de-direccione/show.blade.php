@@ -11,9 +11,6 @@
                         <div class="float-left">
                             <span class="card-title">Mostrar Tipo De Dirección</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('tipo-de-direcciones.index') }}"> Atrás</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -26,7 +23,9 @@
                             <strong>Es Fiscal:</strong>
                             {{ $tipoDeDireccione->es_fiscal }}
                         </div>
-
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('tipo-de-direcciones.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>

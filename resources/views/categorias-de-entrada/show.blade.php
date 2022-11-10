@@ -10,9 +10,7 @@
                         <div class="float-left">
                             <span class="card-title">Mostar Categoría De Entrada</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('categorias-de-entradas.index') }}"> Atrás</a>
-                        </div>
+                        
                     </div>
 
                     <div class="card-body">
@@ -33,6 +31,9 @@
                                 <p class="text-danger">Inactivo</p>
 
                             @endif
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('categorias-de-entradas.index') }}"> Atrás</a>
                         </div>
                     </div>
                 </div>
