@@ -91,5 +91,28 @@ class Finanza extends Model
     {
         return $this->hasMany('App\Models\Factura', 'finanza_id', 'id');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function famCategoria()
+    {
+        return $this->hasOne('App\Models\CategoriasFamilia', 'id', 'categoria_id');
+    }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function unidad()
+    {
+        return $this->hasOne('App\Models\Unidade', 'id', 'unidad_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function iva()
+    {
+        return $this->hasOne('App\Models\Iva', 'id', 'iva_id');
+    }
 }

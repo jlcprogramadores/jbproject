@@ -32,6 +32,12 @@ class Unidade extends Model
      */
     protected $fillable = ['nombre','descripcion','usuario_edito'];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function finanza()
+    {
+        return $this->hasMany('App\Models\Finanza', 'unidad_id', 'id');
+    }
 
 }

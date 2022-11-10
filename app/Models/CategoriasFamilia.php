@@ -45,5 +45,12 @@ class CategoriasFamilia extends Model
         return $this->hasOne('App\Models\Familia', 'id', 'familia_id');
     }
     
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function finanza()
+    {
+        return $this->hasMany('App\Models\Finanza', 'categoria_id', 'id');
+    }
 
 }

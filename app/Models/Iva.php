@@ -31,6 +31,12 @@ class Iva extends Model
      */
     protected $fillable = ['porcentaje','descripcion','usuario_edito'];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function finanza()
+    {
+        return $this->hasMany('App\Models\Finanza', 'iva_id', 'id');
+    }
 
 }

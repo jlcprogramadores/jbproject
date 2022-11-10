@@ -43,22 +43,25 @@
                                         <th>Días</th>
                                         <th>Estado</th>
 										<th>Tipo E&S</th>    
-
-										<th>Categoria Id</th>
-                                        
-                                        <th>Proyecto Id</th>
-										<th>Iva Id</th>
-										<th>No</th>
-                                        <th>Fecha Facturacion</th>
+                                        <th>Fam & Cat</th>
+                                        <th>Razon social</th>
+                                        <th>Proyecto</th>
 										<th>Descripcion</th>
-										<th>Cantidad</th>
-										<th>Unidad Id</th>
+                                        <th>Factaura o Folio</th>
+                                        <th>Proveedor o usuario</th>
+										<th>C.U. & Unidad</th>
 										<th>Costo Unitario</th>
-										<th>Retencion</th>
+                                        <th>Subtotal Total MXN</th>
+										<th>Iva</th>
+										<th>Ret 6%</th>
+                                        <th>Total $MXN$</th>
 										<th>Monto A Pagar</th>
 										<th>Fecha De Pago</th>
 										<th>Metodo De Pago</th>
+                                        <th>$ Estatus $</th>
 										<th>Entregado Material A</th>
+
+                                        <th>Fecha Facturacion</th>
 										<th>Comentario</th>
                                         <th>Fecha Actualización</th>
 
@@ -68,8 +71,8 @@
                                 <tbody>
                                     @foreach ($finanzas as $finanza)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
 
+                                            <td>{{ $finanza->no }}</td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
                                             <td>{{ $finanza->vence }}</td>
@@ -83,22 +86,29 @@
                                             <td>{{$diferencia_en_dias <= 0 ? 'Vencido' : 'Por vencer' }}</td>
                                             <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
 											<td>{{ $tipoFinanza }}</td>
-
-											<td>{{ $finanza->categoria_id }}</td>
-
-                                            <td>{{ $finanza->proyecto_id }}</td>
-											<td>{{ $finanza->iva_id }}</td>
-											<td>{{ $finanza->no }}</td>
-                                            <td>{{ $finanza->fecha_facturacion }}</td>
+                                            <?php 
+                                                $famCat = 'F: '.$finanza->famCategoria->familia->nombre.',';
+                                                $famCat .= 'C: '.$finanza->famCategoria->nombre;
+                                            ?>
+											<td>{{ $famCat }}</td>
+                                            <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
+                                            <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
+                                            <td>factura_id</td>
+                                            <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
+											<td>{{ $finanza->costo_unitario.' '.$finanza->unidad->nombre }}</td>
 											<td>{{ $finanza->cantidad }}</td>
-											<td>{{ $finanza->unidad_id }}</td>
-											<td>{{ $finanza->costo_unitario }}</td>
+                                            <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
+											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
 											<td>{{ $finanza->retencion }}</td>
-											<td>{{ $finanza->monto_a_pagar }}</td>
+                                            <td>{{ '$'.$subTotal*$iva }}</td>
+											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td>{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
+                                            <td>{{ $montoAPagar>0 ? 'Pagado' : 'Pendiente Pagar' }}</td>
 											<td>{{ $finanza->entregado_material_a }}</td>
+
+                                            <td>{{ $finanza->fecha_facturacion }}</td>
 											<td>{{ $finanza->comentario }}</td>
                                             <td>{{ $finanza->usuario_edito }}  <br/> {{ $finanza->updated_at }}</td>
                                             <td>
@@ -141,7 +151,14 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                columnDefs: [{
+                    // espeificamos que columna sera afectada
+                    targets: [8],
+                    render: function(data, type, full, meta) {    
+                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
+                    }
+                }]
             });
         });
         $('.show_confirm').click(function(event) {
