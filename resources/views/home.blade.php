@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-
-
 @if(\Auth::check())
     @section('content')
     <div class="container">
@@ -16,6 +13,10 @@
                             </div>
                         @endif
                         ¡Bievenido(a) {{ Auth::user()->name }}!
+                        br
+                        <a class="navbar-brand" href="{{ url('login') }}"><br>
+                            <img src="{{ asset('images/jbind_bienvenida.jpg') }}" class="responsive">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -43,3 +44,10 @@
 </div>
 @endsection
 @endif
+
+<style>
+.responsive {
+    max-width: 100%;
+    height: 100%;
+}
+</style>
