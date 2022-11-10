@@ -101,7 +101,11 @@
             {{ Form::text('comentario', $finanza->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
             {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group d-none">
+            {{ Form::label('usuario_edito') }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <div class="box-footer mt20">
         <br>

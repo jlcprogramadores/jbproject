@@ -21,7 +21,11 @@
             {{ Form::select('proyecto_id',$proyecto, $entrada->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group d-none">
+            {{ Form::label('usuario_edito') }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <div class="box-footer mt20">
         <br>

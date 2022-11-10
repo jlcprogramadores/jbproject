@@ -34,6 +34,7 @@ class Proveedore extends Model
 		'mail' => 'required',
 		'rfc' => 'required',
 		'es_activo' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -43,7 +44,7 @@ class Proveedore extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','razon_social','estado','dias_de_credito','monto_de_credito','es_facturable','mail','rfc','es_activo'];
+    protected $fillable = ['nombre','razon_social','estado','dias_de_credito','monto_de_credito','es_facturable','mail','rfc','es_activo','usuario_edito'];
 
 
     /**

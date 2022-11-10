@@ -51,7 +51,7 @@
 											<td>{{ $proyecto->nombre }}</td>
 											<td>{{ $proyecto->descripcion }}</td>
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
-                                            <td>{{ $proyecto->updated_at }}</td>
+                                            <td>{{ $proyecto->usuario_edito }}  <br/> {{ $proyecto->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('proyectos.show',$proyecto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

@@ -28,6 +28,7 @@ class CuentasBancaria extends Model
 		'titular_banco' => 'required',
 		'cuenta' => 'required',
 		'es_activo' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -37,7 +38,7 @@ class CuentasBancaria extends Model
      *
      * @var array
      */
-    protected $fillable = ['proveedore_id','banco','titular_banco','cuenta','clabe','tarjeta','es_activo'];
+    protected $fillable = ['proveedore_id','banco','titular_banco','cuenta','clabe','tarjeta','es_activo','usuario_edito'];
 
 
     /**

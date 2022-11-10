@@ -47,8 +47,8 @@
 										<th>Estado</th>
 										<th>Pais</th>
 										<th>Es Activo</th>
-
-                                        <th></th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +68,7 @@
 											<td>{{ $direccione->estado }}</td>
 											<td>{{ $direccione->pais }}</td>
 											<td>{{ $direccione->es_activo }}</td>
-
+                                            <td>{{ $direccione->usuario_edito }}  <br/> {{ $direccione->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('direcciones.destroy',$direccione->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('direcciones.show',$direccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

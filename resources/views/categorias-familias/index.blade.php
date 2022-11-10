@@ -52,7 +52,7 @@
 											<td>{{ $categoriasFamilia->familia->nombre }}</td>
 											<td>{{ $categoriasFamilia->nombre }}</td>
 											<td>{{ $categoriasFamilia->descripcion }}</td>
-                                            <td>{{ $categoriasFamilia->updated_at }}</td>
+                                            <td>{{ $categoriasFamilia->usuario_edito }}  <br/> {{ $categoriasFamilia->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('categorias-familias.destroy',$categoriasFamilia->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('categorias-familias.show',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

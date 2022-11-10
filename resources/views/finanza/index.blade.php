@@ -100,8 +100,7 @@
 											<td>{{ $finanza->metodo_de_pago }}</td>
 											<td>{{ $finanza->entregado_material_a }}</td>
 											<td>{{ $finanza->comentario }}</td>
-                                            <td>{{ $finanza->updated_at }}</td>
-                                            
+                                            <td>{{ $finanza->usuario_edito }}  <br/> {{ $finanza->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

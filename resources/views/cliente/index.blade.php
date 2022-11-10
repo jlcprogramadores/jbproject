@@ -87,7 +87,7 @@
                                                 {{$telefono}}
                                                 @endforeach
                                             </td>
-                                            <td>{{ $cliente->updated_at }}</td>
+                                            <td>{{ $cliente->usuario_edito }}  <br/> {{ $cliente->updated_at }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
                                                 <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>

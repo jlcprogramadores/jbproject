@@ -20,6 +20,7 @@ class TipoDeDireccione extends Model
     static $rules = [
 		'nombre' => 'required',
 		'es_fiscal' => 'required',
+    'usuario_edito' => 'required',
     ];
 
     protected $perPage = 20;
@@ -29,7 +30,7 @@ class TipoDeDireccione extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','es_fiscal'];
+    protected $fillable = ['nombre','es_fiscal','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

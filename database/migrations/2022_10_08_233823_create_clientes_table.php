@@ -20,6 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('mail');
             $table->string('rfc');
             $table->boolean('es_activo');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

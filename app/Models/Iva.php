@@ -19,6 +19,7 @@ class Iva extends Model
     static $rules = [
 		'porcentaje' => 'required',
 		'descripcion' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -28,7 +29,7 @@ class Iva extends Model
      *
      * @var array
      */
-    protected $fillable = ['porcentaje','descripcion'];
+    protected $fillable = ['porcentaje','descripcion','usuario_edito'];
 
 
 

@@ -39,8 +39,8 @@
 										<th>Tipo de ingreso</th>
 										<th>Categorias De Entrada</th>
 										<th>Proyecto</th>
-
-                                        <th></th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +52,7 @@
 											<td>{{ $entrada->tipodeingreso->nombre }}</td>
 											<td>{{ $entrada->categoriadeentrada->nombre }}</td>
 											<td>{{ $entrada->proyecto->nombre }}</td>
-
+                                            <td>{{ $entrada->usuario_edito }}  <br/> {{ $entrada->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('entradas.destroy',$entrada->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('entradas.show',$entrada->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

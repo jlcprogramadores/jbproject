@@ -55,7 +55,7 @@
 											<td>{{ $factura->url }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
-                                            <td>{{ $factura->updated_at }}</td>
+                                            <td>{{ $factura->usuario_edito }}  <br/> {{ $factura->updated_at }}</td>  
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('facturas.show',$factura->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

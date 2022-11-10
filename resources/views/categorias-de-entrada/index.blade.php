@@ -49,7 +49,7 @@
                                             
 											<td>{{ $categoriasDeEntrada->nombre }}</td>
 											<td>{{ $categoriasDeEntrada->descripcion }}</td>
-                                            <td>{{ $categoriasDeEntrada->updated_at }}</td>
+                                            <td>{{ $categoriasDeEntrada->usuario_edito }}  <br/> {{ $categoriasDeEntrada->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('categorias-de-entradas.destroy',$categoriasDeEntrada->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('categorias-de-entradas.show',$categoriasDeEntrada->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

@@ -37,7 +37,6 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-										<th>ENTREEEEEEEEE</th>
 										<th>Nombre</th>
 										<th>Calle</th>
 										<th>Num Int</th>

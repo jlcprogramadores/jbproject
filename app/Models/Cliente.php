@@ -27,6 +27,7 @@ class Cliente extends Model
 		'mail' => 'required',
 		'rfc' => 'required',
 		'es_activo' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,7 +37,7 @@ class Cliente extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','razon_social','mail','rfc','es_activo'];
+    protected $fillable = ['nombre','razon_social','mail','rfc','es_activo','usuario_edito'];
 
 
     /**

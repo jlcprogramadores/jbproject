@@ -20,6 +20,7 @@ class TipoDeIngreso extends Model
     static $rules = [
 		'nombre' => 'required',
 		'descripcion' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -29,7 +30,7 @@ class TipoDeIngreso extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion'];
+    protected $fillable = ['nombre','descripcion','usuario_edito'];
 
 
     /**

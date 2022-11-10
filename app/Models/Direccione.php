@@ -37,6 +37,7 @@ class Direccione extends Model
 		'estado' => 'required',
 		'pais' => 'required',
 		'es_activo' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -46,7 +47,7 @@ class Direccione extends Model
      *
      * @var array
      */
-    protected $fillable = ['tipo_de_direccione_id','cliente_id','proveedor_id','calle','num_int','num_ext','codigo_postal','colonia','municipio','estado','pais','es_activo'];
+    protected $fillable = ['tipo_de_direccione_id','cliente_id','proveedor_id','calle','num_int','num_ext','codigo_postal','colonia','municipio','estado','pais','es_activo','usuario_edito'];
 
 
     /**

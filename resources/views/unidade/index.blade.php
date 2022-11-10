@@ -48,8 +48,8 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $unidade->nombre }}</td>
-											<td>{{ $unidade->descripcion }}</td>
-                                            <td>{{ $unidade->updated_at }}</td>
+											<td>{{ $unidade->descripcion }} </td>
+                                            <td>{{ $unidade->usuario_edito }}  <br/> {{ $unidade->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('unidades.destroy',$unidade->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('unidades.show',$unidade->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

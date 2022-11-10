@@ -38,8 +38,8 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-
-                                        <th></th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,7 @@
                                             
 											<td>{{ $tipoDeIngreso->nombre }}</td>
 											<td>{{ $tipoDeIngreso->descripcion }}</td>
-
+                                            <td>{{ $tipoDeIngreso->usuario_edito }}  <br/> {{ $tipoDeIngreso->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('tipo-de-ingresos.destroy',$tipoDeIngreso->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-ingresos.show',$tipoDeIngreso->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

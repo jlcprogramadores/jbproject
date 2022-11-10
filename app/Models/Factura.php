@@ -24,6 +24,7 @@ class Factura extends Model
 		'referencia_factura' => 'required',
 		'fecha_creacion' => 'required',
 		'fecha_factura' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -33,7 +34,7 @@ class Factura extends Model
      *
      * @var array
      */
-    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id'];
+    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

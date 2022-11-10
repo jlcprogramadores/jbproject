@@ -48,6 +48,7 @@ class Finanza extends Model
 		'metodo_de_pago' => 'required',
 		'entregado_material_a' => 'required',
 		'comentario' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -57,7 +58,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence','usuario_edito'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

@@ -25,6 +25,7 @@ class CreateCuentasBancariasTable extends Migration
             $table->bigInteger('clabe')->nullable();
             $table->bigInteger('tarjeta')->nullable();
             $table->boolean('es_activo');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateProyectosTable extends Migration
             $table->string('descripcion');
             $table->string('numero_de_proyecto');
             $table->boolean('es_activo');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

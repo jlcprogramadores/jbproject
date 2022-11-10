@@ -19,6 +19,7 @@ class Telefono extends Model
 {
     static $rules = [
 		'telefono' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -28,7 +29,7 @@ class Telefono extends Model
      *
      * @var array
      */
-    protected $fillable = ['cliente_id','proveedor_id','telefono'];
+    protected $fillable = ['cliente_id','proveedor_id','telefono','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

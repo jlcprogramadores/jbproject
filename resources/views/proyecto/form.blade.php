@@ -22,7 +22,11 @@
             {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group d-none">
+            {{ Form::label('usuario_edito') }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <div class="box-footer mt20">
         <br>

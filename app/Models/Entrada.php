@@ -26,6 +26,7 @@ class Entrada extends Model
 		'cliente_id' => 'required',
 		'tipodeingreso_id' => 'required',
 		'categorias_de_entrada_id' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,7 +36,7 @@ class Entrada extends Model
      *
      * @var array
      */
-    protected $fillable = ['cliente_id','tipodeingreso_id','categorias_de_entrada_id','proyecto_id'];
+    protected $fillable = ['cliente_id','tipodeingreso_id','categorias_de_entrada_id','proyecto_id','usuario_edito'];
 
 
     /**

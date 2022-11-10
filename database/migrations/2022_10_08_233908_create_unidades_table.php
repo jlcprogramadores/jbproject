@@ -17,6 +17,7 @@ class CreateUnidadesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

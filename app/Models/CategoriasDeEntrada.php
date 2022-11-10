@@ -22,6 +22,7 @@ class CategoriasDeEntrada extends Model
 		'nombre' => 'required',
 		'descripcion' => 'required',
 		'es_activo' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -31,7 +32,7 @@ class CategoriasDeEntrada extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','es_activo'];
+    protected $fillable = ['nombre','descripcion','es_activo','usuario_edito'];
 
 
     /**

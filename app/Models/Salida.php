@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 class Salida extends Model
 {
     static $rules = [
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -25,7 +26,7 @@ class Salida extends Model
      *
      * @var array
      */
-    protected $fillable = ['proveedor_id'];
+    protected $fillable = ['proveedor_id','usuario_edito'];
 
 
     /**

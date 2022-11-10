@@ -49,7 +49,7 @@
                                             
 											<td>{{ $tipoDeDireccione->nombre }}</td>
 											<td>{{ $tipoDeDireccione->es_fiscal }}</td>
-                                            <td>{{ $tipoDeDireccione->updated_at }}</td>
+                                            <td>{{ $tipoDeDireccione->usuario_edito }}  <br/> {{ $tipoDeDireccione->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-direcciones.show',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

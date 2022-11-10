@@ -34,10 +34,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Proveedor</th>
-
-                                        <th></th>
+                                        <th>Actualización</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +45,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $salida->proveedore->nombre }}</td>
-
+                                            <td>{{ $salida->usuario_edito }}  <br/> {{ $salida->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('salidas.destroy',$salida->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('salidas.show',$salida->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

@@ -110,7 +110,11 @@
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Metodo De Pago']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                
+                <div class="form-group d-none">
+                    {{ Form::label('usuario_edito') }}
+                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
             </div>
         </div>
         <br>

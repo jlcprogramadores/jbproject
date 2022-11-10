@@ -23,7 +23,8 @@ class CategoriasFamilia extends Model
 		'familia_id' => 'required',
 		'nombre' => 'required',
 		'descripcion' => 'required',
-		'es_activo' => 'required',   
+		'es_activo' => 'required',
+    'usuario_edito'  => 'required',   
     ];
 
     protected $perPage = 20;
@@ -33,7 +34,7 @@ class CategoriasFamilia extends Model
      *
      * @var array
      */
-    protected $fillable = ['familia_id','nombre','descripcion','es_activo'];
+    protected $fillable = ['familia_id','nombre','descripcion','es_activo','usuario_edito'];
 
 
     /**

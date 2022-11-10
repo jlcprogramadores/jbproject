@@ -23,6 +23,7 @@ class Proyecto extends Model
 		'descripcion' => 'required',
 		'numero_de_proyecto' => 'required',
 		'es_activo' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;
@@ -32,7 +33,7 @@ class Proyecto extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo'];
+    protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
