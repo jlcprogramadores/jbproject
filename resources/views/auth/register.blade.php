@@ -33,7 +33,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>El correo ya esta en uso</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -47,7 +47,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Revisa la contraseña <br> *La contraseña debe tener al menos 8 carácteres <br>*La contraseña y confirmar contraseña deben coincidir</strong>
                                     </span>
                                 @enderror
                             </div>
