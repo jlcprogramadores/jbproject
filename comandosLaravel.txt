@@ -22,3 +22,6 @@ npm run dev
 
 #Si se modificia el archivo app.php para ver reflejados los cambios se usa 
 php artisan config:clear
+
+#instalar y usar icon packages
+composer require codeat3/blade-carbon-icons
