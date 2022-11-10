@@ -13,7 +13,6 @@
                             </div>
                         @endif
                         ¡Bievenido(a) {{ Auth::user()->name }}!
-                        br
                         <a class="navbar-brand" href="{{ url('login') }}"><br>
                             <img src="{{ asset('images/jbind_bienvenida.jpg') }}" class="responsive">
                         </a>
