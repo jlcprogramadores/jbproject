@@ -331,6 +331,7 @@ th {
   border-width: 0;
 }
 
+
 label {
   display: inline-block;
 }
@@ -10834,4 +10835,7 @@ textarea.form-control-lg {
 }
 .truncate:hover{
   -webkit-line-clamp: unset; /* number of lines to show */
+}
+td form{
+  width: 185px !important; 
 }

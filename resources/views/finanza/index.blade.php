@@ -17,9 +17,12 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('finanzas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Finanza') }}
-                                </a>
+                                <a href="{{ route('finanzas.egreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Egresos') }}
+                                </a> 
+                                <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Ingresos') }}
+                                </a> 
                               </div>
                         </div>
                     </div>
@@ -65,7 +68,7 @@
 										<th>Comentario</th>
                                         <th>Fecha Actualización</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
