@@ -152,8 +152,26 @@ class FinanzaController extends Controller
     public function edit($id)
     {
         $finanza = Finanza::find($id);
+        // si es entrada carga los siguiente
+        $esEntrada = false;
+        if(isset($finanza->entradas_id)){
+            $entrada = Entrada::find($finanza->entradas_id);
+            $datoscliente = Cliente::pluck('nombre','id');
+            $esEntrada = True;
+        }else{
+            $salida = Salida::find($finanza->salidas_id);
+            $datosproveedor = Proveedore::pluck('nombre','id');
+        }
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
 
-        return view('finanza.edit', compact('finanza'));
+        return view('finanza.edit', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
     }
 
     /**
