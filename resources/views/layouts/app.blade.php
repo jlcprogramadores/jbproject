@@ -91,6 +91,9 @@
                                 <a class="dropdown-item" href="{{ route('proyectos.index') }}">
                                     {{ __('Proyectos') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('usuarios.index') }}">
+                                    {{ __('Usuarios') }}
+                                </a>
                                 <hr>
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
                                     {{ __('Categorías de entrada') }}

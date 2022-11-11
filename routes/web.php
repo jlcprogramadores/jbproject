@@ -35,6 +35,7 @@ Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)
 Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaController::class);
 Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
+Route::resource('usuarios', App\Http\Controllers\UserController::class);
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');
 Route::get('/direccioncliente/{id}', 'App\Http\Controllers\DireccioneController@direccioncliente')->name('direcciones.direccioncliente');
