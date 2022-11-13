@@ -90,7 +90,7 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('users.index')
+        return redirect()->route('usuarios.index')
             ->with('success', 'Usuario actualizado correctamente.');
     }
 

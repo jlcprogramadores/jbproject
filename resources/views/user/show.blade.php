@@ -19,7 +19,7 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $user->name }}
                         </div>
                         <div class="form-group">
