@@ -64,7 +64,8 @@ class TelefonoController extends Controller
         $telefono = new Telefono();
         $cliente = Cliente::pluck('nombre','id');
         $proveedore = Proveedore::pluck('nombre','id');
-
+        // $url = back();
+        // dd($url);
         return view('telefono.create', compact('telefono','cliente','proveedore'));
     }
 
