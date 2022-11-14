@@ -40,8 +40,8 @@
                                         
 										<th>Cliente</th>
 										<th>Teléfono</th>
-
-                                        <th></th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,6 +51,7 @@
                                             <td>{{ ++$i }}</td>
 											<td>{{ $telefono->cliente->nombre }}</td>
 											<td>{{ $telefono->telefono }}</td>
+                                            <td>{{ $telefono->descripcion }}</td>
 
                                             <td>
                                                 <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">

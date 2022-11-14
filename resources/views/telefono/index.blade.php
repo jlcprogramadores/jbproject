@@ -38,6 +38,7 @@
 										<th>Cliente</th>
 										<th>Proveedor</th>
 										<th>Teléfono</th>
+                                        <th>descripcion</th>
                                         <th>Actualización</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -50,6 +51,7 @@
 											<td>{{ $telefono->cliente->nombre ?? '' }}</td>
 											<td>{{ $telefono->proveedor->nombre ?? '' }}</td>
 											<td>{{ $telefono->telefono }}</td>
+                                            <td>{{ $telefono->descripcion }}</td>
                                             <td>{{ $telefono->usuario_edito }}  <br/> {{ $telefono->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">

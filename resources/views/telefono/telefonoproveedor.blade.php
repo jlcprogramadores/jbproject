@@ -40,7 +40,7 @@
                                         
 										<th>Proveedor</th>
 										<th>Teléfono</th>
-
+                                        <th>Descripción</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -51,7 +51,7 @@
                                             <td>{{ ++$i }}</td>
 											<td>{{ $telefono->proveedor->nombre}}</td>
 											<td>{{ $telefono->telefono }}</td>
-
+                                            <td>{{ $telefono->descripcion }}</td>
                                             <td>
                                                 <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('telefonos.show',$telefono->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

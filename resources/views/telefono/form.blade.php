@@ -46,6 +46,11 @@
             {{ Form::number('telefono', $telefono->telefono, ['class' => 'form-control' . ($errors->has('telefono') ? ' is-invalid' : ''), 'placeholder' => 'Telefono']) }}
             {!! $errors->first('telefono', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label('Descripción') }}
+            {{ Form::text('descripcion', $telefono->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripción']) }}
+            {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}

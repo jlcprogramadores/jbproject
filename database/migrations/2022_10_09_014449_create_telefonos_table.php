@@ -19,6 +19,7 @@ class CreateTelefonosTable extends Migration
             $table->integer('proveedor_id')->nullable();
             $table->bigInteger('telefono');
             $table->string('usuario_edito');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

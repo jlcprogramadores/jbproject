@@ -27,6 +27,10 @@
                             <strong>Telefono:</strong>
                             {{ $telefono->telefono }}
                         </div>
+                        <div class="form-group">
+                            <strong>Telefono:</strong>
+                            {{ $telefono->descripcion }}
+                        </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('telefonos.index') }}"> Atrás</a>
                         </div>
