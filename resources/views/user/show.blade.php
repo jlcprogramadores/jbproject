@@ -26,6 +26,10 @@
                             <strong>Email:</strong>
                             {{ $user->email }}
                         </div>
+                        <div class="form-group">
+                            <strong>Es Activo:</strong>
+                            {{ $user->es_activo }}
+                        </div>
                         <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> Atrás</a>
                     </div>
                 </div>

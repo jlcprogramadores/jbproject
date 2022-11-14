@@ -25,6 +25,7 @@ class User extends Authenticatable
     public static $rules = array(
         'name' => 'required',
         'email' => 'required',
+        'es_activo' => 'required',
     );
 
     /**
@@ -32,7 +33,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name','email','password'];
+    protected $fillable = ['name','email','password','es_activo'];
 
     
     /**

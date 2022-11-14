@@ -11,7 +11,11 @@
             {{ Form::text('email', $user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        
+        <div class="form-group">
+            {{ Form::label('Es Activo') }}
+            {{ Form::text('es_activo', $user->es_activo, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
+            {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     
     <div class="box-footer mt20">
