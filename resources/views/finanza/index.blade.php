@@ -142,7 +142,7 @@
     <script src="//cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#table thead tr').addClass('filters').appendTo( '#table thead' );
+            $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
                 responsive:true,
                 autoWidth: false,   
@@ -192,7 +192,7 @@
                                 $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
                             });
                     });
-                }
+                }                
             });
         });
         $('.show_confirm').click(function(event) {
