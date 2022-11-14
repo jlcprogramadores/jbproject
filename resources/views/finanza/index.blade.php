@@ -137,9 +137,12 @@
 @endsection
 @endif
 @push('scripts')
-    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
     <script>
         $(document).ready( function () {
+            $('#table thead tr').addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
                 responsive:true,
                 autoWidth: false,   
@@ -161,7 +164,35 @@
                     render: function(data, type, full, meta) {    
                         return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
                     }
-                }]
+                }],
+                orderCellsTop: true,
+                fixedHeader: true,
+                initComplete: function() {
+                    var api = this.api();
+                    // For each column
+                    api.columns().eq(0).each(function(colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        var title = $(cell).text();
+                        $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                        // On every keypress in this input
+                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index()) )
+                            .off('keyup change')
+                            .on('keyup change', function (e) {
+                                e.stopPropagation();
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                                    .draw();
+                                $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+                }
             });
         });
         $('.show_confirm').click(function(event) {
