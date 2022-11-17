@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 /**
  * Class UserController
@@ -86,9 +89,32 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        request()->validate(User::$rules);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
 
-        $user->update($request->all());
+        // Validate the data submitted by user
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:225|'. Rule::unique('users')->ignore($user->id),
+        ]);
+
+        // if fails redirects back with errors
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Fill user model
+        $user->fill([
+            'name' => $request->name,
+            'email' => $request->email,
+            'es_activo' => $request->es_activo
+        ]);
+
+        // Save user to database
+        $user->save();
+
 
         return redirect()->route('usuarios.index')
             ->with('success', 'Usuario actualizado correctamente.');

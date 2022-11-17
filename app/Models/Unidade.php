@@ -18,9 +18,9 @@ class Unidade extends Model
 {
     // public $timestamps = false;
     static $rules = [
-		'nombre' => 'required',
-		'descripcion' => 'required',
-    'usuario_edito'  => 'required',
+      'nombre' => 'required',
+      'descripcion' => 'required',
+      'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 20;

@@ -13,7 +13,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('Es Activo') }}
-            {{ Form::text('es_activo', $user->es_activo, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
+            {{ Form::select('es_activo', array(
+                '0' => 'Desactivar',
+                '1' => 'Activar',
+            ),null ,['class' => 'form-select']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>
