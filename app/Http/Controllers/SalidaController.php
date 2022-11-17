@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Salida;
 use Illuminate\Http\Request;
 use App\Models\Proveedore;
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class SalidaController
@@ -47,9 +49,13 @@ class SalidaController extends Controller
     public function store(Request $request)
     {
         request()->validate(Salida::$rules);
-
         $salida = Salida::create($request->all());
-
+        
+        $imagen = $request->file($salida->comprobante->getRealPath());
+        
+        dd($salida->comprobante->storeAs('public', $salida->comprobante->getClientOriginalName()));
+        
+        // dd(base64_encode(file_get_contents($request->file($salida->comprobante->getRealPath()))));
         return redirect()->route('salidas.index')
             ->with('success', 'Salida creada exitosamente.');
     }

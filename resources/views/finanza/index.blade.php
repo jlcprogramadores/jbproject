@@ -56,7 +56,6 @@
 										<th>Costo Unitario</th>
                                         <th>Subtotal Total MXN</th>
 										<th>Iva</th>
-										<th>Ret 6%</th>
                                         <th>Total $MXN$</th>
 										<th>Monto A Pagar</th>
 										<th>Fecha De Pago</th>

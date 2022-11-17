@@ -26,7 +26,7 @@ class Salida extends Model
      *
      * @var array
      */
-    protected $fillable = ['proveedor_id','usuario_edito'];
+    protected $fillable = ['proveedor_id','usuario_edito','comprobante'];
 
 
     /**

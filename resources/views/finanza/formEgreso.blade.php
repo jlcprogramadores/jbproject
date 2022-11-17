@@ -31,6 +31,12 @@
                     {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
+                    {{ Form::label('comprobante') }}
+                    {{ Form::file('comprobante', $salida->comprobante, ['class' => 'form-control' . ($errors->has('comprobante') ? ' is-invalid' : ''), 'placeholder' => 'comprobante']) }}
+                    {!! $errors->first('comprobante', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+         
+                <div class="p-1 form-group">
                     {{ Form::label('no') }}
                     {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'No']) }}
                     {!! $errors->first('no', '<div class="invalid-feedback">:message</div>') !!}
