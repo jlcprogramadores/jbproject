@@ -129,11 +129,6 @@
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('retención') }}
-                    {{ Form::number('retencion', $finanza->retencion, ['class' => 'form-control' . ($errors->has('retencion') ? ' is-invalid' : ''), 'placeholder' => 'Retencion']) }}
-                    {!! $errors->first('retencion', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="p-1 form-group">
                     {{ Form::label('monto_a_pagar') }}
                     {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto A Pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">:message</div>') !!}

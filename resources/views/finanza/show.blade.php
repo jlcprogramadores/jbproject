@@ -64,10 +64,6 @@
                             {{ $finanza->costo_unitario }}
                         </div>
                         <div class="form-group">
-                            <strong>Retencion:</strong>
-                            {{ $finanza->retencion }}
-                        </div>
-                        <div class="form-group">
                             <strong>Monto A Pagar:</strong>
                             {{ $finanza->monto_a_pagar }}
                         </div>

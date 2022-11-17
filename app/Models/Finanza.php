@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $cantidad
  * @property $unidad_id
  * @property $costo_unitario
- * @property $retencion
  * @property $monto_a_pagar
  * @property $fecha_de_pago
  * @property $metodo_de_pago
@@ -42,7 +41,6 @@ class Finanza extends Model
 		'cantidad' => 'required',
 		'unidad_id' => 'required',
 		'costo_unitario' => 'required',
-		'retencion' => 'required',
 		'monto_a_pagar' => 'required',
 		'fecha_de_pago' => 'required',
 		'metodo_de_pago' => 'required',
@@ -58,7 +56,7 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','retencion','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence','usuario_edito'];
+    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence','usuario_edito'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

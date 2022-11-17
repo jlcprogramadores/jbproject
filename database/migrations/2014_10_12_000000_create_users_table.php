@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('es_activo');
-            $table->boolean('es_admin');
         });
     }
 

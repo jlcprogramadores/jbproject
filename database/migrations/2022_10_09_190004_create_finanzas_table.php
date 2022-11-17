@@ -32,7 +32,6 @@ class CreateFinanzasTable extends Migration
             $table->float('cantidad');
             $table->integer('unidad_id');
             $table->float('costo_unitario');
-            $table->float('retencion');
             $table->float('monto_a_pagar');
             $table->dateTime('fecha_de_pago');
             $table->string('metodo_de_pago');

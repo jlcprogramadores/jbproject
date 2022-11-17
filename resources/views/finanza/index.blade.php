@@ -103,7 +103,6 @@
 											<td>{{ $finanza->cantidad }}</td>
                                             <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
 											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
-											<td>{{ $finanza->retencion }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
 											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td>{{ $finanza->fecha_de_pago }}</td>
