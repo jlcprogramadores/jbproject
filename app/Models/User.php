@@ -26,6 +26,7 @@ class User extends Authenticatable
         'name' => 'required',
         'email' => 'required',
         'es_activo' => 'required',
+        'es_admin' => 'required',
     );
 
     /**

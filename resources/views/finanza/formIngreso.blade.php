@@ -1,8 +1,14 @@
 @if(\Auth::check())
 <div class="box box-info padding-1">
     <div class="container">
-        <!-- estilo a partir de balsmiq  -->
+        <!-- estilo a partir de balsamiq  -->
         <div class="row">
+            <select name="tipodeingreso_id" id="tipodeingreso_id">
+                @foreach($datostipodeingreso as $datotipodeingreso => $entrada->tipodeingreso_id)
+                <option value = "{{ $datotipodeingreso }}" selected >{{ $entrada->tipodeingreso_id }}</option>
+                @endforeach
+            </select>
+            
             <div class="col-sm p-1 form-group">
                 {{ Form::label('tipo de ingreso') }}
                 {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Tipo de ingreso']) }}
@@ -136,3 +142,27 @@
     </div>
 </div>
 @endif
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>$('#tipodeingreso_id').select2();</script>
+    {{-- <script>
+    $(document).ready(function(){
+
+        $('#tipodeingreso_id').on('select2:select',function(){
+            var query= $(this).val();
+            console.log(query);
+
+            $.ajax({
+               url:'finanza.formIngreso',
+               type:"GET",
+               data:{'tipodeingreso_id':query},
+               success:function(data){
+                   $('#tipodeingreso_id').html(data);
+               }
+        });
+        //end of ajax call
+       });
+       });
+       </script> --}}
+@endpush
