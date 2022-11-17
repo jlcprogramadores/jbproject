@@ -3,32 +3,45 @@
     <div class="container">
         <!-- estilo a partir de balsamiq  -->
         <div class="row">
-            <select name="tipodeingreso_id" id="tipodeingreso_id">
-                @foreach($datostipodeingreso as $datotipodeingreso => $entrada->tipodeingreso_id)
-                <option value = "{{ $datotipodeingreso }}" selected >{{ $entrada->tipodeingreso_id }}</option>
-                @endforeach
-            </select>
-            
             <div class="col-sm p-1 form-group">
-                {{ Form::label('tipo de ingreso') }}
-                {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Tipo de ingreso']) }}
+                <label for="tipodeingreso_id"> Tipo De Ingreso </label>
+                <select class="form-control {{$errors->has('tipodeingreso_id') ? ' is-invalid' : ''}}" name="tipodeingreso_id" id="tipodeingreso_id">
+                    <option selected>Selecciona Tipo de ingreso</option>
+                    @foreach($datostipodeingreso as $val => $name)
+                        <option value = "{{ $val }}">{{ $name }}</option>
+                    @endforeach
+                </select>
                 {!! $errors->first('tipodeingreso_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-sm p-1 form-group">
-                {{ Form::label('proyecto') }}
-                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+                <label for="proyecto_id"> Proyecto </label>
+                <select class="form-control {{$errors->has('proyecto_id') ? ' is-invalid' : ''}}" name="proyecto_id" id="proyecto_id">
+                    <option selected>Selecciona Proyecto</option>
+                    @foreach($datosproyecto as $val => $name)
+                        <option value = "{{ $val }}">{{  $name }}</option>
+                    @endforeach
+                </select>
                 {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <!-- para poder llenar categoria_id se requiere:
             selecionar una familia, para que cargen las categorias de dicha familia -->
             <div class="col-sm p-1 form-group">
-                {{ Form::label('familia') }}
-                {{ Form::select('Selecciona Familia',$datosfamilia, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
-                {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">:message</div>') !!}
+                <label> Familia </label>
+                <select class="form-control" name="familia_id" id="familia_id">
+                    <option selected>Selecciona Familia</option>
+                    @foreach($datosfamilia as $val => $name)
+                        <option value = "{{ $val }}">{{ $name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-sm p-1 form-group">
-                {{ Form::label('Categoria') }}
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
+                <label for="categoria_id"> Categoria </label>
+                <select class="form-control" name="categoria_id" id="categoria_id">
+                    <option selected>Selecciona Categoria</option>
+                    @foreach($datoscategoriasfamilia as  $val => $name)
+                        <option value = "{{ $val }}">{{ $name }}</option>
+                    @endforeach
+                </select>
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
@@ -140,24 +153,15 @@
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>$('#tipodeingreso_id').select2();</script>
-    {{-- <script>
-    $(document).ready(function(){
-
-        $('#tipodeingreso_id').on('select2:select',function(){
-            var query= $(this).val();
-            console.log(query);
-
-            $.ajax({
-               url:'finanza.formIngreso',
-               type:"GET",
-               data:{'tipodeingreso_id':query},
-               success:function(data){
-                   $('#tipodeingreso_id').html(data);
-               }
+    <script>
+        $('#tipodeingreso_id').select2();
+        $('#proyecto_id').select2();
+        $('#categoria_id').select2();
+        $('#familia_id').select2();
+        $('#familia_id').on('select2:select', function (e) {
+            var data = e.params.data;
+            console.log(data.id);
         });
-        //end of ajax call
-       });
-       });
-       </script> --}}
+        
+    </script>
 @endpush
