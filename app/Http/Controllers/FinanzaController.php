@@ -16,6 +16,7 @@ use App\Models\CategoriasDeEntrada;
 // para la salida se requiere lo siguiente\
 use App\Models\Salida;
 use App\Models\Proveedore;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -123,6 +124,14 @@ class FinanzaController extends Controller
         request()->validate(Finanza::$rules);
         // se crea la salida se recupera el id y se anade al request
         $salida = Salida::create($request->all());
+        $salida->comprobante->storeAs('public\media\\', $salida->comprobante->getClientOriginalName());
+        $file_url = 'storage\app\public\media\\'. $salida->comprobante->getClientOriginalName();
+        $base64 = base64_encode(file_get_contents(base_path($file_url)));
+        $anadiendoBase64 = Salida::find($salida->id);
+        $anadiendoBase64->comprobante = $base64;
+        $anadiendoBase64->save();
+        unlink(base_path($file_url));
+        //Hasta aqui se añaden los archivos en base64
         $request->request->add(['salidas_id' => $salida->id]);
         $finanza = Finanza::create($request->all());
 
