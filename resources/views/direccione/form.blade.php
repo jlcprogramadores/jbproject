@@ -2,7 +2,7 @@
     <div class="box-body">
 
         <div class="form-group">
-            {{ Form::label('tipo_de_direccion') }}
+            {{ Form::label('tipo_de_direccione_id', 'Tipo De Direcciones') }}
             {{ Form::select('tipo_de_direccione_id',$tipodedireccione, $direccione->tipo_de_direccione_id, ['class' => 'form-control' . ($errors->has('tipo_de_direccione_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona tipo']) }}
             {!! $errors->first('tipo_de_direccione_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -43,7 +43,7 @@
                     }
                 }
             ?>
-            {{ Form::label($nombre) }}
+            {{ Form::label($nombreForm,$nombre) }}
             {{ Form::select($nombreForm ,$select2, $direcciones, ['class' => 'form-control' . ($errors->has('$nombreForm') ? ' is-invalid' : ''), 'placeholder' => $placeholder]) }}
             {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -77,42 +77,14 @@
             {{ Form::text('municipio', $direccione->municipio, ['class' => 'form-control' . ($errors->has('municipio') ? ' is-invalid' : ''), 'placeholder' => 'Municipio']) }}
             {!! $errors->first('municipio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <?php 
+            $estados = [ 'Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Coahuila' ,'Colima','Distrito Federal','Durango',
+            'Guanajuato','Guerrero','Hidalgo','Jalisco','México','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro',
+            'Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'];
+        ?>
         <div class="form-group">
             {{ Form::label('estado') }}
-            {{ Form::select('estado', array(
-                'Aguascalientes' => 'Aguascalientes',
-                'Baja California' => 'Baja California',
-                'Baja California Sur' => 'Baja California Sur',
-                'Campeche' => 'Campeche', 
-                'Chiapas' => 'Chiapas',
-                'Chihuahua' => 'Chihuahua',
-                'Coahuila' => 'Coahuila' ,
-                'Colima' => 'Colima',
-                'Distrito Federal' => 'Distrito Federal',
-                'Durango' => 'Durango',
-                'Guanajuato' => 'Guanajuato',
-                'Guerrero' => 'Guerrero',
-                'Hidalgo' => 'Hidalgo',
-                'Jalisco' => 'Jalisco',
-                'México' => 'México',
-                'Michoacán' => 'Michoacán',
-                'Morelos' => 'Morelos',
-                'Nayarit' => 'Nayarit',
-                'Nuevo León' => 'Nuevo León',
-                'Oaxaca' => 'Oaxaca',
-                'Puebla' => 'Puebla',
-                'Querétaro' => 'Querétaro',
-                'Quintana Roo' => 'Quintana Roo',
-                'San Luis Potosí' => 'San Luis Potosí',
-                'Sinaloa' => 'Sinaloa',
-                'Sonora' => 'Sonora',
-                'Tabasco' => 'Tabasco',
-                'Tamaulipas' => 'Tamaulipas',
-                'Tlaxcala' => 'Tlaxcala',
-                'Veracruz' => 'Veracruz',
-                'Yucatán' => 'Yucatán',
-                'Zacatecas' => 'Zacatecas',
-            ),null ,['class' => 'form-select']) }}
+            {{ Form::select('estado', $estados,null ,['class' => 'form-select'. ($errors->has('estado') ? ' is-invalid' : '')]) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">
@@ -130,6 +102,7 @@
             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <br>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Aceptar</button>
@@ -138,5 +111,10 @@
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>$('#estado').select2();</script>
+    <script>
+        $('#estado').select2();
+        $('#cliente_id').select2();
+        $('#proveedor_id').select2();
+        $('#tipo_de_direccione_id').select2();
+    </script>
 @endpush

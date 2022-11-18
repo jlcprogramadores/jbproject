@@ -12,42 +12,14 @@
             {{ Form::text('razon_social', $proveedore->razon_social, ['class' => 'form-control' . ($errors->has('razon_social') ? ' is-invalid' : ''), 'placeholder' => 'Razon Social']) }}
             {!! $errors->first('razon_social', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <?php 
+            $estados = [ 'Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Coahuila' ,'Colima','Distrito Federal','Durango',
+            'Guanajuato','Guerrero','Hidalgo','Jalisco','México','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro',
+            'Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'];
+        ?>
         <div class="form-group">
             {{ Form::label('estado') }}
-            {{ Form::select('estado', array(
-                'Aguascalientes' => 'Aguascalientes',
-                'Baja California' => 'Baja California',
-                'Baja California Sur' => 'Baja California Sur',
-                'Campeche' => 'Campeche', 
-                'Chiapas' => 'Chiapas',
-                'Chihuahua' => 'Chihuahua',
-                'Coahuila' => 'Coahuila' ,
-                'Colima' => 'Colima',
-                'Distrito Federal' => 'Distrito Federal',
-                'Durango' => 'Durango',
-                'Guanajuato' => 'Guanajuato',
-                'Guerrero' => 'Guerrero',
-                'Hidalgo' => 'Hidalgo',
-                'Jalisco' => 'Jalisco',
-                'México' => 'México',
-                'Michoacán' => 'Michoacán',
-                'Morelos' => 'Morelos',
-                'Nayarit' => 'Nayarit',
-                'Nuevo León' => 'Nuevo León',
-                'Oaxaca' => 'Oaxaca',
-                'Puebla' => 'Puebla',
-                'Querétaro' => 'Querétaro',
-                'Quintana Roo' => 'Quintana Roo',
-                'San Luis Potosí' => 'San Luis Potosí',
-                'Sinaloa' => 'Sinaloa',
-                'Sonora' => 'Sonora',
-                'Tabasco' => 'Tabasco',
-                'Tamaulipas' => 'Tamaulipas',
-                'Tlaxcala' => 'Tlaxcala',
-                'Veracruz' => 'Veracruz',
-                'Yucatán' => 'Yucatán',
-                'Zacatecas' => 'Zacatecas',
-            ),null ,['class' => 'form-select']) }}
+            {{ Form::select('estado', $estados,null ,['class' => 'form-select']) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -96,3 +68,9 @@
     </div>
 </div>
 @endif
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#estado').select2();
+    </script>
+@endpush
