@@ -50,8 +50,13 @@
             <!-- datos de ingreso -->
             <div class="col-sm">
                 <div class="p-1 form-group">
-                    {{ Form::label('cliente') }}
-                    {{ Form::select('cliente_id',$datoscliente, $entrada->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Cliente']) }}
+                    <label for="cliente_id"> Cliente </label>
+                    <select class="form-control {{$errors->has('cliente_id') ? ' is-invalid' : ''}}" name="cliente_id" id="cliente_id">
+                        <option selected>Selecciona Categoria</option>
+                        @foreach($datoscliente as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('cliente_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -79,10 +84,14 @@
                     {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
                     {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <!-- falta quiarlo -->
                 <div class="p-1 form-group">
-                    {{ Form::label('categorias_de_entrada_id') }}
-                    {{ Form::select('categorias_de_entrada_id',$datoscategoriasdeentrada, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Categoria de entrada']) }}
+                    <label for="categorias_de_entrada_id"> Categorias De Entrada </label>
+                    <select class="form-control {{$errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''}}" name="categorias_de_entrada_id" id="categorias_de_entrada_id">
+                        <option selected>Selecciona Categoria De Entrada</option>
+                        @foreach($datoscategoriasdeentrada as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -109,13 +118,23 @@
                     {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('unidad') }}
-                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Unidad Id']) }}
+                    <label for="unidad_id"> Unidad </label>
+                    <select class="form-control {{$errors->has('unidad_id') ? ' is-invalid' : ''}}" name="unidad_id" id="unidad_id">
+                        <option selected>Selecciona Unidad</option>
+                        @foreach($datosunidad as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('unidad_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('iva_id') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Iva Id']) }}
+                    <label for="iva_id"> IVA </label>
+                    <select class="form-control {{$errors->has('iva_id') ? ' is-invalid' : ''}}" name="iva_id" id="iva_id">
+                        <option selected>Selecciona el IVA</option>
+                        @foreach($datosiva as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -157,11 +176,22 @@
         $('#tipodeingreso_id').select2();
         $('#proyecto_id').select2();
         $('#categoria_id').select2();
+        $('#cliente_id').select2();
+        $('#categorias_de_entrada_id').select2();
+        $('#unidad_id').select2();
+        $('#iva_id').select2();
+        $('#metodo_de_pago').select2();
         $('#familia_id').select2();
         $('#familia_id').on('select2:select', function (e) {
-            var data = e.params.data;
-            console.log(data.id);
         });
-        
     </script>
+        {{-- var data = e.params.data;
+        console.log(data.id);
+        $('#categoria_id').empty();
+        select = document.getElementById('categoria_id');
+        {{ route('finanzas.egreso') }}
+        var opt = document.createElement('option');
+        opt.value = 1;
+        opt.innerHTML = 'hey';
+        select.appendChild(opt); --}}
 @endpush
