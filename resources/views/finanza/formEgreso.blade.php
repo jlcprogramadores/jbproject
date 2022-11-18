@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm p-1 form-group">
                 {{ Form::label('categoria_id','Categoria') }}
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
+                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Categoria']) }}
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
