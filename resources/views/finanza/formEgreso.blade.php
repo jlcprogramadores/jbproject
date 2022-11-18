@@ -4,20 +4,34 @@
         <!-- estilo a partir de balsmiq  -->
         <div class="row">
             <div class="col-sm p-1 form-group">
-                {{ Form::label('proyecto') }}
-                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+                <label for="proyecto_id"> Proyecto </label>
+                <select class="form-control {{$errors->has('proyecto_id') ? ' is-invalid' : ''}}" name="proyecto_id" id="proyecto_id">
+                    <option selected>Selecciona Proyecto</option>
+                    @foreach($datosproyecto as $val => $name)
+                        <option value = "{{ $val }}">{{  $name }}</option>
+                    @endforeach
+                </select>
                 {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <!-- para poder llenar categoria_id se requiere:
             selecionar una familia, para que cargen las categorias de dicha familia -->
             <div class="col-sm p-1 form-group">
-                {{ Form::label('familia') }}
-                {{ Form::select('Selecciona Familia',$datosfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
-                {!! $errors->first('entradas_id', '<div class="invalid-feedback">:message</div>') !!}
+                <label> Familia </label>
+                <select class="form-control" name="familia_id" id="familia_id">
+                    <option selected>Selecciona Familia</option>
+                    @foreach($datosfamilia as $val => $name)
+                        <option value = "{{ $val }}">{{ $name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-sm p-1 form-group">
-                {{ Form::label('Categoria') }}
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Categoria']) }}
+                <label for="categoria_id"> Categoria </label>
+                <select class="form-control" name="categoria_id" id="categoria_id">
+                    <option selected>Selecciona Categoria</option>
+                    @foreach($datoscategoriasfamilia as  $val => $name)
+                        <option value = "{{ $val }}">{{ $name }}</option>
+                    @endforeach
+                </select>
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
@@ -25,9 +39,15 @@
         <div class="row">
             <!-- datos de ingreso -->
             <div class="col-sm">
+
                 <div class="p-1 form-group">
-                    {{ Form::label('proveedor') }}
-                    {{ Form::select('proveedor_id',$datosproveedor, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
+                    <label for="proveedor_id"> Proveedor </label>
+                    <select class="form-control {{$errors->has('proveedor_id') ? ' is-invalid' : ''}}" name="proveedor_id" id="proveedor_id">
+                        <option selected>Selecciona Proveedor</option>
+                        @foreach($datosproveedor as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -80,13 +100,23 @@
                     {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('unidad') }}
-                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Unidad Id']) }}
+                    <label for="unidad_id"> Unidad </label>
+                    <select class="form-control {{$errors->has('unidad_id') ? ' is-invalid' : ''}}" name="unidad_id" id="unidad_id">
+                        <option selected>Selecciona Unidad</option>
+                        @foreach($datosunidad as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('unidad_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('iva_id') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Iva Id']) }}
+                    <label for="iva_id"> IVA </label>
+                    <select class="form-control {{$errors->has('iva_id') ? ' is-invalid' : ''}}" name="iva_id" id="iva_id">
+                        <option selected>Selecciona el IVA</option>
+                        @foreach($datosiva as  $val => $name)
+                            <option value = "{{ $val }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -126,3 +156,17 @@
     </div>
 </div>
 @endif
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#proyecto_id').select2();
+        $('#categoria_id').select2();
+        $('#proveedor_id').select2();
+        $('#unidad_id').select2();
+        $('#iva_id').select2();
+        $('#metodo_de_pago').select2();
+        $('#familia_id').select2();
+        $('#familia_id').on('select2:select', function (e) {
+        });
+    </script>
+@endpush
