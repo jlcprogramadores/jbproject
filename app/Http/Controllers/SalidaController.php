@@ -8,6 +8,7 @@ use App\Models\Proveedore;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 
+
 /**
  * Class SalidaController
  * @package App\Http\Controllers
@@ -49,13 +50,18 @@ class SalidaController extends Controller
     public function store(Request $request)
     {
         request()->validate(Salida::$rules);
+        
         $salida = Salida::create($request->all());
+
+        $salida->comprobante->storeAs('public\media\\', $salida->comprobante->getClientOriginalName());
         
-        $imagen = $request->file($salida->comprobante->getRealPath());
-        
-        dd($salida->comprobante->storeAs('public', $salida->comprobante->getClientOriginalName()));
-        
-        // dd(base64_encode(file_get_contents($request->file($salida->comprobante->getRealPath()))));
+        $file_url = 'storage\app\public\media\\'. $salida->comprobante->getClientOriginalName();
+        $base64 = base64_encode(file_get_contents(base_path($file_url)));
+
+        $anadiendoBase64 = Salida::find($salida->id);
+        $anadiendoBase64->comprobante = $base64;
+        $anadiendoBase64->save();
+ 
         return redirect()->route('salidas.index')
             ->with('success', 'Salida creada exitosamente.');
     }
