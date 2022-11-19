@@ -47,7 +47,7 @@
                                     <th>Mail</th>
                                     <th>Rfc</th>
                                     <th>Actualización</th>
-                                    <th>Datos</th>
+                                    <th class="botones">Datos</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -89,13 +89,13 @@
                                         {{$telefono}}
                                         @endforeach
                                     </td>
-                                    <td>{{ $proveedore->estado }}</td>
+                                    <td class="completo">{{ $proveedore->estado }}</td>
                                     <td>{{ $proveedore->dias_de_credito }}</td>
                                     <td>{{ $proveedore->monto_de_credito }}</td>
                                     <td>{{ $proveedore->es_facturable }}</td>
                                     <td>{{ $proveedore->mail }}</td>
                                     <td>{{ $proveedore->rfc }}</td>
-                                    <td>{{ $proveedore->usuario_edito }}  <br/> {{ $proveedore->updated_at }}</td>
+                                    <td><span class="peque">{{ $proveedore->usuario_edito }}</span>  <br/> <span class="peque">{{ $proveedore->updated_at }}</span></td>
                                     <td>
                                         <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccionproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
                                         <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>

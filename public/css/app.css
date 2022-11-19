@@ -99,6 +99,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.table > tbody > tr > td {
+  width: 185px !important;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -319,8 +323,8 @@ th {
   text-align: inherit;
   text-align: -webkit-match-parent;
 }
-
 thead,
+
 tbody,
 tfoot,
 tr,
@@ -332,16 +336,16 @@ th {
   font-weight:  normal !important;
   font-size: 0.9rem !important; 
 }
-
 thead > tr > th{
+
   font-size: 0.9rem !important; 
   font-weight:  bold !important;
   white-space: nowrap !important;
   color: #0d6efd !important;
 
 }
-
 thead > tr > th > input {
+
   white-space: nowrap !important;
   width: 100%;
 
@@ -1781,8 +1785,8 @@ progress {
 .table > tbody {
   text-align: center !important;
   vertical-align: inherit;
+  .table > thead {
 }
-.table > thead {
   vertical-align: bottom;
 }
 
@@ -10861,4 +10865,18 @@ textarea.form-control-lg {
 }
 td form{
   width: 185px !important; 
+}
+
+.table > tbody > tr >  td > span .botones{
+  display: block !important;
+}
+.botones{
+  display: block;
+  width: 150px !important;
+}
+.completo{
+  white-space: nowrap !important;
+}
+.peque{
+  font-size: 0.7rem !important;
 }
