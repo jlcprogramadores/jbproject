@@ -210,7 +210,7 @@ class FinanzaController extends Controller
             $getSalida = Salida::find($salida->id);
             $getSalida->comprobante = $file_url;
             $getSalida->save();
-        }else{
+        }else if($request->comprobante != null){
             $nombreOriginal = $request->comprobante->getClientOriginalName();
             $aux = 'salida_' . $getSalida->id . '_';
             $nombreFinal = $aux . $nombreOriginal;
