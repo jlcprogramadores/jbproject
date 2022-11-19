@@ -1816,9 +1816,6 @@ progress {
   --bs-table-accent-bg: var(--bs-table-striped-bg);
   color: var(--bs-table-striped-color);
 }
-table.dataTable tbody tr.odd{
-  background-color: #007bff1d  !important;
-  }
 
 .table-striped-columns > :not(caption) > tr > :nth-child(even) {
   --bs-table-accent-bg: var(--bs-table-striped-bg);
