@@ -107,9 +107,10 @@ class SalidaController extends Controller
     public function update(Request $request, Salida $salida)
     {   
         request()->validate(Salida::$rules);
-        
         $getSalida = Salida::find($salida->id);
 
+        
+        //Existe un comprobante anterior
         if ($getSalida->comprobante != null) {
             unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
             $salida->update($request->all());
@@ -119,6 +120,15 @@ class SalidaController extends Controller
             $salida->comprobante->storeAs('public',$nombreFinal);
             $file_url = '/storage/' . $nombreFinal;
             $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }else{
+            $nombreOriginal = $request->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $getSalida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $request->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($getSalida->id);
             $getSalida->comprobante = $file_url;
             $getSalida->save();
         }
