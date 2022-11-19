@@ -85,7 +85,11 @@
                                                 $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
                                             ?>
                                             <td>{{ $diferencia_en_dias }}</td>
-                                            <td>{{$diferencia_en_dias <= 0 ? 'Vencido' : 'Por vencer' }}</td>
+                                            @if ($diferencia_en_dias <= 0)
+                                                <td><p class="badge bg-danger">Vencido</p></td>
+                                            @else
+                                                <td><p class="badge bg-warning text-dark">Por vencer</p></td>
+                                            @endif
                                             <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
 											<td>{{ $tipoFinanza }}</td>
                                             <?php 
@@ -106,7 +110,11 @@
 											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td >{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
-                                            <td>{{ $montoAPagar>0 ? 'Pagado' : 'Pendiente Pagar' }}</td>
+                                            @if ($montoAPagar>0)
+                                                <td><p class="badge bg-success">Pagado</p></td>
+                                            @else
+                                                <td><p class="badge bg-danger">Pendiente Pagar</p></td>
+                                            @endif
 											<td>{{ $finanza->entregado_material_a }}</td>
 
                                             <td>{{ $finanza->fecha_facturacion }}</td>
