@@ -83,6 +83,10 @@
                             <strong>Comentario:</strong>
                             {{ $finanza->comentario }}
                         </div>
+                        <div class="form-group">
+                            <strong>Comprobante:</strong>
+                            <a href="{{$salida->comprobante}}">Comprobante</a>     
+                        </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
                         </div>
