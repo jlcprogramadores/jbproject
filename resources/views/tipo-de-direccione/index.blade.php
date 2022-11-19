@@ -48,7 +48,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $tipoDeDireccione->nombre }}</td>
-											<td>{{ $tipoDeDireccione->es_fiscal }}</td>
+											<td>{{ $tipoDeDireccione->es_fiscal ? 'SI' : 'NO'}}</td>
                                             <td>{{ $tipoDeDireccione->usuario_edito }}  <br/> {{ $tipoDeDireccione->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">

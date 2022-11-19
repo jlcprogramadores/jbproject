@@ -92,7 +92,7 @@
                                     <td class="completo">{{ $proveedore->estado }}</td>
                                     <td>{{ $proveedore->dias_de_credito }}</td>
                                     <td>{{ $proveedore->monto_de_credito }}</td>
-                                    <td>{{ $proveedore->es_facturable }}</td>
+                                    <td>{{ $proveedore->es_facturable ? 'SI' : 'NO' }}</td>
                                     <td>{{ $proveedore->mail }}</td>
                                     <td>{{ $proveedore->rfc }}</td>
                                     <td><span class="peque">{{ $proveedore->usuario_edito }}</span>  <br/> <span class="peque">{{ $proveedore->updated_at }}</span></td>
