@@ -34,7 +34,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="table">
+                            <table class="table table-striped display compact" id="table"  style="width:100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -89,10 +89,10 @@
                                             <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
 											<td>{{ $tipoFinanza }}</td>
                                             <?php 
-                                                $famCat = 'F: '.$finanza->famCategoria->familia->nombre.',';
-                                                $famCat .= 'C: '.$finanza->famCategoria->nombre;
+                                                $fam = 'F: '.$finanza->famCategoria->familia->nombre;
+                                                $cat = 'C: '.$finanza->famCategoria->nombre;
                                             ?>
-											<td>{{ $famCat }}</td>
+											<td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
                                             <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
@@ -104,14 +104,14 @@
 											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
 											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
-											<td>{{ $finanza->fecha_de_pago }}</td>
+											<td >{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
                                             <td>{{ $montoAPagar>0 ? 'Pagado' : 'Pendiente Pagar' }}</td>
 											<td>{{ $finanza->entregado_material_a }}</td>
 
                                             <td>{{ $finanza->fecha_facturacion }}</td>
 											<td>{{ $finanza->comentario }}</td>
-                                            <td>{{ $finanza->usuario_edito }}  <br/> {{ $finanza->updated_at }}</td>
+                                            <td><span style="font-size: 0.7rem">{{ $finanza->usuario_edito }}</span> <br/>  <span style="font-size: 0.7rem">{{ $finanza->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
@@ -156,13 +156,6 @@
                         "previous": "Anterior"
                     }
                 },
-                columnDefs: [{
-                    // espeificamos que columna sera afectada
-                    targets: [8],
-                    render: function(data, type, full, meta) {    
-                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
-                    }
-                }],
                 orderCellsTop: true,
                 fixedHeader: true,
                 initComplete: function() {

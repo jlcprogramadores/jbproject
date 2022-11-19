@@ -329,8 +329,23 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+  font-weight:  normal !important;
+  font-size: 0.9rem !important; 
 }
 
+thead > tr > th{
+  font-size: 0.9rem !important; 
+  font-weight:  bold !important;
+  white-space: nowrap !important;
+  color: #0d6efd !important;
+
+}
+
+thead > tr > th > input {
+  white-space: nowrap !important;
+  width: 100%;
+
+}
 
 label {
   display: inline-block;
