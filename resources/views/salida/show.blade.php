@@ -19,6 +19,11 @@
                             <strong>Proveedor Id:</strong>
                             {{ $salida->proveedor_id }}
                         </div>
+                        <div class="form-group">
+                            <strong>Comprobante:</strong>
+                            <a href="{{$salida->comprobante}}">Comprobante</a>     
+                        </div>
+                        <br>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('salidas.index') }}"> Atrás</a>
                         </div>

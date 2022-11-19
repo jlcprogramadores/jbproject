@@ -105,11 +105,11 @@
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Metodo De Pago']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('Añadir comprobante de pago') }}
-                    {{ Form::file('comprobante', $salida->comprobante, ['class' => 'form-control' . ($errors->has('comprobante') ? ' is-invalid' : ''), 'placeholder' => 'Comprobante']) }}
-                    {!! $errors->first('comprobante', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
+                {{ Form::label('Comprobante de pago') }}
+                <p>
+                    <label for="comprobante"></label>
+                    <input type="file" name="comprobante">
+                </p>
                 <div class="form-group d-none">
                     {{ Form::label('usuario_edito') }}
                     {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}

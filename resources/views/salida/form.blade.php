@@ -6,12 +6,13 @@
             {{ Form::select('proveedor_id',$proveedore, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
             {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('comprobante') }}
-            {{ Form::file('comprobante', $salida->comprobante, ['class' => 'form-control' . ($errors->has('comprobante') ? ' is-invalid' : ''), 'placeholder' => 'Comprobante']) }}
-            {!! $errors->first('comprobante', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group d-none">
+        <br>
+        {{ Form::label('Comprobante de pago') }}
+        <p>
+            <label for="comprobante"></label>
+            <input type="file" name="comprobante">
+        </p>
+        <div class="form-group d-none" >
             {{ Form::label('usuario_edito') }}
             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}

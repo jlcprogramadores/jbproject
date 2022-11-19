@@ -28,3 +28,7 @@ composer require codeat3/blade-carbon-icons
 página: https://blade-ui-kit.com/blade-icons
 ejemplo:
 <x-carbon-apple style="color: green"/>
+
+
+#Para hacer link simbolico de la carpeta storage/public  y acceder desde su URL
+php artisan storage:link

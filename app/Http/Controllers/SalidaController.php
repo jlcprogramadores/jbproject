@@ -53,14 +53,18 @@ class SalidaController extends Controller
         
         $salida = Salida::create($request->all());
 
-        $salida->comprobante->storeAs('public\media\\', $salida->comprobante->getClientOriginalName());
-        
-        $file_url = 'storage\app\public\media\\'. $salida->comprobante->getClientOriginalName();
-        $base64 = base64_encode(file_get_contents(base_path($file_url)));
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
 
-        $anadiendoBase64 = Salida::find($salida->id);
-        $anadiendoBase64->comprobante = $base64;
-        $anadiendoBase64->save();
+        
  
         return redirect()->route('salidas.index')
             ->with('success', 'Salida creada exitosamente.');
@@ -86,7 +90,7 @@ class SalidaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {    
         $salida = Salida::find($id);
         $proveedore = Proveedore::pluck('nombre','id');
 
@@ -101,11 +105,24 @@ class SalidaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Salida $salida)
-    {
+    {   
         request()->validate(Salida::$rules);
+        
+        $getSalida = Salida::find($salida->id);
 
-        $salida->update($request->all());
-
+        if ($getSalida->comprobante != null) {
+            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+            $salida->update($request->all());
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
+        
         return redirect()->route('salidas.index')
             ->with('success', 'Salida actualizada correctamente.');
     }
@@ -116,7 +133,13 @@ class SalidaController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
+    {   
+        $getSalida = Salida::find($id);
+        if ($getSalida->comprobante != null) {
+            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+            
+        }   
+
         $salida = Salida::find($id)->delete();
 
         return redirect()->route('salidas.index')

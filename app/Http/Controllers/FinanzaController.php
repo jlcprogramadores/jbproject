@@ -124,13 +124,16 @@ class FinanzaController extends Controller
         request()->validate(Finanza::$rules);
         // se crea la salida se recupera el id y se anade al request
         $salida = Salida::create($request->all());
-        $salida->comprobante->storeAs('public\media\\', $salida->comprobante->getClientOriginalName());
-        $file_url = 'storage\app\public\media\\'. $salida->comprobante->getClientOriginalName();
-        $base64 = base64_encode(file_get_contents(base_path($file_url)));
-        $anadiendoBase64 = Salida::find($salida->id);
-        $anadiendoBase64->comprobante = $base64;
-        $anadiendoBase64->save();
-        unlink(base_path($file_url));
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
         //Hasta aqui se añaden los archivos en base64
         $request->request->add(['salidas_id' => $salida->id]);
         $finanza = Finanza::create($request->all());
@@ -190,8 +193,23 @@ class FinanzaController extends Controller
      * @param  Finanza $finanza
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Finanza $finanza)
-    {
+    public function update(Request $request, Finanza $finanza, Salida $salida)
+    {   
+        $salida = Salida::find($finanza->salidas_id);
+        $getSalida = Salida::find($salida->id);
+
+        if ($getSalida->comprobante != null) {
+            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+            $salida->update($request->all());
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
         request()->validate(Finanza::$rules);
 
         $finanza->update($request->all());
@@ -213,6 +231,11 @@ class FinanzaController extends Controller
             Entrada::find($entradaId)->delete();
         }else{
             $salidaId =Finanza::find($id)->salidas_id;
+            $getSalida = Salida::find($salidaId);
+            if ($getSalida->comprobante != null) {
+                unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+                
+            } 
             Salida::find($salidaId)->delete();
         }
         $finanza = Finanza::find($id)->delete();
