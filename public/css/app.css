@@ -347,6 +347,13 @@ thead > tr > th > input {
 
 }
 
+tbody > tr > td {
+  background-color: #04414d;
+  align-items: center !important;
+  margin-left:auto !important;
+  margin-right:auto !important  ;
+}
+
 label {
   display: inline-block;
 }
@@ -1772,6 +1779,7 @@ progress {
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 .table > tbody {
+  text-align: center !important;
   vertical-align: inherit;
 }
 .table > thead {
