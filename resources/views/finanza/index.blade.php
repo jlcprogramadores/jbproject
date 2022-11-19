@@ -122,6 +122,7 @@
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-info " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>
                                                     <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf

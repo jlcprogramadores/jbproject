@@ -44,6 +44,7 @@ Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
 Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
 Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
+Route::get('/correo/{id}', 'App\Http\Controllers\FinanzaController@correo')->name('finanzas.correo');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

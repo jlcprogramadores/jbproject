@@ -151,8 +151,21 @@ class FinanzaController extends Controller
     public function show($id)
     {
         $finanza = Finanza::find($id);
+        $salida = Salida::find($finanza->salidas_id);
+        return view('finanza.show', compact('finanza','salida'));
+    }
 
-        return view('finanza.show', compact('finanza'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function correo($id)
+    {
+        $finanza = Finanza::find($id);
+        $salida = Salida::find($finanza->salidas_id);
+        return view('finanza.correo', compact('finanza','salida'));
     }
 
     /**
