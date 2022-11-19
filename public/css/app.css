@@ -10864,7 +10864,7 @@ textarea.form-control-lg {
   -webkit-line-clamp: unset; /* number of lines to show */
 }
 td form{
-  width: 185px !important; 
+  white-space: nowrap !important;
 }
 
 .table > tbody > tr >  td > span .botones{
