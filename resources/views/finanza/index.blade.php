@@ -118,10 +118,14 @@
 											<td>{{ $finanza->entregado_material_a }}</td>
                                             <td>{{ $finanza->fecha_facturacion }}</td>
                                             <td>{{ $finanza->comentario }}</td>
-                                            @if ($finanza->salida->enviado == 0)
-                                                <td><p class="badge bg-danger">Sin Enviar</p></td>
-                                            @else
-                                                <td><p class="badge bg-success">Enviado</p></td>
+                                            @if ($finanza->salidas_id)
+                                                @if ($finanza->salida->enviado == 0)
+                                                    <td><p class="badge bg-danger">Sin Enviar</p></td>
+                                                @else
+                                                    <td><p class="badge bg-success">Enviado</p></td>
+                                                @endif
+                                            @elses
+                                                <td></td>
                                             @endif
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                             <td>
