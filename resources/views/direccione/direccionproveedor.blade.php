@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -90,6 +91,7 @@
         </div>
     </div>
 @endsection
+@endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
