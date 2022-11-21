@@ -45,7 +45,11 @@
                                             
 											<td>{{ $user->name }}</td>
 											<td>{{ $user->email }}</td>
-                                            <td>{{ $user->es_activo }}</td>
+                                            @if ($user->es_activo)
+                                                <td><p class="badge bg-success">Activado</p></td>
+                                            @else
+                                                <td><p class="badge bg-danger">Innactivo</p></td>
+                                            @endif
                                             <td>
                                                 <form action="{{ route('usuarios.destroy',$user->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
