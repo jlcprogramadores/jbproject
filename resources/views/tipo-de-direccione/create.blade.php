@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Crear Tipo De Dirección')
-@if(\Auth::check())
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
         <div class="row">

@@ -1,4 +1,4 @@
-@if(\Auth::check())
+@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="container">
         <!-- estilo a partir de balsamiq  -->

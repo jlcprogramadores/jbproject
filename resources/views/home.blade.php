@@ -1,5 +1,29 @@
 @extends('layouts.app')
-@if(\Auth::check())
+
+@if (Auth::check() && Auth::user()->es_activo == 0)
+    @section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Inicio de Sesión Exitoso') }}</div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        
+                        <h5 class="text-danger">¡El usuario aún se encuentra inactivo, pide al un admnistrador(a) que lo active!</h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endsection
+@endif
+@if (Auth::check() && Auth::user()->es_activo == 1)
     @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -21,28 +45,30 @@
             </div>
         </div>
     </div>
-    @endsection
-@else
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Salida de Sesión') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    ¡Cerraste sesión exitosamente!
+    @endsection    
+@endif
+@if (Auth::check() == false)
+    @section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Salida de Sesión') }}</div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        ¡Cerraste sesión exitosamente!
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
 @endif
+
 
 <style>
 .responsive {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','Mostar Categorías De Entrada')
-@if(\Auth::check())
+@if(Auth::check() && Auth::user()->es_activo) 
 @section('content')
     <section class="content container-fluid">
         <div class="row">

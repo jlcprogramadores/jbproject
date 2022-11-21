@@ -40,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if(\Auth::check())
+                        @if(Auth::check() && Auth::user()->es_activo)
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Finanzas
@@ -120,8 +120,10 @@
                             </div>
                         </li>
                     </ul>
+                    @else
+                    <p class="text-danger">Usuario Inactivo</p>
                     @endif
-                    
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
