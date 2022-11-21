@@ -52,7 +52,15 @@
                                 <a href="{{$salida->comprobante}}">Comprobante</a> 
                             @else
                                 <span class="text-danger">Sin Comprobante</span>
-                            @endif   
+                            @endif  
+                        </div>
+                        <div>
+                            <strong>Estado:</strong>
+                            @if ($salida->enviado == 1)
+                                <span class="text-success">Enviado</span>
+                            @else
+                                <span class="text-danger">Sin Enviar</span>
+                            @endif 
                         </div>
                         <br>
                         <div class="float-right">
