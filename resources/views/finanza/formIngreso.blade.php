@@ -144,15 +144,31 @@
         $('#metodo_de_pago').select2();
         $('#familia_id').select2();
         $('#familia_id').on('select2:select', function (e) {
+            var data = e.params.data;
+            getCategoriByFamilia(data.id);           
         });
+        function getCategoriByFamilia(id){
+            var iterable='';
+            $.ajax({
+                type:"GET",
+                async : false,
+                data:{
+                    'familia_id':id
+                },
+                url: "{{ route('categorias-familias.getCategoriByFamilia') }}",
+                success:function(data){
+                    iterable = JSON.parse(data);
+                    return iterable;
+                }
+            });
+            $('#categoria_id').empty();
+            select = document.getElementById('categoria_id');
+            for (let value of iterable) {
+                var opt = document.createElement('option');
+                opt.value=value['id'];
+                opt.innerHTML=value['nombre'];
+                select.appendChild(opt)
+            };
+        }
     </script>
-        {{-- var data = e.params.data;
-        console.log(data.id);
-        $('#categoria_id').empty();
-        select = document.getElementById('categoria_id');
-        {{ route('finanzas.egreso') }}
-        var opt = document.createElement('option');
-        opt.value = 1;
-        opt.innerHTML = 'hey';
-        select.appendChild(opt); --}}
 @endpush

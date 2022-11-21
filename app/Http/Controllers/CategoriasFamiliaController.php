@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoriasFamilia;
 use App\Models\Familia;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 /**
  * Class CategoriasFamiliaController
@@ -107,4 +108,12 @@ class CategoriasFamiliaController extends Controller
         return redirect()->route('categorias-familias.index')
             ->with('success', 'Categoria Familia eliminada exitosamente.');
     }
+
+    public function getCategoriByFamilia(Request $request)
+    {
+        $familia_id = $request->familia_id;
+        $categorias = CategoriasFamilia::select('id','nombre')->where('familia_id','=',$familia_id)->get();
+        return json_encode($categorias) ;
+    }
+    
 }
