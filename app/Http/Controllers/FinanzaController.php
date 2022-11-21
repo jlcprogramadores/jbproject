@@ -17,6 +17,9 @@ use App\Models\CategoriasDeEntrada;
 use App\Models\Salida;
 use App\Models\Proveedore;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ComprobanteMailable;
 
 
 
@@ -165,9 +168,39 @@ class FinanzaController extends Controller
     {
         $finanza = Finanza::find($id);
         $salida = Salida::find($finanza->salidas_id);
-        return view('finanza.correo', compact('finanza','salida'));
+        $proveedor = Proveedore::find($salida->proveedor_id);
+        return view('finanza.correo', compact('finanza','salida','proveedor'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function enviarCorreo($id)
+    {   
+        $finanza = Finanza::find($id);
+        $salida = Salida::find($finanza->salidas_id);
+        $proveedor = Proveedore::find($salida->proveedor_id);
+        $cantidad = $finanza->monto_a_pagar;
+        $comprobante = $salida->comprobante;
+        $email = $proveedor->mail;
+
+        $data = [
+            'comprobante' => 'http://127.0.0.1:8000'.$comprobante,
+            'monto_a_pagar' => $cantidad,
+        ];
+
+        $correo = new ComprobanteMailable($data);
+        Mail::to($email)->send($correo,$data);
+        $salida->enviado = 1;
+        $salida->save();
+        return redirect()->route('finanzas.index')
+            ->with('success', 'Correo enviado exitosamente.');
+    }
+
+    
     /**
      * Show the form for editing the specified resource.
      *

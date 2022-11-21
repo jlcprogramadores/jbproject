@@ -62,9 +62,9 @@
 										<th>Metodo De Pago</th>
                                         <th>$ Estatus $</th>
 										<th>Entregado Material A</th>
-
                                         <th>Fecha Facturacion</th>
 										<th>Comentario</th>
+                                        <th>Comprobante</th>
                                         <th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -116,14 +116,20 @@
                                                 <td><p class="badge bg-danger">Pendiente Pagar</p></td>
                                             @endif
 											<td>{{ $finanza->entregado_material_a }}</td>
-
                                             <td>{{ $finanza->fecha_facturacion }}</td>
-											<td>{{ $finanza->comentario }}</td>
+                                            <td>{{ $finanza->comentario }}</td>
+                                            @if ($finanza->salida->enviado == 0)
+                                                <td><p class="badge bg-danger">Sin Enviar</p></td>
+                                            @else
+                                                <td><p class="badge bg-success">Enviado</p></td>
+                                            @endif
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                             <td>
                                                 <span class="completo">
                                                     <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
-                                                        <a class="btn btn-sm btn-info " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>
+                                                        @if ($finanza->salidas_id)
+                                                            <a class="btn btn-sm btn-secondary " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>      
+                                                        @endif
                                                         <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                         <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                         @csrf

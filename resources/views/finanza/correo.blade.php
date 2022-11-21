@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Finanza</span>
+                            <span class="card-title">Envío de Correo</span>
                         </div>
                     </div>
 
@@ -32,20 +32,34 @@
                         </div>
                         <div class="form-group">
                             <strong>Monto A Pagar:</strong>
-                            {{ $finanza->monto_a_pagar }}
+                            ${{ $finanza->monto_a_pagar }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha De Pago:</strong>
                             {{ $finanza->fecha_de_pago }}
                         </div>
                         <div class="form-group">
+                            <strong>Proveedor:</strong>
+                            {{ $proveedor->nombre }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Correo Electrónico:</strong>
+                            {{ $proveedor->mail }}
+                        </div>
+                        <div class="form-group">
                             <strong>Comprobante:</strong>
-                            <a href="{{$salida->comprobante}}">Comprobante</a>     
+                            @if ($salida->comprobante)
+                                <a href="{{$salida->comprobante}}">Comprobante</a> 
+                            @else
+                                <span class="text-danger">Sin Comprobante</span>
+                            @endif   
                         </div>
                         <br>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
-                            <a class="btn btn-success" href="{{ route('finanzas.index') }}"> Enviar Comprobante</a>
+                            @if ($salida->comprobante)
+                                <a class="btn btn-success" href="{{ route('finanzas.enviarCorreo',$finanza->id) }}"> Enviar Comprobante</a>
+                            @endif   
                         </div>
                     </div>
                 </div>

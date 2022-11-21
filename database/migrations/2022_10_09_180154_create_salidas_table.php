@@ -18,6 +18,7 @@ class CreateSalidasTable extends Migration
             $table->integer('proveedor_id')->nullable();
             $table->string('usuario_edito');
             $table->longText('comprobante')->nullable();
+            $table->boolean('enviado')->default('0');
             $table->timestamps();
         });
     }
