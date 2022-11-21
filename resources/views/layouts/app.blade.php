@@ -120,8 +120,6 @@
                             </div>
                         </li>
                     </ul>
-                    @else
-                    <p class="text-danger">Usuario Inactivo</p>
                     @endif
 
                     <!-- Right Side Of Navbar -->
