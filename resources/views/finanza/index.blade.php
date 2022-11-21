@@ -124,7 +124,7 @@
                                                 @else
                                                     <td><p class="badge bg-success">Enviado</p></td>
                                                 @endif
-                                            @elses
+                                            @else
                                                 <td></td>
                                             @endif
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
