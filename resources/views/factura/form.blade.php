@@ -1,10 +1,10 @@
 @if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
+        <?php $idFinanza = [request()->id => 'finanza'] ?>
+        <div class="form-group d-none">
             {{ Form::label('finanza_id') }}
-            {{ Form::select('finanza_id',$datofinanza ,$factura->finanza_id, ['class' => 'form-control' . ($errors->has('finanza_id') ? ' is-invalid' : ''), 'placeholder' => 'Referencia Finanza']) }}
+            {{ Form::select('finanza_id',$idFinanza ,$factura->finanza_id, ['class' => 'form-control' . ($errors->has('finanza_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('finanza_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -12,7 +12,7 @@
             {{ Form::text('referencia_factura', $factura->referencia_factura, ['class' => 'form-control' . ($errors->has('referencia_factura') ? ' is-invalid' : ''), 'placeholder' => 'Referencia Factura']) }}
             {!! $errors->first('referencia_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('factura_base64') }}
             {{ Form::text('factura_base64', $factura->factura_base64, ['class' => 'form-control' . ($errors->has('factura_base64') ? ' is-invalid' : ''), 'placeholder' => 'Factura Base64']) }}
             {!! $errors->first('factura_base64', '<div class="invalid-feedback">:message</div>') !!}

@@ -17,7 +17,10 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('facturas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('finanzas.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
+                                </a>
+                                <a href="{{ route('facturas.create',['id'=>$id]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Factura') }}
                                 </a>
                               </div>
@@ -36,7 +39,6 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Referencia Factura</th>
 										<th>Factura Base64</th>
 										<th>Url</th>
 										<th>Fecha Creacion</th>
@@ -50,7 +52,6 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $factura->referencia_factura }}</td>
 											<td>{{ $factura->factura_base64 }}</td>
 											<td>{{ $factura->url }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
