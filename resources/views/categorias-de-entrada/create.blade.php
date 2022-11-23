@@ -18,6 +18,7 @@
 
                             @include('categorias-de-entrada.form')
 
+                            {{-- Push de prueba --}}
                         </form>
                     </div>
                 </div>
