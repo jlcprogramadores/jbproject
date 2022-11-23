@@ -32,7 +32,7 @@ class Salida extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function proveedores()
+    public function proveedore()
     {
         return $this->hasOne('App\Models\Proveedore', 'id', 'proveedor_id');
     }
