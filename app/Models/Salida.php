@@ -34,6 +34,6 @@ class Salida extends Model
      */
     public function proveedore()
     {
-        return $this->hasOne('App\Models\proveedore', 'id', 'proveedor_id');
+        return $this->hasOne('App\Models\proveedore', 'proveedor_id', 'id');
     }
 }
