@@ -128,7 +128,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item ">
-                                    <a class="nav-link text-white fs-5" href="{{ route('login') }}">{{ __('Inicia Sesión') }}</a>
+                                    <a class="nav-link text-white fs-5" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 </li>
                             @endif
 
