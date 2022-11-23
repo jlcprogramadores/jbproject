@@ -188,7 +188,7 @@ class FinanzaController extends Controller
         $email = $proveedor->mail;
 
         $data = [
-            'comprobante' => 'http://127.0.0.1:8000'.$comprobante,
+            'comprobante' => 'https://mttojbindustrial.com/'.$comprobante,
             'monto_a_pagar' => $cantidad,
         ];
 
