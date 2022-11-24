@@ -5,7 +5,7 @@ php artisan migrate:rollback = HACES ROLLBACK A LAS MIGRACIONES
 php artisan serve = CORRER EL PROYECTO
 
 
-para que jale 
+ # para que jale 
 composer require laravel/ui
 php artisan ui bootstrap --auth
 npm install
@@ -20,15 +20,22 @@ npm install sweetalert2
 npm run dev
 
 
-#Si se modificia el archivo app.php para ver reflejados los cambios se usa 
+# Si se modificia el archivo app.php para ver reflejados los cambios se usa 
 php artisan config:clear
 
-#instalar y usar icon packages
+# instalar y usar icon packages
 composer require codeat3/blade-carbon-icons
 página: https://blade-ui-kit.com/blade-icons
 ejemplo:
+```html
 <x-carbon-apple style="color: green"/>
+```
 
 
-#Para hacer link simbolico de la carpeta storage/public  y acceder desde su URL
+# Para hacer link simbolico de la carpeta storage/public  y acceder desde su URL
 php artisan storage:link
+
+# Para que funcione correctamente el gitignore
+ git rm -r --cached .
+ git commit -m "fixed untracked files"
+ git push ó subirlo mediente desktop
