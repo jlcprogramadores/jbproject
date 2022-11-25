@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
+                                        <th>Monto A Pagar</th>
 										<th>Fecha Entrada</th>
 										<th>Fecha Salida</th>
                                         <th>Vence</th>
@@ -54,7 +54,6 @@
                                         <th>Subtotal Total MXN</th>
 										<th>Iva</th>
                                         <th>Total $MXN$</th>
-										<th>Monto A Pagar</th>
 										<th>Fecha De Pago</th>
 										<th>Metodo De Pago</th>
                                         <th>$ Estatus $</th>
@@ -72,6 +71,7 @@
                                         <tr>
 
                                             <td>{{ $finanza->no }}</td>
+                                            <td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
                                             <td>{{ $finanza->vence }}</td>
@@ -104,7 +104,6 @@
                                             <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
 											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
-											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td >{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
                                             @if ($montoAPagar>0)
