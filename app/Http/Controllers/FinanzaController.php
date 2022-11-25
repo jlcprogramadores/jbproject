@@ -13,7 +13,6 @@ use App\Models\Iva;
 use App\Models\Factura;
 use App\Models\CategoriasFamilia;
 use App\Models\CategoriasDeEntrada;
-// para la salida se requiere lo siguiente\
 use App\Models\Salida;
 use App\Models\Proveedore;
 use Illuminate\Support\Facades\Storage;
@@ -41,6 +40,32 @@ class FinanzaController extends Controller
         $finanzas = Finanza::paginate();
 
         return view('finanza.index', compact('finanzas'))
+            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexEgreso()
+    {
+        $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
+
+        return view('finanza.indexEgreso', compact('finanzas'))
+            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexIngreso()
+    {
+        $finanzas = Finanza::where('entradas_id','!=',null)->paginate();     
+
+        return view('finanza.indexIngreso', compact('finanzas'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
     }
 
@@ -74,7 +99,6 @@ class FinanzaController extends Controller
     {      
         $salida = new Salida();
         $finanza = new Finanza();   
-        
         $datosproveedor = Proveedore::pluck('nombre','id');
         $datosproyecto = Proyecto::pluck('nombre','id');
         $datosfamilia = Familia::pluck('nombre','id');
@@ -158,6 +182,7 @@ class FinanzaController extends Controller
         return view('finanza.show', compact('finanza','salida'));
     }
 
+    
     /**
      * Display the specified resource.
      *

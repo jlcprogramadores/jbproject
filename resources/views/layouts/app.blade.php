@@ -49,10 +49,10 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
                                 </a> 
-                                <a class="dropdown-item" href="{{ route('finanzas.egreso') }}">
+                                <a class="dropdown-item" href="{{ route('finanzas.indexEgreso') }}">
                                     {{ __('Egresos') }}
                                 </a> 
-                                <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
+                                <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
                                 <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
