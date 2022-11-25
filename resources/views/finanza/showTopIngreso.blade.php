@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Finanza')
+@section('title','Mostrar Top Ingreso')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Finanza</span>
+                            <span class="card-title">Mostrar Top Ingreso</span>
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
                             @endif  
                         @endif
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
+                            <a class="btn btn-primary" href="{{ route('finanzas.topIngreso') }}"> Atrás</a>
                         </div>
                     </div>
                 </div>

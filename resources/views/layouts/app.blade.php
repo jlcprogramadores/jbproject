@@ -55,6 +55,9 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
+                                <a class="dropdown-item" href="{{ route('finanzas.topGeneral') }}">
+                                    {{ __('Top Egresos e Ingresos') }}
+                                </a> 
                                 <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
                                     {{ __('Filtrado') }}
                                 </a> 

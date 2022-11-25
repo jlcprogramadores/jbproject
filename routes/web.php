@@ -43,8 +43,13 @@ Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
 Route::get('/indexEgreso', 'App\Http\Controllers\FinanzaController@indexEgreso')->name('finanzas.indexEgreso');
 Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
-Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
-Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
+Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
+Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
+Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
+Route::get('/topIngreso', 'App\Http\Controllers\FinanzaController@topIngreso')->name('finanzas.topIngreso');
+Route::get('/topEgreso', 'App\Http\Controllers\FinanzaController@topEgreso')->name('finanzas.topEgreso');
+Route::get('/showTopIngreso/{id}', 'App\Http\Controllers\FinanzaController@showTopIngreso')->name('finanzas.showTopIngreso');
+Route::get('/showTopEgreso/{id}', 'App\Http\Controllers\FinanzaController@showTopEgreso')->name('finanzas.showTopEgreso');
 Route::get('/correo/{id}', 'App\Http\Controllers\FinanzaController@correo')->name('finanzas.correo');
 Route::get('/enviarCorreo/{id}', 'App\Http\Controllers\FinanzaController@enviarCorreo')->name('finanzas.enviarCorreo');
 Route::get('getCategoriByFamilia', 'App\Http\Controllers\CategoriasFamiliaController@getCategoriByFamilia')->name('categorias-familias.getCategoriByFamilia');

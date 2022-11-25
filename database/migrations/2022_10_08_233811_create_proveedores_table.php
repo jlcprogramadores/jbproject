@@ -19,7 +19,7 @@ class CreateProveedoresTable extends Migration
             $table->string('razon_social');
             $table->string('estado');
             $table->integer('dias_de_credito');
-            $table->float('monto_de_credito');
+            $table->decimal('monto_de_credito', 9, 3);
             $table->boolean('es_facturable');
             $table->string('mail');
             $table->string('rfc');

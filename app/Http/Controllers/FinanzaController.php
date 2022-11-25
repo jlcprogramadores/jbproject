@@ -70,6 +70,44 @@ class FinanzaController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function topGeneral()
+    {
+        $finanzas = Finanza::paginate();     
+
+        return view('finanza.topGeneral', compact('finanzas'))->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function topIngreso()
+    {   
+        $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->limit(10)->paginate();
+        
+        return view('finanza.topIngreso', compact('finanzas'))
+            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function topEgreso()
+    {
+        $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->limit(10)->paginate();     
+
+        return view('finanza.topEgreso', compact('finanzas'))
+            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+    }
+    
+    /**
      * Display a listing of the supplier.
      *
      * @return \Illuminate\Http\Response
@@ -182,7 +220,32 @@ class FinanzaController extends Controller
         return view('finanza.show', compact('finanza','salida'));
     }
 
-    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showTopEgreso($id)
+    {
+        $finanza = Finanza::find($id);
+        $salida = Salida::find($finanza->salidas_id);
+        return view('finanza.showTopEgreso', compact('finanza','salida'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showTopIngreso($id)
+    {
+        $finanza = Finanza::find($id);
+        $salida = Salida::find($finanza->salidas_id);
+        return view('finanza.showTopIngreso', compact('finanza','salida'));
+    }
+
     /**
      * Display the specified resource.
      *
