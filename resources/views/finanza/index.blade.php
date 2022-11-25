@@ -52,8 +52,8 @@
                                         <th>Razon social</th>
                                         <th>Proyecto</th>
 										<th>Descripcion</th>
-                                        <th>Factura o Folio</th>
-                                        <th>Proveedor o cliente</th>
+                                        <th>Factaura o Folio</th>
+                                        <th>Proveedor o usuario</th>
 										<th>C.U. & Unidad</th>
 										<th>Costo Unitario</th>
                                         <th>Subtotal Total MXN</th>
@@ -173,7 +173,7 @@
     <!-- Para los estilos en Excel     -->
     <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.1/js/buttons.html5.styles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.1/js/buttons.html5.styles.templates.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready( function () {
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({

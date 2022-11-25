@@ -54,6 +54,8 @@ Route::get('/correo/{id}', 'App\Http\Controllers\FinanzaController@correo')->nam
 Route::get('/enviarCorreo/{id}', 'App\Http\Controllers\FinanzaController@enviarCorreo')->name('finanzas.enviarCorreo');
 Route::get('getCategoriByFamilia', 'App\Http\Controllers\CategoriasFamiliaController@getCategoriByFamilia')->name('categorias-familias.getCategoriByFamilia');
 Route::get('/facturafinanzas/{id}', 'App\Http\Controllers\FacturaController@facturafinanzas')->name('facturas.facturafinanzas');
+Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('finanzas.filtros');
+
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

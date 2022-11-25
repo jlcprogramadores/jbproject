@@ -386,4 +386,25 @@ class FinanzaController extends Controller
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza eliminada exitosamente.');
     }
+
+    /**
+     * Display a listing of the supplier.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filtros()
+    {      
+        $salida = new Salida();
+        $finanza = new Finanza();   
+        
+        $datosproveedor = Proveedore::pluck('nombre','id');
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+        return view('finanza.filtros', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+    }
 }
