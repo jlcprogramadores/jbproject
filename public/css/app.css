@@ -94,13 +94,9 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: #ededed !important;
+  background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.table > tbody > tr > td {
-  width: 185px !important;
 }
 
 hr {
@@ -323,8 +319,8 @@ th {
   text-align: inherit;
   text-align: -webkit-match-parent;
 }
-thead,
 
+thead,
 tbody,
 tfoot,
 tr,
@@ -333,29 +329,6 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
-  font-weight:  normal !important;
-  font-size: 0.9rem !important; 
-}
-thead > tr > th{
-
-  font-size: 0.9rem !important; 
-  font-weight:  bold !important;
-  white-space: nowrap !important;
-  color: #0d6efd !important;
-
-}
-thead > tr > th > input {
-
-  white-space: nowrap !important;
-  width: 100%;
-
-}
-
-tbody > tr > td {
-  background-color: #04414d;
-  align-items: center !important;
-  margin-left:auto !important;
-  margin-right:auto !important  ;
 }
 
 label {
@@ -1783,10 +1756,9 @@ progress {
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 .table > tbody {
-  text-align: center !important;
   vertical-align: inherit;
-  .table > thead {
 }
+.table > thead {
   vertical-align: bottom;
 }
 
@@ -4254,7 +4226,6 @@ textarea.form-control-lg {
   border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
 .card-header:first-child {
-  font-size: x-large;
   border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
 }
 
@@ -10849,34 +10820,4 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-}
-/* lienas custom jbindustrial */
-.truncate{
-  width: 180px;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
-  -webkit-box-orient: vertical;
-}
-.truncate:hover{
-  -webkit-line-clamp: unset; /* number of lines to show */
-}
-td form{
-  white-space: nowrap !important;
-}
-
-.table > tbody > tr >  td > span .botones{
-  display: block !important;
-}
-.botones{
-  display: block;
-  width: 150px !important;
-}
-.completo{
-  white-space: nowrap !important;
-}
-.peque{
-  font-size: 0.7rem !important;
 }
