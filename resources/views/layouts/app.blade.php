@@ -55,6 +55,9 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
+                                <a class="dropdown-item" href="{{ route('finanzas.ingreso') }}">
+                                    {{ __('Filtrado') }}
+                                </a> 
                                 <a class="dropdown-item" href="{{ url('/') }}">
                                     {{ __('Gráficas') }}
                                 </a> 
