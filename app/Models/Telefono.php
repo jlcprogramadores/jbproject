@@ -23,7 +23,7 @@ class Telefono extends Model
         'descripcion' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.

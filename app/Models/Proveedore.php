@@ -37,7 +37,7 @@ class Proveedore extends Model
         'usuario_edito'  => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.

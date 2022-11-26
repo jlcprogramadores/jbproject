@@ -178,7 +178,6 @@
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
                 responsive:true,
-                paging: false,
                 autoWidth: false,   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",

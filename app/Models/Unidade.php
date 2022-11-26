@@ -23,7 +23,7 @@ class Unidade extends Model
       'usuario_edito'  => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 100000;
 
     /**
      * Attributes that should be mass-assignable.
