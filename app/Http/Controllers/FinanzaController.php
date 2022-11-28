@@ -329,32 +329,32 @@ class FinanzaController extends Controller
      */
     public function update(Request $request, Finanza $finanza, Salida $salida)
     {   
-        $salida = Salida::find($finanza->salidas_id);
-        $getSalida = Salida::find($salida->id);
-
-        if ($getSalida->comprobante != null) {
-            //Existe un comprobante anterior
-            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
-            $salida->update($request->all());
-            $nombreOriginal = $salida->comprobante->getClientOriginalName();
-            $aux = 'salida_' . $salida->id . '_';
-            $nombreFinal = $aux . $nombreOriginal;
-            $salida->comprobante->storeAs('public',$nombreFinal);
-            $file_url = '/storage/' . $nombreFinal;
+        if ($finanza->salidas_id != null) {
+            $salida = Salida::find($finanza->salidas_id);
             $getSalida = Salida::find($salida->id);
-            $getSalida->comprobante = $file_url;
-            $getSalida->save();
-        }else if($request->comprobante != null){
-            $nombreOriginal = $request->comprobante->getClientOriginalName();
-            $aux = 'salida_' . $getSalida->id . '_';
-            $nombreFinal = $aux . $nombreOriginal;
-            $request->comprobante->storeAs('public',$nombreFinal);
-            $file_url = '/storage/' . $nombreFinal;
-            $getSalida = Salida::find($getSalida->id);
-            $getSalida->comprobante = $file_url;
-            $getSalida->save();
+            if ($getSalida->comprobante != null) {
+                //Existe un comprobante anterior
+                unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+                $salida->update($request->all());
+                $nombreOriginal = $salida->comprobante->getClientOriginalName();
+                $aux = 'salida_' . $salida->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $salida->comprobante->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $getSalida = Salida::find($salida->id);
+                $getSalida->comprobante = $file_url;
+                $getSalida->save();
+            }else if($request->comprobante != null){
+                $nombreOriginal = $request->comprobante->getClientOriginalName();
+                $aux = 'salida_' . $getSalida->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->comprobante->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $getSalida = Salida::find($getSalida->id);
+                $getSalida->comprobante = $file_url;
+                $getSalida->save();
+            }
         }
-        
 
         request()->validate(Finanza::$rules);
         $finanza->update($request->all());

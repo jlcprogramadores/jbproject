@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('monto_de_credito') }}
-            {{ Form::number('monto_de_credito', $proveedore->monto_de_credito, ['class' => 'form-control' . ($errors->has('monto_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Monto De Credito','step'=>'any']) }}
+            {{ Form::number('monto_de_credito', $proveedore->monto_de_credito, ['class' => 'form-control','step'=>'any' . ($errors->has('monto_de_credito') ? ' is-invalid' : ''), 'placeholder' => 'Monto De Credito','step'=>'any']) }}
             {!! $errors->first('monto_de_credito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group ">
