@@ -73,51 +73,38 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $user = User::find($id);
 
+    public function edit($id)
+    {   
+        $user = User::find($id);
         return view('user.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
+    public function update(User $user)
+    {       
 
-        // Validate the data submitted by user
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:225|'. Rule::unique('users')->ignore($user->id),
-        ]);
+        if($user->email == request('email')){
+            $this->validate(request(), [
+                'name' => 'required',
+            ]);
 
-        // if fails redirects back with errors
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+            $user->name = request('name');
+            $user->es_activo = request('es_activo');
+            $user->save();
+        }else{
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+            ]);
 
-        // Fill user model
-        $user->fill([
-            'name' => $request->name,
-            'email' => $request->email,
-            'es_activo' => $request->es_activo
-        ]);
-
-        // Save user to database
-        $user->save();
-
-
+            $user->name = request('name');
+            $user->email = request('email');
+            $user->es_activo = request('es_activo');
+            $user->save();
+        }        
+        
         return redirect()->route('usuarios.index')
-            ->with('success', 'Usuario actualizado correctamente.');
+            ->with('success', 'Usuario actualizado exitosamente.');
     }
 
     /**

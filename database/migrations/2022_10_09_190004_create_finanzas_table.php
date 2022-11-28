@@ -29,10 +29,10 @@ class CreateFinanzasTable extends Migration
             $table->dateTime('fecha_entrada')->nullable();
             $table->dateTime('fecha_facturacion')->nullable();
             $table->string('descripcion');
-            $table->float('cantidad', 9, 3);
+            $table->decimal('cantidad', 12, 2);
             $table->integer('unidad_id');
-            $table->float('costo_unitario', 9, 3);
-            $table->float('monto_a_pagar', 9, 3);
+            $table->decimal('costo_unitario', 12, 2);
+            $table->decimal('monto_a_pagar', 12, 2);
             $table->dateTime('fecha_de_pago');
             $table->string('metodo_de_pago');
             $table->string('entregado_material_a');

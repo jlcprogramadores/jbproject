@@ -35,6 +35,7 @@ Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaControl
 Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 Route::resource('usuarios', App\Http\Controllers\UserController::class);
+
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');
 Route::get('/direccioncliente/{id}', 'App\Http\Controllers\DireccioneController@direccioncliente')->name('direcciones.direccioncliente');
@@ -55,7 +56,8 @@ Route::get('/enviarCorreo/{id}', 'App\Http\Controllers\FinanzaController@enviarC
 Route::get('getCategoriByFamilia', 'App\Http\Controllers\CategoriasFamiliaController@getCategoriByFamilia')->name('categorias-familias.getCategoriByFamilia');
 Route::get('/facturafinanzas/{id}', 'App\Http\Controllers\FacturaController@facturafinanzas')->name('facturas.facturafinanzas');
 Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('finanzas.filtros');
-
+Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('facturas.edit');
+Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
