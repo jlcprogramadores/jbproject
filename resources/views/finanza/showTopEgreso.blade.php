@@ -27,12 +27,13 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <strong>Categoria Id:</strong>
-                            {{ $finanza->categoria_id }}
+                            <strong>Familia y Categoría:</strong>    
+                            {{'F: '. $finanza->famCategoria->familia->nombre}}
+                            {{'C: '.$finanza->famCategoria->nombre}}
                         </div>
                         <div class="form-group">
-                            <strong>Iva Id:</strong>
-                            {{ $finanza->iva_id }}
+                            <strong>Iva:</strong>
+                            {{ $finanza->iva->porcentaje }}
                         </div>
                         <div class="form-group">
                             <strong>No:</strong>
@@ -59,8 +60,8 @@
                             {{ $finanza->cantidad }}
                         </div>
                         <div class="form-group">
-                            <strong>Unidad Id:</strong>
-                            {{ $finanza->unidad_id }}
+                            <strong>Unidad:</strong>
+                            {{ $finanza->unidad->nombre}}
                         </div>
                         <div class="form-group">
                             <strong>Costo Unitario:</strong>
