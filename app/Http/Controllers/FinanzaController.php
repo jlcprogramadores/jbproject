@@ -394,17 +394,29 @@ class FinanzaController extends Controller
      */
     public function filtros()
     {      
-        $salida = new Salida();
-        $finanza = new Finanza();   
-        
-        $datosproveedor = Proveedore::pluck('nombre','id');
-        $datosproyecto = Proyecto::pluck('nombre','id');
-        $datosfamilia = Familia::pluck('nombre','id');
-        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
-        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
-        $datosunidad = Unidade::pluck('nombre','id');
-        $datosiva = Iva::pluck('porcentaje','id');
-        $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.filtros', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+        $proyecto = Proyecto::pluck('nombre','id');
+        $cliente = Cliente::pluck('nombre','id');
+        $proveedor = Proveedore::pluck('nombre','id');
+        return view('finanza.filtros', compact('proyecto','cliente','proveedor'));
+    }
+    public function datosfiltrados(Request $request)
+    {      
+        $desde=$request->desde;
+        $hasta=$request->hasta;
+        $proyecto_id=$request->proyecto_id;
+        $tipo=$request->tipo;
+        if($tipo != 1){
+            $cliente_id=$request->cliente_id;
+            $filtros = [
+                ['entradas_id','!=',null],
+                ['proyecto_id','=',$proyecto_id]
+            ];
+            $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+            return view('finanza.showdatosfiltrados', compact('finanzas'));
+        }else{
+            $proveedor_id=$request->proveedor_id;
+            $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
+            return view('finanza.showdatosfiltrados', compact('finanzas'));
+        }
     }
 }

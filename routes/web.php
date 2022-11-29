@@ -60,6 +60,8 @@ Route::get('/facturafinanzas/{id}', 'App\Http\Controllers\FacturaController@fact
 Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('finanzas.filtros');
 Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('facturas.edit');
 Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
+Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
+
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
