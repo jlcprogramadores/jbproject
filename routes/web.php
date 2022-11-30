@@ -61,6 +61,7 @@ Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('
 Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('facturas.edit');
 Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
+Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 
 
 Auth::routes(['verify' => true]);

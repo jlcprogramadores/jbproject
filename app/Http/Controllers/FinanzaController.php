@@ -226,6 +226,17 @@ class FinanzaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function graficas()
+    {   
+        return view('finanza.graficas');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function showTopEgreso($id)
     {
         $finanza = Finanza::find($id);
