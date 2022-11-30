@@ -87,7 +87,7 @@
                     {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
                     {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <!-- falta quiarlo -->
+                <!-- falta quitarlo -->
                 @if (isset($finanza->entradas_id))
                     <div class="p-1 form-group">
                         {{ Form::label('categorias_de_entrada_id', 'Categoria De Entrada') }}

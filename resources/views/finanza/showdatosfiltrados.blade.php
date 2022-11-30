@@ -19,12 +19,6 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('finanzas.egreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Egresos') }}
-                                </a> 
-                                <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Ingresos') }}
-                                </a> 
                               </div>
                         </div>
                     </div>
