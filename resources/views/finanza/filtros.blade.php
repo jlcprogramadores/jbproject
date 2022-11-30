@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Finanzas')
+@section('title','Filtros')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Cliente</span>
+                        <span class="card-title">Filtros</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('finanzas.datosfiltrados') }}" role="form"
@@ -32,8 +32,6 @@
                                                 <input type="date" name="hasta" id="hasta">
                                             </div>
 
-                                        </div>
-                                        <div class="row">
                                             <div class="col-sm p-1 form-group">
                                                 <label class="proyecto_id" name="Ingreso_id"
                                                     for="Ingreso_id">Proyecto:</label>
@@ -56,7 +54,7 @@
                                             </div>
 
                                             <div class="col-sm p-1 form-group" id="cliente" style="display: none">
-                                                <label for="Cliente_id">Cliente:</label>
+                                                <label for="cliente_id">Cliente:</label>
                                                 <br>
                                                 <select class="form-control" id="cliente_id" name="cliente_id">
                                                     <option selected="selected">Selecciona Proyecto</option>
@@ -66,7 +64,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm p-1 form-group" id="proveedor" style="display: none">
-                                                <label for="Proveedor_id">Proveedor:</label>
+                                                <label for="proveedor_id">Proveedor:</label>
                                                 <br>
                                                 <select class="form-control" id="proveedor_id" name="proveedor_id">
                                                     <option selected="selected">Selecciona Proyecto</option>
@@ -100,8 +98,8 @@
     <script>
         $('#proyecto_id').select2();
         $('#tipo').select2();
-        $('#Cliente_id').select2();
-        $('#Proveedor_id').select2();
+        $('#cliente_id').select2();
+        $('#proveedor_id').select2();
         $('#tipo').on('select2:select', function(e) {
             var data = e.params.data;
             console.log(data.id);
