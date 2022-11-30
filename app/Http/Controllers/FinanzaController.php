@@ -405,7 +405,7 @@ class FinanzaController extends Controller
         $hasta=$request->hasta;
         $proyecto_id=$request->proyecto_id;
         $tipo=$request->tipo;
-        if($tipo != 1){
+        if($tipo == 0){
             $cliente_id=$request->cliente_id;
             $filtros = [
                 ['entradas_id','!=',null],
@@ -415,7 +415,11 @@ class FinanzaController extends Controller
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         }else{
             $proveedor_id=$request->proveedor_id;
-            $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
+            $filtros = [
+                ['salidas_id','!=',null],
+                ['proyecto_id','=',$proyecto_id]
+            ];
+            $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         }
     }
