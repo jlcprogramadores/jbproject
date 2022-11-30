@@ -228,7 +228,11 @@ class FinanzaController extends Controller
      */
     public function graficas()
     {   
-        return view('finanza.graficas');
+        $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
+        $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
+        
+        // dd($salidas);
+        return view('finanza.graficas', compact('ingresos','egresos'));
     }
 
     /**
