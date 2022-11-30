@@ -44,7 +44,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm p-1 form-group">
-                                                <label for="tipo">Tipo finanza:</label>
+                                                <label for="tipo">Tipo Finanza:</label>
                                                 <br>
                                                 <select class="form-control" id="tipo" name="tipo">
                                                     <option selected="selected">Selecciona el tipo</option>
@@ -78,7 +78,7 @@
                                         <br />
                                         <div class="container">
                                             <div class="row justify-content-md-center">
-                                                <button type="submit" class="btn btn-primary col col-lg-3">Aceptar</button>
+                                                <button type="submit" class="btn btn-primary col col-lg-3">Filtrar</button>
                                             </div>
                                         </div>
 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','datos-filtrados')
+@section('title','Datos Filtrados')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">    
@@ -15,7 +15,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('datos filtrados') }}
+                                {{ __('Datos Filtrados') }}
                             </span>
 
                              <div class="float-right">
