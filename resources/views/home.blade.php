@@ -53,14 +53,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Salida de Sesión') }}</div>
+                    <div class="card-header">{{ __('Por favor inicia sesión') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        ¡Cerraste sesión exitosamente!
+                        ¡Aún no te has identificado!
                     </div>
                 </div>
             </div>
