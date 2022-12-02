@@ -55,12 +55,11 @@ class FacturaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         request()->validate(Factura::$rules);
-
         $factura = Factura::create($request->all());
 
-        return redirect()->route('facturas.index')
+        return redirect()->route('facturas.facturafinanzas', ['id' => $request->finanza_id])
             ->with('success', 'Factura creada exitosamente.');
     }
 
@@ -100,10 +99,9 @@ class FacturaController extends Controller
     public function update(Request $request, Factura $factura)
     {
         request()->validate(Factura::$rules);
-
         $factura->update($request->all());
-
-        return redirect()->route('facturas.index')
+        
+        return redirect()->route('facturas.facturafinanzas', ['id' => $request->finanza_id])
             ->with('success', 'Factura actualizada correctamente.');
     }
 

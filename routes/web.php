@@ -58,7 +58,7 @@ Route::get('/enviarCorreo/{id}', 'App\Http\Controllers\FinanzaController@enviarC
 Route::get('getCategoriByFamilia', 'App\Http\Controllers\CategoriasFamiliaController@getCategoriByFamilia')->name('categorias-familias.getCategoriByFamilia');
 Route::get('/facturafinanzas/{id}', 'App\Http\Controllers\FacturaController@facturafinanzas')->name('facturas.facturafinanzas');
 Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('finanzas.filtros');
-Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('facturas.edit');
+Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usuarios.edit');
 Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
 Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
