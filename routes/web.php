@@ -44,8 +44,6 @@ Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
 Route::get('/indexEgreso', 'App\Http\Controllers\FinanzaController@indexEgreso')->name('finanzas.indexEgreso');
 Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
-Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
-Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
 Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
 Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
 Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
@@ -63,7 +61,5 @@ Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@upda
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
 Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 
-
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
