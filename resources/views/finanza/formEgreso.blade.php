@@ -81,7 +81,7 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('unidad_id','Unidad') }}
-                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selcciona la unidad']) }}
+                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selecciona la unidad']) }}
                     {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -112,7 +112,7 @@
                     ]; 
                     ?>
                     {{ Form::label('metodo_de_pago','Método de pago') }}
-                    {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Seleccion el método']) }}
+                    {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 {{ Form::label('Comprobante de pago') }}
