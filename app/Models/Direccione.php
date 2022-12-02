@@ -30,7 +30,6 @@ class Direccione extends Model
     static $rules = [
 		'tipo_de_direccione_id' => 'required',
 		'calle' => 'required',
-		'num_int' => 'required',
 		'codigo_postal' => 'required',
 		'colonia' => 'required',
 		'municipio' => 'required',
