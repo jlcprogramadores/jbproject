@@ -96,7 +96,16 @@
                                             <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
-                                            <td>factura_id</td>
+                                            <td>
+                                                @foreach($finanza->factura as $iterFactura)
+                                                <?php   
+                                                $factura = "";
+                                                $factura .= $iterFactura->referencia_factura ? $iterFactura->referencia_factura : '';
+                                                $factura .= "/";
+                                                ?>
+                                                {{$factura}}
+                                                @endforeach
+                                            </td>
                                             <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
 											<td>{{ $finanza->costo_unitario.' '.$finanza->unidad->nombre }}</td>
 											<td>{{ $finanza->cantidad }}</td>
