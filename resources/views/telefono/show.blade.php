@@ -28,7 +28,7 @@
                             {{ $telefono->telefono }}
                         </div>
                         <div class="form-group">
-                            <strong>Telefono:</strong>
+                            <strong>Descripción:</strong>
                             {{ $telefono->descripcion }}
                         </div>
                         <div class="float-right">
