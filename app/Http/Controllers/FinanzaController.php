@@ -424,15 +424,12 @@ class FinanzaController extends Controller
         $proveedor_id=$request->proveedor_id;
         // casos de los filtros
 
-        // dd(is_null($tipo) != false);
         // Puras fechas vrevisar que oo demas se a nulo
         if( is_null($desde) == false  && is_null($proyecto_id) != false && is_null($tipo) != false){
-            dd('puras fechas');
             $finanzas = Finanza::whereBetween('created_at', [$desde, $hasta])->paginate();     
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         // fecha y proyecto
         }elseif(is_null($desde) == false && is_null($proyecto_id) == false && is_null($tipo) != false){
-            dd('fecha y proyecto');
             $filtros = [
                 ['proyecto_id','=',$proyecto_id]
             ];
@@ -440,7 +437,6 @@ class FinanzaController extends Controller
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         // fecha, proyecto y tipo
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && is_null($cliente_id) != false && is_null($proveedor_id) != false){
-            dd('fecha, proyecto y tipo');
 
             if($tipo == 0){
                 $filtros = [
@@ -458,7 +454,6 @@ class FinanzaController extends Controller
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && (is_null($cliente_id) == false || is_null($proveedor_id) == false)){
-            dd('todo');
             if($tipo == 0){
                 $cliente_id=$request->cliente_id;
                 $filtros = [
