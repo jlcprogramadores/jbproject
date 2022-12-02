@@ -168,7 +168,7 @@ class FinanzaController extends Controller
      */
     public function storeIngreso(Request $request)
     {
-        request()->validate(Finanza::$rules);
+        request()->validate(Finanza::$rulesIngreso);
         // se crea la entrada se recupera el id y se anade al request
         $entrada = Entrada::create($request->all());
         $request->request->add(['entradas_id' => $entrada->id]);
@@ -186,7 +186,7 @@ class FinanzaController extends Controller
      */
     public function storeEgreso(Request $request)
     {
-        request()->validate(Finanza::$rules);
+        request()->validate(Finanza::$rulesEgreso);
         // se crea la salida se recupera el id y se anade al request
         $salida = Salida::create($request->all());
         if ($salida->comprobante != null) {
@@ -370,8 +370,11 @@ class FinanzaController extends Controller
                 $getSalida->save();
             }
         }
-
-        request()->validate(Finanza::$rules);
+        if ($finanza->salidas_id != null) {
+            request()->validate(Finanza::$rulesEgreso);
+        }else{
+            request()->validate(Finanza::$rulesIngreso);
+        }
         $finanza->update($request->all());
 
         return redirect()->route('finanzas.index')

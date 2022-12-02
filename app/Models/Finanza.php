@@ -32,8 +32,35 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Finanza extends Model
 {
-    static $rules = [
+    static $rulesIngreso = [
+        
+		'tipodeingreso_id' => 'required',
 		'proyecto_id' => 'required',
+		'categoria_id' => 'required',
+		'cliente_id' => 'required',
+		'fecha_entrada' => 'required',
+		'fecha_facturacion' => 'required',
+		'vence' => 'required',
+		'categorias_de_entrada_id' => 'required',
+		'iva_id' => 'required',
+		'no' => 'required',
+		'descripcion' => 'required',
+		'cantidad' => 'required',
+		'unidad_id' => 'required',
+		'costo_unitario' => 'required',
+		'monto_a_pagar' => 'required',
+		'fecha_de_pago' => 'required',
+		'metodo_de_pago' => 'required',
+		'entregado_material_a' => 'required',
+		'comentario' => 'required',
+        'usuario_edito'  => 'required',
+    ];
+    static $rulesEgreso = [
+		'proyecto_id' => 'required',
+		'categoria_id' => 'required',
+		'proveedor_id' => 'required',
+        'fecha_entrada' => 'required',
+		// 'fecha_salida' => 'required',
 		'iva_id' => 'required',
 		'no' => 'required',
         'vence' => 'required',
