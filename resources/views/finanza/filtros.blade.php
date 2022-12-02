@@ -23,13 +23,13 @@
                                             <div class="col-sm p-1 form-group">
                                                 <label for="desde">Desde:</label>
                                                 <br>
-                                                <input id="desde" type="date" name="desde">
+                                                <input id="desde" type="date" name="desde" required>
                                             </div>
                                             <div class="col-sm p-1 form-group">
 
                                                 <label for="hasta">Hasta:</label>
                                                 <br>
-                                                <input type="date" name="hasta" id="hasta">
+                                                <input type="date" name="hasta" id="hasta" required>
                                             </div>
 
                                             <div class="col-sm p-1 form-group">
@@ -37,7 +37,7 @@
                                                     for="Ingreso_id">Proyecto:</label>
                                                 <br>
                                                 <select class="form-control" id="proyecto_id" name="proyecto_id">
-                                                    <option selected="selected">Selecciona Proyecto</option>
+                                                    <option value="" selected="selected">Selecciona Proyecto</option>
                                                     @foreach ($proyecto as $val => $name)
                                                         <option value="{{ $val }}">{{ $name }}</option>
                                                     @endforeach
@@ -47,7 +47,7 @@
                                                 <label for="tipo">Tipo Finanza:</label>
                                                 <br>
                                                 <select class="form-control" id="tipo" name="tipo">
-                                                    <option selected="selected">Selecciona el tipo</option>
+                                                    <option value="" selected="selected">Selecciona el tipo</option>
                                                     <option value="0">Ingreso</option>
                                                     <option value="1">Egreso</option>
                                                 </select>
@@ -57,7 +57,7 @@
                                                 <label for="cliente_id">Cliente:</label>
                                                 <br>
                                                 <select class="form-control" id="cliente_id" name="cliente_id">
-                                                    <option selected="selected">Selecciona Proyecto</option>
+                                                    <option value="" selected="selected">Selecciona Proyecto</option>
                                                     @foreach ($cliente as $val => $name)
                                                         <option value="{{ $val }}">{{ $name }}</option>
                                                     @endforeach
@@ -67,7 +67,7 @@
                                                 <label for="proveedor_id">Proveedor:</label>
                                                 <br>
                                                 <select class="form-control" id="proveedor_id" name="proveedor_id">
-                                                    <option selected="selected">Selecciona Proyecto</option>
+                                                    <option value="" selected="selected">Selecciona Proyecto</option>
                                                     @foreach ($proveedor as $val => $name)
                                                         <option value="{{ $val }}">{{ $name }}</option>
                                                     @endforeach

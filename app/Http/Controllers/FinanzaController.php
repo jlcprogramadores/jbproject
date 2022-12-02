@@ -420,22 +420,64 @@ class FinanzaController extends Controller
         $hasta=$request->hasta;
         $proyecto_id=$request->proyecto_id;
         $tipo=$request->tipo;
-        if($tipo == 0){
-            $cliente_id=$request->cliente_id;
+        $cliente_id=$request->cliente_id;
+        $proveedor_id=$request->proveedor_id;
+        // casos de los filtros
+
+        // dd(is_null($tipo) != false);
+        // Puras fechas vrevisar que oo demas se a nulo
+        if( is_null($desde) == false  && is_null($proyecto_id) != false && is_null($tipo) != false){
+            dd('puras fechas');
+            $finanzas = Finanza::whereBetween('created_at', [$desde, $hasta])->paginate();     
+            return view('finanza.showdatosfiltrados', compact('finanzas'));
+        // fecha y proyecto
+        }elseif(is_null($desde) == false && is_null($proyecto_id) == false && is_null($tipo) != false){
+            dd('fecha y proyecto');
             $filtros = [
-                ['entradas_id','!=',null],
                 ['proyecto_id','=',$proyecto_id]
             ];
             $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
             return view('finanza.showdatosfiltrados', compact('finanzas'));
-        }else{
-            $proveedor_id=$request->proveedor_id;
-            $filtros = [
-                ['salidas_id','!=',null],
-                ['proyecto_id','=',$proyecto_id]
-            ];
-            $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
-            return view('finanza.showdatosfiltrados', compact('finanzas'));
+        // fecha, proyecto y tipo
+        }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && is_null($cliente_id) != false && is_null($proveedor_id) != false){
+            dd('fecha, proyecto y tipo');
+
+            if($tipo == 0){
+                $filtros = [
+                    ['entradas_id','!=',null],
+                    ['proyecto_id','=',$proyecto_id]
+                ];
+                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                return view('finanza.showdatosfiltrados', compact('finanzas'));
+            }else{
+                $filtros = [
+                    ['salidas_id','!=',null],
+                    ['proyecto_id','=',$proyecto_id]
+                ];
+                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                return view('finanza.showdatosfiltrados', compact('finanzas'));
+            }
+        }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && (is_null($cliente_id) == false || is_null($proveedor_id) == false)){
+            dd('todo');
+            if($tipo == 0){
+                $cliente_id=$request->cliente_id;
+                $filtros = [
+                    ['entradas_id','!=',null],
+                    ['proyecto_id','=',$proyecto_id],
+                    ['cliente_id','=',$cliente_id]
+                ];
+                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                return view('finanza.showdatosfiltrados', compact('finanzas'));
+            }else{
+                $proveedor_id=$request->proveedor_id;
+                $filtros = [
+                    ['salidas_id','!=',null],
+                    ['proyecto_id','=',$proyecto_id],
+                    ['proveedor_id','=',$cliente_id]
+                ];
+                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                return view('finanza.showdatosfiltrados', compact('finanzas'));
+            }
         }
     }
 }
