@@ -44,7 +44,7 @@
 										<th>Fecha Entrada</th>
 										<th>Fecha Salida</th>
                                         <th>Vence</th>
-                                        <th>Fecha vencimineto</th>
+                                        <th>Fecha vencimiento</th>
                                         <th>Días</th>
                                         <th>Estado</th>
 										<th>Tipo E&S</th>    

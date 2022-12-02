@@ -130,6 +130,8 @@
         <br>
         <div class="container">
             <div class="row justify-content-md-center">
+                <br>
+                <a href="{{ route('finanzas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
                 <button type="submit" class="btn btn-primary col col-lg-3">Aceptar</button>
             </div>
         </div>

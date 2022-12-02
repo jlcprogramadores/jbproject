@@ -19,9 +19,6 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Ingresos') }}
-                                </a> 
                               </div>
                         </div>
                     </div>
@@ -41,7 +38,7 @@
 										<th>Fecha Entrada</th>
 										<th>Fecha Salida</th>
                                         <th>Vence</th>
-                                        <th>Fecha vencimineto</th>
+                                        <th>Fecha vencimiento</th>
                                         <th>Días</th>
                                         <th>Estado</th>
 										<th>Tipo E&S</th>    
