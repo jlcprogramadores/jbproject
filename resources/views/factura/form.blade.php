@@ -3,10 +3,10 @@
     <div class="box-body">
         <?php 
             $idFinanza = "";
-            if(is_null(request()->id)){
-                $idFinanza = [$id => 'finanza'];
+            if(request()->creado == 1){
+                $idFinanza = [request()->finanza_id => 'finanza'];
             }else{
-                $idFinanza = [request()->id => 'finanza'];
+                $idFinanza = $datofinanza;
             }
         ?>
         <div class="form-group d-none">
