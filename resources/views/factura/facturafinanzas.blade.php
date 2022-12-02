@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>No</th>
                                         
+										<th>Referencia Factura</th>
 										<th>Factura Base64</th>
 										<th>Url</th>
 										<th>Fecha Creacion</th>
@@ -52,6 +53,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
+											<td>{{ $factura->referencia_factura }}</td>
 											<td>{{ $factura->factura_base64 }}</td>
 											<td>{{ $factura->url }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>

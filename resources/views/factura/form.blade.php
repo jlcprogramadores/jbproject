@@ -1,7 +1,7 @@
 @if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
-        <?php $idFinanza = [request()->id => 'finanza'] ?>
+        <?php $idFinanza = [$id => 'finanza'] ?>
         <div class="form-group d-none">
             {{ Form::label('finanza_id') }}
             {{ Form::select('finanza_id',$idFinanza ,$factura->finanza_id, ['class' => 'form-control' . ($errors->has('finanza_id') ? ' is-invalid' : '')]) }}
