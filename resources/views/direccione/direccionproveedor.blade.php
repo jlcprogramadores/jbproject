@@ -49,7 +49,7 @@
 										<th>Pais</th>
 										<th>Es Activo</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,9 +57,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>
-                                                {{ $direccione->proveedor->nombre }}
-                                            </td>
+											<td>{{ $direccione->proveedor->nombre }}</td>
 											<td>{{ $direccione->calle }}</td>
 											<td>{{ $direccione->num_int }}</td>
 											<td>{{ $direccione->num_ext }}</td>

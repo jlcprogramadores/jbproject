@@ -38,7 +38,7 @@
                                     <thead class="thead">
                                         <tr>
                                             <th>No</th>
-                                            <th>Nombre</th>
+                                            <th>Nombre Cliente</th>
                                             <th>Calle</th>
                                             <th>Num Int</th>
                                             <th>Num Ext</th>
@@ -49,7 +49,7 @@
                                             <th>Pais</th>
                                             <th>Es Activo</th>
 
-                                            <th></th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,7 +57,6 @@
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 
-                                                <td>{{ $direccione->calle}}</td>
                                                 <td>{{ $direccione->cliente->nombre }}</td>
                                                 <td>{{ $direccione->calle }}</td>
                                                 <td>{{ $direccione->num_int }}</td>
