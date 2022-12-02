@@ -78,11 +78,15 @@ class TelefonoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Telefono::$rules);
-
         $telefono = Telefono::create($request->all());
 
-        return redirect()->route('telefonos.index')
+        if($request->has('cliente_id')){
+            return redirect()->route('telefonos.telefonocliente', ['id' => $request->cliente_id])
             ->with('success', 'Telefono creado exitosamente.');
+        }else{
+            return redirect()->route('telefonos.telefonoproveedor', ['id' => $request->proveedor_id])
+            ->with('success', 'Telefono creado exitosamente.');
+        }  
     }
 
     /**
