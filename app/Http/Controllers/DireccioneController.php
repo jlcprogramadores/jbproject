@@ -79,11 +79,15 @@ class DireccioneController extends Controller
     public function store(Request $request)
     {
         request()->validate(Direccione::$rules);
-
         $direccione = Direccione::create($request->all());
 
-        return redirect()->route('direcciones.index')
-            ->with('success', 'Direccion creada exitosamente.');
+        if($request->has('cliente_id')){
+            return redirect()->route('direcciones.direccioncliente', ['id' => $request->cliente_id])
+            ->with('success', 'Dirección creada exitosamente.');
+        }else{
+            return redirect()->route('direcciones.direccionproveedor', ['id' => $request->proveedor_id])
+            ->with('success', 'Dirección creada exitosamente.');
+        }  
     }
 
     /**
@@ -125,11 +129,15 @@ class DireccioneController extends Controller
     public function update(Request $request, Direccione $direccione)
     {
         request()->validate(Direccione::$rules);
-
         $direccione->update($request->all());
 
-        return redirect()->route('direcciones.index')
-            ->with('success', 'Direccion actualizada correctamente.');
+        if($request->has('cliente_id')){
+            return redirect()->route('direcciones.direccioncliente', ['id' => $request->cliente_id])
+            ->with('success', 'Dirección actualizada correctamente.');
+        }else{
+            return redirect()->route('direcciones.direccionproveedor', ['id' => $request->proveedor_id])
+            ->with('success', 'Dirección actualizada correctamente.');
+        }  
     }
 
     /**

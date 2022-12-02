@@ -64,8 +64,6 @@ class TelefonoController extends Controller
         $telefono = new Telefono();
         $cliente = Cliente::pluck('nombre','id');
         $proveedore = Proveedore::pluck('nombre','id');
-        // $url = back();
-        // dd($url);
         return view('telefono.create', compact('telefono','cliente','proveedore'));
     }
 
@@ -127,11 +125,15 @@ class TelefonoController extends Controller
     public function update(Request $request, Telefono $telefono)
     {
         request()->validate(Telefono::$rules);
-
         $telefono->update($request->all());
 
-        return redirect()->route('telefonos.index')
+        if($request->has('cliente_id')){
+            return redirect()->route('telefonos.telefonocliente', ['id' => $request->cliente_id])
             ->with('success', 'Telefono actualizado correctamente.');
+        }else{
+            return redirect()->route('telefonos.telefonoproveedor', ['id' => $request->proveedor_id])
+            ->with('success', 'Telefono actualizado correctamente.');
+        }  
     }
 
     /**
