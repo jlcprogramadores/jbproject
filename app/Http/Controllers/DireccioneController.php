@@ -146,10 +146,20 @@ class DireccioneController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $direccione = Direccione::find($id)->delete();
+    {   
+        $direccion = Direccione::find($id);
+        $idAux = $direccion->cliente_id;
+        if($direccion->cliente_id != null){
+            $idAux = $direccion->cliente_id;
+            $direccion = Direccione::find($id)->delete();
+            return redirect()->route('direcciones.direccioncliente', ['id' => $idAux])
+            ->with('success', 'Dirección eliminada correctamente.');
+        }else{
+            $idAux = $direccion->proveedor_id;
+            $direccion = Direccione::find($id)->delete();
+            return redirect()->route('direcciones.direccionproveedor', ['id' => $idAux])
+            ->with('success', 'Dirección eliminada correctamente.');
+        } 
 
-        return redirect()->route('direcciones.index')
-            ->with('success', 'Direccion eliminada exitosamente.');
     }
 }

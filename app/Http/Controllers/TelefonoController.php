@@ -142,10 +142,19 @@ class TelefonoController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $telefono = Telefono::find($id)->delete();
-
-        return redirect()->route('telefonos.index')
-            ->with('success', 'Telefono eliminado exitosamente.');
+    {   
+        $telefono = Telefono::find($id);
+        $idAux = $telefono->cliente_id;
+        if($telefono->cliente_id != null){
+            $idAux = $telefono->cliente_id;
+            $telefono = Telefono::find($id)->delete();
+            return redirect()->route('telefonos.telefonocliente', ['id' => $idAux])
+            ->with('success', 'Telefono eliminado correctamente.');
+        }else{
+            $idAux = $telefono->proveedor_id;
+            $telefono = Telefono::find($id)->delete();
+            return redirect()->route('telefonos.telefonoproveedor', ['id' => $idAux])
+            ->with('success', 'Telefono eliminado correctamente.');
+        }  
     }
 }
