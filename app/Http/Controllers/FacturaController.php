@@ -112,9 +112,11 @@ class FacturaController extends Controller
      */
     public function destroy($id)
     {
+        $factura = Factura::find($id);
+        $idAux = $factura->finanza_id;
         $factura = Factura::find($id)->delete();
 
-        return redirect()->route('facturas.index')
-            ->with('success', 'Factura eliminada exitosamente.');
+        return redirect()->route('facturas.facturafinanzas', ['id' => $idAux])
+        ->with('success', 'Factura eliminada correctamente.');
     }
 }
