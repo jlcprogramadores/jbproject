@@ -10898,4 +10898,7 @@ td form{
   .card-body{
     padding: 0 !important;
   }
+  .navbar{
+    padding: 0rem !important;
+  }
 }
