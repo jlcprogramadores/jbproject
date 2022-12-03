@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proveedore;
+use App\Models\Salida;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class ProveedoreController extends Controller
      */
     public function destroy($id)
     {
-        $proveedore = Proveedore::find($id)->delete();
-
-        return redirect()->route('proveedores.index')
+        $provedorSalida = Salida::select('id')->where('proveedor_id','=',$id)->first();
+        if(!is_null($provedorSalida)){
+            return redirect()->route('proveedores.index')
+                ->with('danger', 'No se elimino Proveedor por que existen finanzas relacionadas.');
+        }else{
+            $proveedore = Proveedore::find($id)->delete();
+            return redirect()->route('proveedores.index')
             ->with('success', 'Proveedor eliminado exitosamente.');
+        }
     }
 }
