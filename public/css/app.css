@@ -10890,3 +10890,12 @@ td form{
   width: 70px; 
   height: 70px;
 }
+
+@media (max-width: 768px) {
+  .container-fluid{
+    padding: 3px !important;
+  }
+  .card-body{
+    padding: 0 !important;
+  }
+}
