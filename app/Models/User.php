@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -20,7 +21,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     public static $rules = array(
         'name' => 'required',
@@ -28,6 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'es_activo' => 'required',
         'es_admin' => 'required',
     );
+
+    protected $perPage = 100000;
 
     /**
      * The attributes that are mass assignable.

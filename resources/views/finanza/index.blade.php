@@ -19,12 +19,14 @@
                             </span>
 
                              <div class="float-right">
+                                @can('usuarios.index')
                                 <a href="{{ route('finanzas.egreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Egresos') }}
                                 </a> 
                                 <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Ingresos') }}
                                 </a> 
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -40,7 +42,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
+                                        @can('usuarios.index')
 										<th>Fecha Entrada</th>
 										<th>Fecha Salida</th>
                                         <th>Vence</th>
@@ -50,6 +52,7 @@
 										<th>Tipo E&S</th>    
                                         <th>Fam & Cat</th>
                                         <th>Razon social</th>
+                                        @endcan
                                         <th>Proyecto</th>
 										<th>Descripcion</th>
                                         <th>Factaura o Folio</th>
@@ -77,6 +80,7 @@
                                         <tr>
 
                                             <td>{{ $finanza->no }}</td>
+                                            @can('usuarios.index')
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
                                             <td>{{ $finanza->vence }}</td>
@@ -85,21 +89,22 @@
                                                 $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
                                                 $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
                                                 $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
-                                            ?>
+                                                ?>
                                             <td>{{ $diferencia_en_dias }}</td>
                                             @if ($diferencia_en_dias <= 0)
-                                                <td><p class="badge bg-danger">Vencido</p></td>
+                                            <td><p class="badge bg-danger">Vencido</p></td>
                                             @else
-                                                <td><p class="badge bg-warning text-dark">Por vencer</p></td>
+                                            <td><p class="badge bg-warning text-dark">Por vencer</p></td>
                                             @endif
                                             <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
 											<td>{{ $tipoFinanza }}</td>
                                             <?php 
                                                 $fam = 'F: '.$finanza->famCategoria->familia->nombre;
                                                 $cat = 'C: '.$finanza->famCategoria->nombre;
-                                            ?>
+                                                ?>
 											<td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
                                             <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
+                                            @endcan
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
                                             <td>
@@ -149,10 +154,12 @@
                                                         <a class="btn btn-sm btn-warning" href="{{ route('facturas.facturafinanzas', ['id' => $finanza->id]) }}"><i class="fa fa-fw fa-edit"></i> Factura</a>
                                                         
                                                         <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        @can('usuarios.index')
                                                         <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        @endcan
                                                     </form>
                                                 </span>
                                             </td>
