@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = Cliente::find($id)->delete();
-
-        return redirect()->route('clientes.index')
-            ->with('success', 'Cliente eliminado exitosamente.');
+        $clienteEntrada = Entrada::select('id')->where('cliente_id','=',$id)->first();
+        if(!is_null($clienteEntrada)){
+            return redirect()->route('clientes.index')
+                ->with('danger', 'No se elimino Cliente por que existen finanzas relacionadas.');
+        }else{
+            $cliente = Cliente::find($id)->delete();
+            return redirect()->route('clientes.index')
+                ->with('success', 'Cliente eliminado exitosamente.');
+        }
     }
 }

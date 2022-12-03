@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Finanza;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
@@ -101,9 +102,14 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        $proyecto = Proyecto::find($id)->delete();
-
-        return redirect()->route('proyectos.index')
-            ->with('success', 'Proyecto eliminado exitosamente.');
+        $proyectoFinanza = Finanza::select('id')->where('proyecto_id','=',$id)->first();
+        if(!is_null($proyectoFinanza)){
+            return redirect()->route('proyectos.index')
+                ->with('danger', 'No se elimino Proyecto por que existen finanzas relacionadas.');
+        }else{
+            $proyecto = Proyecto::find($id)->delete();
+            return redirect()->route('proyectos.index')
+                ->with('success', 'Proyecto eliminado exitosamente.');
+        }
     }
 }
