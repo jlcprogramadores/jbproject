@@ -10881,9 +10881,8 @@ td form{
 
 @media (max-width: 768px) {
   .imgjb{
-    display: none;
-    /* width: 54px !important; 
-    height: 54px !important; */
+    width: 54px !important; 
+    height: 54px !important;
   }
 }
 
