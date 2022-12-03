@@ -10878,3 +10878,15 @@ td form{
 .invalid-feedback{
   display: block !important;
 }
+
+@media (max-width: 768px) {
+  .imgjb{
+    width: 54px !important; 
+    height: 54px !important;
+  }
+}
+
+.imgjb{
+  width: 70px; 
+  height: 70px;
+}
