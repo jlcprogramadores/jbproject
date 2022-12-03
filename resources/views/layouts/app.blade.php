@@ -61,12 +61,15 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
                                     {{ __('Filtros') }}
                                 </a> 
+                                @can('usuarios.index')
                                 <a class="dropdown-item" href="{{ route('finanzas.graficas') }}">
                                     {{ __('Gráficas') }}
-                                </a>         
+                                </a>
+                                @endcan         
                                 </form>
                             </div>
                         </li>
+                        @can('usuarios.index')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Recursos Humanos
@@ -82,6 +85,9 @@
                                 </form>
                             </div>
                         </li>
+                        @endcan
+                        {{-- Prueba Roles --}}
+                        @can('usuarios.index')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Administración
@@ -96,9 +102,10 @@
                                 <a class="dropdown-item" href="{{ route('proyectos.index') }}">
                                     {{ __('Proyectos') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('usuarios.index') }}">
-                                    {{ __('Usuarios') }}
-                                </a>
+                                
+                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}">
+                                        {{ __('Usuarios') }}
+                                    </a>
                                 <hr>
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
                                     {{ __('Categorías de entrada') }}
@@ -124,6 +131,7 @@
                                 </form>
                             </div>
                         </li>
+                        @endcan
                     </ul>
                     @endif
 

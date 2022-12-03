@@ -58,6 +58,7 @@
         </div>
     </div>
     <div class="box-footer mt20">
+        <a href="javascript:history.back()" class="btn btn-danger ">{{ __('Cancelar')}}</a>
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>

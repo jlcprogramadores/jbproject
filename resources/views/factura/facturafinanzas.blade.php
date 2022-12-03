@@ -61,7 +61,6 @@
                                             <td>{{ $factura->usuario_edito }}  <br/> {{ $factura->updated_at }}</td>  
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('facturas.show',$factura->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
