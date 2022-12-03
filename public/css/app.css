@@ -10879,12 +10879,13 @@ td form{
   display: block !important;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .imgjb{
-    width: 54px !important; 
-    height: 54px !important;
+    display: none;
+    /* width: 54px !important; 
+    height: 54px !important; */
   }
-} */
+}
 
 .imgjb{
   width: 70px; 
