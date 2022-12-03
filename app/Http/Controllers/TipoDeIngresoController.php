@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TipoDeIngreso;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class TipoDeIngresoController extends Controller
      */
     public function destroy($id)
     {
-        $tipoDeIngreso = TipoDeIngreso::find($id)->delete();
-
-        return redirect()->route('tipo-de-ingresos.index')
-            ->with('success', 'Tipo de Ingreso eliminado exitosamente.');
+        $tipodeingresoEntrada = Entrada::select('id')->where('tipodeingreso_id','=',$id)->first();
+        if(!is_null($tipodeingresoEntrada)){
+            return redirect()->route('tipo-de-ingresos.index')
+                ->with('danger', 'No se elimino Tipo de ingreso por que existen finanzas relacionadas.');
+        }else{
+            $tipoDeIngreso = TipoDeIngreso::find($id)->delete();
+            return redirect()->route('tipo-de-ingresos.index')
+                ->with('success', 'Tipo de ingreso eliminado exitosamente.');
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TipoDeDireccione;
+use App\Models\Direccione;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,15 @@ class TipoDeDireccioneController extends Controller
      */
     public function destroy($id)
     {
-        $tipoDeDireccione = TipoDeDireccione::find($id)->delete();
 
-        return redirect()->route('tipo-de-direcciones.index')
-            ->with('success', 'Tipo de Direccion eliminada exitosamente.');
+        $tipoDeDireccionDirecciones = Direccione::select('id')->where('tipo_de_direccione_id','=',$id)->first();
+        if(!is_null($tipoDeDireccionDirecciones)){
+            return redirect()->route('tipo-de-direcciones.index')
+                ->with('danger', 'No se elimino Tipo de Direccion por que existen finanzas relacionadas.');
+        }else{
+        $tipoDeDireccione = TipoDeDireccione::find($id)->delete();
+            return redirect()->route('tipo-de-direcciones.index')
+                ->with('success', 'Tipo de Direccion eliminado exitosamente.');
+        }
     }
 }

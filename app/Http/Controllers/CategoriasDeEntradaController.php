@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Entrada;
 use App\Models\CategoriasDeEntrada;
 use Illuminate\Http\Request;
 
@@ -101,9 +101,14 @@ class CategoriasDeEntradaController extends Controller
      */
     public function destroy($id)
     {
-        $categoriasDeEntrada = CategoriasDeEntrada::find($id)->delete();
-
-        return redirect()->route('categorias-de-entradas.index')
-            ->with('success', 'Categoria de Entrada eliminada exitosamente.');
+        $categoriasDeEntredaEntrada = Entrada::select('id')->where('categorias_de_entrada_id','=',$id)->first();
+        if(!is_null($categoriasDeEntredaEntrada)){
+            return redirect()->route('categorias-de-entradas.index')
+                ->with('danger', 'No se elimino Categoria de Entrada por que existen finanzas relacionadas.');
+        }else{
+            $categoriasDeEntrada = CategoriasDeEntrada::find($id)->delete();
+            return redirect()->route('categorias-de-entradas.index')
+                ->with('success', 'Categoria de Entrada eliminado exitosamente.');
+        }
     }
 }

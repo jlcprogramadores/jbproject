@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Iva;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class IvaController extends Controller
      */
     public function destroy($id)
     {
-        $iva = Iva::find($id)->delete();
-
-        return redirect()->route('ivas.index')
-            ->with('success', 'Iva eliminado exitosamente.');
+        $ivaFinazas = Entrada::select('id')->where('iva_id','=',$id)->first();
+        if(!is_null($ivaFinazas)){
+            return redirect()->route('ivas.index')
+                ->with('danger', 'No se elimino IVA por que existen finanzas relacionadas.');
+        }else{
+            $iva = Iva::find($id)->delete();
+            return redirect()->route('ivas.index')
+                ->with('success', 'IVA eliminado exitosamente.');
+        }
     }
 }

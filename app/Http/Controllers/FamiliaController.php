@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Familia;
+use App\Models\CategoriasFamilia;
 use Illuminate\Http\Request;
 
 /**
@@ -101,10 +102,15 @@ class FamiliaController extends Controller
      */
     public function destroy($id)
     {
-        $familia = Familia::find($id)->delete();
-
-        return redirect()->route('familias.index')
-            ->with('success', 'Familia eliminada exitosamente.');
+        $familiaCateforiaFamilia = CategoriasFamilia::select('id')->where('familia_id','=',$id)->first();
+        if(!is_null($familiaCateforiaFamilia)){
+            return redirect()->route('familias.index')
+                ->with('danger', 'No se elimino Familia por que existen finanzas relacionadas.');
+        }else{
+            $familia = Familia::find($id)->delete();
+            return redirect()->route('familias.index')
+                ->with('success', 'Familia eliminado exitosamente.');
+        }
     }   
     /**
      * @param int $id

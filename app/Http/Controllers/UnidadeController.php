@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unidade;
+use App\Models\Finanza;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class UnidadeController extends Controller
      */
     public function destroy($id)
     {
-        $unidade = Unidade::find($id)->delete();
-
-        return redirect()->route('unidades.index')
-            ->with('success', 'Unidad eliminada exitosamente.');
+        $unidadFinanza = Finanza::select('id')->where('unidad_id','=',$id)->first();
+        if(!is_null($unidadFinanza)){
+            return redirect()->route('unidades.index')
+                ->with('danger', 'No se elimino Unidad por que existen finanzas relacionadas.');
+        }else{
+            $unidade = Unidade::find($id)->delete();
+            return redirect()->route('unidades.index')
+                ->with('success', 'Unidad eliminado exitosamente.');
+        }
     }
 }

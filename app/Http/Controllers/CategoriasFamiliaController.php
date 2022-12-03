@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoriasFamilia;
 use App\Models\Familia;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
@@ -103,10 +104,15 @@ class CategoriasFamiliaController extends Controller
      */
     public function destroy($id)
     {
-        $categoriasFamilia = CategoriasFamilia::find($id)->delete();
-
-        return redirect()->route('categorias-familias.index')
-            ->with('success', 'Categoria Familia eliminada exitosamente.');
+        $categoriaFamiliaEntrada = Entrada::select('id')->where('categoria_id','=',$id)->first();
+        if(!is_null($categoriaFamiliaEntrada)){
+            return redirect()->route('categorias-familias.index')
+                ->with('danger', 'No se elimino Categoria Familia por que existen finanzas relacionadas.');
+        }else{
+            $categoriasFamilia = CategoriasFamilia::find($id)->delete();
+            return redirect()->route('categorias-familias.index')
+                ->with('success', 'Categoria Familia eliminado exitosamente.');
+        }
     }
 
     public function getCategoriByFamilia(Request $request)
