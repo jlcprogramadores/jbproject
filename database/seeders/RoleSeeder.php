@@ -138,6 +138,12 @@ class RoleSeeder extends Seeder
         
         //Permisos Finanzas
         $permisofinanzasindex = Permission::create(['name' => 'finanzas.index'])->syncRoles($rolAdmin);
+        $permisofinanzasfactura = Permission::create(['name' => 'finanzas.factura'])->syncRoles($rolAdmin);
+        $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo'])->syncRoles($rolAdmin);
+        $permisofinanzascreate = Permission::create(['name' => 'finanzas.create'])->syncRoles($rolAdmin);
+        $permisofinanzasshow = Permission::create(['name' => 'finanzas.show'])->syncRoles($rolAdmin);
+        $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit'])->syncRoles($rolAdmin);
+        $permisofinanzasdestroy = Permission::create(['name' => 'finanzas.destroy'])->syncRoles($rolAdmin);
         $permisofinanzastopgeneral = Permission::create(['name' => 'finanzas.topgeneral'])->syncRoles($rolAdmin);
         $permisofinanzasindexEgreso = Permission::create(['name' => 'finanzas.indexEgreso'])->syncRoles($rolAdmin);
         $permisofinanzasegreso = Permission::create(['name' => 'finanzas.egreso'])->syncRoles($rolAdmin);
@@ -147,10 +153,6 @@ class RoleSeeder extends Seeder
         $permisofinanzasshowTopIngreso = Permission::create(['name' => 'finanzas.showTopIngreso'])->syncRoles($rolAdmin);
         $permisofinanzasingreso = Permission::create(['name' => 'finanzas.ingreso'])->syncRoles($rolAdmin);
         $permisofinanzastopIngreso = Permission::create(['name' => 'finanzas.topIngreso'])->syncRoles($rolAdmin);
-        $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo'])->syncRoles($rolAdmin);
-        $permisofinanzasshow = Permission::create(['name' => 'finanzas.show'])->syncRoles($rolAdmin);
-        $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit'])->syncRoles($rolAdmin);
-        $permisofinanzasdestroy = Permission::create(['name' => 'finanzas.destroy'])->syncRoles($rolAdmin);
         $permisofinanzasfiltros = Permission::create(['name' => 'finanzas.filtros'])->syncRoles($rolAdmin);
 
         //Permisos Factura

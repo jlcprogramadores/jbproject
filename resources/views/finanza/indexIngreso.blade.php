@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('finanzas.indexIngreso')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -137,16 +138,24 @@
                                                 <span class="completo">
                                                     <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
                                                         @if ($finanza->salidas_id)
+                                                            @can('finanzas.correo')    
                                                             <a class="btn btn-sm btn-secondary " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>      
+                                                            @endcan
                                                         @endif
-                                                        
+                                                        @can('finanzas.factura')    
                                                         <a class="btn btn-sm btn-warning" href="{{ route('facturas.facturafinanzas', ['id' => $finanza->id]) }}"><i class="fa fa-fw fa-edit"></i> Factura</a>
-                                                        
-                                                        <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        @endcan
+                                                        @can('finanzas.show')
+                                                            <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        @endcan
+                                                        @can('finanzas.show')
                                                         <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        @endcan
                                                         @csrf
                                                         @method('DELETE')
+                                                        @can('finanzas.show')
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        @endcan
                                                     </form>
                                                 </span>
                                             </td>
@@ -162,6 +171,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>

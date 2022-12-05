@@ -47,15 +47,21 @@
                                 Finanzas
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @can('finanzas.index')
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
-                                </a> 
+                                </a>
+                                @endcan
+                                @can('finanzas.indexEgreso') 
                                 <a class="dropdown-item" href="{{ route('finanzas.indexEgreso') }}">
                                     {{ __('Egresos') }}
                                 </a> 
+                                @endcan
+                                @can('finanzas.indexIngreso')
                                 <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
+                                @endcan
                                 @can('menu.top')
                                 <a class="dropdown-item" href="{{ route('finanzas.topGeneral') }}">
                                     {{ __('Top Egresos e Ingresos') }}
