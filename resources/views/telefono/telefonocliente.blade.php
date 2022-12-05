@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('telefonos.telefonocliente')
     @section('content')
         <div class="container-fluid">
             <div class="row">
@@ -20,9 +21,11 @@
                                     <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                         {{ __('Atrás') }}
                                     </a>
+                                    @can('telefonos.create')
                                     <a href="{{ route('telefonos.create', ['id' => $id, 'tipo' => 'cliente', 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Teléfono') }}
+                                        {{ __('Crear Teléfono') }}
                                     </a>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -56,10 +59,14 @@
 
                                                 <td>
                                                     <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
+                                                        @can('telefonos.edit')
                                                         <a class="btn btn-sm btn-success" href="{{ route('telefonos.edit',$telefono->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        @endcan
                                                         @csrf
                                                         @method('DELETE')
+                                                        @can('telefonos.destroy')
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        @endcan
                                                     </form>
                                                 </td>
                                             </tr>
@@ -74,6 +81,7 @@
             </div>
         </div>
     @endsection
+@endcan
 @endif
 
 @push('scripts')

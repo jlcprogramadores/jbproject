@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('clientes.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +16,13 @@
                             <span id="card_title">
                                 {{ __('Clientes') }}
                             </span>
-
-                             <div class="float-right">
+                            @can('clientes.index')
+                            <div class="float-right">
                                 <a href="{{ route('clientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Cliente') }}
+                                    {{ __('Crear Cliente') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -93,17 +95,27 @@
                                             </td>
                                             <td><span class="peque">{{ $cliente->usuario_edito }}</span>  <br/> <span class="peque">{{ $cliente->updated_at }}</span></td>
                                             <td>
+                                                @can('direcciones.direccioncliente')
                                                 <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
+                                                @endcan
+                                                @can('telefonos.telefonocliente')
                                                 <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
+                                                @endcan
                                             </td>
                                             <td>
                                                 <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
+                                                    @can('clientes.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('clientes.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('clientes.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    </form>
+                                                    @endcan    
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -117,6 +129,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

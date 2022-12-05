@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('proveedores.index')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -15,12 +16,13 @@
                         <span id="card_title">
                             {{ __('Proveedores') }}
                         </span>
-
+                        @can('proveedores.create')
                         <div class="float-right">
                             <a href="{{ route('proveedores.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
                                 {{ __('Crear Proveedor') }}
                             </a>
                         </div>
+                        @endcan
                     </div>
                 </div>
                 @if ($message = Session::get('success'))
@@ -102,17 +104,26 @@
                                     <td>{{ $proveedore->rfc }}</td>
                                     <td><span class="peque">{{ $proveedore->usuario_edito }}</span>  <br/> <span class="peque">{{ $proveedore->updated_at }}</span></td>
                                     <td>
+                                        @can('direcciones.direccionproveedor')
                                         <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccionproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
+                                        @endcan
+                                        @can('telefonos.telefonoproveedor') 
                                         <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
+                                        @endcan
                                     </td>
                                     <td>
                                         <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
+                                            @can('proveedores.show')
                                             <a class="btn btn-sm btn-primary " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            @endcan
+                                            @can('proveedores.edit')
                                             <a class="btn btn-sm btn-success" href="{{ route('proveedores.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            @endcan
                                             @csrf
                                             @method('DELETE')
+                                            @can('proveedores.destroy')
                                             <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                            
+                                            @endcan
                                         </form>
                                     </td>
                                 </tr>
@@ -127,6 +138,7 @@
     </div>
 </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

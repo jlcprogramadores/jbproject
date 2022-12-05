@@ -85,18 +85,22 @@
                             </div>
                         </li>
                     @endcan
-                    @can('menu.administracion')                    
+                    @can('menu.administracion')    
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Administración
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
-                            <a class="dropdown-item" href="{{ route('clientes.index') }}">
-                                {{ __('Clientes') }}
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
+                                @can('menu.clientes')
+                                <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                    {{ __('Clientes') }}
                                 </a>  
+                                @endcan
+                                @can('menu.proveedores')
                                 <a class="dropdown-item" href="{{ route('proveedores.index') }}">
                                     {{ __('Proveedores') }}
                                 </a> 
+                                @endcan
                                 @can('menu.proyectos')
                                 <a class="dropdown-item" href="{{ route('proyectos.index') }}">
                                     {{ __('Proyectos') }}
@@ -138,9 +142,11 @@
                                     {{ __('Tipo de Ingresos') }}
                                 </a>  
                                 @endcan
+                                @can('menu.unidades')
                                 <a class="dropdown-item" href="{{ route('unidades.index') }}">
                                     {{ __('Unidades') }}
-                                </a>    
+                                </a>
+                                @endcan    
                                 </form>
                             </div>
                         </li>
