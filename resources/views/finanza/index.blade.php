@@ -162,7 +162,7 @@
                                                         @method('DELETE')
                                                         @can('finanzas.destroy')
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    |   @endcan
+                                                        @endcan
                                                     </form>
                                                 </span>
                                             </td>
