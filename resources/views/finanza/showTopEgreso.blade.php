@@ -2,6 +2,7 @@
 
 @section('title','Mostrar Top Egreso')
 @if(Auth::check() && Auth::user()->es_activo)
+@can('finanzas.showTopEgreso')
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -103,4 +104,5 @@
         </div>
     </section>
 @endsection
+@endcan
 @endif

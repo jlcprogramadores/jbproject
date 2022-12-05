@@ -142,7 +142,9 @@ class RoleSeeder extends Seeder
         $permisofinanzasindexEgreso = Permission::create(['name' => 'finanzas.indexEgreso'])->syncRoles($rolAdmin);
         $permisofinanzasegreso = Permission::create(['name' => 'finanzas.egreso'])->syncRoles($rolAdmin);
         $permisofinanzastopEgreso = Permission::create(['name' => 'finanzas.topEgreso'])->syncRoles($rolAdmin);
+        $permisofinanzasshowTopEgreso = Permission::create(['name' => 'finanzas.showTopEgreso'])->syncRoles($rolAdmin);
         $permisofinanzasindexIngreso = Permission::create(['name' => 'finanzas.indexIngreso'])->syncRoles($rolAdmin);
+        $permisofinanzasshowTopIngreso = Permission::create(['name' => 'finanzas.showTopIngreso'])->syncRoles($rolAdmin);
         $permisofinanzasingreso = Permission::create(['name' => 'finanzas.ingreso'])->syncRoles($rolAdmin);
         $permisofinanzastopIngreso = Permission::create(['name' => 'finanzas.topIngreso'])->syncRoles($rolAdmin);
         $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo'])->syncRoles($rolAdmin);

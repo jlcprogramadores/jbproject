@@ -56,15 +56,19 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
                                     {{ __('Ingresos') }}
                                 </a> 
+                                @can('menu.top')
                                 <a class="dropdown-item" href="{{ route('finanzas.topGeneral') }}">
                                     {{ __('Top Egresos e Ingresos') }}
                                 </a> 
+                                @endcan
                                 <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
                                     {{ __('Filtros') }}
                                 </a> 
+                                @can('menu.graficas')
                                 <a class="dropdown-item" href="{{ route('finanzas.graficas') }}">
                                     {{ __('Gráficas') }}
                                 </a>
+                                @endcan
                                 </form>
                             </div>
                         </li>

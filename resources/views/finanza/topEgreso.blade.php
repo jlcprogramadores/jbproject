@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('finanzas.topEgreso')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -144,6 +145,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>

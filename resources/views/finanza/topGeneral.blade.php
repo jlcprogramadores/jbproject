@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('finanzas.topgeneral')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -29,21 +30,24 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped display compact" id="table"  style="width:100%">
                                 <thead class="thead">
                                     <h5 class="text-black">Selecciona el top de Egreso o Ingreso:</h5>
                                     <span>
+                                        @can('finanzas.showTopEgreso')
                                         <a href="{{ route('finanzas.topEgreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                        {{ __('Top Egresos') }}
-                                        </a> 
+                                            {{ __('Top Egresos') }}
+                                        </a>
+                                        @endcan 
                                     </span>
                                     <span>
+                                        @can('finanzas.topIngreso')
                                         <a href="{{ route('finanzas.topIngreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                        {{ __('Top Ingresos') }}
+                                            {{ __('Top Ingresos') }}
                                         </a> 
+                                        @endcan
                                     </span>
                                 </thead>
                                 <tbody>        
@@ -57,6 +61,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>
