@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('usuarios.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -52,11 +53,17 @@
                                             @endif
                                             <td>
                                                 <form action="{{ route('usuarios.destroy',$user->id) }}" method="POST">
+                                                    @can('usuarios.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
+                                                    @can('usuarios.edit')
+                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>    
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('usuarios.destroy')    
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -71,6 +78,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

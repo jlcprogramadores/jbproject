@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('categorias-familias.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,12 +17,13 @@
                             <span id="card_title">
                                 {{ __('Categorías De Familias') }}
                             </span>
-
-                             <div class="float-right">
+                            @can('categorias-familias.create')
+                            <div class="float-right">
                                 <a href="{{ route('categorias-familias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Categoría De Familia') }}
+                                    {{ __('Crear Categoría De Familia') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -59,11 +61,17 @@
                                             <td>{{ $categoriasFamilia->usuario_edito }}  <br/> {{ $categoriasFamilia->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('categorias-familias.destroy',$categoriasFamilia->id) }}" method="POST">
+                                                    @can('categorias-familias.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('categorias-familias.show',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('categorias-familias.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('categorias-familias.edit',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('categorias-familias.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -78,6 +86,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

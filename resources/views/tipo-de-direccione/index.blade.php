@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('tipo-de-direcciones.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +16,13 @@
                             <span id="card_title">
                                 {{ __('Tipo De Direcciones') }}
                             </span>
-
+                            @can('tipo-de-direcciones.destroy')
                              <div class="float-right">
                                 <a href="{{ route('tipo-de-direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Tipo De Dirección') }}
                                 </a>
                               </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -56,11 +58,17 @@
                                             <td>{{ $tipoDeDireccione->usuario_edito }}  <br/> {{ $tipoDeDireccione->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">
+                                                    @can('tipo-de-direcciones.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-direcciones.show',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('tipo-de-direcciones.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('tipo-de-direcciones.edit',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('tipo-de-direcciones.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,6 +83,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

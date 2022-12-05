@@ -41,6 +41,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @if(Auth::check() && Auth::user()->es_activo)
+                        @can('menu.administracion')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Finanzas
@@ -61,70 +62,82 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
                                     {{ __('Filtros') }}
                                 </a> 
-                                @can('usuarios.index')
                                 <a class="dropdown-item" href="{{ route('finanzas.graficas') }}">
                                     {{ __('Gráficas') }}
                                 </a>
-                                @endcan         
-                                </form>
-                            </div>
-                        </li>
-                        @can('usuarios.index')
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Recursos Humanos
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"  href="{{ url('/') }}"">
-                                    {{ __('Plantilla') }}
-                                </a>  
-                                <a class="dropdown-item" href="{{ url('/') }}"">
-                                    {{ __('Currículums') }}
-                                </a> 
-                                
                                 </form>
                             </div>
                         </li>
                         @endcan
-                        {{-- Prueba Roles --}}
-                        @can('usuarios.index')
+                        @can('menu.recursoshumanos')
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Administración
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
-                                <a class="dropdown-item" href="{{ route('clientes.index') }}">
-                                    {{ __('Clientes') }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Recursos Humanos
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"  href="{{ url('/') }}"">
+                                        {{ __('Plantilla') }}
+                                    </a>  
+                                    <a class="dropdown-item" href="{{ url('/') }}"">
+                                        {{ __('Currículums') }}
+                                    </a> 
+                                    </form>
+                            </div>
+                        </li>
+                    @endcan
+                    @can('menu.administracion')                    
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Administración
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
+                            <a class="dropdown-item" href="{{ route('clientes.index') }}">
+                                {{ __('Clientes') }}
                                 </a>  
                                 <a class="dropdown-item" href="{{ route('proveedores.index') }}">
                                     {{ __('Proveedores') }}
                                 </a> 
+                                @can('menu.proyectos')
                                 <a class="dropdown-item" href="{{ route('proyectos.index') }}">
                                     {{ __('Proyectos') }}
                                 </a>
-                                
-                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}">
-                                        {{ __('Usuarios') }}
-                                    </a>
+                                @endcan
+                                @can('menu.usuarios')
+                                <a class="dropdown-item" href="{{ route('usuarios.index') }}">
+                                    {{ __('Usuarios') }}
+                                </a>
+                                @endcan
                                 <hr>
+                                @can('menu.categorias-de-entrada')
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
                                     {{ __('Categorías de entrada') }}
                                 </a>
+                                @endcan
+                                @can('menu.categorias-familias')
                                 <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
                                     {{ __('Categorías Familias') }}
                                 </a>  
+                                @endcan
+                                @can('menu.familias')
                                 <a class="dropdown-item"  href="{{ route('familias.index') }}">
                                     {{ __('Familias') }}
                                 </a>  
+                                @endcan
+                                @can('menu.ivas')
                                 <a class="dropdown-item" href="{{ route('ivas.index') }}">
                                     {{ __('Ivas') }}
                                 </a> 
+                                @endcan
+                                @can('menu.tipo-de-direcciones')
                                 <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
                                     {{ __('Tipo de Direcciones') }}
                                 </a>
+                                @endcan
+                                @can('menu.tipo-de-ingresos')
                                 <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
                                     {{ __('Tipo de Ingresos') }}
                                 </a>  
+                                @endcan
                                 <a class="dropdown-item" href="{{ route('unidades.index') }}">
                                     {{ __('Unidades') }}
                                 </a>    

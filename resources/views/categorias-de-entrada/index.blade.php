@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('categorias-de-entradas.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -17,9 +18,11 @@
                             </span>
 
                              <div class="float-right">
+                                @can('categorias-de-entradas.create')          
                                 <a href="{{ route('categorias-de-entradas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Categoría De Entrada') }}
+                                    {{ __('Crear Categoría De Entrada') }}
                                 </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -56,11 +59,17 @@
                                             <td>{{ $categoriasDeEntrada->usuario_edito }}  <br/> {{ $categoriasDeEntrada->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('categorias-de-entradas.destroy',$categoriasDeEntrada->id) }}" method="POST">
+                                                    @can('categorias-de-entradas.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('categorias-de-entradas.show',$categoriasDeEntrada->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('categorias-de-entradas.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('categorias-de-entradas.edit',$categoriasDeEntrada->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('categorias-de-entradas.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,6 +84,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

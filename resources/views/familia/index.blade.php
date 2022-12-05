@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('familias.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,12 +17,13 @@
                             <span id="card_title">
                                 {{ __('Familias') }}
                             </span>
-
-                             <div class="float-right">
+                            @can('familias.create')
+                            <div class="float-right">
                                 <a href="{{ route('familias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Familia') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -57,11 +59,17 @@
                                             <td>{{ $familia->usuario_edito }}  <br/> {{ $familia->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('familias.destroy',$familia->id) }}" method="POST">
+                                                    @can('familias.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('familias.show',$familia->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('familias.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('familias.edit',$familia->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('familias.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -76,6 +84,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

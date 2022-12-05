@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::view('/', 'home')->name('home');
 Route::view('menu', 'menu')->name('menu');
 
@@ -60,6 +58,8 @@ Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usua
 Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
 Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
+
+// ->middleware('can:finanzas.graficas')
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('proyectos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +16,13 @@
                             <span id="card_title">
                                 {{ __('Proyectos') }}
                             </span>
-
-                             <div class="float-right">
+                            @can('proyectos.create')    
+                            <div class="float-right">
                                 <a href="{{ route('proyectos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Proyecto') }}
+                                    {{ __('Crear Proyecto') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -58,11 +60,17 @@
                                             <td>{{ $proyecto->usuario_edito }}  <br/> {{ $proyecto->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
+                                                    @can('proyectos.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('proyectos.show',$proyecto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('proyectos.edit') 
                                                     <a class="btn btn-sm btn-success" href="{{ route('proyectos.edit',$proyecto->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('proyectos.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -77,6 +85,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
