@@ -27,7 +27,7 @@ class CategoriasFamilia extends Model
     'usuario_edito'  => 'required',   
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 10000;
 
     /**
      * Attributes that should be mass-assignable.
