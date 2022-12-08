@@ -39,3 +39,6 @@ php artisan storage:link
  git rm -r --cached .
  git commit -m "fixed untracked files"
  git push ó subirlo mediente desktop
+
+# Para que funcione el seeder (se llenan las tablas solas)
+ php artisan migrate:fresh --seed
