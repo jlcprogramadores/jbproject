@@ -33,6 +33,7 @@ Route::resource('cuentas-bancarias', App\Http\Controllers\CuentasBancariaControl
 Route::resource('direcciones', App\Http\Controllers\DireccioneController::class);
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 Route::resource('usuarios', App\Http\Controllers\UserController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');
@@ -58,8 +59,6 @@ Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usua
 Route::patch('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
 Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
-
-// ->middleware('can:finanzas.graficas')
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

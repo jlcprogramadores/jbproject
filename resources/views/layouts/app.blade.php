@@ -121,6 +121,9 @@
                                     {{ __('Usuarios') }}
                                 </a>
                                 @endcan
+                                <a class="dropdown-item" href="{{ route('roles.index') }}">
+                                    {{ __('Roles y permisos') }}
+                                </a>
                                 <hr>
                                 @can('menu.categorias-de-entrada')
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
