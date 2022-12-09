@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostar Categorías De Familias</span>
+                            <span class="card-title">Mostrar Categorías De Familias</span>
                         </div>
                     </div>
 

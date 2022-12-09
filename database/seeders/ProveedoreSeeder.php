@@ -34,7 +34,7 @@ class ProveedoreSeeder extends Seeder
         ]);
 
         Proveedore::create([            
-            'nombre' => 'ACCESORIOS PINDEO',
+            'nombre' => 'ACCESORIOS PINEDO',
             'razon_social' => 'Razón Social Ejemplo',
             'estado' => 'Zacatecas',
             'dias_de_credito' => 1,
