@@ -105,7 +105,7 @@ class FamiliaController extends Controller
         $familiaCateforiaFamilia = CategoriasFamilia::select('id')->where('familia_id','=',$id)->first();
         if(!is_null($familiaCateforiaFamilia)){
             return redirect()->route('familias.index')
-                ->with('danger', 'No se elimino Familia por que existen finanzas relacionadas.');
+                ->with('danger', 'No se elimino Familia por que existen Categoría Familia relacionada.');
         }else{
             $familia = Familia::find($id)->delete();
             return redirect()->route('familias.index')

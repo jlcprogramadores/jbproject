@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iva;
 use App\Models\Entrada;
+use App\Models\Finanza;
 use Illuminate\Http\Request;
 
 /**
@@ -102,7 +103,7 @@ class IvaController extends Controller
      */
     public function destroy($id)
     {
-        $ivaFinazas = Entrada::select('id')->where('iva_id','=',$id)->first();
+        $ivaFinazas = Finanza::select('id')->where('iva_id','=',$id)->first();
         if(!is_null($ivaFinazas)){
             return redirect()->route('ivas.index')
                 ->with('danger', 'No se elimino IVA por que existen finanzas relacionadas.');
