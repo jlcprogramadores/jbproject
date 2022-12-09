@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoriasFamilia;
 use App\Models\Familia;
 use App\Models\Entrada;
+use App\Models\Finanza;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
@@ -103,8 +104,8 @@ class CategoriasFamiliaController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $categoriaFamiliaEntrada = Entrada::select('id')->where('categoria_id','=',$id)->first();
+    {   
+        $categoriaFamiliaEntrada = Finanza::select('id')->where('categoria_id','=',$id)->first();
         if(!is_null($categoriaFamiliaEntrada)){
             return redirect()->route('categorias-familias.index')
                 ->with('danger', 'No se elimino Categoria Familia por que existen finanzas relacionadas.');
