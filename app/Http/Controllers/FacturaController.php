@@ -151,6 +151,9 @@ class FacturaController extends Controller
     {
         $factura = Factura::find($id);
         $idAux = $factura->finanza_id;
+        if ($factura->factura_base64 != null) {
+            unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2])); 
+        } 
         $factura = Factura::find($id)->delete();
 
         return redirect()->route('facturas.facturafinanzas', ['id' => $idAux])
