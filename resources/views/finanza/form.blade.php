@@ -147,6 +147,7 @@
                     'Efectivo' => 'Efectivo',
                     'Cheque' => 'Cheque',
                     'Transferencia' => 'Transferencia',
+                    'Tarjeta de débito' => 'Tarjeta de débito',
                     'Tarjeta de credito' => 'Tarjeta de credito',
                     'Tarjetas digitales' => 'Tarjetas digitales',
                     'Condonación' => 'Condonación',
