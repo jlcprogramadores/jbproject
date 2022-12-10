@@ -56,8 +56,19 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {   
+        
         request()->validate(Factura::$rules);
         $factura = Factura::create($request->all());
+        if ($factura->factura_base64 != null) {
+            $nombreOriginal = $factura->factura_base64->getClientOriginalName();
+            $aux = 'factura_' . $factura->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $factura->factura_base64->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getFactura = Factura::find($factura->id);
+            $getFactura->factura_base64 = $file_url;
+            $getFactura->save();
+        }
 
         return redirect()->route('facturas.facturafinanzas', ['id' => $request->finanza_id])
             ->with('success', 'Factura creada exitosamente.');
@@ -97,9 +108,35 @@ class FacturaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Factura $factura)
-    {
-        request()->validate(Factura::$rules);
-        $factura->update($request->all());
+    {       
+        if ($request->factura_base64 != null) {
+            if ($factura->factura_base64 != null) {
+                //Existe un factura_base64 anterior
+                request()->validate(Factura::$rules);
+                unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2]));
+                $nombreOriginal = $request->factura_base64->getClientOriginalName();
+                $aux = 'factura_' . $factura->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->factura_base64->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $factura->update($request->all());
+                $factura->factura_base64 = $file_url;
+                $factura->save();
+            }else{
+                request()->validate(Factura::$rules);
+                $nombreOriginal = $request->factura_base64->getClientOriginalName();
+                $aux = 'factura_' . $factura->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->factura_base64->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $factura->update($request->all());
+                $factura->factura_base64 = $file_url;
+                $factura->save();
+            }
+        }else{
+            request()->validate(Factura::$rules);
+            $factura->update($request->all());
+        }
         
         return redirect()->route('facturas.facturafinanzas', ['id' => $request->finanza_id])
             ->with('success', 'Factura actualizada correctamente.');

@@ -43,7 +43,7 @@
                                         <th>No</th>
                                         
 										<th>Referencia Factura</th>
-										<th>Factura Base64</th>
+										<th>Link Factura</th>
 										<th>Url</th>
 										<th>Fecha Creacion</th>
 										<th>Fecha Factura</th>

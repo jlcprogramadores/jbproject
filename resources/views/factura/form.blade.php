@@ -19,16 +19,16 @@
             {{ Form::text('referencia_factura', $factura->referencia_factura, ['class' => 'form-control' . ($errors->has('referencia_factura') ? ' is-invalid' : ''), 'placeholder' => 'Referencia Factura']) }}
             {!! $errors->first('referencia_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group d-none">
-            {{ Form::label('factura_base64') }}
-            {{ Form::text('factura_base64', $factura->factura_base64, ['class' => 'form-control' . ($errors->has('factura_base64') ? ' is-invalid' : ''), 'placeholder' => 'Factura Base64']) }}
-            {!! $errors->first('factura_base64', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
         <div class="form-group">
             {{ Form::label('url') }}
             {{ Form::text('url', $factura->url, ['class' => 'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'placeholder' => 'Url']) }}
             {!! $errors->first('url', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        {{ Form::label('Comprobante de factura') }}
+            <p>
+                <label for="factura_base64"></label>
+                <input type="file" name="factura_base64">
+            </p>
         <br>
         <div class="form-group">
             <?php // si tenia auna fecha guardada la recupera

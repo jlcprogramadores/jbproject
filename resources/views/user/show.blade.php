@@ -28,7 +28,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Es Activo:</strong>
-                            {{ $user->es_activo }}
+                            @if($user->es_activo   == 1 )
+                                <p class="text-success">Activo</p>
+                            @else
+                                <p class="text-danger">Inactivo</p>
+                            @endif
                         </div>
                         <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> Atrás</a>
                     </div>

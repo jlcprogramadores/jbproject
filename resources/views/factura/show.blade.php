@@ -20,7 +20,7 @@
                             {{ $factura->referencia_factura }}
                         </div>
                         <div class="form-group">
-                            <strong>Factura Base64:</strong>
+                            <strong>Link Factura:</strong>
                             {{ $factura->factura_base64 }}
                         </div>
                         <div class="form-group">
