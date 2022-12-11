@@ -442,7 +442,7 @@ class FinanzaController extends Controller
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         // fecha, proyecto y tipo
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && is_null($cliente_id) != false && is_null($proveedor_id) != false){
-
+            // si tipo = 0 es intgreso
             if($tipo == 0){
                 $filtros = [
                     ['entradas_id','!=',null],
@@ -461,21 +461,22 @@ class FinanzaController extends Controller
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && (is_null($cliente_id) == false || is_null($proveedor_id) == false)){
             if($tipo == 0){
                 $cliente_id=$request->cliente_id;
-                $filtros = [
-                    ['entradas_id','!=',null],
-                    ['proyecto_id','=',$proyecto_id],
-                    ['cliente_id','=',$cliente_id]
+                $filtro1 = [
+                    ['finanzas.entradas_id','!=',null],
+                    ['finanzas.proyecto_id','=',$proyecto_id],
+                    ['entradas.cliente_id','=',$cliente_id]
                 ];
-                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                $finanzas = Finanza::where($filtro1)->whereBetween('finanzas.created_at', [$desde, $hasta])->join('entradas', 'entradas.id', '=', 'finanzas.id')->paginate();   
+
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }else{
                 $proveedor_id=$request->proveedor_id;
                 $filtros = [
-                    ['salidas_id','!=',null],
-                    ['proyecto_id','=',$proyecto_id],
-                    ['proveedor_id','=',$cliente_id]
+                    ['finanzas.salidas_id','!=',null],
+                    ['finanzas.proyecto_id','=',$proyecto_id],
+                    ['salidas.proveedor_id','=',$cliente_id]
                 ];
-                $finanzas = Finanza::where($filtros)->whereBetween('created_at', [$desde, $hasta])->paginate();     
+                $finanzas = Finanza::where($filtros)->whereBetween('finanzas.created_at', [$desde, $hasta])->join('salidas', 'salidas.id', '=', 'finanzas.id')->paginate();     
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }
         }
