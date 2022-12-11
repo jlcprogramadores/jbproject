@@ -2,20 +2,81 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         
+        <?php 
+            $select = [request()->id => request()->nombre];
+        ?>
+
+
+
         <div class="form-group">
-            {{ Form::label('proveedore_id') }}
-            {{ Form::select('proveedore_id',$proveedore,$cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proveedor']) }}
+            {{ Form::label('proveedore_id', 'Proveedor') }}
+            {{ Form::select('proveedore_id',$select,$cuentasBancaria->proveedore_id, ['class' => 'form-control' . ($errors->has('proveedore_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('proveedore_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+
+
+
+
         <div class="form-group">
             <?php 
-                $nombreBanco = ['ABC Capital','American Express Bank (México)','Banca Afirme','Banca Mifel','Banco Actinver','Banco Autofin México','Banco Azteca',
-                'Banco Bancrea','Banco Base','Banco Covalto','Banco Compartamos','Banco Credit Suisse (México)','Banco de Inversión Afirme','Banco del Bajío','Banco Forjadores',
-                'Banco Inbursa','Banco Inmobiliario Mexicano','Banco Invex','Banco JP Morgan','Banco KEB Hana México','Banco Monex','Banco Multiva','Banco PagaTodo',
-                'Banco Regional de Monterrey','Banco S3 Caceis México','Banco Sabadell','Banco Santander','Banco Shinhan de México','Banco Ve por Más','BanCoppel',
-                'Bank of America Mexico','Bank of China Mexico','Bankaool','Banorte','Bansí','Barclays Bank México','BBVA México','BNP Paribas','Citibanamex',
-                'CIBanco','Consubanco','Deutsche Bank México','Fundación Dondé Banco','HSBC México','Industrial and Commercial Bank of China','Intercam Banco',
-                'Mizuho Bank','MUFG Bank Mexico','Scotiabank'];
+                $nombreBanco = [
+                'ABC Capital' => 'ABC Capital',
+                'American Express Bank (México)' => 'American Express Bank (México)',
+                'Banca Afirme' => 'Banca Afirme',
+                'Banca Mifel' => 'Banca Mifel',
+                'Banco Actinver' => 'Banco Actinver',
+                'Banco Autofin México' => 'Banco Autofin México',
+                'Banco Azteca' => 'Banco Azteca',
+
+                'Banco Bancrea' => 'Banco Bancrea',
+                'Banco Base' => 'Banco Base',
+                'Banco Covalto' => 'Banco Covalto',
+                'Banco Compartamos' => 'Banco Compartamos',
+                'Banco Credit Suisse (México)' => 'Banco Credit Suisse (México)',
+                'Banco de Inversión Afirme' => 'Banco de Inversión Afirme',
+                'Banco del Bajío' => 'Banco del Bajío',
+                'Banco Forjadores' => 'Banco Forjadores',
+
+                'Banco Inbursa' => 'Banco Inbursa',
+                'Banco Inmobiliario Mexicano' => 'Banco Inmobiliario Mexicano',
+                'Banco Invex' => 'Banco Invex',
+                'Banco JP Morgan' => 'Banco JP Morgan',
+                'Banco KEB Hana México' => 'Banco KEB Hana México',
+                'Banco Monex' => 'Banco Monex',
+                'Banco Multiva' => 'Banco Multiva',
+                'Banco PagaTodo' => 'Banco PagaTodo',
+
+                'Banco Regional de Monterrey' => 'Banco Regional de Monterrey',
+                'Banco S3 Caceis México' => 'Banco S3 Caceis México',
+                'Banco Sabadell' => 'Banco Sabadell',
+                'Banco Santander' => 'Banco Santander',
+                'Banco Shinhan de México' => 'Banco Shinhan de México',
+                'Banco Ve por Más' => 'Banco Ve por Más',
+                'BanCoppel' => 'BanCoppel',
+
+                'Bank of America Mexico' => 'Bank of America Mexico',
+                'Bank of China Mexico' => 'Bank of China Mexico',
+                'Bankaool' => 'Bankaool',
+                'Banorte' => 'Banorte',
+                'Bansí' => 'Bansí',
+                'Barclays Bank México' => 'Barclays Bank México',
+                'BBVA México' => 'BBVA México',
+                'BNP Paribas' => 'BNP Paribas',
+                'Citibanamex' => 'Citibanamex',
+
+                'CIBanco' => 'CIBanco',
+                'Consubanco' => 'Consubanco',
+                'Deutsche Bank México' => 'Deutsche Bank México',
+                'Fundación Dondé Banco' => 'Fundación Dondé Banco',
+                'HSBC México' => 'HSBC México',
+                'Industrial and Commercial Bank of China' => 'Industrial and Commercial Bank of China',
+                'Intercam Banco' => 'Intercam Banco',
+
+                'Mizuho Bank' => 'Mizuho Bank',
+                'MUFG Bank Mexico' => 'MUFG Bank Mexico',
+                'Scotiabank' => 'Scotiabank'
+            ];
             ?>
             {{ Form::label('banco') }}
             {{ Form::select('banco', $nombreBanco, $cuentasBancaria->banco, ['class' => 'form-control' . ($errors->has('banco') ? ' is-invalid' : ''), 'placeholder' => 'Banco']) }}

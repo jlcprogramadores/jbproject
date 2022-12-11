@@ -110,4 +110,18 @@ class CuentasBancariaController extends Controller
         return redirect()->route('cuentas-bancarias.index')
             ->with('success', 'Cuenta Bancaria eliminada exitosamente.');
     }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cuentabancariaproveedor($id)
+    {
+        $cuentasBancarias = CuentasBancaria::where('proveedore_id', $id)->paginate();
+        // encuentra el nombre del primer proveedor
+        $nombre = Proveedore::pluck('nombre','id')->first();
+        return view('cuentas-bancaria.index', compact('cuentasBancarias','id','nombre'))
+            ->with('i', (request()->input('page', 1) - 1) * $cuentasBancarias->perPage());
+    }
 }

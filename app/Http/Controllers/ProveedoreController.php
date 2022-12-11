@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CuentasBancaria;
 use App\Models\Proveedore;
 use App\Models\Salida;
 use Illuminate\Http\Request;

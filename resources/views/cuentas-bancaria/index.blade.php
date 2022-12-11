@@ -17,7 +17,11 @@
                             </span>
 
                              <div class="float-right">
+                                @if (isset($id))
+                                <a href="{{ route('cuentas-bancarias.create', ['id' => $id, 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                @else
                                 <a href="{{ route('cuentas-bancarias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                @endif
                                   {{ __('Crear Cuenta Bancaria') }}
                                 </a>
                               </div>

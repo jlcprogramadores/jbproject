@@ -45,6 +45,7 @@
 
                                     <th>Nombre</th>
                                     <th>Razon Social</th>
+                                    <th>Cuentas bancarias</th>
                                     <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Estado</th>
@@ -65,6 +66,7 @@
 
                                     <td>{{ $proveedore->nombre }}</td>
                                     <td>{{ $proveedore->razon_social }}</td>
+                                    <td>falta</td>
 
                                     <td>
                                         @foreach($proveedore->direcciones as $iterDireccion)
@@ -110,6 +112,7 @@
                                         @can('telefonos.telefonoproveedor') 
                                         <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
                                         @endcan
+                                        <a class="btn btn-sm btn-warning" href="{{ route('cuentas-bancarias.cuentabancariaproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Cuaentas Bancarias</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
