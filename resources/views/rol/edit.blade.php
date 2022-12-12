@@ -15,13 +15,10 @@
                         </div>
                         <div class="card-body">
                             
-                            <form method="POST" action="{{ route('roles.update', $rol->id) }}"  role="form" enctype="multipart/form-data">
-                                {{ method_field('PATCH') }}
-                                @csrf
-
-                                @include('rol.form')
-
-                            </form>
+                            {!! Form::model ($rol, ['route' => ['roles.update',$rol->id], 'method'=>'PUT']) !!}
+                                @include('rol.partials.form')
+                            {!! Form::close() !!}
+                            
                         </div>
                     </div>
                 </div>
