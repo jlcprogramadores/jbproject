@@ -24,13 +24,13 @@
                                             <div class="col-sm p-1 form-group">
                                                 <label for="desde">Desde:</label>
                                                 <br>
-                                                <input id="desde" type="date" name="desde" required>
+                                                <input id="desde" type="date" name="desde" onchange="funcionDesde(this.value)" required>
                                             </div>
                                             <div class="col-sm p-1 form-group">
 
                                                 <label for="hasta">Hasta:</label>
                                                 <br>
-                                                <input type="date" name="hasta" id="hasta" required>
+                                                <input type="date" name="hasta" id="hasta" onchange="funcionHasta(this.value)" required>
                                             </div>
 
                                             <div class="col-sm p-1 form-group">
@@ -78,8 +78,9 @@
                                         </div>
                                         <br />
                                         <div class="container">
+                                            <span id="advertencia" style="color: red" > La fecha Desde debe ser menor a la fecha Hasta</span>
                                             <div class="row justify-content-md-center">
-                                                <button type="submit" class="btn btn-primary col col-lg-3">Filtrar</button>
+                                                <button id="btn_filtrar" type="submit" class="btn btn-primary col col-lg-3">Filtrar</button>
                                             </div>
                                         </div>
 
@@ -101,6 +102,31 @@
         $('#tipo').select2();
         $('#cliente_id').select2();
         $('#proveedor_id').select2();
+        let desdeAux = "";
+        let hastaAux = "";
+        document.getElementById("advertencia").style.display = "none";
+        function funcionDesde(val) {
+            desdeAux = val;
+            if (desdeAux > hastaAux && hastaAux != "") {
+                document.getElementById("btn_filtrar").style.display = "none";
+                document.getElementById("advertencia").style.display = "block";
+                
+            }else{
+                document.getElementById("btn_filtrar").style.display = "block";
+                document.getElementById("advertencia").style.display = "none";
+            }
+        }
+        function funcionHasta(val) {
+            hastaAux = val;
+            if (desdeAux > hastaAux) {
+                document.getElementById("btn_filtrar").style.display = "none";
+                document.getElementById("advertencia").style.display = "block";
+            }else{
+                document.getElementById("btn_filtrar").style.display = "block";
+                document.getElementById("advertencia").style.display = "none";
+            }
+        }
+        
         $('#tipo').on('select2:select', function(e) {
             var data = e.params.data;
             console.log(data.id);

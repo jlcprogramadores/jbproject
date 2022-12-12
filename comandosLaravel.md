@@ -43,5 +43,5 @@ php artisan storage:link
 # Para que funcione el seeder (se llenan las tablas solas)
  php artisan migrate:fresh --seed --force
 
-#Para producción aun no es el comando bueno
+# Para llenar tablas en  producción OJO SOBREESCRIBE TODO
 migrate:fresh --seed --force
