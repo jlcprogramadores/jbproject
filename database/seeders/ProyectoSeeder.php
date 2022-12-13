@@ -319,7 +319,7 @@ class ProyectoSeeder extends Seeder
         ]);
 
         Proyecto::create([            
-            'nombre' => 'TODOS LSO PROYECTOS',
+            'nombre' => 'TODOS LOS PROYECTOS',
             'descripcion' => 'Proyecto de Ejemplo',
             'numero_de_proyecto' => 31,
             'es_activo' => 1,

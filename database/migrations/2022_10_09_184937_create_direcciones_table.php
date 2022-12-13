@@ -22,7 +22,7 @@ class CreateDireccionesTable extends Migration
             $table->integer('cliente_id')->nullable();
             $table->integer('proveedor_id')->nullable();
             $table->string('calle');
-            $table->integer('num_int');
+            $table->integer('num_int')->nullable();
             $table->integer('num_ext')->nullable();
             $table->integer('codigo_postal');
             $table->string('colonia');
