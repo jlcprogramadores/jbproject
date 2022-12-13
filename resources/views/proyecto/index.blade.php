@@ -43,8 +43,8 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Descripcion</th>
-										<th>Numero De Proyecto</th>
+										<th>Descripción</th>
+										<th>Número De Proyecto</th>
                                         <th>Actualización</th>
                                         <th>Acciones</th>
                                     </tr>

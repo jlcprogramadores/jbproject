@@ -20,7 +20,7 @@
                             {{ $tipoDeIngreso->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $tipoDeIngreso->descripcion }}
                         </div>
                         <div class="float-right">

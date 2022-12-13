@@ -49,7 +49,7 @@
                                             <th>Colonia</th>
                                             <th>Municipio</th>
                                             <th>Estado</th>
-                                            <th>Pais</th>
+                                            <th>País</th>
 
                                             <th>Acciones</th>
                                         </tr>

@@ -45,7 +45,7 @@
                                         <th>Estado</th>
 										<th>Tipo E&S</th>    
                                         <th>Fam & Cat</th>
-                                        <th>Razon social</th>
+                                        <th>Razón social</th>
                                         <th>Proyecto</th>
 										<th>Descripcion</th>
                                         <th>Factura o Folio</th>

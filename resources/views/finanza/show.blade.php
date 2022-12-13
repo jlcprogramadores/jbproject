@@ -52,7 +52,7 @@
                             {{ $finanza->fecha_entrada }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $finanza->descripcion }}
                         </div>
                         <div class="form-group">

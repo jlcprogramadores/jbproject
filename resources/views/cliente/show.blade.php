@@ -20,7 +20,7 @@
                             {{ $cliente->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Razon Social:</strong>
+                            <strong>Razón Social:</strong>
                             {{ $cliente->razon_social }}
                         </div>
                         <div class="form-group">

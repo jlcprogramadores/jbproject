@@ -20,7 +20,7 @@
                             {{ $categoriasDeEntrada->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $categoriasDeEntrada->descripcion }}
                         </div>
                         <div class="form-group">

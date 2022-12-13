@@ -51,9 +51,9 @@
                                         <th>Estado</th>
 										<th>Tipo E&S</th>    
                                         <th>Fam & Cat</th>
-                                        <th>Razon social</th>
+                                        <th>Razón social</th>
                                         <th>Proyecto</th>
-										<th>Descripcion</th>
+										<th>Descripción</th>
                                         <th>Factaura o Folio</th>
                                         <th>Proveedor o usuario</th>
 										<th>C.U. & Unidad</th>
