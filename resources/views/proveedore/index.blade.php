@@ -45,7 +45,6 @@
 
                                     <th>Nombre</th>
                                     <th>Razon Social</th>
-                                    <th>Cuentas bancarias</th>
                                     <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Estado</th>
@@ -66,7 +65,6 @@
 
                                     <td>{{ $proveedore->nombre }}</td>
                                     <td>{{ $proveedore->razon_social }}</td>
-                                    <td>falta</td>
 
                                     <td>
                                         @foreach($proveedore->direcciones as $iterDireccion)

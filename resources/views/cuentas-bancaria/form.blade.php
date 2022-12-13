@@ -3,7 +3,11 @@
     <div class="box-body">
         
         <?php 
+        if(request()->id != ''){
             $select = [request()->id => request()->nombre];
+        }else{
+            $select = $proveedore;
+        }
         ?>
 
 
@@ -115,8 +119,15 @@
     </div>
     <div class="box-footer mt20">
         <br>
-        <a href="{{ route('cuentas-bancarias.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
+        <a href="javascript:history.back()" class="btn btn-danger ">{{ __('Cancelar')}}</a>
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
 @endif
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#proveedore_id').select2();
+        $('#banco').select2();
+    </script>
+@endpush

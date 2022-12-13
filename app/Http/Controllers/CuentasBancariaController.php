@@ -47,10 +47,8 @@ class CuentasBancariaController extends Controller
     public function store(Request $request)
     {
         request()->validate(CuentasBancaria::$rules);
-
         $cuentasBancaria = CuentasBancaria::create($request->all());
-
-        return redirect()->route('cuentas-bancarias.index')
+        return redirect()->route('cuentas-bancarias.cuentabancariaproveedor', ['id' => $request->proveedore_id, ])
             ->with('success', 'Cuenta bancaria creada exitosamente.');
     }
 
@@ -120,7 +118,7 @@ class CuentasBancariaController extends Controller
     {
         $cuentasBancarias = CuentasBancaria::where('proveedore_id', $id)->paginate();
         // encuentra el nombre del primer proveedor
-        $nombre = Proveedore::pluck('nombre','id')->first();
+        $nombre = Proveedore::where('id','=',$id)->first()->nombre;
         return view('cuentas-bancaria.index', compact('cuentasBancarias','id','nombre'))
             ->with('i', (request()->input('page', 1) - 1) * $cuentasBancarias->perPage());
     }

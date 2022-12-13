@@ -16,7 +16,6 @@
                             <span id="card_title">
                                 {{ __('Teléfonos de Proveedor') }}
                             </span>
-
                              <div class="float-right">
                                 <a href="{{ route('proveedores.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
