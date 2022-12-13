@@ -89,8 +89,8 @@ class RoleController extends Controller
         $request->validate([
             'name' => 'required'
         ]); 
-        $rol = Role::findById($id);
 
+        $rol = Role::findById($id);
         $rol->update($request->all());
         $rol->permissions()->sync($request->permissions);
         

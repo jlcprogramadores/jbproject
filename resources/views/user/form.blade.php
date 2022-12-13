@@ -20,6 +20,16 @@
             ),null ,['class' => 'form-select']) }}
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        </div>
+            @foreach ($roles as $rol)
+                <div>
+                    <label>
+                        {!! Form::checkbox('roles[]',$rol->id,null,['class' => 'mr-1']) !!}
+                        {{$rol->name}}
+                    </label>
+                </div>
+            @endforeach
+        </div>
     </div>
     
     <div class="box-footer mt20">

@@ -15,13 +15,9 @@
                         </div>
                         <div class="card-body">
                             
-                            <form method="POST" action="{{ route('usuarios.update', $user->id) }}"  role="form" enctype="multipart/form-data">
-                                {{ method_field('PATCH') }}
-                                @csrf
-
+                            {!! Form::model ($user, ['route' => ['usuarios.update',$user->id], 'method'=>'PUT']) !!}
                                 @include('user.form')
-
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

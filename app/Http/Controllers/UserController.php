@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class UserController
@@ -77,12 +78,12 @@ class UserController extends Controller
     public function edit($id)
     {   
         $user = User::find($id);
-        return view('user.edit', compact('user'));
+        $roles = Role::all();
+        return view('user.edit', compact('user','roles'));
     }
 
-    public function update(User $user)
+    public function update(Request $request, User $user)
     {       
-
         if($user->email == request('email')){
             $this->validate(request(), [
                 'name' => 'required',
@@ -90,6 +91,7 @@ class UserController extends Controller
 
             $user->name = request('name');
             $user->es_activo = request('es_activo');
+            $user->roles()->sync($request->roles);
             $user->save();
         }else{
             $this->validate(request(), [
@@ -100,6 +102,7 @@ class UserController extends Controller
             $user->name = request('name');
             $user->email = request('email');
             $user->es_activo = request('es_activo');
+            $user->roles()->sync($request->roles);
             $user->save();
         }        
         
