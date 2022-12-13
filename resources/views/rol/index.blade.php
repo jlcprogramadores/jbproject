@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('roles.destroy')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,9 +17,11 @@
                                 {{ __('Roles') }}
                             </span>
                             <div class="float-right">
+                                @can('roles.create')
                                 <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Rol') }}
                                 </a>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -45,11 +48,17 @@
 											<td>{{ $rol->name }}</td>
                                             <td>
                                                 <form action="{{ route('roles.destroy',$rol->id) }}" method="POST">
+                                                    @can('roles.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('roles.show',$rol->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('roles.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('roles.edit',$rol->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>    
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('roles.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -64,6 +73,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

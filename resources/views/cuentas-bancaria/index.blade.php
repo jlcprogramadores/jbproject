@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('cuentasbancarias.cuentabancariaproveedor')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,16 +17,18 @@
                                 {{ __('Cuentas Bancarias') }}
                             </span>
 
+                            @can('cuentasbancarias.create')
                              <div class="float-right">
                                 @if (isset($id))
                                 <a href="{{ route('proveedores.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
                                 <a href="{{ route('cuentas-bancarias.create', ['id' => $id, 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                @endif
-                                  {{ __('Crear Cuenta Bancaria') }}
+                                    @endif
+                                    {{ __('Crear Cuenta Bancaria') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -65,11 +68,17 @@
                                             <td>{{ $cuentasBancaria->usuario_edito }}  <br/> {{ $cuentasBancaria->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('cuentas-bancarias.destroy',$cuentasBancaria->id) }}" method="POST">
+                                                    @can('cuentasbancarias.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('cuentas-bancarias.show',$cuentasBancaria->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('cuentasbancarias.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('cuentas-bancarias.edit',$cuentasBancaria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('cuentasbancarias.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -84,6 +93,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

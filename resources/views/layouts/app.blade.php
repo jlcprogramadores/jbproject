@@ -67,9 +67,11 @@
                                     {{ __('Top Egresos e Ingresos') }}
                                 </a> 
                                 @endcan
+                                @can('menu.filtros')
                                 <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
                                     {{ __('Filtros') }}
                                 </a> 
+                                @endcan
                                 @can('menu.graficas')
                                 <a class="dropdown-item" href="{{ route('finanzas.graficas') }}">
                                     {{ __('Gráficas') }}
@@ -121,9 +123,11 @@
                                     {{ __('Usuarios') }}
                                 </a>
                                 @endcan
+                                @can('menu.roles')
                                 <a class="dropdown-item" href="{{ route('roles.index') }}">
                                     {{ __('Roles y permisos') }}
                                 </a>
+                                @endcan
                                 <hr>
                                 @can('menu.categorias-de-entrada')
                                 <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">

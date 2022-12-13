@@ -110,7 +110,9 @@
                                         @can('telefonos.telefonoproveedor') 
                                         <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonoproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
                                         @endcan
+                                        @can('cuentasbancarias.cuentabancariaproveedor')
                                         <a class="btn btn-sm btn-warning" href="{{ route('cuentas-bancarias.cuentabancariaproveedor', ['id' => $proveedore->id]) }}"><i class="fa fa-fw fa-edit"></i> Cuentas Bancarias</a>
+                                        @endcan
                                     </td>
                                     <td>
                                         <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">

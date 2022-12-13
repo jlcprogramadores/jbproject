@@ -38,6 +38,7 @@ class RoleSeeder extends Seeder
         $permisomenuproveedores = Permission::create(['name' => 'menu.proveedores', 'description' => 'Ver Submenú Administración-Proveedores'])->syncRoles($rolAdmin);
         $permisomenuproyectos = Permission::create(['name' => 'menu.proyectos', 'description' => 'Ver Submenú Administración-Proyectos'])->syncRoles($rolAdmin);
         $permisomenuusuarios = Permission::create(['name' => 'menu.usuarios', 'description' => 'Ver Submenú Administración-Usuarios'])->syncRoles($rolAdmin);
+        $permisomenuroles = Permission::create(['name' => 'menu.roles', 'description' => 'Ver Submenú Administración-Roles y Permisos'])->syncRoles($rolAdmin);
         $permisomenucategoriasdeentrada = Permission::create(['name' => 'menu.categorias-de-entrada', 'description' => 'Ver Submenú Administración-Categorías de entrada'])->syncRoles($rolAdmin);
         $permisomenucategoriasfamilias = Permission::create(['name' => 'menu.categorias-familias', 'description' => 'Ver Submenú Administración-Categorías de Familias'])->syncRoles($rolAdmin);
         $permisomenufamilias = Permission::create(['name' => 'menu.familias', 'description' => 'Ver Submenú Administración-Familias'])->syncRoles($rolAdmin);
@@ -73,6 +74,13 @@ class RoleSeeder extends Seeder
         $permisousuariosedit = Permission::create(['name' => 'usuarios.edit', 'description' => 'Usuarios:Editar'])->syncRoles($rolAdmin);
         $permisousuariosdestroy = Permission::create(['name' => 'usuarios.destroy', 'description' => 'Usuarios:Borrar'])->syncRoles($rolAdmin);
         
+        //Permisos Roles y Permisos 
+        $permisorolesindex = Permission::create(['name' => 'roles.index', 'description' => 'Roles:Tabla'])->syncRoles($rolAdmin);
+        $permisorolescreate = Permission::create(['name' => 'roles.create', 'description' => 'Roles:Crear'])->syncRoles($rolAdmin);
+        $permisorolesshow = Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar'])->syncRoles($rolAdmin);
+        $permisorolesedit = Permission::create(['name' => 'roles.edit', 'description' => 'Roles:Editar'])->syncRoles($rolAdmin);
+        $permisorolesdestroy = Permission::create(['name' => 'roles.destroy', 'description' => 'Roles:Borrar'])->syncRoles($rolAdmin);
+
         //Permisos Categorías de Entradas 
         $permisocategoriasdeentradasindex = Permission::create(['name' => 'categorias-de-entradas.index', 'description' => 'Categorías de entrada:Tabla'])->syncRoles($rolAdmin);
         $permisocategoriasdeentradascreate = Permission::create(['name' => 'categorias-de-entradas.create', 'description' => 'Categorías de entrada:Crear'])->syncRoles($rolAdmin);
@@ -114,6 +122,13 @@ class RoleSeeder extends Seeder
         $permisotelefonoescreate = Permission::create(['name' => 'telefonos.create', 'description' => 'Teléfono:Crear'])->syncRoles($rolAdmin);
         $permisotelefonoesedit = Permission::create(['name' => 'telefonos.edit', 'description' => 'Teléfono:Editar'])->syncRoles($rolAdmin);
         $permisotelefonoesdestroy = Permission::create(['name' => 'telefonos.destroy', 'description' => 'Teléfono:Borrar'])->syncRoles($rolAdmin);
+
+        //Permisos Cuentas Bancarias 
+        $permisocuentabancariaproveedor = Permission::create(['name' => 'cuentasbancarias.cuentabancariaproveedor', 'description' => 'Cuenta Bancaria Proveedor:Tabla'])->syncRoles($rolAdmin);
+        $permisocuentabancariaescreate = Permission::create(['name' => 'cuentasbancarias.show', 'description' => 'Cuenta Bancaria:Mostrar'])->syncRoles($rolAdmin);
+        $permisocuentabancariaescreate = Permission::create(['name' => 'cuentasbancarias.create', 'description' => 'Cuenta Bancaria:Crear'])->syncRoles($rolAdmin);
+        $permisocuentabancariaesedit = Permission::create(['name' => 'cuentasbancarias.edit', 'description' => 'Cuenta Bancaria:Editar'])->syncRoles($rolAdmin);
+        $permisocuentabancariaesdestroy = Permission::create(['name' => 'cuentasbancarias.destroy', 'description' => 'Cuenta Bancaria:Borrar'])->syncRoles($rolAdmin);
 
         //Permisos Tipo de Direcciones 
         $permisotipodedireccionesindex = Permission::create(['name' => 'tipo-de-direcciones.index', 'description' => 'Tipo de Direcciones:Tabla'])->syncRoles($rolAdmin);
