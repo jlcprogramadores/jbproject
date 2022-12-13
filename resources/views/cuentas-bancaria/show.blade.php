@@ -12,7 +12,7 @@
                             <span class="card-title">Mostrar Cuenta Bancaria</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('cuentas-bancarias.index') }}"> Atrás</a>
+                            <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
                         </div>
                     </div>
 
