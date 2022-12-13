@@ -55,7 +55,7 @@
                                         <th>Proyecto</th>
 										<th>Descripción</th>
                                         <th>Factaura o Folio</th>
-                                        <th>Proveedor o usuario</th>
+                                        <th>Proveedor o cliente</th>
 										<th>C.U. & Unidad</th>
 										<th>Costo Unitario</th>
                                         <th>Subtotal Total MXN</th>
