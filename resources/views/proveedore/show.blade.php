@@ -20,7 +20,7 @@
                             {{ $proveedore->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Razon Social:</strong>
+                            <strong>Razón Social:</strong>
                             {{ $proveedore->razon_social }}
                         </div>
                         <div class="form-group">

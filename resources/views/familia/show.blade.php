@@ -20,7 +20,7 @@
                             {{ $familia->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $familia->descripcion }}
                         </div>
                         <div class="form-group">

@@ -20,7 +20,7 @@
                             {{ $iva->porcentaje }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $iva->descripcion }}
                         </div>
                         <div class="float-right">

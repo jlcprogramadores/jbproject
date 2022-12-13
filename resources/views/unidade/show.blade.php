@@ -19,7 +19,7 @@
                             {{ $unidade->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Descripcion:</strong>
+                            <strong>Descripción:</strong>
                             {{ $unidade->descripcion }}
                         </div>
                         <div class="float-right">

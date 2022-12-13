@@ -43,10 +43,10 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Razon Social</th>
+										<th>Razón Social</th>
 										<th>Mail</th>
 										<th>Rfc</th>
-                                        <th>Direccion</th>
+                                        <th>Dirección</th>
                                         <th>Teléfono</th>
                                         <th>Actualización</th>
                                         <th class="botones">Datos</th>    

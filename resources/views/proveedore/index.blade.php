@@ -44,12 +44,12 @@
                                     <th>No</th>
 
                                     <th>Nombre</th>
-                                    <th>Razon Social</th>
+                                    <th>Razón Social</th>
                                     <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Estado</th>
-                                    <th>Dias De Credito</th>
-                                    <th>Monto De Credito</th>
+                                    <th>Días De Crédito</th>
+                                    <th>Monto De Crédito</th>
                                     <th>Es Facturable</th>
                                     <th>Mail</th>
                                     <th>Rfc</th>
