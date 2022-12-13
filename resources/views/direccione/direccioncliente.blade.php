@@ -50,7 +50,6 @@
                                             <th>Municipio</th>
                                             <th>Estado</th>
                                             <th>Pais</th>
-                                            <th>Es Activo</th>
 
                                             <th>Acciones</th>
                                         </tr>
@@ -69,8 +68,7 @@
                                                 <td>{{ $direccione->municipio }}</td>
                                                 <td>{{ $direccione->estado }}</td>
                                                 <td>{{ $direccione->pais }}</td>
-                                                <td>{{ $direccione->es_activo }}</td>
-
+                                                
                                                 <td>
                                                     <form action="{{ route('direcciones.destroy',$direccione->id) }}" method="POST">
                                                         @can('direcciones.edit')
