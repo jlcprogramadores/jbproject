@@ -22,13 +22,13 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm p-1 form-group">
-                                                <label for="desde">Desde:</label>
+                                                <label for="desde">Inico fecha de entrada:</label>
                                                 <br>
                                                 <input id="desde" type="date" name="desde" onchange="funcionDesde(this.value)" required>
                                             </div>
                                             <div class="col-sm p-1 form-group">
 
-                                                <label for="hasta">Hasta:</label>
+                                                <label for="hasta">Fin fecha de entrada:</label>
                                                 <br>
                                                 <input type="date" name="hasta" id="hasta" onchange="funcionHasta(this.value)" required>
                                             </div>
