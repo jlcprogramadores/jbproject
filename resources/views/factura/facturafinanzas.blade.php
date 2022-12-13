@@ -57,7 +57,11 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $factura->referencia_factura }}</td>
-											<td>{{ $factura->factura_base64 }}</td>
+                                            @if ($factura->factura_base64)
+                                                <td><a href="{{$factura->factura_base64}}">Link Factura</a></td> 
+                                            @else
+                                                <td><span class="text-danger">Sin Link</span></td>
+                                            @endif 
 											<td>{{ $factura->url }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
