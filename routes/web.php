@@ -58,8 +58,8 @@ Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('
 Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usuarios.edit');
 Route::put('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
-Route::get('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
-// proveedor 
+Route::get('/graficasGenerales', 'App\Http\Controllers\FinanzaController@graficasGenerales')->name('finanzas.graficasGenerales');
+Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
 
 Auth::routes(['verify' => true]);

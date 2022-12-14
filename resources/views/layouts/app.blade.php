@@ -73,7 +73,7 @@
                                 </a> 
                                 @endcan
                                 @can('menu.graficas')
-                                <a class="dropdown-item" href="{{ route('finanzas.graficas') }}">
+                                <a class="dropdown-item" href="{{ route('finanzas.graficasGenerales') }}">
                                     {{ __('Gráficas') }}
                                 </a>
                                 @endcan

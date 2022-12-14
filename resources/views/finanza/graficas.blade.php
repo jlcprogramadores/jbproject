@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            
+                            <h6>Proyecto: {{$nombreProyecto}}</h6>
                             <div style="display: block">
                                 <canvas id="myChart" width="600" height="700"></canvas>
                             </div>

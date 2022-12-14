@@ -226,13 +226,27 @@ class FinanzaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function graficas()
+    public function graficasGenerales()
     {   
         $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
         $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
-        
-        // dd($salidas);
-        return view('finanza.graficas', compact('ingresos','egresos'));
+        $proyecto = Proyecto::pluck('nombre','id');
+        return view('finanza.graficasGenerales', compact('ingresos','egresos','proyecto'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function graficas(Request $request)
+    {   
+        $proyecto = Proyecto::find($request->proyecto_id);
+        $nombreProyecto = $proyecto->nombre;
+        $ingresos = Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
+        $egresos = Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
+        return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
     }
 
     /**
