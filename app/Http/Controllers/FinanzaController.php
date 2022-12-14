@@ -235,6 +235,7 @@ class FinanzaController extends Controller
         $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
         $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
         $proyecto = Proyecto::pluck('nombre','id');
+
         return view('finanza.graficasGenerales', compact('ingresos','egresos','proyecto'));
     }
 
@@ -250,6 +251,7 @@ class FinanzaController extends Controller
         $nombreProyecto = $proyecto->nombre;
         $ingresos = Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
         $egresos = Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
+        
         return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
     }
 
@@ -265,6 +267,30 @@ class FinanzaController extends Controller
         $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
         $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
         return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function centrodecostos()
+    {   
+
+        $proyectos = Proyecto::all();
+        
+        foreach ($proyectos as $proyecto => $value) {
+            $finanzas[] =array(
+                "id_proyecto"=> $proyecto,
+                "nombre"=>$value->nombre,
+                "presupuesto"=>$value->presupuesto,
+                "margen"=>$value->margen,
+                "costo"=>Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $proyecto+1)->sum('monto_a_pagar')
+            );
+        }
+      
+        return view('finanza.centrodecostos', compact('finanzas'))->with('i');
     }
 
     /**

@@ -20,6 +20,8 @@ class CreateProyectosTable extends Migration
             $table->string('numero_de_proyecto');
             $table->boolean('es_activo');
             $table->string('usuario_edito');
+            $table->decimal('presupuesto', 12, 2);
+            $table->decimal('margen', 12, 2);
             $table->timestamps();
         });
     }

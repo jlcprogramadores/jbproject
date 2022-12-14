@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property $descripcion
  * @property $numero_de_proyecto
  * @property $es_activo
+ * @property $presupuesto
+ * @property $margen
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -23,6 +25,8 @@ class Proyecto extends Model
 		'descripcion' => 'required',
 		'numero_de_proyecto' => 'required',
 		'es_activo' => 'required',
+        'presupuesto' => 'required',
+        'margen' => 'required',
         'usuario_edito'  => 'required',
     ];
 
@@ -32,7 +36,7 @@ class Proyecto extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo','usuario_edito'];
+    protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo','presupuesto','margen','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

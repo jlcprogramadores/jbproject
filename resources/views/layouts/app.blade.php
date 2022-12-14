@@ -76,12 +76,14 @@
                                 <a class="dropdown-item" href="{{ route('finanzas.graficasGenerales') }}">
                                     {{ __('Gráficas por Proyecto') }}
                                 </a>
-                                
                                 <a class="dropdown-item" href="{{ route('finanzas.graficasTotales') }}">
                                     {{ __('Gráficas Generales') }}
                                 </a>
-                                </form>
                                 @endcan
+                                <a class="dropdown-item" href="{{ route('finanzas.centrodecostos') }}">
+                                    {{ __('Centro de Costos') }}
+                                </a>
+                                </form>
                             </div>
                         </li>
                         @endcan

@@ -62,6 +62,8 @@ Route::get('/graficasGenerales', 'App\Http\Controllers\FinanzaController@grafica
 Route::get('/graficasTotales', 'App\Http\Controllers\FinanzaController@graficasTotales')->name('finanzas.graficasTotales');
 Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
+Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
+
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

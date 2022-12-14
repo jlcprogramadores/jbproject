@@ -1,10 +1,9 @@
 @extends('layouts.app')
-@section('title','Proyectos')
+@section('title','Centro de Costos')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('proyectos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -14,15 +13,10 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Proyectos') }}
+                                {{ __('Centro de costos') }}
                             </span>
-                            @can('proyectos.create')    
-                            <div class="float-right">
-                                <a href="{{ route('proyectos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Proyecto') }}
-                                </a>
-                            </div>
-                            @endcan
+                             <div class="float-right">
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -42,54 +36,41 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Descripción</th>
-										<th>Número De Proyecto</th>
-                                        <th>Presupuesto</th>
+										<th>Proyecto</th>
+										<th>Presupuesto</th>
                                         <th>Margen</th>
-                                        <th>Actualización</th>
-                                        <th>Acciones</th>
+                                        <th>Costo Actual</th>
+                                        <th>Límite</th>
                                     </tr>
                                 </thead>
+                                                                       
                                 <tbody>
-                                    @foreach ($proyectos as $proyecto)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $proyecto->nombre }}</td>
-											<td>{{ $proyecto->descripcion }}</td>
-											<td>{{ $proyecto->numero_de_proyecto }}</td>
-                                            <td>{{ $proyecto->presupuesto }}</td>
-                                            <td>{{ $proyecto->margen }}</td>
-                                            <td>{{ $proyecto->usuario_edito }}  <br/> {{ $proyecto->updated_at }}</td>
-                                            <td>
-                                                <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
-                                                    @can('proyectos.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('proyectos.show',$proyecto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('proyectos.edit') 
-                                                    <a class="btn btn-sm btn-success" href="{{ route('proyectos.edit',$proyecto->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    @can('proyectos.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @foreach ($finanzas as $finanza)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+
+                                        <td>{{$finanza['nombre']}}</td> 
+                                        <td>{{$finanza['presupuesto']}}</td>    
+                                        <td>{{$finanza['margen']}}</td> 
+                                        <td>{{$finanza['costo']}}</td> 
+                                        @if ($finanza['costo'] < $finanza['presupuesto'])
+                                                <td><p class="badge bg-success">Debajo del presupuesto</p></td>
+                                        @elseif ($finanza['costo'] < $finanza['margen'])
+                                            <td><p class="badge bg-warning text-dark">Dentro del margen</p></td>
+                                        @else
+                                            <td><p class="badge bg-danger">Presupuesto excedido</p></td>
+                                        @endif
+                                    </tr>
+                                    @endforeach   
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                {!! $proyectos->links() !!}
             </div>
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

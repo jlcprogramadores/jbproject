@@ -24,6 +24,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 1,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -34,6 +36,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 2,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -44,6 +48,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 3,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -54,6 +60,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 4,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -64,6 +72,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 5,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -74,6 +84,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 6,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -84,6 +96,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 7,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -94,6 +108,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 8,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -104,6 +120,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 9,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -114,6 +132,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 10,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -124,6 +144,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 11,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -134,6 +156,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 12,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -144,6 +168,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 13,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -154,6 +180,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 14,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -164,6 +192,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 15,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -174,6 +204,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 16,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -184,6 +216,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 17,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -194,6 +228,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 18,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -204,6 +240,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 19,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -214,6 +252,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 20,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -224,6 +264,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 21,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -234,6 +276,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 22,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -244,6 +288,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 23,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -254,6 +300,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 24,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -264,6 +312,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 25,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -274,6 +324,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 26,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -284,6 +336,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 27,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -294,6 +348,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 28,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -304,6 +360,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 29,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -314,6 +372,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 30,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
@@ -324,6 +384,8 @@ class ProyectoSeeder extends Seeder
             'numero_de_proyecto' => 31,
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
+            'presupuesto' => 10000,
+            'margen' => 12000,
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);

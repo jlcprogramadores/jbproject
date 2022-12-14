@@ -17,6 +17,16 @@
             {{ Form::number('numero_de_proyecto', $proyecto->numero_de_proyecto, ['class' => 'form-control' . ($errors->has('numero_de_proyecto') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
             {!! $errors->first('numero_de_proyecto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label('presupuesto') }}
+            {{ Form::number('presupuesto', $proyecto->presupuesto, ['class' => 'form-control' . ($errors->has('presupuesto') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
+            {!! $errors->first('presupuesto', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('margen') }}
+            {{ Form::number('margen', $proyecto->margen, ['class' => 'form-control' . ($errors->has('margen') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
+            {!! $errors->first('margen', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         <div class="form-group d-none">
             {{ Form::label('es_activo') }}
             {{ Form::text('es_activo', 1, ['class' => 'form-control' . ($errors->has('es_activo') ? ' is-invalid' : ''), 'placeholder' => 'Es Activo']) }}
