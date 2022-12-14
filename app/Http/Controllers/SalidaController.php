@@ -112,7 +112,7 @@ class SalidaController extends Controller
         
         //Existe un comprobante anterior
         if ($getSalida->comprobante != null) {
-            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+            // unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
             $salida->update($request->all());
             $nombreOriginal = $salida->comprobante->getClientOriginalName();
             $aux = 'salida_' . $salida->id . '_';
@@ -146,7 +146,7 @@ class SalidaController extends Controller
     {   
         $getSalida = Salida::find($id);
         if ($getSalida->comprobante != null) {
-            unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+            // unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
             
         }   
 

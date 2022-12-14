@@ -113,7 +113,7 @@ class FacturaController extends Controller
             if ($factura->factura_base64 != null) {
                 //Existe un factura_base64 anterior
                 request()->validate(Factura::$rules);
-                unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2]));
+                // unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2]));
                 $nombreOriginal = $request->factura_base64->getClientOriginalName();
                 $aux = 'factura_' . $factura->id . '_';
                 $nombreFinal = $aux . $nombreOriginal;
@@ -152,7 +152,7 @@ class FacturaController extends Controller
         $factura = Factura::find($id);
         $idAux = $factura->finanza_id;
         if ($factura->factura_base64 != null) {
-            unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2])); 
+            // unlink(base_path('storage\app\public\\'.explode("/",$factura->factura_base64)[2])); 
         } 
         $factura = Factura::find($id)->delete();
 

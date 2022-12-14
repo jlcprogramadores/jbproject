@@ -409,7 +409,7 @@ class FinanzaController extends Controller
                 $getSalida = Salida::find($salida->id);
                 if ($getSalida->comprobante != null) {
                     //Existe un comprobante anterior
-                    unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
+                    // unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2]));
                     $salida->update($request->all());
                     $nombreOriginal = $salida->comprobante->getClientOriginalName();
                     $aux = 'salida_' . $salida->id . '_';
@@ -457,7 +457,7 @@ class FinanzaController extends Controller
             $salidaId =Finanza::find($id)->salidas_id;
             $getSalida = Salida::find($salidaId);
             if ($getSalida->comprobante != null) {
-                unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2])); 
+                // unlink(base_path('storage\app\public\\'.explode("/",$getSalida->comprobante)[2])); 
             } 
             Salida::find($salidaId)->delete();
         }
