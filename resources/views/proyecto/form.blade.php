@@ -19,12 +19,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('presupuesto') }}
-            {{ Form::number('presupuesto', $proyecto->presupuesto, ['class' => 'form-control' . ($errors->has('presupuesto') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
+            {{ Form::number('presupuesto', $proyecto->presupuesto, ['class' => 'form-control' . ($errors->has('presupuesto') ? ' is-invalid' : ''), 'placeholder' => 'Presupuesto']) }}
             {!! $errors->first('presupuesto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('margen') }}
-            {{ Form::number('margen', $proyecto->margen, ['class' => 'form-control' . ($errors->has('margen') ? ' is-invalid' : ''), 'placeholder' => 'Número De Proyecto']) }}
+            {{ Form::number('margen', $proyecto->margen, ['class' => 'form-control' . ($errors->has('margen') ? ' is-invalid' : ''), 'placeholder' => 'Margen']) }}
             {!! $errors->first('margen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">
