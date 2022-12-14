@@ -187,26 +187,22 @@ class FinanzaController extends Controller
     public function storeEgreso(Request $request)
     {
         request()->validate(Finanza::$rulesEgreso);
-        $cuantasCantidades = count($request->cantidad);
-        foreach($request->cantidad as $iterRequest){
-            $requestTemporal = $request; 
-            $requestTemporal->request->add(['cantidad' => $iterRequest['cantidad']]);
-            // se crea la salida se recupera el id y se anade al request
-            $salida = Salida::create($request->all());
-            if ($salida->comprobante != null && $cuantasCantidades == 1) {
-                $nombreOriginal = $salida->comprobante->getClientOriginalName();
-                $aux = 'salida_' . $salida->id . '_';
-                $nombreFinal = $aux . $nombreOriginal;
-                $salida->comprobante->storeAs('public',$nombreFinal);
-                $file_url = '/storage/' . $nombreFinal;
-                $getSalida = Salida::find($salida->id);
-                $getSalida->comprobante = $file_url;
-                $getSalida->save();
-            }
-            //Hasta aqui se añaden los archivos en la tabla
-            $request->request->add(['salidas_id' => $salida->id]);
-            $finanza = Finanza::create($request->all());
+        // se crea la salida se recupera el id y se anade al request
+        $salida = Salida::create($request->all());
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
         }
+        //Hasta aqui se añaden los archivos en la tabla
+        $request->request->add(['salidas_id' => $salida->id]);
+        $finanza = Finanza::create($request->all());
+
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza creada exitosamente.');
     }
