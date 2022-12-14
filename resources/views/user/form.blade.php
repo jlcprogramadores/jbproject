@@ -31,11 +31,12 @@
                 </div>
             @endforeach
         </div>
+        <br>
+        <div class="box-footer mt20">
+            <a class="btn btn-danger" href="{{ route('usuarios.index') }}"> Atrás</a>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
     </div>
     
-    <div class="box-footer mt20">
-        <a class="btn btn-danger" href="{{ route('usuarios.index') }}"> Atrás</a>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
-    </div>
 </div>
 @endif
