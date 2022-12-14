@@ -259,6 +259,20 @@ class FinanzaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function graficasTotales()
+    {   
+        $nombreProyecto = "Todos los Proyectos en el Sistema";
+        $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
+        $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
+        return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function showTopEgreso($id)
     {
         $finanza = Finanza::find($id);
