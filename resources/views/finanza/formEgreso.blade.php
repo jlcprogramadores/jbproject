@@ -74,11 +74,13 @@
                     {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control','step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
+                
+                {{-- <div class="p-1 form-group">
                     {{ Form::label('cantidad') }}
                     {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control','step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
                     {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+                </div> --}}
+
                 <div class="p-1 form-group">
                     {{ Form::label('unidad_id','Unidad') }}
                     {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selecciona la unidad']) }}
@@ -116,16 +118,26 @@
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                {{ Form::label('Comprobante de pago') }}
-                <p>
-                    <label for="comprobante"></label>
-                    <input type="file" name="comprobante">
-                </p>
+                <div class="p-1 form-group  d-flex flex-column">
+                        <label for="comprobante" id="textComprobante">Comprobante de pago</label>
+                        <input type="file" name="comprobante" id="comprobante">
+                </div>
                 <div class="form-group d-none">
                     {{ Form::label('usuario_edito') }}
                     {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
                     {!! $errors->first('usuario_edito', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
+                <table class="table table-bordered" id="dynamicAddRemove">
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Acción</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" name="cantidad[0][cantidad]" placeholder="Cantidad" class="form-control" />
+                        </td>
+                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <br>
@@ -177,5 +189,32 @@
                 select.appendChild(opt)
             };
         }
+
+        var i = 0;
+        $("#dynamic-ar").click(function () {
+            ++i;
+            $("#dynamicAddRemove").append('<tr><td><input type="text" name="cantidad[' + i +
+                '][cantidad]" placeholder="Cantidad" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                );
+            if(i != 0){
+                comprobante = document.getElementById('comprobante');
+                comprobante.value = null;
+                comprobante.style.display = 'none';
+                comprobante = document.getElementById('textComprobante');
+                comprobante.value = null;
+                comprobante.style.display = 'none';   
+            }
+
+        });
+        $(document).on('click', '.remove-input-field', function () {
+            --i;
+            $(this).parents('tr').remove();
+            if(i == 0){
+                comprobante = document.getElementById('comprobante');
+                comprobante.style.display = 'block';
+                comprobante = document.getElementById('textComprobante');
+                comprobante.style.display = 'block';
+            }
+        });
     </script>
 @endpush
