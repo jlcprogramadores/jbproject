@@ -40,6 +40,8 @@
 										<th>Presupuesto</th>
                                         <th>Margen</th>
                                         <th>Costo Actual</th>
+                                        <th>Utilidad</th>
+                                        <th>Factor de Utilidad</th>
                                         <th>Límite</th>
                                     </tr>
                                 </thead>
@@ -53,6 +55,12 @@
                                         <td>{{$finanza['presupuesto']}}</td>    
                                         <td>{{$finanza['margen']}}</td> 
                                         <td>{{$finanza['costo']}}</td> 
+                                        <td>{{$finanza['utilidad']}}</td> 
+                                        @if (($finanza['utilidad']-$finanza['costo']) > 0)
+                                            <td><p class="text-success">+ {{$finanza['utilidad']-$finanza['costo']}}</p></td>
+                                        @else
+                                            <td><p class="text-danger">{{$finanza['utilidad']-$finanza['costo']}}</p></td>
+                                        @endif
                                         @if ($finanza['costo'] < $finanza['presupuesto'])
                                                 <td><p class="badge bg-success">Debajo del presupuesto</p></td>
                                         @elseif ($finanza['costo'] < $finanza['margen'])

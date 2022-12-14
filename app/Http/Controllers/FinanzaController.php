@@ -286,7 +286,8 @@ class FinanzaController extends Controller
                 "nombre"=>$value->nombre,
                 "presupuesto"=>$value->presupuesto,
                 "margen"=>$value->margen,
-                "costo"=>Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $proyecto+1)->sum('monto_a_pagar')
+                "costo"=>Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $proyecto+1)->sum('monto_a_pagar'),
+                "utilidad" =>Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $proyecto+1)->sum('monto_a_pagar') 
             );
         }
       
