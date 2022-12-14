@@ -21,8 +21,8 @@
             {!! $errors->first('es_activo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         </div>
+        {{ Form::label('Roles') }}
             @foreach ($roles as $rol)
-            {{ Form::label('Roles') }}
                 <div>
                     <label>
                         {!! Form::checkbox('roles[]',$rol->id,null,['class' => 'mr-1']) !!}
