@@ -51,7 +51,7 @@
                     $fechaFactura = $factura->fecha_factura;
                 }
             ?>
-            {{ Form::label('fecha_factura') }}
+            {{ Form::label('Fecha Facturación') }}
             {{ Form::date('fecha_factura', $fechaFactura, ['class' => 'form-control-sm' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
             {!! $errors->first('fecha_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
