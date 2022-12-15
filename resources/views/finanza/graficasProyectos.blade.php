@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gráfica Ingresos vs Egresos')
+@section('title', 'Gráficas por proyecto')
 @if (Auth::check() && Auth::user()->es_activo)
     @can('finanzas.graficas')
         @section('content')
