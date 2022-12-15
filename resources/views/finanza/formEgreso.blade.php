@@ -92,8 +92,8 @@
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('monto_a_pagar') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
+                    {{ Form::label('Total') }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
