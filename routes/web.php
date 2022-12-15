@@ -58,8 +58,8 @@ Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('
 Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usuarios.edit');
 Route::put('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
+Route::get('/graficasProyectos', 'App\Http\Controllers\FinanzaController@graficasProyectos')->name('finanzas.graficasProyectos');
 Route::get('/graficasGenerales', 'App\Http\Controllers\FinanzaController@graficasGenerales')->name('finanzas.graficasGenerales');
-Route::get('/graficasTotales', 'App\Http\Controllers\FinanzaController@graficasTotales')->name('finanzas.graficasTotales');
 Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');

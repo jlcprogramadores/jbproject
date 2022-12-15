@@ -230,13 +230,20 @@ class FinanzaController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function graficasProyectos()
+    {   
+        $proyecto = Proyecto::pluck('nombre','id');
+        return view('finanza.graficasProyectos', compact('proyecto'));
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function graficasGenerales()
     {   
-        $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
-        $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
-        $proyecto = Proyecto::pluck('nombre','id');
-
-        return view('finanza.graficasGenerales', compact('ingresos','egresos','proyecto'));
+        return view('finanza.graficasGenerales');
     }
 
     /**
@@ -247,26 +254,23 @@ class FinanzaController extends Controller
      */
     public function graficas(Request $request)
     {   
-        $proyecto = Proyecto::find($request->proyecto_id);
-        $nombreProyecto = $proyecto->nombre;
-        $ingresos = Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
-        $egresos = Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->sum('monto_a_pagar');
-        
-        return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
-    }
+        if(is_null($request->proyecto_id) == false  ){
+            $desde=$request->desde;
+            $hasta=$request->hasta;
+            $proyecto = Proyecto::find($request->proyecto_id);
+            $nombreProyecto = $proyecto->nombre;
+            $ingresos = Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
+            $egresos = Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
+            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function graficasTotales()
-    {   
-        $nombreProyecto = "Todos los Proyectos en el Sistema";
-        $ingresos = Finanza::where('entradas_id','!=',null)->sum('monto_a_pagar');
-        $egresos = Finanza::where('salidas_id','!=',null)->sum('monto_a_pagar');
-        return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+        }else{
+            $desde=$request->desde;
+            $hasta=$request->hasta;
+            $nombreProyecto = "Todos los Proyectos en el Sistema";
+            $ingresos = Finanza::where('entradas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
+            $egresos = Finanza::where('salidas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
+            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+        }
     }
 
     /**

@@ -9,7 +9,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <span class="card-title">Gráficas Generales</span>
+                                <span class="card-title">Gráficas por proyecto</span>
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('finanzas.graficas') }}" role="form"
@@ -30,6 +30,18 @@
                                                 <br>
                                                 <input type="date" name="hasta" id="hasta" class="form-control"
                                                     onchange="funcionHasta(this.value)" required>
+                                            </div>
+                                            <div class="col-5 p-1 form-group ">
+                                                <label class="proyecto_id" name="Ingreso_id" for="Ingreso_id">Proyecto a
+                                                    Gráficar:</label>
+                                                <br>
+                                                <select class="form-control" id="proyecto_id" name="proyecto_id">
+                                                    <option value="" selected="selected">Selecciona Proyecto</option>
+                                                    @foreach ($proyecto as $val => $name)
+                                                        <option value="{{ $val }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+
                                             </div>
                                         </div>
                                     </div>
