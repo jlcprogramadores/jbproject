@@ -83,12 +83,12 @@
 
                 <div class="p-1 form-group">
                     {{ Form::label('unidad_id','Unidad') }}
-                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selecciona la unidad']) }}
+                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la unidad']) }}
                     {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('iva_id','IVA') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selacciona IVA']) }}
+                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona IVA']) }}
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
