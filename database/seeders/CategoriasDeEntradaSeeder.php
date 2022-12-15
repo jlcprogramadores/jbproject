@@ -19,7 +19,7 @@ class CategoriasDeEntradaSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         CategoriasDeEntrada::create([
-            'nombre' => 'Con contrato',
+            'nombre' => 'CON CONTRATO',
             'descripcion' => 'Categoría de entrada de Ejemplo',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
@@ -28,7 +28,7 @@ class CategoriasDeEntradaSeeder extends Seeder
         ]);
 
         CategoriasDeEntrada::create([
-            'nombre' => 'Sin contrato',
+            'nombre' => 'SIN CONTRATO',
             'descripcion' => 'Categoría de entrada de Ejemplo',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
