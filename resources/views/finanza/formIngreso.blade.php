@@ -81,7 +81,7 @@
                 <div class="row">
                     <div class=" col-sm p-1 form-group">
                         {{ Form::label('cantidad') }}
-                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control','step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad ']) }}
+                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control', 'onchange' => "obtenCantidad(this.value)", 'step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad ']) }}
                         {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                     </div>
                     <div class=" col-sm p-2 form-group">
@@ -92,17 +92,22 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('costo_unitario') }}
-                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control' ,'step'=>'any'. ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
+                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control' ,'step'=>'any','onchange'=>"obtenCostoUnitario(this.value);" . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('iva_id','IVA') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona IVA']) }}
+                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control', 'id'=>'selectIva', 'onchange'=>"obtenIva(this.value);" . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona IVA']) }}
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('monto_a_pagar') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
+                    {{ Form::label('Sub-Total')}} 
+                    <br>
+                    <input type="number" class='form-control' readonly='true' id="sub-total" placeholder ='Sub-total' name="sub-total" onchange="obtenSubTotal(this.value)">
+                </div>
+                <div class="p-1 form-group">
+                    {{ Form::label('Total') }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -163,6 +168,47 @@
             var data = e.params.data;
             getCategoriByFamilia(data.id);           
         });
+
+        let costoUnitarioAux = "0";
+        let cantidadAux = "0";
+        let subTotalAux = "0";
+        let ivaAux = "0";
+        
+        function obtenCostoUnitario(val) {
+            costoUnitarioAux = val;
+            var subtotal = document.getElementById('sub-total');
+            subtotal.value = costoUnitarioAux * cantidadAux;
+            
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var subTotal = costoUnitarioAux * cantidadAux;
+            var total = document.getElementById('total');
+
+            total.value = subTotal * ivaAux;
+        }
+        function obtenCantidad(val) {
+            cantidadAux = val;
+            var subtotal = document.getElementById('sub-total');
+            subtotal.value = costoUnitarioAux * cantidadAux;
+
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var subTotal = costoUnitarioAux * cantidadAux;
+            var total = document.getElementById('total');
+
+            total.value = subTotal * ivaAux;
+        }
+
+        function obtenSubTotal(val) {
+            // console.log('soy subtotal ' + val);
+        }
+
+        function obtenIva(val) {
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var subTotal = costoUnitarioAux * cantidadAux;
+            var total = document.getElementById('total');
+
+            total.value = subTotal * ivaAux;
+        }
+        
         function getCategoriByFamilia(id){
             var iterable='';
             $.ajax({

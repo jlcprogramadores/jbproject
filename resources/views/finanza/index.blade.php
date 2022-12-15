@@ -56,7 +56,7 @@
 										<th>Descripción</th>
                                         <th>Factaura o Folio</th>
                                         <th>Proveedor o cliente</th>
-										<th>C.U. & Unidad</th>
+										<th>Cantidad & Unidad</th>
 										<th>Costo Unitario</th>
                                         <th>Subtotal Total MXN</th>
 										<th>Iva</th>
@@ -115,8 +115,8 @@
                                                 @endforeach
                                             </td>
                                             <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
-											<td>{{ $finanza->costo_unitario.' '.$finanza->unidad->nombre }}</td>
-											<td>{{ $finanza->cantidad }}</td>
+											<td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
+											<td>{{ $finanza->costo_unitario }}</td>
                                             <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
 											<td>{{ $iva = $finanza->iva->porcentaje }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
