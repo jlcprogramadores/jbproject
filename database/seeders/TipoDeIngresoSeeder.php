@@ -19,7 +19,7 @@ class TipoDeIngresoSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         TipoDeIngreso::create([
-            'nombre' => 'CON CONTRATO',
+            'nombre' => 'FIJO',
             'descripcion' => 'Tipo de Ingreso de Ejemplo',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
@@ -27,7 +27,15 @@ class TipoDeIngresoSeeder extends Seeder
         ]);
 
         TipoDeIngreso::create([
-            'nombre' => 'SIN CONTRATO',
+            'nombre' => 'VARIABLE',
+            'descripcion' => 'Tipo de Ingreso de Ejemplo',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        TipoDeIngreso::create([
+            'nombre' => 'ESPORADICO',
             'descripcion' => 'Tipo de Ingreso de Ejemplo',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
