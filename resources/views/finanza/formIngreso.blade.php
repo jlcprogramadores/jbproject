@@ -70,9 +70,9 @@
                     {{ Form::text('comentario', $finanza->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
                     {!! $errors->first('comentario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
+                <div class="p-1 form-group d-none">
                     {{ Form::label('entregado_material_a', 'Material entregado a') }}
-                    {{ Form::text('entregado_material_a', $finanza->entregado_material_a, ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
+                    {{ Form::text('entregado_material_a', 'N/A', ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
                     {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
             </div>
@@ -99,8 +99,8 @@
                     {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('Total') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
+                    {{ Form::label('monto_a_pagar') }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">

@@ -51,7 +51,6 @@ class Finanza extends Model
 		'monto_a_pagar' => 'required',
 		'fecha_de_pago' => 'required',
 		'metodo_de_pago' => 'required',
-		'entregado_material_a' => 'required',
 		'comentario' => 'required',
         'usuario_edito'  => 'required',
     ];
@@ -71,7 +70,6 @@ class Finanza extends Model
 		'monto_a_pagar' => 'required',
 		'fecha_de_pago' => 'required',
 		'metodo_de_pago' => 'required',
-		'entregado_material_a' => 'required',
 		'comentario' => 'required',
         'usuario_edito'  => 'required',
     ];
