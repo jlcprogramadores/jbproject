@@ -69,22 +69,22 @@
             </div>
             <!-- datos de precio -->
             <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm p-1 form-group">
+                        {{ Form::label('cantidad') }}
+                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control','step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+                        {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                    </div>
+                    <div class="col-sm p-1 form-group">
+                        {{ Form::label('unidad_id','Unidad') }}
+                        {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selecciona la unidad']) }}
+                        {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                    </div>
+                </div>
                 <div class="p-1 form-group">
                     {{ Form::label('costo_unitario') }}
                     {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control','step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                
-                {{-- <div class="p-1 form-group">
-                    {{ Form::label('cantidad') }}
-                    {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control','step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
-                    {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div> --}}
-
-                <div class="p-1 form-group">
-                    {{ Form::label('unidad_id','Unidad') }}
-                    {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la unidad']) }}
-                    {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('iva_id','IVA') }}
