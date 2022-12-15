@@ -35,11 +35,12 @@
                 if(isset($factura->fecha_creacion)){
                     $fechaCreacion = Carbon\Carbon::parse($factura->fecha_creacion)->format('Y-m-d');
                 }else{
-                    $fechaCreacion = $factura->fecha_creacion;
+                    $now = new DateTime();
+                    $fechaCreacion = $now->format('Y-m-d');
                 }
             ?>
             {{ Form::label('fecha_creacion') }}
-            {{ Form::date('fecha_creacion', $fechaCreacion, ['class' => 'form-control-sm' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''),'value' => date("m-d-Y")]) }}
+            {{ Form::date('fecha_creacion', $fechaCreacion, ['class' => 'form-control-sm', 'readonly' => 'true' . ($errors->has('fecha_creacion') ? ' is-invalid' : ''),'value' => date("m-d-Y")]) }}
             {!! $errors->first('fecha_creacion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <br>
