@@ -46,8 +46,7 @@ Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso
 Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
 Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
 Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
-Route::get('/topIngreso', 'App\Http\Controllers\FinanzaController@topIngreso')->name('finanzas.topIngreso');
-Route::get('/topEgreso', 'App\Http\Controllers\FinanzaController@topEgreso')->name('finanzas.topEgreso');
+Route::post('/top', 'App\Http\Controllers\FinanzaController@top')->name('finanzas.top');
 Route::get('/showTopIngreso/{id}', 'App\Http\Controllers\FinanzaController@showTopIngreso')->name('finanzas.showTopIngreso');
 Route::get('/showTopEgreso/{id}', 'App\Http\Controllers\FinanzaController@showTopEgreso')->name('finanzas.showTopEgreso');
 Route::get('/correo/{id}', 'App\Http\Controllers\FinanzaController@correo')->name('finanzas.correo');

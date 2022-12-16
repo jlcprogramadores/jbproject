@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $finanzas->links() !!}
+                {{-- {!! $finanzas->links() !!} --}}
             </div>
         </div>
     </div>
@@ -164,12 +164,14 @@
         $(document).ready( function () {
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
+                paging: false,
                 responsive:true,
-                autoWidth: false,   
+                autoWidth: false,
+                order: [[1, 'desc']],  
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontró nada – lo siento",
-                    "info": "Página _PAGE_ de _PAGES_",
+                    "info": " _TOTAL_ Registros",
                     "infoEmpty": "No hay registros",
                     "infoFiltered": "(filtered from _MAX_ total records)",
                     "search": "Buscar:",

@@ -86,25 +86,27 @@ class FinanzaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function topIngreso()
+    public function top(Request $request)
     {   
-        $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->limit(10)->paginate();
-        
-        return view('finanza.topIngreso', compact('finanzas'))
-            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
-    }
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function topEgreso()
-    {
-        $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->limit(10)->paginate();     
+        // dd($request);
+        $tipoFinanza = $request->tipoFinanza;
+        $numRegistros = $request->numRegistros;
+        // las opciones de tipo de fiananza son  0 es egreso, 1 es ingreso
+        // y si tipoFinanza == 0 es false
+        if($tipoFinanza){ // ingreso
 
-        return view('finanza.topEgreso', compact('finanzas'))
-            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+            $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->paginate($numRegistros);
+            return view('finanza.topIngreso', compact('finanzas'))
+                ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+
+        }else{ //egreso
+
+            $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->paginate($numRegistros);     
+            
+            return view('finanza.topEgreso', compact('finanzas'))
+                ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
+
+        }
     }
     
     /**
