@@ -206,7 +206,7 @@
                             });
                     });
                 },
-                dom: "Bfrtip",
+                dom: "Blfrtip",
                 buttons:{
                     dom: {
                         button: {
