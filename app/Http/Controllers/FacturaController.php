@@ -56,8 +56,9 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {   
-        
+        dd($request->all());
         request()->validate(Factura::$rules);
+
         $factura = Factura::create($request->all());
         if ($factura->factura_base64 != null) {
             $nombreOriginal = $factura->factura_base64->getClientOriginalName();

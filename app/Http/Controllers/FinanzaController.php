@@ -189,25 +189,47 @@ class FinanzaController extends Controller
     public function storeEgreso(Request $request)
     {
         request()->validate(Finanza::$rulesEgreso);
-        $cuantasCantidades = count($request->cantidad);
-        foreach($request->cantidad as $iterRequest){
-            $requestTemporal = $request; 
-            $requestTemporal->request->add(['cantidad' => $iterRequest['cantidad']]);
-            // se crea la salida se recupera el id y se anade al request
-            $salida = Salida::create($request->all());
-            if ($salida->comprobante != null && $cuantasCantidades == 1) {
-                $nombreOriginal = $salida->comprobante->getClientOriginalName();
-                $aux = 'salida_' . $salida->id . '_';
-                $nombreFinal = $aux . $nombreOriginal;
-                $salida->comprobante->storeAs('public',$nombreFinal);
-                $file_url = '/storage/' . $nombreFinal;
-                $getSalida = Salida::find($salida->id);
-                $getSalida->comprobante = $file_url;
-                $getSalida->save();
+        // se crea la salida se recupera el id y se anade al request
+        $salida = Salida::create($request->all());
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
+        //Hasta aqui se añaden los archivos en la tabla
+        $request->request->add(['salidas_id' => $salida->id]);
+        $finanza = Finanza::create($request->all());
+        // si es almenos una factura se crean
+        if(!is_null($request->factura[0]['referencia_factura'])){
+            // se iteran las facturas que se ñadieron en egresos
+            foreach($request->factura as $iterFactura){
+                $crearFactura = [
+                    'finanza_id' => $finanza->id,
+                    'referencia_factura' => $iterFactura['referencia_factura'],
+                    'url' => $iterFactura['url'],
+                    'fecha_creacion' => $iterFactura['fecha_creacion'],
+                    'fecha_factura' => $iterFactura['fecha_factura'],
+                    'monto' => $iterFactura['monto'],
+                    'usuario_edito' => $finanza->usuario_edito,
+                    'factura_base64' => $iterFactura['factura_base64'],
+                ];
+                $factura = Factura::create($crearFactura);
+                if ($factura->factura_base64 != null) {
+                    $nombreOriginal = $factura->factura_base64->getClientOriginalName();
+                    $aux = 'factura_' . $factura->id . '_';
+                    $nombreFinal = $aux . $nombreOriginal;
+                    $factura->factura_base64->storeAs('public',$nombreFinal);
+                    $file_url = '/storage/' . $nombreFinal;
+                    $getFactura = Factura::find($factura->id);
+                    $getFactura->factura_base64 = $file_url;
+                    $getFactura->save();
+                }
             }
-            //Hasta aqui se añaden los archivos en la tabla
-            $request->request->add(['salidas_id' => $salida->id]);
-            $finanza = Finanza::create($request->all());
         }
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza creada exitosamente.');
