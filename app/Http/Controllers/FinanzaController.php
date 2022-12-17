@@ -354,10 +354,12 @@ class FinanzaController extends Controller
         $cantidad = $finanza->monto_a_pagar;
         $comprobante = $salida->comprobante;
         $email = $proveedor->mail;
+        $nombreProveedor = $proveedor->nombre; 
 
         $data = [
             'comprobante' => 'https://mttojbindustrial.com/'.$comprobante,
             'monto_a_pagar' => $cantidad,
+            'nombreProveedor' => $nombreProveedor,
         ];
 
         $correo = new ComprobanteMailable($data);

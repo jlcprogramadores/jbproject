@@ -17,7 +17,7 @@
 				<table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
 					<tr>
 						<td align="center" style="padding:40px 0 30px 0;background:#0d6efd;">
-							<img src="{{ asset('images/JB.png') }}" alt="150" width="150" style="height:auto;display:block;" />
+							<img src="{{ asset('https://www.mttojbindustrial.com/images/JB.png') }}" alt="150" width="150" style="height:auto;display:block;" />
 						</td>
 					</tr>
 					<tr>
@@ -25,8 +25,11 @@
 							<table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
 								<tr>
 									<td style="padding:0 0 36px 0;color:#153643;">
-										<h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Comprobante de Pago JB Industrial</h1>
-										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Estimado Proveedor adjuntamos el comprobante de pago por la cantidad de ${{$monto_a_pagar}} M.N.</p>
+										<h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Saludos Cordiales</h1>
+										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Estimado Proveedor {{$nombreProveedor}}, el presente correo hace llegar su comprobante de pago por la cantidad de ${{number_format($monto_a_pagar)}} M.N. </p>
+										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Gracias por su atención, que pase un excelente día.</p>
+										
+										
 										<p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href={{$comprobante}} style="color:#ee4c50;text-decoration:underline;">Comprobante de Pago</a></p>
 									</td>
 								</tr>

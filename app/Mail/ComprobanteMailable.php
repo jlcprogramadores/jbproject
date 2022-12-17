@@ -13,6 +13,7 @@ class ComprobanteMailable extends Mailable
 
     public $comprobante;
     public $monto_a_pagar;
+    public $nombreProveedor;
 
     /**
      * Create a new message instance.
@@ -24,6 +25,7 @@ class ComprobanteMailable extends Mailable
         $this->mailData = $mailData;
         $this->comprobante = $mailData['comprobante'];
         $this->monto_a_pagar = $mailData['monto_a_pagar'];
+        $this->nombreProveedor = $mailData['nombreProveedor'];
     }
 
     /**
@@ -33,6 +35,6 @@ class ComprobanteMailable extends Mailable
      */
     public function build()
     {   
-        return $this->view('finanza.enviarCorreo');
+        return $this->view('finanza.enviarCorreo')->subject('Comprobante de Pago Mtto JB Industrial');
     }
 }
