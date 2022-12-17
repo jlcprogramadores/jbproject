@@ -33,6 +33,8 @@ class RoleSeeder extends Seeder
         $permisomenutop = Permission::create(['name' => 'menu.top', 'description' => 'Ver Submenú Finanzas-Top Egresos e Ingresos'])->syncRoles($rolAdmin);
         $permisomenufiltros = Permission::create(['name' => 'menu.filtros', 'description' => 'Ver Submenú Finanzas-Filtros'])->syncRoles($rolAdmin);
         $permisomenugraficas = Permission::create(['name' => 'menu.graficas', 'description' => 'Ver Submenú Finanzas-Gráficas'])->syncRoles($rolAdmin);
+        $permisomenucentrodecostos = Permission::create(['name' => 'menu.centrodecostos', 'description' => 'Ver Submenú Finanzas-Centro de Costos'])->syncRoles($rolAdmin);
+        
         //Submenu administracion
         $permisomenuclientes = Permission::create(['name' => 'menu.clientes', 'description' => 'Ver Submenú Administración-Clientes'])->syncRoles($rolAdmin);
         $permisomenuproveedores = Permission::create(['name' => 'menu.proveedores', 'description' => 'Ver Submenú Administración-Proveedores'])->syncRoles($rolAdmin);
@@ -178,6 +180,9 @@ class RoleSeeder extends Seeder
 
         //Permisos Gráficas
         $permisofinanzasgraficas = Permission::create(['name' => 'finanzas.graficas', 'description' => 'Gráficas:Tabla'])->syncRoles($rolAdmin);
+         
+        //Permisos Gráficas
+        $permisofinanzascentrodecostos = Permission::create(['name' => 'finanzas.centrodecostos', 'description' => 'Centro de Costos:Tabla'])->syncRoles($rolAdmin);
         
     }
 }

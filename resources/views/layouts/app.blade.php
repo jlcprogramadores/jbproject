@@ -80,9 +80,11 @@
                                     {{ __('Gráficas Generales') }}
                                 </a>
                                 @endcan
+                                @can('menu.centrodecostos')
                                 <a class="dropdown-item" href="{{ route('finanzas.centrodecostos') }}">
                                     {{ __('Centro de Costos') }}
                                 </a>
+                                @endcan
                                 </form>
                             </div>
                         </li>
