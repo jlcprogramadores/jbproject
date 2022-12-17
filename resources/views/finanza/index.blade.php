@@ -105,14 +105,16 @@
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
                                             <td>
-                                                @foreach($finanza->factura as $iterFactura)
-                                                <?php   
-                                                $factura = "";
-                                                $factura .= $iterFactura->referencia_factura ? $iterFactura->referencia_factura : '';
-                                                $factura .= "/";
-                                                ?>
-                                                {{$factura}}
-                                                @endforeach
+                                                @if (!empty($finanza->factura[0]))
+                                                 @foreach($finanza->factura as $iterFactura)
+                                                    {{$iterFactura->referencia_factura}}
+                                                    /
+                                                        
+                                                    @endforeach
+                                                @else
+                                                    <p class="badge bg-danger">No facturado</p>
+                                                @endif
+
                                             </td>
                                             <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
 											<td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
