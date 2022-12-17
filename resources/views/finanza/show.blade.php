@@ -95,7 +95,7 @@
                             @endif  
                         @endif
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
+                            <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
                         </div>
                     </div>
                 </div>

@@ -64,7 +64,7 @@
                         </div>
                         <br>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('finanzas.index') }}"> Atrás</a>
+                            <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
                             @if ($salida->comprobante)
                                 <a class="btn btn-success" href="{{ route('finanzas.enviarCorreo',$finanza->id) }}"> Enviar Comprobante</a>
                             @endif   
