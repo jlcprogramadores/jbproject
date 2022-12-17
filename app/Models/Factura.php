@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $url
  * @property $fecha_creacion
  * @property $fecha_factura
+ * @property $monto
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -25,6 +26,7 @@ class Factura extends Model
 		'fecha_creacion' => 'required',
 		'fecha_factura' => 'required',
     'usuario_edito'  => 'required',
+    'monto'  => 'required',
     ];
 
     protected $perPage = 1000000;
@@ -34,7 +36,7 @@ class Factura extends Model
      *
      * @var array
      */
-    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id','usuario_edito'];
+    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id','usuario_edito','monto'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

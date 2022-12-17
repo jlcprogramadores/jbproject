@@ -23,7 +23,7 @@
                                     data: {
                                         labels: ['Ingresos', 'Egresos'],
                                         datasets: [{
-                                            label: 'Total',
+                                            label: 'Total:$',
                                             data: [{{$ingresos}}, {{$egresos}}]
                                         }]
                                     },

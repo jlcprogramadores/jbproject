@@ -35,6 +35,10 @@
                             <strong>Fecha Factura:</strong>
                             {{ $factura->fecha_factura }}
                         </div>
+                        <div class="form-group">
+                            <strong>Monto:</strong>
+                            {{ $factura->monto }}
+                        </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('facturas.index') }}"> Atrás</a>
                         </div>

@@ -39,6 +39,7 @@
 										<th>Referencia Factura</th>
 										<th>Factura Base64</th>
 										<th>Url</th>
+                                        <th>Monto</th>
 										<th>Fecha Creacion</th>
 										<th>Fecha Factura</th>
                                         <th>Actualización</th>
@@ -53,6 +54,7 @@
 											<td>{{ $factura->referencia_factura }}</td>
 											<td>{{ $factura->factura_base64 }}</td>
 											<td>{{ $factura->url }}</td>
+                                            <td>{{ $factura->monto }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
                                             <td>{{ $factura->usuario_edito }}  <br/> {{ $factura->updated_at }}</td>  

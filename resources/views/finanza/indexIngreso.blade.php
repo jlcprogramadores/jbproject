@@ -98,22 +98,24 @@
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>
                                             <td>
-                                                @foreach($finanza->factura as $iterFactura)
-                                                <?php   
-                                                $factura = "";
-                                                $factura .= $iterFactura->referencia_factura ? $iterFactura->referencia_factura : '';
-                                                $factura .= "/";
-                                                ?>
-                                                {{$factura}}
-                                                @endforeach
+                                                @if (!empty($finanza->factura[0]))
+                                                 @foreach($finanza->factura as $iterFactura)
+                                                    {{$iterFactura->referencia_factura}}
+                                                    /
+                                                        
+                                                    @endforeach
+                                                @else
+                                                    <p class="badge bg-danger">No facturado</p>
+                                                @endif
+
                                             </td>
                                             <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
-											<td>{{ $finanza->costo_unitario.' '.$finanza->unidad->nombre }}</td>
-											<td>{{ $finanza->cantidad }}</td>
-                                            <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
-											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
+											<td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
+											<td>{{ '$'.$finanza->costo_unitario }}</td>
+                                            <td>{{  '$'. $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
+											<td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
-											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
+											<td>{{ '$'.$montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td >{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
                                             @if ($montoAPagar>0)

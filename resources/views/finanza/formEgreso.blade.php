@@ -70,9 +70,9 @@
             <!-- datos de precio -->
             <div class="col-sm">
                 <div class="row">
-                    <div class="col-sm p-1 form-group">
+                    <div class=" col-sm p-1 form-group">
                         {{ Form::label('cantidad') }}
-                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control', 'onchange' => "obtenCantidad(this.value)", 'step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
+                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control', 'id' => 'cantidad' , 'onchange' => "obtenCantidad(this.value)", 'step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad ']) }}
                         {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                     </div>
                     <div class="col-sm p-1 form-group">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('costo_unitario') }}
-                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control','onchange'=>"obtenCostoUnitario(this.value);" ,'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
+                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control', 'id'=>'costoUnitario', 'onchange'=>"obtenCostoUnitario(this.value);" ,'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -98,7 +98,7 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('Total') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control', 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -179,24 +179,31 @@
         
         function obtenCostoUnitario(val) {
             costoUnitarioAux = val;
+
+            var cantidad = document.getElementById('cantidad');
             var subtotal = document.getElementById('sub-total');
-            subtotal.value = costoUnitarioAux * cantidadAux;
+            
+            subtotal.value = costoUnitarioAux * cantidad.value;
             
             var ivaAux = $( "#selectIva option:selected" ).text();
-            var subTotal = costoUnitarioAux * cantidadAux;
+            var subTotal = costoUnitarioAux * cantidad.value;
+            
             var total = document.getElementById('total');
-
             total.value = subTotal * ivaAux;
         }
+        
         function obtenCantidad(val) {
             cantidadAux = val;
+            
+            var costoUnitario = document.getElementById('costoUnitario');
             var subtotal = document.getElementById('sub-total');
-            subtotal.value = costoUnitarioAux * cantidadAux;
-
+            
+            subtotal.value = cantidadAux * costoUnitario.value;
+            
             var ivaAux = $( "#selectIva option:selected" ).text();
-            var subTotal = costoUnitarioAux * cantidadAux;
+            var subTotal = cantidadAux * costoUnitario.value;
+            
             var total = document.getElementById('total');
-
             total.value = subTotal * ivaAux;
         }
 
@@ -206,9 +213,15 @@
 
         function obtenIva(val) {
             var ivaAux = $( "#selectIva option:selected" ).text();
-            var subTotal = costoUnitarioAux * cantidadAux;
-            var total = document.getElementById('total');
+            var cantidad = document.getElementById('cantidad');
+            var costoUnitario = document.getElementById('costoUnitario');
+            var subtotal = document.getElementById('sub-total');
+            
+            subtotal.value = cantidad.value * costoUnitario.value;
 
+            var subTotal = cantidad.value * costoUnitario.value;
+            
+            var total = document.getElementById('total');
             total.value = subTotal * ivaAux;
         }
 

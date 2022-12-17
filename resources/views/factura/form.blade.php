@@ -56,6 +56,11 @@
             {{ Form::date('fecha_factura', $fechaFactura, ['class' => 'form-control-sm' . ($errors->has('fecha_factura') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Factura']) }}
             {!! $errors->first('fecha_factura', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label('monto') }}
+            {{ Form::text('monto', $factura->monto, ['class' => 'form-control' . ($errors->has('monto') ? ' is-invalid' : ''), 'placeholder' => 'Monto']) }}
+            {!! $errors->first('monto', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}

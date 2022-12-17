@@ -35,8 +35,6 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-                                        <th>Monto A Pagar</th>
 										<th>Fecha Entrada</th>
 										<th>Fecha Salida</th>
                                         <th>Vence</th>
@@ -50,11 +48,12 @@
 										<th>Descripción</th>
                                         <th>Factura o Folio</th>
                                         <th>Proveedor o cliente</th>
-										<th>C.U. & Unidad</th>
+										<th>Cantidad & Unidad</th>
 										<th>Costo Unitario</th>
                                         <th>Subtotal Total MXN</th>
 										<th>Iva</th>
                                         <th>Total $MXN$</th>
+										<th>Monto A Pagar</th>
 										<th>Fecha De Pago</th>
 										<th>Metodo De Pago</th>
                                         <th>$ Estatus $</th>
@@ -69,63 +68,74 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($finanzas as $finanza)
-                                        <tr>
+                                    <tr>
 
-                                            <td>{{ $finanza->no }}</td>
-											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
-											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
-											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
-                                            <td>{{ $finanza->vence }}</td>
-											<td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>
-                                            <?php 
-                                                $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
-                                                $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
-                                                $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
+                                        <td>{{ $finanza->no }}</td>
+                                        <td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
+                                        <td>{{ $finanza->vence }}</td>
+                                        <td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>
+                                        <?php 
+                                            $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
+                                            $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
+                                            $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
                                             ?>
-                                            <td>{{ $diferencia_en_dias }}</td>
-                                            @if ($diferencia_en_dias <= 0)
-                                                <td><p class="badge bg-danger">Vencido</p></td>
-                                            @else
-                                                <td><p class="badge bg-warning text-dark">Por vencer</p></td>
-                                            @endif
-                                            <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
-											<td>{{ $tipoFinanza }}</td>
-                                            <?php 
-                                                $fam = 'F: '.$finanza->famCategoria->familia->nombre;
-                                                $cat = 'C: '.$finanza->famCategoria->nombre;
+                                        <td>{{ $diferencia_en_dias }}</td>
+                                        @if ($diferencia_en_dias <= 0)
+                                        <td><p class="badge bg-danger">Vencido</p></td>
+                                        @else
+                                        <td><p class="badge bg-warning text-dark">Por vencer</p></td>
+                                        @endif
+                                        <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
+                                        <td>{{ $tipoFinanza }}</td>
+                                        <?php 
+                                            $fam = 'F: '.$finanza->famCategoria->familia->nombre;
+                                            $cat = 'C: '.$finanza->famCategoria->nombre;
                                             ?>
-											<td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
-                                            <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
-                                            <td>{{ $finanza->proyecto->nombre }}</td>
-											<td>{{ $finanza->descripcion }}</td>
-                                            <td>factura_id</td>
-                                            <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
-											<td>{{ $finanza->costo_unitario.' '.$finanza->unidad->nombre }}</td>
-											<td>{{ $finanza->cantidad }}</td>
-                                            <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
-											<td>{{ $iva = $finanza->iva->porcentaje/100 }}</td>
-                                            <td>{{ '$'.$subTotal*$iva }}</td>
-											<td >{{ $finanza->fecha_de_pago }}</td>
-											<td>{{ $finanza->metodo_de_pago }}</td>
-                                            @if ($montoAPagar>0)
-                                                <td><p class="badge bg-success">Pagado</p></td>
+                                        <td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
+                                        <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
+                                        <td>{{ $finanza->proyecto->nombre }}</td>
+                                        <td>{{ $finanza->descripcion }}</td>
+                                        <td>
+                                            @if (!empty($finanza->factura[0]))
+                                             @foreach($finanza->factura as $iterFactura)
+                                                {{$iterFactura->referencia_factura}}
+                                                /
+                                                    
+                                                @endforeach
                                             @else
-                                                <td><p class="badge bg-danger">Pendiente Pagar</p></td>
+                                                <p class="badge bg-danger">No facturado</p>
                                             @endif
-											<td>{{ $finanza->entregado_material_a }}</td>
-                                            <td>{{ $finanza->fecha_facturacion }}</td>
-                                            <td>{{ $finanza->comentario }}</td>
-                                            @if ($finanza->salidas_id)
-                                                @if ($finanza->salida->enviado == 0)
-                                                    <td><p class="badge bg-danger">Sin Enviar</p></td>
-                                                @else
-                                                    <td><p class="badge bg-success">Enviado</p></td>
-                                                @endif
+
+                                        </td>
+                                        <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
+                                        <td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
+                                        <td>{{ '$'.$finanza->costo_unitario }}</td>
+                                        <td>{{  '$'. $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
+                                        <td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
+                                        <td>{{ '$'.$subTotal*$iva }}</td>
+                                        <td>{{ '$'.$montoAPagar = $finanza->monto_a_pagar }}</td>
+                                        <td >{{ $finanza->fecha_de_pago }}</td>
+                                        <td>{{ $finanza->metodo_de_pago }}</td>
+                                        @if ($montoAPagar>0)
+                                            <td><p class="badge bg-success">Pagado</p></td>
+                                        @else
+                                            <td><p class="badge bg-danger">Pendiente Pagar</p></td>
+                                        @endif
+                                        <td>{{ $finanza->entregado_material_a }}</td>
+                                        <td>{{ $finanza->fecha_facturacion }}</td>
+                                        <td>{{ $finanza->comentario }}</td>
+                                        @if ($finanza->salidas_id)
+                                            @if ($finanza->salida->enviado == 0)
+                                                <td><p class="badge bg-danger">Sin Enviar</p></td>
                                             @else
-                                                <td></td>
+                                                <td><p class="badge bg-success">Enviado</p></td>
                                             @endif
-                                            <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
-                                            <td>
+                                        @else
+                                            <td></td>
+                                        @endif
+                                        <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
+                                        <td>
                                                 <span class="completo">
                                                     <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
                                                         <a class="btn btn-sm btn-primary " href="{{ route('finanzas.showTopIngreso',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>

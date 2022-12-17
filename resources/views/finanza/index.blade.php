@@ -54,7 +54,7 @@
                                         <th>Razón social</th>
                                         <th>Proyecto</th>
 										<th>Descripción</th>
-                                        <th>Factaura o Folio</th>
+                                        <th>Factura o Folio</th>
                                         <th>Proveedor o cliente</th>
 										<th>Cantidad & Unidad</th>
 										<th>Costo Unitario</th>
@@ -118,11 +118,11 @@
                                             </td>
                                             <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
 											<td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
-											<td>{{ $finanza->costo_unitario }}</td>
-                                            <td>{{ $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
-											<td>{{ $iva = $finanza->iva->porcentaje }}</td>
+											<td>{{ '$'.$finanza->costo_unitario }}</td>
+                                            <td>{{  '$'. $subTotal = $finanza->costo_unitario*$finanza->cantidad }}</td>
+											<td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
                                             <td>{{ '$'.$subTotal*$iva }}</td>
-											<td>{{ $montoAPagar = $finanza->monto_a_pagar }}</td>
+											<td>{{ '$'.$montoAPagar = $finanza->monto_a_pagar }}</td>
 											<td >{{ $finanza->fecha_de_pago }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
                                             @if ($montoAPagar>0)

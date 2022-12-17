@@ -52,10 +52,10 @@
                                         <td>{{ ++$i }}</td>
 
                                         <td>{{$finanza['nombre']}}</td> 
-                                        <td>{{$finanza['presupuesto']}}</td>    
-                                        <td>{{$finanza['margen']}}</td> 
-                                        <td>{{$finanza['costo']}}</td> 
-                                        <td>{{$finanza['utilidad']}}</td> 
+                                        <td>${{$finanza['presupuesto']}}</td>    
+                                        <td>${{$finanza['margen']}}</td> 
+                                        <td>${{$finanza['costo']}}</td> 
+                                        <td>${{$finanza['utilidad']}}</td> 
                                         @if (($finanza['utilidad']-$finanza['costo']) > 0)
                                             <td><p class="text-success">+ {{$finanza['utilidad']-$finanza['costo']}}</p></td>
                                         @else

@@ -110,28 +110,33 @@
             <div class="col-sm">
                 <div class="p-1 form-group">
                     {{ Form::label('costo_unitario') }}
-                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo Unitario']) }}
-                    {!! $errors->first('costo_unitario', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control', 'id'=>'costoUnitario', 'onchange'=>"obtenCostoUnitario(this.value);" ,'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
+                    {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
+                <div class=" col-sm p-1 form-group">
                     {{ Form::label('cantidad') }}
-                    {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control','step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
-                    {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control', 'id' => 'cantidad' , 'onchange' => "obtenCantidad(this.value)", 'step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad ']) }}
+                    {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('unidad_id','unidad') }}
+                    {{ Form::label('unidad_id','Unidad') }}
                     {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Unidad Id']) }}
                     {!! $errors->first('unidad_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('iva_id','iva_id') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control' . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Iva Id']) }}
-                    {!! $errors->first('iva_id', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('iva_id','IVA') }}
+                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control', 'id'=>'selectIva', 'onchange'=>"obtenIva(this.value);" . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona IVA']) }}
+                    {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
-                    {{ Form::label('monto_a_pagar') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control', 'step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto A Pagar']) }}
-                    {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('Sub-Total')}} 
+                    <br>
+                    <input type="number" class='form-control' readonly='true' id="sub-total" placeholder ='Sub-total' name="sub-total" onchange="obtenSubTotal(this.value)">
+                </div>
+                <div class="p-1 form-group">
+                    {{ Form::label('Total') }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
+                    {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <?php 
                     $fechaDePago = isset($finanza->fecha_de_pago) ? $fechaCreacion = Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : $finanza->fecha_de_pago;
@@ -154,7 +159,7 @@
                     'Cancelación' => 'Cancelación'
                     ];
                     ?>
-                    {{ Form::label('metodo_de_pago') }}
+                    {{ Form::label('Método de Pago') }}
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Metodo De Pago']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -197,6 +202,60 @@
             var data = e.params.data;
             getCategoriByFamilia(data.id);           
         });
+
+        let costoUnitarioAux = "0";
+        let cantidadAux = "0";
+        let subTotalAux = "0";
+        let ivaAux = "0";
+        
+        function obtenCostoUnitario(val) {
+            costoUnitarioAux = val;
+
+            var cantidad = document.getElementById('cantidad');
+            var subtotal = document.getElementById('sub-total');
+            
+            subtotal.value = costoUnitarioAux * cantidad.value;
+            
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var subTotal = costoUnitarioAux * cantidad.value;
+            
+            var total = document.getElementById('total');
+            total.value = subTotal * ivaAux;
+        }
+        
+        function obtenCantidad(val) {
+            cantidadAux = val;
+            
+            var costoUnitario = document.getElementById('costoUnitario');
+            var subtotal = document.getElementById('sub-total');
+            
+            subtotal.value = cantidadAux * costoUnitario.value;
+            
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var subTotal = cantidadAux * costoUnitario.value;
+            
+            var total = document.getElementById('total');
+            total.value = subTotal * ivaAux;
+        }
+
+        function obtenSubTotal(val) {
+            // console.log('soy subtotal ' + val);
+        }
+
+        function obtenIva(val) {
+            var ivaAux = $( "#selectIva option:selected" ).text();
+            var cantidad = document.getElementById('cantidad');
+            var costoUnitario = document.getElementById('costoUnitario');
+            var subtotal = document.getElementById('sub-total');
+            
+            subtotal.value = cantidad.value * costoUnitario.value;
+
+            var subTotal = cantidad.value * costoUnitario.value;
+            
+            var total = document.getElementById('total');
+            total.value = subTotal * ivaAux;
+        }
+        
         function getCategoriByFamilia(id){
             var iterable='';
             $.ajax({
