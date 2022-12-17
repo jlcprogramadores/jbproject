@@ -41,7 +41,7 @@ php artisan storage:link
  git push ó subirlo mediente desktop
 
 # Para que funcione el seeder (se llenan las tablas solas)
- php artisan migrate:fresh --seed
+php artisan migrate:fresh --seed
 
 # Para llenar tablas en  producción OJO SOBREESCRIBE TODO
 migrate:fresh --seed --force

@@ -26,7 +26,7 @@
 								<tr>
 									<td style="padding:0 0 36px 0;color:#153643;">
 										<h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Saludos Cordiales</h1>
-										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Estimado Proveedor {{$nombreProveedor}}, el presente correo hace llegar su comprobante de pago por la cantidad de ${{number_format($monto_a_pagar)}} M.N. </p>
+										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Estimado Proveedor {{$nombreProveedor}}, el presente correo hace llegar su comprobante de pago por la cantidad de ${{number_format($monto_a_pagar)}} M.X.N. </p>
 										<p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;" >Gracias por su atención, que pase un excelente día.</p>
 										
 										
