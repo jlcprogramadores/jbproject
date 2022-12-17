@@ -37,20 +37,21 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('fecha_entrada') }}
-                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control-sm' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
+                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control-sm', 'id' => 'fechaEntrada' , 'onchange' => "obtenFechaEntrada(this.value)" . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
                     {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                </div>
+                <div class="p-1 form-group">
+                    {{ Form::label('vence') }}
+                    {{ Form::number('vence', $finanza->vence, ['class' => 'form-control', 'id' => 'vence' , 'onchange' => "obtenVence(this.value)" . ($errors->has('vence') ? ' is-invalid' : ''), 'placeholder' => 'En cuantos días vence']) }}
+                    {!! $errors->first('vence', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <!-- ocupa el campo de fecha facturacion no de salida -->
                 <div class="p-1 form-group">
                     {{ Form::label('fecha_salida') }}
-                    {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control-sm' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+                    {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control-sm', 'id' => 'fechaSalida', 'readonly' => 'true' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
                     {!! $errors->first('fecha_salida', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('vence') }}
-                    {{ Form::number('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''), 'placeholder' => 'En cuantos días vence']) }}
-                    {!! $errors->first('vence', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+                
                 <div class="p-1 form-group">
                     {{ Form::label('descripción') }}
                     {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
@@ -176,7 +177,61 @@
         let cantidadAux = "0";
         let subTotalAux = "0";
         let ivaAux = "0";
+        let venceAux = "0";
+        let fechaEntradaAux = "0";
         
+        function obtenVence(val) {
+            var fechaSalida = document.getElementById('fechaSalida');
+            var fechaEntrada = document.getElementById('fechaEntrada');
+            var result = new Date(fechaEntrada.value);
+            var diasSumados = Number(val);
+
+            result.setDate(result.getDate() + (diasSumados)+1);   
+            
+            var ano = (result.getFullYear());
+            var mes = ((result.getMonth()+1));
+            var dia = (result.getDate());
+            
+            if (mes < 10) {
+                mes = '0'+ mes
+            }
+
+            if (dia < 10) {
+                dia = '0'+ dia
+            }
+
+            cadFechaSalida = ano + '-' + mes + '-'  + dia;
+
+            fechaSalida.value = cadFechaSalida;
+            
+        }
+
+        function obtenFechaEntrada(val) {
+            var fechaSalida = document.getElementById('fechaSalida');
+            var vence = document.getElementById('vence');
+            var fechaEntrada = val;
+            var result = new Date(fechaEntrada);
+            var diasSumados = Number(vence.value);
+
+            result.setDate(result.getDate() + (diasSumados)+1);   
+            
+            var ano = (result.getFullYear());
+            var mes = ((result.getMonth()+1));
+            var dia = (result.getDate());
+            
+            if (mes < 10) {
+                mes = '0'+ mes
+            }
+
+            if (dia < 10) {
+                dia = '0'+ dia
+            }
+
+            cadFechaSalida = ano + '-' + mes + '-'  + dia;
+
+            fechaSalida.value = cadFechaSalida;
+            
+        }
         function obtenCostoUnitario(val) {
             costoUnitarioAux = val;
 
