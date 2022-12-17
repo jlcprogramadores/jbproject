@@ -56,7 +56,6 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {   
-        dd($request->all());
         request()->validate(Factura::$rules);
 
         $factura = Factura::create($request->all());
