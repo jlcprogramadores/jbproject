@@ -19,6 +19,9 @@
                             </span>
 
                              <div class="float-right">
+                                <a href="javascript:history.back()" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
+                                </a>
                               </div>
                         </div>
                     </div>
