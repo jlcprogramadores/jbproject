@@ -53,14 +53,14 @@
                                         <td>{{ ++$i }}</td>
 
                                         <td>{{$finanza['nombre']}}</td> 
-                                        <td>${{number_format($finanza['presupuesto'])}}</td>    
-                                        <td>${{number_format($finanza['margen'])}}</td> 
-                                        <td>${{number_format($finanza['costo'])}}</td> 
-                                        <td>${{number_format($finanza['utilidad'])}}</td> 
+                                        <td>${{number_format($finanza['presupuesto'],2)}}</td>    
+                                        <td>${{number_format($finanza['margen'],2)}}</td> 
+                                        <td>${{number_format($finanza['costo'],2)}}</td> 
+                                        <td>${{number_format($finanza['utilidad'],2)}}</td> 
                                         @if (($finanza['utilidad']-$finanza['costo']) > 0)
-                                            <td><p class="text-success">+ {{number_format($finanza['utilidad']-$finanza['costo'])}}</p></td>
+                                            <td><p class="text-success">+ {{number_format($finanza['utilidad']-$finanza['costo'],2)}}</p></td>
                                         @else
-                                            <td><p class="text-danger">{{number_format($finanza['utilidad']-$finanza['costo'])}}</p></td>
+                                            <td><p class="text-danger">{{number_format($finanza['utilidad']-$finanza['costo'],2)}}</p></td>
                                         @endif
                                         @if ($finanza['costo'] < $finanza['presupuesto'])
                                                 <td><p class="badge bg-success">Debajo del presupuesto</p></td>

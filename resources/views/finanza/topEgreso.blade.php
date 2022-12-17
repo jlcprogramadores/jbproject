@@ -122,12 +122,12 @@
                                                     <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre }}
                                                     </td>
                                                     <td>{{ $finanza->cantidad . ' ' . $finanza->unidad->nombre }}</td>
-                                                    <td>{{ '$' . number_format($finanza->costo_unitario) }}</td>
-                                                    <td>{{ '$' . number_format($subTotal = $finanza->costo_unitario * $finanza->cantidad) }}
+                                                    <td>{{ '$' . number_format($finanza->costo_unitario,2) }}</td>
+                                                    <td>{{ '$' . number_format($subTotal = $finanza->costo_unitario * $finanza->cantidad,2) }}
                                                     </td>
                                                     <td>{{ ($iva = $finanza->iva->porcentaje) . '%' }}</td>
-                                                    <td>{{ '$' . number_format($subTotal * $iva) }}</td>
-                                                    <td>{{ '$' . number_format($montoAPagar = $finanza->monto_a_pagar) }}</td>
+                                                    <td>{{ '$' . number_format($subTotal * $iva,2) }}</td>
+                                                    <td>{{ '$' . number_format($montoAPagar = $finanza->monto_a_pagar,2) }}</td>
                                                     <td>{{ $finanza->fecha_de_pago }}</td>
                                                     <td>{{ $finanza->metodo_de_pago }}</td>
                                                     @if ($montoAPagar > 0)

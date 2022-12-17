@@ -59,8 +59,8 @@
 											<td>{{ $proyecto->nombre }}</td>
 											<td>{{ $proyecto->descripcion }}</td>
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
-                                            <td>{{ '$'. number_format($proyecto->presupuesto) }}</td>
-                                            <td>{{ '$'. number_format($proyecto->margen) }}</td>
+                                            <td>{{ '$'. number_format($proyecto->presupuesto,2) }}</td>
+                                            <td>{{ '$'. number_format($proyecto->margen,2) }}</td>
                                             <td>{{ $proyecto->usuario_edito }}  <br/> {{ $proyecto->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
