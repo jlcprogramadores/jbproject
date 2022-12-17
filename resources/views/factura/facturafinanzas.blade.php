@@ -64,7 +64,7 @@
                                                 <td><span class="text-danger">Sin Link</span></td>
                                             @endif 
 											<td>{{ $factura->url }}</td>
-                                            <td>{{ $factura->monto }}</td>
+                                            <td>{{ '$'. number_format( $factura->monto) }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
                                             <td>{{ $factura->usuario_edito }}  <br/> {{ $factura->updated_at }}</td>  
