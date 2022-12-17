@@ -154,7 +154,7 @@
                             <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
                             <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
                             <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
-                            <td><input id="monto" type="number" name="factura[0][monto]" class="form-control"/></td>
+                            <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control"/></td>
                         <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
                         </tr>
                     </table>
@@ -328,7 +328,7 @@
                      '<td><input type="text" name="factura['+i+'][url]" class="form-control" required /></td>'+
                      '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control" required /></td>'+
                      '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required /></td>'+
-                     '<td><input type="number" name="factura['+i+'][monto]" class="form-control" required /></td>'+
+                     '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" required /></td>'+
                      '<td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td>'+
                 '</tr>'
                 );
