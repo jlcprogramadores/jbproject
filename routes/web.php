@@ -46,6 +46,7 @@ Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso
 Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
 Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
 Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
+Route::get('/confirmarPago/{id}', 'App\Http\Controllers\FinanzaController@confirmarPago')->name('finanzas.confirmarPago');
 Route::post('/top', 'App\Http\Controllers\FinanzaController@top')->name('finanzas.top');
 Route::get('/showTopIngreso/{id}', 'App\Http\Controllers\FinanzaController@showTopIngreso')->name('finanzas.showTopIngreso');
 Route::get('/showTopEgreso/{id}', 'App\Http\Controllers\FinanzaController@showTopEgreso')->name('finanzas.showTopEgreso');
@@ -65,4 +66,4 @@ Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodeco
 
 
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

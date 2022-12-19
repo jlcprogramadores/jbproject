@@ -65,6 +65,7 @@
                                                 <th>Fecha Facturacion</th>
                                                 <th>Comentario</th>
                                                 <th>Comprobante</th>
+                                                <th>Pagado</th>
                                                 <th>Fecha Actualización</th>
 
                                                 <th>Acciones</th>
@@ -154,6 +155,11 @@
                                                         @endif
                                                     @else
                                                         <td></td>
+                                                    @endif
+                                                    @if ($finanza->es_pagado == 0)
+                                                        <td><p class="badge bg-danger">Sin Pagar</p></td>
+                                                    @else
+                                                        <td><p class="badge bg-success">Pagado</p></td>
                                                     @endif
                                                     <td><span class="peque">{{ $finanza->usuario_edito }}</span> <br /> <span
                                                             class="peque">{{ $finanza->updated_at }}</span></td>

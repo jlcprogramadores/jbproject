@@ -62,6 +62,7 @@
                                         <th>Fecha Facturacion</th>
 										<th>Comentario</th>
                                         <th>Comprobante</th>
+                                        <th>Pagado</th>
                                         <th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -135,10 +136,16 @@
                                             @else
                                                 <td></td>
                                             @endif
+                                            @if ($finanza->es_pagado == 0)
+                                                <td><p class="badge bg-danger">Sin Pagar</p></td>
+                                            @else
+                                                <td><p class="badge bg-success">Pagado</p></td>
+                                            @endif
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                             <td>
                                                 <span class="completo">
                                                     <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
+                                                        <a class="btn btn-sm btn-info " href="{{ route('finanzas.confirmarPago',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>      
                                                         @if ($finanza->salidas_id)
                                                             @can('finanzas.correo')    
                                                             <a class="btn btn-sm btn-secondary " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>      

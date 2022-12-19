@@ -523,6 +523,29 @@ class FinanzaController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmarPago($id)
+    {
+        $finanza = Finanza::find($id);
+        
+        if ($finanza->es_pagado == 0) {
+            $finanza->es_pagado = 1;
+            $finanza->save();
+            return back()->with('success', 'Pago actualizado (PAGADO) exitosamente.');
+        }else{
+            $finanza->es_pagado = 0;
+            $finanza->save();
+            return back()->with('success', 'Pago actualizado (SIN PAGAR) exitosamente.');
+        }
+
+        
+    }
+
+    /**
      * Display a listing of the supplier.
      *
      * @return \Illuminate\Http\Response
