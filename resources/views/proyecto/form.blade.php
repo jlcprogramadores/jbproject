@@ -19,12 +19,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('presupuesto') }}
-            {{ Form::number('presupuesto', $proyecto->presupuesto, ['class' => 'form-control' . ($errors->has('presupuesto') ? ' is-invalid' : ''), 'placeholder' => 'Presupuesto']) }}
+            {{ Form::number('presupuesto', $proyecto->presupuesto, ['class' => 'form-control', 'id' => 'presupuesto' , 'onchange' => "obtenPresupuesto(this.value)" . ($errors->has('presupuesto') ? ' is-invalid' : ''), 'placeholder' => 'Presupuesto']) }}
             {!! $errors->first('presupuesto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('margen') }}
-            {{ Form::number('margen', $proyecto->margen, ['class' => 'form-control' . ($errors->has('margen') ? ' is-invalid' : ''), 'placeholder' => 'Margen']) }}
+            {{ Form::number('margen', $proyecto->margen, ['class' => 'form-control', 'id' => 'margen' , 'onchange' => "obtenMargen(this.value)" . ($errors->has('margen') ? ' is-invalid' : ''), 'placeholder' => 'Margen']) }}
             {!! $errors->first('margen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group d-none">
@@ -39,9 +39,38 @@
         </div>
     </div>
     <div class="box-footer mt20">
+        <span id="advertencia" style="color: red" > El Presupuesto debe ser menor al Margen</span>                                
         <br>
         <a href="{{ route('proyectos.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <button type="submit" class="btn btn-primary" id="btn-Aceptar" >Aceptar</button>
     </div>
 </div>
 @endif
+
+<script>
+    document.getElementById("advertencia").style.display = "none";
+    function obtenPresupuesto(val) {
+        var presupuesto = val;
+        var margen = document.getElementById('margen');
+        if (presupuesto > margen.value) {
+            document.getElementById("advertencia").style.display = "block";
+            document.getElementById("btn-Aceptar").style.display = "none";
+        }else{
+            document.getElementById("advertencia").style.display = "none";
+            document.getElementById("btn-Aceptar").style.display = "inline-block";
+        }
+    }
+
+    function obtenMargen(val) {
+        var presupuesto = document.getElementById('presupuesto');
+        var margen = val;
+        if (presupuesto.value > margen) {
+            document.getElementById("advertencia").style.display = "block";
+            document.getElementById("btn-Aceptar").style.display = "none";
+        }else{
+            document.getElementById("advertencia").style.display = "none";
+            document.getElementById("btn-Aceptar").style.display = "inline-block";
+        }
+    }
+
+</script>
