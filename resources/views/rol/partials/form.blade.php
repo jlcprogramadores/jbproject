@@ -14,7 +14,7 @@
                 $titulos = array('Finanzas', 'Recursos Humanos', 'Administración');
                 $indicadorEnPM = '00';
             ?>
-    
+    <br>
     <div class="container">
         <div class="row">
 
