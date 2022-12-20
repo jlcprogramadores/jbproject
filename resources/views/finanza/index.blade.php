@@ -152,7 +152,9 @@
                                             <td>
                                                 <span class="completo">
                                                     <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
+                                                        @can('finanzas.confirmarpago')
                                                         <a class="btn btn-sm btn-info" href="{{ route('finanzas.confirmarPago',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>      
+                                                        @endcan
                                                         @if ($finanza->salidas_id)
                                                         @can('finanzas.correo')
                                                         <a class="btn btn-sm btn-secondary " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>      

@@ -25,17 +25,18 @@ class RoleSeeder extends Seeder
                 //Permisos 
                 $permisofinanzasindex = Permission::create(['name' => 'finanzas.index', 'description' => 'Finanzas:Tabla', 'nomenclatura' => 'mn-01-sb-01-pm-01'])->syncRoles($rolAdmin);
                 $permisofinanzasfactura = Permission::create(['name' => 'finanzas.factura', 'description' => 'Finanzas:Factura', 'nomenclatura' => 'mn-01-sb-01-pm-02'])->syncRoles($rolAdmin);
-                $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo', 'description' => 'Finanzas:Correo', 'nomenclatura' => 'mn-01-sb-01-pm-03'])->syncRoles($rolAdmin);
-                $permisofinanzascreate = Permission::create(['name' => 'finanzas.create', 'description' => 'Finanzas:Crear', 'nomenclatura' => 'mn-01-sb-01-pm-04'])->syncRoles($rolAdmin);
-                $permisofinanzasshow = Permission::create(['name' => 'finanzas.show', 'description' => 'Finanzas:Mostrar', 'nomenclatura' => 'mn-01-sb-01-pm-05'])->syncRoles($rolAdmin);
-                $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit', 'description' => 'Finanzas:Editar', 'nomenclatura' => 'mn-01-sb-01-pm-06'])->syncRoles($rolAdmin);
-                $permisofinanzasdestroy = Permission::create(['name' => 'finanzas.destroy', 'description' => 'Finanzas:Borrar', 'nomenclatura' => 'mn-01-sb-01-pm-07'])->syncRoles($rolAdmin);
+                $permisofinanzasconfirmarpago = Permission::create(['name' => 'finanzas.confirmarpago', 'description' => 'Finanzas:Confirmar Pago', 'nomenclatura' => 'mn-01-sb-01-pm-03'])->syncRoles($rolAdmin);
+                $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo', 'description' => 'Finanzas:Correo', 'nomenclatura' => 'mn-01-sb-01-pm-04'])->syncRoles($rolAdmin);
+                $permisofinanzascreate = Permission::create(['name' => 'finanzas.create', 'description' => 'Finanzas:Crear', 'nomenclatura' => 'mn-01-sb-01-pm-05'])->syncRoles($rolAdmin);
+                $permisofinanzasshow = Permission::create(['name' => 'finanzas.show', 'description' => 'Finanzas:Mostrar', 'nomenclatura' => 'mn-01-sb-01-pm-06'])->syncRoles($rolAdmin);
+                $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit', 'description' => 'Finanzas:Editar', 'nomenclatura' => 'mn-01-sb-01-pm-07'])->syncRoles($rolAdmin);
+                $permisofinanzasdestroy = Permission::create(['name' => 'finanzas.destroy', 'description' => 'Finanzas:Borrar', 'nomenclatura' => 'mn-01-sb-01-pm-08'])->syncRoles($rolAdmin);
                 $permisofinanzasegreso = Permission::create(['name' => 'finanzas.egreso', 'description' => 'Finanzas:Crear Egreso', 'nomenclatura' => 'mn-01-sb-01-pm-08'])->syncRoles($rolAdmin);
-                $permisofinanzasingreso = Permission::create(['name' => 'finanzas.ingreso', 'description' => 'Finanzas:Crear Ingreso', 'nomenclatura' => 'mn-01-sb-01-pm-09'])->syncRoles($rolAdmin);
-                $permisofacturasindex = Permission::create(['name' => 'facturas.index', 'description' => 'Factura:Tabla', 'nomenclatura' => 'mn-01-sb-01-pm-10'])->syncRoles($rolAdmin);
-                $permisofacturascreate = Permission::create(['name' => 'facturas.create', 'description' => 'Factura:Crear', 'nomenclatura' => 'mn-01-sb-01-pm-11'])->syncRoles($rolAdmin);
-                $permisofacturasedit = Permission::create(['name' => 'facturas.edit', 'description' => 'Factura:Editar', 'nomenclatura' => 'mn-01-sb-01-pm-12'])->syncRoles($rolAdmin);
-                $permisofacturasdestroy = Permission::create(['name' => 'facturas.destroy', 'description' => 'Factura:Borrar', 'nomenclatura' => 'mn-01-sb-01-pm-13'])->syncRoles($rolAdmin);
+                $permisofinanzasingreso = Permission::create(['name' => 'finanzas.ingreso', 'description' => 'Finanzas:Crear Ingreso', 'nomenclatura' => 'mn-01-sb-01-pm-10'])->syncRoles($rolAdmin);
+                $permisofacturasindex = Permission::create(['name' => 'facturas.index', 'description' => 'Factura:Tabla', 'nomenclatura' => 'mn-01-sb-01-pm-11'])->syncRoles($rolAdmin);
+                $permisofacturascreate = Permission::create(['name' => 'facturas.create', 'description' => 'Factura:Crear', 'nomenclatura' => 'mn-01-sb-01-pm-12'])->syncRoles($rolAdmin);
+                $permisofacturasedit = Permission::create(['name' => 'facturas.edit', 'description' => 'Factura:Editar', 'nomenclatura' => 'mn-01-sb-01-pm-13'])->syncRoles($rolAdmin);
+                $permisofacturasdestroy = Permission::create(['name' => 'facturas.destroy', 'description' => 'Factura:Borrar', 'nomenclatura' => 'mn-01-sb-01-pm-14'])->syncRoles($rolAdmin);
                 
             $permisomenuegresos = Permission::create(['name' => 'menu.egresos', 'description' => 'Ver Submenú Finanzas-Egresos', 'nomenclatura' => 'mn-01-sb-02-pm-00'])->syncRoles($rolAdmin);
                 //Permisos 
