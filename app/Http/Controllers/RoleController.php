@@ -72,7 +72,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         $rol = Role::findById($id);
-        $permissions = Permission::all(); 
+        $permissions = Permission::all()->sortBy('nomenclatura'); 
 
         return view('rol.edit', compact('rol','permissions'));
     }
