@@ -42,7 +42,7 @@
         <span id="advertencia" style="color: red" > El Presupuesto debe ser menor al Margen</span>                                
         <br>
         <a href="{{ route('proyectos.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary" id="btn-Aceptar" >Aceptar</button>
+        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
 @endif

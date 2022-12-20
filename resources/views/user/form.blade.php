@@ -34,7 +34,7 @@
         <br>
         <div class="box-footer mt20">
             <a class="btn btn-danger" href="{{ route('usuarios.index') }}"> Atrás</a>
-            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
         </div>
     </div>
     

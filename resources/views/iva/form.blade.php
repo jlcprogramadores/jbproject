@@ -26,8 +26,8 @@
 </div>
 @endif
 
-<script>
+{{-- <script>
 function myFunction(){
     document.getElementById("btn-aceptar").style.display = "none";
 };   
-</script>
+</script> --}}

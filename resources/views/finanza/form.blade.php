@@ -179,7 +179,7 @@
         <br>
         <div class="container">
             <div class="row justify-content-md-center">
-                <button type="submit" class="btn btn-primary col col-lg-3">Aceptar</button>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
             </div>
         </div>
     </div>

@@ -167,7 +167,7 @@
                 <br>
                 <a href="{{ route('finanzas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
                 <br>
-                <button type="submit" class="btn btn-primary col col-lg-3">Aceptar</button>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
             </div>
         </div>
     </div>

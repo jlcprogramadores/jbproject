@@ -21,7 +21,7 @@
     <div class="box-footer mt20">
         <br>
         <a href="{{ route('tipo-de-ingresos.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
 @endif
