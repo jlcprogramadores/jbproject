@@ -85,7 +85,7 @@
                                                 @foreach($cliente->telefonos as $iterTelefono)
                                                 <?php   
                                                 ++$itel; 
-                                                // iteramos y formamos las las dirrecioness
+                                                // iteramos y formamos las las direciones
                                                 $telefono = "";
                                                 $telefono .= $iterTelefono->telefono ? 'Tel' . $itel . ': ' . $iterTelefono->telefono : '';
                                                 $telefono .= ",";
