@@ -36,6 +36,7 @@
 										<th>Nombre</th>
 										<th>Email</th>
                                         <th>Es Activo</th>
+                                        <th>Roles</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -50,6 +51,27 @@
                                                 <td><p class="badge bg-success">Activado</p></td>
                                             @else
                                                 <td><p class="badge bg-danger">Innactivo</p></td>
+                                            @endif
+                                            {{-- <td>{{$user->roles}}</td> --}}
+                                            @if (isset($user->roles[0]))
+                                            <?php
+                                                $iter = 0;
+                                                $rolecito = '';
+                                            ?>
+                                            @foreach($user->roles as $rol)
+                                                <?php
+                                                    if ($iter == 0) {
+                                                        $rolecito = $rolecito . $rol->name;
+                                                    }else{
+                                                        $rolecito = $rolecito . ', ';
+                                                        $rolecito = $rolecito . $rol->name;
+                                                    }
+                                                    $iter ++;
+                                                ?>
+                                                @endforeach
+                                                <td>{{$rolecito}}</td>
+                                            @else
+                                                <td>Sin Rol</td>
                                             @endif
                                             <td>
                                                 <form action="{{ route('usuarios.destroy',$user->id) }}" method="POST">
