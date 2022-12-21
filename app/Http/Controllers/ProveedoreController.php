@@ -6,7 +6,8 @@ use App\Models\CuentasBancaria;
 use App\Models\Proveedore;
 use App\Models\Salida;
 use Illuminate\Http\Request;
-
+use App\Models\Telefono;
+use App\Models\Direccione;
 /**
  * Class ProveedoreController
  * @package App\Http\Controllers
@@ -108,7 +109,23 @@ class ProveedoreController extends Controller
             return redirect()->route('proveedores.index')
                 ->with('danger', 'No se elimino Proveedor por que existen finanzas relacionadas.');
         }else{
-            $proveedore = Proveedore::find($id)->delete();
+            // eliminamos direcciones y telefono
+            $proveedore = Proveedore::find($id);
+            $id_cliente = $proveedore->id;
+            $telefonos = Telefono::where('proveedor_id','=',$id_cliente)->get();
+            foreach($telefonos as $iterTelefonos){
+                $iterTelefonos->delete();
+            }
+            $direccion = Direccione::where('proveedor_id','=',$id_cliente)->get();
+            foreach($direccion as $iterDireccion){
+                $iterDireccion->delete();
+            }
+            $cuentas = CuentasBancaria::where('proveedore_id','=',$id_cliente)->get();
+            foreach($cuentas as $iterCuentas){
+                $iterCuentas->delete();
+            }
+            $proveedore->delete();
+            
             return redirect()->route('proveedores.index')
             ->with('success', 'Proveedor eliminado exitosamente.');
         }

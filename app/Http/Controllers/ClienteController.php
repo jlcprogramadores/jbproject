@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Entrada;
 use Illuminate\Http\Request;
+use App\Models\Telefono;
+use App\Models\Direccione;
 
 /**
  * Class ClienteController
@@ -107,7 +109,18 @@ class ClienteController extends Controller
             return redirect()->route('clientes.index')
                 ->with('danger', 'No se elimino Cliente por que existen finanzas relacionadas.');
         }else{
-            $cliente = Cliente::find($id)->delete();
+            // eliminamos direcciones y telefono
+            $cliente = Cliente::find($id);
+            $id_cliente = $cliente->id;
+            $telefonos = Telefono::where('cliente_id','=',$id_cliente)->get();
+            foreach($telefonos as $iterTelefonos){
+                $iterTelefonos->delete();
+            }
+            $direccion = Direccione::where('cliente_id','=',$id_cliente)->get();
+            foreach($direccion as $iterDireccion){
+                $iterDireccion->delete();
+            }
+            $cliente->delete();
             return redirect()->route('clientes.index')
                 ->with('success', 'Cliente eliminado exitosamente.');
         }

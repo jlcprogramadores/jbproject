@@ -22,6 +22,7 @@ use App\Mail\ComprobanteMailable;
 
 
 
+
 use Illuminate\Http\Request;
 
 /**
@@ -505,19 +506,21 @@ class FinanzaController extends Controller
      */
     public function destroy($id)
     {
-        // si tienes entrada borra tambien entrada y si tienes salida tambien la salida
-        $entradaId=Finanza::find($id)->entradas_id;
-        if(isset($entradaId)){
-            Entrada::find($entradaId)->delete();
+        $finanza_id = Finanza::find($id);
+        if(isset($finanza_id->entradas_id ) ){
+            Entrada::find($finanza_id->entradas_id)->delete();
         }else{
-            $salidaId =Finanza::find($id)->salidas_id;
-            $getSalida = Salida::find($salidaId);
-            if ($getSalida->comprobante != null) {
-                unlink(base_path('storage/app/public/'.explode("/",$getSalida->comprobante)[2]));
+            $salida_id = Salida::find($finanza_id->salidas_id);
+            if ($salida_id->comprobante != null) {
+                unlink(base_path('storage/app/public/'.explode("/",$salida_id->comprobante)[2]));
             } 
-            Salida::find($salidaId)->delete();
+            $salida_id->delete();
         }
-        $finanza = Finanza::find($id)->delete();
+        $factura = Factura::where('finanza_id','=',$finanza_id->id)->get();
+        foreach($factura as $iterFacturas){
+            $iterFacturas->delete();
+        }       
+        $finanza_id->delete();
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza eliminada exitosamente.');
     }
