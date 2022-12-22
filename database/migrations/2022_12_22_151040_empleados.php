@@ -17,12 +17,12 @@ class Empleados extends Migration
             $table->id();
             $table->integer('proyecto_id')->nullable();
             $table->integer('puesto_id')->nullable();
-            $table->integer('no_empleado');
+            $table->string('no_empleado');
             $table->string('apellido_materno');
             $table->string('apellido_paterno');
             $table->string('nombre');
             $table->string('genero');
-            $table->integer('telefono_personal');
+            $table->bigInteger('telefono_personal');
             $table->string('correo');
             $table->decimal('salario_imss', 12, 2)->nullable();
             $table->decimal('salario_real', 12, 2)->nullable();
