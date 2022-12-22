@@ -95,9 +95,9 @@
                                     Recursos Humanos
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"  href="{{ url('/') }}"">
-                                        {{ __('Plantilla') }}
-                                    </a>  
+                                    <a class="dropdown-item" href="{{ route('empleados.index') }}">
+                                        {{ __('Empleados') }}
+                                    </a> 
                                     <a class="dropdown-item" href="{{ url('/') }}"">
                                         {{ __('Currículums') }}
                                     </a> 

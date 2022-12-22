@@ -34,6 +34,7 @@ Route::resource('direcciones', App\Http\Controllers\DireccioneController::class)
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 Route::resource('usuarios', App\Http\Controllers\UserController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::resource('empleados', App\Http\Controllers\EmpleadoController::class);
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');

@@ -1,3 +1,5 @@
+php artisan make:migration empleados
+php artisan make:crud empleados
 php artisan make:model TipoDeDireccione -mc = HACES UN NUEVO MODELO Y CONTROLADOR
 php artisan migrate = HACES LAS MIGRACIONES
 php artisan migrate:update = HACES LAS MIGRACIONES ACTUALIZADAS
@@ -30,7 +32,6 @@ ejemplo:
 ```html
 <x-carbon-apple style="color: green"/>
 ```
-
 
 # Para hacer link simbolico de la carpeta storage/public  y acceder desde su URL
 php artisan storage:link
