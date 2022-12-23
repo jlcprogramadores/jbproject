@@ -104,6 +104,9 @@
                                     <a class="dropdown-item" href="{{ route('paros.index') }}">
                                         {{ __('Paros') }}
                                     </a> 
+                                    <a class="dropdown-item" href="{{ route('expedientes.index') }}">
+                                        {{ __('Paros') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ url('/') }}"">
                                         {{ __('Currículums') }}
                                     </a> 
