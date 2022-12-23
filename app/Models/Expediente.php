@@ -26,7 +26,7 @@ class Expediente extends Model
 		'usuario_edito' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.
@@ -35,6 +35,12 @@ class Expediente extends Model
      */
     protected $fillable = ['nombre','es_multiple','usuario_edito'];
 
-
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function empleadoExpediente()
+    {
+        return $this->hasMany('App\Models\EmpleadoExpediente', 'expediente_id', 'id');
+    }
+    
 }
