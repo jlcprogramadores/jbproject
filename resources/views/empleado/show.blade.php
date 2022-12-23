@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $empleado->name ?? 'Show Empleado' }}
-@endsection
+@section('title','Mostrar Empleado')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,22 +9,19 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Empleado</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Back</a>
+                            <span class="card-title">Mostrar Empleado</span>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Proyecto Id:</strong>
-                            {{ $empleado->proyecto_id }}
+                            <strong>Proyecto:</strong>
+                            {{ $empleado->proyecto->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Puesto Id:</strong>
-                            {{ $empleado->puesto_id }}
+                            <strong>Puesto:</strong>
+                            {{ $empleado->puesto->nombre}}
                         </div>
                         <div class="form-group">
                             <strong>No Empleado:</strong>
@@ -45,11 +40,11 @@
                             {{ $empleado->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Genero:</strong>
+                            <strong>Género:</strong>
                             {{ $empleado->genero }}
                         </div>
                         <div class="form-group">
-                            <strong>Telefono Personal:</strong>
+                            <strong>Teléfono Personal:</strong>
                             {{ $empleado->telefono_personal }}
                         </div>
                         <div class="form-group">
@@ -97,7 +92,7 @@
                             {{ $empleado->campamento }}
                         </div>
                         <div class="form-group">
-                            <strong>Identificacion Oficial:</strong>
+                            <strong>Identificación Oficial:</strong>
                             {{ $empleado->identificacion_oficial }}
                         </div>
                         <div class="form-group">
@@ -202,14 +197,14 @@
                         </div>
                         <div class="form-group">
                             <strong>Talla Calzado:</strong>
-                            {{ $empleado->talla_calzado }}
+                            {{ $empleado->talla_calzado .  ' cm'}}
                         </div>
                         <div class="form-group">
                             <strong>Enfermedades:</strong>
                             {{ $empleado->enfermedades }}
                         </div>
                         <div class="form-group">
-                            <strong>Cirugias:</strong>
+                            <strong>Cirugías:</strong>
                             {{ $empleado->cirugias }}
                         </div>
                         <div class="form-group">
@@ -229,7 +224,7 @@
                             {{ $empleado->fumador }}
                         </div>
                         <div class="form-group">
-                            <strong>Practica Deporte:</strong>
+                            <strong>Práctica Deporte:</strong>
                             {{ $empleado->practica_deporte }}
                         </div>
                         <div class="form-group">
@@ -264,11 +259,9 @@
                             <strong>Esta Trabajando:</strong>
                             {{ $empleado->esta_trabajando }}
                         </div>
-                        <div class="form-group">
-                            <strong>Usuario Edito:</strong>
-                            {{ $empleado->usuario_edito }}
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
                         </div>
-
                     </div>
                 </div>
             </div>

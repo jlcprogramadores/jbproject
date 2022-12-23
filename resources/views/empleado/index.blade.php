@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Empleado')
+@section('title','Empleados')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Empleado') }}
+                                {{ __('Empleados') }}
                             </span>
 
                              <div class="float-right">
@@ -36,14 +36,14 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Proyecto Id</th>
-										<th>Puesto Id</th>
+										<th>Proyecto</th>
+										<th>Puesto</th>
 										<th>No Empleado</th>
 										<th>Nombre</th>
-										<th>Telefono Personal</th>
+										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Esta Trabajando</th>
-										<th>Usuario Edito</th>
+										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -59,16 +59,16 @@
 											<td>{{ $empleado->nombre.' '.$empleado->apellido_paterno.' '.$empleado->apellido_materno }}</td>
 											<td>{{ $empleado->telefono_personal }}</td>
 											<td>{{ $empleado->correo }}</td>
-											<td>{{ $empleado->esta_trabajando }}</td>
+                                            <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>
 											<td>{{ $empleado->usuario_edito }}</td>
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

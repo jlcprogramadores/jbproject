@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('genero') }}
-            {{ Form::select('genero',array('0' => 'Masculino', '1' => 'Femenino', '2'=> 'otro'), $empleado->genero, ['class' => 'form-control' . ($errors->has('genero') ? ' is-invalid' : '')]) }}
+            {{ Form::select('genero',array('0' => 'Masculino', '1' => 'Femenino', '2'=> 'Otro'), $empleado->genero, ['class' => 'form-control' . ($errors->has('genero') ? ' is-invalid' : '')]) }}
             {!! $errors->first('genero', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -89,7 +89,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('nuevo_ingreso_reingreso') }}
-            {{ Form::text('nuevo_ingreso_reingreso', $empleado->nuevo_ingreso_reingreso, ['class' => 'form-control' . ($errors->has('nuevo_ingreso_reingreso') ? ' is-invalid' : ''), 'placeholder' => 'Nuevo Ingreso Reingreso']) }}
+            {{ Form::text('Nuevo Ingreso o Reingreso', $empleado->nuevo_ingreso_reingreso, ['class' => 'form-control' . ($errors->has('nuevo_ingreso_reingreso') ? ' is-invalid' : ''), 'placeholder' => 'Nuevo Ingreso Reingreso']) }}
             {!! $errors->first('nuevo_ingreso_reingreso', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -217,9 +217,20 @@
             {{ Form::text('domicilio_alterno', $empleado->domicilio_alterno, ['class' => 'form-control' . ($errors->has('domicilio_alterno') ? ' is-invalid' : ''), 'placeholder' => 'Domicilio Alterno']) }}
             {!! $errors->first('domicilio_alterno', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <?php 
+            $talla_camisa = [
+                'XS' => 'XS', 
+                'S' => 'S', 
+                'M' => 'M',
+                'L' => 'L',
+                'XL' => 'XL',
+                'XXL' => 'XXL',
+                'XXXL' => 'XXXL',
+            ];
+            ?>
         <div class="form-group">
             {{ Form::label('talla_camisa') }}
-            {{ Form::text('talla_camisa', $empleado->talla_camisa, ['class' => 'form-control' . ($errors->has('talla_camisa') ? ' is-invalid' : ''), 'placeholder' => 'Talla Camisa']) }}
+            {{ Form::select('talla_camisa', $talla_camisa,null ,['class' => 'form-select'. ($errors->has('talla_camisa') ? ' is-invalid' : '')]) }}
             {!! $errors->first('talla_camisa', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -228,8 +239,35 @@
             {!! $errors->first('talla_pantalon', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php 
+            $talla_calzado = [
+                '20' => '20 cm', 
+                '20.5' => '20.5 cm',
+                '21' => '21 cm',
+                '21.5' => '21.5 cm',
+                '22' => '22 cm',
+                '22.5' => '22.5 cm',
+                '23' => '23 cm',
+                '23.5' => '23.5 cm',
+                '24' => '24 cm',
+                '24.5' => '24.5 cm',
+                '25' => '25 cm',
+                '25.5' => '25.5 cm',
+                '26' => '26 cm',
+                '26.5' => '26.5 cm',
+                '27' => '27 cm',
+                '27.5' => '27.5 cm',
+                '28' => '28 cm',
+                '28.5' => '28.5 cm',
+                '29' => '29 cm',
+                '29.5' => '29.5 cm',
+                '30' => '30 cm',
+                '30.5' => '30.5 cm',
+                '31' => '31 cm'
+            ];
+            ?>
             {{ Form::label('talla_calzado') }}
-            {{ Form::text('talla_calzado', $empleado->talla_calzado, ['class' => 'form-control' . ($errors->has('talla_calzado') ? ' is-invalid' : ''), 'placeholder' => 'Talla Calzado']) }}
+            {{ Form::select('talla_calzado', $talla_calzado,null ,['class' => 'form-select'. ($errors->has('talla_calzado') ? ' is-invalid' : '')]) }}
             {!! $errors->first('talla_calzado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -327,5 +365,7 @@
     <script>
         $('#proyecto_id').select2();
         $('#puesto_id').select2();
+        $('#talla_calzado').select2();
+        $('#talla_camisa').select2();
     </script>
 @endpush
