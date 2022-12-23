@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\EmpleadoExpediente;
 use Illuminate\Http\Request;
+use App\Models\Empleado;
+use App\Models\Expediente;
 
 /**
  * Class EmpleadoExpedienteController
@@ -32,7 +34,9 @@ class EmpleadoExpedienteController extends Controller
     public function create()
     {
         $empleadoExpediente = new EmpleadoExpediente();
-        return view('empleado-expediente.create', compact('empleadoExpediente'));
+        $empleado = Empleado::pluck('nombre','id');
+        $expediente = Expediente::all();
+        return view('empleado-expediente.create', compact('empleadoExpediente','empleado', 'expediente'));
     }
 
     /**
@@ -44,9 +48,30 @@ class EmpleadoExpedienteController extends Controller
     public function store(Request $request)
     {
         request()->validate(EmpleadoExpediente::$rules);
+        $empleado_id = $request->empleado_id;
+        $usuario_edito = $request->usuario_edito;
+        // dd($request->documentos);
 
-        $empleadoExpediente = EmpleadoExpediente::create($request->all());
-
+        foreach ($request->documentos as $expediente_id => $archivo){
+            $crearFactura = [
+                'empleado_id' => $empleado_id,
+                'expediente_id' => $expediente_id,
+                'archivo' => $archivo,
+                'usuario_edito' => $usuario_edito,
+            ];
+            $empleadoExpediente = EmpleadoExpediente::create($crearFactura);
+            // parte del jose
+            if ($empleadoExpediente->archivo != null) {
+                $nombreOriginal = $empleadoExpediente->archivo->getClientOriginalName();
+                $aux = 'expediente_' . $empleadoExpediente->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $empleadoExpediente->archivo->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $getEmpleadoExpediente = EmpleadoExpediente::find($empleadoExpediente->id);
+                $getEmpleadoExpediente->archivo = $file_url;
+                $getEmpleadoExpediente->save();
+            }
+        }
         return redirect()->route('empleado-expedientes.index')
             ->with('success', 'EmpleadoExpediente created successfully.');
     }

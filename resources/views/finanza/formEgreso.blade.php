@@ -126,7 +126,7 @@
                 </div>
                 <div class="p-1 form-group  d-flex flex-column">
                         <label for="comprobante" id="textComprobante">Comprobante de pago</label>
-                        <input type="file" name="comprobante" id="comprobante">
+                        <input type="file" name="comprobante" id="comprobante"  class="form-control">
                 </div>
                 <div class="form-group d-none">
                     {{ Form::label('usuario_edito') }}

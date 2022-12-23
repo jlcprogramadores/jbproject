@@ -25,8 +25,6 @@ class EmpleadoExpediente extends Model
     
     static $rules = [
 		'empleado_id' => 'required',
-		'expediente_id' => 'required',
-		'archivo' => 'required',
 		'usuario_edito' => 'required',
     ];
 
