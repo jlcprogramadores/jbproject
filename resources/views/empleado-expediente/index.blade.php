@@ -49,8 +49,8 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $empleadoExpediente->empleado_id }}</td>
-											<td>{{ $empleadoExpediente->expediente_id }}</td>
+											<td>{{ $empleadoExpediente->empleado->nombre }}</td>
+											<td>{{ $empleadoExpediente->expediente->nombre }}</td>
 											<td>{{ $empleadoExpediente->archivo }}</td>
 											<td>{{ $empleadoExpediente->usuario_edito }}</td>
 

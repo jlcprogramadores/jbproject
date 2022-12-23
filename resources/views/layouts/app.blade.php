@@ -107,6 +107,9 @@
                                     <a class="dropdown-item" href="{{ route('expedientes.index') }}">
                                         {{ __('Expedientes') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
+                                        {{ __('Empleado Expediente') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ url('/') }}"">
                                         {{ __('Currículums') }}
                                     </a> 
