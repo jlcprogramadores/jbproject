@@ -45,7 +45,7 @@
 										<th>Esta Trabajando</th>
 										<th>Usuario Edito</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,7 +92,7 @@
                 autoWidth: false,   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "No se encontró nada – lo siento",
+                    "zeroRecords": "Nothing found - sorry",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros",
                     "infoFiltered": "(filtered from _MAX_ total records)",
@@ -102,13 +102,6 @@
                         "previous": "Anterior"
                     }
                 },
-                columnDefs: [{
-                    // espeificamos que columna sera afectada
-                    targets: [5,6],
-                    render: function(data, type, full, meta) {    
-                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
-                    }
-                }],
                 orderCellsTop: true,
                 fixedHeader: true,
                 initComplete: function() {

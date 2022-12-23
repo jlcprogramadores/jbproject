@@ -19,7 +19,7 @@ class ExpedienteController extends Controller
     public function index()
     {
         $expedientes = Expediente::paginate();
-
+        
         return view('expediente.index', compact('expedientes'))
             ->with('i', (request()->input('page', 1) - 1) * $expedientes->perPage());
     }
