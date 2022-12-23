@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('genero') }}
-            {{ Form::text('genero', $empleado->genero, ['class' => 'form-control' . ($errors->has('genero') ? ' is-invalid' : ''), 'placeholder' => 'Genero']) }}
+            {{ Form::select('genero',array('0' => 'Masculino', '1' => 'Femenino', '2'=> 'otro'), $empleado->genero, ['class' => 'form-control' . ($errors->has('genero') ? ' is-invalid' : '')]) }}
             {!! $errors->first('genero', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -310,7 +310,7 @@
         </div>
         <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', Auth::user()->name, $empleado->usuario_edito, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
