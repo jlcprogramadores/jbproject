@@ -107,8 +107,8 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $empleado->proyecto_id }}</td>
-											<td>{{ $empleado->puesto_id }}</td>
+											<td>{{ isset($empleado->proyecto->nombre) ? $empleado->proyecto->nombre : 'Sin Proyecto'}}</td>
+											<td>{{ isset($empleado->puesto->nombre) ? $empleado->puesto->nombre : 'Sin Puesto'}}</td>
 											<td>{{ $empleado->no_empleado }}</td>
 											<td>{{ $empleado->apellido_materno }}</td>
 											<td>{{ $empleado->apellido_paterno }}</td>

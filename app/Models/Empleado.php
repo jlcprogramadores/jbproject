@@ -90,7 +90,7 @@ class Empleado extends Model
 		'usuario_edito' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.
@@ -99,6 +99,19 @@ class Empleado extends Model
      */
     protected $fillable = ['proyecto_id','puesto_id','no_empleado','apellido_materno','apellido_paterno','nombre','genero','telefono_personal','correo','salario_imss','salario_real','tipo_de_empleado','evaluaciones','dc3','clims','fecha_ingreso','fecha_baja','nuevo_ingreso_reingreso','campamento','identificacion_oficial','curp','rfc','domicilio','nss','fecha_nacimiento','lugar_nacimiento','residencia','vacunas_covid','licencia_conducir','carta_antecedentes','estado_civil','nivel_estudios','infonavit','fonacot','cuenta_bancaria','contacto_emergencia','nombre_esposa','no_hijos','persona_para_tramites','beneficiarios','porcentaje','domicilio_real','domicilio_alterno','talla_camisa','talla_pantalon','talla_calzado','enfermedades','cirugias','alergias','lentes','lesiones','fumador','practica_deporte','pertenece_club_social','pertenece_sindicato','toma_medicamento','tipo_sangre','peso','estatura','imc','esta_trabajando','usuario_edito'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function proyecto()
+    {
+        return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
+    }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function puesto()
+    {
+        return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
+    }
 }
