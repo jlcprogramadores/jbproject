@@ -41,6 +41,8 @@ php artisan storage:link
  git commit -m "fixed untracked files"
  git push ó subirlo mediente desktop
 
+# Para crear un seeder ejemplo de rol
+php artisan make:seeder RoleSeeder 
 # Para que funcione el seeder (se llenan las tablas solas)
 php artisan migrate:fresh --seed
 
