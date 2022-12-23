@@ -114,4 +114,12 @@ class Empleado extends Model
     {
         return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function empleadoExpediente()
+    {
+        return $this->hasMany('App\Models\EmpleadoExpediente', 'expediente_id', 'id');
+    }
 }
