@@ -3,13 +3,13 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('proyecto_id') }}
-            {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Proyecto Id']) }}
+            {{ Form::label('proyecto_id', 'Proyecto') }}
+            {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('puesto_id') }}
-            {{ Form::select('puesto_id', $puesto, $empleado->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Puesto Id']) }}
+            {{ Form::label('puesto_id', 'Puesto') }}
+            {{ Form::select('puesto_id', $puesto, $empleado->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona puesto']) }}
             {!! $errors->first('puesto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
