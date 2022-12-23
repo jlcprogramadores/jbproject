@@ -38,6 +38,8 @@
                                         
 										<th>Proyecto</th>
 										<th>Puesto</th>
+                                        <th>Salario IMSS</th>
+                                        <th>Salario Real</th>
 										<th>No Empleado</th>
 										<th>Nombre</th>
 										<th>Teléfono Personal</th>
@@ -55,10 +57,12 @@
                                             
 											<td>{{ isset($empleado->proyecto->nombre) ? $empleado->proyecto->nombre : 'Sin Proyecto'}}</td>
 											<td>{{ isset($empleado->puesto->nombre) ? $empleado->puesto->nombre : 'Sin Puesto'}}</td>
+                                            <td>{{ '$'. number_format($empleado->salario_imss,2) }}</td>
+                                            <td>{{ '$'. number_format($empleado->salario_real,2) }}</td>
 											<td>{{ $empleado->no_empleado }}</td>
 											<td>{{ $empleado->nombre.' '.$empleado->apellido_paterno.' '.$empleado->apellido_materno }}</td>
 											<td>{{ $empleado->telefono_personal }}</td>
-											<td>{{ $empleado->correo }}</td>
+											<td>{{ $empleado->correo}}</td>
                                             <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>
 											<td>{{ $empleado->usuario_edito }}</td>
 

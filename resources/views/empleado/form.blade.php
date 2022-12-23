@@ -153,13 +153,34 @@
             {!! $errors->first('carta_antecedentes', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php 
+                $estado_civil = [
+                    'Soltero(a)' => 'Soltero(a)', 
+                    'Casado(a)' => 'Casado(a)', 
+                    'Unión Libre' => 'Unión Libre',
+                    'Separado(a)' => 'Separado(a)',
+                    'Divorciado(a)' => 'Divorciado(a)',
+                    'Viudo(a)' => 'Viudo(a)',
+                ];
+            ?>
             {{ Form::label('estado_civil') }}
-            {{ Form::text('estado_civil', $empleado->estado_civil, ['class' => 'form-control' . ($errors->has('estado_civil') ? ' is-invalid' : ''), 'placeholder' => 'Estado Civil']) }}
+            {{ Form::select('estado_civil', $estado_civil,null ,['class' => 'form-select'. ($errors->has('estado_civil') ? ' is-invalid' : '')]) }}
             {!! $errors->first('estado_civil', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php 
+                $nivel_estudios = [
+                    'Primaria' => 'Primaria', 
+                    'Secundaria' => 'Secundaria', 
+                    'Preparatoria' => 'Preparatoria',
+                    'Licenciatura' => 'Licenciatura',
+                    'Maestría' => 'Maestría',
+                    'Doctorado' => 'Doctorado',
+                    'Ninguno' => 'Ninguno',
+                ];
+            ?>
             {{ Form::label('nivel_estudios') }}
-            {{ Form::text('nivel_estudios', $empleado->nivel_estudios, ['class' => 'form-control' . ($errors->has('nivel_estudios') ? ' is-invalid' : ''), 'placeholder' => 'Nivel Estudios']) }}
+            {{ Form::select('nivel_estudios', $nivel_estudios,null ,['class' => 'form-select'. ($errors->has('nivel_estudios') ? ' is-invalid' : '')]) }}
             {!! $errors->first('nivel_estudios', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -227,7 +248,7 @@
                 'XXL' => 'XXL',
                 'XXXL' => 'XXXL',
             ];
-            ?>
+        ?>
         <div class="form-group">
             {{ Form::label('talla_camisa') }}
             {{ Form::select('talla_camisa', $talla_camisa,null ,['class' => 'form-select'. ($errors->has('talla_camisa') ? ' is-invalid' : '')]) }}
@@ -322,8 +343,20 @@
             {!! $errors->first('toma_medicamento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            <?php 
+                $tipo_sangre = [
+                    'AB +' => 'AB +', 
+                    'AB -' => 'AB -', 
+                    'A +' => 'A +',
+                    'A -' => 'A -',
+                    'B +' => 'B +',
+                    'B -' => 'B -',
+                    'O +' => 'O +',
+                    'O -' => 'O -',
+                ];
+            ?>
             {{ Form::label('tipo_sangre') }}
-            {{ Form::text('tipo_sangre', $empleado->tipo_sangre, ['class' => 'form-control' . ($errors->has('tipo_sangre') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Sangre']) }}
+            {{ Form::select('tipo_sangre', $tipo_sangre,null ,['class' => 'form-select'. ($errors->has('tipo_sangre') ? ' is-invalid' : '')]) }}
             {!! $errors->first('tipo_sangre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -367,5 +400,8 @@
         $('#puesto_id').select2();
         $('#talla_calzado').select2();
         $('#talla_camisa').select2();
+        $('#tipo_sangre').select2();
+        $('#nivel_estudios').select2();
+        $('#estado_civil').select2();
     </script>
 @endpush

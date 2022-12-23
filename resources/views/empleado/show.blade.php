@@ -41,7 +41,13 @@
                         </div>
                         <div class="form-group">
                             <strong>Género:</strong>
-                            {{ $empleado->genero }}
+                            @if($empleado->genero  == 0 )
+                                <span>Masculino</span>
+                            @elseif ($empleado->genero  == 1 )
+                                <span>Femenino</span>
+                            @else
+                                <span>Otro</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <strong>Teléfono Personal:</strong>
@@ -221,7 +227,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Fumador:</strong>
-                            {{ $empleado->fumador }}
+                            @if($empleado->fumador  == 0 )
+                                <span>Sí fuma</span>
+                            @else
+                                <span>No fuma</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <strong>Práctica Deporte:</strong>
@@ -257,7 +267,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Esta Trabajando:</strong>
-                            {{ $empleado->esta_trabajando }}
+                            @if($empleado->esta_trabajando  == 0 )
+                                <span class="text-success">Sí</span>
+                            @else
+                                <span class="text-success">No</span>
+                            @endif
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
