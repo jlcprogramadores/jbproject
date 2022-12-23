@@ -64,10 +64,7 @@
         </div>
         <div class="form-group ">
             {{ Form::label('es_facturable') }}
-            {{ Form::select('es_facturable', array(
-                '0' => 'No',
-                '1' => 'Si',
-            ),null ,['class' => 'form-select']) }}
+            {{ Form::select('es_facturable', array('0' => 'No', '1' => 'Si'),null ,['class' => 'form-select']) }}
             {!! $errors->first('es_facturable', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

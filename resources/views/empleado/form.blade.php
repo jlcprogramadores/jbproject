@@ -1,14 +1,15 @@
+@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
         
         <div class="form-group">
             {{ Form::label('proyecto_id') }}
-            {{ Form::text('proyecto_id', $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Proyecto Id']) }}
+            {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Proyecto Id']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('puesto_id') }}
-            {{ Form::text('puesto_id', $empleado->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Puesto Id']) }}
+            {{ Form::select('puesto_id', $puesto, $empleado->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Puesto Id']) }}
             {!! $errors->first('puesto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -38,7 +39,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('telefono_personal') }}
-            {{ Form::text('telefono_personal', $empleado->telefono_personal, ['class' => 'form-control' . ($errors->has('telefono_personal') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Personal']) }}
+            {{ Form::number('telefono_personal', $empleado->telefono_personal, ['class' => 'form-control' . ($errors->has('telefono_personal') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Personal']) }}
             {!! $errors->first('telefono_personal', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -78,12 +79,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('fecha_ingreso') }}
-            {{ Form::text('fecha_ingreso', $empleado->fecha_ingreso, ['class' => 'form-control' . ($errors->has('fecha_ingreso') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Ingreso']) }}
+            {{ Form::date('fecha_ingreso', $empleado->fecha_ingreso, ['class' => 'form-control' . ($errors->has('fecha_ingreso') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Ingreso']) }}
             {!! $errors->first('fecha_ingreso', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('fecha_baja') }}
-            {{ Form::text('fecha_baja', $empleado->fecha_baja, ['class' => 'form-control' . ($errors->has('fecha_baja') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Baja']) }}
+            {{ Form::date('fecha_baja', $empleado->fecha_baja, ['class' => 'form-control' . ($errors->has('fecha_baja') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Baja']) }}
             {!! $errors->first('fecha_baja', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -123,7 +124,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('fecha_nacimiento') }}
-            {{ Form::text('fecha_nacimiento', $empleado->fecha_nacimiento, ['class' => 'form-control' . ($errors->has('fecha_nacimiento') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Nacimiento']) }}
+            {{ Form::date('fecha_nacimiento', $empleado->fecha_nacimiento, ['class' => 'form-control' . ($errors->has('fecha_nacimiento') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Nacimiento']) }}
             {!! $errors->first('fecha_nacimiento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -188,7 +189,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('no_hijos') }}
-            {{ Form::text('no_hijos', $empleado->no_hijos, ['class' => 'form-control' . ($errors->has('no_hijos') ? ' is-invalid' : ''), 'placeholder' => 'No Hijos']) }}
+            {{ Form::number('no_hijos', $empleado->no_hijos, ['class' => 'form-control' . ($errors->has('no_hijos') ? ' is-invalid' : ''), 'placeholder' => 'No Hijos']) }}
             {!! $errors->first('no_hijos', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -256,9 +257,10 @@
             {{ Form::text('lesiones', $empleado->lesiones, ['class' => 'form-control' . ($errors->has('lesiones') ? ' is-invalid' : ''), 'placeholder' => 'Lesiones']) }}
             {!! $errors->first('lesiones', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
             {{ Form::label('fumador') }}
-            {{ Form::text('fumador', $empleado->fumador, ['class' => 'form-control' . ($errors->has('fumador') ? ' is-invalid' : ''), 'placeholder' => 'Fumador']) }}
+            {{ Form::select('fumador',array('0' => 'No', '1' => 'Si'), $empleado->fumador, ['class' => 'form-control' . ($errors->has('fumador') ? ' is-invalid' : '')]) }}
             {!! $errors->first('fumador', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -303,17 +305,27 @@
         </div>
         <div class="form-group">
             {{ Form::label('esta_trabajando') }}
-            {{ Form::text('esta_trabajando', $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : ''), 'placeholder' => 'Esta Trabajando']) }}
+            {{ Form::select('esta_trabajando',array('0' => 'No', '1' => 'Si') , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
             {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', $empleado->usuario_edito, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+            {{ Form::text('usuario_edito', Auth::user()->name, $empleado->usuario_edito, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <a href="{{ route('empleados.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
+        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
+@endif
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#proyecto_id').select2();
+        $('#puesto_id').select2();
+    </script>
+@endpush
