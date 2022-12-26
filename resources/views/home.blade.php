@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','¡Bienvenido(a)!')
 @if (Auth::check() && Auth::user()->es_activo == 0)
     @section('content')
     <div class="container">

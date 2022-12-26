@@ -70,7 +70,7 @@
 											<td>{{ $empleado->telefono_personal }}</td>
 											<td>{{ $empleado->correo}}</td>
                                             <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>
-											<td>{{ $empleado->usuario_edito }}</td>
+											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">

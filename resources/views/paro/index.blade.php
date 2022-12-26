@@ -56,7 +56,7 @@
 											<td>{{ $paro->puesto->nombre }}</td>
 											<td>{{ $paro->salario }}</td>
 											<td>{{ $paro->comentario }}</td>
-											<td>{{ $paro->usuario_edito }}</td>
+											<td>{{ $paro->usuario_edito }} <br/> {{ $paro->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">

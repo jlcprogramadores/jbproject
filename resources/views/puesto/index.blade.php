@@ -48,7 +48,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $puesto->nombre }}</td>
-											<td>{{ $puesto->usuario_edito }}</td>
+											<td>{{ $puesto->usuario_edito }} <br/> {{ $puesto->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('puestos.destroy',$puesto->id) }}" method="POST">
