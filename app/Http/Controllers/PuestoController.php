@@ -91,7 +91,7 @@ class PuestoController extends Controller
         $puesto->update($request->all());
 
         return redirect()->route('puestos.index')
-            ->with('success', 'Puesto updated successfully');
+            ->with('success', 'Puesto actualizado exitosamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class PuestoController extends Controller
         $puesto = Puesto::find($id)->delete();
 
         return redirect()->route('puestos.index')
-            ->with('success', 'Puesto deleted successfully');
+            ->with('success', 'Puesto eliminado exitosamente.');
     }
 }

@@ -1,12 +1,11 @@
-php artisan make:migration empleados
-php artisan make:crud empleados
-php artisan make:model TipoDeDireccione -mc = HACES UN NUEVO MODELO Y CONTROLADOR
-php artisan migrate = HACES LAS MIGRACIONES
 php artisan migrate:update = HACES LAS MIGRACIONES ACTUALIZADAS
 php artisan migrate:rollback = HACES ROLLBACK A LAS MIGRACIONES
 php artisan serve = CORRER EL PROYECTO
 
-
+ # Flujo nueva integración de una tabla nueva y su CRUD 
+ php artisan make:migration empleados
+ php artisan migrate:fresh --seed
+ php artisan make:crud empleados
  # para que jale 
 composer require laravel/ui
 php artisan ui bootstrap --auth
@@ -20,7 +19,6 @@ php artisan make:crud "nombre de tabla"
 # alert Swal
 npm install sweetalert2
 npm run dev
-
 
 # Si se modificia el archivo app.php para ver reflejados los cambios se usa 
 php artisan config:clear
@@ -43,6 +41,7 @@ php artisan storage:link
 
 # Para crear un seeder ejemplo de rol
 php artisan make:seeder RoleSeeder 
+
 # Para que funcione el seeder (se llenan las tablas solas)
 php artisan migrate:fresh --seed
 
