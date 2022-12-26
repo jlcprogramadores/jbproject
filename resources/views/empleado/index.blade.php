@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>No</th>
                                         
+                                        <th>Fotografía</th>
 										<th>Proyecto</th>
 										<th>Puesto</th>
                                         <th>Salario IMSS</th>
@@ -54,7 +55,12 @@
                                     @foreach ($empleados as $empleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
+                                            @if ($empleado->fotografia)
+                                                <td> <img src={{ $empleado->fotografia }} height="100" ></td> 
+                                            @else
+                                                <td><span class="badge bg-danger">Sin Fotografía</span></td>
+                                            @endif 
 											<td>{{ isset($empleado->proyecto->nombre) ? $empleado->proyecto->nombre : 'Sin Proyecto'}}</td>
 											<td>{{ isset($empleado->puesto->nombre) ? $empleado->puesto->nombre : 'Sin Puesto'}}</td>
                                             <td>{{ '$'. number_format($empleado->salario_imss,2) }}</td>

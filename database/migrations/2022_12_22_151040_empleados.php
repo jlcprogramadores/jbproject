@@ -15,6 +15,7 @@ class Empleados extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
+            $table->longText('fotografia')->nullable();
             $table->integer('proyecto_id')->nullable();
             $table->integer('puesto_id')->nullable();
             $table->string('no_empleado');

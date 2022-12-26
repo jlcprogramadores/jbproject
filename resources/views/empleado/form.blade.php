@@ -1,7 +1,11 @@
 @if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+        {{ Form::label('Fotografía del empleado') }}
+            <p>
+                <label for="fotografia"></label>
+                <input type="file" name="fotografia">
+            </p>
         <div class="form-group">
             {{ Form::label('proyecto_id', 'Proyecto') }}
             {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona proyecto']) }}
