@@ -73,7 +73,7 @@ class EmpleadoExpedienteController extends Controller
             }
         }
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente creado exitosamente.');
+            ->with('success', 'Empleado-Expediente creado exitosamente.');
     }
 
     /**
@@ -116,7 +116,7 @@ class EmpleadoExpedienteController extends Controller
         $empleadoExpediente->update($request->all());
 
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente actualizado correctamente.');
+            ->with('success', 'Empleado-Expediente actualizado correctamente.');
     }
 
     /**

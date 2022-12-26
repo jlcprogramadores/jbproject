@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $empleadoExpediente->name ?? 'Show Empleado Expediente' }}
-@endsection
+@section('title','Mostrar Empleado-Expediente')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,35 +9,33 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Empleado Expediente</span>
+                            <span class="card-title">Mostrar Empleado Expediente</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('empleado-expedientes.index') }}"> Back</a>
                         </div>
                     </div>
-
+                    
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Empleado Id:</strong>
-                            {{ $empleadoExpediente->empleado_id }}
+                            <strong>Empleado:</strong>
+                            {{ $empleadoExpediente->empleado->nombre}}
                         </div>
                         <div class="form-group">
-                            <strong>Expediente Id:</strong>
-                            {{ $empleadoExpediente->expediente_id }}
+                            <strong>Expediente:</strong>
+                            {{ $empleadoExpediente->expediente->nombre}}
                         </div>
                         <div class="form-group">
                             <strong>Archivo:</strong>
                             {{ $empleadoExpediente->archivo }}
                         </div>
-                        <div class="form-group">
-                            <strong>Usuario Edito:</strong>
-                            {{ $empleadoExpediente->usuario_edito }}
-                        </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('empleado-expedientes.index') }}"> Atrás</a>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
-@endsection
+    @endsection
+    

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Empleado Expediente
-@endsection
+@section('title','Actualizar Empleado-Expediente')
 
 @section('content')
     <section class="content container-fluid">
