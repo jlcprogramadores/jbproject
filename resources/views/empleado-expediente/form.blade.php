@@ -1,4 +1,4 @@
-<div class="box box-info padding-1">
+<div class="box box-success padding-1">
     <div class="box-body">
         
         <div class="form-group">
@@ -7,46 +7,63 @@
             {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-
-        @foreach ($expediente as $item)
-            @if ($item->es_multiple)
-                <div class="form-group">
-                    {{ Form::label($item->id,$item->nombre) }}
-                    <input type="file" name="documentos[{{$item->id}}]" class="form-control">
-                </div>
-                <div>
-                    <label>Factura</label>
-                    <input type="button" name="answer" value="Añadir"  class="btn btn-success" onclick="mostrarDiv()" />
-                    <div id="apartadoFactura"  style="display:none;">
-                        <br>
-                        <table class="table table-bordered" id="dynamicAddRemove">
-                            <tr>
+        <div class="container text-uppercase">
         
-                                <th>Referencia</th>
-                                <th>URL</th>
-                                <th>Comprobante</th>
-                                <th>Fecha Facturación</th>
-                                <th>Monto</th>
-                                <th>Acción</th>
-                            </tr>
-                            <tr>
-                                <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control"/></td>
-                                <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
-                                <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
-                                <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
-                                <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control"/></td>
-                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            @else
-                <div class="form-group">
-                    {{ Form::label($item->id,$item->nombre) }}
-                    <input type="file" name="documentos[{{$item->id}}]" class="form-control">
-                </div>
-            @endif
-        @endforeach
+                <?php 
+                    $i = -1 ;
+                    $inicial = false;
+                ?>
+                @foreach ($expediente as $item)
+                    <?php $i++; ?>
+        
+                    @if ($i % 3 == 0)
+                        @if ($inicial)
+                            </div>
+                            <div class="row">
+                            @if ($item->es_multiple)
+                                <div class="form-group col-md p-1">
+                                    {{ Form::label($item->id,strtr($item->nombre,'_',' ').' (Selección Múltiple)', ['class' => 'text-success' ]) }}
+                                    <input type="file" name="documentos[{{$item->id}}][]" class="form-control" multiple="multiple">
+                                </div>
+                            @else
+                                <div class="form-group col-md p-1">
+                                    {{ Form::label($item->id,strtr($item->nombre,'_',' '), ['class' => 'text-primary' ]) }}
+                                    <input type="file" name="documentos[{{$item->id}}]" class="form-control">
+                                </div>
+                            @endif
+                        @else
+                            <?php $inicial = true; ?>
+                            <div class="row">
+                            @if ($item->es_multiple)
+                                <div class="form-group col-md p-1 ">
+                                    {{ Form::label($item->id,strtr($item->nombre,'_',' ').' (Selección Múltiple)', ['class' => 'text-success' ]) }}
+                                    <input type="file" name="documentos[{{$item->id}}][]" class="form-control" multiple="multiple">
+                                </div>
+                            @else
+                                <div class="form-group col-md p-1">
+                                    {{ Form::label($item->id,strtr($item->nombre,'_',' '), ['class' => 'text-primary' ]) }}
+                                    <input type="file" name="documentos[{{$item->id}}]" class="form-control">
+                                </div>
+                            @endif
+                        @endif
+                        
+                    @else
+                        @if ($item->es_multiple)
+                            <div class="form-group col-md p-1">
+                                {{ Form::label($item->id,strtr($item->nombre,'_',' ').' (Selección Múltiple)', ['class' => 'text-success' ]) }}
+                                <input type="file" name="documentos[{{$item->id}}][]" class="form-control" multiple="multiple">
+                            </div>
+                        @else
+                            <div class="form-group col-md p-1">
+                                {{ Form::label($item->id,strtr($item->nombre,'_',' '), ['class' => 'text-primary' ]) }}
+                                <input type="file" name="documentos[{{$item->id}}]" class="form-control">
+                            </div>
+                        @endif
+                        
+                    @endif
+                @endforeach
+                            
+        </div>
 
         <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}

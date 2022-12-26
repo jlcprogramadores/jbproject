@@ -50,27 +50,50 @@ class EmpleadoExpedienteController extends Controller
         request()->validate(EmpleadoExpediente::$rules);
         $empleado_id = $request->empleado_id;
         $usuario_edito = $request->usuario_edito;
-        // dd($request->documentos);
 
         foreach ($request->documentos as $expediente_id => $archivo){
-            $crearFactura = [
-                'empleado_id' => $empleado_id,
-                'expediente_id' => $expediente_id,
-                'archivo' => $archivo,
-                'usuario_edito' => $usuario_edito,
-            ];
-            $empleadoExpediente = EmpleadoExpediente::create($crearFactura);
-            // parte del jose
-            if ($empleadoExpediente->archivo != null) {
-                $nombreOriginal = $empleadoExpediente->archivo->getClientOriginalName();
-                $aux = 'expediente_' . $empleadoExpediente->id . '_';
-                $nombreFinal = $aux . $nombreOriginal;
-                $empleadoExpediente->archivo->storeAs('public',$nombreFinal);
-                $file_url = '/storage/' . $nombreFinal;
-                $getEmpleadoExpediente = EmpleadoExpediente::find($empleadoExpediente->id);
-                $getEmpleadoExpediente->archivo = $file_url;
-                $getEmpleadoExpediente->save();
+            if (is_array($archivo)) {
+                foreach($archivo as $iterArchivos){
+                    $crearFactura = [
+                        'empleado_id' => $empleado_id,
+                        'expediente_id' => $expediente_id,
+                        'archivo' => $iterArchivos,
+                        'usuario_edito' => $usuario_edito,
+                    ];
+                    $empleadoExpediente = EmpleadoExpediente::create($crearFactura);
+                    // parte del jose
+                    if ($empleadoExpediente->archivo != null) {
+                        $nombreOriginal = $empleadoExpediente->archivo->getClientOriginalName();
+                        $aux = 'expediente_' . $empleadoExpediente->id . '_';
+                        $nombreFinal = $aux . $nombreOriginal;
+                        $empleadoExpediente->archivo->storeAs('public',$nombreFinal);
+                        $file_url = '/storage/' . $nombreFinal;
+                        $getEmpleadoExpediente = EmpleadoExpediente::find($empleadoExpediente->id);
+                        $getEmpleadoExpediente->archivo = $file_url;
+                        $getEmpleadoExpediente->save();
+                    }
+                }
+            } else {
+                $crearFactura = [
+                    'empleado_id' => $empleado_id,
+                    'expediente_id' => $expediente_id,
+                    'archivo' => $archivo,
+                    'usuario_edito' => $usuario_edito,
+                ];
+                $empleadoExpediente = EmpleadoExpediente::create($crearFactura);
+                // parte del jose
+                if ($empleadoExpediente->archivo != null) {
+                    $nombreOriginal = $empleadoExpediente->archivo->getClientOriginalName();
+                    $aux = 'expediente_' . $empleadoExpediente->id . '_';
+                    $nombreFinal = $aux . $nombreOriginal;
+                    $empleadoExpediente->archivo->storeAs('public',$nombreFinal);
+                    $file_url = '/storage/' . $nombreFinal;
+                    $getEmpleadoExpediente = EmpleadoExpediente::find($empleadoExpediente->id);
+                    $getEmpleadoExpediente->archivo = $file_url;
+                    $getEmpleadoExpediente->save();
+                }
             }
+            
         }
         return redirect()->route('empleado-expedientes.index')
             ->with('success', 'Empleado-Expediente creado exitosamente.');
