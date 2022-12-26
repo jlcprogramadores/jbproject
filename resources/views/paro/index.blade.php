@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Paro
-@endsection
+@section('title','Paros')
 
 @section('content')
     <div class="container-fluid">
@@ -13,12 +11,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Paro') }}
+                                {{ __('Paros') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Paro') }}
                                 </a>
                               </div>
                         </div>
@@ -36,12 +34,12 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Empleado Id</th>
-										<th>Proyecto Id</th>
-										<th>Puesto Id</th>
+										<th>Empleado</th>
+										<th>Proyecto</th>
+										<th>Puesto</th>
 										<th>Salario</th>
 										<th>Comentario</th>
-										<th>Usuario Edito</th>
+										<th>Fecha Actualización</th>
 
                                         <th></th>
                                     </tr>
@@ -60,11 +58,11 @@
 
                                             <td>
                                                 <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('paros.edit',$paro->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('paros.edit',$paro->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

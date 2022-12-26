@@ -73,7 +73,7 @@ class EmpleadoExpedienteController extends Controller
             }
         }
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente created successfully.');
+            ->with('success', 'EmpleadoExpediente creado exitosamente.');
     }
 
     /**
@@ -116,7 +116,7 @@ class EmpleadoExpedienteController extends Controller
         $empleadoExpediente->update($request->all());
 
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente updated successfully');
+            ->with('success', 'EmpleadoExpediente actualizado correctamente.');
     }
 
     /**
@@ -129,6 +129,6 @@ class EmpleadoExpedienteController extends Controller
         $empleadoExpediente = EmpleadoExpediente::find($id)->delete();
 
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente deleted successfully');
+            ->with('success', 'EmpleadoExpediente eliminado exitosamente.');
     }
 }

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Paro
-@endsection
+@section('title','Actualizar Paro')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Paro</span>
+                        <span class="card-title">Actualizar Paro</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('paros.update', $paro->id) }}"  role="form" enctype="multipart/form-data">

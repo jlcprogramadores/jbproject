@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
+use App\Models\Proyecto;
+use App\Models\Puesto;
 use App\Models\Paro;
 use Illuminate\Http\Request;
 
@@ -32,7 +35,10 @@ class ParoController extends Controller
     public function create()
     {
         $paro = new Paro();
-        return view('paro.create', compact('paro'));
+        $empleado = Empleado::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+        $puesto = Puesto::pluck('nombre','id');
+        return view('paro.create', compact('paro','empleado','proyecto','puesto'));
     }
 
     /**
@@ -48,7 +54,7 @@ class ParoController extends Controller
         $paro = Paro::create($request->all());
 
         return redirect()->route('paros.index')
-            ->with('success', 'Paro created successfully.');
+            ->with('success', 'Paro creado exitosamente.');
     }
 
     /**
@@ -73,8 +79,11 @@ class ParoController extends Controller
     public function edit($id)
     {
         $paro = Paro::find($id);
+        $empleado = Empleado::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+        $puesto = Puesto::pluck('nombre','id');
 
-        return view('paro.edit', compact('paro'));
+        return view('paro.edit', compact('paro','empleado','proyecto','puesto'));
     }
 
     /**
@@ -91,7 +100,7 @@ class ParoController extends Controller
         $paro->update($request->all());
 
         return redirect()->route('paros.index')
-            ->with('success', 'Paro updated successfully');
+            ->with('success', 'Paro actualizado correctamente.');
     }
 
     /**
@@ -104,6 +113,6 @@ class ParoController extends Controller
         $paro = Paro::find($id)->delete();
 
         return redirect()->route('paros.index')
-            ->with('success', 'Paro deleted successfully');
+            ->with('success', 'Paro eliminado exitosamente.');
     }
 }

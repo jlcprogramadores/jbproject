@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $expediente->name ?? 'Show Expediente' }}
-@endsection
+@section('title','Mostrar Expediente')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,13 +9,12 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Expediente</span>
+                            <span class="card-title">Mostrar Expediente</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('expedientes.index') }}"> Back</a>
                         </div>
                     </div>
-
+                    
                     <div class="card-body">
                         
                         <div class="form-group">
@@ -26,13 +23,14 @@
                         </div>
                         <div class="form-group">
                             <strong>Es Multiple:</strong>
-                            {{ $expediente->es_multiple }}
+                            @if($expediente->es_multiple  != 0 )
+                                <span class="text-success">Sí</span>
+                            @else
+                                <span class="text-danger">No</span>
+                            @endif
                         </div>
-                        <div class="form-group">
-                            <strong>Usuario Edito:</strong>
-                            {{ $expediente->usuario_edito }}
-                        </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('expedientes.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>

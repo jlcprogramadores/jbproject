@@ -6,9 +6,9 @@
             {{ Form::text('nombre', $puesto->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', $puesto->usuario_edito, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

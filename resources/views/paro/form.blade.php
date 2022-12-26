@@ -2,18 +2,18 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('empleado_id') }}
-            {{ Form::text('empleado_id', $paro->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Empleado Id']) }}
+            {{ Form::label('Empleado') }}
+            {{ Form::select('empleado_id',$empleado, $paro->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Empleado']) }}
             {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('proyecto_id') }}
-            {{ Form::text('proyecto_id', $paro->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Proyecto Id']) }}
+            {{ Form::label('Proyecto') }}
+            {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('puesto_id') }}
-            {{ Form::text('puesto_id', $paro->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Puesto Id']) }}
+            {{ Form::label('Puesto') }}
+            {{ Form::select('puesto_id',$puesto, $paro->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Puesto']) }}
             {!! $errors->first('puesto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -26,14 +26,16 @@
             {{ Form::text('comentario', $paro->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
             {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', $paro->usuario_edito, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
             {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <a href="{{ route('paros.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>

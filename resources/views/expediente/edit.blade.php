@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Expediente
-@endsection
+@section('title','Actualizar Expediente')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Expediente</span>
+                        <span class="card-title">Actualizar Expediente</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('expedientes.update', $expediente->id) }}"  role="form" enctype="multipart/form-data">

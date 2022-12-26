@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title','Expediente')
+@section('title','Expedientes')
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -38,9 +39,9 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Es Multiple</th>
-										<th>Usuario Edito</th>
+										<th>Nombre del Documento</th>
+										<th>Es Múltiple</th>
+										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -51,16 +52,21 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $expediente->nombre }}</td>
-											<td>{{ $expediente->es_multiple }}</td>
+											{{-- <td>{{  }}</td> --}}
+                                            @if ($expediente->es_multiple == 0)
+                                                <td><p class="badge bg-danger">No</p></td>
+                                            @else
+                                                <td><p class="badge bg-success">Sí</p></td>
+                                            @endif
 											<td>{{ $expediente->usuario_edito }}</td>
 
                                             <td>
                                                 <form action="{{ route('expedientes.destroy',$expediente->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('expedientes.show',$expediente->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('expedientes.edit',$expediente->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('expedientes.show',$expediente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('expedientes.edit',$expediente->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

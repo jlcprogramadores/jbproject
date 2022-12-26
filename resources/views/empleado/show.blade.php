@@ -267,13 +267,14 @@
                         </div>
                         <div class="form-group">
                             <strong>Esta Trabajando:</strong>
-                            @if($empleado->esta_trabajando  == 0 )
+                            @if($empleado->esta_trabajando  != 0 )
                                 <span class="text-success">Sí</span>
                             @else
-                                <span class="text-success">No</span>
+                                <span class="text-danger">No</span>
                             @endif
                         </div>
                         <div class="float-right">
+                            <br>
                             <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
                         </div>
                     </div>

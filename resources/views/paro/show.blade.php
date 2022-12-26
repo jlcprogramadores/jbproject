@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $paro->name ?? 'Show Paro' }}
-@endsection
+@section('title','Mostrar Paro')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,26 +9,25 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Paro</span>
+                            <span class="card-title">Mostrar Paro</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('paros.index') }}"> Back</a>
                         </div>
                     </div>
-
+                    
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Empleado Id:</strong>
-                            {{ $paro->empleado_id }}
+                            <strong>Empleado:</strong>
+                            {{ $paro->empleado->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Proyecto Id:</strong>
-                            {{ $paro->proyecto_id }}
+                            <strong>Proyecto:</strong>
+                            {{ $paro->proyecto->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Puesto Id:</strong>
-                            {{ $paro->puesto_id }}
+                            <strong>Puesto:</strong>
+                            {{ $paro->puesto->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Salario:</strong>
@@ -40,11 +37,8 @@
                             <strong>Comentario:</strong>
                             {{ $paro->comentario }}
                         </div>
-                        <div class="form-group">
-                            <strong>Usuario Edito:</strong>
-                            {{ $paro->usuario_edito }}
-                        </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('paros.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>

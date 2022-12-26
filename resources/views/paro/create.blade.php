@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Paro
-@endsection
+@section('title','Crear Paro')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Paro</span>
+                        <span class="card-title">Crear Paro</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('paros.store') }}"  role="form" enctype="multipart/form-data">

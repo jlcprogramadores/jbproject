@@ -48,7 +48,7 @@ class ExpedienteController extends Controller
         $expediente = Expediente::create($request->all());
 
         return redirect()->route('expedientes.index')
-            ->with('success', 'Expediente created successfully.');
+            ->with('success', 'Expediente creado exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class ExpedienteController extends Controller
         $expediente->update($request->all());
 
         return redirect()->route('expedientes.index')
-            ->with('success', 'Expediente updated successfully');
+            ->with('success', 'Expediente actualizado correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class ExpedienteController extends Controller
         $expediente = Expediente::find($id)->delete();
 
         return redirect()->route('expedientes.index')
-            ->with('success', 'Expediente deleted successfully');
+            ->with('success', 'Expediente eliminado exitosamente.');
     }
 }
