@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $puesto->name ?? 'Show Puesto' }}
-@endsection
+@section('title','Mostrar Puesto')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Puesto</span>
+                            <span class="card-title">Mostrar Puesto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('puestos.index') }}"> Back</a>
+                            
                         </div>
                     </div>
 
@@ -25,10 +23,11 @@
                             {{ $puesto->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Usuario Edito:</strong>
+                            <strong>Fecha Actualización:</strong>
                             {{ $puesto->usuario_edito }}
                         </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('puestos.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>

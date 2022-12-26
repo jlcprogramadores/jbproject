@@ -14,6 +14,8 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <a href="{{ route('puestos.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>

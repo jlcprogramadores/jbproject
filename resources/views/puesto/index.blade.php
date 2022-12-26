@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Puesto
-@endsection
+@section('title','Puestos')
 
 @section('content')
     <div class="container-fluid">
@@ -13,12 +11,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Puesto') }}
+                                {{ __('Puestos') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('puestos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Puesto') }}
                                 </a>
                               </div>
                         </div>
@@ -37,7 +35,7 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Usuario Edito</th>
+										<th>Fecha Actualización</th>
 
                                         <th></th>
                                     </tr>
@@ -52,11 +50,11 @@
 
                                             <td>
                                                 <form action="{{ route('puestos.destroy',$puesto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('puestos.show',$puesto->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('puestos.edit',$puesto->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('puestos.show',$puesto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('puestos.edit',$puesto->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>
