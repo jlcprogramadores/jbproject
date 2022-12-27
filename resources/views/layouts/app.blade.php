@@ -100,15 +100,21 @@
                                         {{ __('Empleados') }}
                                     </a> 
                                     @endcan
+                                    @can('menu.puestos')
                                     <a class="dropdown-item" href="{{ route('puestos.index') }}">
                                         {{ __('Puestos') }}
-                                    </a> 
+                                    </a>
+                                    @endcan 
+                                    @can('menu.paros')
                                     <a class="dropdown-item" href="{{ route('paros.index') }}">
                                         {{ __('Paros') }}
-                                    </a> 
+                                    </a>
+                                    @endcan 
+                                    @can('menu.expedientes') 
                                     <a class="dropdown-item" href="{{ route('expedientes.index') }}">
                                         {{ __('Expedientes') }}
                                     </a>
+                                    @endcan 
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Empleado Expediente') }}
                                     </a>
