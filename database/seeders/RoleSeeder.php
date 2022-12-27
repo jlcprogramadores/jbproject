@@ -93,7 +93,14 @@ class RoleSeeder extends Seeder
                 $permisoparosshow = Permission::create(['name' => 'paros.show', 'description' => 'Paros:Mostrar', 'nomenclatura' => 'mn-02-sb-03-pm-03'])->syncRoles($rolAdmin);
                 $permisoparosedit = Permission::create(['name' => 'paros.edit', 'description' => 'Paros:Editar', 'nomenclatura' => 'mn-02-sb-03-pm-04'])->syncRoles($rolAdmin);
                 $permisoparosdestroy = Permission::create(['name' => 'paros.destroy', 'description' => 'Paros:Borrar', 'nomenclatura' => 'mn-02-sb-03-pm-05'])->syncRoles($rolAdmin);
-                
+            //Submenu expedientes
+            $permisoexpedientesindex = Permission::create(['name' => 'expedientes.index', 'description' => 'Expedientes:Tabla', 'nomenclatura' => 'mn-02-sb-04-pm-01'])->syncRoles($rolAdmin);
+                //Permisos expedientes
+                $permisoexpedientescreate = Permission::create(['name' => 'expedientes.create', 'description' => 'Expedientes:Crear', 'nomenclatura' => 'mn-02-sb-04-pm-02'])->syncRoles($rolAdmin);
+                $permisoexpedientesshow = Permission::create(['name' => 'expedientes.show', 'description' => 'Expedientes:Mostrar', 'nomenclatura' => 'mn-02-sb-04-pm-03'])->syncRoles($rolAdmin);
+                $permisoexpedientesedit = Permission::create(['name' => 'expedientes.edit', 'description' => 'Expedientes:Editar', 'nomenclatura' => 'mn-02-sb-04-pm-04'])->syncRoles($rolAdmin);
+                $permisoexpedientesdestroy = Permission::create(['name' => 'expedientes.destroy', 'description' => 'Expedientes:Borrar', 'nomenclatura' => 'mn-02-sb-04-pm-05'])->syncRoles($rolAdmin);
+            
         // Administración -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         $permisomenuadministracion = Permission::create(['name' => 'menu.administracion','description' => 'Ver Menú Administración', 'nomenclatura' => 'mn-03-sb-00-pm-00'])->syncRoles($rolAdmin,$rolPrueba);
             //Submenu administracion
