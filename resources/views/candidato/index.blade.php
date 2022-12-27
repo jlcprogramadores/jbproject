@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('bolsatrabajo.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +16,13 @@
                             <span id="card_title">
                                 {{ __('Candidatos') }}
                             </span>
-
+                            @can('bolsatrabajo.create')
                              <div class="float-right">
                                 <a href="{{ route('candidatos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Candidato') }}
                                 </a>
                               </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -79,11 +81,17 @@
 
                                             <td>
                                                 <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
+                                                    @can('bolsatrabajo.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('bolsatrabajo.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('candidatos.edit',$candidato->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('bolsatrabajo.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -98,6 +106,7 @@
         </div>
     </div>
 @endsection
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

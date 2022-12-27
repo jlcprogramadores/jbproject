@@ -118,9 +118,11 @@
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Empleado Expediente') }}
                                     </a>
+                                    @can('menu.bolsatrabajo') 
                                     <a class="dropdown-item" href="{{ route('candidatos.index') }}">
                                         {{ __('Bolsa de Trabajo') }}
                                     </a> 
+                                    @endcan
                                     </form>
                             </div>
                         </li>
