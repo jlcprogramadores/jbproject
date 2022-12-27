@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('empleado_id', 'Empleado') }}
-            {{ Form::select('empleado_id', $empleado, $empleadoExpediente->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Un Empleado']) }}
+            {{ Form::select('empleado_id', $empleado, null, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Un Empleado']) }}
             {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

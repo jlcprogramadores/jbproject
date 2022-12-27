@@ -6,6 +6,7 @@ use App\Models\EmpleadoExpediente;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Expediente;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class EmpleadoExpedienteController
@@ -20,10 +21,12 @@ class EmpleadoExpedienteController extends Controller
      */
     public function index()
     {
-        $empleadoExpedientes = EmpleadoExpediente::paginate();
+        
+        // $empleadoExpedientes = EmpleadoExpediente::paginate();
+        $empleados = Empleado::paginate();
 
-        return view('empleado-expediente.index', compact('empleadoExpedientes'))
-            ->with('i', (request()->input('page', 1) - 1) * $empleadoExpedientes->perPage());
+        return view('empleado-expediente.index', compact('empleados'))
+            ->with('i', (request()->input('page', 1) - 1) * $empleados->perPage());
     }
 
     /**
@@ -118,11 +121,56 @@ class EmpleadoExpedienteController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function editExpediente($id_empleado)
+    {
+        
+        $empleado = Empleado::find($id_empleado);
+        $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
+                        ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+                        ->where('empleado_expedientes.empleado_id','=',$id_empleado)->paginate();
+        // dd($expediente);
+        // return view('finanza.showdatosfiltrados', compact('finanzas'));
+        $i=0;
+        return view('empleado-expediente.indexEmpExpedientes', compact('empleado', 'expedientes','i'));
+    }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function docsFaltantes($id_empleado)
+    {
+        
+        $empleado = Empleado::find($id_empleado);
+        // se tiene que hacer un selec en base a los que no tiene aún y los multiples
+            $whereJoin = [
+                ['empleado_expedientes.expediente_id', '=', 'expedientes.id'],
+                ['empleado_expedientes.empleado_id','=',DB::raw($empleado->id)],
+                ['expedientes.es_multiple','=',DB::raw(0)]
+            ];
+        $expediente = Expediente::select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
+                        ->leftjoin('empleado_expedientes', $whereJoin)
+                        ->where('empleado_expedientes.expediente_id','=', null)->paginate();
+        // dd($expediente);
+
+        $i=0;
+        return view('empleado-expediente.docsFaltantes', compact('empleado', 'expediente','i'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
+        
         $empleadoExpediente = EmpleadoExpediente::find($id);
+        $empleado = Empleado::find($empleadoExpediente->empleado_id)->first();
 
-        return view('empleado-expediente.edit', compact('empleadoExpediente'));
+        return view('empleado-expediente.edit', compact('empleadoExpediente','empleado'));
     }
 
     /**

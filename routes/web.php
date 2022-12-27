@@ -71,6 +71,8 @@ Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->nam
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
 
+Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
+Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
