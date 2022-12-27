@@ -16,7 +16,7 @@
                             <span id="card_title">
                                 {{ __('Unidades') }}
                             </span>
-                            @can('unidades.show')
+                            @can('unidades.create')
                             <div class="float-right">
                                 <a href="{{ route('unidades.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Unidad') }}

@@ -95,9 +95,11 @@
                                     Recursos Humanos
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @can('menu.empleados')
                                     <a class="dropdown-item" href="{{ route('empleados.index') }}">
                                         {{ __('Empleados') }}
                                     </a> 
+                                    @endcan
                                     <a class="dropdown-item" href="{{ route('puestos.index') }}">
                                         {{ __('Puestos') }}
                                     </a> 
