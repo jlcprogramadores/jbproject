@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('paros.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +16,13 @@
                             <span id="card_title">
                                 {{ __('Paros') }}
                             </span>
-
-                             <div class="float-right">
+                            @can('paros.create')
+                            <div class="float-right">
                                 <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Paro') }}
+                                    {{ __('Crear Paro') }}
                                 </a>
-                              </div>
+                            </div>
+                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -62,11 +64,17 @@
 
                                             <td>
                                                 <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">
+                                                    @can('paros.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('paros.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('paros.edit',$paro->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('paros.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -81,7 +89,9 @@
         </div>
     </div>
 @endsection
-
+@endcan
+@endif
+    
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
@@ -162,4 +172,3 @@
         });
     </script>
 @endpush
-@endif

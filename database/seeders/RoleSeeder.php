@@ -75,18 +75,26 @@ class RoleSeeder extends Seeder
         $permisomenuexpedientes= Permission::create(['name' => 'menu.expedientes', 'description' => 'Ver Submenú RecursosHumanos-Expedientes', 'nomenclatura' => 'mn-02-sb-04-pm-00'])->syncRoles($rolAdmin);
             //Submenu empleados
              $permisoempleadosindex = Permission::create(['name' => 'empleados.index', 'description' => 'Empleados:Tabla', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
-                 //Permisos
+                 //Permisos empleados
                 $permisoempleadoscreate = Permission::create(['name' => 'empleados.create', 'description' => 'Empleados:Crear', 'nomenclatura' => 'mn-02-sb-01-pm-02'])->syncRoles($rolAdmin);
                 $permisoempleadosshow = Permission::create(['name' => 'empleados.show', 'description' => 'Empleados:Mostrar', 'nomenclatura' => 'mn-02-sb-01-pm-03'])->syncRoles($rolAdmin);
                 $permisoempleadosedit = Permission::create(['name' => 'empleados.edit', 'description' => 'Empleados:Editar', 'nomenclatura' => 'mn-02-sb-01-pm-04'])->syncRoles($rolAdmin);
                 $permisoempleadosdestroy = Permission::create(['name' => 'empleados.destroy', 'description' => 'Empleados:Borrar', 'nomenclatura' => 'mn-02-sb-01-pm-05'])->syncRoles($rolAdmin);
             //Submenu puestos
-                $permisopuestosindex = Permission::create(['name' => 'puestos.index', 'description' => 'Puestos:Tabla', 'nomenclatura' => 'mn-02-sb-02-pm-01'])->syncRoles($rolAdmin);
-                //Permisos
+            $permisopuestosindex = Permission::create(['name' => 'puestos.index', 'description' => 'Puestos:Tabla', 'nomenclatura' => 'mn-02-sb-02-pm-01'])->syncRoles($rolAdmin);
+                //Permisos puestos
                 $permisopuestoscreate = Permission::create(['name' => 'puestos.create', 'description' => 'Puestos:Crear', 'nomenclatura' => 'mn-02-sb-02-pm-02'])->syncRoles($rolAdmin);
                 $permisopuestosedit = Permission::create(['name' => 'puestos.edit', 'description' => 'Puestos:Editar', 'nomenclatura' => 'mn-02-sb-02-pm-04'])->syncRoles($rolAdmin);
                 $permisopuestosdestroy = Permission::create(['name' => 'puestos.destroy', 'description' => 'Puestos:Borrar', 'nomenclatura' => 'mn-02-sb-02-pm-05'])->syncRoles($rolAdmin);
-                // Administración -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            //Submenu paros
+            $permisoparosindex = Permission::create(['name' => 'paros.index', 'description' => 'Paros:Tabla', 'nomenclatura' => 'mn-02-sb-03-pm-01'])->syncRoles($rolAdmin);
+                //Permisos paros
+                $permisoparoscreate = Permission::create(['name' => 'paros.create', 'description' => 'Paros:Crear', 'nomenclatura' => 'mn-02-sb-03-pm-02'])->syncRoles($rolAdmin);
+                $permisoparosshow = Permission::create(['name' => 'paros.show', 'description' => 'Paros:Mostrar', 'nomenclatura' => 'mn-02-sb-03-pm-03'])->syncRoles($rolAdmin);
+                $permisoparosedit = Permission::create(['name' => 'paros.edit', 'description' => 'Paros:Editar', 'nomenclatura' => 'mn-02-sb-03-pm-04'])->syncRoles($rolAdmin);
+                $permisoparosdestroy = Permission::create(['name' => 'paros.destroy', 'description' => 'Paros:Borrar', 'nomenclatura' => 'mn-02-sb-03-pm-05'])->syncRoles($rolAdmin);
+                
+        // Administración -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         $permisomenuadministracion = Permission::create(['name' => 'menu.administracion','description' => 'Ver Menú Administración', 'nomenclatura' => 'mn-03-sb-00-pm-00'])->syncRoles($rolAdmin,$rolPrueba);
             //Submenu administracion
             $permisomenuclientes = Permission::create(['name' => 'menu.clientes', 'description' => 'Ver Submenú Administración-Clientes', 'nomenclatura' => 'mn-03-sb-01-pm-00'])->syncRoles($rolAdmin);
