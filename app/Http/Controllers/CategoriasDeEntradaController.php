@@ -48,7 +48,7 @@ class CategoriasDeEntradaController extends Controller
         $categoriasDeEntrada = CategoriasDeEntrada::create($request->all());
 
         return redirect()->route('categorias-de-entradas.index')
-            ->with('success', 'Categoria de Entrada creado exitosamente.');
+            ->with('success', 'Categoria de Entrada creada exitosamente.');
     }
 
     /**
@@ -108,7 +108,7 @@ class CategoriasDeEntradaController extends Controller
         }else{
             $categoriasDeEntrada = CategoriasDeEntrada::find($id)->delete();
             return redirect()->route('categorias-de-entradas.index')
-                ->with('success', 'Categoria de Entrada eliminado exitosamente.');
+                ->with('success', 'Categoria de Entrada eliminada exitosamente.');
         }
     }
 }

@@ -110,8 +110,8 @@
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Empleado Expediente') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ url('/') }}"">
-                                        {{ __('Currículums') }}
+                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
+                                        {{ __('Bolsa de Trabajo') }}
                                     </a> 
                                     </form>
                             </div>

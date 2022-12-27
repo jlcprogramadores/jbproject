@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Paros')
+@section('title','Bolsa de Trabajo')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -8,17 +8,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card text-white border-secondary">
-                    <div class="card-header bg-secondary">
+                <div class="card">
+                    <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Paros') }}
+                                {{ __('Candidatos') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Paro') }}
+                                <a href="{{ route('candidatos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Candidato') }}
                                 </a>
                               </div>
                         </div>
@@ -31,39 +31,56 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="table">
+                            <table class="table table-striped table-hover"  id="table">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Empleado</th>
-										<th>Proyecto</th>
-										<th>Puesto</th>
-										<th>Salario</th>
-										<th>Comentario</th>
+										<th>Nombre Completo</th>
+										<th>Teléfono Personal</th>
+										<th>Correo</th>
+										<th>Currículum</th>
+										<th>Semáforo</th>
+										<th>Género</th>
 										<th>Fecha Actualización</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($paros as $paro)
+                                    @foreach ($candidatos as $candidato)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            {{-- @php
-                                                dd($paro->id);
-                                            @endphp --}}
-											<td>{{ $paro->empleado->nombre }}</td>
-											<td>{{ $paro->proyecto->nombre}}</td>
-											<td>{{ $paro->puesto->nombre }}</td>
-											<td>{{ $paro->salario }}</td>
-											<td>{{ $paro->comentario }}</td>
-											<td>{{ $paro->usuario_edito }} <br/> {{ $paro->updated_at }}</td>
+                                            
+											<td>{{ $candidato->nombre.' '.$candidato->apellido_paterno.' '.$candidato->apellido_materno }}</td>
+											<td>{{ $candidato->telefono_personal }}</td>
+											<td>{{ $candidato->correo }}</td>
+                                            @if ($candidato->curriculum)
+                                                <td><a href="{{$candidato->curriculum}}">Link Currículum</a></td> 
+                                            @else
+                                                <td><span class="text-danger">Sin Currículum</span></td>
+                                            @endif 
+
+                                            @if ($candidato->semaforo == 1)
+                                                <td><p class="badge bg-success">Verde</p></td>
+                                            @elseif ($candidato->semaforo == 2)
+                                                <td><p class="badge bg-warning">Amarillo</p></td>
+                                            @else
+                                                <td><p class="badge bg-danger">Rojo</p></td>
+                                            @endif
+                                            @if ($candidato->genero == 0)
+                                                <td>Masculino</td>
+                                            @elseif ($candidato->genero == 1)
+                                                <td>Femenino</td>
+                                            @else
+                                                <td>Otro</td>
+                                            @endif 
+											<td>{{ $candidato->usuario_edito }}</td>
 
                                             <td>
-                                                <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('paros.edit',$paro->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('candidatos.edit',$candidato->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
@@ -76,12 +93,12 @@
                         </div>
                     </div>
                 </div>
-                {!! $paros->links() !!}
+                {!! $candidatos->links() !!}
             </div>
         </div>
     </div>
 @endsection
-
+@endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
@@ -92,7 +109,7 @@
                 autoWidth: false,   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "Nothing found - sorry",
+                    "zeroRecords": "No se encontró nada – lo siento",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros",
                     "infoFiltered": "(filtered from _MAX_ total records)",
@@ -162,4 +179,3 @@
         });
     </script>
 @endpush
-@endif

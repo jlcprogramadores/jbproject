@@ -3,9 +3,9 @@ php artisan migrate:rollback = HACES ROLLBACK A LAS MIGRACIONES
 php artisan serve = CORRER EL PROYECTO
 
  # Flujo nueva integración de una tabla nueva y su CRUD 
- php artisan make:migration empleados
- php artisan migrate:fresh --seed
- php artisan make:crud empleados
+php artisan make:migration empleados
+php artisan migrate:fresh --seed
+php artisan make:crud empleados
  # para que jale 
 composer require laravel/ui
 php artisan ui bootstrap --auth
