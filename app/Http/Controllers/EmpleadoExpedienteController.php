@@ -142,12 +142,14 @@ class EmpleadoExpedienteController extends Controller
      */
     public function docsFaltantes($id_empleado)
     {
-        
-        $empleado = Empleado::find($id_empleado);
+        // dd($id_empleado);
+        $emp = Empleado::where('id','=', $id_empleado)->first();
+        $empleado = [$emp->id => $emp->nombre];
+        // dd($empleado);
         // se tiene que hacer un selec en base a los que no tiene aún y los multiples
             $whereJoin = [
                 ['empleado_expedientes.expediente_id', '=', 'expedientes.id'],
-                ['empleado_expedientes.empleado_id','=',DB::raw($empleado->id)],
+                ['empleado_expedientes.empleado_id','=',DB::raw($emp->id)],
                 ['expedientes.es_multiple','=',DB::raw(0)]
             ];
         $expediente = Expediente::select('expedientes.id','expedientes.nombre','expedientes.es_multiple')

@@ -1,14 +1,17 @@
 <div class="box box-success padding-1">
     <div class="box-body">
         
-        <div class="form-group">
-            {{ Form::label('empleado_id', 'Empleado') }}
-            {{ Form::select('empleado_id', $empleado, null, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Un Empleado']) }}
-            {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
-        <div class="container text-uppercase">
         
+        <div class="container text-uppercase">
+            <div class="row">
+                <div class="form-group col-md p-1">
+                    {{ Form::label('empleado_id', 'Empleado') }}
+                    <br>
+                    {{ Form::select('empleado_id', $empleado, null, ['class' => 'form-control form-control-sm ' . ($errors->has('empleado_id') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+            </div>
+
                 <?php 
                     $i = -1 ;
                     $inicial = false;
