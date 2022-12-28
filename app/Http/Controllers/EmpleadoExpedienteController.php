@@ -114,6 +114,19 @@ class EmpleadoExpedienteController extends Controller
 
         return view('empleado-expediente.show', compact('empleadoExpediente'));
     }
+    
+    public function showPorEmpleado($id)
+    {
+        $empleadoExpediente = EmpleadoExpediente::find($id);
+        $empleado = Empleado::find($empleadoExpediente->empleado_id);
+        $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
+                        ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+                        ->where('empleado_expedientes.empleado_id','=',$empleadoExpediente->empleado_id)->get();
+        dd($expedientes);
+        // return view('finanza.showdatosfiltrados', compact('finanzas'));
+        $i=0;
+        return view('empleado-expediente.showPorEmpleado', compact('empleadoExpediente'));
+    }
 
     /**
      * Show the form for editing the specified resource.

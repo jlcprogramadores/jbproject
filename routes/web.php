@@ -75,6 +75,7 @@ Route::get('/poblaciondetalle/{id}', 'App\Http\Controllers\EmpleadoController@po
 
 Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
+Route::get('/showPorEmpleado/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@showPorEmpleado')->name('empleado-expedientes.showPorEmpleado');
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
