@@ -27,6 +27,45 @@ class EmpleadoController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function poblacion()
+    {        
+        $proyectos = Proyecto::all();
+
+        foreach ($proyectos as $proyecto => $value) {
+            $costos[] =array(
+                "id_proyecto"=> $value->id,
+                "nombre"=>$value->nombre,
+                "costo_nomina"=>Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->sum('salario_real'), 
+                "total_empleados" => Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->count()
+            );
+
+            $listas[] =array(
+                "lista"=> Empleado::select('nombre')->where('proyecto_id','=',$value->id)->get()
+            );
+        }
+        
+        return view('empleado.poblacion', compact('costos','listas'))->with('i');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function poblaciondetalle(Request $request)
+    {        
+        $proyecto = Proyecto::select('nombre')->where('id','=',$request->id)->get();
+        $empleados = Empleado::where('proyecto_id','=', $request->id)->where('proyecto_id', '=', $request->id)->get();
+        $puestos = Puesto::pluck('nombre','id');
+        
+        return view('empleado.poblaciondetalle', compact('empleados','puestos','proyecto'))->with('i');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -123,6 +123,9 @@
                                         {{ __('Bolsa de Trabajo') }}
                                     </a> 
                                     @endcan
+                                    <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
+                                        {{ __('Población') }}
+                                    </a> 
                                     </form>
                             </div>
                         </li>
