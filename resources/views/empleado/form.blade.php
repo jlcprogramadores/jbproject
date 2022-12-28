@@ -22,14 +22,14 @@
             {!! $errors->first('no_empleado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('apellido_materno') }}
-            {{ Form::text('apellido_materno', $empleado->apellido_materno, ['class' => 'form-control' . ($errors->has('apellido_materno') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Materno']) }}
-            {!! $errors->first('apellido_materno', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
             {{ Form::label('apellido_paterno') }}
             {{ Form::text('apellido_paterno', $empleado->apellido_paterno, ['class' => 'form-control' . ($errors->has('apellido_paterno') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Paterno']) }}
             {!! $errors->first('apellido_paterno', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('apellido_materno') }}
+            {{ Form::text('apellido_materno', $empleado->apellido_materno, ['class' => 'form-control' . ($errors->has('apellido_materno') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Materno']) }}
+            {!! $errors->first('apellido_materno', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('nombre') }}

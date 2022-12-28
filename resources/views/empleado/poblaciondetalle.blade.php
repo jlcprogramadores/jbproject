@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Empleado</th>
+										<th>Nombre</th>
                                         <th>Salario IMSS</th>
                                         <th>Salario Real</th>
                                         <th>Puesto</th>
@@ -50,7 +50,7 @@
                                     @foreach ($empleados as $empleado)
                                     <tr>
                                         <td>{{ ++$i }}</td> 
-                                        <td>{{$empleado['nombre']}}</td> 
+                                        <td>{{ $empleado['nombre'].' '.$empleado['apellido_paterno'].' '.$empleado['apellido_materno'] }}</td>
                                         <td>${{number_format($empleado['salario_imss'],2)}}</td> 
                                         <td>${{number_format($empleado['salario_real'],2)}}</td> 
                                         <td>{{$empleado->puesto->nombre}}</td>
