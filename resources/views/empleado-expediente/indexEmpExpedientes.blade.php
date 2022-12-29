@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Documetnos') }}
+                                {{ __('Expediente') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('empleado-expedientes.docsFaltantes', $empleado->id) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Completar documetos') }}
+                                  {{ __('Completar documetos del Expediente') }}
                                 </a>
                               </div>
                         </div>

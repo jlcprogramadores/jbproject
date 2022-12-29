@@ -16,14 +16,14 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Expediente') }}
+                                {{ __('Documentos de Expedientes') }}
                             </span>
                             @can('expedientes.create') 
-                            <div class="float-right">
+                            {{-- <div class="float-right">
                                 <a href="{{ route('expedientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Expediente') }}
                                 </a>
-                            </div>
+                            </div> --}}
                             @endcan
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     @can('expedientes.destroy') 
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    {{-- <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button> --}}
                                                     @endcan
                                                 </form>
                                             </td>

@@ -112,11 +112,11 @@
                                     @endcan 
                                     @can('menu.expedientes') 
                                     <a class="dropdown-item" href="{{ route('expedientes.index') }}">
-                                        {{ __('Expedientes') }}
+                                        {{ __('Documentos de Expedientes') }}
                                     </a>
                                     @endcan 
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
-                                        {{ __('Empleado Expediente') }}
+                                        {{ __('Expediente de Empleado') }}
                                     </a>
                                     @can('menu.bolsatrabajo') 
                                     <a class="dropdown-item" href="{{ route('candidatos.index') }}">
