@@ -59,7 +59,7 @@
                                             @else
                                                 <td><p class="badge bg-success">Sí</p></td>
                                             @endif
-											<td>{{ $expediente->usuario_edito }}</td>
+											<td>{{ $expediente->usuario_edito }}  <br/> {{ $expediente->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('expedientes.destroy',$expediente->id) }}" method="POST">

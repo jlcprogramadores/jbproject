@@ -77,7 +77,7 @@
                                             @else
                                                 <td>Otro</td>
                                             @endif 
-											<td>{{ $candidato->usuario_edito }}</td>
+											<td>{{ $candidato->usuario_edito }}  <br/> {{ $candidato->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
