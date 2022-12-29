@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre</th>
+										<th>Nombre del Puesto</th>
 										<th>Fecha Actualización</th>
 
                                         <th></th>

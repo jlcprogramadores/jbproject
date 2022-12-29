@@ -15,8 +15,6 @@ class Candidatos extends Migration
     {   
         Schema::create('candidatos', function (Blueprint $table) {
             $table->id();
-            $table->string('apellido_materno');
-            $table->string('apellido_paterno');
             $table->string('nombre');
             $table->string('genero');
             $table->bigInteger('telefono_personal');

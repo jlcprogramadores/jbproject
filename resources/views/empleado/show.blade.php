@@ -28,14 +28,6 @@
                             {{ $empleado->no_empleado }}
                         </div>
                         <div class="form-group">
-                            <strong>Apellido Materno:</strong>
-                            {{ $empleado->apellido_materno }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Apellido Paterno:</strong>
-                            {{ $empleado->apellido_paterno }}
-                        </div>
-                        <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $empleado->nombre }}
                         </div>
@@ -59,11 +51,13 @@
                         </div>
                         <div class="form-group">
                             <strong>Salario Imss:</strong>
-                            {{ $empleado->salario_imss }}
+                            
+                            {{ '$'. number_format($empleado->salario_imss,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Salario Real:</strong>
-                            {{ $empleado->salario_real }}
+                             
+                            {{ '$'. number_format($empleado->salario_real,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Tipo De Empleado:</strong>
@@ -255,7 +249,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Peso:</strong>
-                            {{ $empleado->peso }}
+                            {{ $empleado->peso . ' Kg'}}
                         </div>
                         <div class="form-group">
                             <strong>Estatura:</strong>

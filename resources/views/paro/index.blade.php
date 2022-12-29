@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Empleado</th>
+										<th>Nombre del Empleado</th>
 										<th>Proyecto</th>
 										<th>Puesto</th>
 										<th>Salario</th>
@@ -58,7 +58,8 @@
 											<td>{{ $paro->empleado->nombre }}</td>
 											<td>{{ $paro->proyecto->nombre}}</td>
 											<td>{{ $paro->puesto->nombre }}</td>
-											<td>{{ $paro->salario }}</td>
+											<td>{{ '$'. number_format($paro->salario,2)  }}</td>
+                                            
 											<td>{{ $paro->comentario }}</td>
 											<td>{{ $paro->usuario_edito }} <br/> {{ $paro->updated_at }}</td>
 

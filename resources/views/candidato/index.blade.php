@@ -54,7 +54,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $candidato->nombre.' '.$candidato->apellido_paterno.' '.$candidato->apellido_materno }}</td>
+											<td>{{ $candidato->nombre }}</td>
 											<td>{{ $candidato->telefono_personal }}</td>
 											<td>{{ $candidato->correo }}</td>
                                             @if ($candidato->curriculum)

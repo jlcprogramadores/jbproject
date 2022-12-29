@@ -19,8 +19,6 @@ class Empleados extends Migration
             $table->integer('proyecto_id')->nullable();
             $table->integer('puesto_id')->nullable();
             $table->string('no_empleado');
-            $table->string('apellido_materno');
-            $table->string('apellido_paterno');
             $table->string('nombre');
             $table->string('genero');
             $table->bigInteger('telefono_personal');
