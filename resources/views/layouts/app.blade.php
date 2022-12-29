@@ -46,7 +46,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Finanzas
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @can('finanzas.index')
                                 <a class="dropdown-item" href="{{ route('finanzas.index') }}">
                                     {{ __('Finanzas') }}
@@ -85,57 +85,6 @@
                                     {{ __('Centro de Costos') }}
                                 </a>
                                 @endcan
-                                </form>
-                            </div>
-                        </li>
-                        @endcan
-                        @can('menu.recursoshumanos')
-                        <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Recursos Humanos
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @can('menu.empleados')
-                                    <a class="dropdown-item" href="{{ route('empleados.index') }}">
-                                        {{ __('Empleados') }}
-                                    </a> 
-                                    @endcan
-                                    @can('menu.puestos')
-                                    <a class="dropdown-item" href="{{ route('puestos.index') }}">
-                                        {{ __('Puestos') }}
-                                    </a>
-                                    @endcan 
-                                    @can('menu.paros')
-                                    <a class="dropdown-item" href="{{ route('paros.index') }}">
-                                        {{ __('Paros') }}
-                                    </a>
-                                    @endcan 
-                                    @can('menu.expedientes') 
-                                    <a class="dropdown-item" href="{{ route('expedientes.index') }}">
-                                        {{ __('Documentos de Expedientes') }}
-                                    </a>
-                                    @endcan 
-                                    <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
-                                        {{ __('Expediente de Empleado') }}
-                                    </a>
-                                    @can('menu.bolsatrabajo') 
-                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
-                                        {{ __('Bolsa de Trabajo') }}
-                                    </a> 
-                                    @endcan
-                                    <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
-                                        {{ __('Población') }}
-                                    </a> 
-                                    </form>
-                            </div>
-                        </li>
-                    @endcan
-                    @can('menu.administracion')    
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Administración
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
                                 @can('menu.clientes')
                                 <a class="dropdown-item" href="{{ route('clientes.index') }}">
                                     {{ __('Clientes') }}
@@ -151,6 +100,127 @@
                                     {{ __('Proyectos') }}
                                 </a>
                                 @endcan
+                                <div class="dropdown-divider"></div>
+                                <li>
+                                    <a class="dropdown-item " href="">
+                                        {{ __('Configuración') }} &raquo;
+                                    </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li>
+                                            @can('menu.categorias-de-entrada')
+                                            <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
+                                                {{ __('Categorías de entrada') }}
+                                            </a>
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.categorias-familias')
+                                            <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
+                                                {{ __('Categorías Familias') }}
+                                            </a>  
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.familias')
+                                            <a class="dropdown-item"  href="{{ route('familias.index') }}">
+                                                {{ __('Familias') }}
+                                            </a>  
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.ivas')
+                                            <a class="dropdown-item" href="{{ route('ivas.index') }}">
+                                                {{ __('Ivas') }}
+                                            </a> 
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.tipo-de-direcciones')
+                                            <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
+                                                {{ __('Tipo de Direcciones') }}
+                                            </a>
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.tipo-de-ingresos')
+                                            <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
+                                                {{ __('Tipo de Ingresos') }}
+                                            </a>  
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.unidades')
+                                            <a class="dropdown-item" href="{{ route('unidades.index') }}">
+                                                {{ __('Unidades') }}
+                                            </a>
+                                            @endcan   
+                                        </li>
+                                    </ul>
+                                </li>
+                                </form>
+                            </ul>
+                        </li>
+                        @endcan
+                        @can('menu.recursoshumanos')
+                        <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Recursos Humanos
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @can('menu.empleados')
+                                    <a class="dropdown-item" href="{{ route('empleados.index') }}">
+                                        {{ __('Empleados') }}
+                                    </a> 
+                                    @endcan
+                                    @can('menu.paros')
+                                    <a class="dropdown-item" href="{{ route('paros.index') }}">
+                                        {{ __('Paros') }}
+                                    </a>
+                                    @endcan 
+                                    <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
+                                        {{ __('Expediente de Empleado') }}
+                                    </a>
+                                    @can('menu.bolsatrabajo') 
+                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
+                                        {{ __('Bolsa de Trabajo') }}
+                                    </a> 
+                                    @endcan
+                                    <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
+                                        {{ __('Población') }}
+                                    </a> 
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a class="dropdown-item" href="">
+                                            {{ __('Configuración') }} &raquo;
+                                        </a> 
+                                        <ul class="submenu dropdown-menu">
+                                            @can('menu.puestos')
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('puestos.index') }}">
+                                                    {{ __('Puestos') }}
+                                                </a>
+                                            </li>
+                                            @endcan 
+                                            @can('menu.expedientes') 
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('expedientes.index') }}">
+                                                    {{ __('Documentos de Expedientes') }}
+                                                </a>
+                                            </li>
+                                            @endcan 
+                                        </ul>
+                                    </li>
+                                    </form>
+                                </ul>   
+                        </li>
+                    @endcan
+                    @can('menu.administracion')    
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Administración
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
+                               
                                 @can('menu.usuarios')
                                 <a class="dropdown-item" href="{{ route('usuarios.index') }}">
                                     {{ __('Usuarios') }}
@@ -161,42 +231,7 @@
                                     {{ __('Roles y permisos') }}
                                 </a>
                                 @endcan
-                                <hr>
-                                @can('menu.categorias-de-entrada')
-                                <a class="dropdown-item" href="{{ route('categorias-de-entradas.index') }}">
-                                    {{ __('Categorías de entrada') }}
-                                </a>
-                                @endcan
-                                @can('menu.categorias-familias')
-                                <a class="dropdown-item" href="{{ route('categorias-familias.index') }}">
-                                    {{ __('Categorías Familias') }}
-                                </a>  
-                                @endcan
-                                @can('menu.familias')
-                                <a class="dropdown-item"  href="{{ route('familias.index') }}">
-                                    {{ __('Familias') }}
-                                </a>  
-                                @endcan
-                                @can('menu.ivas')
-                                <a class="dropdown-item" href="{{ route('ivas.index') }}">
-                                    {{ __('Ivas') }}
-                                </a> 
-                                @endcan
-                                @can('menu.tipo-de-direcciones')
-                                <a class="dropdown-item" href="{{ route('tipo-de-direcciones.index') }}">
-                                    {{ __('Tipo de Direcciones') }}
-                                </a>
-                                @endcan
-                                @can('menu.tipo-de-ingresos')
-                                <a class="dropdown-item" href="{{ route('tipo-de-ingresos.index') }}">
-                                    {{ __('Tipo de Ingresos') }}
-                                </a>  
-                                @endcan
-                                @can('menu.unidades')
-                                <a class="dropdown-item" href="{{ route('unidades.index') }}">
-                                    {{ __('Unidades') }}
-                                </a>
-                                @endcan    
+                                
                                 </form>
                             </div>
                         </li>
