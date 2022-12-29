@@ -16,17 +16,6 @@
 
                     <div class="card-body">
                         
-                        @if ($finanza->salidas_id != null)
-                            <div class="form-group">
-                                <strong>Salidas Id:</strong>
-                                {{ $finanza->salidas_id }}
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <strong>Entradas Id:</strong>
-                                {{ $finanza->entradas_id }}
-                            </div>
-                        @endif
                         <div class="form-group">
                             <strong>Familia y Categoría:</strong>    
                             {{'F: '. $finanza->famCategoria->familia->nombre}}

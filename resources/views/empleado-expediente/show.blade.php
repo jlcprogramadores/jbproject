@@ -25,10 +25,12 @@
                             <strong>Expediente:</strong>
                             {{ $empleadoExpediente->expediente->nombre}}
                         </div>
-                        <div class="form-group">
-                            <strong>Archivo:</strong>
-                            {{ $empleadoExpediente->archivo }}
-                        </div>
+                        @if ($empleadoExpediente->archivo)
+                            <a href="{{$empleadoExpediente->archivo}}">Archivo: {{$empleadoExpediente->expediente->nombre}}</a> 
+                        @else
+                            <span class="text-danger">Sin Archivo</span>
+                        @endif  
+                        <br>
                         <br>
                         <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
                         

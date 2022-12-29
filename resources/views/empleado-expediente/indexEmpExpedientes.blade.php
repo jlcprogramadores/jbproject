@@ -21,7 +21,7 @@
                                     {{ __('Atrás') }}
                                 </a>
                                 <a href="{{ route('empleado-expedientes.docsFaltantes', $empleado->id) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Completar documetos del Expediente') }}
+                                  {{ __('Completar Documentos del Expediente') }}
                                 </a>
                               </div>
                         </div>
@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>nombre</th>
+										<th>Nombre del Documento</th>
 
                                         <th>Acciones</th>
                                     </tr>
