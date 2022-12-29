@@ -17,6 +17,9 @@
                             </span>
 
                              <div class="float-right">
+                                <a href="{{ route('empleado-expedientes.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
+                                </a>
                                 <a href="{{ route('empleado-expedientes.docsFaltantes', $empleado->id) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Completar documetos del Expediente') }}
                                 </a>

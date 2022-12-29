@@ -30,7 +30,7 @@
                             {{ $empleadoExpediente->archivo }}
                         </div>
                         <br>
-                        <a class="btn btn-primary" href="{{ route('empleado-expedientes.index') }}"> Atrás</a>
+                        <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
                         
                     </div>
                 </div>

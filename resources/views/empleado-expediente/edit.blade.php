@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Empleado Expediente</span>
+                        <span class="card-title">Cambiar Archivo del Expediente</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('empleado-expedientes.update', $empleado->id) }}"  role="form" enctype="multipart/form-data">
@@ -45,6 +45,7 @@
                                 </div>
                                 <div class="box-footer mt20">
                                     <br>
+                                    <a href="javascript:history.back()" class="btn btn-danger ">{{ __('Cancelar')}}</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
