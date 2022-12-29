@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Salario:</strong>
-                            {{ $paro->salario }}
+                            {{ '$'. number_format($paro->salario,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Comentario:</strong>
