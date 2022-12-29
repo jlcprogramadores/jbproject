@@ -75,11 +75,17 @@
         </div>
 
     </div>
-    <div class="box-footer mt20">
-        <br>
-        <a href="{{ route('empleado-expedientes.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <br>
+            <a href="{{ route('empleado-expedientes.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
+            <br>
+            <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
+        </div>
     </div>
+
+
+
 </div>
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
