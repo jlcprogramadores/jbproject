@@ -117,15 +117,22 @@ class EmpleadoExpedienteController extends Controller
     
     public function showPorEmpleado($id)
     {
+        // contiene los 
         $empleadoExpediente = EmpleadoExpediente::find($id);
-        $empleado = Empleado::find($empleadoExpediente->empleado_id);
-        $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
+        $expedientesCargados = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
                         ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                         ->where('empleado_expedientes.empleado_id','=',$empleadoExpediente->empleado_id)->get();
-        dd($expedientes);
-        // return view('finanza.showdatosfiltrados', compact('finanzas'));
-        $i=0;
-        return view('empleado-expediente.showPorEmpleado', compact('empleadoExpediente'));
+        // dd($expedientesCargados);
+        $whereJoin = [
+            ['empleado_expedientes.expediente_id', '=', 'expedientes.id'],
+            ['empleado_expedientes.empleado_id','=',DB::raw($empleadoExpediente->empleado_id)],
+            ['expedientes.es_multiple','=',DB::raw(0)]
+        ];
+        $expedienteFaltantes = Expediente::select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
+                    ->leftjoin('empleado_expedientes', $whereJoin)
+                    ->where('empleado_expedientes.expediente_id','=', null)->paginate();
+
+        return view('empleado-expediente.showPorEmpleado', compact('expedientesCargados','expedienteFaltantes'));
     }
 
     /**
