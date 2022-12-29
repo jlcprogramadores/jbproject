@@ -38,13 +38,13 @@
                                     <tr>
                                         <th>No</th>
                                         
+										<th>No Empleado</th>
                                         <th>Fotografía</th>
+										<th>Nombre</th>
 										<th>Proyecto</th>
 										<th>Puesto</th>
                                         <th>Salario IMSS</th>
                                         <th>Salario Real</th>
-										<th>No Empleado</th>
-										<th>Nombre</th>
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Esta Trabajando</th>
@@ -58,17 +58,17 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
+                                            <td>{{ $empleado->no_empleado }}</td>
                                             @if ($empleado->fotografia)
                                                 <td> <img src={{ $empleado->fotografia }} height="100" ></td> 
                                             @else
                                                 <td><span class="badge bg-danger">Sin Fotografía</span></td>
                                             @endif 
+                                            <td>{{ $empleado->nombre }}</td>
 											<td>{{ isset($empleado->proyecto->nombre) ? $empleado->proyecto->nombre : 'Sin Proyecto'}}</td>
 											<td>{{ isset($empleado->puesto->nombre) ? $empleado->puesto->nombre : 'Sin Puesto'}}</td>
                                             <td>{{ '$'. number_format($empleado->salario_imss,2) }}</td>
                                             <td>{{ '$'. number_format($empleado->salario_real,2) }}</td>
-											<td>{{ $empleado->no_empleado }}</td>
-											<td>{{ $empleado->nombre }}</td>
 											<td>{{ $empleado->telefono_personal }}</td>
 											<td>{{ $empleado->correo}}</td>
                                             <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>
