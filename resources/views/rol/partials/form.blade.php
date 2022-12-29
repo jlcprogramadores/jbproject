@@ -13,6 +13,7 @@
             $contador = 0;
             $titulos = ['Finanzas', 'Recursos Humanos', 'Administración'];
             $indicadorEnPM = '00';
+            $esEspecial = false;
             ?>
             <br>
             <div class="container">
@@ -29,52 +30,52 @@
                         // parte submenus
                         $subMenu = substr($permission->nomenclatura, 15, 2);
                         $subMenuEsIgual = $indicadorEnPM == $subMenu;
+                        $esEspecial = $subMenu == 'cf'; 
                         ?>
                         {{-- Cuando es el primero --}}
-                        @if ($menuEsIgual == false && $contador == 0)
-                            <div class="col-sm" data-bs-spy="scroll">
+                            @if ($menuEsIgual == false && $contador == 0)
+                                
+                                <div class="col-sm" data-bs-spy="scroll">
                                 <li class="list-group-item list-group-item-primary">
                                     <div class="d-flex justify-content-between">
-                                        <div>
-                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                            {{ $permission->description }}
-                                        </div>
-                                        <div class="fw-bold"> {{ $titulos[$contador] }}</div>
+                                    <div>
+                                    {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                    {{ $permission->description }}
+                                    </div>
+                                    <div class="fw-bold"> {{ $titulos[$contador] }}</div>
                                     </div>
                                 </li>
                                 <ul class="list-group">
-
-                                    <?php $contador++; ?>
-                                @elseif($menuEsIgual == true)
-                                    @if ($subMenuEsIgual)
-                                        <li class="list-group-item list-group-item-secondary">
-                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                            {{ $permission->description }}
-                                        </li>
-                                    @else
-                                        <li class="list-group-item">
-                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                            {{ $permission->description }}
-                                        </li>
-                                    @endif
-                                @elseif($menuEsIgual == false)
+                                <?php $contador++; ?>
+                            @elseif($menuEsIgual == true)
+                                @if ($subMenuEsIgual)
+                                    <li class="list-group-item list-group-item-secondary">
+                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                        {{ $permission->description }}
+                                    </li>
+                                @else
+                                    <li class="list-group-item">
+                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                        {{ $permission->description }}
+                                    </li>
+                                @endif
+                            @elseif($menuEsIgual == false)
                                 </ul>
-                            </div>
-                            <div class="col-sm" data-bs-spy="scroll">
-
+                                </div>
+                                <div class="col-sm" data-bs-spy="scroll">
                                 <li class="list-group-item list-group-item-primary">
                                     <div class="d-flex justify-content-between">
-                                        <div>
-                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                            {{ $permission->description }}
-                                        </div>
-                                        <div class="fw-bold">{{ $titulos[$contador] }}</div>
+                                    <div>
+                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                        {{ $permission->description }}
+                                    </div>
+                                    <div class="fw-bold">{{ $titulos[$contador] }}</div>
                                     </div>
                                 </li>
                                 <ul class="list-group">
-
-                                    <?php $contador++; ?>
-                        @endif
+                                <?php $contador++; ?>
+                            @endif
+                        
                     @endforeach
                     </ul>
                 </div>
