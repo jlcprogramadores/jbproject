@@ -19,14 +19,6 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Apellido Materno:</strong>
-                            {{ $candidato->apellido_materno }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Apellido Paterno:</strong>
-                            {{ $candidato->apellido_paterno }}
-                        </div>
-                        <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $candidato->nombre }}
                         </div>

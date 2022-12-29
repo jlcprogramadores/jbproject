@@ -68,7 +68,7 @@
                                             <td>{{ '$'. number_format($empleado->salario_imss,2) }}</td>
                                             <td>{{ '$'. number_format($empleado->salario_real,2) }}</td>
 											<td>{{ $empleado->no_empleado }}</td>
-											<td>{{ $empleado->nombre.' '.$empleado->apellido_paterno.' '.$empleado->apellido_materno }}</td>
+											<td>{{ $empleado->nombre }}</td>
 											<td>{{ $empleado->telefono_personal }}</td>
 											<td>{{ $empleado->correo}}</td>
                                             <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>

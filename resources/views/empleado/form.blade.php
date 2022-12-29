@@ -1,12 +1,12 @@
 @if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="container">
-        {{ Form::label('Fotografía del empleado') }}
+        <div class="row">
+            {{ Form::label('Fotografía del empleado') }}
             <p>
                 <label for="fotografia"></label>
                 <input type="file" name="fotografia">
             </p>
-        <div class="row">
             <div class="col-sm">
                 <div class="p-1 form-group">
                     {{ Form::label('proyecto_id', 'Proyecto') }}
@@ -23,16 +23,6 @@
                     {{ Form::label('no_empleado') }}
                     {{ Form::text('no_empleado', $empleado->no_empleado, ['class' => 'form-control' . ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No Empleado']) }}
                     {!! $errors->first('no_empleado', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('apellido_paterno') }}
-                    {{ Form::text('apellido_paterno', $empleado->apellido_paterno, ['class' => 'form-control' . ($errors->has('apellido_paterno') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Paterno']) }}
-                    {!! $errors->first('apellido_paterno', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('apellido_materno') }}
-                    {{ Form::text('apellido_materno', $empleado->apellido_materno, ['class' => 'form-control' . ($errors->has('apellido_materno') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Materno']) }}
-                    {!! $errors->first('apellido_materno', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('nombre') }}
@@ -114,13 +104,14 @@
                     {{ Form::text('curp', $empleado->curp, ['class' => 'form-control' . ($errors->has('curp') ? ' is-invalid' : ''), 'placeholder' => 'Curp']) }}
                     {!! $errors->first('curp', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-            </div>   
-            <div class="col-sm"> 
                 <div class="p-1 form-group">
                     {{ Form::label('rfc') }}
                     {{ Form::text('rfc', $empleado->rfc, ['class' => 'form-control' . ($errors->has('rfc') ? ' is-invalid' : ''), 'placeholder' => 'Rfc']) }}
                     {!! $errors->first('rfc', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+            </div>   
+            <div class="col-sm"> 
+                
                 <div class="p-1 form-group">
                     {{ Form::label('domicilio') }}
                     {{ Form::text('domicilio', $empleado->domicilio, ['class' => 'form-control' . ($errors->has('domicilio') ? ' is-invalid' : ''), 'placeholder' => 'Domicilio']) }}
@@ -232,8 +223,6 @@
                     {{ Form::text('beneficiarios', $empleado->beneficiarios, ['class' => 'form-control' . ($errors->has('beneficiarios') ? ' is-invalid' : ''), 'placeholder' => 'Beneficiarios']) }}
                     {!! $errors->first('beneficiarios', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-            </div>
-            <div class="col-sm">
                 <div class="p-1 form-group">
                     {{ Form::label('porcentaje') }}
                     {{ Form::text('porcentaje', $empleado->porcentaje, ['class' => 'form-control' . ($errors->has('porcentaje') ? ' is-invalid' : ''), 'placeholder' => 'Porcentaje']) }}
@@ -244,6 +233,8 @@
                     {{ Form::text('domicilio_real', $empleado->domicilio_real, ['class' => 'form-control' . ($errors->has('domicilio_real') ? ' is-invalid' : ''), 'placeholder' => 'Domicilio Real']) }}
                     {!! $errors->first('domicilio_real', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+            </div>
+            <div class="col-sm">
                 <div class="p-1 form-group">
                     {{ Form::label('domicilio_alterno') }}
                     {{ Form::text('domicilio_alterno', $empleado->domicilio_alterno, ['class' => 'form-control' . ($errors->has('domicilio_alterno') ? ' is-invalid' : ''), 'placeholder' => 'Domicilio Alterno']) }}
@@ -398,11 +389,15 @@
                 </div>
         </div>
     </div>
-    <div class="box-footer mt20">
-        <br>
-        <a href="{{ route('empleados.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
-    </div>
+    <br>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <br>
+                <a href="{{ route('empleados.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
+                <br>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
+            </div>
+        </div>
 </div>
 @endif
 @push('scripts')
