@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Expediente') }}
+                                {{ 'Expediente de '.$empleado->nombre }}
                             </span>
 
                              <div class="float-right">
@@ -48,7 +48,7 @@
                                     @foreach ($expedientes as $item)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-											<td>{{ $item->nombre }}</td>
+											<td class="text-uppercase">{{ strtr($item->nombre,'_',' ') }}</td>
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$item->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.show',$item->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
