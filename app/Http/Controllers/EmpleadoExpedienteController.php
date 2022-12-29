@@ -120,7 +120,7 @@ class EmpleadoExpedienteController extends Controller
         // contiene los 
         $empleadoExpediente = EmpleadoExpediente::find($id);
         if(isset($empleadoExpediente->empleado_id)){
-            $expedientesCargados = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
+            $expedientesCargados = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo' )
                             ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                             ->where('empleado_expedientes.empleado_id','=',$id)->get();
         }else{
