@@ -196,7 +196,6 @@ class EmpleadoExpedienteController extends Controller
      */
     public function edit($id)
     {
-        
         $empleadoExpediente = EmpleadoExpediente::find($id);
         $empleado = Empleado::find($empleadoExpediente->empleado_id)->first();
 
@@ -212,9 +211,34 @@ class EmpleadoExpedienteController extends Controller
      */
     public function update(Request $request, EmpleadoExpediente $empleadoExpediente)
     {
-        request()->validate(EmpleadoExpediente::$rules);
-
-        $empleadoExpediente->update($request->all());
+        if ($request->archivo != null) {
+            if ($empleadoExpediente->archivo != null) {
+                //Existe un archivo anterior
+                request()->validate(EmpleadoExpediente::$rules);
+                unlink(base_path('storage/app/public/'.explode("/",$empleadoExpediente->archivo)[2]));
+                $nombreOriginal = $request->archivo->getClientOriginalName();
+                $aux = 'expediente__' . $empleadoExpediente->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->archivo->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $empleadoExpediente->update($request->all());
+                $empleadoExpediente->archivo = $file_url;
+                $empleadoExpediente->save();
+            }else{
+                request()->validate(EmpleadoExpediente::$rules);
+                $nombreOriginal = $request->archivo->getClientOriginalName();
+                $aux = 'expediente__' . $empleadoExpediente->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->archivo->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $empleadoExpediente->update($request->all());
+                $empleadoExpediente->archivo = $file_url;
+                $empleadoExpediente->save();
+            }
+        }else{
+            request()->validate(EmpleadoExpediente::$rules);
+            $empleadoExpediente->update($request->all());
+        }
 
         return redirect()->route('empleado-expedientes.index')
             ->with('success', 'Empleado-Expediente actualizado correctamente.');
@@ -226,7 +250,11 @@ class EmpleadoExpedienteController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
+    {   
+        $empleadoExpediente = EmpleadoExpediente::find($id);
+        if ($empleadoExpediente->archivo != null) {
+            unlink(base_path('storage/app/public/'.explode("/",$empleadoExpediente->archivo)[2]));
+        } 
         $empleadoExpediente = EmpleadoExpediente::find($id)->delete();
 
         return redirect()->route('empleado-expedientes.index')

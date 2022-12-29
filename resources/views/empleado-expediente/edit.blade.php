@@ -31,11 +31,12 @@
                                         {{ Form::text('expediente_id', $empleadoExpediente->expediente_id, ['class' => 'form-control' . ($errors->has('expediente_id') ? ' is-invalid' : ''), 'placeholder' => 'Expediente Id']) }}
                                         {!! $errors->first('expediente_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
-                                    <div class="form-group">
-                                        {{ Form::label('archivo') }}
-                                        {{ Form::text('archivo', $empleadoExpediente->archivo, ['class' => 'form-control' . ($errors->has('archivo') ? ' is-invalid' : ''), 'placeholder' => 'Archivo']) }}
-                                        {!! $errors->first('archivo', '<div class="invalid-feedback">:message</div>') !!}
-                                    </div>
+                                    {{ Form::label('Archivo nuevo') }}
+                                        <p>
+                                            <label for="archivo"></label>
+                                            <input type="file" name="archivo">
+                                        </p>
+                                    <br>
                                     <div class="form-group d-none">
                                         {{ Form::label('usuario_edito') }}
                                         {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
@@ -46,7 +47,7 @@
                                 <div class="box-footer mt20">
                                     <br>
                                     <a href="javascript:history.back()" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
                                 </div>
                             </div>
 
