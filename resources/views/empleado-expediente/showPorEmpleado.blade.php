@@ -17,12 +17,13 @@
                     
                     <div class="card-body">
                         <div class="container text-uppercase">
-                            
-                            @foreach ($expedientesCargados as $item)
-                                <p class="badge bg-success">Cargado</p>
-                                    {{strtr($item->nombre,'_',' ')}}
-                                    <br>
-                            @endforeach
+                            @if ($expedientesCargados)
+                                @foreach ($expedientesCargados as $item)
+                                    <p class="badge bg-success">Cargado</p>
+                                        {{strtr($item->nombre,'_',' ')}}
+                                        <br>
+                                @endforeach
+                            @endif
                             @foreach ($expedienteFaltantes as $item)
                                     <p class="badge bg-danger">Falta</p>
                                     {{strtr($item->nombre,'_',' ')}}
