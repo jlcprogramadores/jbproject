@@ -14,7 +14,7 @@
                         <span class="card-title">Cambiar Archivo del Expediente</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('empleado-expedientes.update', $empleado->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('empleado-expedientes.update',  $empleadoExpediente->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
