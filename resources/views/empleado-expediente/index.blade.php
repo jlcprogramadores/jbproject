@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Empleado-Expedientes')
+@section('title','Expedientes de Empleados')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -42,7 +42,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td>{{ $empleado->nombre }}</td>
-											<td>{{ $empleado->usuario_edito }}</td>
+											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>  
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$empleado->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.showPorEmpleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Expediente</a>
