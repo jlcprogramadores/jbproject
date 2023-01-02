@@ -38,7 +38,5 @@ class UserSeeder extends Seeder
             'es_admin' => 0
         ])->assignRole('Prueba');
         
-        User::factory(100)->create();
-
     }
 }

@@ -168,9 +168,9 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @can('menu.empleados')
-                                    <a class="dropdown-item" href="{{ route('empleados.index') }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('empleados.index') }}">
                                         {{ __('Empleados') }}
-                                    </a> 
+                                    </a>  --}}
                                     @endcan
                                     @can('menu.paros')
                                     <a class="dropdown-item" href="{{ route('paros.index') }}">
@@ -181,13 +181,13 @@
                                         {{ __('Expediente de Empleado') }}
                                     </a>
                                     @can('menu.bolsatrabajo') 
-                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('candidatos.index') }}">
                                         {{ __('Bolsa de Trabajo') }}
-                                    </a> 
+                                    </a>  --}}
                                     @endcan
-                                    <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
                                         {{ __('Población') }}
-                                    </a> 
+                                    </a>  --}}
                                     <div class="dropdown-divider"></div>
                                     <li>
                                         <a class="dropdown-item" href="">
