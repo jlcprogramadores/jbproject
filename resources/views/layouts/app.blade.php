@@ -27,6 +27,7 @@
     <!-- css -->
     @yield('css')
 </head>
+<meta name="google-site-verification" content="WV-wyYYwuPyq3e-6lnsjL4_gmBUvpuZdJicBkYh34zw" />
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
