@@ -20,7 +20,7 @@
                             @if ($expedientesCargados)
                                 @foreach ($expedientesCargados as $item)
                                     <p class="badge bg-success">Cargado</p>
-                                    <a href="{{$item->archivo}}" target="_blank">{{strtr($item->nombre,'_',' ')}}</a>
+                                    <a href="{{$item->archivo}}">{{strtr($item->nombre,'_',' ')}}</a>
                                         <br>
                                 @endforeach
                             @endif
