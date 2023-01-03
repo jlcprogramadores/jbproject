@@ -34,12 +34,12 @@ Route::resource('direcciones', App\Http\Controllers\DireccioneController::class)
 Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 Route::resource('usuarios', App\Http\Controllers\UserController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
-// Route::resource('empleados', App\Http\Controllers\EmpleadoController::class);
+Route::resource('empleados', App\Http\Controllers\EmpleadoController::class);
 Route::resource('puestos', App\Http\Controllers\PuestoController::class);
 Route::resource('paros', App\Http\Controllers\ParoController::class);
 Route::resource('expedientes', App\Http\Controllers\ExpedienteController::class);
 Route::resource('empleado-expedientes', App\Http\Controllers\EmpleadoExpedienteController::class);
-// Route::resource('candidatos', App\Http\Controllers\CandidatoController::class);
+Route::resource('candidatos', App\Http\Controllers\CandidatoController::class);
 
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
