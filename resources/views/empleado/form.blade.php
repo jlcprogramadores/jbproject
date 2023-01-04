@@ -5,7 +5,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datos Generales</h5>
+                    <h5 class="card-title">Datos Minimos requeridos</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('no_empleado') }}
@@ -23,12 +23,34 @@
                             {{ Form::select('genero',array('0' => 'Masculino', '1' => 'Femenino', '2'=> 'Otro'), $empleado->genero, ['class' => 'form-control' . ($errors->has('genero') ? ' is-invalid' : '')]) }}
                             {!! $errors->first('genero', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm p-1 form-group">
+                            {{ Form::label('telefono_personal') }}
+                            {{ Form::number('telefono_personal', $empleado->telefono_personal, ['class' => 'form-control' . ($errors->has('telefono_personal') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Personal']) }}
+                            {!! $errors->first('telefono_personal', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
+                        <div class="col-sm p-1 form-group">
+                            {{ Form::label('correo') }}
+                            {{ Form::email('correo', $empleado->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
+                            {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('Fotografía del empleado') }}
                             <label for="fotografia"></label>
-                            <input type="file" name="fotografia" size="60">
+                            <input type="file" name="fotografia" size="50">
                         </div>
                     </div>
+                    
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Datos Genrales</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('puesto_id', 'Puesto') }}
@@ -42,16 +64,6 @@
                             {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona proyecto',  'style'=>"width: 75%"]) }}
                             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
                         </div>  
-                        <div class="col-sm p-1 form-group">
-                            {{ Form::label('telefono_personal') }}
-                            {{ Form::number('telefono_personal', $empleado->telefono_personal, ['class' => 'form-control' . ($errors->has('telefono_personal') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Personal']) }}
-                            {!! $errors->first('telefono_personal', '<div class="invalid-feedback">:message</div>') !!}
-                        </div>
-                        <div class="col-sm p-1 form-group">
-                            {{ Form::label('correo') }}
-                            {{ Form::email('correo', $empleado->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
-                            {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
@@ -76,14 +88,6 @@
                             {!! $errors->first('tipo_de_empleado', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Datos Complemetarios</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('fecha_ingreso') }}
@@ -211,7 +215,7 @@
                         </div>
                     </div>
                     <br>
-                    <h5 class="card-title">Otros Datos</h5>
+                    <h5 class="card-title">Datos Complementarios</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('evaluaciones') }}
