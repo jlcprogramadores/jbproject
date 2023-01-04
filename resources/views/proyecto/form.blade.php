@@ -3,6 +3,11 @@
     <div class="box-body">
         
         <div class="form-group">
+            {{ Form::label('mina_id', 'Mina') }}
+            {{ Form::select('mina_id',$mina ,$proyecto->mina_id, ['class' => 'form-control' . ($errors->has('mina_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
+            {!! $errors->first('mina_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('nombre') }}
             {{ Form::text('nombre', $proyecto->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}

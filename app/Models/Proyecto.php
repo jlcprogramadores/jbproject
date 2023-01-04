@@ -39,6 +39,14 @@ class Proyecto extends Model
     protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo','presupuesto','margen','usuario_edito'];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mina()
+    {
+        return $this->hasOne('App\Models\Mina', 'id', 'mina_id');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function entrada()

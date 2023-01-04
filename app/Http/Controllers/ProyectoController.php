@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finanza;
+use App\Models\Mina;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class ProyectoController extends Controller
     public function create()
     {
         $proyecto = new Proyecto();
-        return view('proyecto.create', compact('proyecto'));
+        $mina = Mina::pluck('nombre','id');
+        return view('proyecto.create', compact('proyecto','mina'));
     }
 
     /**
@@ -74,8 +76,9 @@ class ProyectoController extends Controller
     public function edit($id)
     {
         $proyecto = Proyecto::find($id);
+        $mina = Mina::pluck('nombre','id');
 
-        return view('proyecto.edit', compact('proyecto'));
+        return view('proyecto.edit', compact('proyecto','mina'));
     }
 
     /**

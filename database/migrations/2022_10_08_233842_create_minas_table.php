@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProyectosTable extends Migration
+class CreateMinasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateProyectosTable extends Migration
      */
     public function up()
     {
-        Schema::create('proyectos', function (Blueprint $table) {
+        Schema::create('minas', function (Blueprint $table) {
             $table->id();
-            $table->integer('mina_id')->nullable();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->string('numero_de_proyecto');
-            $table->boolean('es_activo');
             $table->string('usuario_edito');
-            $table->decimal('presupuesto', 12, 2);
-            $table->decimal('margen', 12, 2);
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreateProyectosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyectos');
+        Schema::dropIfExists('minas');
     }
 }
