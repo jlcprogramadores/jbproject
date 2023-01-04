@@ -4,7 +4,7 @@
         
         <div class="form-group">
             {{ Form::label('mina_id', 'Mina') }}
-            {{ Form::select('mina_id',$mina ,$proyecto->mina_id, ['class' => 'form-control' . ($errors->has('mina_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
+            {{ Form::select('mina_id',$mina ,$proyecto->mina_id, ['class' => 'form-control' . ($errors->has('mina_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Mina si es alguna Mina']) }}
             {!! $errors->first('mina_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
