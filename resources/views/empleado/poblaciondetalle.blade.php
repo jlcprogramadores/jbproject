@@ -38,11 +38,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        <th>Número de Empleado</th>
 										<th>Nombre</th>
-                                        <th>Salario IMSS</th>
                                         <th>Salario Real</th>
                                         <th>Puesto</th>
+                                        <th>Es Activo</th>
                                     </tr>
                                 </thead>
                                                                        
@@ -50,10 +50,17 @@
                                     @foreach ($empleados as $empleado)
                                     <tr>
                                         <td>{{ ++$i }}</td> 
+                                        
+                                        <td>{{ $empleado['no_empleado'] }}</td>
                                         <td>{{ $empleado['nombre'] }}</td>
-                                        <td>${{number_format($empleado['salario_imss'],2)}}</td> 
                                         <td>${{number_format($empleado['salario_real'],2)}}</td> 
                                         <td>{{$empleado->puesto->nombre}}</td>
+                                        @if ($empleado['esta_trabajando'])
+                                            <td><p class="badge bg-success">Activo</p></td>
+                                        @else
+                                            <td><p class="badge bg-danger">Inactivo</p></td>
+                                        @endif
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>
