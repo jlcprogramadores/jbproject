@@ -42,7 +42,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Currículum:</strong>
-                            <td><a href="{{$candidato->curriculum}}">Link Currículum</a></td> 
+                            @if ($candidato->curriculum)
+                                <td><a href="{{$candidato->curriculum}}">Link Currículum</a></td> 
+                            @else
+                                <td><span class="text-danger">Sin Currículum</span></td>
+                            @endif 
                         </div>
                         <br>
                         <a class="btn btn-primary" href="{{ route('candidatos.index') }}"> Atrás</a>
