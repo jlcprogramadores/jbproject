@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Bolsa de Trabajo')
+@section('title','Candidatos')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('bolsatrabajo.index')
+@can('candidatos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,7 +16,7 @@
                             <span id="card_title">
                                 {{ __('Candidatos') }}
                             </span>
-                            @can('bolsatrabajo.create')
+                            @can('candidatos.create')
                              <div class="float-right">
                                 <a href="{{ route('candidatos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Candidato') }}
@@ -132,15 +132,15 @@
                                                     @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
                                                         <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
                                                     @endif 
-                                                    @can('bolsatrabajo.show')
+                                                    @can('candidatos.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan
-                                                    @can('bolsatrabajo.edit')
+                                                    @can('candidatos.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('candidatos.edit',$candidato->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @endcan
                                                     @csrf
                                                     @method('DELETE')
-                                                    @can('bolsatrabajo.destroy')
+                                                    @can('candidatos.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                     @endcan
                                                 </form>

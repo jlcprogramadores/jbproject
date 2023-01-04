@@ -206,13 +206,13 @@ class RoleSeeder extends Seeder
                 $permisoexpedientesdestroy = Permission::create(['name' => 'expedientes.destroy', 'description' => 'Expedientes:Borrar', 'nomenclatura' => 'mn-02-sb-03-pm-05'])->syncRoles($rolAdmin);
                 
             //Submenu expedientes
-            $permisomenubolsatrabajo= Permission::create(['name' => 'menu.bolsatrabajo', 'description' => 'Ver Submenú RecursosHumanos-Bolsa de trabajo', 'nomenclatura' => 'mn-02-sb-04-pm-00'])->syncRoles($rolAdmin);
+            $permisomenucandidatos= Permission::create(['name' => 'menu.candidatos', 'description' => 'Ver Submenú RecursosHumanos-Candidatos', 'nomenclatura' => 'mn-02-sb-04-pm-00'])->syncRoles($rolAdmin);
                 //Permisos expedientes
-                $permisobolsatrabajoindex = Permission::create(['name' => 'bolsatrabajo.index', 'description' => 'Bolsa de Trabajo:Tabla', 'nomenclatura' => 'mn-02-sb-04-pm-01'])->syncRoles($rolAdmin);
-                $permisobolsatrabajocreate = Permission::create(['name' => 'bolsatrabajo.create', 'description' => 'Bolsa de Trabajo:Crear', 'nomenclatura' => 'mn-02-sb-04-pm-02'])->syncRoles($rolAdmin);
-                $permisobolsatrabajoshow = Permission::create(['name' => 'bolsatrabajo.show', 'description' => 'Bolsa de Trabajo:Mostrar', 'nomenclatura' => 'mn-02-sb-04-pm-03'])->syncRoles($rolAdmin);
-                $permisobolsatrabajoedit = Permission::create(['name' => 'bolsatrabajo.edit', 'description' => 'Bolsa de Trabajo:Editar', 'nomenclatura' => 'mn-02-sb-04-pm-04'])->syncRoles($rolAdmin);
-                $permisobolsatrabajodestroy = Permission::create(['name' => 'bolsatrabajo.destroy', 'description' => 'Bolsa de Trabajo:Borrar', 'nomenclatura' => 'mn-02-sb-04-pm-05'])->syncRoles($rolAdmin);  
+                $permisocandidatosindex = Permission::create(['name' => 'candidatos.index', 'description' => 'Candidatos:Tabla', 'nomenclatura' => 'mn-02-sb-04-pm-01'])->syncRoles($rolAdmin);
+                $permisocandidatoscreate = Permission::create(['name' => 'candidatos.create', 'description' => 'Candidatos:Crear', 'nomenclatura' => 'mn-02-sb-04-pm-02'])->syncRoles($rolAdmin);
+                $permisocandidatosshow = Permission::create(['name' => 'candidatos.show', 'description' => 'Candidatos:Mostrar', 'nomenclatura' => 'mn-02-sb-04-pm-03'])->syncRoles($rolAdmin);
+                $permisocandidatosedit = Permission::create(['name' => 'candidatos.edit', 'description' => 'Candidatos:Editar', 'nomenclatura' => 'mn-02-sb-04-pm-04'])->syncRoles($rolAdmin);
+                $permisocandidatosdestroy = Permission::create(['name' => 'candidatos.destroy', 'description' => 'Candidatos:Borrar', 'nomenclatura' => 'mn-02-sb-04-pm-05'])->syncRoles($rolAdmin);  
             // conmfiguracion 
             $permisomenuproyectos = Permission::create(['name' => 'conf.2', 'description' => 'Configuración', 'nomenclatura' => 'mn-02-sb-05-pm-00'])->syncRoles($rolAdmin);
                 

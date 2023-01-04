@@ -168,6 +168,11 @@
                                     Recursos Humanos
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @can('menu.candidatos') 
+                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
+                                        {{ __('Candidatos') }}
+                                    </a> 
+                                    @endcan
                                     @can('menu.empleados')
                                     <a class="dropdown-item" href="{{ route('empleados.index') }}">
                                         {{ __('Empleados') }}
@@ -181,11 +186,7 @@
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Expediente de Empleado') }}
                                     </a>
-                                    @can('menu.bolsatrabajo') 
-                                    <a class="dropdown-item" href="{{ route('candidatos.index') }}">
-                                        {{ __('Bolsa de Trabajo') }}
-                                    </a> 
-                                    @endcan
+                                    
                                     <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
                                         {{ __('Población') }}
                                     </a> 
