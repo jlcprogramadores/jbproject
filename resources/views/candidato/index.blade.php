@@ -117,7 +117,15 @@
 
                                             </td>
                                             
-                                            <td></span> <p class="badge bg-secondary">En trámite</p><br></td>
+                                            <td>
+                                                @if ($v1 == 1 && $v2 == 1 && $v3 == 1)
+                                                    </span> <p class="badge bg-success">Aceptado</p><br>
+                                                @elseif($v1 === 0 || $v2 === 0 || $v3 === 0)
+                                                    </span> <p class="badge bg-danger">Rechazado</p><br>
+                                                @else
+                                                    </span> <p class="badge bg-secondary">En trámite</p><br>
+                                                @endif
+                                            </td>
 
                                             @if ($candidato->genero == 0)
                                                 <td>Masculino</td>
