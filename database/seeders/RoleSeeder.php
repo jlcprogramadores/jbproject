@@ -18,6 +18,9 @@ class RoleSeeder extends Seeder
         //Roles
         $rolAdmin = Role::create(['name' => 'Admin']);
         $rolPrueba = Role::create(['name' => 'Prueba']);
+        $rolValidador_1 = Role::create(['name' => 'Validador_1']);
+        $rolValidador_2 = Role::create(['name' => 'Validador_2']);
+        $rolValidador_3 = Role::create(['name' => 'Validador_3']);
         // FINANZAS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         $permisomenufinanzas = Permission::create(['name' => 'menu.finanzas', 'description' => 'Ver Menú Finanzas', 'nomenclatura' => 'mn-01-sb-00-pm-00'])->syncRoles($rolAdmin,$rolPrueba);
             //Submenu finanzas

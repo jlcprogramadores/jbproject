@@ -25,11 +25,11 @@
                 <label for="curriculum"></label>
                 <input type="file" name="curriculum">
             </p>
-        <div class="form-group">
+        {{-- <div class="form-group">
             {{ Form::label('semaforo') }}
             {{ Form::select('semaforo',array('1' => 'Verde', '2' => 'Amarillo', '3'=> 'Rojo'), $candidato->semaforo, ['class' => 'form-control' . ($errors->has('semaforo') ? ' is-invalid' : '')]) }}
             {!! $errors->first('semaforo', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> --}}
         <div class="form-group d-none">
             {{ Form::label('usuario_edito') }}
             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}

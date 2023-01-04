@@ -42,7 +42,8 @@
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Currículum</th>
-										<th>Semáforo</th>
+										<th>Validación</th>
+                                        <th>Semáforo</th>
 										<th>Género</th>
 										<th>Fecha Actualización</th>
 
@@ -62,14 +63,41 @@
                                             @else
                                                 <td><span class="text-danger">Sin Currículum</span></td>
                                             @endif 
+                                            <?php 
+                                                $v1 = $candidato->validacion_1;
+                                                $v2 = $candidato->validacion_2;
+                                                $v3 = $candidato->validacion_3;
+                                            ?>
+                                           
+                                            <td> 
+                                                @if (is_null($v1))
+                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
+                                                @elseif($v1 == 1)
+                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-success">Aceptado</p><br>
+                                                @else
+                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-danger">Rechazado</p><br>
+                                                @endif
 
-                                            @if ($candidato->semaforo == 1)
-                                                <td><p class="badge bg-success">Verde</p></td>
-                                            @elseif ($candidato->semaforo == 2)
-                                                <td><p class="badge bg-warning">Amarillo</p></td>
-                                            @else
-                                                <td><p class="badge bg-danger">Rojo</p></td>
-                                            @endif
+                                                @if (is_null($v2))
+                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
+                                                @elseif($v2 == 1)
+                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-success">Aceptado</p><br>
+                                                @else
+                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-danger">Rechazado</p><br>
+                                                @endif
+
+                                                @if (is_null($v3))
+                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
+                                                @elseif($v3 == 1)
+                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-success">Aceptado</p><br>
+                                                @else
+                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-danger">Rechazado</p><br>
+                                                @endif
+
+                                            </td>
+                                            
+                                            <td></span> <p class="badge bg-secondary">En trámite</p><br></td>
+
                                             @if ($candidato->genero == 0)
                                                 <td>Masculino</td>
                                             @elseif ($candidato->genero == 1)

@@ -12,7 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property $telefono_personal
  * @property $correo
  * @property $curriculum
- * @property $semaforo
+ * @property $validacion_1
+ * @property $validacion_2
+ * @property $validacion_3
  * @property $usuario_edito
  * @property $created_at
  * @property $updated_at
@@ -38,7 +40,7 @@ class Candidato extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','genero','telefono_personal','correo','curriculum','semaforo','usuario_edito'];
+    protected $fillable = ['nombre','genero','telefono_personal','correo','curriculum','validacion_1','validacion_2','validacion_3','usuario_edito'];
 
 
 

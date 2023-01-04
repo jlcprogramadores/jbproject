@@ -20,7 +20,9 @@ class Candidatos extends Migration
             $table->bigInteger('telefono_personal');
             $table->string('correo');
             $table->string('curriculum')->nullable();
-            $table->integer('semaforo')->nullable();    
+            $table->integer('validacion_1')->nullable();    
+            $table->integer('validacion_2')->nullable();  
+            $table->integer('validacion_3')->nullable();  
             $table->string('usuario_edito');
             $table->timestamps();
         });
