@@ -120,24 +120,27 @@ class EmpleadoExpedienteController extends Controller
         // contiene los 
         $empleadoExpediente = EmpleadoExpediente::find($id);
         if(isset($empleadoExpediente->empleado_id)){
-            $expedientesCargados = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo' )
-                            ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
-                            ->where('empleado_expedientes.empleado_id','=',$id)->get();
-        }else{
-            $expedientesCargados = null;
-        }
-        // dd($expedientesCargados);
-        if(isset($empleadoExpediente->empleado_id)){
+            $expedientesCargados = DB::table('expedientes')
+                ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+                ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
+                ->where('empleado_expedientes.empleado_id','=',$id)
+                ->get();
+
             $whereJoin = [
                 ['empleado_expedientes.expediente_id', '=', 'expedientes.id'],
                 ['empleado_expedientes.empleado_id','=',DB::raw($id)],
                 ['expedientes.es_multiple','=',DB::raw(0)]
             ];
-            $expedienteFaltantes = Expediente::select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
-                        ->leftjoin('empleado_expedientes', $whereJoin)
-                        ->where('empleado_expedientes.expediente_id','=', null)->get();
+            $expedienteFaltantes = DB::table('expedientes')
+                ->leftjoin('empleado_expedientes', $whereJoin)
+                ->select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
+                ->where('empleado_expedientes.empleado_id','=', null)
+                ->get();
         }else{
+            $expedientesCargados = null;
+
             $expedienteFaltantes = Expediente::all();
+
         }
 
         return view('empleado-expediente.showPorEmpleado', compact('expedientesCargados','expedienteFaltantes'));
