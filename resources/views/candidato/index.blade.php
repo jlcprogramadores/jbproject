@@ -69,30 +69,51 @@
                                                 $v3 = $candidato->validacion_3;
                                             ?>
                                            
-                                            <td> 
-                                                @if (is_null($v1))
-                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
-                                                @elseif($v1 == 1)
-                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-success">Aceptado</p><br>
-                                                @else
-                                                <span style=" white-space: nowrap">Alex: </span> <p class="badge bg-danger">Rechazado</p><br>
-                                                @endif
+                                            <td > 
 
-                                                @if (is_null($v2))
-                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
-                                                @elseif($v2 == 1)
-                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-success">Aceptado</p><br>
-                                                @else
-                                                <span style=" white-space: nowrap">Cecy: </span> <p class="badge bg-danger">Rechazado</p><br>
-                                                @endif
+                                                    @if (is_null($v1))
+                                                        <span> 
+                                                            Alex: <p class="badge bg-secondary">Sin Evaluar</p>,
+                                                        </span> 
+                                                    @elseif($v1 == 1)
+                                                        <span>
+                                                            Alex: <p class="badge bg-success">Aceptado</p>,
+                                                        </span>
+                                                    @else
+                                                        <span>
+                                                            Alex: <p class="badge bg-danger">Rechazado</p>,
+                                                        </span>
+                                                    @endif
 
-                                                @if (is_null($v3))
-                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-secondary">Sin Evaluar</p><br>
-                                                @elseif($v3 == 1)
-                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-success">Aceptado</p><br>
-                                                @else
-                                                <span style=" white-space: nowrap">Javier: </span> <p class="badge bg-danger">Rechazado</p><br>
-                                                @endif
+                                                    @if (is_null($v2))
+                                                        <span>
+                                                            Cecy: <p class="badge bg-secondary">Sin Evaluar</p>,
+                                                        </span>
+                                                    @elseif($v2 == 1)
+                                                        <span>
+                                                            Cecy: <p class="badge bg-success">Aceptado</p>,
+                                                        </span>
+                                                    @else
+                                                        <span>
+                                                            Cecy: <p class="badge bg-danger">Rechazado</p>,
+                                                        </span>
+                                                    @endif
+
+                                                    @if (is_null($v3))
+                                                        <span>
+                                                            Javier: <p class="badge bg-secondary">Sin Evaluar</p>,
+                                                        </span>
+                                                    @elseif($v3 == 1)
+                                                        <span>
+                                                            Javier: <p class="badge bg-success">Aceptado</p>,
+                                                        </span>
+                                                    @else
+                                                        <span>
+                                                            Javier: <p class="badge bg-danger">Rechazado</p>,
+                                                        </span>
+                                                    @endif
+
+
 
                                             </td>
                                             
@@ -156,6 +177,13 @@
                         "previous": "Anterior"
                     }
                 },
+                columnDefs: [{
+                    // espeificamos que columna sera afectada
+                    targets: [5,6],
+                    render: function(data, type, full, meta) {    
+                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
+                    }
+                }],
                 orderCellsTop: true,
                 fixedHeader: true,
                 initComplete: function() {
