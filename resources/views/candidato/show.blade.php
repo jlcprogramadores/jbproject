@@ -44,16 +44,6 @@
                             <strong>Currículum:</strong>
                             <td><a href="{{$candidato->curriculum}}">Link Currículum</a></td> 
                         </div>
-                        {{-- <div class="form-group">
-                            <strong>Semáforo:</strong>
-                            @if($candidato->semaforo  == 1 )
-                                <span class="text-success">Verde</span>
-                            @elseif($candidato->semaforo  == 2)
-                                <span class="text-warning">Amarillo</span>
-                            @else
-                            <span class="text-danger">Rojo</span>
-                            @endif
-                        </div> --}}
                         <br>
                         <a class="btn btn-primary" href="{{ route('candidatos.index') }}"> Atrás</a>
                     </div>

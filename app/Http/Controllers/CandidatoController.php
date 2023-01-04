@@ -88,6 +88,19 @@ class CandidatoController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function evaluar($id)
+    {
+        $candidato = Candidato::find($id);
+
+        return view('candidato.evaluar', compact('candidato'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request

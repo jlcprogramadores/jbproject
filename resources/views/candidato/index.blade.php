@@ -42,7 +42,7 @@
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Currículum</th>
-										<th>Validación</th>
+										<th>Evaluación</th>
                                         <th>Semáforo</th>
 										<th>Género</th>
 										<th>Fecha Actualización</th>
@@ -127,9 +127,11 @@
                                                 <td>Otro</td>
                                             @endif 
 											<td>{{ $candidato->usuario_edito }}  <br/> {{ $candidato->updated_at }}</td>
-
                                             <td>
                                                 <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
+                                                    @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
+                                                        <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
+                                                    @endif 
                                                     @can('bolsatrabajo.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan

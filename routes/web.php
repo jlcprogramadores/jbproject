@@ -72,6 +72,8 @@ Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancari
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
 Route::get('/poblacion', 'App\Http\Controllers\EmpleadoController@poblacion')->name('empleados.poblacion');
 Route::get('/poblaciondetalle/{id}', 'App\Http\Controllers\EmpleadoController@poblaciondetalle')->name('empleados.poblaciondetalle');
+Route::get('/evaluar/{id}', 'App\Http\Controllers\CandidatoController@evaluar')->name('candidatos.evaluar');
+
 
 Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
