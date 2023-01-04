@@ -189,8 +189,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
-                            {{ Form::label('nombre_esposa') }}
-                            {{ Form::text('nombre_esposa', $empleado->nombre_esposa, ['class' => 'form-control' . ($errors->has('nombre_esposa') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Esposa']) }}
+                            {{ Form::label('nombre esposa(o)') }}
+                            {{ Form::text('nombre_esposa', $empleado->nombre_esposa, ['class' => 'form-control' . ($errors->has('nombre_esposa') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Esposa(o)']) }}
                             {!! $errors->first('nombre_esposa', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
@@ -367,9 +367,20 @@
                         </div>
                     </div>
                     <div class="row">
+                        <?php 
+                        $practica_deporte = [
+                                '0' => 'Futból', 
+                                '1' => 'Natación',
+                                '2' => 'Voleibol',
+                                '3' => 'Basketball',
+                                '4' => 'Beisbol',
+                                '5' => 'Deportes de combate (boxeo, taekwondo, judo, etc.)',
+                                '6' => 'No práctica deporte',
+                            ];
+                            ?>
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('practica_deporte') }}
-                            {{ Form::text('practica_deporte', $empleado->practica_deporte, ['class' => 'form-control' . ($errors->has('practica_deporte') ? ' is-invalid' : ''), 'placeholder' => 'Practica Deporte']) }}
+                            {{ Form::select('practica_deporte', $practica_deporte,null , ['class' => 'form-control' . ($errors->has('practica_deporte') ? ' is-invalid' : ''), 'placeholder' => 'Practica Deporte']) }}
                             {!! $errors->first('practica_deporte', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">

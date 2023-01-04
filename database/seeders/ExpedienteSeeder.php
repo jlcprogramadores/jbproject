@@ -19,6 +19,14 @@ class ExpedienteSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Expediente::create([
+            'nombre' => 'contrato',
+            'es_multiple' => 0,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Expediente::create([
             'nombre' => 'formato_alta',
             'es_multiple' => 0,
             'usuario_edito' => 'Administrador ',
@@ -229,6 +237,14 @@ class ExpedienteSeeder extends Seeder
         Expediente::create([
             'nombre' => 'evaluacion_desempeno',
             'es_multiple' => 0,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Expediente::create([
+            'nombre' => 'cartas_amonestacion',
+            'es_multiple' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
