@@ -34,8 +34,6 @@ class EmpleadoController extends Controller
      */
     public function capacitaciones($id)
     {        
-        // dd($id);
-        // el numero 30 es el expediente  capacitaciones_dc3
         $capacitaciones = DB::table('expedientes')
                 ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                 ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
@@ -94,8 +92,8 @@ class EmpleadoController extends Controller
     public function create()
     {
         $empleado = new Empleado();
-        $proyecto = Proyecto::pluck('nombre','id');
         $puesto = Puesto::pluck('nombre','id');
+        $proyecto  = Proyecto::where('mina_id','!=',null)->pluck('nombre','id');     
 
         return view('empleado.create', compact('empleado','proyecto','puesto'));
     }
@@ -147,7 +145,7 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
         $empleado = Empleado::find($id);
-        $proyecto = Proyecto::pluck('nombre','id');
+        $proyecto  = Proyecto::where('mina_id','!=',null)->pluck('nombre','id');   
         $puesto = Puesto::pluck('nombre','id');
         return view('empleado.edit', compact('empleado','proyecto','puesto'));
     }

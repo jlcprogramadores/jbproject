@@ -55,7 +55,7 @@ class ProyectoSeeder extends Seeder
         ]);
 
         Proyecto::create([            
-            'nombre' => 'COMPLEMENTO FLETE PARO 1 MAYO',
+            'nombre' => 'PROYECTO CIENEGA',
             'descripcion' => 'Proyecto de Ejemplo',
             'numero_de_proyecto' => 4,
             'es_activo' => 1,

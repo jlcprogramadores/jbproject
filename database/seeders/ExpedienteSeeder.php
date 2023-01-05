@@ -43,14 +43,6 @@ class ExpedienteSeeder extends Seeder
         ]);
         
         Expediente::create([
-            'nombre' => 'contrato',
-            'es_multiple' => 0,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
-
-        Expediente::create([
             'nombre' => 'aviso_privacidad',
             'es_multiple' => 0,
             'usuario_edito' => 'Administrador ',

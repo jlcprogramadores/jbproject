@@ -8,9 +8,14 @@
                     <h5 class="card-title">Datos Minimos requeridos</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
+                            <?php
+                            $prueba = [
+                            'hola' => 'hola'
+                            ]; 
+                            ?>
                             {{ Form::label('no_empleado') }}
                             <br>
-                            {{ Form::text('no_empleado', $empleado->no_empleado, ['class' => 'form-control' . ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No Empleado']) }}
+                            {{ Form::select('no_empleado',$prueba, $empleado->no_empleado, ['class' => 'form-control', 'readonly' => 'true'. ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Num Empleado']) }}
                             {!! $errors->first('no_empleado', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">

@@ -36,7 +36,7 @@ class Proyecto extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','numero_de_proyecto','es_activo','presupuesto','margen','usuario_edito'];
+    protected $fillable = ['nombre','descripcion','numero_de_proyecto','mina_id','es_activo','presupuesto','margen','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
