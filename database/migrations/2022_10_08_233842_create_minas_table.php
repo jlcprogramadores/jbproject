@@ -17,6 +17,7 @@ class CreateMinasTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('abreviacion');
             $table->string('usuario_edito');
             $table->timestamps();
         });

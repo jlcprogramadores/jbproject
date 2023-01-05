@@ -33,7 +33,7 @@ class Mina extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','descripcion','usuario_edito'];
+    protected $fillable = ['nombre','descripcion','abreviacion','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

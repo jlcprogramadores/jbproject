@@ -39,6 +39,7 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
+                                        <th>Abreviación</th>
 										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -51,6 +52,7 @@
                                             
 											<td>{{ $mina->nombre }}</td>
 											<td>{{ $mina->descripcion }}</td>
+                                            <td>{{ $mina->abreviacion }}</td>
 											<td>{{ $mina->usuario_edito }}</td>
 
                                             <td>

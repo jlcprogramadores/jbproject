@@ -8,6 +8,11 @@
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('abreviacon') }}
+                    {{ Form::text('abreviacon', $mina->abreviacon, ['class' => 'form-control' . ($errors->has('abreviacon') ? ' is-invalid' : ''), 'placeholder' => 'Abreviacon']) }}
+                    {!! $errors->first('abreviacon', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class="form-group">
                     {{ Form::label('descripcion') }}
                     {{ Form::text('descripcion', $mina->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
                     {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}

@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PuestoSeeder::class);
         $this->call(ParoSeeder::class);
         $this->call(ExpedienteSeeder::class);
+        $this->call(MinaSeeder::class);
     }
 }

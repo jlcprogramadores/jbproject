@@ -24,6 +24,10 @@
                             {{ $mina->nombre }}
                         </div>
                         <div class="form-group">
+                            <strong>Nombre:</strong>
+                            {{ $mina->abreviacon }}
+                        </div>
+                        <div class="form-group">
                             <strong>Descripcion:</strong>
                             {{ $mina->descripcion }}
                         </div>
