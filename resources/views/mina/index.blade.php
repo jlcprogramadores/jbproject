@@ -39,7 +39,7 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Actualización</th>
+										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>

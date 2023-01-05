@@ -13,7 +13,7 @@
                             <span class="card-title">Mostrar Mina</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('minas.index') }}"> Atrás</a>
+                            
                         </div>
                     </div>
 
@@ -28,10 +28,11 @@
                             {{ $mina->descripcion }}
                         </div>
                         <div class="form-group">
-                            <strong>Usuario Edito:</strong>
+                            <strong>Fecha Actualización:</strong>
                             {{ $mina->usuario_edito }}
                         </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('minas.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>
