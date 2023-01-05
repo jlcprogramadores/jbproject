@@ -6,6 +6,7 @@ use App\Models\Empleado;
 use App\Models\Proyecto;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class EmpleadoController
@@ -24,6 +25,26 @@ class EmpleadoController extends Controller
 
         return view('empleado.index', compact('empleados'))
             ->with('i', (request()->input('page', 1) - 1) * $empleados->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function capacitaciones($id)
+    {        
+        // dd($id);
+        // el numero 30 es el expediente  capacitaciones_dc3
+        $capacitaciones = DB::table('expedientes')
+                ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+                ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
+                ->where('empleado_expedientes.empleado_id','=',$id)
+                ->where('expedientes.id','=',DB::raw(30))
+                ->get();        
+
+        $i = 0;
+        return view('empleado.showCapacitaciones', compact('capacitaciones'))->with('i');
     }
 
     /**

@@ -218,14 +218,14 @@
                     <h5 class="card-title">Datos Complementarios</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
+                            {{ Form::label('esta_trabajando') }}
+                            {{ Form::select('esta_trabajando',array('0' => 'No', '1' => 'Si') , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
+                            {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
+                        <div class="col-sm p-1 form-group">
                             {{ Form::label('evaluaciones') }}
                             {{ Form::text('evaluaciones', $empleado->evaluaciones, ['class' => 'form-control' . ($errors->has('evaluaciones') ? ' is-invalid' : ''), 'placeholder' => 'Evaluaciones']) }}
                             {!! $errors->first('evaluaciones', '<div class="invalid-feedback">:message</div>') !!}
-                        </div>
-                        <div class="col-sm p-1 form-group">
-                            {{ Form::label('dc3') }}
-                            {{ Form::text('dc3', $empleado->dc3, ['class' => 'form-control' . ($errors->has('dc3') ? ' is-invalid' : ''), 'placeholder' => 'Dc3']) }}
-                            {!! $errors->first('dc3', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('clims') }}
@@ -434,11 +434,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm p-1 form-group">
-                            {{ Form::label('esta_trabajando') }}
-                            {{ Form::select('esta_trabajando',array('0' => 'No', '1' => 'Si') , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
-                            {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
-                        </div>
+                        
                         <div class="form-group d-none">
                             {{ Form::label('usuario_edito') }}
                             {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
