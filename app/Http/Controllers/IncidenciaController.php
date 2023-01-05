@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incidencia;
+use App\Models\Empleado;
+use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,9 @@ class IncidenciaController extends Controller
     public function create()
     {
         $incidencia = new Incidencia();
-        return view('incidencia.create', compact('incidencia'));
+        $empleado = Empleado::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+        return view('incidencia.create', compact('incidencia','empleado','proyecto'));
     }
 
     /**
@@ -46,9 +50,18 @@ class IncidenciaController extends Controller
         request()->validate(Incidencia::$rules);
 
         $incidencia = Incidencia::create($request->all());
-
+        if ($incidencia->justificante != null) {
+            $nombreOriginal = $incidencia->justificante->getClientOriginalName();
+            $aux = 'justificante_' . $incidencia->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $incidencia->justificante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getEmpleado = Incidencia::find($incidencia->id);
+            $getEmpleado->justificante = $file_url;
+            $getEmpleado->save();
+        }
         return redirect()->route('incidencias.index')
-            ->with('success', 'Incidencia created successfully.');
+            ->with('success', 'Incidencia creado correctamente.');
     }
 
     /**
@@ -72,9 +85,12 @@ class IncidenciaController extends Controller
      */
     public function edit($id)
     {
+        
         $incidencia = Incidencia::find($id);
-
-        return view('incidencia.edit', compact('incidencia'));
+        $empleado = Empleado::pluck('nombre','id');
+        $proyecto = Proyecto::pluck('nombre','id');
+        
+        return view('incidencia.edit', compact('incidencia','empleado','proyecto'));
     }
 
     /**
@@ -87,11 +103,32 @@ class IncidenciaController extends Controller
     public function update(Request $request, Incidencia $incidencia)
     {
         request()->validate(Incidencia::$rules);
-
-        $incidencia->update($request->all());
-
+        if ($request->justificante != null) {
+            if ($incidencia->justificante != null) {
+                unlink(base_path('storage/app/public/'.explode("/",$incidencia->justificante)[2]));
+                $nombreOriginal = $request->justificante->getClientOriginalName();
+                $aux = 'justificante_' . $incidencia->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->justificante->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $incidencia->update($request->all());
+                $incidencia->justificante = $file_url;
+                $incidencia->save();
+            }else{
+                $nombreOriginal = $request->justificante->getClientOriginalName();
+                $aux = 'justificante_' . $incidencia->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->justificante->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $incidencia->update($request->all());
+                $incidencia->justificante = $file_url;
+                $incidencia->save();
+            }
+        }else{
+            $incidencia->update($request->all());
+        }
         return redirect()->route('incidencias.index')
-            ->with('success', 'Incidencia updated successfully');
+            ->with('success', 'Incidencia actualizado correctamente.');
     }
 
     /**
@@ -104,6 +141,6 @@ class IncidenciaController extends Controller
         $incidencia = Incidencia::find($id)->delete();
 
         return redirect()->route('incidencias.index')
-            ->with('success', 'Incidencia deleted successfully');
+            ->with('success', 'Incidencia eliminar correctamente.');
     }
 }

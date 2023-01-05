@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $incidencia->name ?? 'Show Incidencia' }}
-@endsection
+@section('title','Mostrar Incidencia')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Incidencia</span>
+                            <span class="card-title">Mostrar Incidencia</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('incidencias.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('incidencias.index') }}"> Atrás</a>
                         </div>
                     </div>
 
