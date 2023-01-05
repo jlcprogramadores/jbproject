@@ -249,6 +249,14 @@ class ExpedienteSeeder extends Seeder
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
+
+        Expediente::create([
+            'nombre' => 'capacitaciones_dc3',
+            'es_multiple' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
     }
    
 }
