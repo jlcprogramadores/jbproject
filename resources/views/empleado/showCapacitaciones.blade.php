@@ -24,7 +24,7 @@
                                 @endforeach
                             @else
                                 <div class="form-group">
-                                    <strong>No se ha añadido ninguna capacitación</strong>
+                                    <strong>No se ha añadido ninguna capacitación al expediente</strong>
                                 </div>
                             @endif
                             <div class="float-right">
