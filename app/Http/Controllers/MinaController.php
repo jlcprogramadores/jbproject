@@ -48,7 +48,7 @@ class MinaController extends Controller
         $mina = Mina::create($request->all());
 
         return redirect()->route('minas.index')
-            ->with('success', 'Mina created successfully.');
+            ->with('success', 'Mina creada correctamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class MinaController extends Controller
         $mina->update($request->all());
 
         return redirect()->route('minas.index')
-            ->with('success', 'Mina updated successfully');
+            ->with('success', 'Mina actualizada correctamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class MinaController extends Controller
         $mina = Mina::find($id)->delete();
 
         return redirect()->route('minas.index')
-            ->with('success', 'Mina deleted successfully');
+            ->with('success', 'Mina eliminada correctamente.');
     }
 }
