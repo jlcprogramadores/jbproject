@@ -15,18 +15,24 @@
 
                     <div class="card-body">
                         <div class="container text-uppercase">
-                            @foreach ($capacitaciones as $item)
+                            @if (isset($capacitaciones[0]))
+                                @foreach ($capacitaciones as $item)
+                                    <div class="form-group">
+                                        <strong>Capacitacion {{++$i}}:</strong>
+                                        <a href="{{$item->archivo}}">{{substr($item->archivo,9)}}</a>
+                                    </div>
+                                @endforeach
+                            @else
                                 <div class="form-group">
-                                    <strong>Capacitacion {{++$i}}:</strong>
-                                    <a href="{{$item->archivo}}">{{substr($item->archivo,9)}}</a>
+                                    <strong>No se ha añadido ninguna capacitación</strong>
                                 </div>
-                            @endforeach
+                            @endif
+                            <div class="float-right">
+                                <br>
+                                <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
+                            </div>
                         </div>
                         
-                        <div class="float-right">
-                            <br>
-                            <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
-                        </div>
                     </div>
                 </div>
             </div>
