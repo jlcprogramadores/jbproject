@@ -124,6 +124,7 @@ class EmpleadoExpedienteController extends Controller
                 ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                 ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
                 ->where('empleado_expedientes.empleado_id','=',$id)
+                ->where('expedientes.id','!=',DB::raw(30))
                 ->get();
 
             $whereJoin = [
@@ -135,6 +136,7 @@ class EmpleadoExpedienteController extends Controller
                 ->leftjoin('empleado_expedientes', $whereJoin)
                 ->select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
                 ->where('empleado_expedientes.empleado_id','=', null)
+                ->where('expedientes.id','!=',DB::raw(30))
                 ->get();
         }else{
             $expedientesCargados = null;
