@@ -60,5 +60,5 @@ class Incidencia extends Model
         return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
     }
     
-
+    
 }

@@ -77,4 +77,11 @@ class Proyecto extends Model
     {
         return $this->hasMany('App\Models\Paro', 'proyecto_id', 'id');
     }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function incidencia()
+    {
+        return $this->hasMany('App\Models\Incidencia', 'proyecto_id', 'id');
+    }
 }
