@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mina')
+@section('title','Minas')
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -14,7 +14,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Mina') }}
+                                {{ __('Minas') }}
                             </span>
 
                              <div class="float-right">
@@ -39,7 +39,7 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Usuario Edito</th>
+										<th>Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -59,7 +59,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('minas.edit',$mina->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

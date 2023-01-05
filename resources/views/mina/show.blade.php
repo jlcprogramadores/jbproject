@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $mina->name ?? 'Show Mina' }}
-@endsection
+@section('title','Mostrar Mina')
+
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +10,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Mina</span>
+                            <span class="card-title">Mostrar Mina</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('minas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('minas.index') }}"> Atrás</a>
                         </div>
                     </div>
 

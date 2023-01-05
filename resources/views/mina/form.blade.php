@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="row justify-content-md-center">
                     <br>
-                    <a href="{{ route('candidatos.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
+                    <a href="{{ route('minas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
                     <br>
                     <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
                 </div>
