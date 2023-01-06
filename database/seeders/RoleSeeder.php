@@ -100,8 +100,16 @@ class RoleSeeder extends Seeder
                 $permisoproyectosedit = Permission::create(['name' => 'proyectos.edit', 'description' => 'Proyectos:Editar', 'nomenclatura' => 'mn-01-sb-10-pm-04'])->syncRoles($rolAdmin);
                 $permisoproyectosdestroy = Permission::create(['name' => 'proyectos.destroy', 'description' => 'Proyectos:Borrar', 'nomenclatura' => 'mn-01-sb-10-pm-05'])->syncRoles($rolAdmin);
             
+            $permisomenuminas = Permission::create(['name' => 'menu.minas', 'description' => 'Ver Submenú Administración-Minas', 'nomenclatura' => 'mn-01-sb-20-pm-00'])->syncRoles($rolAdmin);
+                //Permisos
+                $permisominasindex = Permission::create(['name' => 'minas.index', 'description' => 'Mina:Tabla', 'nomenclatura' => 'mn-01-sb-20-pm-01'])->syncRoles($rolAdmin);
+                $permisominascreate = Permission::create(['name' => 'minas.create', 'description' => 'Mina:Crear', 'nomenclatura' => 'mn-01-sb-20-pm-02'])->syncRoles($rolAdmin);
+                $permisominasshow = Permission::create(['name' => 'minas.show', 'description' => 'Mina:Mostrar', 'nomenclatura' => 'mn-01-sb-20-pm-03'])->syncRoles($rolAdmin);
+                $permisominasedit = Permission::create(['name' => 'minas.edit', 'description' => 'Mina:Editar', 'nomenclatura' => 'mn-01-sb-20-pm-04'])->syncRoles($rolAdmin);
+                $permisominasdestroy = Permission::create(['name' => 'minas.destroy', 'description' => 'Mina:Borrar', 'nomenclatura' => 'mn-01-sb-20-pm-05'])->syncRoles($rolAdmin);
+
             // configuracion
-            $permisomenuproyectos = Permission::create(['name' => 'conf.1', 'description' => 'Configuración', 'nomenclatura' => 'mn-01-sb-11-pm-00'])->syncRoles($rolAdmin);
+            $permisomenuconfiguracion = Permission::create(['name' => 'conf.1', 'description' => 'Configuración', 'nomenclatura' => 'mn-01-sb-11-pm-00'])->syncRoles($rolAdmin);
 
             $permisomenucategoriasdeentrada = Permission::create(['name' => 'menu.categorias-de-entrada', 'description' => 'Ver Submenú Administración-Categorías de entrada', 'nomenclatura' => 'mn-01-sb-12-pm-00'])->syncRoles($rolAdmin);
                 //Permisos

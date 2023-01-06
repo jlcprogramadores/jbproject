@@ -5,6 +5,7 @@
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
+@can('minas.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -18,9 +19,11 @@
                             </span>
 
                              <div class="float-right">
+                                @can('minas.create')
                                 <a href="{{ route('minas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nueva Mina') }}
                                 </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -57,11 +60,17 @@
 
                                             <td>
                                                 <form action="{{ route('minas.destroy',$mina->id) }}" method="POST">
+                                                    @can('minas.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('minas.show',$mina->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    @endcan
+                                                    @can('minas.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('minas.edit',$mina->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
+                                                    @can('minas.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,6 +84,7 @@
         </div>
     </div>    
 @endsection
+@endcan
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
