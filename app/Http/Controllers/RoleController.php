@@ -15,8 +15,9 @@ class RoleController extends Controller
      */
     public function index()
     {   
-        $roles = Role::paginate();
 
+        
+        $roles = Role::where('name', '!=', 'Validador_1')->where('name', '!=', 'Validador_2')->where('name', '!=', 'Validador_3')->paginate();
         return view('rol.index', compact('roles'))
             ->with('i', (request()->input('page', 1) - 1) * $roles->perPage());
     }
