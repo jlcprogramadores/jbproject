@@ -23,6 +23,10 @@
                             {{ $candidato->nombre }}
                         </div>
                         <div class="form-group">
+                            <strong>Puesto al que aplica:</strong>
+                            <td>{{ isset($candidato->puesto->nombre) ? $candidato->puesto->nombre : 'Sin Puesto'}}</td>
+                        </div>
+                        <div class="form-group">
                             <strong>Género:</strong>
                             @if($candidato->genero  == 0 )
                                 <span>Masculino</span>
@@ -47,6 +51,10 @@
                             @else
                                 <td><span class="text-danger">Sin Currículum</span></td>
                             @endif 
+                        </div>
+                        <div class="form-group">
+                            <strong>Comentario:</strong>
+                            <td>{{ isset($candidato->comentario) ? $candidato->comentario : 'Sin Comentario'}}</td>
                         </div>
                         <br>
                         <a class="btn btn-primary" href="{{ route('candidatos.index') }}"> Atrás</a>

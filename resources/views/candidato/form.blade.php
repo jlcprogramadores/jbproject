@@ -20,6 +20,17 @@
             {{ Form::email('correo', $candidato->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
             {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="col-sm p-1 form-group">
+            {{ Form::label('puesto_id', 'Puesto al que aplica') }}
+            <br>
+            {{ Form::select('puesto_id', $puesto, $candidato->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Puesto al que aplica', 'style'=>"width: 15%"]) }}
+            {!! $errors->first('puesto_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('comentario') }}
+            {{ Form::text('comentario', $candidato->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'comentario']) }}
+            {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
         {{ Form::label('Currículum del candidato') }}
             <p>
                 <label for="curriculum"></label>

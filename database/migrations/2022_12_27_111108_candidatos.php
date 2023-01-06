@@ -20,6 +20,8 @@ class Candidatos extends Migration
             $table->bigInteger('telefono_personal');
             $table->string('correo');
             $table->string('curriculum')->nullable();
+            $table->integer('puesto_id')->nullable();
+            $table->string('comentario')->nullable();
             $table->integer('validacion_1')->nullable();    
             $table->integer('validacion_2')->nullable();  
             $table->integer('validacion_3')->nullable();  

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidato;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class CandidatoController extends Controller
     public function create()
     {
         $candidato = new Candidato();
-        return view('candidato.create', compact('candidato'));
+        $puesto = Puesto::pluck('nombre','id');
+        return view('candidato.create', compact('candidato','puesto'));
     }
 
     /**
@@ -83,8 +85,9 @@ class CandidatoController extends Controller
     public function edit($id)
     {
         $candidato = Candidato::find($id);
+        $puesto = Puesto::pluck('nombre','id');
 
-        return view('candidato.edit', compact('candidato'));
+        return view('candidato.edit', compact('candidato','puesto'));
     }
 
     /**

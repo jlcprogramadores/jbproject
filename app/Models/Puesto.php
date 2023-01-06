@@ -48,4 +48,12 @@ class Puesto extends Model
     {
         return $this->hasMany('App\Models\Paro', 'puesto_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function candidato()
+    {
+        return $this->hasMany('App\Models\Candidato', 'puesto_id', 'id');
+    }
 }

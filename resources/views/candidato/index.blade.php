@@ -39,6 +39,7 @@
                                         <th>No</th>
                                         
 										<th>Nombre Completo</th>
+                                        <th>Puesto que aplica</th>
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Currículum</th>
@@ -56,6 +57,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $candidato->nombre }}</td>
+                                            <td>{{ isset($candidato->puesto->nombre) ? $candidato->puesto->nombre : 'Sin Puesto'}}</td>
 											<td>{{ $candidato->telefono_personal }}</td>
 											<td>{{ $candidato->correo }}</td>
                                             @if ($candidato->curriculum)

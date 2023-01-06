@@ -33,15 +33,19 @@ class Candidato extends Model
 		'usuario_edito' => 'required',
     ];
 
-    protected $perPage = 1000000;
-
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['nombre','genero','telefono_personal','correo','curriculum','validacion_1','validacion_2','validacion_3','usuario_edito'];
-
-
+    protected $fillable = ['nombre','genero','telefono_personal','correo','curriculum','puesto_id','comentario','validacion_1','validacion_2','validacion_3','usuario_edito'];
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function puesto()
+    {
+        return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
+    }
 
 }
