@@ -17,11 +17,21 @@
                         
                         <div class="form-group">
                             <strong>Proyecto:</strong>
-                            {{ $empleado->proyecto->nombre }}
+                            @if (isset($empleado->proyecto->nombre))
+                            {{ $empleado->proyecto->nombre}}
+                            @else
+                            <span class="text-danger">Sin Proyecto asignado</span>   
+                            @endif
+                            
                         </div>
                         <div class="form-group">
                             <strong>Puesto:</strong>
-                            {{ $empleado->puesto->nombre}}
+                            @if ($empleado->puesto)
+                                {{ $empleado->puesto->nombre}}
+                            @else
+                                <span class="text-danger">Sin Puesto asignado</span>
+                            @endif
+                            
                         </div>
                         <div class="form-group">
                             <strong>No Empleado:</strong>

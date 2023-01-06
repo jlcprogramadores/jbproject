@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $mina->abreviacon }}
+                            {{ $mina->abreviacion }}
                         </div>
                         <div class="form-group">
                             <strong>Descripcion:</strong>

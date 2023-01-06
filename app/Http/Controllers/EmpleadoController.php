@@ -93,9 +93,12 @@ class EmpleadoController extends Controller
     {
         $empleado = new Empleado();
         $puesto = Puesto::pluck('nombre','id');
-        $proyecto  = Proyecto::where('mina_id','!=',null)->pluck('nombre','id');     
+        $proyecto  = Proyecto::pluck('nombre','id');  
+        $totalEmpleados = Empleado::paginate()->count();
+        $numEmpleado =  date("dmy");
+        $numEmpleado = 'JB-'.$numEmpleado.'-'.($totalEmpleados+1);
 
-        return view('empleado.create', compact('empleado','proyecto','puesto'));
+        return view('empleado.create', compact('empleado','proyecto','puesto','numEmpleado'));
     }
 
     /**
@@ -145,9 +148,11 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
         $empleado = Empleado::find($id);
-        $proyecto  = Proyecto::where('mina_id','!=',null)->pluck('nombre','id');   
+        $proyecto  = Proyecto::pluck('nombre','id');   
         $puesto = Puesto::pluck('nombre','id');
-        return view('empleado.edit', compact('empleado','proyecto','puesto'));
+        $numEmpleado = $empleado->no_empleado;
+
+        return view('empleado.edit', compact('empleado','proyecto','puesto','numEmpleado'));
     }
 
     /**

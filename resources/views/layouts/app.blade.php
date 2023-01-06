@@ -295,7 +295,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function myFunction(){
-            document.getElementById("btn-aceptar").style.display = "none";
+            document.getElementById("btn-aceptar").style.visibility = "hidden";
+            setTimeout(() => document.getElementById("btn-aceptar").style.visibility = "visible", 3600);  
         };   
     </script>
     @stack('scripts')

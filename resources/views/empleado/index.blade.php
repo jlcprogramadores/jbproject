@@ -57,8 +57,14 @@
                                     @foreach ($empleados as $empleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
+                                            
+                                            @if (isset($empleado->proyecto->nombre) == false)
                                             <td>{{ $empleado->no_empleado }}</td>
+                                            @elseif($empleado->proyecto->mina)
+                                                <td>{{ $empleado->no_empleado }}-{{ $empleado->proyecto->mina->abreviacion}}</td> 
+                                            @else
+                                                <td>{{ $empleado->no_empleado }}</td>     
+                                            @endif
                                             @if ($empleado->fotografia)
                                                 <td> <img src={{ $empleado->fotografia }} height="100" ></td> 
                                             @else

@@ -7,17 +7,20 @@
                 <div class="card-body">
                     <h5 class="card-title">Datos Minimos requeridos</h5>
                     <div class="row">
-                        <div class="col-sm p-1 form-group">
-                            <?php
-                            $prueba = [
-                            'hola' => 'hola'
-                            ]; 
-                            ?>
+                        <div class="col-sm p-1 form-group ">
                             {{ Form::label('no_empleado') }}
-                            <br>
-                            {{ Form::select('no_empleado',$prueba, $empleado->no_empleado, ['class' => 'form-control', 'readonly' => 'true'. ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Num Empleado']) }}
+                            @if (isset($empleado->no_empleado))
+                                {{ Form::text('no_empleado', $empleado->no_empleado, ['class' => 'form-control', 'readonly' => 'true'. ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
+                            @else   
+                                <input type="text" value="{{$numEmpleado}}" disabled="true" class="form-control" >
+                                <div class="d-none">
+                                    {{ Form::text('no_empleado', $numEmpleado, $empleado->no_empleado, ['class' => 'form-control' . ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
+                                </div>  
+                            @endif
+                            
                             {!! $errors->first('no_empleado', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('nombre') }}
                             {{ Form::text('nombre', $empleado->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}

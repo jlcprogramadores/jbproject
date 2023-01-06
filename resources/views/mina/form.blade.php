@@ -8,9 +8,9 @@
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('abreviacon') }}
-                    {{ Form::text('abreviacon', $mina->abreviacon, ['class' => 'form-control' . ($errors->has('abreviacon') ? ' is-invalid' : ''), 'placeholder' => 'Abreviacon']) }}
-                    {!! $errors->first('abreviacon', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::label('abreviacion') }}
+                    {{ Form::text('abreviacion', $mina->abreviacion, ['class' => 'form-control' . ($errors->has('abreviacion') ? ' is-invalid' : ''), 'placeholder' => 'Abreviacion']) }}
+                    {!! $errors->first('abreviacion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
                     {{ Form::label('descripcion') }}

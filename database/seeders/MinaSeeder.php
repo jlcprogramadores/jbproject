@@ -21,7 +21,7 @@ class MinaSeeder extends Seeder
         Mina::create([
             'nombre' => 'SAUCITO',
             'descripcion' => 'Descripcion Ejemplo',
-            'abreviacion' => 'sau',
+            'abreviacion' => 'SAU',
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
@@ -30,7 +30,7 @@ class MinaSeeder extends Seeder
         Mina::create([
             'nombre' => 'CIENEGA',
             'descripcion' => 'Descripcion Ejemplo',
-            'abreviacion' => 'ci',
+            'abreviacion' => 'CI',
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
@@ -39,11 +39,19 @@ class MinaSeeder extends Seeder
         Mina::create([
             'nombre' => 'SAN JULIAN',
             'descripcion' => 'Descripcion Ejemplo',
-            'abreviacion' => 'sj',
+            'abreviacion' => 'SJ',
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
+        Mina::create([
+            'nombre' => 'ARANZAZU',
+            'descripcion' => 'Descripcion Ejemplo',
+            'abreviacion' => 'ARAZU',
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
     }
 }
