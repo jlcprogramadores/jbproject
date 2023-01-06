@@ -75,6 +75,7 @@ class Empleados extends Migration
             $table->decimal('estatura', 12, 2)->nullable();
             $table->decimal('imc', 12, 2)->nullable();
             $table->boolean('esta_trabajando')->nullable();
+            $table->dateTime('fecha_limite_expediente')->nullable();
             $table->string('usuario_edito');
             $table->timestamps();
         });

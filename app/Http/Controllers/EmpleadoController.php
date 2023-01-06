@@ -34,11 +34,15 @@ class EmpleadoController extends Controller
      */
     public function capacitaciones($id)
     {        
+        $id_dc3 = DB::table('expedientes')
+                ->where('nombre','=','capacitaciones_dc3')
+                ->get();
+        $id_dc3  = $id_dc3->first()->id;
         $capacitaciones = DB::table('expedientes')
                 ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                 ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
                 ->where('empleado_expedientes.empleado_id','=',$id)
-                ->where('expedientes.id','=',DB::raw(30))
+                ->where('expedientes.id','=',DB::raw($id_dc3))
                 ->get();        
 
         $i = 0;

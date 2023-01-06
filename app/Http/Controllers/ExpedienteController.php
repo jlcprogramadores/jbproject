@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Expediente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 /**
  * Class ExpedienteController
@@ -18,7 +20,11 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
-        $expedientes = Expediente::paginate();
+        $id_dc3 = DB::table('expedientes')
+            ->where('nombre','=','capacitaciones_dc3')
+            ->get();
+        $id_dc3  = $id_dc3->first()->id;
+        $expedientes = Expediente::where('expedientes.id','!=',DB::raw($id_dc3))->paginate();
         
         return view('expediente.index', compact('expedientes'))
             ->with('i', (request()->input('page', 1) - 1) * $expedientes->perPage());
@@ -72,7 +78,9 @@ class ExpedienteController extends Controller
      */
     public function edit($id)
     {
+        
         $expediente = Expediente::find($id);
+
 
         return view('expediente.edit', compact('expediente'));
     }
