@@ -76,6 +76,9 @@ Route::get('/poblaciondetalle/{id}', 'App\Http\Controllers\EmpleadoController@po
 Route::get('/capacitaciones/{id}', 'App\Http\Controllers\EmpleadoController@capacitaciones')->name('empleados.capacitaciones');
 Route::get('/evaluar/{id}', 'App\Http\Controllers\CandidatoController@evaluar')->name('candidatos.evaluar');
 
+Route::get('/editarfechalimite/{id}', 'App\Http\Controllers\EmpleadoController@editarfechalimite')->name('empleados.editarfechalimite');
+Route::post('/actualizarfechalimite', 'App\Http\Controllers\EmpleadoController@actualizarfechalimite')->name('empleados.actualizarfechalimite');
+
 
 Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');

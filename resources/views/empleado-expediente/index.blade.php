@@ -32,6 +32,7 @@
                                         <th>No</th>
                                         
 										<th>Empleado</th>
+                                        <th>Fecha Limite</th>
 										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -42,9 +43,11 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td>{{ $empleado->nombre }}</td>
+											<td>{{$empleado->fecha_limite_expediente ? Carbon\Carbon::parse($empleado->fecha_limite_expediente)->format('Y-m-d') : '' }}</td>
 											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>  
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$empleado->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-warning " href="{{ route('empleados.editarfechalimite',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Fecha limite</a>
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.showPorEmpleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Expediente</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('empleado-expedientes.editExpediente',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar Expediente</a>
                                                     @csrf

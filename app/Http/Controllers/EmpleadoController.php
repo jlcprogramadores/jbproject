@@ -200,6 +200,7 @@ class EmpleadoController extends Controller
         return redirect()->route('empleados.index')
             ->with('success', 'Empleado actualizado correctamente.');
     }
+    
 
     /**
      * @param int $id
@@ -217,5 +218,37 @@ class EmpleadoController extends Controller
 
         return redirect()->route('empleados.index')
             ->with('success', 'Empleado eliminado exitosamente.');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editarfechalimite($id)
+    {
+        $empleado = Empleado::find($id);
+
+        return view('empleado.editFechaLimite', compact('empleado'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Empleado $empleado
+     * @return \Illuminate\Http\Response
+     */
+    public function actualizarfechalimite(Request $request, Empleado $empleado)
+    {
+        request()->validate(Empleado::$rulesfechalimite);
+
+        $empleadofind = Empleado::find($request->id);
+        $empleadofind->fecha_limite_expediente = $request->fecha_limite_expediente;
+        $empleadofind->save();        
+
+        return redirect()->route('empleado-expedientes.index')
+            ->with('success', 'Fecha limite actualizada correctamente.');
     }
 }

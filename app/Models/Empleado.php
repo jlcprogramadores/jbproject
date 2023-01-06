@@ -86,6 +86,9 @@ class Empleado extends Model
 		'correo' => 'required',
 		'usuario_edito' => 'required',
     ];
+    static $rulesfechalimite = [
+		'fecha_limite_expediente' => 'required'
+    ];
 
     protected $perPage = 1000000;
 
