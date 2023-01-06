@@ -13,13 +13,19 @@
                     {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
+                    <?php 
+                        $fechaInicio = isset($incidencia->fecha_inicio) ? Carbon\Carbon::parse($incidencia->fecha_inicio)->format('Y-m-d') : $incidencia->fecha_inicio;
+                    ?>
                     {{ Form::label('fecha_inicio') }}
-                    {{ Form::date('fecha_inicio', $incidencia->fecha_inicio, ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Inicio']) }}
+                    {{ Form::date('fecha_inicio', $fechaInicio, ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Inicio']) }}
                     {!! $errors->first('fecha_inicio', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
+                    <?php 
+                        $fechaFin = isset($incidencia->fecha_fin) ? Carbon\Carbon::parse($incidencia->fecha_fin)->format('Y-m-d') : $incidencia->fecha_fin;
+                    ?>
                     {{ Form::label('fecha_fin') }}
-                    {{ Form::date('fecha_fin', $incidencia->fecha_fin, ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Fin']) }}
+                    {{ Form::date('fecha_fin', $fechaFin, ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Fin']) }}
                     {!! $errors->first('fecha_fin', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm p-1 form-group">
