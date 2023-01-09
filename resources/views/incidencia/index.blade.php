@@ -57,7 +57,13 @@
 											<td>{{ $incidencia->proyecto->nombre }}</td>
 											<td>{{ Carbon\Carbon::parse($incidencia->fecha_inicio)->format('Y-m-d')  }}</td>
 											<td>{{ Carbon\Carbon::parse($incidencia->fecha_fin)->format('Y-m-d') }}</td>
-											<td>{{ $incidencia->justificante }}</td>
+											<td>
+                                                @if ($incidencia->justificante)
+                                                    <a href="{{$incidencia->justificante}}">Ver Justificante</a>
+                                                @else
+                                                    <span class="text-danger"> Sin Justificante</span>
+                                                @endif
+                                            </td>
 											<td>{{ $incidencia->comentario }}</td>
 											<td>{{ $incidencia->usuario_edito }}</td>
 
