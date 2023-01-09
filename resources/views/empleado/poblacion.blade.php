@@ -47,7 +47,11 @@
                                     @foreach ($costos as $costo)
                                     <tr>
                                         <td>{{ ++$i }}</td> 
-                                        <td>{{$costo['nombre']}}</td> 
+                                        @if ($costo['mina']=='')
+                                            <td>{{$costo['nombre']}}</td>
+                                        @else
+                                            <td>{{$costo['nombre']}} <br> Mina: {{$costo['mina']}}</td> 
+                                        @endif
                                         <td>${{number_format($costo['costo_nomina'],2)}}</td> 
                                         <td>{{$costo['total_empleados']}}</td> 
                                         <td>
