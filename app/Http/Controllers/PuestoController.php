@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Puesto;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class PuestoController extends Controller
      */
     public function destroy($id)
     {
-        $puesto = Puesto::find($id)->delete();
-
-        return redirect()->route('puestos.index')
-            ->with('success', 'Puesto eliminado exitosamente.');
+        $relacionEmpleado = Empleado::select('id')->where('puesto_id','=',$id)->first();
+        if(!is_null($relacionEmpleado)){
+            return redirect()->route('puestos.index')
+                ->with('danger', 'No se elimino el puesto por que existen emplados relacionados.');
+        }else{
+            $puesto = Puesto::find($id)->delete();
+            return redirect()->route('puestos.index')
+                ->with('success', 'Puesto eliminado correctamente.');
+        }
     }
 }
