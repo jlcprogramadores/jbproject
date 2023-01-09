@@ -62,6 +62,7 @@ class EmpleadoController extends Controller
             $costos[] =array(
                 "id_proyecto"=> $value->id,
                 "nombre"=>$value->nombre,
+                "mina"=>isset($value->mina->nombre) ? $value->mina->nombre : '' ,
                 "costo_nomina"=>Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->sum('salario_real'), 
                 "total_empleados" => Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->count()
             );
@@ -70,7 +71,6 @@ class EmpleadoController extends Controller
                 "lista"=> Empleado::select('nombre')->where('proyecto_id','=',$value->id)->get()
             );
         }
-        
         return view('empleado.poblacion', compact('costos','listas'))->with('i');
     }
 
