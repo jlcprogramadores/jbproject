@@ -101,11 +101,6 @@
                                     {{ __('Proyectos') }}
                                 </a>
                                 @endcan
-                                @can('menu.minas')
-                                <a class="dropdown-item" href="{{ route('minas.index') }}">
-                                    {{ __('Minas') }}
-                                </a>
-                                @endcan
                                 <div class="dropdown-divider"></div>
                                 <li>
                                     <a class="dropdown-item " href="">
@@ -138,6 +133,13 @@
                                             <a class="dropdown-item" href="{{ route('ivas.index') }}">
                                                 {{ __('Ivas') }}
                                             </a> 
+                                            @endcan
+                                        </li>
+                                        <li>
+                                            @can('menu.minas')
+                                            <a class="dropdown-item" href="{{ route('minas.index') }}">
+                                                {{ __('Minas') }}
+                                            </a>
                                             @endcan
                                         </li>
                                         <li>
