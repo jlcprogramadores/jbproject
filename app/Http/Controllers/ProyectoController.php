@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Finanza;
+use App\Models\Incidencia;
 use App\Models\Mina;
+use App\Models\Paro;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
@@ -105,8 +108,11 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        $proyectoFinanza = Finanza::select('id')->where('proyecto_id','=',$id)->first();
-        if(!is_null($proyectoFinanza)){
+        $relacionFinanza = Finanza::select('id')->where('proyecto_id','=',$id)->first();
+        $relacionEmpleados = Empleado::select('id')->where('proyecto_id','=',$id)->first();
+        $relacionParos = Paro::select('id')->where('proyecto_id','=',$id)->first();
+        $relacionIncidencias = Incidencia::select('id')->where('proyecto_id','=',$id)->first();
+        if(!is_null($relacionFinanza) || !is_null($relacionEmpleados) || !is_null($relacionParos)|| !is_null($relacionIncidencias) ){
             return redirect()->route('proyectos.index')
                 ->with('danger', 'No se elimino Proyecto por que existen finanzas relacionadas.');
         }else{
