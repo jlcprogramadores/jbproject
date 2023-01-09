@@ -55,8 +55,11 @@
                                     @foreach ($proyectos as $proyecto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $proyecto->nombre }}</td>
+                                            @if (isset($proyecto->mina->nombre))
+											    <td>{{ $proyecto->nombre }} <br> Mina: {{ $proyecto->mina->nombre}}</td>
+                                            @else
+											    <td>{{ $proyecto->nombre }} </td>
+                                            @endif
 											<td>{{ $proyecto->descripcion }}</td>
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
                                             <td>{{ '$'. number_format($proyecto->presupuesto,2) }}</td>
