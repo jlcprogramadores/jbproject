@@ -15,7 +15,7 @@
                                 {{ __('Detalle Población Proyecto: ') . $proyecto[0]->nombre}}
                             </span>
                              <div class="float-right">
-                                <a href="{{ route('empleados.poblacion') }}" class="btn btn-danger btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('empleados.poblacion') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
                               </div>
