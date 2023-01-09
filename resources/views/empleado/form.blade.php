@@ -44,11 +44,7 @@
                             {{ Form::email('correo', $empleado->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
                             {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
-                        <div class="col-sm p-1 form-group">
-                            {{ Form::label('Fotografía del empleado') }}
-                            <label for="fotografia"></label>
-                            <input type="file" name="fotografia" size="50">
-                        </div>
+                        
                     </div>
                     
                 </div>
@@ -58,7 +54,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datos Genrales</h5>
+                    <h5 class="card-title">Datos Generales</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('puesto_id', 'Puesto') }}
@@ -72,6 +68,11 @@
                             {{ Form::select('proyecto_id', $proyecto, $empleado->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona proyecto',  'style'=>"width: 75%"]) }}
                             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
                         </div>  
+                        <div class="col-sm p-1 form-group">
+                            {{ Form::label('Fotografía del empleado') }}
+                            <label for="fotografia"></label>
+                            <input type="file" name="fotografia" size="50">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
@@ -377,14 +378,15 @@
                     <div class="row">
                         <?php 
                         $practica_deporte = [
-                                '0' => 'Futból', 
-                                '1' => 'Natación',
-                                '2' => 'Voleibol',
-                                '3' => 'Basketball',
-                                '4' => 'Beisbol',
-                                '5' => 'Deportes de combate (boxeo, taekwondo, judo, etc.)',
-                                '6' => 'No práctica deporte',
-                            ];
+                            'Futból' => 'Futból', 
+                            'Natación' => 'Natación',
+                            'Voleibol' => 'Voleibol',
+                            'Basketball' => 'Basketball',
+                            'Beisbol' => 'Beisbol',
+                            'Deportes de combate (boxeo, taekwondo, judo, etc.)' => 'Deportes de combate (boxeo, taekwondo, judo, etc.)',
+                            'Otro' => 'Otro',
+                            'No práctica deporte' => 'No práctica deporte',
+                        ];
                             ?>
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('practica_deporte') }}
