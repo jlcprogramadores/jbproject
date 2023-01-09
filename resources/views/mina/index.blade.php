@@ -56,7 +56,7 @@
 											<td>{{ $mina->nombre }}</td>
 											<td>{{ $mina->descripcion }}</td>
                                             <td>{{ $mina->abreviacion }}</td>
-											<td>{{ $mina->usuario_edito }}</td>
+											<td><span class="peque">{{ $mina->usuario_edito }}</span>  <br/> <span class="peque">{{ $mina->updated_at }}</span> </td>
 
                                             <td>
                                                 <form action="{{ route('minas.destroy',$mina->id) }}" method="POST">

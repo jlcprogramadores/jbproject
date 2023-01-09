@@ -28,10 +28,10 @@
                     {{ Form::date('fecha_fin', $fechaFin, ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Fin']) }}
                     {!! $errors->first('fecha_fin', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <div class="col-sm p-1 form-group">
+                <div class="form-group">
                     {{ Form::label('Fotografía del empleado') }}
                     <label for="justificante"></label>
-                    <input type="file" name="justificante" size="50">
+                    <input type="file" name="justificante"  class="form-control">
                 </div>
                 <div class="form-group">
                     {{ Form::label('comentario') }}
