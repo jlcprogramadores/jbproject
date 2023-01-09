@@ -34,6 +34,14 @@
                             {{ '$'. number_format($paro->salario,2) }}
                         </div>
                         <div class="form-group">
+                            <strong>Fecha de Inicio:</strong>
+                            {{ $paro->fecha_inicio }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Fecha de Fin:</strong>
+                            {{ $paro->fecha_fin }}
+                        </div>
+                        <div class="form-group">
                             <strong>Comentario:</strong>
                             {{ $paro->comentario }}
                         </div>

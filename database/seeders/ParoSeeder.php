@@ -22,8 +22,10 @@ class ParoSeeder extends Seeder
             'empleado_id' => 1,
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'comentario' => 'Comentario Ejemplo',
             'salario' => 15000,
+            'fecha_inicio' => $dateNow,
+            'fecha_fin' => $dateNow,
+            'comentario' => 'Comentario Ejemplo',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow

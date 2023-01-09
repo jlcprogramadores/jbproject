@@ -25,6 +25,8 @@ class Paros extends Migration
                 ->on('proyectos');
             $table->integer('puesto_id')->nullable();
             $table->decimal('salario', 12, 2);
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin');
             $table->string('comentario')->nullable();
             $table->string('usuario_edito');
             $table->timestamps();

@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property $proyecto_id
  * @property $puesto_id
  * @property $salario
+ * @property $fecha_inicio
+ * @property $fecha_fin
  * @property $comentario
  * @property $usuario_edito
  * @property $created_at
@@ -39,7 +41,7 @@ class Paro extends Model
      *
      * @var array
      */
-    protected $fillable = ['empleado_id','proyecto_id','puesto_id','salario','comentario','usuario_edito'];
+    protected $fillable = ['empleado_id','proyecto_id','puesto_id','salario','fecha_inicio','fecha_fin','comentario','usuario_edito'];
 
 
     /**

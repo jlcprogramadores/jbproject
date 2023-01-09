@@ -42,7 +42,9 @@
 										<th>Proyecto</th>
 										<th>Puesto</th>
 										<th>Salario</th>
-										<th>Comentario</th>
+										<th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Comentario</th>
 										<th>Fecha Actualización</th>
 
                                         <th></th>
@@ -59,7 +61,8 @@
 											<td>{{ $paro->proyecto->nombre}}</td>
 											<td>{{ $paro->puesto->nombre }}</td>
 											<td>{{ '$'. number_format($paro->salario,2)  }}</td>
-                                            
+                                            <td>{{ Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d')  }}</td>
+                                            <td>{{ Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d')  }}</td>
 											<td>{{ $paro->comentario }}</td>
 											<td>{{ $paro->usuario_edito }} <br/> {{ $paro->updated_at }}</td>
 

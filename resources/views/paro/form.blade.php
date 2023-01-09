@@ -21,6 +21,16 @@
             {{ Form::text('salario', $paro->salario, ['class' => 'form-control' . ($errors->has('salario') ? ' is-invalid' : ''), 'placeholder' => 'Salario']) }}
             {!! $errors->first('salario', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="p-1 form-group">
+            {{ Form::label('fecha_inicio') }}
+            {{ Form::date('fecha_inicio', $paro->fecha_inicio, ['class' => 'form-control-sm' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+            {!! $errors->first('fecha_inicio', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+        </div>
+        <div class="p-1 form-group">
+            {{ Form::label('fecha_fin') }}
+            {{ Form::date('fecha_fin', $paro->fecha_fin, ['class' => 'form-control-sm' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+            {!! $errors->first('fecha_fin', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+        </div>
         <div class="form-group">
             {{ Form::label('comentario') }}
             {{ Form::text('comentario', $paro->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
