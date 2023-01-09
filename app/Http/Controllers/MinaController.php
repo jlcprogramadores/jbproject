@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mina;
+use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,14 @@ class MinaController extends Controller
      */
     public function destroy($id)
     {
-        $mina = Mina::find($id)->delete();
-
-        return redirect()->route('minas.index')
-            ->with('success', 'Mina eliminada correctamente.');
+        $relacionProyecto = Proyecto::select('id')->where('mina_id','=',$id)->first();
+        if(!is_null($relacionProyecto)){
+            return redirect()->route('minas.index')
+                ->with('danger', 'No se elimino la mina por que existen poryectos relacionados.');
+        }else{
+            $mina = Mina::find($id)->delete();
+            return redirect()->route('minas.index')
+                ->with('success', 'Mina eliminada correctamente.');
+        }
     }
 }
