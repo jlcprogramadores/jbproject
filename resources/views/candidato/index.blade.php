@@ -40,12 +40,12 @@
                                         
 										<th>Nombre Completo</th>
                                         <th>Puesto que aplica</th>
+										<th>Género</th>
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Currículum</th>
 										<th>Evaluación</th>
                                         <th>Semáforo</th>
-										<th>Género</th>
 										<th>Fecha Actualización</th>
 
                                         <th></th>
@@ -58,6 +58,13 @@
                                             
 											<td>{{ $candidato->nombre }}</td>
                                             <td>{{ isset($candidato->puesto->nombre) ? $candidato->puesto->nombre : 'Sin Puesto'}}</td>
+                                            @if ($candidato->genero == 0)
+                                                <td>Masculino</td>
+                                            @elseif ($candidato->genero == 1)
+                                                <td>Femenino</td>
+                                            @else
+                                                <td>Otro</td>
+                                            @endif 
 											<td>{{ $candidato->telefono_personal }}</td>
 											<td>{{ $candidato->correo }}</td>
                                             @if ($candidato->curriculum)
@@ -129,13 +136,7 @@
                                                 @endif
                                             </td>
 
-                                            @if ($candidato->genero == 0)
-                                                <td>Masculino</td>
-                                            @elseif ($candidato->genero == 1)
-                                                <td>Femenino</td>
-                                            @else
-                                                <td>Otro</td>
-                                            @endif 
+                                            
 											<td>{{ $candidato->usuario_edito }}  <br/> {{ $candidato->updated_at }}</td>
                                             <td>
                                                 <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
