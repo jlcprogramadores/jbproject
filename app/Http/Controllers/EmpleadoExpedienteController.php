@@ -145,7 +145,6 @@ class EmpleadoExpedienteController extends Controller
                 ->where('expedientes.id','!=',DB::raw($id_dc3))
                 ->get();
         // }else{
-        //     dd('no');
         //     $expedientesCargados = null;
         //     $id_dc3 = DB::table('expedientes')
         //         ->where('nombre','=','capacitaciones_dc3')
@@ -172,8 +171,6 @@ class EmpleadoExpedienteController extends Controller
         $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
                         ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                         ->where('empleado_expedientes.empleado_id','=',$id_empleado)->paginate();
-        // dd($expediente);
-        // return view('finanza.showdatosfiltrados', compact('finanzas'));
         $i=0;
         return view('empleado-expediente.indexEmpExpedientes', compact('empleado', 'expedientes','i'));
     }
@@ -186,10 +183,8 @@ class EmpleadoExpedienteController extends Controller
      */
     public function docsFaltantes($id_empleado)
     {
-        // dd($id_empleado);
         $emp = Empleado::where('id','=', $id_empleado)->first();
         $empleado = [$emp->id => $emp->nombre];
-        // dd($empleado);
         // se tiene que hacer un selec en base a los que no tiene aún y los multiples
             $whereJoin = [
                 ['empleado_expedientes.expediente_id', '=', 'expedientes.id'],
@@ -199,8 +194,6 @@ class EmpleadoExpedienteController extends Controller
         $expediente = Expediente::select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
                         ->leftjoin('empleado_expedientes', $whereJoin)
                         ->where('empleado_expedientes.expediente_id','=', null)->paginate();
-        // dd($expediente);
-
         $i=0;
         return view('empleado-expediente.docsFaltantes', compact('empleado', 'expediente','i'));
     }

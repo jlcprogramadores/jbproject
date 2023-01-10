@@ -54,9 +54,6 @@
                                     @foreach ($paros as $paro)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            {{-- @php
-                                                dd($paro->id);
-                                            @endphp --}}
 											<td>{{ $paro->empleado->nombre }}</td>
 											<td>{{ $paro->proyecto->nombre}}</td>
 											<td>{{ $paro->puesto->nombre }}</td>

@@ -89,7 +89,6 @@ class FinanzaController extends Controller
      */
     public function top(Request $request)
     {   
-        // dd($request);
         $tipoFinanza = $request->tipoFinanza;
         $numRegistros = $request->numRegistros;
         // las opciones de tipo de fiananza son  0 es egreso, 1 es ingreso
