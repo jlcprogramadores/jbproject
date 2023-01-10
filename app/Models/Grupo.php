@@ -46,7 +46,7 @@ class Grupo extends Model
      */
     public function grupoEmpleado()
     {
-        return $this->hasOne('App\Models\GruposEmpleado', 'grupo_id', 'id');
+        return $this->hasMany('App\Models\GruposEmpleado', 'grupo_id', 'id');
     }
 
 }
