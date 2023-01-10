@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Historial Alta
-@endsection
+@section('title','Actualizar Alta/baja')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Historial Alta</span>
+                        <span class="card-title">Actualizar Alta/baja</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('historial-altas.update', $historialAlta->id) }}"  role="form" enctype="multipart/form-data">

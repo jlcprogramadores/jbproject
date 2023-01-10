@@ -189,6 +189,14 @@ class Empleado extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function historialalta()
+    {
+        return $this->hasMany('App\Models\HistorialAlta', 'empleado_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function incidencia()
     {
         return $this->hasMany('App\Models\Incidencia', 'empleado_id', 'id');

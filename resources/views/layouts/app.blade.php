@@ -185,6 +185,9 @@
                                         {{ __('Empleados') }}
                                     </a> 
                                     @endcan
+                                    <a class="dropdown-item" href="{{ route('historial-altas.index') }}">
+                                        {{ __('Historial Altas/Bajas') }}
+                                    </a> 
                                     <a class="dropdown-item" href="{{ route('incidencias.index') }}">
                                         {{ __('Incidencias') }}
                                     </a> 

@@ -42,6 +42,7 @@ Route::resource('empleado-expedientes', App\Http\Controllers\EmpleadoExpedienteC
 Route::resource('candidatos', App\Http\Controllers\CandidatoController::class);
 Route::resource('minas', App\Http\Controllers\MinaController::class);
 Route::resource('incidencias', App\Http\Controllers\IncidenciaController::class);
+Route::resource('historial-altas', App\Http\Controllers\HistorialAltaController::class);
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\HistorialAlta;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class HistorialAltaController extends Controller
     public function create()
     {
         $historialAlta = new HistorialAlta();
-        return view('historial-alta.create', compact('historialAlta'));
+        $empleado = Empleado::pluck('nombre','id');
+        return view('historial-alta.create', compact('historialAlta','empleado'));
     }
 
     /**
@@ -73,8 +75,10 @@ class HistorialAltaController extends Controller
     public function edit($id)
     {
         $historialAlta = HistorialAlta::find($id);
-
-        return view('historial-alta.edit', compact('historialAlta'));
+        
+        $empleado = Empleado::where('id','=',$historialAlta->empleado_id)->get()[0];
+        $empleado = [ $empleado->id => $empleado->nombre ];
+        return view('historial-alta.edit', compact('historialAlta', 'empleado'));
     }
 
     /**
