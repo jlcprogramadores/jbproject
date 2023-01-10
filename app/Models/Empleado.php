@@ -201,4 +201,12 @@ class Empleado extends Model
     {
         return $this->hasMany('App\Models\Incidencia', 'empleado_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function grupoEmpleado()
+    {
+        return $this->hasMany('App\Models\GruposEmpleado', 'empleado_id', 'id');
+    }
 }

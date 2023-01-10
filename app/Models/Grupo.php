@@ -41,4 +41,12 @@ class Grupo extends Model
         return $this->hasMany('App\Models\Paro', 'grupo_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function grupoEmpleado()
+    {
+        return $this->hasOne('App\Models\GruposEmpleado', 'grupo_id', 'id');
+    }
+
 }
