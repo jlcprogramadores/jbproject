@@ -49,4 +49,12 @@ class Grupo extends Model
         return $this->hasMany('App\Models\GruposEmpleado', 'grupo_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function historialParo()
+    {
+        return $this->hasMany('App\Models\HistorialParo', 'grupo_id', 'id');
+    }
+
 }

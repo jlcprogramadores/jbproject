@@ -5,29 +5,37 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Paro
+ * Class HistorialParo
  *
  * @property $id
+ * @property $paro_id
  * @property $grupo_id
- * @property $proyecto_id
+ * @property $empleado_id
  * @property $fecha_inicio
  * @property $fecha_fin
+ * @property $nombre_grupo
  * @property $comentario
  * @property $usuario_edito
  * @property $created_at
  * @property $updated_at
  *
  * @property Empleado $empleado
- * @property Proyecto $proyecto
+ * @property Grupo $grupo
+ * @property Paro $paro
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Paro extends Model
+class HistorialParo extends Model
 {
     
     static $rules = [
+		'paro_id' => 'required',
 		'grupo_id' => 'required',
-		'proyecto_id' => 'required',
+		'empleado_id' => 'required',
+		'fecha_inicio' => 'required',
+		'fecha_fin' => 'required',
+		'nombre_grupo' => 'required',
+		'usuario_edito' => 'required',
     ];
 
     protected $perPage = 1000000;
@@ -37,16 +45,17 @@ class Paro extends Model
      *
      * @var array
      */
-    protected $fillable = ['grupo_id','proyecto_id','fecha_inicio','fecha_fin','comentario','usuario_edito'];
-    
+    protected $fillable = ['paro_id','grupo_id','empleado_id','fecha_inicio','fecha_fin','nombre_grupo','comentario','usuario_edito'];
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function proyecto()
+    public function empleado()
     {
-        return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
+        return $this->hasOne('App\Models\Empleado', 'id', 'empleado_id');
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -54,12 +63,14 @@ class Paro extends Model
     {
         return $this->hasOne('App\Models\Grupo', 'id', 'grupo_id');
     }
-
+    
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function historialParo()
+    public function paro()
     {
-        return $this->hasMany('App\Models\HistorialParo', 'paro_id', 'id');
+        return $this->hasOne('App\Models\Paro', 'id', 'paro_id');
     }
+    
+
 }

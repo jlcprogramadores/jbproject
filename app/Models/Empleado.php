@@ -209,4 +209,12 @@ class Empleado extends Model
     {
         return $this->hasMany('App\Models\GruposEmpleado', 'empleado_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function historialParo()
+    {
+        return $this->hasMany('App\Models\HistorialParo', 'empleado_id', 'id');
+    }
 }
