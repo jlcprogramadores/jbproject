@@ -15,18 +15,16 @@ class Paros extends Migration
     {
         Schema::create('paros', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('empleado_id');
-            $table->foreign('empleado_id')
-                ->references('id')
-                ->on('empleados');
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')
                 ->references('id')
                 ->on('proyectos');
-            $table->integer('puesto_id')->nullable();
-            $table->decimal('salario', 12, 2);
-            $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_fin');
+            $table->unsignedBigInteger('grupo_id');
+            $table->foreign('grupo_id')
+                ->references('id')
+                ->on('grupos');
+            $table->dateTime('fecha_inicio')->nullable();
+            $table->dateTime('fecha_fin')->nullable();
             $table->string('comentario')->nullable();
             $table->string('usuario_edito');
             $table->timestamps();

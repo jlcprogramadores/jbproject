@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Paro
  *
  * @property $id
- * @property $empleado_id
+ * @property $grupo_id
  * @property $proyecto_id
- * @property $puesto_id
- * @property $salario
  * @property $fecha_inicio
  * @property $fecha_fin
  * @property $comentario
@@ -28,10 +26,8 @@ class Paro extends Model
 {
     
     static $rules = [
-		'empleado_id' => 'required',
+		'grupo_id' => 'required',
 		'proyecto_id' => 'required',
-		'salario' => 'required',
-		'usuario_edito' => 'required',
     ];
 
     protected $perPage = 1000000;
@@ -41,16 +37,7 @@ class Paro extends Model
      *
      * @var array
      */
-    protected $fillable = ['empleado_id','proyecto_id','puesto_id','salario','fecha_inicio','fecha_fin','comentario','usuario_edito'];
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function empleado()
-    {
-        return $this->hasOne('App\Models\Empleado', 'id', 'empleado_id');
-    }
+    protected $fillable = ['grupo_id','proyecto_id','fecha_inicio','fecha_fin','comentario','usuario_edito'];
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -59,13 +46,12 @@ class Paro extends Model
     {
         return $this->hasOne('App\Models\Proyecto', 'id', 'proyecto_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function puesto()
+    public function grupo()
     {
-        return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
+        return $this->hasOne('App\Models\Grupo', 'id', 'grupo_id');
     }
-
 }

@@ -2,24 +2,14 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('Empleado') }}
-            {{ Form::select('empleado_id',$empleado, $paro->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Empleado']) }}
-            {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Grupo') }}
+            {{ Form::select('grupo_id',$grupo, $paro->grupo_id, ['class' => 'form-control' . ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Grupo']) }}
+            {!! $errors->first('grupo_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Proyecto') }}
             {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('Puesto') }}
-            {{ Form::select('puesto_id',$puesto, $paro->puesto_id, ['class' => 'form-control' . ($errors->has('puesto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Puesto']) }}
-            {!! $errors->first('puesto_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('salario') }}
-            {{ Form::text('salario', $paro->salario, ['class' => 'form-control' . ($errors->has('salario') ? ' is-invalid' : ''), 'placeholder' => 'Salario']) }}
-            {!! $errors->first('salario', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="p-1 form-group">
             {{ Form::label('fecha_inicio') }}

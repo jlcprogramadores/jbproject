@@ -38,10 +38,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre del Empleado</th>
 										<th>Proyecto</th>
-										<th>Puesto</th>
-										<th>Salario</th>
+                                        <th>Grupo</th>
 										<th>Fecha Inicio</th>
                                         <th>Fecha Fin</th>
                                         <th>Comentario</th>
@@ -54,10 +52,8 @@
                                     @foreach ($paros as $paro)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-											<td>{{ $paro->empleado->nombre }}</td>
 											<td>{{ $paro->proyecto->nombre}}</td>
-											<td>{{ $paro->puesto->nombre }}</td>
-											<td>{{ '$'. number_format($paro->salario,2)  }}</td>
+                                            <td>{{ $paro->grupo->nombre}}</td>
                                             <td>{{ Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d')  }}</td>
                                             <td>{{ Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d')  }}</td>
 											<td>{{ $paro->comentario }}</td>

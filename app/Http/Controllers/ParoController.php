@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleado;
+use App\Models\Grupo;
 use App\Models\Proyecto;
-use App\Models\Puesto;
 use App\Models\Paro;
 use Illuminate\Http\Request;
 
@@ -35,10 +34,9 @@ class ParoController extends Controller
     public function create()
     {
         $paro = new Paro();
-        $empleado = Empleado::pluck('nombre','id');
         $proyecto = Proyecto::pluck('nombre','id');
-        $puesto = Puesto::pluck('nombre','id');
-        return view('paro.create', compact('paro','empleado','proyecto','puesto'));
+        $grupo = Grupo::pluck('nombre','id');
+        return view('paro.create', compact('paro','proyecto','grupo'));
     }
 
     /**
@@ -79,11 +77,10 @@ class ParoController extends Controller
     public function edit($id)
     {
         $paro = Paro::find($id);
-        $empleado = Empleado::pluck('nombre','id');
         $proyecto = Proyecto::pluck('nombre','id');
-        $puesto = Puesto::pluck('nombre','id');
+        $grupo = Grupo::pluck('nombre','id');
 
-        return view('paro.edit', compact('paro','empleado','proyecto','puesto'));
+        return view('paro.edit', compact('paro','proyecto','grupo'));
     }
 
     /**

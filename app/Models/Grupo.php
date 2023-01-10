@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Puesto
+ * Class Grupo
  *
  * @property $id
  * @property $nombre
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Puesto extends Model
+class Grupo extends Model
 {
     
     static $rules = [
@@ -36,16 +36,9 @@ class Puesto extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function empleado()
+    public function paro()
     {
-        return $this->hasMany('App\Models\Empleado', 'puesto_id', 'id');
+        return $this->hasMany('App\Models\Paro', 'grupo_id', 'id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function candidato()
-    {
-        return $this->hasMany('App\Models\Candidato', 'puesto_id', 'id');
-    }
 }

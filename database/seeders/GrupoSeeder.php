@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Paro;
+use App\Models\Grupo;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class ParoSeeder extends Seeder
+class GrupoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,12 +18,15 @@ class ParoSeeder extends Seeder
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
 
-        Paro::create([
-            'proyecto_id' => 1,
-            'grupo_id' => 1,
-            'fecha_inicio' => $dateNow,
-            'fecha_fin' => $dateNow,
-            'comentario' => 'Comentario Ejemplo',
+        Grupo::create([
+            'nombre' => 'Grupo A',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Grupo::create([
+            'nombre' => 'Grupo B',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow

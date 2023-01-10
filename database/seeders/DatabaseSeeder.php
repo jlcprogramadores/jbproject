@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClienteSeeder::class);
         $this->call(EmpleadoSeeder::class);
         $this->call(PuestoSeeder::class);
+        $this->call(GrupoSeeder::class);
         $this->call(ParoSeeder::class);
         $this->call(ExpedienteSeeder::class);
         $this->call(MinaSeeder::class);
