@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\HistorialAlta;
 use App\Models\Proyecto;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
@@ -114,7 +115,6 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Empleado::$rules);
-
         $empleado = Empleado::create($request->all());
         if ($empleado->fotografia != null) {
             $nombreOriginal = $empleado->fotografia->getClientOriginalName();
@@ -126,6 +126,14 @@ class EmpleadoController extends Controller
             $getEmpleado->fotografia = $file_url;
             $getEmpleado->save();
         }
+        $request->esta_trabajando;
+        $crearHistrial = [
+            'empleado_id' => $empleado->id,
+            'tipo' => $empleado->esta_trabajando,
+            'comentario' => $request->comentario,
+            'usuario_edito' => $empleado->usuario_edito,
+        ];
+        $historialAlta = HistorialAlta::create($crearHistrial);
         return redirect()->route('empleados.index')
             ->with('success', 'Empleado creado exitosamente.');
     }

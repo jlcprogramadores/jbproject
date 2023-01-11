@@ -227,11 +227,6 @@
                     <h5 class="card-title">Datos Complementarios</h5>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
-                            {{ Form::label('esta_trabajando') }}
-                            {{ Form::select('esta_trabajando',array('0' => 'No', '1' => 'Si') , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
-                            {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
-                        </div>
-                        <div class="col-sm p-1 form-group">
                             {{ Form::label('evaluaciones') }}
                             {{ Form::text('evaluaciones', $empleado->evaluaciones, ['class' => 'form-control' . ($errors->has('evaluaciones') ? ' is-invalid' : ''), 'placeholder' => 'Evaluaciones']) }}
                             {!! $errors->first('evaluaciones', '<div class="invalid-feedback">:message</div>') !!}
@@ -454,6 +449,35 @@
                 </div>
             </div>
         </div>
+        {{-- si es se esta creano el empleado aparece estado actual / se evalua con un dato requrido si contiene algo o no --}}
+        @if ($empleado->nombre)
+            {{-- no contiene nada porque ya es viejo --}}
+            <div class="col-sm-4 p-1 form-group d-none">
+                {{ Form::label('esta_trabajando','Estado (Alta/Bajo)') }}
+                {{ Form::select('esta_trabajando',['1' => 'Alta', '0' => 'Baja' ] , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
+                {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+        @else
+        <br>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Estado actual</h5>
+                    <div class="row">
+                        <div class="col-sm-4 p-1 form-group">
+                            {{ Form::label('esta_trabajando','Estado (Alta/Baja)') }}
+                            {{ Form::select('esta_trabajando',['1' => 'Alta', '0' => 'Baja' ] , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
+                            {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
+                        <div class="col-sm-8 p-1 form-group">
+                            <label for="comentario">Comentario</label>
+                            <input type="text" name="comentario" id="comentario" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
     <br>
         <div class="container">

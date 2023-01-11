@@ -5,14 +5,23 @@
                 <div class="form-group">
                     {{ Form::label('empleado_id', 'Empleado') }}
                     {{-- determino si es nuevo o editado --}}
-                    @if ($historialAlta->tipo)
+                    @if ($editado)
                         {{ Form::select('empleado_id', $empleado, $historialAlta->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : '')]) }}
                     @else
                         {{ Form::select('empleado_id', $empleado, $historialAlta->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Selcciona el Empleado']) }}
                     @endif
                     {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                {{-- se crea un campo falso para que se puede enviar correctamente el form con d-none --}}
                 <div class="form-group">
+                    <label for="">Tipo</label>
+                    @if ($historialAlta->tipo)
+                    <input type="text" name="" id="" value="Alta" class="form-control" disabled>
+                    @else
+                    <input type="text" name="" id="" value="Baja" class="form-control" disabled>
+                    @endif
+                </div>
+                <div class="form-group d-none">
                     {{ Form::label('tipo') }}
                     {{ Form::select('tipo', [ '0' => 'Baja', '1' => 'Alta'], $historialAlta->tipo, ['class' => 'form-control' . ($errors->has('tipo') ? ' is-invalid' : '')]) }}
                     {!! $errors->first('tipo', '<div class="invalid-feedback">:message</div>') !!}

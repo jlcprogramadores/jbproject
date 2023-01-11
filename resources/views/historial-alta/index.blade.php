@@ -19,9 +19,9 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('historial-altas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                {{-- <a href="{{ route('historial-altas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nueva Alta/Baja') }}
-                                </a>
+                                </a> --}}
                               </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
 										<th>Comentario</th>
 										<th>Usuario Edito</th>
 
-                                        <th>Acciones</th>
+                                        {{-- <th>Acciones</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +56,7 @@
 											<td>{{ $historialAlta->comentario }}</td>
 											<td>{{ $historialAlta->usuario_edito }}</td>
 
-                                            <td>
+                                            {{-- <td>
                                                 <form action="{{ route('historial-altas.destroy',$historialAlta->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('historial-altas.show',$historialAlta->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('historial-altas.edit',$historialAlta->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
@@ -64,7 +64,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

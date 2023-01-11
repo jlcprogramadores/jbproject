@@ -16,13 +16,16 @@
                             <span id="card_title">
                                 {{ __('Empleados') }}
                             </span>
-                            @can('empleados.create')
-                             <div class="float-right">
+                            <div class="float-right">
+                                <a  href="{{ route('historial-altas.index') }}" class="btn btn-warning btn-sm float-right"  data-placement="left">
+                                    {{ __('Historial Altas/Bajas') }}
+                                </a> 
+                                 @can('empleados.create')
                                 <a href="{{ route('empleados.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Empleado') }}
                                 </a>
+                                @endcan
                               </div>
-                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -82,6 +85,8 @@
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Estado (Alta/Baja)</a>
+
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
                                                     @can('empleados.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
