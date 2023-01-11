@@ -64,7 +64,7 @@
                                                 @endif
                                             </td>
 											<td>{{ $historialAlta->comentario }}</td>
-											<td>{{ $historialAlta->usuario_edito }}</td>
+											<td><span class="peque">{{ $historialAlta->usuario_edito }}</span>  <br/> <span class="peque">{{ $historialAlta->updated_at }}</span> <br> </td>
 
                                             {{-- <td>
                                                 <form action="{{ route('historial-altas.destroy',$historialAlta->id) }}" method="POST">
