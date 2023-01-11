@@ -19,7 +19,8 @@ class HistorialAltaController extends Controller
      */
     public function index()
     {
-        $historialAltas = HistorialAlta::paginate();
+        // se hace que el numero menor sea el más nuevo
+        $historialAltas = HistorialAlta::orderBy('id', 'desc')->paginate();
 
         return view('historial-alta.index', compact('historialAltas'))
             ->with('i', (request()->input('page', 1) - 1) * $historialAltas->perPage());

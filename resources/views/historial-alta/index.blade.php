@@ -42,7 +42,7 @@
                                         
 										<th>No Empleado</th>
 										<th>Empleado</th>
-										<th>Tipo</th>
+										<th>Estado</th>
 										<th>Comentario</th>
 										<th>Usuario Edito</th>
 
