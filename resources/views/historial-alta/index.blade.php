@@ -15,13 +15,15 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Historial Altas/Bajas') }}
+                                {{ __('Historial Estado') }}
                             </span>
 
                              <div class="float-right">
+
                                 {{-- <a href="{{ route('historial-altas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nueva Alta/Baja') }}
                                 </a> --}}
+                                <a class="btn btn-light" href="{{ route('empleados.index') }}"> Atrás</a>
                               </div>
                         </div>
                     </div>
@@ -38,6 +40,7 @@
                                     <tr>
                                         <th>No</th>
                                         
+										<th>No Empleado</th>
 										<th>Empleado</th>
 										<th>Tipo</th>
 										<th>Comentario</th>
@@ -51,8 +54,15 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
+											<td>{{ $historialAlta->empleado->no_empleado }}</td>
 											<td>{{ $historialAlta->empleado->nombre }}</td>
-											<td>{{ $historialAlta->tipo ? 'Alta' : 'Baja'}}</td>
+											<td>
+                                                @if ($historialAlta->tipo)
+                                                <span class="badge bg-success">Alta</span>
+                                                @else
+                                                <span class="badge bg-danger">Baja</span>
+                                                @endif
+                                            </td>
 											<td>{{ $historialAlta->comentario }}</td>
 											<td>{{ $historialAlta->usuario_edito }}</td>
 

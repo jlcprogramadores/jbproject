@@ -18,7 +18,7 @@
                             </span>
                             <div class="float-right">
                                 <a  href="{{ route('historial-altas.index') }}" class="btn btn-warning btn-sm float-right"  data-placement="left">
-                                    {{ __('Historial Altas/Bajas') }}
+                                    {{ __('Historial Estado') }}
                                 </a> 
                                  @can('empleados.create')
                                 <a href="{{ route('empleados.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
@@ -50,7 +50,7 @@
                                         <th>Salario Real</th>
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
-										<th>Esta Trabajando</th>
+										<th>Estado</th>
 										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -80,12 +80,18 @@
                                             <td>{{ '$'. number_format($empleado->salario_real,2) }}</td>
 											<td>{{ $empleado->telefono_personal }}</td>
 											<td>{{ $empleado->correo}}</td>
-                                            <td>{{ $empleado->esta_trabajando  ? 'SI' : 'NO'}}</td>
+                                            <td>
+                                                @if ($empleado->esta_trabajando)
+                                                <span class="badge bg-success">Alta</span>
+                                                @else
+                                                <span class="badge bg-danger">Baja</span>
+                                                @endif
+                                            </td>
 											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>
 
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Estado (Alta/Baja)</a>
+                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Estado</a>
 
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
                                                     @can('empleados.show')
