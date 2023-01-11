@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grupo;
+use App\Models\GruposEmpleado;
 use Illuminate\Http\Request;
 
 /**
@@ -44,11 +45,24 @@ class GrupoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Grupo::$rules);
-
         $grupo = Grupo::create($request->all());
 
+        if(!is_null($request->factura[0]['empleado_id'])){
+            // se iteran las facturas que se ñadieron en egresos
+            foreach($request->factura as $iterFactura){
+                $crearFactura = [
+                    'grupo_id' => $grupo->id,
+                    'empleado_id' => $iterFactura['empleado_id'],
+                    'puesto_id' => $iterFactura['puesto_id'],
+                    'salario' => $iterFactura['salario'],
+                    'usuario_edito' => $grupo->usuario_edito,
+                ];
+                $factura = GruposEmpleado::create($crearFactura);
+            }
+        }
+       
         return redirect()->route('grupos.index')
-            ->with('success', 'Grupo created successfully.');
+            ->with('success', 'Grupo creado exitosamente.');
     }
 
     /**
@@ -91,7 +105,7 @@ class GrupoController extends Controller
         $grupo->update($request->all());
 
         return redirect()->route('grupos.index')
-            ->with('success', 'Grupo updated successfully');
+            ->with('success', 'Grupo actualizado exitosamente.');
     }
 
     /**
@@ -104,6 +118,6 @@ class GrupoController extends Controller
         $grupo = Grupo::find($id)->delete();
 
         return redirect()->route('grupos.index')
-            ->with('success', 'Grupo deleted successfully');
+            ->with('success', 'Grupo eliminado exitosamente.');
     }
 }

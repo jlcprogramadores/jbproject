@@ -176,7 +176,7 @@ class FinanzaController extends Controller
         $request->request->add(['entradas_id' => $entrada->id]);
         $finanza = Finanza::create($request->all());
          // si es almenos una factura se crean
-         if(!is_null($request->factura[0]['referencia_factura'])){
+        if(!is_null($request->factura[0]['referencia_factura'])){
             // se iteran las facturas que se ñadieron en egresos
             foreach($request->factura as $iterFactura){
                 $crearFactura = [

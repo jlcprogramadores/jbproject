@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
-@section('title','Crear Grupo de Empleados')
-@if(Auth::check() && Auth::user()->es_activo)
+@section('template_title')
+    Update Grupos Empleado
+@endsection
+
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Grupo de Empleados</span>
+                        <span class="card-title">Update Grupos Empleado</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('grupos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('grupos-empleados.update', $gruposEmpleado->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('grupo.form')
+                            @include('grupos-empleado.form')
 
                         </form>
                     </div>
@@ -26,4 +29,3 @@
         </div>
     </section>
 @endsection
-@endif

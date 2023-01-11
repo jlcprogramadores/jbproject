@@ -24,6 +24,7 @@ class FacturaController extends Controller
         return view('factura.index', compact('facturas'))
             ->with('i', (request()->input('page', 1) - 1) * $facturas->perPage());
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +37,7 @@ class FacturaController extends Controller
         return view('factura.facturafinanzas', compact('facturas','id'))
             ->with('i', (request()->input('page', 1) - 1) * $facturas->perPage());
     }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -25,11 +25,5 @@ class GrupoSeeder extends Seeder
             'updated_at' => $dateNow
         ]);
 
-        Grupo::create([
-            'nombre' => 'Grupo B',
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
     }
 }

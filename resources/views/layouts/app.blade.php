@@ -203,6 +203,11 @@
                                     <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
                                         {{ __('Población') }}
                                     </a> 
+
+                                    <a class="dropdown-item" href="{{ route('grupos.index') }}">
+                                        {{ __('Grupos') }}
+                                    </a> 
+
                                     <div class="dropdown-divider"></div>
                                     <li>
                                         <a class="dropdown-item" href="">

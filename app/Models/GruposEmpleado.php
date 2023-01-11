@@ -55,6 +55,14 @@ class GruposEmpleado extends Model
     {
         return $this->hasOne('App\Models\Grupo', 'id', 'grupo_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function puesto()
+    {
+        return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
+    }
     
 
 } 

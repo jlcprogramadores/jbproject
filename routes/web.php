@@ -43,6 +43,8 @@ Route::resource('candidatos', App\Http\Controllers\CandidatoController::class);
 Route::resource('minas', App\Http\Controllers\MinaController::class);
 Route::resource('incidencias', App\Http\Controllers\IncidenciaController::class);
 Route::resource('historial-altas', App\Http\Controllers\HistorialAltaController::class);
+Route::resource('grupos', App\Http\Controllers\GrupoController::class);
+Route::resource('grupos-empleados', App\Http\Controllers\GruposEmpleadoController::class);
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');
@@ -76,14 +78,12 @@ Route::get('/poblacion', 'App\Http\Controllers\EmpleadoController@poblacion')->n
 Route::get('/poblaciondetalle/{id}', 'App\Http\Controllers\EmpleadoController@poblaciondetalle')->name('empleados.poblaciondetalle');
 Route::get('/capacitaciones/{id}', 'App\Http\Controllers\EmpleadoController@capacitaciones')->name('empleados.capacitaciones');
 Route::get('/evaluar/{id}', 'App\Http\Controllers\CandidatoController@evaluar')->name('candidatos.evaluar');
-
 Route::get('/editarfechalimite/{id}', 'App\Http\Controllers\EmpleadoController@editarfechalimite')->name('empleados.editarfechalimite');
 Route::post('/actualizarfechalimite', 'App\Http\Controllers\EmpleadoController@actualizarfechalimite')->name('empleados.actualizarfechalimite');
-
-
 Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
 Route::get('/showPorEmpleado/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@showPorEmpleado')->name('empleado-expedientes.showPorEmpleado');
+Route::get('/grupoPorEmpleados/{id}', 'App\Http\Controllers\GruposEmpleadoController@grupoPorEmpleados')->name('grupos-empleado.grupoPorEmpleados');
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

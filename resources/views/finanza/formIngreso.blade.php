@@ -282,7 +282,7 @@
                      '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control" required /></td>'+
                      '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required /></td>'+
                      '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" required /></td>'+
-                     '<td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td>'+
+                     '<td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td>'+
                 '</tr>'
                 );
             if(i != 0){

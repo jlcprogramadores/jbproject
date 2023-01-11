@@ -109,7 +109,7 @@ class UnidadeController extends Controller
         }else{
             $unidade = Unidade::find($id)->delete();
             return redirect()->route('unidades.index')
-                ->with('success', 'Unidad eliminado exitosamente.');
+                ->with('success', 'Unidad eliminada exitosamente.');
         }
     }
 }

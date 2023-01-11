@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Grupos')
+@section('title','Empleados del Grupo: ' . $nombre)
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -11,14 +11,18 @@
                 <div class="card text-white border-secondary">
                     <div class="card-header bg-secondary">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
+
                             <span id="card_title">
-                                {{ __('Grupo') }}
+                                {{ __('Empleados del Grupo: ') . $nombre}}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('grupos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Grupo') }}
+                                <a href="javascript:history.back()" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
                                 </a>
+                                {{-- <a href="{{ route('facturas.create',['finanza_id'=> $id, 'creado' => 1 ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Factura') }}
+                                </a> --}}
                               </div>
                         </div>
                     </div>
@@ -35,30 +39,33 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Fecha Actualización</th>
+										<th>Grupo</th>
+                                        <th>Empleado</th>
+										<th>Puesto</th>
+										<th>Salario</th>
 
-                                        <th></th>
+                                        {{-- <th>Acciones</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($grupos as $grupo)
+                                    @foreach ($gruposEmpleados as $gruposEmpleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $grupo->nombre }}</td>
-                                            <td><span class="peque">{{ $grupo->usuario_edito }}</span>  <br/> <span class="peque">{{ $grupo->updated_at }}</span> </td>
+											<td>{{ $gruposEmpleado->grupo->nombre }}</td>
+                                            <td>{{ $gruposEmpleado->empleado->nombre }}</td>
+											<td>{{ $gruposEmpleado->puesto->nombre }}</td>
+                                            <td>{{ '$'. number_format( $gruposEmpleado->salario,2) }}</td>
 
-                                            <td>
-                                                <form action="{{ route('grupos.destroy',$grupo->id) }}" method="POST">
-                                                    <a class="btn btn btn-sm btn-primary" href="{{ route('grupos-empleado.grupoPorEmpleados', ['id' => $grupo->id]) }}"><i class="fa fa-fw fa-edit"></i> Mostrar Empleados</a>
-                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('grupos.show',$grupo->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Empleados</a> --}}
-                                                    <a class="btn btn-sm btn-success" href="{{ route('grupos.edit',$grupo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            {{-- <td>
+                                                <form action="{{ route('grupos-empleados.destroy',$gruposEmpleado->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('grupos-empleados.show',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('grupos-empleados.edit',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -66,13 +73,11 @@
                         </div>
                     </div>
                 </div>
-                {!! $grupos->links() !!}
             </div>
         </div>
     </div>
 @endsection
 @endif
-
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>

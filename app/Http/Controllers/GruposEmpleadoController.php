@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GruposEmpleado;
+use App\Models\Grupo;
 use Illuminate\Http\Request;
 
 /**
@@ -18,10 +19,26 @@ class GruposEmpleadoController extends Controller
      */
     public function index()
     {
-        // $gruposEmpleados = GruposEmpleado::paginate();
+        $gruposEmpleados = GruposEmpleado::paginate();
 
-        // return view('grupos-empleado.index', compact('gruposEmpleados'))
-        //     ->with('i', (request()->input('page', 1) - 1) * $gruposEmpleados->perPage());
+        return view('grupos-empleado.index', compact('gruposEmpleados'))
+            ->with('i', (request()->input('page', 1) - 1) * $gruposEmpleados->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function grupoPorEmpleados($id)
+    {
+        $gruposEmpleados =  GruposEmpleado::where('grupo_id', $id)->paginate();
+        $nombre = Grupo::where('id', $id)->get();
+        $nombre = $nombre[0]->nombre;
+
+        // dd($gruposEmpleados);
+        return view('grupos-empleado.grupoPorEmpleados', compact('gruposEmpleados','nombre','id'))
+            ->with('i', (request()->input('page', 1) - 1) * $gruposEmpleados->perPage());
     }
 
     /**
@@ -31,8 +48,8 @@ class GruposEmpleadoController extends Controller
      */
     public function create()
     {
-        // $gruposEmpleado = new GruposEmpleado();
-        // return view('grupos-empleado.create', compact('gruposEmpleado'));
+        $gruposEmpleado = new GruposEmpleado();
+        return view('grupos-empleado.create', compact('gruposEmpleado'));
     }
 
     /**
@@ -43,12 +60,12 @@ class GruposEmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        // request()->validate(GruposEmpleado::$rules);
+        request()->validate(GruposEmpleado::$rules);
 
-        // $gruposEmpleado = GruposEmpleado::create($request->all());
+        $gruposEmpleado = GruposEmpleado::create($request->all());
 
-        // return redirect()->route('grupos-empleados.index')
-        //     ->with('success', 'GruposEmpleado created successfully.');
+        return redirect()->route('grupos-empleados.index')
+            ->with('success', 'GruposEmpleado created successfully.');
     }
 
     /**
@@ -59,9 +76,9 @@ class GruposEmpleadoController extends Controller
      */
     public function show($id)
     {
-        // $gruposEmpleado = GruposEmpleado::find($id);
+        $gruposEmpleado = GruposEmpleado::find($id);
 
-        // return view('grupos-empleado.show', compact('gruposEmpleado'));
+        return view('grupos-empleado.show', compact('gruposEmpleado'));
     }
 
     /**
@@ -72,9 +89,9 @@ class GruposEmpleadoController extends Controller
      */
     public function edit($id)
     {
-        // $gruposEmpleado = GruposEmpleado::find($id);
+        $gruposEmpleado = GruposEmpleado::find($id);
 
-        // return view('grupos-empleado.edit', compact('gruposEmpleado'));
+        return view('grupos-empleado.edit', compact('gruposEmpleado'));
     }
 
     /**
@@ -86,12 +103,12 @@ class GruposEmpleadoController extends Controller
      */
     public function update(Request $request, GruposEmpleado $gruposEmpleado)
     {
-        // request()->validate(GruposEmpleado::$rules);
+        request()->validate(GruposEmpleado::$rules);
 
-        // $gruposEmpleado->update($request->all());
+        $gruposEmpleado->update($request->all());
 
-        // return redirect()->route('grupos-empleados.index')
-        //     ->with('success', 'GruposEmpleado updated successfully');
+        return redirect()->route('grupos-empleados.index')
+            ->with('success', 'GruposEmpleado updated successfully');
     }
 
     /**
@@ -101,9 +118,9 @@ class GruposEmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        // $gruposEmpleado = GruposEmpleado::find($id)->delete();
+        $gruposEmpleado = GruposEmpleado::find($id)->delete();
 
-        // return redirect()->route('grupos-empleados.index')
-        //     ->with('success', 'GruposEmpleado deleted successfully');
+        return redirect()->route('grupos-empleados.index')
+            ->with('success', 'GruposEmpleado deleted successfully');
     }
 }
