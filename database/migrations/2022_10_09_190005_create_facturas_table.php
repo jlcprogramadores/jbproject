@@ -25,6 +25,8 @@ class CreateFacturasTable extends Migration
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_factura');
             $table->decimal('monto', 12, 2);
+            $table->string('concepto');
+            $table->string('comentario')->nullable();
             $table->string('usuario_edito');
             $table->timestamps();
         });

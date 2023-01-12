@@ -37,6 +37,7 @@ class CreateFinanzasTable extends Migration
             $table->string('metodo_de_pago');
             $table->string('entregado_material_a');
             $table->string('comentario');
+            $table->integer('a_meses')->nullable();
             $table->string('usuario_edito');
             $table->boolean('es_pagado')->default(0);
             $table->timestamps();
