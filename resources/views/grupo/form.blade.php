@@ -21,16 +21,33 @@
             <br>
             <table class="table table-bordered" id="dynamicAddRemove">
                 <tr>
-
                     <th>Empleado</th>
                     <th>Puesto</th>
                     <th>Salario</th>
                     <th>Acción</th>
                 </tr>
                 <tr>
-                    <td><input id="empleado_id" type="text" name="factura[0][empleado_id]" class="form-control"/></td>
-                    <td><input id="puesto_id" type="text" name="factura[0][puesto_id]" class="form-control"/></td>
-                    <td><input id="salario" type="number"  step="any" name="factura[0][salario]" class="form-control"/></td>
+                    {{-- <td>
+                        <select  id="empleado_id" type="text" name="empleado[0][empleado_id]" class="form-control">
+                            <option value=''>Selecciona Empleado</option>
+                            @foreach ($empleados as $key => $value) 
+                            <option value='{{$key}}'>{{$value}}</option>
+                            @endforeach
+                        </select>
+                    </td> --}}
+                    
+                    
+                    {{-- <td>
+                        <select  id="puesto_id" type="text" name="empleado[0][puesto_id]" class="form-control">
+                        <option value=''>Selecciona Puesto</option>
+                        @foreach ($puestos as $key => $value) 
+                        <option value='{{$key}}'>{{$value}}</option>
+                        @endforeach
+                    </select>
+                </td> --}}
+                    <td><select id="empleado_id" type="text" name="empleado[0][empleado_id]" class="form-control"></select></td>
+                    <td><select id="puesto_id" type="text" name="empleado[0][puesto_id]"  class="my-select"></select></td>
+                    <td><input id="salario" type="number"  step="any" name="empleado[0][salario]" class="form-control"/></td>
                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
                 </tr>
             </table>
@@ -50,13 +67,15 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append(
+                
                 '<tr>'+
-                     '<td><input type="text" name="factura['+i+'][empleado_id]" class="form-control" required /></td>'+
-                     '<td><input type="text" name="factura['+i+'][puesto_id]" class="form-control" required /></td>'+
-                     '<td><input type="number" step="any" name="factura['+i+'][salario]" class="form-control" required /></td>'+
-                     '<td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td>'+
+                    '<td><select id="empleado_id" type="text" name="empleado['+i+'][empleado_id]" class="form-control" required/></select></td>'+
+                    '<td><select id="puesto_id" type="text" name="empleado['+i+'][puesto_id]"  class="my-select-'+i+'" required /></select></td>'+
+                    '<td><input type="number" step="any" name="empleado['+i+'][salario]" class="form-control" required /></td>'+
+                    '<td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td>'+
                 '</tr>'
                 );
+                llenar();
             if(i != 0){
                 comprobante = document.getElementById('comprobante');
                 comprobante.value = null;
@@ -65,8 +84,33 @@
                 comprobante.value = null;
                 comprobante.style.display = 'none';   
             }
-
         });
+        
+        function llenar() {
+            var empleado_id = <?php echo json_encode($empleados)?>;
+            var select2 = document.querySelectorAll('[id=empleado_id]');            
+            select2.forEach(function (element) {
+                var elementoZ = element;
+                elementoZ.options.length = 0;
+                for(index in empleado_id) {
+                    elementoZ.options[elementoZ.options.length] = new Option(empleado_id[index], index);
+                }
+            });
+
+            
+            var puesto_id = <?php echo json_encode($puestos)?>;
+            var select1 = document.querySelectorAll('[id=puesto_id]');
+            select1.forEach(function (element) {
+                var elementoX = element;
+                console.log(elementoX);
+                elementoX.options.length = 0;
+                for(index in puesto_id) {
+                    elementoX.options[elementoX.options.length] = new Option(puesto_id[index], index);
+                }
+            });
+            
+        }
+
         $(document).on('click', '.remove-input-field', function () {
             --i;
             $(this).parents('tr').remove();
@@ -79,8 +123,10 @@
         });
 
     function mostrarDiv() {
+        llenar();
         var apartadoEmpleado = document.getElementById('apartadoEmpleado');
         if (apartadoEmpleado.style.display === "none") {
+            
             apartadoEmpleado.style.display = "block";
             document.getElementById('empleado_id').required = true;
             document.getElementById('puesto_id').required = true;
@@ -92,5 +138,7 @@
             document.getElementById('salario').required = false;
         }
     }
+
+
 </script>
 @endpush

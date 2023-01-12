@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Grupo;
 use App\Models\GruposEmpleado;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 
 /**
@@ -33,7 +35,9 @@ class GrupoController extends Controller
     public function create()
     {
         $grupo = new Grupo();
-        return view('grupo.create', compact('grupo'));
+        $empleados = Empleado::pluck('nombre','id');
+        $puestos = Puesto::pluck('nombre','id');
+        return view('grupo.create', compact('grupo','puestos','empleados'));
     }
 
     /**
@@ -47,17 +51,17 @@ class GrupoController extends Controller
         request()->validate(Grupo::$rules);
         $grupo = Grupo::create($request->all());
 
-        if(!is_null($request->factura[0]['empleado_id'])){
-            // se iteran las facturas que se ñadieron en egresos
-            foreach($request->factura as $iterFactura){
-                $crearFactura = [
+        if(!is_null($request->empleado[0]['empleado_id'])){
+            // se iteran los empleados que se añadieron en empleados
+            foreach($request->empleado as $iterEmpleado){
+                $crearEmpleado = [
                     'grupo_id' => $grupo->id,
-                    'empleado_id' => $iterFactura['empleado_id'],
-                    'puesto_id' => $iterFactura['puesto_id'],
-                    'salario' => $iterFactura['salario'],
+                    'empleado_id' => $iterEmpleado['empleado_id'],
+                    'puesto_id' => $iterEmpleado['puesto_id'],
+                    'salario' => $iterEmpleado['salario'],
                     'usuario_edito' => $grupo->usuario_edito,
                 ];
-                $factura = GruposEmpleado::create($crearFactura);
+                $empleado = GruposEmpleado::create($crearEmpleado);
             }
         }
        
