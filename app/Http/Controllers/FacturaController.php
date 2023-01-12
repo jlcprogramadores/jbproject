@@ -32,9 +32,10 @@ class FacturaController extends Controller
      */
     public function facturafinanzas($id)
     {
+        $fiananza = Finanza::find($id)->first();
+        $es_a_meses = !is_null($fiananza->a_meses);
         $facturas = Factura::where('finanza_id', $id)->paginate();
-
-        return view('factura.facturafinanzas', compact('facturas','id'))
+        return view('factura.facturafinanzas', compact('facturas','id','es_a_meses'))
             ->with('i', (request()->input('page', 1) - 1) * $facturas->perPage());
     }
 

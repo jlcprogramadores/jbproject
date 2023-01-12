@@ -1,24 +1,23 @@
 @extends('layouts.app')
 
-@section('title','Actualizar Factura')
+@section('title','Crear Egreso')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
-        <div class="">
+        <div class="row">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar Factura{{$factura->comentario_pago ? ' / Mensualidad: '.$factura->comentario_pago : '' }}</span>
+                        <span class="card-title">Crear Egreso A Meses</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('facturas.update', $factura->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('finanzas.storeEgresoMeses') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('factura.form')
+                            @include('finanza.formEgresoMeses')
 
                         </form>
                     </div>

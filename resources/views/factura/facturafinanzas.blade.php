@@ -41,7 +41,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        @if ($es_a_meses)
+										    <th>Mensualidad</th>
+                                        @endif
 										<th>Referencia Factura</th>
 										<th>Link Factura</th>
 										<th>Url</th>
@@ -56,7 +58,9 @@
                                     @foreach ($facturas as $factura)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+                                            @if ($es_a_meses)
+										        <td>{{$factura->comentario_pago}}</td>
+                                            @endif
 											<td>{{ $factura->referencia_factura }}</td>
                                             @if ($factura->factura_base64)
                                                 <td><a href="{{$factura->factura_base64}}">Link Factura</a></td> 

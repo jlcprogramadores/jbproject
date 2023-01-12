@@ -151,6 +151,26 @@ class FinanzaController extends Controller
     }
 
     /**
+     * Display a listing of the supplier.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function egresoMeses()
+    {      
+        $salida = new Salida();
+        $finanza = new Finanza();   
+        $datosproveedor = Proveedore::pluck('nombre','id');
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+        return view('finanza.createEgresoMeses', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -257,6 +277,54 @@ class FinanzaController extends Controller
                 }
             }
         }
+        return redirect()->route('finanzas.index')
+            ->with('success', 'Finanza creada exitosamente.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeEgresoMeses(Request $request)
+    {
+        request()->validate(Finanza::$rulesEgresoMeses);
+        // se crea la salida se recupera el id y se anade al request
+        $salida = Salida::create($request->all());
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
+        //Hasta aqui se añaden los archivos en la tabla
+        $request->request->add(['salidas_id' => $salida->id]);
+        $finanza = Finanza::create($request->all());
+        
+        // se crean factura segun el numero de meses 
+        for ($i=1; $i < $request->a_meses+1 ; $i++) { 
+            $crearFactura = [
+                'finanza_id' => $finanza->id,
+                'referencia_factura' => null,
+                'concepto' => null,
+                'url' => null,
+                'fecha_creacion' => $finanza->updated_at,
+                'fecha_factura' => null,
+                'monto' => null,
+                'usuario_edito' => $finanza->usuario_edito,
+                'factura_base64' => null,
+                'comentario_pago' => $i.' de '.$request->a_meses,
+            ];
+            $factura = Factura::create($crearFactura);
+
+
+        }
+
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza creada exitosamente.');
     }

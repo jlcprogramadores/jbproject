@@ -85,6 +85,8 @@ Route::get('/graficasProyectos', 'App\Http\Controllers\FinanzaController@grafica
 Route::get('/graficasGenerales', 'App\Http\Controllers\FinanzaController@graficasGenerales')->name('finanzas.graficasGenerales');
 Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
+Route::get('/egresoMeses', 'App\Http\Controllers\FinanzaController@egresoMeses')->name('finanzas.egresoMeses');
+Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEgresoMeses')->name('finanzas.storeEgresoMeses');
 
 // historial-altas
 Route::get('/crearporempleado/{id}', 'App\Http\Controllers\HistorialAltaController@crearporempleado')->name('historial-altas.crearporempleado');
