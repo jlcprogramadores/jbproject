@@ -23,6 +23,7 @@ class Factura extends Model
 {
     static $rules = [
 		'referencia_factura' => 'required',
+		'concepto' => 'required',
 		'fecha_creacion' => 'required',
 		'fecha_factura' => 'required',
     'usuario_edito'  => 'required',
