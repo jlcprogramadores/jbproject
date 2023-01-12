@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use function PHPSTORM_META\map;
+
 /**
  * Class Finanza
  *
@@ -81,7 +83,30 @@ class Finanza extends Model
      *
      * @var array
      */
-    protected $fillable = ['salidas_id','entradas_id','proyecto_id','categoria_id','iva_id','no','fecha_facturacion','fecha_salida','fecha_entrada','descripcion','cantidad','unidad_id','costo_unitario','monto_a_pagar','fecha_de_pago','metodo_de_pago','entregado_material_a','comentario','vence','usuario_edito','es_pagado'];
+    protected $fillable = [
+        'salidas_id',
+        'entradas_id',
+        'proyecto_id',
+        'categoria_id',
+        'iva_id',
+        'no',
+        'fecha_facturacion',
+        'fecha_salida',
+        'fecha_entrada',
+        'descripcion',
+        'cantidad',
+        'unidad_id',
+        'costo_unitario',
+        'monto_a_pagar',
+        'fecha_de_pago',
+        'metodo_de_pago',
+        'entregado_material_a',
+        'comentario',
+        'vence',
+        'usuario_edito',
+        'es_pagado',
+        'a_meses'
+    ];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

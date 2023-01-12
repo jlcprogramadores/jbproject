@@ -36,7 +36,18 @@ class Factura extends Model
      *
      * @var array
      */
-    protected $fillable = ['referencia_factura','factura_base64','url','fecha_creacion','fecha_factura','finanza_id','usuario_edito','monto'];
+    protected $fillable = [
+      'referencia_factura',
+      'factura_base64',
+      'url',
+      'fecha_creacion',
+      'fecha_factura',
+      'finanza_id',
+      'usuario_edito',
+      'monto',
+      'concepto',
+      'comentario_pago'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
