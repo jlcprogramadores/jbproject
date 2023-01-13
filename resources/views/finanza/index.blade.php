@@ -72,7 +72,6 @@
                                         <th>Fecha Facturacion</th>
 										<th>Comentario</th>
                                         <th>Comprobante</th>
-                                        <th>Pagado</th>
                                         <th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -127,12 +126,12 @@
 											<td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
                                             <td>{{ '$'. number_format($subTotal*$iva,2) }}</td>
 											<td>{{ '$'. number_format($montoAPagar = $finanza->monto_a_pagar,2) }}</td>
-											<td >{{ $finanza->fecha_de_pago }}</td>
+											<td >{{Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') }}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
-                                            @if ($montoAPagar>0)
-                                                <td><p class="badge bg-success">Pagado</p></td>
-                                            @else
+                                            @if ($finanza->es_pagado == 0)
                                                 <td><p class="badge bg-danger">Pendiente Pagar</p></td>
+                                            @else
+                                                <td><p class="badge bg-success">Pagado</p></td>
                                             @endif
 											<td>{{ $finanza->entregado_material_a }}</td>
                                             <td>{{ $finanza->fecha_facturacion }}</td>
@@ -146,11 +145,7 @@
                                             @else
                                                 <td></td>
                                             @endif
-                                            @if ($finanza->es_pagado == 0)
-                                                <td><p class="badge bg-danger">Sin Pagar</p></td>
-                                            @else
-                                                <td><p class="badge bg-success">Pagado</p></td>
-                                            @endif
+                                            
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                             <td>
                                                 <span class="completo">
