@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-sm p-1 form-group">
                     {{ Form::label('monto') }}
-                    {{ Form::number('monto', $factura->monto, ['class' => 'form-control' . ($errors->has('monto') ? ' is-invalid' : ''), 'placeholder' => 'Monto']) }}
+                    {{ Form::number('monto', $factura->monto, ['class' => 'form-control' . ($errors->has('monto') ? ' is-invalid' : ''), 'placeholder' => 'Monto', 'step'=>'any']) }}
                     {!! $errors->first('monto', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>

@@ -144,18 +144,23 @@
                                                         $totalPagado = 0;
                                                         if(!empty($finanza->factura[0])){
                                                             foreach ($finanza->factura as $iterFactura) {
-                                                                if (!is_null($iterFactura->monto)) {
+                                                                if (!is_null($iterFactura->monto) && $iterFactura->monto != 0  ) {
                                                                     $cuantosMeses++;
                                                                     $totalPagado = $totalPagado + $iterFactura->monto; 
                                                                 }
                                                             }
                                                         }
                                                         $resta = $finanza->monto_a_pagar - $totalPagado
+                                                        
                                                     ?> 
                                                     {{ $cuantosMeses.' de '.$finanza->a_meses}}
                                                     <br>
                                                     <span class="peque">
-                                                        {{ 'Resta: $'. number_format($resta,2)  }}
+                                                        @if ($resta <= 0)
+                                                            Pagado
+                                                        @else
+                                                            {{ 'Resta: $'. number_format($resta,2)  }}
+                                                        @endif
                                                     </span>
                                                 @else
                                                     N/A
