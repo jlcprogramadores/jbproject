@@ -36,6 +36,12 @@ class GrupoController extends Controller
     {
         $grupo = new Grupo();
         $empleados = Empleado::pluck('nombre','id');
+        $numeros = Empleado::pluck('no_empleado','id');
+        
+        foreach($numeros as $i => $valor){
+            $empleados[$i] = ($empleados[$i] . ' # ' . $valor );
+        }
+
         $puestos = Puesto::pluck('nombre','id');
         return view('grupo.create', compact('grupo','puestos','empleados'));
     }
@@ -48,25 +54,34 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Grupo::$rules);
-        $grupo = Grupo::create($request->all());
 
+        
         if(!is_null($request->empleado[0]['empleado_id'])){
-            // se iteran los empleados que se añadieron en empleados
+            request()->validate(Grupo::$rules);
+            $arrIdEmp = array();
             foreach($request->empleado as $iterEmpleado){
-                $crearEmpleado = [
-                    'grupo_id' => $grupo->id,
-                    'empleado_id' => $iterEmpleado['empleado_id'],
-                    'puesto_id' => $iterEmpleado['puesto_id'],
-                    'salario' => $iterEmpleado['salario'],
-                    'usuario_edito' => $grupo->usuario_edito,
-                ];
-                $empleado = GruposEmpleado::create($crearEmpleado);
+                $arrIdEmp[] = $iterEmpleado['empleado_id'];
             }
-        }
-       
-        return redirect()->route('grupos.index')
-            ->with('success', 'Grupo creado exitosamente.');
+            if (!(count($arrIdEmp) !== count(array_unique($arrIdEmp)))) {
+                $grupo = Grupo::create($request->all());
+                foreach($request->empleado as $iterEmpleado){
+                    $crearEmpleado = [
+                        'grupo_id' => $grupo->id,
+                        'empleado_id' => $iterEmpleado['empleado_id'],
+                        'puesto_id' => $iterEmpleado['puesto_id'],
+                        'salario' => $iterEmpleado['salario'],
+                        'usuario_edito' => $grupo->usuario_edito,
+                    ];
+                    $empleado = GruposEmpleado::create($crearEmpleado);
+                }
+                return redirect()->route('grupos.index')
+                ->with('success', 'Grupo creado exitosamente.');
+
+            }else{
+                return redirect()->route('grupos.index')
+                ->with('danger', 'ERROR el grupo tiene empleados repetidos.');
+            }
+        }       
     }
 
     /**
