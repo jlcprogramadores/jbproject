@@ -22,9 +22,11 @@
                                     {{ __('Atrás') }}
                                 </a>
                                 @can('facturas.create')
-                                <a href="{{ route('facturas.create',['finanza_id'=> $id, 'creado' => 1 ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Factura') }}
-                                </a>
+                                    @if (!$es_a_meses)
+                                        <a href="{{ route('facturas.create',['finanza_id'=> $id, 'creado' => 1 ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                            {{ __('Crear Factura') }}
+                                        </a>
+                                    @endif
                                 @endcan
                               </div>
                         </div>
@@ -75,12 +77,14 @@
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
                                                     @can('facturas.edit')    
-                                                    <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @endcan
                                                     @csrf
                                                     @method('DELETE')
                                                     @can('facturas.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>    
+                                                        @if (!$es_a_meses)
+                                                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>    
+                                                        @endif
                                                     @endcan
                                                 </form>
                                             </td>

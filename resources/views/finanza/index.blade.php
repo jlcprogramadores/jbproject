@@ -69,6 +69,7 @@
 										<th>Metodo De Pago</th>
                                         <th>$ Estatus $</th>
 										<th>Entregado Material A</th>
+										<th>A Meses</th>
                                         <th>Fecha Facturacion</th>
 										<th>Comentario</th>
                                         <th>Comprobante</th>
@@ -134,6 +135,32 @@
                                                 <td><p class="badge bg-success">Pagado</p></td>
                                             @endif
 											<td>{{ $finanza->entregado_material_a }}</td>
+                                            {{-- Parte de los meses --}}
+                                            {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
+                                            <td>
+                                                @if (!empty($finanza->a_meses))
+                                                    <?php 
+                                                        $cuantosMeses = 0;
+                                                        $totalPagado = 0;
+                                                        if(!empty($finanza->factura[0])){
+                                                            foreach ($finanza->factura as $iterFactura) {
+                                                                if (!is_null($iterFactura->monto)) {
+                                                                    $cuantosMeses++;
+                                                                    $totalPagado = $totalPagado + $iterFactura->monto; 
+                                                                }
+                                                            }
+                                                        }
+                                                        $resta = $finanza->monto_a_pagar - $totalPagado
+                                                    ?> 
+                                                    {{ $cuantosMeses.' de '.$finanza->a_meses}}
+                                                    <br>
+                                                    <span class="peque">
+                                                        {{ 'Resta: $'. number_format($resta,2)  }}
+                                                    </span>
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
                                             <td>{{ $finanza->fecha_facturacion }}</td>
                                             <td>{{ $finanza->comentario }}</td>
                                             @if ($finanza->salidas_id)
@@ -142,7 +169,7 @@
                                                 @else
                                                     <td><p class="badge bg-success">Enviado</p></td>
                                                 @endif
-                                            @else
+                                            @else  
                                                 <td></td>
                                             @endif
                                             
@@ -220,6 +247,13 @@
                         "previous": "Anterior"
                     }
                 },
+                columnDefs: [{
+                    // espeificamos que columna sera afectada
+                    targets: [12],
+                    render: function(data, type, full, meta) {    
+                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
+                    }
+                }],
                 orderCellsTop: true,
                 fixedHeader: true,
                 initComplete: function() {
