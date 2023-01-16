@@ -19,6 +19,7 @@ class ParoSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Paro::create([
+            'nombre' => 'LOS PARADOS',
             'proyecto_id' => 1,
             'grupo_id' => 1,
             'fecha_inicio' => $dateNow,

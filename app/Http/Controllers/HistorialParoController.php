@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
+use App\Models\Grupo;
 use App\Models\HistorialParo;
+use App\Models\Paro;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +22,6 @@ class HistorialParoController extends Controller
     public function index()
     {
         $historialParos = HistorialParo::paginate();
-
         return view('historial-paro.index', compact('historialParos'))
             ->with('i', (request()->input('page', 1) - 1) * $historialParos->perPage());
     }

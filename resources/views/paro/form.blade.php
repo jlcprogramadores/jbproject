@@ -2,6 +2,11 @@
     <div class="box-body">
         
         <div class="form-group">
+            {{ Form::label('Nombre') }}
+            {{ Form::text('nombre', $paro->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('Grupo') }}
             {{ Form::select('grupo_id',$grupo, $paro->grupo_id, ['class' => 'form-control' . ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Grupo']) }}
             {!! $errors->first('grupo_id', '<div class="invalid-feedback">:message</div>') !!}

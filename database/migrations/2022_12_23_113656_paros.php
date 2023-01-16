@@ -15,6 +15,7 @@ class Paros extends Migration
     {
         Schema::create('paros', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')
                 ->references('id')

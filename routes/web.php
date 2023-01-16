@@ -45,6 +45,7 @@ Route::resource('incidencias', App\Http\Controllers\IncidenciaController::class)
 Route::resource('historial-altas', App\Http\Controllers\HistorialAltaController::class);
 Route::resource('grupos', App\Http\Controllers\GrupoController::class);
 Route::resource('grupos-empleados', App\Http\Controllers\GruposEmpleadoController::class);
+Route::resource('historial-paros', App\Http\Controllers\HistorialParoController::class);
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');

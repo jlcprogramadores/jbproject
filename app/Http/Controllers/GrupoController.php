@@ -39,7 +39,7 @@ class GrupoController extends Controller
         $numeros = Empleado::pluck('no_empleado','id');
         
         foreach($numeros as $i => $valor){
-            $empleados[$i] = ($empleados[$i] . ' # ' . $valor );
+            $empleados[$i] = (' # ' . $valor . ' ' . $empleados[$i] );
         }
 
         $puestos = Puesto::pluck('nombre','id');
@@ -54,8 +54,6 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-
-        
         if(!is_null($request->empleado[0]['empleado_id'])){
             request()->validate(Grupo::$rules);
             $arrIdEmp = array();

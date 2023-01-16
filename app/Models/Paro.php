@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Paro
  *
  * @property $id
+ * @property $nombre
  * @property $grupo_id
  * @property $proyecto_id
  * @property $fecha_inicio
@@ -37,7 +38,7 @@ class Paro extends Model
      *
      * @var array
      */
-    protected $fillable = ['grupo_id','proyecto_id','fecha_inicio','fecha_fin','comentario','usuario_edito'];
+    protected $fillable = ['nombre','grupo_id','proyecto_id','fecha_inicio','fecha_fin','comentario','usuario_edito'];
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

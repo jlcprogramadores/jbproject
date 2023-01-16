@@ -192,7 +192,11 @@
                                     <a class="dropdown-item" href="{{ route('paros.index') }}">
                                         {{ __('Paros') }}
                                     </a>
-                                    @endcan 
+                                    @endcan
+                                    <a class="dropdown-item" href="{{ route('historial-paros.index') }}">
+                                        {{ __('Historial Paros') }}
+                                    </a>
+                                    
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Expediente de Empleado') }}
                                     </a>

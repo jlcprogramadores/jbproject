@@ -1,28 +1,27 @@
 @extends('layouts.app')
-@section('title','Paros')
+
+@section('title','Historial Paros')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('paros.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card text-white border-secondary">
-                    <div class="card-header bg-secondary">
+                <div class="card">
+                    <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Paros') }}
+                                {{ __('Historial Paros') }}
                             </span>
-                            @can('paros.create')
-                            <div class="float-right">
-                                <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Paro') }}
-                                </a>
-                            </div>
-                            @endcan
+
+                             <div class="float-right">
+                                {{-- <a href="{{ route('historial-paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
+                                </a> --}}
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -38,42 +37,34 @@
                                     <tr>
                                         <th>No</th>
                                         
-                                        <th>Nombre</th>
-										<th>Proyecto</th>
-                                        <th>Grupo</th>
+										<th>Paro</th>
+										<th>Grupo</th>
+										<th>Empleado</th>
 										<th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
-                                        <th>Comentario</th>
-										<th>Fecha Actualización</th>
+										<th>Fecha Fin</th>
+										<th>Comentario</th>
+										<th>Usuario Edito</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($paros as $paro)
+                                    @foreach ($historialParos as $historialParo)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $paro->nombre}}</td>
-											<td>{{ $paro->proyecto->nombre}}</td>
-                                            <td>{{ $paro->grupo->nombre}}</td>
-                                            <td>{{ Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d')  }}</td>
-                                            <td>{{ Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d')  }}</td>
-											<td>{{ $paro->comentario }}</td>
-											<td>{{ $paro->usuario_edito }} <br/> {{ $paro->updated_at }}</td>
+                                            
+											<td>{{ $historialParo->paro->nombre}}</td>
+											<td>{{ $historialParo->grupo->nombre }}</td>
+											<td>{{ $historialParo->empleado->nombre }}</td>
+                                            <td>{{ Carbon\Carbon::parse($historialParo->fecha_inicio)->format('d-m-Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($historialParo->fecha_fin)->format('d-m-Y') }}</td>
+											<td>{{ $historialParo->comentario }}</td>
+											<td>{{ $historialParo->usuario_edito }}  <br/> {{ $historialParo->updated_at }}</td>
 
                                             <td>
-                                                <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">
-                                                    @can('paros.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('paros.edit')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('paros.edit',$paro->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
+                                                <form action="{{ route('historial-paros.destroy',$historialParo->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('historial-paros.show',$historialParo->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @csrf
-                                                    @method('DELETE')
-                                                    @can('paros.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
@@ -83,14 +74,12 @@
                         </div>
                     </div>
                 </div>
-                {!! $paros->links() !!}
+                {!! $historialParos->links() !!}
             </div>
         </div>
     </div>
 @endsection
-@endcan
 @endif
-    
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
@@ -101,7 +90,7 @@
                 autoWidth: false,   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "Nothing found - sorry",
+                    "zeroRecords": "No se encontró nada – lo siento",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros",
                     "infoFiltered": "(filtered from _MAX_ total records)",
