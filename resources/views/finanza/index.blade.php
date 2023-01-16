@@ -83,7 +83,21 @@
                                         <tr>
 
                                             <td>{{ $finanza->no }}</td>
-											<td>{{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}</td>
+											<td>
+                                                @if ($finanza->esta_atrasado)
+                                                    <span class="text-danger">
+                                                        {{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}
+                                                    </span>
+                                                    <br>
+                                                    <span class="peque text-danger">
+                                                        Atrasada
+                                                    </span>
+                                                @else
+                                                    {{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}
+                                                    
+                                                @endif
+                                            
+                                            </td>
 											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
                                             <td>{{ $finanza->vence }}</td>
 											<td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>

@@ -40,14 +40,39 @@
                     {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'Folio']) }}
                     {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('fecha_entrada') }}
-                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control-sm' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
-                    {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+
+                <?php $tienePermiso = false;?>
+                @can('finanzas.formMasDias')
+                    <?php $tienePermiso = true;?>
+                @endcan
+
+                @if (!$tienePermiso)
+                    {{-- Dias que se cargan en el select --}}
+                    <?php 
+                        $date = Carbon\Carbon::now();
+                        $uno = Carbon\Carbon::now()->subDay(1); 
+                        $dos = Carbon\Carbon::now()->subDay(2); 
+                        $tres = Carbon\Carbon::now()->subDay(3); 
+                    ?>
+                    <div class="p-1 form-group">
+                        <label for="fecha_entrada">Fecha Entrada</label>
+                        <select name="fecha_entrada" class="form-control">
+                            <option value="{{ Carbon\Carbon::parse($date)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($date)->format('d/m/Y') }}</option>
+                            <option value="{{ Carbon\Carbon::parse($uno)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($uno)->format('d/m/Y') }}</option>
+                            <option value="{{ Carbon\Carbon::parse($dos)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($dos)->format('d/m/Y') }}</option>
+                            <option value="{{ Carbon\Carbon::parse($tres)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($tres)->format('d/m/Y') }}</option>
+                        </select>
+                    </div>
+                @else  
+                    <div class="p-1 form-group">
+                        {{ Form::label('fecha_entrada') }}
+                        {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
+                        {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                    </div>
+                @endif
                 <div class="p-1 form-group">
                     {{ Form::label('fecha_facturacion') }}
-                    {{ Form::date('fecha_facturacion', $finanza->fecha_facturacion, ['class' => 'form-control-sm' . ($errors->has('fecha_facturacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Facturacion']) }}
+                    {{ Form::date('fecha_facturacion', $finanza->fecha_facturacion, ['class' => 'form-control' . ($errors->has('fecha_facturacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Facturacion']) }}
                     {!! $errors->first('fecha_facturacion', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -112,7 +137,7 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('fecha_de_pago') }}
-                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control-sm' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
                     {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">

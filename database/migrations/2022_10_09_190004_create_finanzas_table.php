@@ -40,6 +40,7 @@ class CreateFinanzasTable extends Migration
             $table->integer('a_meses')->nullable();
             $table->string('usuario_edito');
             $table->boolean('es_pagado')->default(0);
+            $table->boolean('esta_atrasado')->default(0);
             $table->timestamps();
         });
     }

@@ -124,7 +124,8 @@ class Finanza extends Model
         'vence',
         'usuario_edito',
         'es_pagado',
-        'a_meses'
+        'a_meses',
+        'esta_atrasado'
     ];
 
 	/**

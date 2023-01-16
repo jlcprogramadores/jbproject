@@ -40,6 +40,7 @@ class RoleSeeder extends Seeder
                 $permisofacturascreate = Permission::create(['name' => 'facturas.create', 'description' => 'Factura:Crear', 'nomenclatura' => 'mn-01-sb-01-pm-12'])->syncRoles($rolAdmin);
                 $permisofacturasedit = Permission::create(['name' => 'facturas.edit', 'description' => 'Factura:Editar', 'nomenclatura' => 'mn-01-sb-01-pm-13'])->syncRoles($rolAdmin);
                 $permisofacturasdestroy = Permission::create(['name' => 'facturas.destroy', 'description' => 'Factura:Borrar', 'nomenclatura' => 'mn-01-sb-01-pm-14'])->syncRoles($rolAdmin);
+                $permisofacturasdestroy = Permission::create(['name' => 'finanzas.formMasDias', 'description' => 'Formulario:Mas días de Fecha de entrada', 'nomenclatura' => 'mn-01-sb-01-pm-15'])->syncRoles($rolAdmin);
                 
             $permisomenuegresos = Permission::create(['name' => 'menu.egresos', 'description' => 'Ver Submenú Finanzas-Egresos', 'nomenclatura' => 'mn-01-sb-02-pm-00'])->syncRoles($rolAdmin);
                 //Permisos 

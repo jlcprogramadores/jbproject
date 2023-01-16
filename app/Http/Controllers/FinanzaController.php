@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ComprobanteMailable;
+use  Carbon\Carbon;
 
 
 
@@ -191,6 +192,21 @@ class FinanzaController extends Controller
     public function storeIngreso(Request $request)
     {
         request()->validate(Finanza::$rulesIngreso);
+        // Hay que deteminar si la fecha esta atrasado o no la fecha
+      
+        $fechaActual = Carbon::createFromFormat('Y-m-d', $request->fecha_entrada);
+
+        $fechaLimite = Carbon::parse( Carbon::now()->subDay(3))->format('Y-m-d');
+        $shippingDate = Carbon::createFromFormat('Y-m-d',$fechaLimite );
+
+        $diferencia_en_dias = $fechaActual->diffInDays($shippingDate,false);
+        // cuando es mayor a 1 es que la fecha es positava antes de los 3 dias por lo que esta retrasado
+        if($diferencia_en_dias > 0){
+            $request['esta_atrasado'] = 1;
+
+        }
+        // dd($request->all());
+
         // se crea la entrada se recupera el id y se anade al request
         $entrada = Entrada::create($request->all());
         $request->request->add(['entradas_id' => $entrada->id]);
