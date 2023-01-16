@@ -40,12 +40,14 @@
 										<th>Paro</th>
 										<th>Grupo</th>
 										<th>Empleado</th>
+                                        <th>Puesto</th>
+                                        <th>Salario</th>
 										<th>Fecha Inicio</th>
 										<th>Fecha Fin</th>
 										<th>Comentario</th>
-										<th>Usuario Edito</th>
+										<th>Fecha Actualización</th>
 
-                                        <th></th>
+                                        {{-- <th></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,17 +58,14 @@
 											<td>{{ $historialParo->paro->nombre}}</td>
 											<td>{{ $historialParo->grupo->nombre }}</td>
 											<td>{{ $historialParo->empleado->nombre }}</td>
+                                            <td>{{ $historialParo->puesto->nombre }}</td>
+                                            <td>{{ '$'. number_format($historialParo->salario,2) }}</td>
                                             <td>{{ Carbon\Carbon::parse($historialParo->fecha_inicio)->format('d-m-Y') }}</td>
                                             <td>{{ Carbon\Carbon::parse($historialParo->fecha_fin)->format('d-m-Y') }}</td>
 											<td>{{ $historialParo->comentario }}</td>
 											<td>{{ $historialParo->usuario_edito }}  <br/> {{ $historialParo->updated_at }}</td>
 
-                                            <td>
-                                                <form action="{{ route('historial-paros.destroy',$historialParo->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('historial-paros.show',$historialParo->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @csrf
-                                                </form>
-                                            </td>
+                                      
                                         </tr>
                                     @endforeach
                                 </tbody>

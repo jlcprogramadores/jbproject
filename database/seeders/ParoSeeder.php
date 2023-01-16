@@ -18,16 +18,16 @@ class ParoSeeder extends Seeder
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
 
-        Paro::create([
-            'nombre' => 'LOS PARADOS',
-            'proyecto_id' => 1,
-            'grupo_id' => 1,
-            'fecha_inicio' => $dateNow,
-            'fecha_fin' => $dateNow,
-            'comentario' => 'Comentario Ejemplo',
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
+        // Paro::create([
+        //     'nombre' => 'LOS PARADOS',
+        //     'proyecto_id' => 1,
+        //     'grupo_id' => 1,
+        //     'fecha_inicio' => $dateNow,
+        //     'fecha_fin' => $dateNow,
+        //     'comentario' => 'Comentario Ejemplo',
+        //     'usuario_edito' => 'Administrador ',
+        //     'created_at' => $dateNow,
+        //     'updated_at' => $dateNow
+        // ]);
     }
 }

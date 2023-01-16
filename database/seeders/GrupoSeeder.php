@@ -18,12 +18,12 @@ class GrupoSeeder extends Seeder
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
 
-        Grupo::create([
-            'nombre' => 'Grupo A',
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
+        // Grupo::create([
+        //     'nombre' => 'Grupo A',
+        //     'usuario_edito' => 'Administrador ',
+        //     'created_at' => $dateNow,
+        //     'updated_at' => $dateNow
+        // ]);
 
     }
 }

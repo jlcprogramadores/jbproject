@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property $paro_id
  * @property $grupo_id
  * @property $empleado_id
+ * @property $puesto_id
+ * @property $salario
  * @property $fecha_inicio
  * @property $fecha_fin
  * @property $nombre_grupo
@@ -45,7 +47,7 @@ class HistorialParo extends Model
      *
      * @var array
      */
-    protected $fillable = ['paro_id','grupo_id','empleado_id','fecha_inicio','fecha_fin','nombre_grupo','comentario','usuario_edito'];
+    protected $fillable = ['paro_id','grupo_id','empleado_id','puesto_id','salario','fecha_inicio','fecha_fin','nombre_grupo','comentario','usuario_edito'];
 
 
     /**
@@ -70,6 +72,14 @@ class HistorialParo extends Model
     public function paro()
     {
         return $this->hasOne('App\Models\Paro', 'id', 'paro_id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function puesto()
+    {
+        return $this->hasOne('App\Models\Puesto', 'id', 'puesto_id');
     }
     
 

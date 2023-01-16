@@ -27,6 +27,11 @@ class HistorialParos extends Migration
             $table->foreign('empleado_id')
                 ->references('id')
                 ->on('empleados');
+            $table->unsignedBigInteger('puesto_id');
+            $table->foreign('puesto_id')
+                ->references('id')
+                ->on('puestos');
+            $table->decimal('salario', 12, 2)->nullable();
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
             $table->string('nombre_grupo');
@@ -35,7 +40,6 @@ class HistorialParos extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
