@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><select id="empleado_id" type="text"  name="empleado[0][empleado_id]" class="form-control ancho-select2" required></select></td> 
                                     <td><select id="puesto_id" type="text"  name="empleado[0][puesto_id]" class="form-control ancho-select2" required></select></td> 
-                                    <td><input id="salario" type="number"  step="any" name="empleado[0][salario]" class="form-control ancho-select2 "/></td>
+                                    <td><input id="salario" type="number" min="0" step="any" name="empleado[0][salario]" class="form-control ancho-select2" value="0"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,9 +97,9 @@
             ++marcador;
             $("#dynamicAddRemove").append(        
                 '<tr>'+
-                    '<td><select id="empleado_id'+i+'" type="text" name="empleado['+i+'][empleado_id]"  class="form-control ancho-select2" required/></select></td>'+
-                    '<td><select id="puesto_id'+i+'" type="text" name="empleado['+i+'][puesto_id]"  class="form-control ancho-select2" required /></select></td>'+
-                    '<td><input type="number" step="any" name="empleado['+i+'][salario]" class="form-control ancho-select2" /></td>'+
+                    '<td><select id="empleado_id'+i+'" type="text" name="empleado['+i+'][empleado_id]"  class="form-control ancho-select2" required></select></td>'+
+                    '<td><select id="puesto_id'+i+'" type="text" name="empleado['+i+'][puesto_id]"  class="form-control ancho-select2" required ></select></td>'+
+                    '<td><input type="number" step="any" min="0" name="empleado['+i+'][salario]" class="form-control ancho-select2" value="0"></td>'+
                 '</tr>'
             );
             llenar(); 
