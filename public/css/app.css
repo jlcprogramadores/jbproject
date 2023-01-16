@@ -10927,3 +10927,20 @@ td form{
 .dropdown-menu>li:hover>.submenu {
   display: block;
 }
+
+.select2-selection {
+  min-height: 37.8px;
+  text-align: left;
+}
+
+.select2-selection__rendered {
+  margin: 5px;
+}
+
+.select2-selection__arrow {
+  margin: 5px;
+}
+.ancho-select2{
+  width: 293px!important;
+  margin: auto!important;
+}

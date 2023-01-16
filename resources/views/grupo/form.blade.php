@@ -1,48 +1,60 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
-            {{ Form::label('nombre') }}
-            {{ Form::text('nombre', $grupo->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="p-1 form-group  d-flex flex-column">
-            <label id="textcantidad">Cantidad de Empleados</label>
-            <input type="number" name="cantidad" id="cantidad"  class="form-control">
-        </div>
-        <div class="form-group d-none">
-            {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
-            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 p-1 form-group">
+                    <label id="textcantidad">Cantidad de Empleados</label>
+                    <input type="number" name="cantidad" id="cantidad" min="1"  class="form-control" value="1">
+                </div>
+                <div class="col-sm-10 p-1 form-group">
+                    {{ Form::label('nombre') }}
+                    {{ Form::text('nombre', $grupo->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+                    {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class="form-group d-none">
+                    {{ Form::label('usuario_edito') }}
+                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-md-center">
+                    <td><input id="btnCargarEmpleados" type="button" name="answer" value="Cargar Empleados"  class="btn btn-success col col-lg-3" onclick="llenarTablas()" /></td>
+            </div>
+
+            <br>
+            <div class="row">
+                <div id="apartadoEmpleado"  style="display:none;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="dynamicAddRemove" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Puesto</th>
+                                    <th>Salario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><select id="empleado_id" type="text"  name="empleado[0][empleado_id]" class="form-control ancho-select2" required></select></td> 
+                                    <td><select id="puesto_id" type="text"  name="empleado[0][puesto_id]" class="form-control ancho-select2" required></select></td> 
+                                    <td><input id="salario" type="number"  step="any" name="empleado[0][salario]" class="form-control ancho-select2 "/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('grupos.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
+            </div>
+
         </div>
 
-    </div>
-    <br>
-    <div>
-        <td><input id="btnCargarEmpleados" type="button" name="answer" value="Cargar Empleados"  class="btn btn-success btn-sm" onclick="llenarTablas()" /></td>
-    </div>
-    <div>
-        <label>Empleados</label>
-        <div id="apartadoEmpleado"  style="display:none;">
-            <br>
-            <table class="table table-bordered" id="dynamicAddRemove">
-                <tr>
-                    <th>Empleado</th>
-                    <th>Puesto</th>
-                    <th>Salario</th>
-                </tr>
-                <tr>
-                    <td><select id="empleado_id" type="text" style="width: auto;" name="empleado[0][empleado_id]" class="form-control" required/>></select></td> 
-                    <td><select id="puesto_id" type="text" style="width: auto;" name="empleado[0][puesto_id]" class="form-control" required/>></select></td> 
-                    <td><input id="salario" type="number"  step="any" name="empleado[0][salario]" class="form-control"/></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="box-footer mt20">
-        <br>
-        <a href="{{ route('grupos.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
 
@@ -85,9 +97,9 @@
             ++marcador;
             $("#dynamicAddRemove").append(        
                 '<tr>'+
-                    '<td><select id="empleado_id'+i+'" type="text" name="empleado['+i+'][empleado_id]" style="width: auto;" class="form-control" required/></select></td>'+
-                    '<td><select id="puesto_id'+i+'" type="text" name="empleado['+i+'][puesto_id]" style="width: auto;" class="form-control" required /></select></td>'+
-                    '<td><input type="number" step="any" name="empleado['+i+'][salario]" class="form-control" /></td>'+
+                    '<td><select id="empleado_id'+i+'" type="text" name="empleado['+i+'][empleado_id]"  class="form-control ancho-select2" required/></select></td>'+
+                    '<td><select id="puesto_id'+i+'" type="text" name="empleado['+i+'][puesto_id]"  class="form-control ancho-select2" required /></select></td>'+
+                    '<td><input type="number" step="any" name="empleado['+i+'][salario]" class="form-control ancho-select2" /></td>'+
                 '</tr>'
             );
             llenar(); 
