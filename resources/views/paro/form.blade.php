@@ -11,7 +11,6 @@
             {{ Form::select('grupo_id',$grupo, $paro->grupo_id, ['class' => 'form-control',  ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el Grupo']) }}
             {!! $errors->first('grupo_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
         </div>
-        {{-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
         <div class="row">
             <div id="apartadoEmpleado"  style="display:none;">
                 <div class="table-responsive">
@@ -34,7 +33,6 @@
                 </div>
             </div>
         </div>
-        {{-- ///////////////////////////////////////////////////////////////////////////////////////// --}}
         <div class="form-group">
             {{ Form::label('Proyecto') }}
             {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
@@ -65,7 +63,7 @@
     <div class="box-footer mt20">
         <br>
         <a href="{{ route('paros.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <button type="submit" class="btn btn-primary" onclick="habilitarGrupo()">Aceptar</button>
     </div>
 </div>
 
@@ -77,12 +75,13 @@
         $('#grupo_id').select2();
         var mySelect = document.getElementById('grupo_id');
         mySelect.onchange = (event) => {
-            mySelect.style.visibility = 'hidden';
             var inputText = event.target.value;
+            $('#grupo_id').attr('disabled', 'disabled');
             getEmpleadosByGrupo(inputText);
         }
 
         function getEmpleadosByGrupo(id){
+
             var iterable='';
             $.ajax({
                 type:"GET",
@@ -143,6 +142,10 @@
             var apartadoEmpleado = document.getElementById('apartadoEmpleado');
             apartadoEmpleado.style.display = "block";   
             // iteradorTabla = 0;
+        }
+
+        function habilitarGrupo() {
+            $('#grupo_id').removeAttr('disabled');
         }
 
     </script>
