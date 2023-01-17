@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriasFamilia;
+use App\Models\Empleado;
 use App\Models\GruposEmpleado;
 use App\Models\Grupo;
+use GruposEmpleados;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class GruposEmpleadoController
@@ -75,7 +79,7 @@ class GruposEmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
         $gruposEmpleado = GruposEmpleado::find($id);
 
         return view('grupos-empleado.show', compact('gruposEmpleado'));
@@ -122,5 +126,24 @@ class GruposEmpleadoController extends Controller
 
         return redirect()->route('grupos-empleados.index')
             ->with('success', 'GruposEmpleado deleted successfully');
+    }
+
+    public function getEmpleadosByGrupo(Request $request)
+    {
+        $grupo_id = $request->grupo_id;
+        $empleadosIds = GruposEmpleado::select('id','empleado_id')->where('grupo_id','=',$grupo_id)->get();
+
+        $myArray = array();
+        foreach($empleadosIds as $empleadosId){
+            $empleados = DB::table('grupos_empleados')
+            ->join('puestos', 'puestos.id', '=', 'grupos_empleados.puesto_id')
+            ->join('empleados', 'empleados.id', '=', 'grupos_empleados.empleado_id')
+            ->select('grupos_empleados.id', 'empleados.nombre', 'puestos.nombre as puesto', 'grupos_empleados.salario')
+            ->where('grupos_empleados.id','=',(($empleadosId->id)))
+            ->get();  
+
+            $myArray[] = $empleados;
+        }
+        return json_encode($myArray);
     }
 }

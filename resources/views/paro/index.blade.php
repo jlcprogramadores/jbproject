@@ -19,7 +19,10 @@
                             @can('paros.create')
                             <div class="float-right">
                                 <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Paro') }}
+                                    {{ __('Crear Paro (Grupo Nuevo)') }}
+                                </a>
+                                <a href="{{ route('paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Paro (Grupo Existente)') }}
                                 </a>
                             </div>
                             @endcan

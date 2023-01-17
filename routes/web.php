@@ -52,6 +52,7 @@ Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@t
 Route::get('/direccioncliente/{id}', 'App\Http\Controllers\DireccioneController@direccioncliente')->name('direcciones.direccioncliente');
 Route::get('/telefonocliente/{id}', 'App\Http\Controllers\TelefonoController@telefonocliente')->name('telefonos.telefonocliente');
 Route::get('getCategoriByFamilia', 'App\Http\Controllers\CategoriasFamiliaController@getCategoriByFamilia')->name('categorias-familias.getCategoriByFamilia');
+Route::get('getEmpleadosByGrupo', 'App\Http\Controllers\GruposEmpleadoController@getEmpleadosByGrupo')->name('grupos.getEmpleadosByGrupo');
 Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('usuarios.edit');
 Route::put('usuarios/{user}/update', 'App\Http\Controllers\UserController@update')->name('usuarios.update');
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
