@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $user->name ?? 'Show User' }}
-@endsection
+@section('title','Mostrar Usuario')
+
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -29,9 +28,9 @@
                         <div class="form-group">
                             <strong>Es Activo:</strong>
                             @if($user->es_activo   == 1 )
-                                <p class="text-success">Activo</p>
+                                <span class="text-success">Activo</span>
                             @else
-                                <p class="text-danger">Inactivo</p>
+                                <span class="text-danger">Inactivo</span>
                             @endif
                         </div>
                         <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> Atrás</a>
