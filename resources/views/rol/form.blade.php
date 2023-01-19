@@ -2,11 +2,7 @@
     <div class="box box-info padding-1">
         <div class="box-body">
 
-            <div class="form-group">
-                {{ Form::label('Nombre') }}
-                {{ Form::text('name', $rol->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-            </div>
+            
             <?php
             // parte de los headers
             $menuAnterior = null;
@@ -14,8 +10,15 @@
             $titulos = ['Finanzas', 'Recursos Humanos', 'Administración'];
             $indicadorEnPM = '00';
             ?>
-            <br>
             <div class="container">
+                <div class="row">
+                    <div class="form-group">
+                        {{ Form::label('Nombre') }}
+                        {{ Form::text('name', $rol->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+                        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     @foreach ($permissions as $permission)
                         <?php
@@ -76,10 +79,12 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="box-footer mt20">
-            <a class="btn btn-danger" href="{{ route('roles.index') }}"> Atrás</a>
-            <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('roles.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
+            </div>
         </div>
     </div>
 @endif

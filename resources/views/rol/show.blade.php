@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $user->name ?? 'Show User' }}
-@endsection
+@section('title','Mostrar Rol')
+
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create User
-@endsection
+@section('title','Crear Rol')
 
 @section('content')
     <section class="content container-fluid">

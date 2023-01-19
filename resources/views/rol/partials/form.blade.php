@@ -1,11 +1,7 @@
 @if (Auth::check() && Auth::user()->es_activo)
     <div class="box box-info padding-1">
         <div class="box-body">
-            <div class="form-group">
-                {{ Form::label('Nombre') }}
-                {{ Form::text('name', $rol->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-            </div>
+
 
             <?php
             // parte de los headers
@@ -18,9 +14,14 @@
             <br>
             <div class="container">
                 <div class="row">
-
-
-
+                    <div class="form-group">
+                        {{ Form::label('Nombre') }}
+                        {{ Form::text('name', $rol->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+                        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
                     @foreach ($permissions as $permission)
                         <?php
                         //  parte de los headers
@@ -30,65 +31,61 @@
                         // parte submenus
                         $subMenu = substr($permission->nomenclatura, 15, 2);
                         $subMenuEsIgual = $indicadorEnPM == $subMenu;
-                        $esEspecial = $subMenu == 'cf'; 
+                        $esEspecial = $subMenu == 'cf';
                         ?>
                         {{-- Cuando es el primero --}}
-                            @if ($menuEsIgual == false && $contador == 0)
-                                
-                                <div class="col-sm" data-bs-spy="scroll">
+                        @if ($menuEsIgual == false && $contador == 0)
+                            <div class="col-sm" data-bs-spy="scroll">
                                 <li class="list-group-item list-group-item-primary">
                                     <div class="d-flex justify-content-between">
-                                    <div>
-                                    {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                    {{ $permission->description }}
-                                    </div>
-                                    <div class="fw-bold"> {{ $titulos[$contador] }}</div>
+                                        <div>
+                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                            {{ $permission->description }}
+                                        </div>
+                                        <div class="fw-bold"> {{ $titulos[$contador] }}</div>
                                     </div>
                                 </li>
                                 <ul class="list-group">
-                                <?php $contador++; ?>
-                            @elseif($menuEsIgual == true)
-                                @if ($subMenuEsIgual)
-                                    <li class="list-group-item list-group-item-secondary">
-                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                        {{ $permission->description }}
-                                    </li>
-                                @else
-                                    <li class="list-group-item">
-                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                        {{ $permission->description }}
-                                    </li>
-                                @endif
-                            @elseif($menuEsIgual == false)
+                                    <?php $contador++; ?>
+                                @elseif($menuEsIgual == true)
+                                    @if ($subMenuEsIgual)
+                                        <li class="list-group-item list-group-item-secondary">
+                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                            {{ $permission->description }}
+                                        </li>
+                                    @else
+                                        <li class="list-group-item">
+                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                            {{ $permission->description }}
+                                        </li>
+                                    @endif
+                                @elseif($menuEsIgual == false)
                                 </ul>
-                                </div>
-                                <div class="col-sm" data-bs-spy="scroll">
+                            </div>
+                            <div class="col-sm" data-bs-spy="scroll">
                                 <li class="list-group-item list-group-item-primary">
                                     <div class="d-flex justify-content-between">
-                                    <div>
-                                        {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
-                                        {{ $permission->description }}
-                                    </div>
-                                    <div class="fw-bold">{{ $titulos[$contador] }}</div>
+                                        <div>
+                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                            {{ $permission->description }}
+                                        </div>
+                                        <div class="fw-bold">{{ $titulos[$contador] }}</div>
                                     </div>
                                 </li>
                                 <ul class="list-group">
-                                <?php $contador++; ?>
-                            @endif
-                        
+                                    <?php $contador++; ?>
+                        @endif
                     @endforeach
                     </ul>
                 </div>
-
-
-
-
+            </div>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('roles.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar') }}</a>
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();"
+                    class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>
         </div>
-    </div>
-    <div class="box-footer mt20">
-        <a class="btn btn-danger" href="{{ route('roles.index') }}"> Atrás</a>
-        <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
-    </div>
     </div>
 @endif
