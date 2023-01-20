@@ -2,7 +2,15 @@
     <div class="box-body">
         <div class="container">
             <div class="row">
-                <div class="form-group">
+                <div class="col-sm-4 p-2 form-group">
+                    <label for="">Tipo</label>
+                    @if ($historialAlta->tipo)
+                    <input type="text" name="" id="" value="Alta" class="form-control" disabled>
+                    @else
+                    <input type="text" name="" id="" value="Baja" class="form-control" disabled>
+                    @endif
+                </div>
+                <div class="col-sm-8 p-2 form-group">
                     {{ Form::label('empleado_id', 'Empleado') }}
                     {{-- determino si es nuevo o editado --}}
                     @if ($editado)
@@ -13,14 +21,9 @@
                     {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 {{-- se crea un campo falso para que se puede enviar correctamente el form con d-none --}}
-                <div class="form-group">
-                    <label for="">Tipo</label>
-                    @if ($historialAlta->tipo)
-                    <input type="text" name="" id="" value="Alta" class="form-control" disabled>
-                    @else
-                    <input type="text" name="" id="" value="Baja" class="form-control" disabled>
-                    @endif
-                </div>
+                
+            </div>
+            <div class="row">
                 <div class="form-group d-none">
                     {{ Form::label('tipo') }}
                     {{ Form::select('tipo', [ '0' => 'Baja', '1' => 'Alta'], $historialAlta->tipo, ['class' => 'form-control' . ($errors->has('tipo') ? ' is-invalid' : '')]) }}
@@ -38,14 +41,12 @@
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div class="row justify-content-md-center">
-                    <br>
-                    <a href="{{ route('historial-altas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
-                    <br>
-                    <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
-                </div>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('empleados.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>
+
         </div>
     </div>
 </div>

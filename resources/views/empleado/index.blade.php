@@ -90,7 +90,7 @@
                                             <td><span class="peque">{{ $empleado->usuario_edito }}</span>  <br/> <span class="peque">{{ $empleado->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Estado</a>
+                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Cambio De Estado</a>
 
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
                                                     @can('empleados.show')

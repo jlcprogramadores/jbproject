@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Crear Alta/baja')
+@section('title','Cambio De Estado')
 
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Alta/baja</span>
+                        <span class="card-title">Cambio De Estado (Alta/baja)</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('historial-altas.storeporempleado') }}"  role="form" enctype="multipart/form-data">
