@@ -57,7 +57,6 @@ class ParoController extends Controller
         $empleados = GruposEmpleado::where('grupo_id','=',$params['grupo_id'])->get();
         $nombreGrupo = Grupo::select('nombre')->where('id','=',$params['grupo_id'])->first();
         $paro = Paro::create($request->all());
-        // dd($paro);
         foreach($empleados as $empleado){
             $crearHistorialParos = [
                 'paro_id' =>  $paro->id,
