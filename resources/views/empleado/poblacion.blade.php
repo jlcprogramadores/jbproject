@@ -37,8 +37,8 @@
                                         <th>No</th>
                                         
 										<th>Proyecto</th>
-										<th>Costo de Nómina</th>
-                                        <th>Total de Empleados</th>
+										<th>Costo De Nómina</th>
+                                        <th>Total De Empleados</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>

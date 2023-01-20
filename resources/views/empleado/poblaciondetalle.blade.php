@@ -38,7 +38,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        <th>Número de Empleado</th>
+                                        <th>Número De Empleado</th>
 										<th>Nombre</th>
                                         <th>Salario Real</th>
                                         <th>Puesto</th>

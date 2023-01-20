@@ -57,7 +57,7 @@ class EmpleadoController extends Controller
      */
     public function poblacion()
     {        
-        $proyectos = Proyecto::all();
+        $proyectos = Proyecto::orderBy('id','desc')->get();
 
         foreach ($proyectos as $proyecto => $value) {
             $costos[] =array(
