@@ -18,33 +18,29 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Empleado:</strong>
-                            {{ $paro->empleado->nombre }}
+                            <strong>Nombre:</strong>
+                            {{ $paro->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Proyecto:</strong>
                             {{ $paro->proyecto->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Puesto:</strong>
-                            {{ $paro->puesto->nombre }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Salario:</strong>
-                            {{ '$'. number_format($paro->salario,2) }}
-                        </div>
-                        <div class="form-group">
                             <strong>Fecha de Inicio:</strong>
-                            {{ $paro->fecha_inicio }}
+                            {{ Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d') }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha de Fin:</strong>
-                            {{ $paro->fecha_fin }}
+                            {{ Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d') }}
                         </div>
                         <div class="form-group">
                             <strong>Comentario:</strong>
                             {{ $paro->comentario }}
                         </div>
+                        <div class="form-group">
+                            <strong>Grupo:</strong>
+                            {{ $paro->grupo->nombre }}
+                        </div>                        
                         <br>
                         <a class="btn btn-primary" href="{{ route('paros.index') }}"> Atrás</a>
                     </div>
