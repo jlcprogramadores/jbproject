@@ -200,12 +200,11 @@ class FinanzaController extends Controller
         $shippingDate = Carbon::createFromFormat('Y-m-d',$fechaLimite );
 
         $diferencia_en_dias = $fechaActual->diffInDays($shippingDate,false);
-        // cuando es mayor a 1 es que la fecha es positava antes de los 3 dias por lo que esta retrasado
+        // cuando es mayor a 1 es que la fecha es positiva antes de los 3 dias por lo que esta retrasado
         if($diferencia_en_dias > 0){
             $request['esta_atrasado'] = 1;
 
         }
-        // dd($request->all());
 
         // se crea la entrada se recupera el id y se anade al request
         $entrada = Entrada::create($request->all());

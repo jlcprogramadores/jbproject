@@ -33,10 +33,7 @@
                                                         {{ Form::date('fecha_limite_expediente', $fechalimite, ['class' => 'form-control' . ($errors->has('fecha_limite_expediente') ? ' is-invalid' : ''), 'placeholder' => 'fecha_limite_expediente']) }}
                                                         {!! $errors->first('fecha_limite_expediente', '<div class="invalid-feedback">:message</div>') !!}
                                                     </div>
-                                                    
                                                 </div>
-                                                
-                                                
                                             </div>
                                         </div>
                                     </div>

@@ -37,12 +37,12 @@ class GrupoController extends Controller
         $grupo = new Grupo();
         $empleados = Empleado::pluck('nombre','id');
         $numeros = Empleado::pluck('no_empleado','id');
+        $puestos = Puesto::pluck('nombre','id');
         
         foreach($numeros as $i => $valor){
             $empleados[$i] = (' # ' . $valor . ' ' . $empleados[$i] );
         }
 
-        $puestos = Puesto::pluck('nombre','id');
         return view('grupo.create', compact('grupo','puestos','empleados'));
     }
 
@@ -104,8 +104,10 @@ class GrupoController extends Controller
     public function edit($id)
     {
         $grupo = Grupo::find($id);
-
-        return view('grupo.edit', compact('grupo'));
+        $empleados = Empleado::pluck('nombre','id');
+        $numeros = Empleado::pluck('no_empleado','id');
+        $puestos = Puesto::pluck('nombre','id');
+        return view('grupo.edit', compact('grupo','puestos','empleados'));
     }
 
     /**

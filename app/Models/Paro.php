@@ -29,6 +29,8 @@ class Paro extends Model
     static $rules = [
 		'grupo_id' => 'required',
 		'proyecto_id' => 'required',
+        'fecha_inicio' => 'required',
+        'fecha_fin' => 'required',
     ];
 
     protected $perPage = 1000000;

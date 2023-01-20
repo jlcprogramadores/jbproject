@@ -66,7 +66,7 @@ Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteContr
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
 Route::get('/showPorEmpleado/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@showPorEmpleado')->name('empleado-expedientes.showPorEmpleado');
 Route::get('/grupoPorEmpleados/{id}', 'App\Http\Controllers\GruposEmpleadoController@grupoPorEmpleados')->name('grupos-empleado.grupoPorEmpleados');
-// fiananzas
+// finanzas
 Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('finanzas.ingreso');
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
 Route::get('/indexEgreso', 'App\Http\Controllers\FinanzaController@indexEgreso')->name('finanzas.indexEgreso');
@@ -94,6 +94,9 @@ Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEg
 Route::get('/crearporempleado/{id}', 'App\Http\Controllers\HistorialAltaController@crearporempleado')->name('historial-altas.crearporempleado');
 Route::post('/storeporempleado', 'App\Http\Controllers\HistorialAltaController@storeporempleado')->name('historial-altas.storeporempleado');
 
+//Paros
+Route::get('/createParoGrupo', 'App\Http\Controllers\ParoController@createParoGrupo')->name('paros.createParoGrupo');
+Route::post('/storeParoGrupo', 'App\Http\Controllers\ParoController@storeParoGrupo')->name('paros.storeParoGrupo');
 
-Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(['verify' => true]);

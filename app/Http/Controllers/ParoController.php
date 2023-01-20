@@ -8,6 +8,7 @@ use App\Models\Grupo;
 use App\Models\HistorialParo;
 use App\Models\Proyecto;
 use App\Models\Paro;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 
 /**
@@ -75,6 +76,99 @@ class ParoController extends Controller
 
         return redirect()->route('paros.index')
             ->with('success', 'Paro creado exitosamente.');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createParoGrupo()
+    {   
+        $grupo = new Grupo();
+        $paro = new Paro();
+        $proyecto = Proyecto::pluck('nombre','id');
+        $empleados = Empleado::pluck('nombre','id');
+        $numeros = Empleado::pluck('no_empleado','id');
+        $puestos = Puesto::pluck('nombre','id');
+
+        foreach($numeros as $i => $valor){
+            $empleados[$i] = (' # ' . $valor . ' ' . $empleados[$i] );
+        }
+
+        return view('paro.createParoGrupo', compact('paro','grupo','proyecto','empleados','puestos'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeParoGrupo(Request $request)
+    {   
+        if(!is_null($request->empleado[0]['empleado_id'])){
+            request()->validate(Grupo::$rules);
+            $arrIdEmp = array();
+            foreach($request->empleado as $iterEmpleado){
+                $arrIdEmp[] = $iterEmpleado['empleado_id'];
+            }
+
+            if (!(count($arrIdEmp) !== count(array_unique($arrIdEmp)))) {
+                $crearGrupo = [
+                    'nombre' => $request->nombreGrupo,
+                    'usuario_edito' => $request->usuario_edito,
+                ];
+                $grupo = Grupo::create($crearGrupo);
+
+                foreach($request->empleado as $iterEmpleado){
+                    $crearEmpleado = [
+                        'grupo_id' => $grupo->id,
+                        'empleado_id' => $iterEmpleado['empleado_id'],
+                        'puesto_id' => $iterEmpleado['puesto_id'],
+                        'salario' => $iterEmpleado['salario'],
+                        'usuario_edito' => $grupo->usuario_edito,
+                    ];
+                    
+                    $empleado = GruposEmpleado::create($crearEmpleado);
+                }
+
+                $crearParo = [
+                    'nombre' => $request->nombre,
+                    'proyecto_id' => $request->proyecto_id,
+                    'grupo_id' => $grupo->id,
+                    'fecha_inicio' => $request->fecha_inicio,
+                    'fecha_fin' => $request->fecha_fin,
+                    'comentario' => $request->comentario,
+                    'usuario_edito' => $grupo->usuario_edito,
+                ];
+
+                $paro = Paro::create($crearParo);
+                $empleados = GruposEmpleado::where('grupo_id','=',$grupo->id)->get();
+
+                foreach($empleados as $empleado){
+                    $crearHistorialParos = [
+                        'paro_id' =>  $paro->id,
+                        'grupo_id' => $grupo->id,
+                        'empleado_id' => $empleado->empleado_id,
+                        'puesto_id' => $empleado->puesto_id,
+                        'salario' => $empleado->salario,
+                        'fecha_inicio' => $paro->fecha_inicio,
+                        'fecha_fin' => $paro->fecha_fin,
+                        'nombre_grupo' =>  $request->nombreGrupo, 
+                        'comentario' => $paro->comentario,
+                        'usuario_edito' => $paro->usuario_edito,
+                    ];
+                    $historialParo = HistorialParo::create($crearHistorialParos);
+                } 
+                return redirect()->route('paros.index')
+                    ->with('success', 'Paro creado exitosamente.');
+            }else{
+                return redirect()->route('grupos.index')
+                ->with('danger', 'ERROR el grupo tiene empleados repetidos.');
+            }
+        }  
+ 
     }
 
     /**
