@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Proyecto') }}
-            {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+            {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control', 'id' => 'proyecto_id' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
             {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <?php 
@@ -77,6 +77,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     
+    $('#proyecto_id').select2();
     var iteradorTabla = 0;
 
     $(document).ready( function () {

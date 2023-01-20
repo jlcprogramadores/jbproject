@@ -39,7 +39,7 @@
                 <div class="table-responsive">
                     <div class="form-group">
                         <label id="textNombreGrupo">Nombre del Grupo</label>
-                        <input type="text" name="nombreGrupo" class="form-control" required>
+                        <input type="text" name="nombreGrupo" placeholder ='Nombre del Grupo' class="form-control" required>
                     </div>
                     <table class="table table-bordered table-striped" id="dynamicAddRemove" style="width:100%">
                         <thead>
@@ -83,7 +83,8 @@
     var marcador = 0;
     
     function llenarTablas() {
-        document.getElementById("btnCargarEmpleados").disabled = true;  
+        document.getElementById("btnCargarEmpleados").disabled = true; 
+        document.getElementById("btnCargarEmpleados").style.display = 'none';  
         var cantidad = document.getElementById('cantidad');
         cantidadDeEmpleados = cantidad.value;
         cantidad.setAttribute('readonly', true);
