@@ -55,7 +55,7 @@
                                             
 											<td>{{ $tipoDeIngreso->nombre }}</td>
 											<td>{{ $tipoDeIngreso->descripcion }}</td>
-                                            <td>{{ $tipoDeIngreso->usuario_edito }}  <br/> {{ $tipoDeIngreso->updated_at }}</td>
+                                            <td><span class="peque">{{ $tipoDeIngreso->usuario_edito }}</span>  <br/> <span class="peque">{{ $tipoDeIngreso->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('tipo-de-ingresos.destroy',$tipoDeIngreso->id) }}" method="POST">
                                                     @can('tipo-de-ingresos.show')
