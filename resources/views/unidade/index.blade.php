@@ -12,7 +12,6 @@
                 <div class="card text-white border-secondary">
                     <div class="card-header bg-secondary">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
                                 {{ __('Unidades') }}
                             </span>
@@ -41,8 +40,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Nombre</th>
+										<th>Abreviación</th>
 										<th>Descripción</th>
                                         <th>Actualización</th>
                                         <th>Acciones</th>   
@@ -52,10 +50,9 @@
                                     @foreach ($unidades as $unidade)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
 											<td>{{ $unidade->nombre }}</td>
 											<td>{{ $unidade->descripcion }} </td>
-                                            <td>{{ $unidade->usuario_edito }}  <br/> {{ $unidade->updated_at }}</td>
+                                            <td><span class="peque">{{ $unidade->usuario_edito }}</span>  <br/> <span class="peque">{{ $unidade->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('unidades.destroy',$unidade->id) }}" method="POST">
                                                     @can('unidades.show')
