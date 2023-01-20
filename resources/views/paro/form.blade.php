@@ -1,75 +1,97 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
-            {{ Form::label('Nombre') }}
-            {{ Form::text('nombre', $paro->nombre, ['class' => 'form-control',  'required' => 'required' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('grupo_id','Grupo') }}
-            {{ Form::select('grupo_id',$grupo, $paro->grupo_id, ['class' => 'form-control',  ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el Grupo']) }}
-            {!! $errors->first('grupo_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-        </div>
-        <div class="row">
-            <div id="apartadoEmpleado"  style="display:none;">
-                <div class="table-responsive" id="tablaEmpleados">
-                    <table class="table table-bordered table-striped" id="dynamicAddRemove" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Empleado</th>
-                                <th>Puesto</th>
-                                <th>Salario</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input id="empleado_id" type="text" name="empleado[0][empleado_id]" class="form-control ancho-select2" readonly></td>
-                                <td><input id="puesto_id" type="text" name="empleado[0][puesto_id]" class="form-control ancho-select2" readonly></td>
-                                <td><input id="salario" type="number" min="0" step="any" name="empleado[0][salario]" class="form-control ancho-select2" readonly></td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Paro</h5>
+                        <div class="row">
+                            <div class="col-sm p-1 form-group">
+                                {{ Form::label('Nombre') }}
+                                {{ Form::text('nombre', $paro->nombre, ['class' => 'form-control',  'required' => 'required' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+                                {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="col-sm p-1 form-group">
+                                {{ Form::label('Proyecto') }}
+                                {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control', 'id' => 'proyecto_id' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
+                                {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm p-1 form-group">
+                                <?php $fechaInicio = isset($paro->fecha_inicio) ? Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d') : $paro->fecha_inicio; ?>
+                                {{ Form::label('fecha_inicio') }}
+                                {{ Form::date('fecha_inicio', $fechaInicio, ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                                {!! $errors->first('fecha_inicio', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                            </div>
+                            <div class="col-sm p-1 form-group">
+                                <?php $fechaFin = isset($paro->fecha_fin) ? Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d') : $paro->fecha_fin; ?>
+                                {{ Form::label('fecha_fin') }}
+                                {{ Form::date('fecha_fin', $fechaFin, ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                                {!! $errors->first('fecha_fin', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="p-1 form-group">
+                                {{ Form::label('comentario') }}
+                                {{ Form::text('comentario', $paro->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
+                                {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            {{ Form::label('Proyecto') }}
-            {{ Form::select('proyecto_id',$proyecto, $paro->proyecto_id, ['class' => 'form-control', 'id' => 'proyecto_id' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Proyecto']) }}
-            {!! $errors->first('proyecto_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <?php 
-            $fechaInicio = isset($paro->fecha_inicio) ? Carbon\Carbon::parse($paro->fecha_inicio)->format('Y-m-d') : $paro->fecha_inicio;
-        ?>
-        <div class="p-1 form-group">
-            {{ Form::label('fecha_inicio') }}
-            {{ Form::date('fecha_inicio', $fechaInicio, ['class' => 'form-control-sm' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
-            {!! $errors->first('fecha_inicio', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-        </div>
-        <?php 
-            $fechaFin = isset($paro->fecha_fin) ? Carbon\Carbon::parse($paro->fecha_fin)->format('Y-m-d') : $paro->fecha_fin;
-        ?>
-        <div class="p-1 form-group">
-            {{ Form::label('fecha_fin') }}
-            {{ Form::date('fecha_fin', $fechaFin, ['class' => 'form-control-sm' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
-            {!! $errors->first('fecha_fin', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('comentario') }}
-            {{ Form::text('comentario', $paro->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
-            {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group d-none">
-            {{ Form::label('usuario_edito') }}
-            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
-            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Selecciona Grupo</h5>
+                        <div class="row">
+                            <div class="form-group">
+                                {{ Form::label('grupo_id','Grupo') }}
+                                {{ Form::select('grupo_id',$grupo, $paro->grupo_id, ['class' => 'form-control',  ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el Grupo']) }}
+                                {!! $errors->first('grupo_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div id="apartadoEmpleado"  style="display:none;">
+                                <div class="table-responsive" id="tablaEmpleados">
+                                    <table class="table table-bordered table-striped" id="dynamicAddRemove" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Empleado</th>
+                                                <th>Puesto</th>
+                                                <th>Salario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input id="empleado_id" type="text" name="empleado[0][empleado_id]" class="form-control ancho-select2" readonly></td>
+                                                <td><input id="puesto_id" type="text" name="empleado[0][puesto_id]" class="form-control ancho-select2" readonly></td>
+                                                <td><input id="salario" type="number" min="0" step="any" name="empleado[0][salario]" class="form-control ancho-select2" readonly></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
-    </div>
-    <div class="box-footer mt20">
-        <br>
-        <a href="{{ route('paros.index') }}" class="btn btn-danger ">{{ __('Cancelar')}}</a>
-        <button type="submit" class="btn btn-primary" onclick="habilitarGrupo()">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-none">
+                {{ Form::label('usuario_edito') }}
+                {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+                {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('paros.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="habilitarGrupo();" class="btn btn-primary col col-sm-2">Aceptar</button>
+            </div>
+        </div>
     </div>
 </div>
 
