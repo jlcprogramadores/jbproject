@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Historial Altas/Bajas')
+@section('title','Historial Estado')
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
