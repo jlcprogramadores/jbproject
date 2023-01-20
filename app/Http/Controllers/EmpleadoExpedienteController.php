@@ -23,7 +23,7 @@ class EmpleadoExpedienteController extends Controller
     {
         
         // $empleadoExpedientes = EmpleadoExpediente::paginate();
-        $empleados = Empleado::paginate();
+        $empleados = Empleado::orderBy('id','desc')->paginate();
 
         return view('empleado-expediente.index', compact('empleados'))
             ->with('i', (request()->input('page', 1) - 1) * $empleados->perPage());
@@ -99,7 +99,7 @@ class EmpleadoExpedienteController extends Controller
             
         }
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'Empleado-Expediente creado exitosamente.');
+            ->with('success', 'Expediente creado exitosamente.');
     }
 
     /**
@@ -168,7 +168,7 @@ class EmpleadoExpedienteController extends Controller
     {
         
         $empleado = Empleado::find($id_empleado);
-        $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple')
+        $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.usuario_edito','empleado_expedientes.updated_at' )
                         ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                         ->where('empleado_expedientes.empleado_id','=',$id_empleado)->paginate();
         $i=0;
@@ -250,7 +250,7 @@ class EmpleadoExpedienteController extends Controller
         }
 
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'Empleado-Expediente actualizado correctamente.');
+            ->with('success', 'Expediente actualizado correctamente.');
     }
 
     /**
@@ -267,6 +267,6 @@ class EmpleadoExpedienteController extends Controller
         $empleadoExpediente = EmpleadoExpediente::find($id)->delete();
 
         return redirect()->route('empleado-expedientes.index')
-            ->with('success', 'EmpleadoExpediente eliminado exitosamente.');
+            ->with('success', 'Expediente eliminado exitosamente.');
     }
 }

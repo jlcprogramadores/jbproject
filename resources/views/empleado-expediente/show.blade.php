@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Archivo Expediente')
+@section('title','Mostrar Expediente')
 
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Empleado Expediente</span>
+                            <span class="card-title">Mostrar Expediente</span>
                         </div>
                         <div class="float-right">
                         </div>

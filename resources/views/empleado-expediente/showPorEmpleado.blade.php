@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Expediente del Empleado</span>
+                            <span class="card-title">Mostrar Expediente</span>
                         </div>
                         <div class="float-right">
                         </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Expediente')
+@section('title','Editar Expediente')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ 'Expediente de '.$empleado->nombre }}
+                                {{ 'Editar Expediente De: '.$empleado->nombre }}
                             </span>
 
                              <div class="float-right">
@@ -41,6 +41,7 @@
                                         
 										<th>Nombre del Documento</th>
 
+                                        <th>Actualización</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 											<td class="text-uppercase">{{ strtr($item->nombre,'_',' ') }}</td>
+                                            <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$item->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.show',$item->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
