@@ -20,7 +20,7 @@ class IncidenciaController extends Controller
      */
     public function index()
     {
-        $incidencias = Incidencia::paginate();
+        $incidencias = Incidencia::orderBy('id','desc')->paginate();
 
         return view('incidencia.index', compact('incidencias'))
             ->with('i', (request()->input('page', 1) - 1) * $incidencias->perPage());

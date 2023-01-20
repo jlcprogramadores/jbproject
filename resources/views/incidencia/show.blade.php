@@ -28,23 +28,19 @@
                         </div>
                         <div class="form-group">
                             <strong>Fecha Inicio:</strong>
-                            {{ $incidencia->fecha_inicio }}
+                            {{Carbon\Carbon::parse($incidencia->fecha_inicio)->format('Y-m-d')}}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Fin:</strong>
-                            {{ $incidencia->fecha_fin }}
+                            {{ Carbon\Carbon::parse($incidencia->fecha_fin)->format('Y-m-d')}}
                         </div>
                         <div class="form-group">
                             <strong>Justificante:</strong>
-                            {{ $incidencia->justificante }}
+                            <a href="{{$incidencia->justificante}}">Ver Justificante</a>
                         </div>
                         <div class="form-group">
                             <strong>Comentario:</strong>
                             {{ $incidencia->comentario }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Es Activo:</strong>
-                            {{ $incidencia->es_activo }}
                         </div>
                         <div class="form-group">
                             <strong>Usuario Edito:</strong>

@@ -37,8 +37,8 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Empleado Id</th>
-										<th>Proyecto Id</th>
+										<th>Empleado</th>
+										<th>Proyecto</th>
 										<th>Fecha Inicio</th>
 										<th>Fecha Fin</th>
 										<th>Justificante</th>
@@ -65,7 +65,7 @@
                                                 @endif
                                             </td>
 											<td>{{ $incidencia->comentario }}</td>
-											<td>{{ $incidencia->usuario_edito }}</td>
+                                            <td><span class="peque">{{ $incidencia->usuario_edito }}</span>  <br/> <span class="peque">{{ $incidencia->updated_at }}</span></td>
 
                                             <td>
                                                 <form action="{{ route('incidencias.destroy',$incidencia->id) }}" method="POST">
