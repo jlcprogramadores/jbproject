@@ -19,7 +19,7 @@ class CandidatoController extends Controller
      */
     public function index()
     {
-        $candidatos = Candidato::paginate();
+        $candidatos = Candidato::orderBy('id','desc')->paginate();
 
         return view('candidato.index', compact('candidatos'))
             ->with('i', (request()->input('page', 1) - 1) * $candidatos->perPage());

@@ -78,52 +78,49 @@
                                                 $v3 = $candidato->validacion_3;
                                             ?>
                                            
-                                            <td > 
+                                            <td class="completo" style="line-height:0pt!important;"> 
 
                                                     @if (is_null($v1))
-                                                        <span> 
-                                                            Alex: <p class="badge bg-secondary">Sin Evaluar</p>,
-                                                        </span> 
+                                                        <p> 
+                                                            Alex: <span class="badge bg-secondary">Sin Evaluar</span>,
+                                                        </p> 
                                                     @elseif($v1 == 1)
-                                                        <span>
-                                                            Alex: <p class="badge bg-success">Aceptado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Alex: <span class="badge bg-success">Aceptado</span>,
+                                                        </p>
                                                     @else
-                                                        <span>
-                                                            Alex: <p class="badge bg-danger">Rechazado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Alex: <span class="badge bg-danger">Rechazado</span>,
+                                                        </p>
                                                     @endif
 
                                                     @if (is_null($v2))
-                                                        <span>
-                                                            Cecy: <p class="badge bg-secondary">Sin Evaluar</p>,
-                                                        </span>
+                                                        <p>
+                                                            Cecy: <span class="badge bg-secondary">Sin Evaluar</span>,
+                                                        </p>
                                                     @elseif($v2 == 1)
-                                                        <span>
-                                                            Cecy: <p class="badge bg-success">Aceptado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Cecy: <span class="badge bg-success">Aceptado</span>,
+                                                        </p>
                                                     @else
-                                                        <span>
-                                                            Cecy: <p class="badge bg-danger">Rechazado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Cecy: <span class="badge bg-danger">Rechazado</span>,
+                                                        </p>
                                                     @endif
 
                                                     @if (is_null($v3))
-                                                        <span>
-                                                            Javier: <p class="badge bg-secondary">Sin Evaluar</p>,
-                                                        </span>
+                                                        <p>
+                                                            Javier: <span class="badge bg-secondary">Sin Evaluar</span>,
+                                                        </p>
                                                     @elseif($v3 == 1)
-                                                        <span>
-                                                            Javier: <p class="badge bg-success">Aceptado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Javier: <span class="badge bg-success">Aceptado</span>,
+                                                        </p>
                                                     @else
-                                                        <span>
-                                                            Javier: <p class="badge bg-danger">Rechazado</p>,
-                                                        </span>
+                                                        <p>
+                                                            Javier: <span class="badge bg-danger">Rechazado</span>,
+                                                        </p>
                                                     @endif
-
-
-
                                             </td>
                                             
                                             <td>
@@ -137,7 +134,8 @@
                                             </td>
 
                                             
-											<td>{{ $candidato->usuario_edito }}  <br/> {{ $candidato->updated_at }}</td>
+                                            <td><span class="peque">{{ $candidato->usuario_edito }}</span>  <br/> <span class="peque">{{ $candidato->updated_at }}</span></td>
+
                                             <td>
                                                 <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
                                                     @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
