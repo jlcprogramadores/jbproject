@@ -240,6 +240,8 @@ class ParoController extends Controller
      * @param int $paro_id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
+     * busco el paro e itero los registros de historial paro que voy a eliminar
+     * depuesr elimino el paro en si
      */
     public function destroy($id)
     {
