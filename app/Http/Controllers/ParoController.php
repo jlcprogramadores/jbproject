@@ -209,8 +209,26 @@ class ParoController extends Controller
     public function update(Request $request, Paro $paro)
     {
         request()->validate(Paro::$rules);
-
         $paro->update($request->all());
+        $params = $request->request->all();
+        $empleados = GruposEmpleado::where('grupo_id','=',$params['grupo_id'])->get();
+        $nombreGrupo = Grupo::select('nombre')->where('id','=',$params['grupo_id'])->first();
+
+        foreach($empleados as $empleado){
+            $crearHistorialParos = [
+                'paro_id' =>  $paro->id,
+                'grupo_id' => $params['grupo_id'],
+                'empleado_id' => $empleado->empleado_id,
+                'puesto_id' => $empleado->puesto_id,
+                'salario' => $empleado->salario,
+                'fecha_inicio' => $paro->fecha_inicio,
+                'fecha_fin' => $paro->fecha_fin,
+                'nombre_grupo' => $nombreGrupo->nombre,
+                'comentario' => $paro->comentario,
+                'usuario_edito' => $paro->usuario_edito,
+            ];
+            $historialParo = HistorialParo::create($crearHistorialParos);
+        } 
 
         return redirect()->route('paros.index')
             ->with('success', 'Paro actualizado correctamente.');
