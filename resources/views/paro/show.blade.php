@@ -41,6 +41,31 @@
                             <strong>Grupo:</strong>
                             {{ $paro->grupo->nombre }}
                         </div>                        
+                        <div class="form-group">
+                            <strong>Integrantes:</strong>
+                            <br>
+                            <ul>
+                                @foreach ($paro->grupo->grupoEmpleado as $item)
+                                <li>
+                                    <strong>{{$item->empleado->nombre}}</strong>
+                                    
+                                    <ul>
+                                        <li>
+                                            <strong>Puesto:</strong>
+                                            {{$item->puesto->nombre}}
+
+                                        </li>
+                                        <li>
+                                            <strong>Salario:</strong>
+                                            {{$item->salario}}
+
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>                        
                         <br>
                         <a class="btn btn-primary" href="{{ route('paros.index') }}"> Atrás</a>
                     </div>
