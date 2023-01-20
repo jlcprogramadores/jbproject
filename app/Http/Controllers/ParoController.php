@@ -57,7 +57,7 @@ class ParoController extends Controller
         $empleados = GruposEmpleado::where('grupo_id','=',$params['grupo_id'])->get();
         $nombreGrupo = Grupo::select('nombre')->where('id','=',$params['grupo_id'])->first();
         $paro = Paro::create($request->all());
-
+        // dd($paro);
         foreach($empleados as $empleado){
             $crearHistorialParos = [
                 'paro_id' =>  $paro->id,
@@ -67,6 +67,7 @@ class ParoController extends Controller
                 'salario' => $empleado->salario,
                 'fecha_inicio' => $paro->fecha_inicio,
                 'fecha_fin' => $paro->fecha_fin,
+                'nombre_paro' => $paro->nombre,
                 'nombre_grupo' => $nombreGrupo->nombre,
                 'comentario' => $paro->comentario,
                 'usuario_edito' => $paro->usuario_edito,
@@ -155,6 +156,7 @@ class ParoController extends Controller
                         'salario' => $empleado->salario,
                         'fecha_inicio' => $paro->fecha_inicio,
                         'fecha_fin' => $paro->fecha_fin,
+                        'nombre_paro' =>  $paro->nombre,
                         'nombre_grupo' =>  $request->nombreGrupo, 
                         'comentario' => $paro->comentario,
                         'usuario_edito' => $paro->usuario_edito,
@@ -223,6 +225,7 @@ class ParoController extends Controller
                 'salario' => $empleado->salario,
                 'fecha_inicio' => $paro->fecha_inicio,
                 'fecha_fin' => $paro->fecha_fin,
+                'nombre_paro' => $paro->nombre,
                 'nombre_grupo' => $nombreGrupo->nombre,
                 'comentario' => $paro->comentario,
                 'usuario_edito' => $paro->usuario_edito,

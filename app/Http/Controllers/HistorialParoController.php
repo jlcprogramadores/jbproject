@@ -25,6 +25,18 @@ class HistorialParoController extends Controller
         return view('historial-paro.index', compact('historialParos'))
             ->with('i', (request()->input('page', 1) - 1) * $historialParos->perPage());
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function historialempleado($paro_id)
+    {
+        $historialParos = HistorialParo::where('paro_id',$paro_id)->orderBy('id','desc')->paginate();
+
+        return view('historial-paro.index', compact('historialParos'))
+            ->with('i', (request()->input('page', 1) - 1) * $historialParos->perPage());
+    }
 
     /**
      * Show the form for creating a new resource.

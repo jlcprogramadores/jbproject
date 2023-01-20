@@ -47,7 +47,19 @@ class HistorialParo extends Model
      *
      * @var array
      */
-    protected $fillable = ['paro_id','grupo_id','empleado_id','puesto_id','salario','fecha_inicio','fecha_fin','nombre_grupo','comentario','usuario_edito'];
+    protected $fillable = [
+        'paro_id',
+        'grupo_id',
+        'empleado_id',
+        'puesto_id',
+        'salario',
+        'fecha_inicio',
+        'fecha_fin',
+        'nombre_paro',
+        'nombre_grupo',
+        'comentario',
+        'usuario_edito'
+    ];
 
 
     /**

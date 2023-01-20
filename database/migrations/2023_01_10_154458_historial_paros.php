@@ -34,6 +34,7 @@ class HistorialParos extends Migration
             $table->decimal('salario', 12, 2)->nullable();
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
+            $table->string('nombre_paro');
             $table->string('nombre_grupo');
             $table->string('comentario')->nullable();
             $table->string('usuario_edito');

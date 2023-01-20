@@ -9,12 +9,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card text-white border-secondary">
+                    <div class="card-header bg-secondary">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Historial Paros') }}
+                                {{ __('Historial Del Paro:') }} {{$historialParos[0]->paro->nombre}}
                             </span>
 
                              <div class="float-right">
@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $historialParo->paro->nombre}}</td>
+											<td>{{ $historialParo->nombre_paro}}</td>
 											<td>{{ $historialParo->grupo->nombre }}</td>
 											<td>{{ $historialParo->empleado->nombre }}</td>
                                             <td>{{ $historialParo->puesto->nombre }}</td>

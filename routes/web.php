@@ -93,6 +93,8 @@ Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEg
 // historial-altas
 Route::get('/crearporempleado/{id}', 'App\Http\Controllers\HistorialAltaController@crearporempleado')->name('historial-altas.crearporempleado');
 Route::post('/storeporempleado', 'App\Http\Controllers\HistorialAltaController@storeporempleado')->name('historial-altas.storeporempleado');
+// historial-paros
+Route::get('/historialempleado/{id}', 'App\Http\Controllers\HistorialParoController@historialempleado')->name('historial-paros.historialempleado');
 
 //Paros
 Route::get('/createParoGrupo', 'App\Http\Controllers\ParoController@createParoGrupo')->name('paros.createParoGrupo');
