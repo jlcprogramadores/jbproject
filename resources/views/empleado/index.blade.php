@@ -87,8 +87,7 @@
                                                 <span class="badge bg-danger">Baja</span>
                                                 @endif
                                             </td>
-											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>
-
+                                            <td><span class="peque">{{ $empleado->usuario_edito }}</span>  <br/> <span class="peque">{{ $empleado->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Estado</a>
