@@ -8,12 +8,12 @@
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('abreviacion') }}
-                    {{ Form::text('abreviacion', $mina->abreviacion, ['class' => 'form-control' . ($errors->has('abreviacion') ? ' is-invalid' : ''), 'placeholder' => 'Abreviacion']) }}
+                    {{ Form::label('abreviación') }}
+                    {{ Form::text('abreviacion', $mina->abreviacion, ['class' => 'form-control' . ($errors->has('abreviacion') ? ' is-invalid' : ''),"onkeyup"=>"mayus(this);" , 'placeholder' => 'Abreviacion']) }}
                     {!! $errors->first('abreviacion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('descripcion') }}
+                    {{ Form::label('descripción') }}
                     {{ Form::text('descripcion', $mina->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
                     {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -24,14 +24,19 @@
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div class="row justify-content-md-center">
-                    <br>
-                    <a href="{{ route('minas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
-                    <br>
-                    <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
-                </div>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route('minas.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        function mayus(e) {
+            e.value = e.value.toUpperCase();
+        }
+    </script>
+@endpush

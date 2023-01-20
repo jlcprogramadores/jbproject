@@ -6,7 +6,7 @@
                 <div class="form-group">
                     @csrf
                     {{ Form::label('abreviación') }}
-                    {{ Form::text('nombre', $unidade->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), "style"=>"text-transform:uppercase;",'placeholder' => 'abreviación']) }}
+                    {{ Form::text('nombre', $unidade->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''),"onkeyup"=>"mayus(this);" ,'placeholder' => 'abreviación']) }}
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
@@ -32,3 +32,10 @@
     </div>
 </div>
 @endif
+@push('scripts')
+    <script>
+        function mayus(e) {
+            e.value = e.value.toUpperCase();
+        }
+    </script>
+@endpush

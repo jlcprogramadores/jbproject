@@ -45,7 +45,7 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Descripcion</th>
+										<th>Descripción</th>
                                         <th>Abreviación</th>
 										<th>Fecha Actualización</th>
 
