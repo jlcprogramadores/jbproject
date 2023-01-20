@@ -55,7 +55,7 @@
                                             
 											<td>{{ $tipoDeDireccione->nombre }}</td>
 											<td>{{ $tipoDeDireccione->es_fiscal ? 'SI' : 'NO'}}</td>
-                                            <td>{{ $tipoDeDireccione->usuario_edito }}  <br/> {{ $tipoDeDireccione->updated_at }}</td>
+                                            <td><span class="peque">{{ $tipoDeDireccione->usuario_edito }}</span>  <br/> <span class="peque">{{ $tipoDeDireccione->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">
                                                     @can('tipo-de-direcciones.show')
