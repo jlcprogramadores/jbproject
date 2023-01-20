@@ -237,12 +237,16 @@ class ParoController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param int $paro_id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function destroy($id)
     {
+        $histrialParo = HistorialParo::where('paro_id', $id)->get();
+        foreach($histrialParo as $item){
+            $item->delete();
+        }
         $paro = Paro::find($id)->delete();
 
         return redirect()->route('paros.index')
