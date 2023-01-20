@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Capacitaciones')
+@section('title','Capacitaciones')
 
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Capacitaciones</span>
+                            <span class="card-title">Capacitaciones</span>
                         </div>
                     </div>
 
@@ -24,7 +24,7 @@
                                 @endforeach
                             @else
                                 <div class="form-group">
-                                    <strong>No se ha añadido ninguna capacitación al expediente</strong>
+                                    <strong>No se ha añadido ninguna capacitación, se añaden desde "Expediente De Empleado" </strong>
                                 </div>
                             @endif
                             <div class="float-right">
