@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Grupos Empleado
+    Añadir Empleado al Grupo
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Grupos Empleado</span>
+                        <span class="card-title">Añadir Empleado al Grupo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('grupos-empleados.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('grupos-empleado.form')
+                            @include('grupos-empleado.formEmpleadoGrupo')
 
                         </form>
                     </div>

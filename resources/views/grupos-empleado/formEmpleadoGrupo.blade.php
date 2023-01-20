@@ -6,9 +6,9 @@
             {{ Form::select('grupo_id',$grupos, $gruposEmpleado->grupo_id, ['class' => 'form-control', 'readonly' => 'true' . ($errors->has('grupo_id') ? ' is-invalid' : ''), 'placeholder' => 'Grupo Id']) }}
             {!! $errors->first('grupo_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group d-none">
+        <div class="form-group">
             {{ Form::label('empleado_id', 'Empleado') }}
-            {{ Form::select('empleado_id',$empleados, $gruposEmpleado->empleado_id, ['class' => 'form-control' , 'readonly' => 'true'. ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccionar Empleado']) }}
+            {{ Form::select('empleado_id',$empleados, $gruposEmpleado->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccionar Empleado']) }}
             {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

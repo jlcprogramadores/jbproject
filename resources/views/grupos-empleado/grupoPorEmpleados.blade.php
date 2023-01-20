@@ -15,15 +15,15 @@
                             <span id="card_title">
                                 {{ __('Empleados del Grupo: ') . $nombre}}
                             </span>
-
                              <div class="float-right">
-                                <a href="javascript:history.back()" class="btn btn-light btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('grupos.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
-                                {{-- <a href="{{ route('facturas.create',['finanza_id'=> $id, 'creado' => 1 ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Factura') }}
-                                </a> --}}
+                                <a href="{{ route('grupos-empleados.formEmpleadoGrupo', ['idGrupo' => ($gruposEmpleados[0]->grupo_id) ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Añadir Empleado al Grupo') }}
+                                </a>
                               </div>
+                              
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -43,7 +43,7 @@
                                         <th>Empleado</th>
 										<th>Puesto</th>
 										<th>Salario</th>
-
+                                        <th>Editar Empleado</th>
                                         {{-- <th>Acciones</th> --}}
                                     </tr>
                                 </thead>
@@ -51,21 +51,20 @@
                                     @foreach ($gruposEmpleados as $gruposEmpleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
 											<td>{{ $gruposEmpleado->grupo->nombre }}</td>
                                             <td>{{ $gruposEmpleado->empleado->nombre }}</td>
 											<td>{{ $gruposEmpleado->puesto->nombre }}</td>
                                             <td>{{ '$'. number_format( $gruposEmpleado->salario,2) }}</td>
 
-                                            {{-- <td>
+                                            <td>
                                                 <form action="{{ route('grupos-empleados.destroy',$gruposEmpleado->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('grupos-empleados.show',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('grupos-empleados.edit',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('grupos-empleados.show',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a> --}}
+                                                    <a class="btn btn-sm btn-success" href="{{ route('grupos-empleados.edit',$gruposEmpleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
