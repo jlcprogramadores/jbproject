@@ -57,8 +57,7 @@
                                         </li>
                                         <li>
                                             <strong>Salario:</strong>
-                                            {{$item->salario}}
-
+                                            ${{number_format($item->salario,2)}}
                                         </li>
                                     </ul>
 
