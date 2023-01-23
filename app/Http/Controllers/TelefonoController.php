@@ -34,7 +34,7 @@ class TelefonoController extends Controller
      */
     public function telefonocliente($id)
     {
-        $telefonos = Telefono::where('cliente_id', $id)->paginate();
+        $telefonos = Telefono::where('cliente_id', $id)->orderBy('id','desc')->paginate();
         // encuentra el nombre del primer proveedor
         $nombre = Cliente::where('id','=',$id)->first()->nombre;
         return view('telefono.telefonocliente', compact('telefonos','id','nombre'))
@@ -48,7 +48,7 @@ class TelefonoController extends Controller
      */
     public function telefonoproveedor($id)
     {
-        $telefonos = Telefono::where('proveedor_id', $id)->paginate();
+        $telefonos = Telefono::where('proveedor_id', $id)->orderBy('id','desc')->paginate();
         // encuentra el nombre del primer proveedor
         $nombre = Proveedore::where('id','=',$id)->first()->nombre;
         return view('telefono.telefonoproveedor', compact('telefonos','id','nombre'))

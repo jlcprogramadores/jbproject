@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Teléfonos')
+@section('title','Teléfonos de cliente')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
@@ -45,6 +45,8 @@
                                             <th>Cliente</th>
                                             <th>Teléfono</th>
                                             <th>Descripción</th>
+
+                                            <th>Actualización</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -56,6 +58,7 @@
                                                 <td>{{ $telefono->cliente->nombre }}</td>
                                                 <td>{{ $telefono->telefono }}</td>
                                                 <td>{{ $telefono->descripcion }}</td>
+                                                <td><span class="peque">{{ $telefono->usuario_edito }}</span>  <br/> <span class="peque">{{ $telefono->updated_at }}</span></td>
 
                                                 <td>
                                                     <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
