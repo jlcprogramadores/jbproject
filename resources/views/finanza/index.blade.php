@@ -86,19 +86,19 @@
 											<td>
                                                 @if ($finanza->esta_atrasado)
                                                     <span class="text-danger">
-                                                        {{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}
+                                                        {{ $finanza->fecha_entrada ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : '' }}
                                                     </span>
                                                     <br>
                                                     <span class="peque text-danger">
                                                         Atrasada
                                                     </span>
                                                 @else
-                                                    {{ Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') }}
+                                                    {{ $finanza->fecha_entrada ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : '' }}
                                                     
                                                 @endif
                                             
                                             </td>
-											<td>{{ Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') }}</td>
+											<td>{{ $finanza->fecha_salida ? Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') : '' }}</td>
                                             <td>{{ $finanza->vence }}</td>
 											<td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>
                                             <?php 
@@ -141,7 +141,7 @@
 											<td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
                                             <td>{{ '$'. number_format($subTotal*$iva,2) }}</td>
 											<td>{{ '$'. number_format($montoAPagar = $finanza->monto_a_pagar,2) }}</td>
-											<td >{{Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') }}</td>
+											<td >{{$finanza->fecha_de_pago ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : ''}}</td>
 											<td>{{ $finanza->metodo_de_pago }}</td>
                                             @if ($finanza->es_pagado == 0)
                                                 <td><p class="badge bg-danger">Pendiente Pagar</p></td>
@@ -180,7 +180,7 @@
                                                     N/A
                                                 @endif
                                             </td>
-                                            <td>{{ $finanza->fecha_facturacion }}</td>
+                                            <td>{{ $finanza->fecha_facturacion ?  Carbon\Carbon::parse($finanza->fecha_facturacion)->format('Y-m-d') :'' }}</td>
                                             <td>{{ $finanza->comentario }}</td>
                                             @if ($finanza->salidas_id)
                                                 @if ($finanza->salida->enviado == 0)
@@ -211,7 +211,13 @@
                                                         <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                         @endcan
                                                         @can('finanzas.edit')
-                                                        <a class="btn btn-sm btn-success" href="{{ route('finanzas.edit',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                            @if (!empty($finanza->a_meses))
+                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgresoMeses',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+                                                            @elseif($finanza->salidas_id)
+                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgreso',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+                                                            @else
+                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editIngreso',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
+                                                            @endif
                                                         @endcan
                                                         @csrf
                                                         @method('DELETE')

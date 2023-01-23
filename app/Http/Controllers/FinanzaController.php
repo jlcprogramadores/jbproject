@@ -582,6 +582,82 @@ class FinanzaController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editIngreso($id)
+    {
+        $finanza = Finanza::find($id);
+        // si es entrada carga los siguiente        
+        $entrada = Entrada::find($finanza->entradas_id);
+        $datoscliente = Cliente::pluck('nombre','id');
+        $esEntrada = True;
+        
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+
+        return view('finanza.editIngreso', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editEgresoMeses($id)
+    {
+        $finanza = Finanza::find($id);
+        // si es entrada carga los siguiente        
+        $esEntrada = false;
+        $salida = Salida::find($finanza->salidas_id);
+        $datosproveedor = Proveedore::pluck('nombre','id');
+
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+        return view('finanza.editEgresoMeses', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editEgreso($id)
+    {
+        $finanza = Finanza::find($id);
+        // si es entrada carga los siguiente        
+        $esEntrada = false;
+        $salida = Salida::find($finanza->salidas_id);
+        $datosproveedor = Proveedore::pluck('nombre','id');
+
+        $datosproyecto = Proyecto::pluck('nombre','id');
+        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        $datosfamilia = Familia::pluck('nombre','id');
+        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
+        $datosunidad = Unidade::pluck('nombre','id');
+        $datosiva = Iva::pluck('porcentaje','id');
+        $datosfactura = Factura ::pluck('referencia_factura','id');
+
+        return view('finanza.editEgreso', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+    }
+
+    /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

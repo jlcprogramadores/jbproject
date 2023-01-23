@@ -94,6 +94,10 @@ Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->nam
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
 Route::get('/egresoMeses', 'App\Http\Controllers\FinanzaController@egresoMeses')->name('finanzas.egresoMeses');
 Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEgresoMeses')->name('finanzas.storeEgresoMeses');
+// Forms de editar en finanzas
+Route::get('/editEgreso/{id}', 'App\Http\Controllers\FinanzaController@editEgreso')->name('finanzas.editEgreso');
+Route::get('/editIngreso/{id}', 'App\Http\Controllers\FinanzaController@editIngreso')->name('finanzas.editIngreso');
+Route::get('/editEgresoMeses/{id}', 'App\Http\Controllers\FinanzaController@editEgresoMeses')->name('finanzas.editEgresoMeses');
 
 // historial-altas
 Route::get('/crearporempleado/{id}', 'App\Http\Controllers\HistorialAltaController@crearporempleado')->name('historial-altas.crearporempleado');

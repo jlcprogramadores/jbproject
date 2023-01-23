@@ -39,8 +39,11 @@
                     {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaEntrada = isset($finanza->fecha_entrada) ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : $finanza->fecha_entrada;
+                    ?>
                     {{ Form::label('fecha_entrada') }}
-                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control', 'id' => 'fechaEntrada' , 'onchange' => "obtenFechaEntrada(this.value)" . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
+                    {{ Form::date('fecha_entrada', $fechaEntrada, ['class' => 'form-control', 'id' => 'fechaEntrada' , 'onchange' => "obtenFechaEntrada(this.value)" . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
                     {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -50,8 +53,11 @@
                 </div>
                 <!-- ocupa el campo de fecha facturacion no de salida -->
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaSalida = isset($finanza->fecha_salida) ? Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') : $finanza->fecha_salida;
+                    ?>
                     {{ Form::label('fecha_salida') }}
-                    {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control', 'id' => 'fechaSalida', 'readonly' => 'true' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+                    {{ Form::date('fecha_salida', $fechaSalida, ['class' => 'form-control', 'id' => 'fechaSalida', 'readonly' => 'true' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
                     {!! $errors->first('fecha_salida', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 
@@ -70,11 +76,18 @@
                     {{ Form::text('entregado_material_a', $finanza->entregado_material_a, ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
                     {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('a_meses') }}
-                    {{ Form::number('a_meses', $finanza->a_meses, ['class' => 'form-control' . ($errors->has('a_meses') ? ' is-invalid' : ''), 'placeholder' => 'A cuantos meses']) }}
-                    {!! $errors->first('a_meses', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+                @if ($finanza->a_meses)
+                    <div class="p-1 form-group">
+                        <label>A Meses</label>
+                        <input type="number" value="{{$finanza->a_meses}}" class="form-control" disabled>
+                    </div>
+                @else
+                    <div class="p-1 form-group">
+                        {{ Form::label('a_meses') }}
+                        {{ Form::number('a_meses', $finanza->a_meses, ['class' => 'form-control' . ($errors->has('a_meses') ? ' is-invalid' : ''), 'placeholder' => 'A cuantos meses']) }}
+                        {!! $errors->first('a_meses', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                    </div>
+                @endif
             </div>
             <!-- datos de precio -->
             <div class="col-sm">
@@ -111,8 +124,11 @@
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaDePago = isset($finanza->fecha_de_pago) ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : $finanza->fecha_de_pago;
+                    ?>
                     {{ Form::label('fecha_de_pago') }}
-                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {{ Form::date('fecha_de_pago', $fechaDePago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
                     {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">

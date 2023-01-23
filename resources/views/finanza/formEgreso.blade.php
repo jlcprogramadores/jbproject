@@ -39,8 +39,11 @@
                     {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaEntrada = isset($finanza->fecha_entrada) ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : $finanza->fecha_entrada;
+                    ?>
                     {{ Form::label('fecha_entrada') }}
-                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control', 'id' => 'fechaEntrada' , 'onchange' => "obtenFechaEntrada(this.value)" . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
+                    {{ Form::date('fecha_entrada', $fechaEntrada, ['class' => 'form-control', 'id' => 'fechaEntrada' , 'onchange' => "obtenFechaEntrada(this.value)" . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
                     {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -50,8 +53,11 @@
                 </div>
                 <!-- ocupa el campo de fecha facturacion no de salida -->
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaSalida = isset($finanza->fecha_salida) ? Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') : $finanza->fecha_salida;
+                    ?>
                     {{ Form::label('fecha_salida') }}
-                    {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control', 'id' => 'fechaSalida', 'readonly' => 'true' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
+                    {{ Form::date('fecha_salida', $fechaSalida, ['class' => 'form-control', 'id' => 'fechaSalida', 'readonly' => 'true' . ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion']) }}
                     {!! $errors->first('fecha_salida', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 
@@ -106,8 +112,11 @@
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
+                    <?php 
+                        $fechaDePago = isset($finanza->fecha_de_pago) ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : $finanza->fecha_de_pago;
+                    ?>
                     {{ Form::label('fecha_de_pago') }}
-                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {{ Form::date('fecha_de_pago', $fechaDePago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
                     {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -137,32 +146,36 @@
                     {!! $errors->first('usuario_edito', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
             </div>
-            <div>
-                <label>Factura</label>
-                <input type="button" name="answer" value="Añadir"  class="btn btn-success" onclick="mostrarDiv()" />
-                <div id="apartadoFactura"  style="display:none;">
-                    <br>
-                    <table class="table table-bordered" id="dynamicAddRemove">
-                        <tr>
-    
-                            <th>Referencia</th>
-                            <th>URL</th>
-                            <th>Comprobante</th>
-                            <th>Fecha Facturación</th>
-                            <th>Monto</th>
-                            <th>Acción</th>
-                        </tr>
-                        <tr>
-                            <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control"/></td>
-                            <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
-                            <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
-                            <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
-                            <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control"/></td>
-                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
-                        </tr>
-                    </table>
+            @if ($finanza->no)
+                
+            @else
+                <div>
+                    <label>Factura</label>
+                    <input type="button" name="answer" value="Añadir"  class="btn btn-success" onclick="mostrarDiv()" />
+                    <div id="apartadoFactura"  style="display:none;">
+                        <br>
+                        <table class="table table-bordered" id="dynamicAddRemove">
+                            <tr>
+        
+                                <th>Referencia</th>
+                                <th>URL</th>
+                                <th>Comprobante</th>
+                                <th>Fecha Facturación</th>
+                                <th>Monto</th>
+                                <th>Acción</th>
+                            </tr>
+                            <tr>
+                                <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control"/></td>
+                                <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
+                                <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
+                                <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
+                                <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control"/></td>
+                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         <br>
         <div class="row d-flex justify-content-center">
