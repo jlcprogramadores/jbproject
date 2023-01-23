@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Mostrar Iva')
+@section('title','Mostrar IVA')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Mostrar Iva</span>
+                            <span class="card-title">Mostrar IVA</span>
                         </div>
                     </div>
 
@@ -17,7 +17,7 @@
                         
                         <div class="form-group">
                             <strong>Porcentaje:</strong>
-                            {{ $iva->porcentaje }}
+                            {{ $iva->porcentaje }}%
                         </div>
                         <div class="form-group">
                             <strong>Descripción:</strong>

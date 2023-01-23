@@ -14,12 +14,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Iva') }}
+                                {{ __('IVA') }}
                             </span>
                             @can('ivas.create')
                              <div class="float-right">
                                 <a href="{{ route('ivas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Iva') }}
+                                  {{ __('Crear IVA') }}
                                 </a>
                               </div>
                             @endcan
@@ -53,7 +53,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $iva->porcentaje }}</td>
+											<td>{{ $iva->porcentaje }}%</td>
 											<td>{{ $iva->descripcion }}</td>
                                             <td>{{ $iva->usuario_edito }}  <br/> {{ $iva->updated_at }}</td>
                                             <td>

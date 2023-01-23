@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Actualizar Iva')
+@section('title','Actualizar IVA')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar Iva</span>
+                        <span class="card-title">Actualizar IVA</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ivas.update', $iva->id) }}"  role="form" enctype="multipart/form-data">
