@@ -64,7 +64,9 @@
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
                                             <td>{{ '$'. number_format($proyecto->presupuesto,2) }}</td>
                                             <td>{{ '$'. number_format($proyecto->margen,2) }}</td>
-                                            <td>{{ $proyecto->usuario_edito }}  <br/> {{ $proyecto->updated_at }}</td>
+                                            <td><span class="peque">{{ $proyecto->usuario_edito }}</span>  <br/> <span class="peque">{{ $proyecto->updated_at }}</span></td>
+
+
                                             <td>
                                                 <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
                                                     @can('proyectos.show')

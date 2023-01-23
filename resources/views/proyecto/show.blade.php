@@ -29,11 +29,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Presupuesto:</strong>
-                            {{ $proyecto->presupuesto }}
+                            {{ '$'. number_format($proyecto->presupuesto,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Márgen:</strong>
-                            {{ $proyecto->margen }}
+                            {{ '$'. number_format($proyecto->margen,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
