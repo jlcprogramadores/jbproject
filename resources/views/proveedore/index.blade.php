@@ -51,7 +51,7 @@
                                     <th>Días De Crédito</th>
                                     <th>Monto De Crédito</th>
                                     <th>Es Facturable</th>
-                                    <th>Mail</th>
+                                    <th>Correo</th>
                                     <th>Rfc</th>
                                     <th>Actualización</th>
                                     <th class="botones">Datos</th>
@@ -98,7 +98,7 @@
                                     </td>
                                     <td class="completo">{{ $proveedore->estado }}</td>
                                     <td>{{ $proveedore->dias_de_credito }}</td>
-                                    <td>{{ $proveedore->monto_de_credito }}</td>
+                                    <td>{{ '$'. number_format($proveedore->monto_de_credito,2) }}</td>
                                     <td>{{ $proveedore->es_facturable ? 'SI' : 'NO' }}</td>
                                     <td>{{ $proveedore->mail }}</td>
                                     <td>{{ $proveedore->rfc }}</td>

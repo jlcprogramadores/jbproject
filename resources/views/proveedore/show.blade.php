@@ -28,23 +28,23 @@
                             {{ $proveedore->estado }}
                         </div>
                         <div class="form-group">
-                            <strong>Dias De Credito:</strong>
+                            <strong>Días De Crédito:</strong>
                             {{ $proveedore->dias_de_credito }}
                         </div>
                         <div class="form-group">
-                            <strong>Monto De Credito:</strong>
-                            {{ $proveedore->monto_de_credito }}
+                            <strong>Monto De Crédito:</strong>
+                            {{ '$'. number_format($proveedore->monto_de_credito,2) }}
                         </div>
                         <div class="form-group">
                             <strong>Es Facturable:</strong>
                             {{ $proveedore->es_facturable }}
                         </div>
                         <div class="form-group">
-                            <strong>Mail:</strong>
+                            <strong>Correo:</strong>
                             {{ $proveedore->mail }}
                         </div>
                         <div class="form-group">
-                            <strong>Rfc:</strong>
+                            <strong>RFC:</strong>
                             {{ $proveedore->rfc }}
                         </div>
                         <div class="form-group">
