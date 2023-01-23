@@ -56,7 +56,7 @@
                                             
 											<td>{{ $categoriasDeEntrada->nombre }}</td>
 											<td>{{ $categoriasDeEntrada->descripcion }}</td>
-                                            <td>{{ $categoriasDeEntrada->usuario_edito }}  <br/> {{ $categoriasDeEntrada->updated_at }}</td>
+                                            <td><span class="peque">{{ $categoriasDeEntrada->usuario_edito }}</span>  <br/> <span class="peque">{{ $categoriasDeEntrada->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('categorias-de-entradas.destroy',$categoriasDeEntrada->id) }}" method="POST">
                                                     @can('categorias-de-entradas.show')
