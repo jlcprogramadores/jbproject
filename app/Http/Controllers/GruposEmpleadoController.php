@@ -57,9 +57,23 @@ class GruposEmpleadoController extends Controller
         $puestos = Puesto::pluck('nombre','id');
         $empleados = Empleado::pluck('nombre','id');
         $grupos = Grupo::pluck('nombre','id');
-        return view('grupos-empleado.create', compact('gruposEmpleado','puestos','empleados','grupos'));
+        return view('grupos-empleado.create', compact('gruposEmpleado','puestos','empleados','grupos','idGrupo'));
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function formEmpleadoNuevoGrupo($idGrupo)
+    {   
+        $gruposEmpleado = new GruposEmpleado();
+        $puestos = Puesto::pluck('nombre','id');
+        $empleados = Empleado::pluck('nombre','id');
+        $grupos = Grupo::pluck('nombre','id');
+        return view('grupos-empleado.create', compact('gruposEmpleado','puestos','empleados','grupos','idGrupo'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -78,7 +92,7 @@ class GruposEmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $empleados = GruposEmpleado::where('grupo_id','=', $request->all()['grupo_id'])->get();
         
         foreach($empleados as $empleado){
@@ -87,10 +101,9 @@ class GruposEmpleadoController extends Controller
 
         if( !in_array( $request->all()['empleado_id'] ,$myArray ) )
         {
-            request()->validate(GruposEmpleado::$rules);
             $gruposEmpleado = GruposEmpleado::create($request->all());
             return redirect()->route('grupos.index')
-            ->with('success', 'GruposEmpleado created successfully.');
+            ->with('success', 'Empleado añadido al grupo exitosamente.');
         }else{
             return redirect()->route('grupos.index')
                 ->with('danger', 'ERROR el empleado ya existe en el grupo.');
@@ -117,7 +130,7 @@ class GruposEmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
         $gruposEmpleado = GruposEmpleado::find($id);
         $puestos = Puesto::pluck('nombre','id');
         $empleados = Empleado::pluck('nombre','id');
@@ -152,7 +165,7 @@ class GruposEmpleadoController extends Controller
     {
         $gruposEmpleado = GruposEmpleado::find($id)->delete();
 
-        return redirect()->route('grupos-empleados.index')
+        return redirect()->route('grupos.index')
             ->with('success', 'Empleado del grupo eliminado(a) exitosamente.');
     }
 

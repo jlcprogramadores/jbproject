@@ -19,7 +19,7 @@
                                 <a href="{{ route('grupos.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
-                                <a href="{{ route('grupos-empleados.formEmpleadoGrupo', ['idGrupo' => ($gruposEmpleados[0]->grupo_id) ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('grupos-empleados.formEmpleadoNuevoGrupo', ['idGrupo' => ($gruposEmpleados[0]->grupo_id) ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Añadir Empleado al Grupo') }}
                                 </a>
                               </div>
