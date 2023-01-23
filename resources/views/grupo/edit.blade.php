@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Grupo
-@endsection
+@section('title','Actualizar Grupo')
 
 @section('content')
     <section class="content container-fluid">
@@ -13,14 +11,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Grupo</span>
+                        <span class="card-title">Actualizar Grupo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('grupos.update', $grupo->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('grupo.form')
+                            @include('grupo.formGrupoNombre')
 
                         </form>
                     </div>

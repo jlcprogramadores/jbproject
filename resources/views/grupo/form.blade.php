@@ -5,7 +5,7 @@
                 <div class="col-sm-2 p-1 form-group">
                     <label id="textcantidad">Cantidad de Empleados</label>
                     <input type="number" name="cantidad" id="cantidad" min="1"  class="form-control" value="1">
-                </div>
+                </div>  
                 <div class="col-sm-10 p-1 form-group">
                     {{ Form::label('nombre') }}
                     {{ Form::text('nombre', $grupo->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
@@ -21,7 +21,6 @@
             <div class="row justify-content-md-center">
                     <td><input id="btnCargarEmpleados" type="button" name="answer" value="Cargar Empleados"  class="btn btn-success col col-lg-3" onclick="llenarTablas()" /></td>
             </div>
-
             <br>
             <div class="row">
                 <div id="apartadoEmpleado"  style="display:none;">
