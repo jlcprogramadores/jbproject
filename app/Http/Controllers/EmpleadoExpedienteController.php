@@ -169,8 +169,8 @@ class EmpleadoExpedienteController extends Controller
         
         $empleado = Empleado::find($id_empleado);
         $expedientes = Expediente::select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.usuario_edito','empleado_expedientes.updated_at' )
-                        ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
-                        ->where('empleado_expedientes.empleado_id','=',$id_empleado)->paginate();
+            ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+            ->where('empleado_expedientes.empleado_id','=',$id_empleado)->paginate();
         $i=0;
         return view('empleado-expediente.indexEmpExpedientes', compact('empleado', 'expedientes','i'));
     }

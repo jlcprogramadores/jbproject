@@ -18,6 +18,9 @@
                             </span>
 
                              <div class="float-right">
+                                <a href="{{ route('paros.index') }}"  class="btn btn-light btn-sm float-right"  data-placement="left">
+                                    {{ __('Atrás') }}
+                                </a>
                                 {{-- <a href="{{ route('historial-paros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a> --}}
