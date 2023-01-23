@@ -55,7 +55,7 @@
                                             
 											<td>{{ $iva->porcentaje }}%</td>
 											<td>{{ $iva->descripcion }}</td>
-                                            <td>{{ $iva->usuario_edito }}  <br/> {{ $iva->updated_at }}</td>
+                                            <td><span class="peque">{{ $iva->usuario_edito }}</span>  <br/> <span class="peque">{{ $iva->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('ivas.destroy',$iva->id) }}" method="POST">
                                                     @can('ivas.show')    
