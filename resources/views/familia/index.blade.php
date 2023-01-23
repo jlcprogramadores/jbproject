@@ -56,7 +56,7 @@
                                             
 											<td>{{ $familia->nombre }}</td>
 											<td>{{ $familia->descripcion }}</td>
-                                            <td>{{ $familia->usuario_edito }}  <br/> {{ $familia->updated_at }}</td>
+                                            <td><span class="peque">{{ $familia->usuario_edito }}</span>  <br/> <span class="peque">{{ $familia->updated_at }}</span></td>   
                                             <td>
                                                 <form action="{{ route('familias.destroy',$familia->id) }}" method="POST">
                                                     @can('familias.show')
