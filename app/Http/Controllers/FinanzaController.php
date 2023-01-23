@@ -394,7 +394,7 @@ class FinanzaController extends Controller
             $nombreProyecto = $proyecto->nombre;
             $ingresos = Finanza::where('entradas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
             $egresos = Finanza::where('salidas_id','!=',null)->where('proyecto_id', '=', $request->proyecto_id)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
-            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto','desde','hasta'));
 
         }else{
             $desde=$request->desde;
@@ -402,7 +402,7 @@ class FinanzaController extends Controller
             $nombreProyecto = "Todos los Proyectos en el Sistema";
             $ingresos = Finanza::where('entradas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
             $egresos = Finanza::where('salidas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
-            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto'));
+            return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto','desde','hasta'));
         }
     }
 

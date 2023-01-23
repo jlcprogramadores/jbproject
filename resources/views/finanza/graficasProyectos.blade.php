@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gráficas por proyecto')
+@section('title', 'Gráficas Por Proyecto')
 @if (Auth::check() && Auth::user()->es_activo)
     @can('finanzas.graficas')
         @section('content')
@@ -9,7 +9,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <span class="card-title">Gráficas por proyecto</span>
+                                <span class="card-title">Gráficas Por Proyecto</span>
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('finanzas.graficas') }}" role="form"
@@ -17,23 +17,8 @@
                                     @csrf
                                     <div class="container">
                                         <div class="row">
-
                                             <div class="col-sm p-1 form-group ">
-                                                <label for="desde">Fecha inico:</label>
-                                                <br>
-                                                <input id="desde" type="date" name="desde" class="form-control"
-                                                    onchange="funcionDesde(this.value)" required>
-                                            </div>
-                                            <div class="col-sm p-1 form-group ">
-
-                                                <label for="hasta">Fecha fin:</label>
-                                                <br>
-                                                <input type="date" name="hasta" id="hasta" class="form-control"
-                                                    onchange="funcionHasta(this.value)" required>
-                                            </div>
-                                            <div class="col-5 p-1 form-group ">
-                                                <label class="proyecto_id" name="Ingreso_id" for="Ingreso_id">Proyecto a
-                                                    Gráficar:</label>
+                                                <label class="proyecto_id" name="Ingreso_id" for="Ingreso_id">Proyecto A Gráficar:</label>
                                                 <br>
                                                 <select class="form-control" id="proyecto_id" name="proyecto_id">
                                                     <option value="" selected="selected">Selecciona Proyecto</option>
@@ -41,15 +26,29 @@
                                                         <option value="{{ $val }}">{{ $name }}</option>
                                                     @endforeach
                                                 </select>
-
                                             </div>
+                                            <div class="col-sm p-1 form-group ">
+                                                <label for="desde">Fecha Inico:</label>
+                                                <br>
+                                                <input id="desde" type="date" name="desde" class="form-control"
+                                                    onchange="funcionDesde(this.value)" required>
+                                            </div>
+                                            <div class="col-sm p-1 form-group ">
+
+                                                <label for="hasta">Fecha Fin:</label>
+                                                <br>
+                                                <input type="date" name="hasta" id="hasta" class="form-control"
+                                                    onchange="funcionHasta(this.value)" required>
+                                            </div>
+                                            
+                                        </div>                                    
+                                        <br>
+                                        <div class="row justify-content-md-center">
+                                            <button id="btn_graficar" type="submit"
+                                                class="btn btn-primary col col-lg-3">Gráficar</button>
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="row justify-content-md-center">
-                                        <button id="btn_graficar" type="submit"
-                                            class="btn btn-primary col col-lg-3">Gráficar</button>
-                                    </div>
                                 </form>
                             </div>
                         </div>

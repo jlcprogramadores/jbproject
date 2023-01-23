@@ -19,24 +19,23 @@
                                         <div class="row">
 
                                             <div class="col-sm p-1 form-group ">
-                                                <label for="desde">Fecha inico:</label>
+                                                <label for="desde">Fecha Inico:</label>
                                                 <br>
                                                 <input id="desde" type="date" name="desde" class="form-control"
                                                     onchange="funcionDesde(this.value)" required>
                                             </div>
                                             <div class="col-sm p-1 form-group ">
 
-                                                <label for="hasta">Fecha fin:</label>
+                                                <label for="hasta">Fecha Fin:</label>
                                                 <br>
                                                 <input type="date" name="hasta" id="hasta" class="form-control"
                                                     onchange="funcionHasta(this.value)" required>
                                             </div>
                                         </div>
-                                    </div>
-                                    <br>
-                                    <div class="row justify-content-md-center">
-                                        <button id="btn_graficar" type="submit"
-                                            class="btn btn-primary col col-lg-3">Gráficar</button>
+                                        <br>
+                                        <div class="row justify-content-md-center">
+                                            <button id="btn_graficar" type="submit" class="btn btn-primary col col-lg-3">Gráficar</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
