@@ -44,8 +44,8 @@
                                         
 										<th>Nombre</th>
 										<th>Razón Social</th>
-										<th>Mail</th>
-										<th>Rfc</th>
+										<th>Correo</th>
+										<th>RFC</th>
                                         <th>Dirección</th>
                                         <th>Teléfono</th>
                                         <th>Actualización</th>
