@@ -39,7 +39,7 @@ class FinanzaController extends Controller
      */
     public function index()
     {
-        $finanzas = Finanza::paginate();
+        $finanzas = Finanza::orderBy('id','desc')->paginate();
 
         return view('finanza.index', compact('finanzas'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());

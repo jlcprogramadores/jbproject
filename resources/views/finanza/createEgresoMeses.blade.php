@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Crear Egreso')
+@section('title','Crear Egreso A Meses')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">

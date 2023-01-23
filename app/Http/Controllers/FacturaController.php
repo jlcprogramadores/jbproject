@@ -34,8 +34,16 @@ class FacturaController extends Controller
     {
         $fiananza = Finanza::where('id',$id)->first();
         $es_a_meses = !is_null($fiananza->a_meses);
+        if($es_a_meses == false){
+            // si no es amese que muestre el orrden en desc
+            $facturas = Factura::where('finanza_id', $id)->orderBy('id','desc')->paginate();
 
-        $facturas = Factura::where('finanza_id', $id)->paginate();
+        }else{
+            $facturas = Factura::where('finanza_id', $id)->paginate();
+
+        }
+
+
         return view('factura.facturafinanzas', compact('facturas','id','es_a_meses'))
             ->with('i', (request()->input('page', 1) - 1) * $facturas->perPage());
     }

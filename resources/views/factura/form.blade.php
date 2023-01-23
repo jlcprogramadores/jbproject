@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-sm p-1 form-group">
-                    <label for="factura_base64">Comprobante de factura</label>
+                    <label for="factura_base64">Comprobante De Factura</label>
                     <input type="file" name="factura_base64" class="form-control">
                 </div>
                 <div class="col-sm p-1 form-group">
@@ -74,19 +74,16 @@
                     {!! $errors->first('monto', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
-                <div class="col-sm p-1 form-group d-none">
-                    {{ Form::label('usuario_edito') }}
-                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
-                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
-                </div>
+            <div class="col-sm p-1 form-group d-none">
+                {{ Form::label('usuario_edito') }}
+                {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+                {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
             <br>
-            <div class="row">
-                <div class="row justify-content-md-center">
-                    <br>
-                    <a href="javascript:history.back()" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
-                    <br>
-                    <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
-                </div>
+            <div class="row d-flex justify-content-center">
+                <a href="javascript:history.back()"class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <div class="col col-sm-2"></div>
+                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>
         </div>
     </div>

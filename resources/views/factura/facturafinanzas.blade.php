@@ -50,7 +50,7 @@
 										<th>Link Factura</th>
 										<th>Url</th>
                                         <th>Monto</th>
-										<th>Fecha Creacion</th>
+										<th>Fecha Creación</th>
 										<th>Fecha Factura</th>
                                         <th>Actualización</th>
                                         <th>Acciones</th>
@@ -73,7 +73,8 @@
                                             <td>{{ '$'. number_format( $factura->monto,2) }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
 											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
-                                            <td>{{ $factura->usuario_edito }}  <br/> {{ $factura->updated_at }}</td>  
+                                            <td><span class="peque">{{ $factura->usuario_edito }}</span>  <br/> <span class="peque">{{ $factura->updated_at }}</span></td>
+                                            
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
                                                     @can('facturas.edit')    

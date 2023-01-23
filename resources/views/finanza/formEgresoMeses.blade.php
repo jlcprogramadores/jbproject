@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-sm p-1 form-group">
                 {{ Form::label('proyecto_id','Proyecto') }}
+                <br>
                 {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el proyecto']) }}
                 {!! $errors->first('proyecto_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
@@ -12,12 +13,14 @@
             selecionar una familia, para que cargen las categorias de dicha familia -->
             <div class="col-sm p-1 form-group">
                 {{ Form::label('familia_id','Familia') }}
+                <br>
                 {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la familia']) }}
                 {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col-sm p-1 form-group">
-                {{ Form::label('categoria_id','Categoria') }}
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoria']) }}
+                {{ Form::label('categoria_id','Categoría') }}
+                <br>
+                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoría']) }}
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
@@ -104,12 +107,12 @@
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('Total') }}
-                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
+                    {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
                     {{ Form::label('fecha_de_pago') }}
-                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control-sm' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
                     {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group">
@@ -125,12 +128,12 @@
                     'Cancelación' => 'Cancelación'
                     ]; 
                     ?>
-                    {{ Form::label('metodo_de_pago','Método de pago') }}
+                    {{ Form::label('metodo_de_pago','Método De Pago') }}
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
                     {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="p-1 form-group  d-flex flex-column">
-                        <label for="comprobante" id="textComprobante">Comprobante de pago</label>
+                        <label for="comprobante" id="textComprobante">Comprobante De Pago</label>
                         <input type="file" name="comprobante" id="comprobante"  class="form-control">
                 </div>
                 <div class="form-group d-none">
@@ -141,13 +144,10 @@
             </div>
         </div>
         <br>
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <br>
-                <a href="{{ route('finanzas.index') }}" class="btn btn-danger col col-lg-3">{{ __('Cancelar')}}</a>
-                <br>
-                <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-lg-3">Aceptar</button>
-            </div>
+        <div class="row d-flex justify-content-center">
+            <a href="{{ route('finanzas.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+            <div class="col col-sm-2"></div>
+            <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
         </div>
     </div>
 </div>
