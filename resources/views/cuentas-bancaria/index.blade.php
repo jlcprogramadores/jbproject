@@ -65,7 +65,7 @@
 											<td>{{ $cuentasBancaria->cuenta }}</td>
 											<td>{{ $cuentasBancaria->clabe }}</td>
 											<td>{{ $cuentasBancaria->tarjeta }}</td>
-                                            <td>{{ $cuentasBancaria->usuario_edito }}  <br/> {{ $cuentasBancaria->updated_at }}</td>
+                                            <td><span class="peque">{{ $cuentasBancaria->usuario_edito }}</span>  <br/> <span class="peque">{{ $cuentasBancaria->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('cuentas-bancarias.destroy',$cuentasBancaria->id) }}" method="POST">
                                                     @can('cuentasbancarias.show')
