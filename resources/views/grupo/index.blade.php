@@ -55,7 +55,7 @@
 
                                             <td>
                                                 <form action="{{ route('grupos.destroy',$grupo->id) }}" method="POST">
-                                                    <a class="btn btn btn-sm btn-primary" href="{{ route('grupos-empleado.grupoPorEmpleados', ['id' => $grupo->id]) }}"><i class="fa fa-fw fa-edit"></i> Mostrar Empleados</a>
+                                                    <a class="btn btn btn-sm btn-primary" href="{{ route('grupos-empleado.grupoPorEmpleados', ['id' => $grupo->id]) }}"><i class="fa fa-fw fa-edit"></i> Lista de Empleados</a>
                                                     {{-- <a class="btn btn-sm btn-primary " href="{{ route('grupos.show',$grupo->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Empleados</a> --}}
                                                     <a class="btn btn-sm btn-success" href="{{ route('grupos.edit',$grupo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf

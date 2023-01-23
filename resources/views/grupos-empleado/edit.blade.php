@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Update Grupos Empleado
+    Actualizar Empleado
 @endsection
 
 @section('content')
@@ -12,8 +12,10 @@
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Update Grupos Empleado</span>
+                        <div class="card text-white border-secondary">
+                            <div class="card-header bg-secondary">
+                                <span class="card-title-white border-secondary">Actualizar Empleado: {{$empleados[$gruposEmpleado->empleado_id]}}</span>
+                            </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('grupos-empleados.update', $gruposEmpleado->id) }}"  role="form" enctype="multipart/form-data">

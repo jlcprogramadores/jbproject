@@ -66,6 +66,8 @@ Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteContr
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
 Route::get('/showPorEmpleado/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@showPorEmpleado')->name('empleado-expedientes.showPorEmpleado');
 Route::get('/grupoPorEmpleados/{id}', 'App\Http\Controllers\GruposEmpleadoController@grupoPorEmpleados')->name('grupos-empleado.grupoPorEmpleados');
+Route::get('/formEmpleadoGrupo/{idGrupo}', 'App\Http\Controllers\GruposEmpleadoController@formEmpleadoGrupo')->name('grupos-empleados.formEmpleadoGrupo');
+
 // finanzas
 Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('finanzas.ingreso');
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
