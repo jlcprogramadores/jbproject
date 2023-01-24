@@ -77,11 +77,9 @@
                                             <br>
                                         </div>
                                         <br />
-                                        <div class="container">
-                                            <span id="advertencia" style="color: red" > La fecha Desde debe ser menor a la fecha Hasta</span>
-                                            <div class="row justify-content-md-center">
-                                                <button id="btn_filtrar" type="submit" class="btn btn-primary col col-lg-3">Filtrar</button>
-                                            </div>
+                                        <span id="advertencia" style="color: red" > La fecha Desde debe ser menor a la fecha Hasta</span>
+                                        <div class="row justify-content-md-center">
+                                            <button id="btn_filtrar" type="submit" class="btn btn-primary col col-lg-3">Filtrar</button>
                                         </div>
 
                                     </div>

@@ -33,11 +33,11 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <br>
-                                    <div class="row justify-content-md-center">
-                                        <button id="btn_graficar" type="submit"
-                                            class="btn btn-primary col col-lg-3">Mostrar</button>
+                                        <br>
+                                        <div class="row justify-content-md-center">
+                                            <button id="btn_graficar" type="submit"
+                                                class="btn btn-primary col col-lg-3">Mostrar</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
