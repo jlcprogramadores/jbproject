@@ -38,6 +38,37 @@ class UserSeeder extends Seeder
             'es_admin' => 0
         ])->assignRole('Prueba');
         
+        User::create([
+            'name' => 'Administración',
+            'email' => 'admnistracion@gmail.com',
+            'password' => bcrypt('Jbindustrial22'),
+            'es_activo' => 1,
+            'es_admin' => 1
+        ])->assignRole('Admin');
+
+        User::create([
+            'name' => 'Finanzas',
+            'email' => 'finanzas@gmail.com',
+            'password' => bcrypt('Jbindustrial22'),
+            'es_activo' => 1,
+            'es_admin' => 1
+        ])->assignRole('Admin');
+
+        User::create([
+            'name' => 'Administrador General',
+            'email' => 'admingeneral@gmail.com',
+            'password' => bcrypt('Jbindustrial22'),
+            'es_activo' => 1,
+            'es_admin' => 1
+        ])->assignRole('Admin');
+
+        User::create([
+            'name' => 'Recursos Humanos	',
+            'email' => 'recursoshumanos@gmail.com',
+            'password' => bcrypt('Jbindustrial22'),
+            'es_activo' => 1,
+            'es_admin' => 1
+        ])->assignRole('Admin');
         // User::factory(100)->create();
 
     }
