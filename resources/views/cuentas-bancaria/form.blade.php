@@ -33,7 +33,6 @@
                         'Banco Actinver' => 'Banco Actinver',
                         'Banco Autofin México' => 'Banco Autofin México',
                         'Banco Azteca' => 'Banco Azteca',
-        
                         'Banco Bancrea' => 'Banco Bancrea',
                         'Banco Base' => 'Banco Base',
                         'Banco Covalto' => 'Banco Covalto',
@@ -42,7 +41,6 @@
                         'Banco de Inversión Afirme' => 'Banco de Inversión Afirme',
                         'Banco del Bajío' => 'Banco del Bajío',
                         'Banco Forjadores' => 'Banco Forjadores',
-        
                         'Banco Inbursa' => 'Banco Inbursa',
                         'Banco Inmobiliario Mexicano' => 'Banco Inmobiliario Mexicano',
                         'Banco Invex' => 'Banco Invex',
@@ -51,7 +49,6 @@
                         'Banco Monex' => 'Banco Monex',
                         'Banco Multiva' => 'Banco Multiva',
                         'Banco PagaTodo' => 'Banco PagaTodo',
-        
                         'Banco Regional de Monterrey' => 'Banco Regional de Monterrey',
                         'Banco S3 Caceis México' => 'Banco S3 Caceis México',
                         'Banco Sabadell' => 'Banco Sabadell',
@@ -59,7 +56,6 @@
                         'Banco Shinhan de México' => 'Banco Shinhan de México',
                         'Banco Ve por Más' => 'Banco Ve por Más',
                         'BanCoppel' => 'BanCoppel',
-        
                         'Bank of America Mexico' => 'Bank of America Mexico',
                         'Bank of China Mexico' => 'Bank of China Mexico',
                         'Bankaool' => 'Bankaool',
@@ -69,7 +65,6 @@
                         'BBVA México' => 'BBVA México',
                         'BNP Paribas' => 'BNP Paribas',
                         'Citibanamex' => 'Citibanamex',
-        
                         'CIBanco' => 'CIBanco',
                         'Consubanco' => 'Consubanco',
                         'Deutsche Bank México' => 'Deutsche Bank México',
@@ -77,7 +72,6 @@
                         'HSBC México' => 'HSBC México',
                         'Industrial and Commercial Bank of China' => 'Industrial and Commercial Bank of China',
                         'Intercam Banco' => 'Intercam Banco',
-        
                         'Mizuho Bank' => 'Mizuho Bank',
                         'MUFG Bank Mexico' => 'MUFG Bank Mexico',
                         'Scotiabank' => 'Scotiabank'
@@ -119,7 +113,11 @@
             </div>
             <br>
             <div class="row d-flex justify-content-center">
-                <a href="javascript:history.back()"  class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                @if (request()->id)
+                    <a class="btn btn-danger col col-sm-2" href="{{ route('cuentas-bancarias.cuentabancariaproveedor', ['id' => request()->id ])}}"><i class="fa fa-fw fa-edit"></i> Cancelar</a> 
+                @else    
+                    <a class="btn btn-danger col col-sm-2" href="{{ route('cuentas-bancarias.cuentabancariaproveedor', ['id' => $cuentasBancaria->proveedore_id ])}}"><i class="fa fa-fw fa-edit"></i> Cancelar</a>
+                @endif
                 <div class="col col-sm-2"></div>
                 <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>

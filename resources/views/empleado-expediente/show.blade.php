@@ -32,8 +32,7 @@
                         @endif  
                         <br>
                         <br>
-                        <a class="btn btn-primary" href="javascript:history.back()"> Atrás</a>
-                        
+                        <a class="btn btn-primary" href="{{ route('empleado-expedientes.editExpediente', ['id' => $empleadoExpediente->empleado_id]) }}"><i class="fa fa-fw fa-edit"></i> Atrás</a>
                     </div>
                 </div>
             </div>

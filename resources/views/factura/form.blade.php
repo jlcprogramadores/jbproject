@@ -81,7 +81,11 @@
             </div>
             <br>
             <div class="row d-flex justify-content-center">
-                <a href="javascript:history.back()"class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                @if (request()->finanza_id)
+                   <a class="btn btn-danger col col-sm-2" href="{{ route('facturas.facturafinanzas', ['id' => request()->finanza_id]) }}"><i class="fa fa-fw fa-edit"></i> Cancelar</a> 
+                @else
+                   <a class="btn btn-danger col col-sm-2" href="{{ route('facturas.facturafinanzas', ['id' => $factura->finanza_id]) }}"><i class="fa fa-fw fa-edit"></i> Cancelar</a>
+                @endif
                 <div class="col col-sm-2"></div>
                 <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>

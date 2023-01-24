@@ -4,7 +4,6 @@
         
         <div class="container ">
             <div class="text-capitalize">
-
                 <div class="row">
                     <div class="form-group col-md p-1">
                         {{ Form::label('empleado_id', 'Empleado') }}
@@ -75,7 +74,7 @@
                 </div>
             <br>
             <div class="row d-flex justify-content-center">
-                <a href="{{ route('empleado-expedientes.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <a class="btn btn-danger col col-sm-2" href="{{ route('empleado-expedientes.editExpediente', ['id' => request()->id]) }}"><i class="fa fa-fw fa-edit"></i> Atrás</a>
                 <div class="col col-sm-2"></div>
                 <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>
