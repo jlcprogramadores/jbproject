@@ -53,8 +53,9 @@ class FinanzaController extends Controller
     public function indexEgreso()
     {
         $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
-
-        return view('finanza.indexEgreso', compact('finanzas'))
+        $esEgreso = true;
+        $nombre = 'Egreso';
+        return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
     }
 
@@ -66,8 +67,9 @@ class FinanzaController extends Controller
     public function indexIngreso()
     {
         $finanzas = Finanza::where('entradas_id','!=',null)->paginate();     
-
-        return view('finanza.indexIngreso', compact('finanzas'))
+        $esEgreso = false;
+        $nombre = 'Ingreso';
+        return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
     }
 
