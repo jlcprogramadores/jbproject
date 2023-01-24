@@ -52,7 +52,7 @@ class FinanzaController extends Controller
      */
     public function indexEgreso()
     {
-        $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
+        $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('id','desc')->paginate();     
         $esEgreso = true;
         $nombre = 'Egreso';
         return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
@@ -66,7 +66,7 @@ class FinanzaController extends Controller
      */
     public function indexIngreso()
     {
-        $finanzas = Finanza::where('entradas_id','!=',null)->paginate();     
+        $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('id','desc')->paginate();     
         $esEgreso = false;
         $nombre = 'Ingreso';
         return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
