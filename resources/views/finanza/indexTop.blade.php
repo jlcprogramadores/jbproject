@@ -16,11 +16,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Finanzas') }}
+                                {{ 'Top '.$nombre }}
                             </span>
-
-                            <div class="float-right">
-                                <a href="javascript:history.back()" class="btn btn-light btn-sm float-right"  data-placement="left">
+                              <div class="float-right">
+                                <a href="javascript:history.back()" class="btn btn-light btn-sm float-right"
+                                    data-placement="left">
                                     {{ __('Atrás') }}
                                 </a>
                             </div>
@@ -66,6 +66,7 @@
 										<th>Comentario</th>
                                         <th>Comprobante</th>
                                         <th>Fecha Actualización</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -181,6 +182,7 @@
                                             @else  
                                                 <td></td>
                                             @endif
+                                            
                                             <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
                                         </tr>
                                     @endforeach
@@ -215,6 +217,9 @@
             $('#table').DataTable({
                 responsive:true,
                 autoWidth: false,   
+                order: [
+                    [18, 'desc']
+                ],
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontró nada – lo siento",

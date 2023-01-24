@@ -69,16 +69,16 @@ Route::get('/grupoPorEmpleados/{id}', 'App\Http\Controllers\GruposEmpleadoContro
 Route::get('/formEmpleadoGrupo/{idGrupo}', 'App\Http\Controllers\GruposEmpleadoController@formEmpleadoGrupo')->name('grupos-empleados.formEmpleadoGrupo');
 Route::get('/formEmpleadoNuevoGrupo/{idGrupo}', 'App\Http\Controllers\GruposEmpleadoController@formEmpleadoNuevoGrupo')->name('grupos-empleados.formEmpleadoNuevoGrupo');
 Route::get('/formGrupoNombre/{idGrupo}', 'App\Http\Controllers\GruposController@formGrupoNombre')->name('grupos.formGrupoNombre');
-
+// top
+Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
+Route::get('/indexEgreso', 'App\Http\Controllers\FinanzaController@indexEgreso')->name('finanzas.indexEgreso');
+Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
 
 // finanzas
 Route::get('/ingreso', 'App\Http\Controllers\FinanzaController@ingreso')->name('finanzas.ingreso');
 Route::get('/egreso', 'App\Http\Controllers\FinanzaController@egreso')->name('finanzas.egreso');
-Route::get('/indexEgreso', 'App\Http\Controllers\FinanzaController@indexEgreso')->name('finanzas.indexEgreso');
-Route::get('/indexIngreso', 'App\Http\Controllers\FinanzaController@indexIngreso')->name('finanzas.indexIngreso');
 Route::post('/storeIngreso', 'App\Http\Controllers\FinanzaController@storeIngreso')->name('finanzas.storeIngreso');
 Route::post('/storeEgreso', 'App\Http\Controllers\FinanzaController@storeEgreso')->name('finanzas.storeEgreso');
-Route::get('/topGeneral', 'App\Http\Controllers\FinanzaController@topGeneral')->name('finanzas.topGeneral');
 Route::get('/confirmarPago/{id}', 'App\Http\Controllers\FinanzaController@confirmarPago')->name('finanzas.confirmarPago');
 Route::post('/top', 'App\Http\Controllers\FinanzaController@top')->name('finanzas.top');
 Route::get('/showTopIngreso/{id}', 'App\Http\Controllers\FinanzaController@showTopIngreso')->name('finanzas.showTopIngreso');

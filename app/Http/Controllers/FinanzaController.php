@@ -95,16 +95,16 @@ class FinanzaController extends Controller
         // las opciones de tipo de fiananza son  0 es egreso, 1 es ingreso
         // y si tipoFinanza == 0 es false
         if($tipoFinanza){ // ingreso
-
+            $nombre = 'Ingreso';
             $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->paginate($numRegistros);
-            return view('finanza.topIngreso', compact('finanzas'))
+            return view('finanza.indexTop', compact('finanzas','nombre'))
                 ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
 
         }else{ //egreso
-
+            $nombre = 'Egreso';
             $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->paginate($numRegistros);     
             
-            return view('finanza.topEgreso', compact('finanzas'))
+            return view('finanza.indexTop', compact('finanzas','nombre'))
                 ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
 
         }
@@ -431,31 +431,7 @@ class FinanzaController extends Controller
         return view('finanza.centrodecostos', compact('finanzas'))->with('i');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showTopEgreso($id)
-    {
-        $finanza = Finanza::find($id);
-        $salida = Salida::find($finanza->salidas_id);
-        return view('finanza.showTopEgreso', compact('finanza','salida'));
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showTopIngreso($id)
-    {
-        $finanza = Finanza::find($id);
-        $salida = Salida::find($finanza->salidas_id);
-        return view('finanza.showTopIngreso', compact('finanza','salida'));
-    }
 
     /**
      * Display the specified resource.
@@ -730,14 +706,14 @@ class FinanzaController extends Controller
 
         // Puras fechas vrevisar que oo demas se a nulo
         if( is_null($desde) == false  && is_null($proyecto_id) != false && is_null($tipo) != false){
-            $finanzas = Finanza::whereBetween('fecha_entrada', [$desde, $hasta])->paginate();     
+            $finanzas = Finanza::whereBetween('fecha_entrada', [$desde, $hasta])->orderBy('id','desc')->paginate();     
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         // fecha y proyecto
         }elseif(is_null($desde) == false && is_null($proyecto_id) == false && is_null($tipo) != false){
             $filtros = [
                 ['proyecto_id','=',$proyecto_id]
             ];
-            $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->paginate();     
+            $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->orderBy('id','desc')->paginate();     
             return view('finanza.showdatosfiltrados', compact('finanzas'));
         // fecha, proyecto y tipo
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && is_null($cliente_id) != false && is_null($proveedor_id) != false){
@@ -747,14 +723,14 @@ class FinanzaController extends Controller
                     ['entradas_id','!=',null],
                     ['proyecto_id','=',$proyecto_id]
                 ];
-                $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->paginate();     
+                $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->orderBy('id','desc')->paginate();     
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }else{
                 $filtros = [
                     ['salidas_id','!=',null],
                     ['proyecto_id','=',$proyecto_id]
                 ];
-                $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->paginate();     
+                $finanzas = Finanza::where($filtros)->whereBetween('fecha_entrada', [$desde, $hasta])->orderBy('id','desc')->paginate();     
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }
         }elseif(is_null($proyecto_id) == false && is_null($proyecto_id) == false && is_null($tipo) == false && (is_null($cliente_id) == false || is_null($proveedor_id) == false)){
@@ -765,7 +741,7 @@ class FinanzaController extends Controller
                     ['finanzas.proyecto_id','=',$proyecto_id],
                     ['entradas.cliente_id','=',$cliente_id]
                 ];
-                $finanzas = Finanza::where($filtro1)->whereBetween('finanzas.fecha_entrada', [$desde, $hasta])->join('entradas', 'entradas.id', '=', 'finanzas.entradas_id')->paginate();   
+                $finanzas = Finanza::where($filtro1)->whereBetween('finanzas.fecha_entrada', [$desde, $hasta])->join('entradas', 'entradas.id', '=', 'finanzas.entradas_id')->orderBy('id','desc')->paginate();   
 
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }else{
@@ -775,7 +751,7 @@ class FinanzaController extends Controller
                     ['finanzas.proyecto_id','=',$proyecto_id],
                     ['salidas.proveedor_id','=',$proveedor_id]
                 ];
-                $finanzas = Finanza::where($filtros)->whereBetween('finanzas.fecha_entrada', [$desde, $hasta])->join('salidas', 'salidas.id', '=', 'finanzas.salidas_id')->paginate();     
+                $finanzas = Finanza::where($filtros)->whereBetween('finanzas.fecha_entrada', [$desde, $hasta])->join('salidas', 'salidas.id', '=', 'finanzas.salidas_id')->orderBy('id','desc')->paginate();     
                 return view('finanza.showdatosfiltrados', compact('finanzas'));
             }
         }
