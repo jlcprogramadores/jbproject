@@ -88,8 +88,8 @@ class ParoController extends Controller
         $grupo = new Grupo();
         $paro = new Paro();
         $proyecto = Proyecto::pluck('nombre','id');
-        $empleados = Empleado::pluck('nombre','id');
-        $numeros = Empleado::pluck('no_empleado','id');
+        $empleados = Empleado::where('esta_trabajando','=', 1)->pluck('nombre','id');
+        $numeros = Empleado::where('esta_trabajando','=', 1)->pluck('no_empleado','id');
         $puestos = Puesto::pluck('nombre','id');
 
         foreach($numeros as $i => $valor){

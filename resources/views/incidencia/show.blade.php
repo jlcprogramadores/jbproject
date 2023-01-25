@@ -12,19 +12,19 @@
                             <span class="card-title">Mostrar Incidencia</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('incidencias.index') }}"> Atrás</a>
+                            
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Empleado Id:</strong>
-                            {{ $incidencia->empleado_id }}
+                            <strong>Empleado:</strong>
+                            {{ $incidencia->empleado->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Proyecto Id:</strong>
-                            {{ $incidencia->proyecto_id }}
+                            <strong>Proyecto:</strong>
+                            {{ $incidencia->proyecto->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Inicio:</strong>
@@ -42,11 +42,8 @@
                             <strong>Comentario:</strong>
                             {{ $incidencia->comentario }}
                         </div>
-                        <div class="form-group">
-                            <strong>Usuario Edito:</strong>
-                            {{ $incidencia->usuario_edito }}
-                        </div>
-
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('incidencias.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>
