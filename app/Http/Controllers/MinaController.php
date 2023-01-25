@@ -105,7 +105,7 @@ class MinaController extends Controller
         $relacionProyecto = Proyecto::select('id')->where('mina_id','=',$id)->first();
         if(!is_null($relacionProyecto)){
             return redirect()->route('minas.index')
-                ->with('danger', 'No se elimino la mina por que existen poryectos relacionados.');
+                ->with('danger', 'No se elimino la mina por que existen proyectos relacionados.');
         }else{
             $mina = Mina::find($id)->delete();
             return redirect()->route('minas.index')
