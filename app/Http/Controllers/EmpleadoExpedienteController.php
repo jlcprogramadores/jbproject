@@ -261,12 +261,13 @@ class EmpleadoExpedienteController extends Controller
     public function destroy($id)
     {   
         $empleadoExpediente = EmpleadoExpediente::find($id);
+        $idEmpleado = $empleadoExpediente->empleado_id;
         if ($empleadoExpediente->archivo != null) {
             unlink(base_path('storage/app/public/'.explode("/",$empleadoExpediente->archivo)[2]));
         } 
         $empleadoExpediente = EmpleadoExpediente::find($id)->delete();
-
-        return redirect()->route('empleado-expedientes.index')
+        
+        return redirect()->route('empleado-expedientes.editExpediente', ['id' =>$idEmpleado])
             ->with('success', 'Expediente eliminado exitosamente.');
     }
 }

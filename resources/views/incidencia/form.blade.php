@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 p-1 form-group">
-                    {{ Form::label('Fotografía del empleado') }}
+                    {{ Form::label('Justificante de Incidencia') }}
                     <label for="justificante"></label>
                     <input type="file" name="justificante"  class="form-control">
                 </div>

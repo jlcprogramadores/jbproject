@@ -108,10 +108,11 @@ class ExpedienteController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $expediente = Expediente::find($id)->delete();
+    {   
+        dd($id);
+        // $expediente = Expediente::find($id)->delete();
 
-        return redirect()->route('expedientes.index')
-            ->with('success', 'Expediente eliminado exitosamente.');
+        // return redirect()->route('expedientes.index')
+        //     ->with('success', 'Expediente eliminado exitosamente.');
     }
 }
