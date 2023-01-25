@@ -37,7 +37,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Es Facturable:</strong>
-                            {{ $proveedore->es_facturable }}
+                            @if($proveedore->es_facturable  == 1 )
+                                <p style="display:inline" class="text-success">Facturable</p>
+                            @else
+                                <p style="display:inline" class="text-danger">No Facturable</p>
+                            @endif
                         </div>
                         <div class="form-group">
                             <strong>Correo:</strong>
@@ -50,9 +54,9 @@
                         <div class="form-group">
                             <strong>Estado:</strong>
                             @if($proveedore->es_activo  == 1 )
-                                <p class="text-success">Activo</p>
+                                <p style="display:inline" class="text-success">Activo</p>
                             @else
-                                <p class="text-danger">Inactivo</p>
+                                <p style="display:inline" class="text-danger">Inactivo</p>
                             @endif
                         </div>
                         <div class="float-right">

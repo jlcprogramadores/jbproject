@@ -249,7 +249,7 @@ class RoleSeeder extends Seeder
                 //Permisos
                 $permisorolesindex = Permission::create(['name' => 'roles.index', 'description' => 'Roles:Tabla', 'nomenclatura' => 'mn-03-sb-05-pm-01'])->syncRoles($rolAdmin);
                 $permisorolescreate = Permission::create(['name' => 'roles.create', 'description' => 'Roles:Crear', 'nomenclatura' => 'mn-03-sb-05-pm-02'])->syncRoles($rolAdmin);
-                $permisorolesshow = Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 'mn-03-sb-05-pm-03'])->syncRoles($rolAdmin);
+                // $permisorolesshow = Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 'mn-03-sb-05-pm-03'])->syncRoles($rolAdmin);
                 $permisorolesedit = Permission::create(['name' => 'roles.edit', 'description' => 'Roles:Editar', 'nomenclatura' => 'mn-03-sb-05-pm-04'])->syncRoles($rolAdmin);
                 $permisorolesdestroy = Permission::create(['name' => 'roles.destroy', 'description' => 'Roles:Borrar', 'nomenclatura' => 'mn-03-sb-05-pm-05'])->syncRoles($rolAdmin);
 

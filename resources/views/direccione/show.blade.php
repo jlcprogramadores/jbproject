@@ -40,7 +40,7 @@
                             {{ $direccione->num_ext }}
                         </div>
                         <div class="form-group">
-                            <strong>Codigo Postal:</strong>
+                            <strong>Código Postal:</strong>
                             {{ $direccione->codigo_postal }}
                         </div>
                         <div class="form-group">

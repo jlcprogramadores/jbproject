@@ -48,9 +48,9 @@
 											<td>{{ $rol->name }}</td>
                                             <td>
                                                 <form action="{{ route('roles.destroy',$rol->id) }}" method="POST">
-                                                    @can('roles.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('roles.show',$rol->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
+                                                    {{-- @can('roles.show') --}}
+                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('roles.show',$rol->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a> --}}
+                                                    {{-- @endcan --}}
                                                     @can('roles.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('roles.edit',$rol->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>    
                                                     @endcan

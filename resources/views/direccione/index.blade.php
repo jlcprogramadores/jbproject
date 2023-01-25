@@ -41,7 +41,7 @@
 										<th>Calle</th>
 										<th>Num Int</th>
 										<th>Num Ext</th>
-										<th>Codigo Postal</th>
+										<th>Código Postal</th>
 										<th>Colonia</th>
 										<th>Municipio</th>
 										<th>Estado</th>
