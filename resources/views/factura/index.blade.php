@@ -55,8 +55,8 @@
 											<td>{{ $factura->factura_base64 }}</td>
 											<td>{{ $factura->url }}</td>
                                             <td>{{ $factura->monto }}</td>
-											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
-											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
+											<td>{{ $factura->fecha_creacion ? Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') : '' }}</td>
+											<td>{{ $factura->fecha_factura ? Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') : '' }}</td>
                                             <td><span class="peque">{{ $factura->usuario_edito }}</span>  <br/> <span class="peque">{{ $factura->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">

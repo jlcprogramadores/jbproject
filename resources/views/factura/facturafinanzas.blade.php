@@ -71,8 +71,8 @@
                                             @endif 
 											<td>{{ $factura->url }}</td>
                                             <td>{{ '$'. number_format( $factura->monto,2) }}</td>
-											<td>{{ Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') }}</td>
-											<td>{{ Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') }}</td>
+											<td>{{ $factura->fecha_creacion ? Carbon\Carbon::parse($factura->fecha_creacion)->format('d-m-Y') : '' }}</td>
+											<td>{{ $factura->fecha_factura ? Carbon\Carbon::parse($factura->fecha_factura)->format('d-m-Y') : ''}}</td>
                                             <td><span class="peque">{{ $factura->usuario_edito }}</span>  <br/> <span class="peque">{{ $factura->updated_at }}</span></td>
                                             
                                             <td>
