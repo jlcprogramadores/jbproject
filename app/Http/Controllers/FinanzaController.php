@@ -551,6 +551,18 @@ class FinanzaController extends Controller
         if ($finanza->salidas_id != null) {
             request()->validate(Finanza::$rulesEgreso);
         }else{
+            // Se evalua que no las fechas bno pasen de 3 dias antes de la fecha actual para tomarlo como retraso
+            $fechaActual = Carbon::createFromFormat('Y-m-d', $request->fecha_entrada);
+            $fechaLimite = Carbon::parse( Carbon::now()->subDay(3))->format('Y-m-d');
+            $shippingDate = Carbon::createFromFormat('Y-m-d', $fechaLimite );
+            $diferencia_en_dias = $fechaActual->diffInDays($shippingDate,false);
+            // cuando es mayor a 1 es que la fecha es positiva antes de los 3 dias por lo que esta retrasado
+            if($diferencia_en_dias > 0){
+                $request['esta_atrasado'] = 1;
+            }else{
+                $request['esta_atrasado'] = 0;
+            }
+
             request()->validate(Finanza::$rulesIngreso);
         }
         $finanza->update($request->all());
