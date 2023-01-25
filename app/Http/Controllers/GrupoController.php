@@ -134,6 +134,11 @@ class GrupoController extends Controller
      */
     public function destroy($id)
     {
+        // se elimina de grupos_emplados despues el grupo
+        $GruposEmp = GruposEmpleado::where('grupo_id', $id)->get();
+        foreach($GruposEmp as $item){
+            $item->delete();
+        }
         $grupo = Grupo::find($id)->delete();
 
         return redirect()->route('grupos.index')
