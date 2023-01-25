@@ -138,6 +138,11 @@ class IncidenciaController extends Controller
      */
     public function destroy($id)
     {
+        $incidencia = Incidencia::find($id);
+        if ($incidencia->justificante != null) {
+            unlink(base_path('storage/app/public/'.explode("/",$incidencia->justificante)[2]));
+        } 
+        
         $incidencia = Incidencia::find($id)->delete();
 
         return redirect()->route('incidencias.index')
