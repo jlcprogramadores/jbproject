@@ -20,11 +20,18 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
+        // capacitaciones_dc3 no debe de ver
         $id_dc3 = DB::table('expedientes')
             ->where('nombre','=','capacitaciones_dc3')
             ->get();
         $id_dc3  = $id_dc3->first()->id;
-        $expedientes = Expediente::where('expedientes.id','!=',DB::raw($id_dc3))->paginate();
+        // cartas_amonestacion no debe de ver
+        $id_cartas_amo = DB::table('expedientes')
+            ->where('nombre','=','cartas_amonestacion')
+            ->get();
+        $id_cartas_amo  = $id_cartas_amo->first()->id;
+
+        $expedientes = Expediente::where('expedientes.id','!=',DB::raw($id_dc3))->where('expedientes.id','!=',DB::raw($id_cartas_amo))->paginate();
         
         return view('expediente.index', compact('expedientes'))
             ->with('i', (request()->input('page', 1) - 1) * $expedientes->perPage());

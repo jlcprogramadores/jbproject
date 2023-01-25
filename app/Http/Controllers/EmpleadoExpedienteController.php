@@ -126,11 +126,19 @@ class EmpleadoExpedienteController extends Controller
                 ->where('nombre','=','capacitaciones_dc3')
                 ->get();
             $id_dc3  = $id_dc3->first()->id;
+            // amonestación
+            $id_cartas_amo = DB::table('expedientes')
+                ->where('nombre','=','cartas_amonestacion')
+                ->get();
+            $id_cartas_amo  = $id_cartas_amo->first()->id;
+
+
             $expedientesCargados = DB::table('expedientes')
                 ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
                 ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
                 ->where('empleado_expedientes.empleado_id','=',$id)
                 ->where('expedientes.id','!=',DB::raw($id_dc3))
+                ->where('expedientes.id','!=',DB::raw($id_cartas_amo))
                 ->get();
 
             $whereJoin = [
@@ -143,6 +151,7 @@ class EmpleadoExpedienteController extends Controller
                 ->select('expedientes.id','expedientes.nombre','expedientes.es_multiple')
                 ->where('empleado_expedientes.empleado_id','=', null)
                 ->where('expedientes.id','!=',DB::raw($id_dc3))
+                ->where('expedientes.id','!=',DB::raw($id_cartas_amo))
                 ->get();
         // }else{
         //     $expedientesCargados = null;
@@ -156,6 +165,24 @@ class EmpleadoExpedienteController extends Controller
         // }
 
         return view('empleado-expediente.showPorEmpleado', compact('expedientesCargados','expedienteFaltantes'));
+    }
+
+    public function Amonestacion($id)
+    {   
+        $id_cartas_amo = DB::table('expedientes')
+            ->where('nombre','=','cartas_amonestacion')
+            ->get();
+        $id_cartas_amo  = $id_cartas_amo->first()->id;
+
+        $cartasAmo = DB::table('expedientes')
+                ->join('empleado_expedientes', 'empleado_expedientes.expediente_id', '=', 'expedientes.id')
+                ->select('empleado_expedientes.id','expedientes.nombre','expedientes.es_multiple','empleado_expedientes.archivo')
+                ->where('empleado_expedientes.empleado_id','=',$id)
+                ->where('expedientes.id','=',DB::raw($id_cartas_amo))
+                ->get();        
+
+        $i = 0;
+        return view('empleado-expediente.showAmonestacion', compact('cartasAmo'))->with('i');
     }
 
     /**

@@ -64,7 +64,10 @@ Route::get('/editarfechalimite/{id}', 'App\Http\Controllers\EmpleadoController@e
 Route::post('/actualizarfechalimite', 'App\Http\Controllers\EmpleadoController@actualizarfechalimite')->name('empleados.actualizarfechalimite');
 Route::get('/editExpediente/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@editExpediente')->name('empleado-expedientes.editExpediente');
 Route::get('/docsFaltantes/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@docsFaltantes')->name('empleado-expedientes.docsFaltantes');
+// expediente-empleado
 Route::get('/showPorEmpleado/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@showPorEmpleado')->name('empleado-expedientes.showPorEmpleado');
+Route::get('/Amonestacion/{id}', 'App\Http\Controllers\EmpleadoExpedienteController@Amonestacion')->name('empleado-expedientes.Amonestacion');
+
 Route::get('/grupoPorEmpleados/{id}', 'App\Http\Controllers\GruposEmpleadoController@grupoPorEmpleados')->name('grupos-empleado.grupoPorEmpleados');
 Route::get('/formEmpleadoGrupo/{idGrupo}', 'App\Http\Controllers\GruposEmpleadoController@formEmpleadoGrupo')->name('grupos-empleados.formEmpleadoGrupo');
 Route::get('/formEmpleadoNuevoGrupo/{idGrupo}', 'App\Http\Controllers\GruposEmpleadoController@formEmpleadoNuevoGrupo')->name('grupos-empleados.formEmpleadoNuevoGrupo');

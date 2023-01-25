@@ -96,11 +96,13 @@
                                                 <td></td>
                                             @endif
 
-											<td>{{ $empleado->usuario_edito }} <br/> {{ $empleado->updated_at }}</td>  
+                                            <td><span class="peque">{{ $empleado->usuario_edito }}</span>  <br/> <span class="peque">{{ $empleado->updated_at }}</span></td>
+
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$empleado->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.editarfechalimite',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Fecha Limite</a>
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.showPorEmpleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Expediente</a>
+                                                    <a class="btn btn-sm btn-danger " href="{{ route('empleado-expedientes.Amonestacion',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Cartas Amonestación</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('empleado-expedientes.editExpediente',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar Expediente</a>
                                                     @csrf
                                                 </form>
