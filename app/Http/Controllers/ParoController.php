@@ -165,7 +165,7 @@ class ParoController extends Controller
                 return redirect()->route('paros.index')
                     ->with('success', 'Paro creado exitosamente.');
             }else{
-                return redirect()->route('grupos.index')
+                return redirect()->route('paros.index')
                 ->with('danger', 'ERROR el grupo tiene empleados repetidos.');
             }
         }  

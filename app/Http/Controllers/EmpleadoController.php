@@ -65,12 +65,12 @@ class EmpleadoController extends Controller
                 "id_proyecto"=> $value->id,
                 "nombre"=>$value->nombre,
                 "mina"=>isset($value->mina->nombre) ? $value->mina->nombre : '' ,
-                "costo_nomina"=>Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->sum('salario_real'), 
-                "total_empleados" => Empleado::where('proyecto_id','=', $value->id)->where('proyecto_id', '=', $value->id)->count()
+                "costo_nomina"=>Empleado::where('proyecto_id','=', $value->id)->where('esta_trabajando','=', 1)->sum('salario_real'), 
+                "total_empleados" => Empleado::where('proyecto_id','=', $value->id)->where('esta_trabajando','=', 1)->count()
             );
 
             $listas[] =array(
-                "lista"=> Empleado::select('nombre')->where('proyecto_id','=',$value->id)->get()
+                "lista"=> Empleado::select('nombre')->where('proyecto_id','=',$value->id)->where('esta_trabajando','=', 1)->get()
             );
         }
         return view('empleado.poblacion', compact('costos','listas'))->with('i');
@@ -84,7 +84,7 @@ class EmpleadoController extends Controller
     public function poblaciondetalle(Request $request)
     {        
         $proyecto = Proyecto::select('nombre')->where('id','=',$request->id)->get();
-        $empleados = Empleado::where('proyecto_id','=', $request->id)->where('proyecto_id', '=', $request->id)->get();
+        $empleados = Empleado::where('proyecto_id','=', $request->id)->where('esta_trabajando','=', 1)->get();
         $puestos = Puesto::pluck('nombre','id');
         
         return view('empleado.poblaciondetalle', compact('empleados','puestos','proyecto'))->with('i');
