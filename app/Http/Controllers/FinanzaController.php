@@ -666,6 +666,9 @@ class FinanzaController extends Controller
         }
         $factura = Factura::where('finanza_id','=',$finanza_id->id)->get();
         foreach($factura as $iterFacturas){
+            if ($iterFacturas->factura_base64!= null) {
+                unlink(base_path('storage/app/public/'.explode("/",$iterFacturas->factura_base64)[2]));
+            }
             $iterFacturas->delete();
         }       
         $finanza_id->delete();
