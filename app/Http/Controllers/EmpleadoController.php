@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\EmpleadoExpediente;
 use App\Models\HistorialAlta;
 use App\Models\Proyecto;
 use App\Models\Puesto;
@@ -222,6 +223,20 @@ class EmpleadoController extends Controller
         if ($empleado->fotografia != null) {
             unlink(base_path('storage/app/public/'.explode("/",$empleado->fotografia)[2]));
         } 
+        // elimina el historial despues el empleado
+        $hisAlta = HistorialAlta::where('empleado_id', $id)->get();
+        foreach($hisAlta as $item){
+            $item->delete();
+        }
+        // eliminamos los archivos del expediente
+        $expediente = EmpleadoExpediente::where('empleado_id', $id)->get();
+        foreach($expediente as $item){
+            if ($item->archivo != null) {
+                unlink(base_path('storage/app/public/'.explode("/",$item->archivo)[2]));
+            } 
+            $item->delete();
+        }
+        // Así porfin borramos el empleado
         $empleado = Empleado::find($id)->delete();
 
         return redirect()->route('empleados.index')
