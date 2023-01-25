@@ -417,7 +417,7 @@ class FinanzaController extends Controller
     public function centrodecostos()
     {   
 
-        $proyectos = Proyecto::orderBy('id','desc')->get();
+        $proyectos = Proyecto::get();
         
         foreach ($proyectos as $proyecto => $value) {
             $finanzas[] =array(
