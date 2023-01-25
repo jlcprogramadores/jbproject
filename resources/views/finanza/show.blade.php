@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Cantidad:</strong>
-                            {{ '$'. number_format($finanza->cantidad,2) }}
+                            {{ $finanza->cantidad }}
                         </div>
                         <div class="form-group">
                             <strong>Unidad:</strong>

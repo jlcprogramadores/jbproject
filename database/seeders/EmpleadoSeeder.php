@@ -20,7 +20,7 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JBCI00122',
+            'no_empleado' => 'JB-240123-1',
             'nombre' => 'CARLOS ISAI ARTEAGA TREJO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -85,7 +85,7 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JBCI00122',
+            'no_empleado' => 'JB-240123-2',
             'nombre' => 'JOSE LUIS REYES MAURICIO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -151,7 +151,7 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JBCI00122',
+            'no_empleado' => 'JB-240123-3',
             'nombre' => 'CARLOS ANDRES QUIÑONEZ NAVA',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -217,7 +217,7 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JBCI00122',
+            'no_empleado' => 'JB-240123-4',
             'nombre' => 'ERICK FIGUEROA TERRONES',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -283,7 +283,7 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JBCI00122',
+            'no_empleado' => 'JB-240123-5',
             'nombre' => 'CESAR IVANCITO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,

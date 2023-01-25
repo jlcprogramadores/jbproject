@@ -20,11 +20,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Fecha Creacion:</strong>
-                            {{ $finanza->fecha_salida }}
+                            {{ $finanza->fecha_salida ? Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') : '' }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Entrada:</strong>
-                            {{ $finanza->fecha_entrada }}
+                            {{ $finanza->fecha_entrada ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : '' }}
                         </div>
                         <div class="form-group">
                             <strong>Descripción:</strong>
@@ -32,11 +32,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Monto A Pagar:</strong>
-                            ${{ $finanza->monto_a_pagar }}
+                            <td>{{ '$'. number_format($finanza->monto_a_pagar,2) }}</td>
                         </div>
                         <div class="form-group">
                             <strong>Fecha De Pago:</strong>
-                            {{ $finanza->fecha_de_pago }}
+                            {{ $finanza->fecha_de_pago ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : '' }}
                         </div>
                         <div class="form-group">
                             <strong>Proveedor:</strong>

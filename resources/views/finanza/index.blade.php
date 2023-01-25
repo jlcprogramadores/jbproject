@@ -52,7 +52,7 @@
                                         <th>Fecha vencimiento</th>
                                         <th>Días</th>
                                         <th>Estado</th>
-										<th>Tipo E&S</th>    
+										<th>Tipo I&E</th>    
                                         <th>Fam & Cat</th>
                                         <th>Razón social</th>
                                         <th>Proyecto</th>
@@ -112,7 +112,7 @@
                                             @else
                                             <td><p class="badge bg-warning text-dark">Por vencer</p></td>
                                             @endif
-                                            <?php $tipoFinanza = $finanza->salidas_id ?  'Salida' : 'Entrada' ?>
+                                            <?php $tipoFinanza = $finanza->salidas_id ?  'Egreso' : 'Ingreso' ?>
 											<td>{{ $tipoFinanza }}</td>
                                             <?php 
                                                 $fam = 'F: '.$finanza->famCategoria->familia->nombre;
