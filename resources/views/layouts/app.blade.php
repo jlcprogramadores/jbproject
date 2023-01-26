@@ -184,6 +184,8 @@
                                     <a class="dropdown-item" href="{{ route('empleados.index') }}">
                                         {{ __('Empleados') }}
                                     </a> 
+                                    @endcan
+                                    @can('menu.empleado-expedientes')
                                     <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                         {{ __('Expediente de Empleado') }}
                                     </a>

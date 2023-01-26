@@ -1,9 +1,10 @@
 @extends('layouts.app')
-
 @section('title','Expedientes de Empleados')
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
+@can('empleado-expedientes.index')
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -100,10 +101,18 @@
 
                                             <td>
                                                 <form action="{{ route('empleado-expedientes.destroy',$empleado->id) }}" method="POST">
+                                                    @can('empleado-expedientes.fechalimite')
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.editarfechalimite',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Fecha Limite</a>
+                                                    @endcan
+                                                    @can('empleado-expedientes.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleado-expedientes.showPorEmpleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Expediente</a>
+                                                    @endcan
+                                                    @can('empleado-expedientes.cartasamonestacion')
                                                     <a class="btn btn-sm btn-danger " href="{{ route('empleado-expedientes.Amonestacion',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Cartas Amonestación</a>
+                                                    @endcan
+                                                    @can('empleado-expedientes.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('empleado-expedientes.editExpediente',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar Expediente</a>
+                                                    @endcan
                                                     @csrf
                                                 </form>
                                             </td>
@@ -119,6 +128,8 @@
         </div>
     </div>
 @endsection
+@endcan
+@endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>

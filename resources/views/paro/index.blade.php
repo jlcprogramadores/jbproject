@@ -70,9 +70,9 @@
 
                                             <td>
                                                 <form action="{{ route('paros.destroy',$paro->id) }}" method="POST">
-                                                    
+                                                    @can('paros.historial')
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-paros.historialempleado',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Historial</a>
-                                                    
+                                                    @endcan
                                                     @can('paros.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('paros.show',$paro->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan

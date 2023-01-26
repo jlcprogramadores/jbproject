@@ -18,13 +18,13 @@
                             <span id="card_title">
                                 {{ __('Documentos de Expedientes') }}
                             </span>
-                            @can('expedientes.create') 
+                            {{-- @can('expedientes.create')  --}}
                             {{-- <div class="float-right">
                                 <a href="{{ route('expedientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Expediente') }}
                                 </a>
                             </div> --}}
-                            @endcan
+                            {{-- @endcan --}}
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -71,9 +71,9 @@
                                                     @endcan
                                                     @csrf
                                                     @method('DELETE')
-                                                    @can('expedientes.destroy') 
+                                                    {{-- @can('expedientes.destroy')  --}}
                                                     {{-- <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button> --}}
-                                                    @endcan
+                                                    {{-- @endcan --}}
                                                 </form>
                                             </td>
                                         </tr>
