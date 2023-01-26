@@ -190,12 +190,16 @@
                                         {{ __('Expediente de Empleado') }}
                                     </a>
                                     @endcan
+                                    @can('menu.incidencias')
                                     <a class="dropdown-item" href="{{ route('incidencias.index') }}">
                                         {{ __('Incidencias') }}
-                                    </a> 
+                                    </a>
+                                    @endcan 
+                                    @can('menu.grupos')
                                     <a class="dropdown-item" href="{{ route('grupos.index') }}">
                                         {{ __('Grupos') }}
                                     </a> 
+                                    @endcan
                                     @can('menu.paros')
                                     <a class="dropdown-item" href="{{ route('paros.index') }}">
                                         {{ __('Paros') }}
