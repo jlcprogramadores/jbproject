@@ -422,18 +422,18 @@
                             {!! $errors->first('tipo_sangre', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
-                            {{ Form::label('peso') }}
-                            {{ Form::number('peso', $empleado->peso, ['class' => 'form-control' . ($errors->has('peso') ? ' is-invalid' : ''),'step'=>'any', 'placeholder' => 'Peso']) }}
+                            {{ Form::label('peso (Kg)') }}
+                            {{ Form::number('peso', 1, ['class' => 'form-control', 'id'=>'peso' , 'min'=>'1', 'onchange'=>"calculoIMC();" . ($errors->has('peso') ? ' is-invalid' : ''), 'step'=>'any', 'placeholder' => 'Peso']) }}
                             {!! $errors->first('peso', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
-                            {{ Form::label('estatura') }}
-                            {{ Form::number('estatura', $empleado->estatura, ['class' => 'form-control' . ($errors->has('estatura') ? ' is-invalid' : ''),'step'=>'any', 'placeholder' => 'Estatura']) }}
+                            {{ Form::label('estatura (cm)') }}
+                            {{ Form::number('estatura', 1, ['class' => 'form-control', 'id'=>'estatura', 'min'=>'1', 'onchange'=>"calculoIMC();" . ($errors->has('estatura') ? ' is-invalid' : ''), 'step'=>'any', 'placeholder' => 'Estatura']) }}
                             {!! $errors->first('estatura', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('imc','IMC') }}
-                            {{ Form::text('imc', $empleado->imc, ['class' => 'form-control' . ($errors->has('imc') ? ' is-invalid' : ''), 'placeholder' => 'IMC']) }}
+                            {{ Form::text('imc', $empleado->imc, ['class' => 'form-control', 'id'=>'imc', 'readonly' => 'true' . ($errors->has('imc') ? ' is-invalid' : ''), 'placeholder' => 'IMC']) }}
                             {!! $errors->first('imc', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                     </div>
@@ -496,5 +496,22 @@
         $('#tipo_sangre').select2();
         $('#nivel_estudios').select2();
         $('#estado_civil').select2();
+        let pesoEstatico = "0";
+        let estaturaEstatico = "0";
+        function calculoIMC() {
+            var peso = document.getElementById('peso');
+            var estatura = document.getElementById('estatura');
+            if (peso.value) {
+                pesoEstatico = peso.value;
+            }
+            if(estatura.value){
+                estaturaEstatico = Math.round(estatura.value) / 100 ;
+            }
+            calculo = (pesoEstatico / Math.pow(estaturaEstatico, 2));
+            
+            var total = document.getElementById('imc');
+            total.value = calculo.toFixed(2);
+
+        }
     </script>
 @endpush
