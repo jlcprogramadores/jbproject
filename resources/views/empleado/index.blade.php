@@ -51,6 +51,7 @@
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
 										<th>Estado</th>
+										<th>Fin de contrato</th>
 										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -87,6 +88,43 @@
                                                 <span class="badge bg-danger">Baja</span>
                                                 @endif
                                             </td>
+                                            @if ($empleado->fecha_fin_contrato)
+                                                <?php 
+                                                    $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
+                                                    $fechaLimite = Carbon\Carbon::parse( $empleado->fecha_fin_contrato)->format('Y-m-d');
+                                                    
+                                                    $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d',$fechaLimite );
+                                                    $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
+                                                    $estaVencido = false;
+                                                ?>
+                                                @if ($fechaActual > $fechaLimite && $diferencia_en_dias != 0)
+                                                <td>
+                                                    <p class="bg-danger text-white" >
+                                                        Vencido
+                                                        <br>
+                                                        {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                    </p>
+                                                </td>
+                                                @else     
+                                                    <td> 
+                                                        @if ($diferencia_en_dias > 10)
+                                                            <p class=" bg-success text-white" >
+                                                                Restan {{$diferencia_en_dias}} días
+                                                                <br>
+                                                                {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                            </p>
+                                                        @elseif($diferencia_en_dias >= -1)
+                                                            <p class="bg-warning text-white" >
+                                                                Restan {{$diferencia_en_dias}} días
+                                                                <br>
+                                                                {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                            </p>
+                                                        @endif
+                                                    </td>
+                                                @endif
+                                            @else
+                                                <td></td>
+                                            @endif
                                             <td><span class="peque">{{ $empleado->usuario_edito }}</span>  <br/> <span class="peque">{{ $empleado->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
