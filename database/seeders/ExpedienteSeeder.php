@@ -18,13 +18,6 @@ class ExpedienteSeeder extends Seeder
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
 
-        Expediente::create([
-            'nombre' => 'contrato',
-            'es_multiple' => 0,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
 
         Expediente::create([
             'nombre' => 'formato_alta',

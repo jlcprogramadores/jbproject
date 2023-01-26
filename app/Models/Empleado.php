@@ -86,6 +86,10 @@ class Empleado extends Model
 		'correo' => 'required',
 		'usuario_edito' => 'required',
     ];
+    static $rulesContrato = [
+        'fecha_inicio_contrato'=> 'required',
+        'fecha_fin_contrato'=> 'required'
+    ];
     static $rulesfechalimite = [
 		'fecha_limite_expediente' => 'required'
     ];
@@ -159,7 +163,10 @@ class Empleado extends Model
         'imc',
         'esta_trabajando',
         'usuario_edito',
-        'fecha_limite_expediente'
+        'fecha_limite_expediente',
+        'contrato',
+        'fecha_inicio_contrato',
+        'fecha_fin_contrato'
     ];
 
     /**

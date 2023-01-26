@@ -77,6 +77,9 @@ class Empleados extends Migration
             $table->boolean('esta_trabajando')->nullable();
             $table->dateTime('fecha_limite_expediente')->nullable();
             $table->string('usuario_edito');
+            $table->longText('contrato')->nullable();
+            $table->dateTime('fecha_inicio_contrato')->nullable();
+            $table->dateTime('fecha_fin_contrato')->nullable();
             $table->timestamps();
         });
     }

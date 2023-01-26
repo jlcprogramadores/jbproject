@@ -58,7 +58,11 @@ Route::put('usuarios/{user}/update', 'App\Http\Controllers\UserController@update
 Route::get('/cuentabancariaproveedor/{id}', 'App\Http\Controllers\CuentasBancariaController@cuentabancariaproveedor')->name('cuentas-bancarias.cuentabancariaproveedor');
 Route::get('/poblacion', 'App\Http\Controllers\EmpleadoController@poblacion')->name('empleados.poblacion');
 Route::get('/poblaciondetalle/{id}', 'App\Http\Controllers\EmpleadoController@poblaciondetalle')->name('empleados.poblaciondetalle');
+// empleado 
 Route::get('/capacitaciones/{id}', 'App\Http\Controllers\EmpleadoController@capacitaciones')->name('empleados.capacitaciones');
+Route::get('/formContrato/{id}', 'App\Http\Controllers\EmpleadoController@formContrato')->name('empleados.formContrato');
+Route::post('/updateContrato', 'App\Http\Controllers\EmpleadoController@updateContrato')->name('empleados.updateContrato');
+
 Route::get('/evaluar/{id}', 'App\Http\Controllers\CandidatoController@evaluar')->name('candidatos.evaluar');
 Route::get('/editarfechalimite/{id}', 'App\Http\Controllers\EmpleadoController@editarfechalimite')->name('empleados.editarfechalimite');
 Route::post('/actualizarfechalimite', 'App\Http\Controllers\EmpleadoController@actualizarfechalimite')->name('empleados.actualizarfechalimite');

@@ -95,6 +95,59 @@ class EmpleadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function formContrato($id)
+    {
+        $empleado = Empleado::find($id);
+
+        return view('empleado.formContrato', compact('empleado'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateContrato(Request $request)
+    {
+        request()->validate(Empleado::$rulesContrato);
+        // dd($request->id);
+        $empleado = Empleado::find($request->id);
+
+        if ($request->contrato != null) {
+            if ($empleado->contrato != null) {
+                //Existe un contrato anterior
+                unlink(base_path('storage/app/public/'.explode("/",$empleado->contrato)[2]));
+                $nombreOriginal = $request->contrato->getClientOriginalName();
+                $aux = 'empleado_' . $empleado->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->contrato->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $empleado->update($request->all());
+                $empleado->contrato = $file_url;
+                $empleado->save();
+            }else{
+                $nombreOriginal = $request->contrato->getClientOriginalName();
+                $aux = 'empleado_' . $empleado->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $request->contrato->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $empleado->update($request->all());
+                $empleado->contrato = $file_url;
+                $empleado->save();
+            }
+        }else{
+            // dd($empleado->id);
+            $empleado->update($request->all());
+        }
+
+        return redirect()->route('empleados.index')
+            ->with('success', 'Empleado actualizado correctamente.');
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $empleado = new Empleado();
@@ -107,6 +160,7 @@ class EmpleadoController extends Controller
         return view('empleado.create', compact('empleado','proyecto','puesto','numEmpleado'));
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
