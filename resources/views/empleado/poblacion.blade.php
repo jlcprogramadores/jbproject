@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
+@can('poblacion.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -55,7 +56,9 @@
                                         <td>${{number_format($costo['costo_nomina'],2)}}</td> 
                                         <td>{{$costo['total_empleados']}}</td> 
                                         <td>
+                                            @can('poblacion.detalle')
                                             <a class="btn btn-sm btn-primary " href="{{ route('empleados.poblaciondetalle',$costo['id_proyecto']) }}"><i class="fa fa-fw fa-eye"></i>  Detalle Población</a>
+                                            @endcan
                                         </td>   
                                     </tr>
                                     @endforeach
@@ -68,7 +71,7 @@
         </div>
     </div>
 @endsection
-
+@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

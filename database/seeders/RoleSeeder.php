@@ -241,11 +241,18 @@ class RoleSeeder extends Seeder
                 $permisoparosedit = Permission::create(['name' => 'paros.edit', 'description' => 'Paros:Editar', 'nomenclatura' => 'mn-02-sb-06-pm-06'])->syncRoles($rolAdmin);
                 $permisoparosdestroy = Permission::create(['name' => 'paros.destroy', 'description' => 'Paros:Borrar', 'nomenclatura' => 'mn-02-sb-06-pm-07'])->syncRoles($rolAdmin);
 
+            //Submenu poblacion
+            $permisomenupoblacion= Permission::create(['name' => 'menu.poblacion', 'description' => 'Ver Submenú RecursosHumanos-Poblacion', 'nomenclatura' => 'mn-02-sb-07-pm-00'])->syncRoles($rolAdmin);
+                //Permisos poblacion
+                $permisopoblacionindex = Permission::create(['name' => 'poblacion.index', 'description' => 'Poblacion:Tabla', 'nomenclatura' => 'mn-02-sb-07-pm-01'])->syncRoles($rolAdmin);
+                $permisopoblaciondetalle = Permission::create(['name' => 'poblacion.detalle', 'description' => 'Poblacion:Detalle Poblacion', 'nomenclatura' => 'mn-02-sb-07-pm-02'])->syncRoles($rolAdmin);
+
+
             // Configuracion 
-            $permisomenuproyectos = Permission::create(['name' => 'conf.2', 'description' => 'Configuración', 'nomenclatura' => 'mn-02-sb-07-pm-00'])->syncRoles($rolAdmin);
+            $permisomenuproyectos = Permission::create(['name' => 'conf.2', 'description' => 'Configuración', 'nomenclatura' => 'mn-02-sb-08-pm-00'])->syncRoles($rolAdmin);
 
             //Submenu expedientes
-            $permisomenuexpedientes= Permission::create(['name' => 'menu.expedientes', 'description' => 'Ver Submenú RecursosHumanos-Expedientes', 'nomenclatura' => 'mn-02-sb-08-pm-00'])->syncRoles($rolAdmin);
+            $permisomenuexpedientes= Permission::create(['name' => 'menu.expedientes', 'description' => 'Ver Submenú RecursosHumanos-Expedientes', 'nomenclatura' => 'mn-02-sb-09-pm-00'])->syncRoles($rolAdmin);
                 //Permisos expedientes
                 $permisoexpedientesindex = Permission::create(['name' => 'expedientes.index', 'description' => 'Expedientes:Tabla', 'nomenclatura' => 'mn-02-sb-09-pm-01'])->syncRoles($rolAdmin);
                 // $permisoexpedientescreate = Permission::create(['name' => 'expedientes.create', 'description' => 'Expedientes:Crear', 'nomenclatura' => 'mn-02-sb-09-pm-02'])->syncRoles($rolAdmin);

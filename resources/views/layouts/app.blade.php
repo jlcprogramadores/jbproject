@@ -205,9 +205,11 @@
                                         {{ __('Paros') }}
                                     </a>
                                     @endcan
+                                    @can('menu.poblacion')
                                     <a class="dropdown-item" href="{{ route('empleados.poblacion') }}">
                                         {{ __('Población') }}
                                     </a> 
+                                    @endcan
                                     <div class="dropdown-divider"></div>
                                     <li>
                                         <a class="dropdown-item" href="">
