@@ -43,6 +43,7 @@
 										<th>No Empleado</th>
 										<th>Empleado</th>
 										<th>Estado</th>
+										<th>Fecha Del Suceso</th>
 										<th>Comentario</th>
 										<th>Usuario Edito</th>
 
@@ -63,6 +64,7 @@
                                                 <span class="badge bg-danger">Baja</span>
                                                 @endif
                                             </td>
+											<td>{{ $historialAlta->fecha_suceso ? Carbon\Carbon::parse($historialAlta->fecha_suceso)->format('Y-m-d') : '' }}</td>
 											<td>{{ $historialAlta->comentario }}</td>
 											<td><span class="peque">{{ $historialAlta->usuario_edito }}</span>  <br/> <span class="peque">{{ $historialAlta->updated_at }}</span> <br> </td>
 

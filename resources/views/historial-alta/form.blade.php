@@ -2,7 +2,7 @@
     <div class="box-body">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 p-2 form-group">
+                <div class="col-sm-2 p-2 form-group">
                     <label for="">Tipo</label>
                     @if ($historialAlta->tipo)
                     <input type="text" name="" id="" value="Alta" class="form-control" disabled>
@@ -10,7 +10,7 @@
                     <input type="text" name="" id="" value="Baja" class="form-control" disabled>
                     @endif
                 </div>
-                <div class="col-sm-8 p-2 form-group">
+                <div class="col-sm-5 p-2 form-group">
                     {{ Form::label('empleado_id', 'Empleado') }}
                     {{-- determino si es nuevo o editado --}}
                     @if ($editado)
@@ -21,6 +21,11 @@
                     {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 {{-- se crea un campo falso para que se puede enviar correctamente el form con d-none --}}
+                <div class="col-sm-5 p-2 form-group">
+                    {{ Form::label('fecha_suceso', 'Fecha Del Suceso') }}
+                    {{ Form::date('fecha_suceso', $historialAlta->fecha_suceso, ['class' => 'form-control' . ($errors->has('fecha_suceso') ? ' is-invalid' : '')]) }}
+                    {!! $errors->first('fecha_suceso', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
                 
             </div>
             <div class="row">

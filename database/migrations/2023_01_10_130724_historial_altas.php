@@ -21,6 +21,7 @@ class HistorialAltas extends Migration
                 ->on('empleados');
             $table->boolean('tipo');
             $table->string('comentario')->nullable();
+            $table->dateTime('fecha_suceso');
             $table->string('usuario_edito');
             $table->timestamps();
         });

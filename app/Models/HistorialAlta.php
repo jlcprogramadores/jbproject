@@ -35,7 +35,13 @@ class HistorialAlta extends Model
      *
      * @var array
      */
-    protected $fillable = ['empleado_id','tipo','comentario','usuario_edito'];
+    protected $fillable = [
+      'empleado_id',
+      'tipo',
+      'comentario',
+      'fecha_suceso',
+      'usuario_edito'
+    ];
 
 
     /**
