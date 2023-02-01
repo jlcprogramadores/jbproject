@@ -299,8 +299,19 @@
                     </div>
                     <div class="row">
                         <div class="col-sm p-1 form-group">
+                            <?php 
+                                $talla_pantalon = [
+                                    'XS' => 'XS', 
+                                    'S' => 'S', 
+                                    'M' => 'M',
+                                    'L' => 'L',
+                                    'XL' => 'XL',
+                                    'XXL' => 'XXL',
+                                    'XXXL' => 'XXXL',
+                                ];
+                            ?>
                             {{ Form::label('talla_pantalon') }}
-                            {{ Form::text('talla_pantalon', $empleado->talla_pantalon, ['class' => 'form-control' . ($errors->has('talla_pantalon') ? ' is-invalid' : ''), 'placeholder' => 'Talla Pantalon']) }}
+                            {{ Form::select('talla_pantalon',$talla_pantalon,  $empleado->talla_pantalon, ['class' => 'form-control' . ($errors->has('talla_pantalon') ? ' is-invalid' : '')]) }}
                             {!! $errors->first('talla_pantalon', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
                         <div class="col-sm p-1 form-group">
@@ -493,6 +504,7 @@
         $('#puesto_id').select2();
         $('#talla_calzado').select2();
         $('#talla_camisa').select2();
+        $('#talla_pantalon').select2();
         $('#tipo_sangre').select2();
         $('#nivel_estudios').select2();
         $('#estado_civil').select2();
