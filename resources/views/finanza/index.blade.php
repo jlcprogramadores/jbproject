@@ -153,22 +153,52 @@
                                             {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
                                             <td>
                                                 @if (!empty($finanza->a_meses))
+                                                    @foreach ($finanza->factura as $item)
+                                                    <span class="completo text-capitalize">
+                                                        <?php 
+                                                            $mes_pago = carbon\Carbon::parse($item->mes_de_pago)
+                                                        ?>
+                                                        {{ $mes_pago->monthName }}
+                                                        @if (!is_null($item->monto) && $item->monto != 0)
+                                                            <span class="badge bg-success">
+                                                                Pagado
+                                                            </span>
+                                                        @else
+                                                            @if ($mes_pago->monthName == $fechaActual->monthName)
+                                                            <span class="badge bg-warning text-dark">
+                                                                Por Vencer
+                                                            </span>
+                                                            
+                                                            @elseif($mes_pago < $fechaActual )
+                                                            <span class="badge bg-danger ">
+                                                                Vencido
+                                                            </span>
+                                                            @else
+                                                            <span class="badge bg-secondary">
+                                                                Próximo
+                                                            </span>
+                                                            @endif
+                                                        @endif
+                                                        <br>
+                                                    </span>
+                                                    @endforeach
                                                     <?php 
                                                         $cuantosMeses = 0;
                                                         $totalPagado = 0;
                                                         if(!empty($finanza->factura[0])){
+                                                            // aqui se iteran todas las facturas
                                                             foreach ($finanza->factura as $iterFactura) {
+                                                                // se detecta si se pago ese mes
                                                                 if (!is_null($iterFactura->monto) && $iterFactura->monto != 0  ) {
                                                                     $cuantosMeses++;
                                                                     $totalPagado = $totalPagado + $iterFactura->monto; 
                                                                 }
                                                             }
                                                         }
+                                                        // se detemina si se ha pagado por el monto en mayor a cero
                                                         $resta = $finanza->monto_a_pagar - $totalPagado
-                                                        
+                                                        // deteminar si esta pagada la fecha
                                                     ?> 
-                                                    {{ $cuantosMeses.' de '.$finanza->a_meses}}
-                                                    <br>
                                                     <span class="peque">
                                                         @if ($resta <= 0)
                                                             Pagado

@@ -61,7 +61,13 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             @if ($es_a_meses)
-										        <td>{{$factura->comentario_pago}}</td>
+										        <td>
+                                                    {{$factura->comentario_pago}}
+                                                    <br>
+                                                    <span class="text-capitalize">
+                                                        {{ carbon\Carbon::parse($factura->mes_de_pago)->monthName }}
+                                                    </span>
+                                                </td>
                                             @endif
 											<td>{{ $factura->referencia_factura }}</td>
                                             @if ($factura->factura_base64)

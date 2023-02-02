@@ -322,7 +322,8 @@ class FinanzaController extends Controller
         //Hasta aqui se añaden los archivos en la tabla
         $request->request->add(['salidas_id' => $salida->id]);
         $finanza = Finanza::create($request->all());
-        
+        // fecha de inicio
+        $fechaLimite = Carbon::parse( $finanza->fecha_primer_pago);
         // se crean factura segun el numero de meses 
         for ($i=1; $i < $request->a_meses+1 ; $i++) { 
             $crearFactura = [
@@ -336,7 +337,9 @@ class FinanzaController extends Controller
                 'usuario_edito' => $finanza->usuario_edito,
                 'factura_base64' => null,
                 'comentario_pago' => $i.' de '.$request->a_meses,
+                'mes_de_pago' => $fechaLimite->format('Y-m-d')
             ];
+            $fechaLimite->addMonth();
             $factura = Factura::create($crearFactura);
 
 

@@ -47,7 +47,8 @@ class Factura extends Model
       'usuario_edito',
       'monto',
       'concepto',
-      'comentario_pago'
+      'comentario_pago',
+      'mes_de_pago'
     ];
 
     /**

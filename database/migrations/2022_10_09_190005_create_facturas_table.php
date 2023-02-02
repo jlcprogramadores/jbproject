@@ -24,6 +24,7 @@ class CreateFacturasTable extends Migration
             $table->string('url')->nullable();
             $table->dateTime('fecha_creacion');
             $table->dateTime('fecha_factura')->nullable();
+            $table->dateTime('mes_de_pago')->nullable();
             $table->decimal('monto', 12, 2)->nullable();
             $table->string('concepto')->nullable();
             $table->string('comentario_pago')->nullable();

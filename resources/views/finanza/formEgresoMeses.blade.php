@@ -76,18 +76,28 @@
                     {{ Form::text('entregado_material_a', $finanza->entregado_material_a, ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
                     {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                @if ($finanza->a_meses)
-                    <div class="p-1 form-group">
-                        <label>A Meses</label>
-                        <input type="number" value="{{$finanza->a_meses}}" class="form-control" disabled>
+                <div class="row">
+                    @if ($finanza->a_meses)
+                        <div class="col-sm p-1 form-group">
+                            <label>A Meses</label>
+                            <input type="number" value="{{$finanza->a_meses}}" class="form-control" disabled>
+                        </div>
+                    @else
+                        <div class="col-sm p-1 form-group">
+                            {{ Form::label('a_meses') }}
+                            {{ Form::number('a_meses', $finanza->a_meses, ['class' => 'form-control' . ($errors->has('a_meses') ? ' is-invalid' : ''), 'placeholder' => 'A cuantos meses']) }}
+                            {!! $errors->first('a_meses', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                        </div>
+                    @endif
+                    <div class="col-sm p-1 form-group">
+                        <?php 
+                            $fechapago = $finanza->fecha_primer_pago ? Carbon\Carbon::parse($finanza->fecha_primer_pago)->format('Y-m-d') : $finanza->fecha_primer_pago;
+                        ?>
+                        {{ Form::label('fecha_primer_pago') }}
+                        {{ Form::date('fecha_primer_pago', $fechapago, ['class' => 'form-control'. ($errors->has('fecha_primer_pago') ? ' is-invalid' : '')]) }}
+                        {!! $errors->first('fecha_primer_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                     </div>
-                @else
-                    <div class="p-1 form-group">
-                        {{ Form::label('a_meses') }}
-                        {{ Form::number('a_meses', $finanza->a_meses, ['class' => 'form-control' . ($errors->has('a_meses') ? ' is-invalid' : ''), 'placeholder' => 'A cuantos meses']) }}
-                        {!! $errors->first('a_meses', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                    </div>
-                @endif
+                </div>
             </div>
             <!-- datos de precio -->
             <div class="col-sm">

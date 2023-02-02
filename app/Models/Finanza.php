@@ -125,7 +125,8 @@ class Finanza extends Model
         'usuario_edito',
         'es_pagado',
         'a_meses',
-        'esta_atrasado'
+        'esta_atrasado',
+        'fecha_primer_pago'
     ];
 
 	/**
