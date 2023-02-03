@@ -141,6 +141,7 @@
                                                     @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
                                                         <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
                                                     @endif 
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('documentos-candidatos.doccandidato', $candidato->id) }}"><i class="fa fa-fw fa-eye"></i>   {{ __('Documentos') }}</a>
                                                     @can('candidatos.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan

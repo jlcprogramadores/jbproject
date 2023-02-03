@@ -46,6 +46,10 @@ Route::resource('historial-altas', App\Http\Controllers\HistorialAltaController:
 Route::resource('grupos', App\Http\Controllers\GrupoController::class);
 Route::resource('grupos-empleados', App\Http\Controllers\GruposEmpleadoController::class);
 Route::resource('historial-paros', App\Http\Controllers\HistorialParoController::class);
+Route::resource('documentos-candidatos', App\Http\Controllers\DocumentosCandidatoController::class);
+
+// docuemtos-candidatos
+Route::get('/DocCandidato/{id}', 'App\Http\Controllers\DocumentosCandidatoController@index')->name('documentos-candidatos.doccandidato');
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');
 Route::get('/telefonoproveedor/{id}', 'App\Http\Controllers\TelefonoController@telefonoproveedor')->name('telefonos.telefonoproveedor');

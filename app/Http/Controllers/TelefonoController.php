@@ -46,7 +46,7 @@ class TelefonoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function telefonoproveedor($id)
+    public function telefonoproveedor( candidato $id)
     {
         $telefonos = Telefono::where('proveedor_id', $id)->orderBy('id','desc')->paginate();
         // encuentra el nombre del primer proveedor
