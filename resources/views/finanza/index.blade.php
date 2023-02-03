@@ -125,12 +125,17 @@
                                             <td>
                                                 @if (!empty($finanza->factura[0]))
                                                  @foreach($finanza->factura as $iterFactura)
-                                                    {{$iterFactura->referencia_factura}}
-                                                    /
+
+                                                    {{$iterFactura->referencia_factura ? $iterFactura->referencia_factura.',' : '' }}
+                                                    
                                                         
                                                     @endforeach
                                                 @else
-                                                    <p class="badge bg-danger">No facturado</p>
+                                                    @if ($finanza->salidas_id)
+                                                        <p class="badge bg-danger">No facturado</p>
+                                                    @else
+                                                        <p class="badge bg-danger">No Recibida</p>
+                                                    @endif
                                                 @endif
 
                                             </td>
@@ -307,7 +312,7 @@
                     // espeificamos que columna sera afectada
                     targets: [12, 24],
                     render: function(data, type, full, meta) {    
-                        return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
+                        return '<div class="truncate">' + data + '</div>';
                     }
                 }],
                 orderCellsTop: true,
