@@ -569,6 +569,17 @@ class FinanzaController extends Controller
             request()->validate(Finanza::$rulesIngreso);
         }
         $finanza->update($request->all());
+        // revisar si es a meses para poder cambiar los meses
+        if(!is_null($finanza->a_meses)){
+            $fechaLimite = Carbon::parse( $finanza->fecha_primer_pago);
+            foreach($finanza->factura as $itemFactura){
+                $itemFactura->mes_de_pago = $fechaLimite->format('Y-m-d');
+                $itemFactura->save();
+                $fechaLimite->addMonth();
+            }
+            
+        }   
+        
 
         return redirect()->route('finanzas.index')
             ->with('success', 'Finanza actualizada correctamente.');

@@ -152,53 +152,54 @@
                                             {{-- Parte de los meses --}}
                                             {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
                                             <td>
+                                                <?php 
+                                                    // $hayProximo = false;
+                                                    $totalPagado = 0;    
+                                                ?>
                                                 @if (!empty($finanza->a_meses))
                                                     @foreach ($finanza->factura as $item)
                                                     <span class="completo text-capitalize">
                                                         <?php 
                                                             $mes_pago = carbon\Carbon::parse($item->mes_de_pago)
                                                         ?>
-                                                        {{ $mes_pago->monthName }}
-                                                        @if (!is_null($item->monto) && $item->monto != 0)
-                                                            <span class="badge bg-success">
-                                                                Pagado
-                                                            </span>
-                                                        @else
-                                                            @if ($mes_pago->monthName == $fechaActual->monthName)
-                                                            <span class="badge bg-warning text-dark">
-                                                                Por Vencer
-                                                            </span>
-                                                            
-                                                            @elseif($mes_pago < $fechaActual )
-                                                            <span class="badge bg-danger ">
-                                                                Vencido
-                                                            </span>
+                                                        @if ($mes_pago->monthName == $fechaActual->monthName && $mes_pago->year == $fechaActual->year )
+                                                            @if (!is_null($item->monto) && $item->monto != 0)
+                                                                {{ $mes_pago->monthName }}
+                                                                <span class="badge bg-success">
+                                                                    Pagado
+                                                                </span>
+                                                                <br>
+                                                                <?php $totalPagado = $totalPagado + $item->monto; ?> 
                                                             @else
-                                                            <span class="badge bg-secondary">
-                                                                Próximo
-                                                            </span>
+                                                                {{ $mes_pago->monthName }}
+                                                                <span class="badge bg-warning text-dark">
+                                                                    Por Vencer
+                                                                </span>
+                                                                <br>
                                                             @endif
+                                                        @elseif($mes_pago < $fechaActual )
+                                                            @if (!is_null($item->monto) && $item->monto != 0)
+                                                               
+                                                            @else
+                                                                {{ $mes_pago->monthName }}
+                                                                <span class="badge bg-danger">
+                                                                    Vencido
+                                                                </span>
+                                                                <br>
+                                                            @endif
+                                                        @else
+                                                            {{-- php $hayProximo = true   --}}
                                                         @endif
-                                                        <br>
+                                                        
                                                     </span>
                                                     @endforeach
-                                                    <?php 
-                                                        $cuantosMeses = 0;
-                                                        $totalPagado = 0;
-                                                        if(!empty($finanza->factura[0])){
-                                                            // aqui se iteran todas las facturas
-                                                            foreach ($finanza->factura as $iterFactura) {
-                                                                // se detecta si se pago ese mes
-                                                                if (!is_null($iterFactura->monto) && $iterFactura->monto != 0  ) {
-                                                                    $cuantosMeses++;
-                                                                    $totalPagado = $totalPagado + $iterFactura->monto; 
-                                                                }
-                                                            }
-                                                        }
-                                                        // se detemina si se ha pagado por el monto en mayor a cero
-                                                        $resta = $finanza->monto_a_pagar - $totalPagado
-                                                        // deteminar si esta pagada la fecha
-                                                    ?> 
+                                                        {{-- @if ($hayProximo)
+                                                            <span class="badge bg-secondary">
+                                                                
+                                                            </span>
+                                                            <br>
+                                                        @endif --}}
+                                                    <?php $resta = $finanza->monto_a_pagar - $totalPagado ?> 
                                                     <span class="peque">
                                                         @if ($resta <= 0)
                                                             Pagado
@@ -304,7 +305,7 @@
                 },
                 columnDefs: [{
                     // espeificamos que columna sera afectada
-                    targets: [12],
+                    targets: [12, 24],
                     render: function(data, type, full, meta) {    
                         return '<div class="truncate">' + data.split(",").join("<br/>") + '</div>';
                     }

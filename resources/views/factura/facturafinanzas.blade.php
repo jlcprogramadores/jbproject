@@ -64,8 +64,43 @@
 										        <td>
                                                     {{$factura->comentario_pago}}
                                                     <br>
-                                                    <span class="text-capitalize">
-                                                        {{ carbon\Carbon::parse($factura->mes_de_pago)->monthName }}
+                                                    <span class="completo text-capitalize">
+                                                        <?php 
+                                                            $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
+                                                            $mes_pago = carbon\Carbon::parse($factura->mes_de_pago)
+                                                        ?>
+                                                    @if ($mes_pago->monthName == $fechaActual->monthName && $mes_pago->year == $fechaActual->year )
+                                                       @if (!is_null($factura->monto) && $factura->monto != 0)
+                                                           {{ $mes_pago->monthName }}
+                                                           <span class="badge bg-success">
+                                                               Pagado
+                                                           </span>
+                                                           <br>
+                                                       @else
+                                                           {{ $mes_pago->monthName }}
+                                                           <span class="badge bg-warning text-dark">
+                                                               Por Vencer
+                                                           </span>
+                                                           <br>
+                                                       @endif
+                                                   @elseif($mes_pago < $fechaActual )
+                                                       @if (!is_null($factura->monto) && $factura->monto != 0)
+                                                            {{ $mes_pago->monthName }}
+                                                            <span class="badge bg-success">
+                                                                Pagado
+                                                            </span>
+                                                            <br>
+                                                       @else
+                                                           {{ $mes_pago->monthName }}
+                                                           <span class="badge bg-danger">
+                                                               Vencido
+                                                           </span>
+                                                           <br>
+                                                       @endif
+                                                   @else
+                                                        {{ $mes_pago->monthName }}
+                                                       {{-- php $hayProximo = true   --}}
+                                                   @endif
                                                     </span>
                                                 </td>
                                             @endif
