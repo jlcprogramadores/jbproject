@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+///
+Route::get('subir-archivo', [App\Http\Controllers\FileUploadController::class, 'index'])->name('files.index');
+Route::post('file-upload/upload-large-files', [App\Http\Controllers\FileUploadController::class, 'uploadLargeFiles'])->name('files.upload.large');
+///
+
 Route::view('/', 'home')->name('home');
 Route::view('menu', 'menu')->name('menu');
 
@@ -47,8 +54,9 @@ Route::resource('grupos', App\Http\Controllers\GrupoController::class);
 Route::resource('grupos-empleados', App\Http\Controllers\GruposEmpleadoController::class);
 Route::resource('historial-paros', App\Http\Controllers\HistorialParoController::class);
 Route::resource('documentos-candidatos', App\Http\Controllers\DocumentosCandidatoController::class);
+Route::resource('archivos', App\Http\Controllers\ArchivoController::class);
 
-// docuemtos-candidatos
+// documentos-candidatos
 Route::get('/DocCandidato/{id}', 'App\Http\Controllers\DocumentosCandidatoController@index')->name('documentos-candidatos.doccandidato');
 
 Route::get('/direccionproveedor/{id}', 'App\Http\Controllers\DireccioneController@direccionproveedor')->name('direcciones.direccionproveedor');

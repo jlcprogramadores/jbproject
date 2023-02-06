@@ -258,6 +258,17 @@
                             </div>
                         </li>
                         @endcan
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Archivos
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">  
+                                <a class="dropdown-item" href="{{ route('archivos.index') }}">
+                                    {{ __('Compartir Archivos') }}
+                                </a>
+                                </form>
+                            </div>
+                        </li>
                     </ul>
                     @endif
 
