@@ -33,7 +33,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>El correo ya esta en uso</strong>
+                                        <strong>Revisa el correo <br> *El Correo ya esta en uso <br>*El Correo debe de usar el dominio mttoindustrialbarrios.com</strong>
                                     </span>
                                 @enderror
                             </div>
