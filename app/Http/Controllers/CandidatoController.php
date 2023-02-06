@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocumentosCandidato;
 use App\Models\Candidato;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
@@ -46,17 +47,40 @@ class CandidatoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Candidato::$rules);
+        // $request2 = $request->all();
+        // $request2 = $request2->curriculum = '';
+        $newCandidato =[
+            'nombre' => $request->nombre,
+            'telefono_personal' => $request->telefono_personal,
+            'genero' => $request->genero,
+            'puesto_id' => $request->puesto_id,
+            'correo' => $request->correo,
+            'comentario' => $request->comentario,
+            'usuario_edito' => $request->usuario_edito,
+        ];
+        // dd($newCandidato);
+        $candidato = Candidato::create($newCandidato);
+        $candidato_id = $candidato->id;
+        $usuario_edito = $request->usuario_edito;
+        foreach($request->curriculum as $item){
+            $docCandidatos = [
+                'candidato_id' => $candidato_id,
+                'archivo' => $item,
+                'usuario_edito' => $usuario_edito,
+            ];
+            $documentosCandidato = DocumentosCandidato::create($docCandidatos);
+            if ($documentosCandidato->archivo != null) {
+                $nombreOriginal = $documentosCandidato->archivo->getClientOriginalName();
+                $aux = 'docEmp_' . $documentosCandidato->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $documentosCandidato->archivo->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $getdocCandidato = DocumentosCandidato::find($documentosCandidato->id);
+                $getdocCandidato->archivo = $file_url;
+                $getdocCandidato->save();
+            }
 
-        $candidato = Candidato::create($request->all());
-        if ($candidato->curriculum != null) {
-            $nombreOriginal = $candidato->curriculum->getClientOriginalName();
-            $aux = 'candidato_' . $candidato->id . '_';
-            $nombreFinal = $aux . $nombreOriginal;
-            $candidato->curriculum->storeAs('public',$nombreFinal);
-            $file_url = '/storage/' . $nombreFinal;
-            $getCandidato = Candidato::find($candidato->id);
-            $getCandidato->curriculum = $file_url;
-            $getCandidato->save();
+
         }
 
         return redirect()->route('candidatos.index')

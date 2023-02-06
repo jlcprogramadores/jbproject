@@ -38,10 +38,14 @@
                     {{ Form::text('comentario', $candidato->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'comentario']) }}
                     {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                
+                @if (!$candidato->nombre)
                 <div>
                     {{ Form::label('Currículum del candidato') }}
-                    <input type="file" name="curriculum" class="form-control">
+                    <input type="file" name="curriculum[]" class="form-control" multiple="multiple">
                 </div>
+                @endif
+
                 <div class="col-sm p-2 form-group d-none">
                     {{ Form::label('usuario_edito') }}
                     {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}

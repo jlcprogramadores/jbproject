@@ -43,7 +43,6 @@
 										<th>Género</th>
 										<th>Teléfono Personal</th>
 										<th>Correo</th>
-										<th>Currículum</th>
 										<th>Evaluación</th>
                                         <th>Semáforo</th>
 										<th>Fecha Actualización</th>
@@ -67,11 +66,6 @@
                                             @endif 
 											<td>{{ $candidato->telefono_personal }}</td>
 											<td>{{ $candidato->correo }}</td>
-                                            @if ($candidato->curriculum)
-                                                <td><a href="{{$candidato->curriculum}}">Link Currículum</a></td> 
-                                            @else
-                                                <td><span class="text-danger">Sin Currículum</span></td>
-                                            @endif 
                                             <?php 
                                                 $v1 = $candidato->validacion_1;
                                                 $v2 = $candidato->validacion_2;
@@ -141,7 +135,7 @@
                                                     @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
                                                         <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
                                                     @endif 
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('documentos-candidatos.doccandidato', $candidato->id) }}"><i class="fa fa-fw fa-eye"></i>   {{ __('Documentos') }}</a>
+                                                    <a class="btn btn-sm btn-success " href="{{ route('documentos-candidatos.doccandidato', $candidato->id) }}"><i class="fa fa-fw fa-eye"></i>   {{ __('Documentos') }}</a>
                                                     @can('candidatos.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan

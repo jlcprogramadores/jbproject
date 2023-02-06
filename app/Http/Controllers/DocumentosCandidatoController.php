@@ -20,8 +20,8 @@ class DocumentosCandidatoController extends Controller
     public function index( $id )
     {
         $documentosCandidatos = DocumentosCandidato::where('candidato_id',$id)->paginate();
-        $nombreCandidato = Candidato::find($id)->nombre;
-        return view('documentos-candidato.index', compact('documentosCandidatos','nombreCandidato'))
+        $Candidato = Candidato::find($id);
+        return view('documentos-candidato.index', compact('documentosCandidatos','Candidato'))
             ->with('i', (request()->input('page', 1) - 1) * $documentosCandidatos->perPage());
     }
 
@@ -45,10 +45,27 @@ class DocumentosCandidatoController extends Controller
     public function store(Request $request)
     {
         request()->validate(DocumentosCandidato::$rules);
-
-        $documentosCandidato = DocumentosCandidato::create($request->all());
-
-        return redirect()->route('documentos-candidatos.index')
+        $candidato_id = $request->candidato_id;
+        $usuario_edito = $request->usuario_edito;
+        foreach($request->archivo as $item){
+            $docCandidatos = [
+                'candidato_id' => $candidato_id,
+                'archivo' => $item,
+                'usuario_edito' => $usuario_edito,
+            ];
+            $documentosCandidato = DocumentosCandidato::create($docCandidatos);
+            if ($documentosCandidato->archivo != null) {
+                $nombreOriginal = $documentosCandidato->archivo->getClientOriginalName();
+                $aux = 'docEmp_' . $documentosCandidato->id . '_';
+                $nombreFinal = $aux . $nombreOriginal;
+                $documentosCandidato->archivo->storeAs('public',$nombreFinal);
+                $file_url = '/storage/' . $nombreFinal;
+                $getdocCandidato = DocumentosCandidato::find($documentosCandidato->id);
+                $getdocCandidato->archivo = $file_url;
+                $getdocCandidato->save();
+            }
+        }
+        return redirect()->route('documentos-candidatos.doccandidato', $candidato_id)
             ->with('success', 'DocumentosCandidato created successfully.');
     }
 
