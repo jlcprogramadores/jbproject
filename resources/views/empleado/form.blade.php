@@ -474,15 +474,23 @@
                 <div class="card-body">
                     <h5 class="card-title">Estado actual</h5>
                     <div class="row">
-                        <div class="col-sm-4 p-1 form-group">
+                        <div class="col-sm p-1 form-group">
                             {{ Form::label('esta_trabajando','Estado (Alta/Baja)') }}
                             {{ Form::select('esta_trabajando',['1' => 'Alta', '0' => 'Baja' ] , $empleado->esta_trabajando, ['class' => 'form-control' . ($errors->has('esta_trabajando') ? ' is-invalid' : '')]) }}
                             {!! $errors->first('esta_trabajando', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
-                        <div class="col-sm-8 p-1 form-group">
+                        <div class="col-sm p-1 form-group">
+                            {{ Form::label('fecha_suceso', 'Fecha Del Suceso') }}
+                            {{ Form::date('fecha_suceso',null, ['class' => 'form-control' . ($errors->has('fecha_suceso') ? ' is-invalid' : '')]) }}
+                            {!! $errors->first('fecha_suceso', '<div class="invalid-feedback">:message</div>') !!}
+                        </div>
+                        
+                    <div class="row">
+                        <div class="col-sm p-1 form-group">
                             <label for="comentario">Comentario</label>
                             <input type="text" name="comentario" id="comentario" class="form-control">
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

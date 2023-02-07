@@ -182,11 +182,15 @@ class EmpleadoController extends Controller
             $getEmpleado->save();
         }
         $request->esta_trabajando;
+        $comentario = $request->comentario;
+        $fechaSuceso = $request->fecha_suceso;
+
         $crearHistrial = [
             'empleado_id' => $empleado->id,
             'tipo' => $empleado->esta_trabajando,
-            'comentario' => $request->comentario,
+            'comentario' => $comentario,
             'usuario_edito' => $empleado->usuario_edito,
+            'fecha_suceso' => $fechaSuceso,
         ];
         $historialAlta = HistorialAlta::create($crearHistrial);
         return redirect()->route('empleados.index')
