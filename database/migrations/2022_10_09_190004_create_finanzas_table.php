@@ -24,7 +24,7 @@ class CreateFinanzasTable extends Migration
                 ->references('id')
                 ->on('proyectos');
             $table->integer('iva_id');
-            $table->string('no');
+            $table->integer('no');
             $table->dateTime('fecha_salida')->nullable();
             $table->dateTime('fecha_entrada')->nullable();
             $table->dateTime('fecha_facturacion')->nullable();

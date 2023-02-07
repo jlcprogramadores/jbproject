@@ -295,7 +295,10 @@
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
                 responsive:true,
-                autoWidth: false,   
+                autoWidth: false,
+                order: [
+                    [0, 'desc']
+                ],   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontró nada – lo siento",

@@ -39,11 +39,11 @@
                     {{ Form::select('cliente_id',$datoscliente, $entrada->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el cliente']) }}
                     {!! $errors->first('cliente_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
+                {{-- <div class="p-1 form-group">
                     {{ Form::label('folio') }}
                     {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'Folio']) }}
                     {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+                </div> --}}
 
                 <?php $tienePermiso = false;?>
                 @can('finanzas.formMasDias')

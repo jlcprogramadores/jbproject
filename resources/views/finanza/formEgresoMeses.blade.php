@@ -33,11 +33,11 @@
                     {{ Form::select('proveedor_id',$datosproveedor, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el proveedor']) }}
                     {!! $errors->first('proveedor_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
+                {{-- <div class="p-1 form-group">
                     {{ Form::label('no', 'No.') }}
                     {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'No']) }}
                     {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
+                </div> --}}
                 <div class="p-1 form-group">
                     <?php 
                         $fechaEntrada = isset($finanza->fecha_entrada) ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : $finanza->fecha_entrada;

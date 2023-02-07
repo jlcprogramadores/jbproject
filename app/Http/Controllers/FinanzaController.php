@@ -39,7 +39,7 @@ class FinanzaController extends Controller
      */
     public function index()
     {
-        $finanzas = Finanza::orderBy('id','desc')->paginate();
+        $finanzas = Finanza::paginate();
 
         return view('finanza.index', compact('finanzas'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
@@ -52,7 +52,7 @@ class FinanzaController extends Controller
      */
     public function indexEgreso()
     {
-        $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('id','desc')->paginate();     
+        $finanzas = Finanza::where('salidas_id','!=',null)->paginate();     
         $esEgreso = true;
         $nombre = 'Egreso';
         return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
@@ -66,7 +66,7 @@ class FinanzaController extends Controller
      */
     public function indexIngreso()
     {
-        $finanzas = Finanza::where('entradas_id','!=',null)->orderBy('id','desc')->paginate();     
+        $finanzas = Finanza::where('entradas_id','!=',null)->paginate();     
         $esEgreso = false;
         $nombre = 'Ingreso';
         return view('finanza.indexEgresoIngreso', compact('finanzas','esEgreso','nombre'))
@@ -195,7 +195,6 @@ class FinanzaController extends Controller
     {
         request()->validate(Finanza::$rulesIngreso);
         // Hay que deteminar si la fecha esta atrasado o no la fecha
-      
         $fechaActual = Carbon::createFromFormat('Y-m-d', $request->fecha_entrada);
 
         $fechaLimite = Carbon::parse( Carbon::now()->subDay(3))->format('Y-m-d');
@@ -207,65 +206,12 @@ class FinanzaController extends Controller
             $request['esta_atrasado'] = 1;
 
         }
-
         // se crea la entrada se recupera el id y se anade al request
         $entrada = Entrada::create($request->all());
         $request->request->add(['entradas_id' => $entrada->id]);
-        $finanza = Finanza::create($request->all());
-         // si es almenos una factura se crean
-        if(!is_null($request->factura[0]['referencia_factura'])){
-            // se iteran las facturas que se ñadieron en egresos
-            foreach($request->factura as $iterFactura){
-                $crearFactura = [
-                    'finanza_id' => $finanza->id,
-                    'referencia_factura' => $iterFactura['referencia_factura'],
-                    'url' => $iterFactura['url'],
-                    'fecha_creacion' => $finanza->updated_at,
-                    'fecha_factura' => $iterFactura['fecha_factura'],
-                    'monto' => $iterFactura['monto'],
-                    'usuario_edito' => $finanza->usuario_edito,
-                    'factura_base64' => $iterFactura['factura_base64'],
-                ];
-                $factura = Factura::create($crearFactura);
-                if ($factura->factura_base64 != null) {
-                    $nombreOriginal = $factura->factura_base64->getClientOriginalName();
-                    $aux = 'factura_' . $factura->id . '_';
-                    $nombreFinal = $aux . $nombreOriginal;
-                    $factura->factura_base64->storeAs('public',$nombreFinal);
-                    $file_url = '/storage/' . $nombreFinal;
-                    $getFactura = Factura::find($factura->id);
-                    $getFactura->factura_base64 = $file_url;
-                    $getFactura->save();
-                }
-            }
-        }
-        return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente.');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeEgreso(Request $request)
-    {
-        request()->validate(Finanza::$rulesEgreso);
-        // se crea la salida se recupera el id y se anade al request
-        $salida = Salida::create($request->all());
-        if ($salida->comprobante != null) {
-            $nombreOriginal = $salida->comprobante->getClientOriginalName();
-            $aux = 'salida_' . $salida->id . '_';
-            $nombreFinal = $aux . $nombreOriginal;
-            $salida->comprobante->storeAs('public',$nombreFinal);
-            $file_url = '/storage/' . $nombreFinal;
-            $getSalida = Salida::find($salida->id);
-            $getSalida->comprobante = $file_url;
-            $getSalida->save();
-        }
-        //Hasta aqui se añaden los archivos en la tabla
-        $request->request->add(['salidas_id' => $salida->id]);
+        // vamos a poner el  no maximo disponible
+        $noMax = Finanza::max('no')+1;
+        $request->request->add(['no' => $noMax]);
         $finanza = Finanza::create($request->all());
         // si es almenos una factura se crean
         if(!is_null($request->factura[0]['referencia_factura'])){
@@ -295,7 +241,64 @@ class FinanzaController extends Controller
             }
         }
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente.');
+            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeEgreso(Request $request)
+    {
+        request()->validate(Finanza::$rulesEgreso);
+        // se crea la salida se recupera el id y se anade al request
+        $salida = Salida::create($request->all());
+        if ($salida->comprobante != null) {
+            $nombreOriginal = $salida->comprobante->getClientOriginalName();
+            $aux = 'salida_' . $salida->id . '_';
+            $nombreFinal = $aux . $nombreOriginal;
+            $salida->comprobante->storeAs('public',$nombreFinal);
+            $file_url = '/storage/' . $nombreFinal;
+            $getSalida = Salida::find($salida->id);
+            $getSalida->comprobante = $file_url;
+            $getSalida->save();
+        }
+        //Hasta aqui se añaden los archivos en la tabla
+        $request->request->add(['salidas_id' => $salida->id]);
+        $noMax = Finanza::max('no')+1;
+        $request->request->add(['no' => $noMax]);
+        $finanza = Finanza::create($request->all());
+        // si es almenos una factura se crean
+        if(!is_null($request->factura[0]['referencia_factura'])){
+            // se iteran las facturas que se ñadieron en egresos
+            foreach($request->factura as $iterFactura){
+                $crearFactura = [
+                    'finanza_id' => $finanza->id,
+                    'referencia_factura' => $iterFactura['referencia_factura'],
+                    'url' => $iterFactura['url'],
+                    'fecha_creacion' => $finanza->updated_at,
+                    'fecha_factura' => $iterFactura['fecha_factura'],
+                    'monto' => $iterFactura['monto'],
+                    'usuario_edito' => $finanza->usuario_edito,
+                    'factura_base64' => $iterFactura['factura_base64'],
+                ];
+                $factura = Factura::create($crearFactura);
+                if ($factura->factura_base64 != null) {
+                    $nombreOriginal = $factura->factura_base64->getClientOriginalName();
+                    $aux = 'factura_' . $factura->id . '_';
+                    $nombreFinal = $aux . $nombreOriginal;
+                    $factura->factura_base64->storeAs('public',$nombreFinal);
+                    $file_url = '/storage/' . $nombreFinal;
+                    $getFactura = Factura::find($factura->id);
+                    $getFactura->factura_base64 = $file_url;
+                    $getFactura->save();
+                }
+            }
+        }
+        return redirect()->route('finanzas.index')
+            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
     }
 
     /**
@@ -319,8 +322,12 @@ class FinanzaController extends Controller
             $getSalida->comprobante = $file_url;
             $getSalida->save();
         }
+        $noMax = Finanza::max('no')+1;
+        // dd($noMax);
         //Hasta aqui se añaden los archivos en la tabla
         $request->request->add(['salidas_id' => $salida->id]);
+
+        $request->request->add(['no' => $noMax]);
         $finanza = Finanza::create($request->all());
         // fecha de inicio
         $fechaLimite = Carbon::parse( $finanza->fecha_primer_pago);
@@ -346,7 +353,7 @@ class FinanzaController extends Controller
         }
 
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente.');
+            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
     }
 
     /**
