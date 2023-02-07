@@ -79,7 +79,7 @@ class Empleado extends Model
 {
     
     static $rules = [
-		'no_empleado' => 'required',
+		// 'no_empleado' => 'required',
 		'nombre' => 'required',
 		'genero' => 'required',
 		'telefono_personal' => 'required',
@@ -106,6 +106,7 @@ class Empleado extends Model
         'proyecto_id',
         'puesto_id',
         'no_empleado',
+        'fecha_no_empleado',
         'nombre',
         'genero',
         'telefono_personal',

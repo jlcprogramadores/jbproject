@@ -7,6 +7,9 @@ use App\Models\Grupo;
 use App\Models\GruposEmpleado;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 /**
  * Class GrupoController
@@ -35,14 +38,16 @@ class GrupoController extends Controller
     public function create()
     {
         $grupo = new Grupo();
-        $empleados = Empleado::where('esta_trabajando','=', 1)->pluck('nombre','id');
-        $numeros = Empleado::where('esta_trabajando','=', 1)->pluck('no_empleado','id');
         $puestos = Puesto::pluck('nombre','id');
-        
-        foreach($numeros as $i => $valor){
-            $empleados[$i] = (' # ' . $valor . ' ' . $empleados[$i] );
-        }
+        $queryEmpleado = Empleado::where('esta_trabajando','=', 1)->get();
+        $empleados = [];
+        foreach($queryEmpleado as $empleado){
+            $concatenado = isset($empleado->proyecto->mina) ? '-'.$empleado->proyecto->mina->abreviacion : '';
 
+
+            $fecha = $empleado->fecha_no_empleado ? Carbon::parse($empleado->fecha_no_empleado)->format('dmy') : '';
+            $empleados[$empleado->id] = ('# JB-' . $fecha . '-' . $empleado->no_empleado . $concatenado . ' ' . $empleado->nombre );
+        }
         return view('grupo.create', compact('grupo','puestos','empleados'));
     }
 

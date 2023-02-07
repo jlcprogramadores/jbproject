@@ -20,7 +20,8 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JB-240123-1',
+            'no_empleado' => 1,
+            'fecha_no_empleado' => $dateNow,
             'nombre' => 'CARLOS ISAI ARTEAGA TREJO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -85,7 +86,8 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JB-240123-2',
+            'no_empleado' => 2,
+            'fecha_no_empleado' => $dateNow,
             'nombre' => 'JOSE LUIS REYES MAURICIO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -151,7 +153,8 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JB-240123-3',
+            'no_empleado' => 3,
+            'fecha_no_empleado' => $dateNow,
             'nombre' => 'CARLOS ANDRES QUIÑONEZ NAVA',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -217,7 +220,8 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JB-240123-4',
+            'no_empleado' => 4,
+            'fecha_no_empleado' => $dateNow,
             'nombre' => 'ERICK FIGUEROA TERRONES',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,
@@ -283,7 +287,8 @@ class EmpleadoSeeder extends Seeder
         Empleado::create([
             'proyecto_id' => 1,
             'puesto_id' => 1,
-            'no_empleado' => 'JB-240123-5',
+            'no_empleado' => 5,
+            'fecha_no_empleado' => $dateNow,
             'nombre' => 'CESAR IVANCITO',
             'genero' => 'HOMBRE LIBRE NO BINARIO',
             'telefono_personal' => 4935123562,

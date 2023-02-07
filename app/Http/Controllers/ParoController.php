@@ -10,6 +10,8 @@ use App\Models\Proyecto;
 use App\Models\Paro;
 use App\Models\Puesto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 /**
  * Class ParoController
@@ -88,12 +90,16 @@ class ParoController extends Controller
         $grupo = new Grupo();
         $paro = new Paro();
         $proyecto = Proyecto::pluck('nombre','id');
-        $empleados = Empleado::where('esta_trabajando','=', 1)->pluck('nombre','id');
-        $numeros = Empleado::where('esta_trabajando','=', 1)->pluck('no_empleado','id');
         $puestos = Puesto::pluck('nombre','id');
 
-        foreach($numeros as $i => $valor){
-            $empleados[$i] = (' # ' . $valor . ' ' . $empleados[$i] );
+        $queryEmpleado = Empleado::where('esta_trabajando','=', 1)->get();
+        $empleados = [];
+        foreach($queryEmpleado as $empleado){
+            $concatenado = isset($empleado->proyecto->mina) ? '-'.$empleado->proyecto->mina->abreviacion : '';
+
+
+            $fecha = $empleado->fecha_no_empleado ? Carbon::parse($empleado->fecha_no_empleado)->format('dmy') : '';
+            $empleados[$empleado->id] = ('# JB-' . $fecha . '-' . $empleado->no_empleado . $concatenado . ' ' . $empleado->nombre );
         }
 
         return view('paro.createParoGrupo', compact('paro','grupo','proyecto','empleados','puestos'));

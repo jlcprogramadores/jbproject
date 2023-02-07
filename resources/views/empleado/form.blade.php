@@ -7,19 +7,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Datos Minimos requeridos</h5>
                     <div class="row">
+                        @if (isset($empleado->no_empleado))
                         <div class="col-sm p-1 form-group ">
                             {{ Form::label('no_empleado') }}
-                            @if (isset($empleado->no_empleado))
-                                {{ Form::text('no_empleado', $empleado->no_empleado, ['class' => 'form-control', 'readonly' => 'true'. ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
-                            @else   
-                                <input type="text" value="{{$numEmpleado}}" disabled="true" class="form-control" >
-                                <div class="d-none">
-                                    {{ Form::text('no_empleado', $numEmpleado, $empleado->no_empleado, ['class' => 'form-control' . ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
-                                </div>  
-                            @endif
-                            
+                            {{ Form::text('no_empleado', $empleado->no_empleado, ['class' => 'form-control', 'readonly' => 'true'. ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
                             {!! $errors->first('no_empleado', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+                        @else   
+                            {{-- <input type="text" value="{{$numEmpleado}}" disabled="true" class="form-control" >
+                            <div class="d-none">
+                                {{ Form::text('no_empleado', $numEmpleado, $empleado->no_empleado, ['class' => 'form-control' . ($errors->has('no_empleado') ? ' is-invalid' : ''), 'placeholder' => 'No_empleado']) }}
+                            </div>   --}}
+                        @endif
+                            
 
                         <div class="col-sm p-1 form-group">
                             {{ Form::label('nombre') }}

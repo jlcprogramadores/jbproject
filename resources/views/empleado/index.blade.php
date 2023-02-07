@@ -41,7 +41,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>No Empleado</th>
+										<th>No.Empleado</th>
                                         <th>Fotografía</th>
 										<th>Nombre</th>
 										<th>Proyecto</th>
@@ -62,13 +62,15 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-                                            @if (isset($empleado->proyecto->nombre) == false)
-                                            <td>{{ $empleado->no_empleado }}</td>
-                                            @elseif($empleado->proyecto->mina)
-                                                <td>{{ $empleado->no_empleado }}-{{ $empleado->proyecto->mina->abreviacion}}</td> 
-                                            @else
-                                                <td>{{ $empleado->no_empleado }}</td>     
-                                            @endif
+                                            <td>
+                                                {{-- fomato empleado --}}
+                                                <?php 
+                                                    $concatenado = isset($empleado->proyecto->mina) ? '-'.$empleado->proyecto->mina->abreviacion : '';
+                                                    $fecha = $empleado->fecha_no_empleado ? Carbon\Carbon::parse($empleado->fecha_no_empleado)->format('dmy') : '';
+                                                ?>
+                                                {{ 'JB-'.$fecha.'-'.$empleado->no_empleado.$concatenado }}
+                                            </td>
+
                                             @if ($empleado->fotografia)
                                                 <td> <img src={{ $empleado->fotografia }} height="100" ></td> 
                                             @else

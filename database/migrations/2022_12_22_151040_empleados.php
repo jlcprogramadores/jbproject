@@ -18,7 +18,8 @@ class Empleados extends Migration
             $table->longText('fotografia')->nullable();
             $table->integer('proyecto_id')->nullable();
             $table->integer('puesto_id')->nullable();
-            $table->string('no_empleado');
+            $table->integer('no_empleado');
+            $table->dateTime('fecha_no_empleado');
             $table->string('nombre');
             $table->string('genero');
             $table->bigInteger('telefono_personal');

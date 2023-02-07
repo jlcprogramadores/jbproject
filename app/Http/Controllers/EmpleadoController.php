@@ -7,6 +7,7 @@ use App\Models\EmpleadoExpediente;
 use App\Models\HistorialAlta;
 use App\Models\Proyecto;
 use App\Models\Puesto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -153,11 +154,11 @@ class EmpleadoController extends Controller
         $empleado = new Empleado();
         $puesto = Puesto::pluck('nombre','id');
         $proyecto  = Proyecto::pluck('nombre','id');  
-        $totalEmpleados = Empleado::paginate()->count();
-        $numEmpleado =  date("dmy");
-        $numEmpleado = 'JB-'.$numEmpleado.'-'.($totalEmpleados+1);
+        // $totalEmpleados = Empleado::paginate()->count();
+        // $numEmpleado =  date("dmy");
+        // $numEmpleado = 'JB-'.$numEmpleado.'-'.($totalEmpleados+1);
 
-        return view('empleado.create', compact('empleado','proyecto','puesto','numEmpleado'));
+        return view('empleado.create', compact('empleado','proyecto','puesto'));
     }
 
     
@@ -170,6 +171,16 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Empleado::$rules);
+
+        $noMax = Empleado::max('no_empleado')+1;
+        
+        $fechaNoEmpleado =  date("Y-m-d");
+        $numEmpleado =  date("dmy");
+        $request->request->add([
+            'no_empleado' => $noMax,
+            'fecha_no_empleado' => $fechaNoEmpleado
+        ]);
+        // dd($request->all());
         $empleado = Empleado::create($request->all());
         if ($empleado->fotografia != null) {
             $nombreOriginal = $empleado->fotografia->getClientOriginalName();
@@ -194,7 +205,7 @@ class EmpleadoController extends Controller
         ];
         $historialAlta = HistorialAlta::create($crearHistrial);
         return redirect()->route('empleados.index')
-            ->with('success', 'Empleado creado exitosamente.');
+            ->with('success', 'Empleado creado con el NO. JB-'.$numEmpleado.'-'.$noMax.'.');
     }
 
     /**

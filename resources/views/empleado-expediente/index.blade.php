@@ -31,7 +31,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        <th>No.Empleado</th>
 										<th>Empleado</th>
                                         <th>Fecha Limite</th>
 										<th>Fecha Actualización</th>
@@ -43,6 +43,14 @@
                                     @foreach ($empleados as $empleado)
                                         <tr>
                                             <td>{{ ++$i }}</td>
+                                            <td>
+                                                {{-- fomato empleado --}}
+                                                <?php 
+                                                    $concatenado = isset($empleado->proyecto->mina) ? '-'.$empleado->proyecto->mina->abreviacion : '';
+                                                    $fecha = $empleado->fecha_no_empleado ? Carbon\Carbon::parse($empleado->fecha_no_empleado)->format('dmy') : '';
+                                                ?>
+                                                {{ 'JB-'.$fecha.'-'.$empleado->no_empleado.$concatenado }}
+                                            </td>
 											<td>{{ $empleado->nombre }}</td>
 
 
