@@ -18,7 +18,7 @@
                             <input id="acceso" type="password" class="form-control @error('acceso') is-invalid @enderror" name="acceso" required >
                             @error('acceso')
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                                <strong>La contraseña para registrarte es incorrecta, solicitala al administrador.</strong>
                             </span>
                             @enderror
                             </div>
