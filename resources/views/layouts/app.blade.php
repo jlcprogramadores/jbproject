@@ -253,7 +253,9 @@
                                     {{ __('Roles y permisos') }}
                                 </a>
                                 @endcan
-                                
+                                <a class="dropdown-item" href="{{ route('accesos.index') }}">
+                                    {{ __('Clave de Registro') }}
+                                </a>
                                 </form>
                             </div>
                         </li>

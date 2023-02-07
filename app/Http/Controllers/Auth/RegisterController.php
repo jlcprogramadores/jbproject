@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -48,8 +49,12 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
+    {   
+        $acceso = DB::table('accesos')->where('id','=','1')->get('valor');
+        $valor = $acceso[0]->valor;
+        
         return Validator::make($data, [
+            'acceso' => ['required', 'string' ,'regex:/'.$valor.'/'],
             'name' => ['required', 'string', 'max:255'],
             'email'    => 'required|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(mttoindustrialbarrios)[.](com)$/',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -63,7 +68,7 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
+    {   
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

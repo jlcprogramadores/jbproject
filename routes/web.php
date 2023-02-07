@@ -55,6 +55,7 @@ Route::resource('grupos-empleados', App\Http\Controllers\GruposEmpleadoControlle
 Route::resource('historial-paros', App\Http\Controllers\HistorialParoController::class);
 Route::resource('documentos-candidatos', App\Http\Controllers\DocumentosCandidatoController::class);
 Route::resource('archivos', App\Http\Controllers\ArchivoController::class);
+Route::resource('accesos', App\Http\Controllers\AccesoController::class);
 
 // documentos-candidatos
 Route::get('/DocCandidato/{id}', 'App\Http\Controllers\DocumentosCandidatoController@index')->name('documentos-candidatos.doccandidato');

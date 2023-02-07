@@ -11,6 +11,21 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        {{-- Para validar la contraseña de creación --}}
+                        <div class="form-group row">
+                            <label for="acceso" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña de Creación') }}</label>
+                            <div class="col-md-6">
+                            <input id="acceso" type="password" class="form-control @error('acceso') is-invalid @enderror" name="acceso" required >
+                            @error('acceso')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            </div>
+                            </div>
+                            <br>
+                        {{--  --}}
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre de Usuario') }}</label>
 

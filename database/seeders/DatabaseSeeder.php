@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SalidaSeeder::class);
         $this->call(EntradaSeeder::class);
         $this->call(FinanzaSeeder::class);
+        $this->call(AccesoSeeder::class);
     }
 }
