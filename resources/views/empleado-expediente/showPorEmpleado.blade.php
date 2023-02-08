@@ -30,13 +30,14 @@
                                     <br>
                             @endforeach
                            <br>
-                            <a class="btn btn-primary" href="{{ route('empleado-expedientes.index') }}"> Atrás</a>
                         </div>
-                        
+                        <a class="btn btn-primary btn-sm" href="{{ route('empleado-expedientes.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     @endsection
+    
+
     

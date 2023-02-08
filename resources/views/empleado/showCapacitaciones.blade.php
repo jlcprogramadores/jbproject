@@ -27,12 +27,12 @@
                                     <strong>No se ha añadido ninguna capacitación, se añaden desde "Expediente De Empleado" </strong>
                                 </div>
                             @endif
-                            <div class="float-right">
-                                <br>
-                                <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
-                            </div>
+                            
                         </div>
-                        
+                        <div class="float-right">
+                            <br>
+                            <a class="btn btn-primary" href="{{ route('empleados.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>
