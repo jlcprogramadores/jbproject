@@ -47,3 +47,9 @@ php artisan migrate:fresh --seed
 
 # Para llenar tablas en  producción OJO SOBREESCRIBE TODO
 migrate:fresh --seed --force
+
+# Comandos para realizar CRON
+php artisan make:command DeleteFileTask
+php artisan schedule:list
+php artisan schedule:run
+php artisan schedule:test
