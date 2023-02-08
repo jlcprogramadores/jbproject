@@ -80,6 +80,57 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <button type="button" id="anadirEmpleados" onclick="mostrarElemento();" class="btn btn-success col col-sm-4">Añadir Empleados</button>
+            </div>
+            <br>
+            <div class="row" id="anadirAlGrupo"  style="display:none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Empleados Adicionales</h5>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-4 p-1 ">
+                                <label id="textcantidad">Número De Empleados</label>
+                                <input type="number" name="cantidad" id="cantidad" min="1"  class="form-control" value="1">
+                            </div>
+                            <div class="col-sm-4 p-1 ">
+                                <br>
+                                <td><input id="btnCargarEmpleados" type="button" name="answer" value="Cargar Empleados"  class="btn btn-success " onclick="llenarTablas()" /></td>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="row justify-content-md-center">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div id="apartadoEmpleadoNuevo"  style="display:none;">
+                                <div class="table-responsive">
+                                    
+                                    <table class="table table-bordered table-striped" id="dynamicEmp" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Empleado</th>
+                                                <th>Puesto</th>
+                                                <th>Salario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><select id="emp_id" type="text"  name="empleadoNuevo[0][emp_id]" class="form-control ancho-select2" ></select></td> 
+                                                <td><select id="pst_id" type="text"  name="empleadoNuevo[0][pst_id]" class="form-control ancho-select2" ></select></td> 
+                                                <td><input id="sal" type="number" min="0" step="any" name="empleadoNuevo[0][sal]" class="form-control ancho-select2" value="0"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group d-none">
                 {{ Form::label('usuario_edito') }}
                 {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
@@ -98,7 +149,120 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    
+    // mostrar tabla de empleados
+    function mostrarElemento() {
+        var elemento = document.getElementById('anadirAlGrupo');
+        if (elemento.style.display === "none") {
+            elemento.style.display = "block";
+            document.getElementById('emp_id').required = true;
+            document.getElementById('pst_id').required = true;
+            document.getElementById('sal').required = true;
+            document.getElementById('anadirEmpleados').disabled = true;
+
+        } 
+    }
+    var cantidadDeEmpleadoNuevo = 0;
+    var i = 0;
+    var marcador = 0;
+
+    function llenarTablas() {
+        document.getElementById("btnCargarEmpleados").disabled = true; 
+        // document.getElementById("btnCargarEmpleados").style.display = 'none';  
+        var cantidad = document.getElementById('cantidad');
+        cantidadDeEmpleadoNuevo = cantidad.value;
+        cantidad.setAttribute('readonly', true);
+        // imprime a loe empleados 
+        // console.log(<?php echo json_encode($empleados)?>);
+        var emp_id = <?php echo json_encode($empleados)?>;
+        var selectEmpleadoNuevo = document.querySelectorAll('[id=emp_id]');
+        selectEmpleadoNuevo.forEach(function (element) {
+            // console.log(emp_id);
+            var elementoEmpleado = element;
+            for(index in emp_id) {
+                elementoEmpleado.options[elementoEmpleado.options.length] = new Option(emp_id[index], index);
+                $('#emp_id').select2();
+            }
+        });
+
+        var pst_id = <?php echo json_encode($puestos)?>;
+        var selectPuesto = document.querySelectorAll('[id=pst_id]');
+        selectPuesto.forEach(function (element) {
+            var elementoPuesto = element;
+            for(index in pst_id) {
+                console.log(elementoPuesto);
+                elementoPuesto.options[elementoPuesto.options.length] = new Option(pst_id[index], index);
+                $('#pst_id').select2();
+            }
+        });
+        
+        for (let indiceEmpleadosNuevos = 1; indiceEmpleadosNuevos < cantidadDeEmpleadoNuevo; indiceEmpleadosNuevos++) {
+            ++i;
+            ++marcador;
+            $("#dynamicEmp").append(        
+                '<tr>'+
+                    '<td><select id="emp_id'+i+'" type="text" name="empleadoNuevo['+i+'][emp_id]"  class="form-control ancho-select2" required></select></td>'+
+                    '<td><select id="pst_id'+i+'" type="text" name="empleadoNuevo['+i+'][pst_id]"  class="form-control ancho-select2" required ></select></td>'+
+                    '<td><input type="number" step="any" min="0" name="empleadoNuevo['+i+'][sal]" class="form-control ancho-select2" value="0"></td>'+
+                '</tr>'
+            );
+            llenar(); 
+        }
+        
+ 
+        var apartadoEmpleadoNuevo = document.getElementById('apartadoEmpleadoNuevo');
+        if (apartadoEmpleadoNuevo.style.display === "none") {
+            // var btnAceptar = document.getElementById('btnAceptar');
+            // btnAceptar.style.display = "inline-block";
+            apartadoEmpleadoNuevo.style.display = "block";
+            document.getElementById('emp_id').required = true;
+            document.getElementById('pst_id').required = true;
+            document.getElementById('sal').required = false;
+        } else {
+            apartadoEmpleadoNuevo.style.display = "none";
+            document.getElementById('emp_id').required = false;
+            document.getElementById('pst_id').required = false;
+            document.getElementById('sal').required = false;
+        }
+    }
+
+    function llenar() {
+        for (let marcadorIndex = 1; marcadorIndex < marcador+1; marcadorIndex++) {
+            var emp_id = <?php echo json_encode($empleados)?>;
+            var selectEmpleadoNuevo = document.querySelectorAll('[id=emp_id'+marcadorIndex+']');
+            selectEmpleadoNuevo.forEach(function (element) {
+                var elementoEmpleado = element;
+                elementoEmpleado.options.length = 0;
+                for(index in emp_id) {
+                    elementoEmpleado.options[elementoEmpleado.options.length] = new Option(emp_id[index], index);
+                    var cadena = '#emp_id'+marcadorIndex;
+                    $('#emp_id').select2();
+                    $(cadena).select2();
+                }
+            });
+        }
+
+        for (let marcadorIndex = 1; marcadorIndex < marcador+1; marcadorIndex++) {
+            var pst_id = <?php echo json_encode($puestos)?>;
+            var selectPuesto = document.querySelectorAll('[id=pst_id'+marcadorIndex+']');
+            selectPuesto.forEach(function (element) {
+                var elementoPuesto = element;
+                elementoPuesto.options.length = 0;
+                for(index in pst_id) {
+                    elementoPuesto.options[elementoPuesto.options.length] = new Option(pst_id[index], index);
+                    var cadena = '#pst_id'+marcadorIndex;
+                    $('#pst_id').select2();
+                    $(cadena).select2();
+                }
+            });
+        }
+        
+    }
+
+
+    // function habilitarGrupoNuevo () {
+    //     document.getElementById('cantidad').readOnly = false; 
+    // } 
+
     $('#proyecto_id').select2();
     var iteradorTabla = 0;
 
@@ -167,20 +331,20 @@
             }else{
                 var selectEmpleado = document.querySelectorAll('[id=empleado_id'+iterador+']');
                 selectEmpleado.forEach(function (element) {
-                    var elementoEmpleado = element;
-                    elementoEmpleado.value = value[0]['nombre'];
+                    var elementoEmpleado2 = element;
+                    elementoEmpleado2.value = value[0]['nombre'];
                 });
                 
-                var selectPuesto = document.querySelectorAll('[id=puesto_id'+iterador+']');
-                selectPuesto.forEach(function (element) {
-                    var elementoEmpleado = element;
-                    elementoEmpleado.value = value[0]['puesto'];
+                var selectPuesto2 = document.querySelectorAll('[id=puesto_id'+iterador+']');
+                selectPuesto2.forEach(function (element) {
+                    var elementoEmpleado2 = element;
+                    elementoEmpleado2.value = value[0]['puesto'];
                 });
                 
                 var selectSalario = document.querySelectorAll('[id=salario_id'+iterador+']');
                 selectSalario.forEach(function (element) {
-                    var elementoEmpleado = element;
-                    elementoEmpleado.value = value[0]['salario'];
+                    var elementoEmpleado2 = element;
+                    elementoEmpleado2.value = value[0]['salario'];
                 });
                 iterador ++; 
             }

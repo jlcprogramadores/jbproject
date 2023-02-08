@@ -42,7 +42,17 @@ class ParoController extends Controller
         $paro = new Paro();
         $proyecto = Proyecto::pluck('nombre','id');
         $grupo = Grupo::pluck('nombre','id');
-        return view('paro.create', compact('paro','proyecto','grupo'));
+        $puestos = Puesto::pluck('nombre','id');
+        $queryEmpleado = Empleado::where('esta_trabajando','=', 1)->get();
+        $empleados = [];
+        foreach($queryEmpleado as $empleado){
+            $concatenado = isset($empleado->proyecto->mina) ? '-'.$empleado->proyecto->mina->abreviacion : '';
+            $fecha = $empleado->fecha_no_empleado ? Carbon::parse($empleado->fecha_no_empleado)->format('dmy') : '';
+            $empleados[$empleado->id] = ('# JB-' . $fecha . '-' . $empleado->no_empleado . $concatenado . ' ' . $empleado->nombre );
+        }
+
+
+        return view('paro.create', compact('paro','proyecto','grupo','empleados','puestos'));
     }
 
     /**
@@ -54,13 +64,33 @@ class ParoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Paro::$rules);
-
+        // validacion de empleados diferentes
         $params = $request->request->all();
         $empleados = GruposEmpleado::where('grupo_id','=',$params['grupo_id'])->get();
+        $tieneEmpAdicinales = isset($params['empleadoNuevo'][0]['emp_id']);
+        // dd(isset($params['empleadoNuevo'][0]['emp_id']));
+        $arrIdEmp = array();
+        // grupo de eempleados
+        foreach($empleados as $iterEmpleado){
+            $arrIdEmp[] = $iterEmpleado['empleado_id'];
+        }
+        // si tiene adicionales se hace esto
+        if($tieneEmpAdicinales){
+            // empleados añadidos
+            foreach($params['empleadoNuevo'] as $iterEmpleado){
+                $arrIdEmp[] = (integer)($iterEmpleado['emp_id']);
+            }
+            // con esta condicion determino si estan duplicados
+            if(count($arrIdEmp) != count(array_unique($arrIdEmp))){
+                return redirect()->route('paros.index')
+                ->with('danger', 'ERROR el grupo tiene empleados repetidos.');
+            }
+        }
         $nombreGrupo = Grupo::select('nombre')->where('id','=',$params['grupo_id'])->first();
         $paro = Paro::create($request->all());
+
         foreach($empleados as $empleado){
-            $crearHistorialParos = [
+            $crearHistorialParos[] = [
                 'paro_id' =>  $paro->id,
                 'grupo_id' => $params['grupo_id'],
                 'empleado_id' => $empleado->empleado_id,
@@ -72,10 +102,34 @@ class ParoController extends Controller
                 'nombre_grupo' => $nombreGrupo->nombre,
                 'comentario' => $paro->comentario,
                 'usuario_edito' => $paro->usuario_edito,
+                'updated_at' =>  Carbon::parse($paro->updated_at)->format('Y-m-d H:i:s'),
+                'created_at' =>   Carbon::parse($paro->created_at)->format('Y-m-d H:i:s')
             ];
-            $historialParo = HistorialParo::create($crearHistorialParos);
         } 
 
+        if($tieneEmpAdicinales){
+            foreach($params['empleadoNuevo'] as $empleadoAdicional){
+                $crearHistorialParos[] = [
+                    'paro_id' =>  $paro->id,
+                    'grupo_id' => $params['grupo_id'],
+                    'empleado_id' => $empleadoAdicional['emp_id'],
+                    'puesto_id' => $empleadoAdicional['pst_id'],
+                    'salario' => $empleadoAdicional['sal'],
+                    'fecha_inicio' => $paro->fecha_inicio,
+                    'fecha_fin' => $paro->fecha_fin,
+                    'nombre_paro' => $paro->nombre,
+                    'nombre_grupo' => $nombreGrupo->nombre,
+                    'comentario' => $paro->comentario,
+                    'usuario_edito' => $paro->usuario_edito,
+                    'updated_at' =>  Carbon::parse($paro->updated_at)->format('Y-m-d H:i:s'),
+                    'created_at' =>   Carbon::parse($paro->created_at)->format('Y-m-d H:i:s')
+                ];
+            } 
+        }
+
+        foreach($crearHistorialParos as $itemAGuardar){
+            $historialParo = HistorialParo::create($itemAGuardar);
+        }
         return redirect()->route('paros.index')
             ->with('success', 'Paro creado exitosamente.');
     }
