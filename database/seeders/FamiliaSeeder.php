@@ -19,53 +19,35 @@ class FamiliaSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Familia::create([
-            'nombre' => 'MATERIAL',
-            'descripcion' => 'Familia de Ejemplo',
-            'es_activo' => 1,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
-
-        Familia::create([
             'nombre' => 'SERVICIOS',
-            'descripcion' => 'Familia de Ejemplo',
+            'descripcion' => 'SERVICIOS',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
-        Familia::create([
-            'nombre' => 'VIATICOS',
-            'descripcion' => 'Familia de Ejemplo',
-            'es_activo' => 1,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
-
-        Familia::create([
-            'nombre' => 'ADMIN',
-            'descripcion' => 'Familia de Ejemplo',
-            'es_activo' => 1,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
-        
-        Familia::create([
-            'nombre' => 'FINANCIEROS_IN',
-            'descripcion' => 'Familia de Ejemplo',
-            'es_activo' => 1,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
-        
         Familia::create([
             'nombre' => 'FINANCIEROS_EGRESO',
-            'descripcion' => 'Familia de Ejemplo',
+            'descripcion' => 'FINANCIEROS_EGRESO',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Familia::create([
+            'nombre' => 'VEHICULOS',
+            'descripcion' => 'VEHICULOS',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Familia::create([
+            'nombre' => 'MATERIAL',
+            'descripcion' => 'MATERIAL',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
@@ -73,8 +55,8 @@ class FamiliaSeeder extends Seeder
         ]);
         
         Familia::create([
-            'nombre' => 'VEHICULOS',
-            'descripcion' => 'Familia de Ejemplo',
+            'nombre' => 'SERVICIO_MEDICO',
+            'descripcion' => 'SERVICIO_MEDICO',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
@@ -83,7 +65,25 @@ class FamiliaSeeder extends Seeder
         
         Familia::create([
             'nombre' => 'EQUIPO_MOVIL',
-            'descripcion' => 'Familia de Ejemplo',
+            'descripcion' => 'EQUIPO_MOVIL',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
+        Familia::create([
+            'nombre' => 'VIATICOS',
+            'descripcion' => 'VIATICOS',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
+        Familia::create([
+            'nombre' => 'TI',
+            'descripcion' => 'TI',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
@@ -98,23 +98,24 @@ class FamiliaSeeder extends Seeder
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
-        
+
         Familia::create([
-            'nombre' => 'TI',
+            'nombre' => 'FINANCIEROS_IN',
+            'descripcion' => 'FINANCIEROS_IN',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Familia::create([
+            'nombre' => 'ADMIN',
             'descripcion' => 'Familia de Ejemplo',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
-        
-        Familia::create([
-            'nombre' => 'SERVICIO_MEDICO',
-            'descripcion' => 'Familia de Ejemplo',
-            'es_activo' => 1,
-            'usuario_edito' => 'Administrador ',
-            'created_at' => $dateNow,
-            'updated_at' => $dateNow
-        ]);
+
     }
 }
