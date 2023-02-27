@@ -53,3 +53,10 @@ php artisan make:command DeleteFileTask
 php artisan schedule:list
 php artisan schedule:run
 php artisan schedule:test
+
+
+# Comandos de Permisos
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan migrate:fresh --seed
+Se añade al modelo user.php la linea use Spatie\Permission\Traits\HasRoles;
