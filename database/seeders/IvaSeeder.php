@@ -19,8 +19,16 @@ class IvaSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Iva::create([
+            'porcentaje' => 0,
+            'descripcion' => 'Iva 0%',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Iva::create([
             'porcentaje' => 1.0,
-            'descripcion' => 'Iva de Ejemplo',
+            'descripcion' => 'Iva 1.0%',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
@@ -28,7 +36,7 @@ class IvaSeeder extends Seeder
 
         Iva::create([
             'porcentaje' => 1.16,
-            'descripcion' => 'Iva de Ejemplo',
+            'descripcion' => 'Iva 1.16%',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
