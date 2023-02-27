@@ -19,56 +19,89 @@ class UnidadSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Unidade::create([
-            'nombre' => 'PIEZA',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'SER',
+            'descripcion' => 'Unidad de SER',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'HR',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'ROLLO',
+            'descripcion' => 'Unidad de ROLLO',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'KGS',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'PZA',
+            'descripcion' => 'Unidad de PZA',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'KIT',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'PAR',
+            'descripcion' => 'Unidad de PAR',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'PIEZA',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'PAQ',
+            'descripcion' => 'Unidad de PAQ',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'SERVICIO',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'PA',
+            'descripcion' => 'Unidad de PA',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
 
         Unidade::create([
-            'nombre' => 'LTS',
-            'descripcion' => 'Unidad de Ejemplo',
+            'nombre' => 'MTS',
+            'descripcion' => 'Unidad de MTS',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Unidade::create([
+            'nombre' => 'M3',
+            'descripcion' => 'Unidad de M3',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Unidade::create([
+            'nombre' => 'M',
+            'descripcion' => 'Unidad de M',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+
+        Unidade::create([
+            'nombre' => 'LOTE',
+            'descripcion' => 'Unidad de LOTE',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Unidade::create([
+            'nombre' => 'KG',
+            'descripcion' => 'Unidad de KG',
             'usuario_edito' => 'Administrador ',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
