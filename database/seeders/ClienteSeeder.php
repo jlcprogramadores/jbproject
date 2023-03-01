@@ -20,9 +20,9 @@ class ClienteSeeder extends Seeder
 
         Cliente::create([            
             'nombre' => 'ARANZAZU HOLDING',
-            'razon_social' => 'Razón Social Ejemplo',
-            'mail' => 'mail@ejemplo.com',
-            'rfc' => 'XAXX010101000',
+            'razon_social' => 'MINERA AURA ARANZAZU',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
@@ -31,9 +31,9 @@ class ClienteSeeder extends Seeder
 
         Cliente::create([            
             'nombre' => 'COMERTEX',
-            'razon_social' => 'Razón Social Ejemplo',
-            'mail' => 'mail@ejemplo.com',
-            'rfc' => 'XAXX010101000',
+            'razon_social' => 'COMERTEX',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
@@ -41,10 +41,54 @@ class ClienteSeeder extends Seeder
         ]);
 
         Cliente::create([            
-            'nombre' => 'MINERA FRESNILLO',
-            'razon_social' => 'Razón Social Ejemplo',
-            'mail' => 'mail@ejemplo.com',
-            'rfc' => 'XAXX010101000',
+            'nombre' => 'CONSTRUCCIONES AUTONOMAS NYPD',
+            'razon_social' => 'CONSTRUCCIONES AUTONOMAS NYPD',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+	                    
+        Cliente::create([            
+            'nombre' => 'E. SOLEDAD',
+            'razon_social' => 'ESTACION DE SERVICIOS SOLEDAD SA DE CV',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+           
+        Cliente::create([            
+            'nombre' => 'FORD GUADALAJARA',
+            'razon_social' => 'PLASENCIA MOTORS GUADALAJARA S.A DE C.V.',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Cliente::create([            
+            'nombre' => 'GRUPO ROSGO SA DE CV',
+            'razon_social' => 'GRUPO ROSGO SA DE CV',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+	    
+        Cliente::create([            
+            'nombre' => 'MINERA MEXICANA LA CIENEGA',
+            'razon_social' => 'MINERA MEXICANA LA CIENEGA SA DE CV',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
@@ -53,9 +97,9 @@ class ClienteSeeder extends Seeder
 
         Cliente::create([            
             'nombre' => 'MINERA SAN JULIAN',
-            'razon_social' => 'Razón Social Ejemplo',
-            'mail' => 'mail@ejemplo.com',
-            'rfc' => 'XAXX010101000',
+            'razon_social' => 'MINERA SAN JULIAN',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
@@ -64,13 +108,47 @@ class ClienteSeeder extends Seeder
 
         Cliente::create([            
             'nombre' => 'MINERA SAUCITO',
-            'razon_social' => 'Razón Social Ejemplo',
-            'mail' => 'mail@ejemplo.com',
-            'rfc' => 'XAXX010101000',
+            'razon_social' => 'MINERA SAUCITO',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
             'es_activo' => 1,
             'usuario_edito' => 'Administrador',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
+
+        Cliente::create([            
+            'nombre' => 'TONCHE',
+            'razon_social' => 'TONCHE',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Cliente::create([            
+            'nombre' => 'TRUTH',
+            'razon_social' => 'CONSTRUCTORA TRUTH S DE RL',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+ 
+        Cliente::create([            
+            'nombre' => 'ZAIRO CONSTRUCTORA',
+            'razon_social' => 'ZAIRO CONSTRUCTORA',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
     }
 }

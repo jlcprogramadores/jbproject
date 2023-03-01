@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpedienteSeeder::class);
         $this->call(MinaSeeder::class);
         $this->call(SalidaSeeder::class);
-        $this->call(EntradaSeeder::class);
-        $this->call(FinanzaSeeder::class);
+        // $this->call(EntradaSeeder::class);
+        // $this->call(FinanzaSeeder::class);
         $this->call(AccesoSeeder::class);
     }
 }
