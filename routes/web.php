@@ -129,5 +129,9 @@ Route::get('/historialempleado/{id}', 'App\Http\Controllers\HistorialParoControl
 Route::get('/createParoGrupo', 'App\Http\Controllers\ParoController@createParoGrupo')->name('paros.createParoGrupo');
 Route::post('/storeParoGrupo', 'App\Http\Controllers\ParoController@storeParoGrupo')->name('paros.storeParoGrupo');
 
+// recibir en base a un exel
+Route::post('/exel', 'App\Http\Controllers\EntradaController@exel')->name('entradas.exel');
+
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes(['verify' => true]);

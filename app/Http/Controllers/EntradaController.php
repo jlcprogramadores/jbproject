@@ -8,7 +8,9 @@ use App\Models\Cliente;
 use App\Models\TipoDeIngreso;
 use App\Models\CategoriasDeEntrada;
 use App\Models\Proyecto;
-
+// use Excel;
+// use Importer;
+use Rap2hpoutre\FastExcel\FastExcel;
 /**
  * Class EntradaController
  * @package App\Http\Controllers
@@ -119,4 +121,28 @@ class EntradaController extends Controller
         return redirect()->route('entradas.index')
             ->with('success', 'Entrada eliminada exitosamente.');
     }
+    
+    
+    public function exel(Request $request)
+    {
+        // $file = 
+        $path = $request->file('file')->getRealPath();
+        $collection = (new FastExcel)->import($path);
+        dd($collection);
+        // $excel = Importer::make('Excel');
+        // $excel->load($path);
+        // $collection = $excel->getCollection();
+        // dd($collection);
+        // // $datos = Excel::load($path )->get();
+        // dd($datos->count());
+        // $datos = $datos->toArray();
+        // for ($i=0; $i < count($datos) ; $i++) { 
+        //     $datosImportar[] = $datos [$i];
+        // }
+
+        // dd($datosImportar);
+    }
+
+
+
 }
