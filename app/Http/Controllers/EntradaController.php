@@ -169,10 +169,12 @@ class EntradaController extends Controller
 
 
 
-        foreach($collection as $file){
+        foreach($collection as $file){            
             // creacion de entrada o salida
-            if($file[$tipoEyS] == "SALIDA" ){ //salida
-                $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get();
+            $esSalida = $file[$tipoEyS] == "SALIDA";
+            $idEntSal = 0;
+            if($esSalida ){ //salida
+                $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
                 $datosSalida =[
                     'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : null,
                     'usuario_edito' => $usuario_edito,
@@ -182,10 +184,11 @@ class EntradaController extends Controller
                     'updated_at' => $dateNow,
                 ];
                 // dd($datosSalida);
-                // $salida = Salida::create($datosSalida);
+                $salida = Salida::create($datosSalida);
+                $idEntSal = $salida->id;
             }else{ //entrada
-                $dbCliente = DB::table('clientes')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get();
-                $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get();
+                $dbCliente = DB::table('clientes')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
+                $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
 
                 $datosEntrada =[
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
@@ -196,10 +199,59 @@ class EntradaController extends Controller
                     'created_at' => $dateNow,
                     'updated_at' => $dateNow,
                 ];
-                dd($datosEntrada);
-                // $entrada = Entrada::create($datosEntrada);
+                // dd($datosEntrada);
+                $entrada = Entrada::create($datosEntrada);
+                $idEntSal = $entrada->id;
             }
-            dd($file['TIPO E&S']);
+
+            $dbCategoria = DB::table('categorias_familias','cf')
+                ->leftjoin(DB::raw('familias as f'), 'f.id', '=', 'cf.familia_id')
+                ->select('cf.id')
+                ->where('f.nombre',DB::raw("'".$file[$familia]."'"))
+                ->where('cf.nombre',DB::raw("'".$file[$categoria]."'"))
+                ->get()
+                ->first();
+            $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+
+            $dbIva = DB::table('ivas')->where('porcentaje',DB::raw("'".$file[$iva]."'"))->get()->first();
+
+            $dbUnidades = DB::table('unidades')->where('nombre',DB::raw("'".$file[$unidad]."'"))->get()->first();
+
+            // dd($file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null);
+            $datosFinanza = [
+                'salidas_id' => $esSalida ? $idEntSal : null,
+                'entradas_id' => $esSalida ? null : $idEntSal,
+                'categoria_id' => isset($dbCategoria->id) ? $dbCategoria->id : null,
+                'vence' => $file[$vence],
+                'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : null,
+                'iva_id' => $dbIva->id,
+                'no' => $file[$no],
+                'fecha_facturacion' => $esSalida ? null : ($file[$fechaSalida] ? Carbon::parse($file[$fechaSalida])->format('Y-m-d') : null),
+                'fecha_salida' => $esSalida ? $file[$fechaSalida] ? Carbon::parse($file[$fechaSalida])->format('Y-m-d') : null : null,
+                'fecha_entrada' => $file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null,
+                'descripcion' =>$file[$descripcion],
+                'cantidad' => $file[$cantidad],
+                'unidad_id' => $dbUnidades->id,
+                'costo_unitario' => $file[$costoUnitario],
+                'monto_a_pagar' => $file[$monto],
+                'fecha_de_pago' => $file[$fechaDePago] ? Carbon::parse($file[$fechaDePago])->format('Y-m-d') : null,
+                'metodo_de_pago' => $file[$metodoDePago],
+                'entregado_material_a' => $file[$entregadoA],
+                'comentario' => $file[$comentarios],
+                // 'a_meses' => ,
+                // 'fecha_primer_pago' => ,
+                'usuario_edito' => $usuario_edito,
+                'es_pagado' => 0,  
+                'esta_atrasado' => 0,
+                'created_at' => $dateNow,
+                'updated_at' => $dateNow,
+            ];
+
+            dd($datosFinanza);
+            $finanza = Finanza::create($datosFinanza);
+
+
+
 
             // creacion de finanza
         }
