@@ -241,9 +241,9 @@ class EntradaController extends Controller
                 'cantidad' => $file[$cantidad],
                 'unidad_id' => $dbUnidades->id,
                 'costo_unitario' => $file[$costoUnitario],
-                'monto_a_pagar' => $file[$monto],
-                'fecha_de_pago' => $file[$fechaDePago] ? Carbon::parse($file[$fechaDePago])->format('Y-m-d') : null,
-                'metodo_de_pago' => $file[$metodoDePago],
+                'monto_a_pagar' => $file[$monto] != "" ? $file[$monto] : 0 ,
+                'fecha_de_pago' => $file[$fechaDePago] != "" ? Carbon::parse($file[$fechaDePago])->format('Y-m-d') : $dateNow,
+                'metodo_de_pago' => $file[$metodoDePago] ,
                 'entregado_material_a' => $file[$entregadoA],
                 'comentario' => $file[$comentarios],
                 // 'a_meses' => ,
@@ -256,9 +256,9 @@ class EntradaController extends Controller
             ];
 
             $finanza = Finanza::create($datosFinanza);
-            // dump(is_null($file[$factura]));
-            if($file[$factura] != ""){
-                $facturas = explode("/",$file[$factura]);
+            // dump();
+            if( $file["FACTURA  O FOLIO"] != ""){
+                $facturas = explode("/",$file["FACTURA  O FOLIO"]);
                 foreach($facturas as $item){
                     $datosFactura = [
                         'finanza_id' => $finanza->id,
