@@ -177,7 +177,7 @@ class EntradaController extends Controller
                     $file[$key] = trim($val);
                 }
             }
-
+            // dd($file);
             // creacion de entrada o salida
             $esSalida = $file[$tipoEyS] == "SALIDA";
             $idEntSal = 0;
@@ -256,7 +256,7 @@ class EntradaController extends Controller
             ];
 
             $finanza = Finanza::create($datosFinanza);
-            
+            // dump(is_null($file[$factura]));
             if($file[$factura] != ""){
                 $facturas = explode("/",$file[$factura]);
                 foreach($facturas as $item){
@@ -273,7 +273,7 @@ class EntradaController extends Controller
             }
             
             // creacion de finanza
-            dump('Termine el numero '.$file[$factura]);
+            dump('Termine el numero '.$file[$no]);
         }
        
 
