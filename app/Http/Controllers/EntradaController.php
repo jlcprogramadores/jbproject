@@ -12,6 +12,7 @@ use App\Models\CategoriasDeEntrada;
 use App\Models\Proyecto;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Factura;
 // use Excel;
 // use Importer;
 use Rap2hpoutre\FastExcel\FastExcel;
@@ -169,7 +170,14 @@ class EntradaController extends Controller
 
 
 
-        foreach($collection as $file){            
+        foreach($collection as $file){   
+            // se limpian los espacios
+            foreach ($file as $key => $val) {
+                if(is_string($val)){
+                    $file[$key] = trim($val);
+                }
+            }
+
             // creacion de entrada o salida
             $esSalida = $file[$tipoEyS] == "SALIDA";
             $idEntSal = 0;
@@ -241,21 +249,33 @@ class EntradaController extends Controller
                 // 'a_meses' => ,
                 // 'fecha_primer_pago' => ,
                 'usuario_edito' => $usuario_edito,
-                'es_pagado' => 0,  
+                'es_pagado' => $file[$monto] != "" ? 1 : 0,  
                 'esta_atrasado' => 0,
                 'created_at' => $dateNow,
                 'updated_at' => $dateNow,
             ];
 
-            dd($datosFinanza);
             $finanza = Finanza::create($datosFinanza);
-
-
-
-
+            
+            if($file[$factura] != ""){
+                $facturas = explode("/",$file[$factura]);
+                foreach($facturas as $item){
+                    $datosFactura = [
+                        'finanza_id' => $finanza->id,
+                        'referencia_factura' => trim($item),
+                        'fecha_creacion' => $dateNow,
+                        'usuario_edito' => $usuario_edito,
+                        'created_at' => $dateNow,
+                        'updated_at' => $dateNow,
+                    ];
+                    $factura = Factura::create($request->all());
+                }
+            }
+            
             // creacion de finanza
+            dump('Termine el numero '.$file[$factura]);
         }
-        dd();
+       
 
     }
 
