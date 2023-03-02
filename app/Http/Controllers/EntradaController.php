@@ -268,7 +268,7 @@ class EntradaController extends Controller
                         'created_at' => $dateNow,
                         'updated_at' => $dateNow,
                     ];
-                    $factura = Factura::create($request->all());
+                    $factura = Factura::create($datosFactura);
                 }
             }
             
