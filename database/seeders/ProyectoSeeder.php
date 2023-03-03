@@ -19,6 +19,17 @@ class ProyectoSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Proyecto::create([            
+            'nombre' => 'Sin Poryecto',
+            'descripcion' => 'No hay proyecto',
+            'numero_de_proyecto' => 1,
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'presupuesto' => 1,
+            'margen' => 2,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proyecto::create([            
             'nombre' => 'AMPLIACION BODEGA JB',
             'descripcion' => 'AMPLIACION BODEGA JB',
             'numero_de_proyecto' => 1,
