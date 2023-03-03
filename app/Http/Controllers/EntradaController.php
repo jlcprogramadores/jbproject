@@ -226,12 +226,12 @@ class EntradaController extends Controller
             $dbUnidades = DB::table('unidades')->where('nombre',DB::raw("'".$file[$unidad]."'"))->get()->first();
 
             // dd($file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null);
-            $datosFinanza = [
+            $datosFinanza = [ // 2978
                 'salidas_id' => $esSalida ? $idEntSal : null,
                 'entradas_id' => $esSalida ? null : $idEntSal,
                 'categoria_id' => isset($dbCategoria->id) ? $dbCategoria->id : null,
-                'vence' => $file[$vence],
-                'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : null,
+                'vence' => $file[$vence] != "" ? $file[$vence] : 0 ,
+                'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : 1,
                 'iva_id' => $dbIva->id,
                 'no' => $file[$no],
                 'fecha_facturacion' => $esSalida ? null : ($file[$fechaSalida] ? Carbon::parse($file[$fechaSalida])->format('Y-m-d') : null),
@@ -240,7 +240,7 @@ class EntradaController extends Controller
                 'descripcion' =>$file[$descripcion],
                 'cantidad' => $file[$cantidad],
                 'unidad_id' => $dbUnidades->id,
-                'costo_unitario' => $file[$costoUnitario],
+                'costo_unitario' => $file[$costoUnitario] != "" ? $file[$costoUnitario] : 0,
                 'monto_a_pagar' => $file[$monto] != "" ? $file[$monto] : 0 ,
                 'fecha_de_pago' => $file[$fechaDePago] != "" ? Carbon::parse($file[$fechaDePago])->format('Y-m-d') : $dateNow,
                 'metodo_de_pago' => $file[$metodoDePago] ,
