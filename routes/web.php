@@ -130,6 +130,7 @@ Route::get('/createParoGrupo', 'App\Http\Controllers\ParoController@createParoGr
 Route::post('/storeParoGrupo', 'App\Http\Controllers\ParoController@storeParoGrupo')->name('paros.storeParoGrupo');
 
 // recibir en base a un exel
+Route::get('/importar', 'App\Http\Controllers\EntradaController@importar')->name('paros.importar');
 Route::post('/exel', 'App\Http\Controllers\EntradaController@exel')->name('entradas.exel');
 
 

@@ -128,6 +128,10 @@ class EntradaController extends Controller
     }
     
     
+    public function importar()
+    {
+        return view('entrada.importar');
+    }
     public function exel(Request $request)
     {
         // datos de la cabezera del archivo
