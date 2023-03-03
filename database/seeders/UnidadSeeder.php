@@ -19,6 +19,14 @@ class UnidadSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Unidade::create([
+            'nombre' => 'No Seleccionado',
+            'descripcion' => 'No Seleccionado',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        Unidade::create([
             'nombre' => 'SER',
             'descripcion' => 'Unidad de SER',
             'usuario_edito' => 'Administrador ',

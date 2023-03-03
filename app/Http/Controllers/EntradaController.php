@@ -204,8 +204,8 @@ class EntradaController extends Controller
 
                 $datosEntrada =[
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
-                    'tipodeingreso_id' => 0,
-                    'categorias_de_entrada_id' => 0,
+                    'tipodeingreso_id' => 1,
+                    'categorias_de_entrada_id' => 1,
                     'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : null,
                     'usuario_edito' => $usuario_edito,
                     'created_at' => $dateNow,
@@ -243,7 +243,7 @@ class EntradaController extends Controller
                 'fecha_entrada' => $file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null,
                 'descripcion' =>$file[$descripcion],
                 'cantidad' => $file[$cantidad],
-                'unidad_id' => $dbUnidades->id,
+                'unidad_id' => isset($dbUnidades->id) ? $dbUnidades->id : 1,
                 'costo_unitario' => $file[$costoUnitario] != "" ? $file[$costoUnitario] : 0,
                 'monto_a_pagar' => $file[$monto] != "" ? $file[$monto] : 0 ,
                 'fecha_de_pago' => $file[$fechaDePago] != "" ? Carbon::parse($file[$fechaDePago])->format('Y-m-d') : $dateNow,
@@ -279,7 +279,7 @@ class EntradaController extends Controller
             // creacion de finanza
             dump('Termine el numero '.$file[$no]);
         }
-       
+       return dump('Termine');
 
     }
 

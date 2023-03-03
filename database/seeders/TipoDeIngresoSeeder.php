@@ -17,6 +17,14 @@ class TipoDeIngresoSeeder extends Seeder
     {
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
+        
+        TipoDeIngreso::create([
+            'nombre' => 'No Seleccionado',
+            'descripcion' => 'No Seleccionado',
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
 
         TipoDeIngreso::create([
             'nombre' => 'FIJO',

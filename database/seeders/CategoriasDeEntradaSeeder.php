@@ -17,6 +17,15 @@ class CategoriasDeEntradaSeeder extends Seeder
     {
         $dt = Carbon::now();
         $dateNow = $dt->toDateTimeString();
+        
+        CategoriasDeEntrada::create([
+            'nombre' => 'No Seleccionado',
+            'descripcion' => 'No Seleccionado',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador ',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
 
         CategoriasDeEntrada::create([
             'nombre' => 'CON CONTRATO',
