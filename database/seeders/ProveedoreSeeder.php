@@ -19,6 +19,20 @@ class ProveedoreSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         Proveedore::create([            
+            'nombre' => 'No Seleccionado',
+            'razon_social' => 'No Seleccionado',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proveedore::create([            
             'nombre' => 'ADN',
             'razon_social' => 'LLANTAS Y SERVICIOS DEL MINERAL SA DE CV',
             'estado' => 'SIN ESTADO',

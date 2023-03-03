@@ -188,7 +188,7 @@ class EntradaController extends Controller
             if($esSalida ){ //salida
                 $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
                 $datosSalida =[
-                    'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : null,
+                    'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : 1,
                     'usuario_edito' => $usuario_edito,
                     // 'comprobante' => ,
                     'enviado' => 0,
@@ -277,9 +277,9 @@ class EntradaController extends Controller
             }
             
             // creacion de finanza
-            dump('Termine el numero '.$file[$no]);
+            print_r(' / '.$file[$no].' / ');
         }
-       return dump('Termine');
+       return print_r('Termine');
 
     }
 
