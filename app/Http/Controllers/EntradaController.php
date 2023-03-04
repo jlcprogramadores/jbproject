@@ -178,7 +178,8 @@ class EntradaController extends Controller
             // se limpian los espacios
             foreach ($file as $key => $val) {
                 if(is_string($val)){
-                    $file[$key] = trim($val);
+                    $trimVal = trim($val);
+                    $file[$key] = $trimVal != "-"  ? $trimVal : 0 ;
                 }
             }
             // dd($file);
@@ -206,7 +207,7 @@ class EntradaController extends Controller
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
                     'tipodeingreso_id' => 1,
                     'categorias_de_entrada_id' => 1,
-                    'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : null,
+                    'proyecto_id' => isset($dbProyecto->id) ? $dbProyecto->id : 1,
                     'usuario_edito' => $usuario_edito,
                     'created_at' => $dateNow,
                     'updated_at' => $dateNow,
@@ -223,13 +224,14 @@ class EntradaController extends Controller
                 ->where('cf.nombre',DB::raw("'".$file[$categoria]."'"))
                 ->get()
                 ->first();
-            $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+            $dbProyecto = $file[$proyecto] != ''?  DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first() : 1;
 
             $dbIva = DB::table('ivas')->where('porcentaje',DB::raw("'".$file[$iva]."'"))->get()->first();
 
             $dbUnidades = DB::table('unidades')->where('nombre',DB::raw("'".$file[$unidad]."'"))->get()->first();
 
             // dd($file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null);
+            // dd($file);
             $datosFinanza = [ // 2978
                 'salidas_id' => $esSalida ? $idEntSal : null,
                 'entradas_id' => $esSalida ? null : $idEntSal,
