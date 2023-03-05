@@ -264,7 +264,7 @@ class EntradaController extends Controller
             $finanza = Finanza::create($datosFinanza);
             // dump();
             if( $file["FACTURA  O FOLIO"] != ""){
-                $facturas = explode("/",$file["FACTURA  O FOLIO"]);
+                $facturas =$file["FACTURA  O FOLIO"] != "SIN/OCJB"? explode("/",$file["FACTURA  O FOLIO"]) : explode("/","SIN OCJB");
                 foreach($facturas as $item){
                     $datosFactura = [
                         'finanza_id' => $finanza->id,
