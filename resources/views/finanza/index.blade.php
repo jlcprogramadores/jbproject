@@ -115,11 +115,10 @@
                                             <?php $tipoFinanza = $finanza->salidas_id ?  'Egreso' : 'Ingreso' ?>
 											<td>{{ $tipoFinanza }}</td>
                                             <?php 
-                                                // $fam = 'F: '.$finanza->famCategoria->familia->nombre;
-                                                // $cat = 'C: '.$finanza->famCategoria->nombre;
-                                                ?>
-                                                
-											<td> <span style=" white-space: nowrap">{{-- $fam --}}</span> <br/> <span style=" white-space: nowrap">{{-- $cat --}}</span>    </td>
+                                                $fam = 'F: '.$finanza->famCategoria->familia->nombre;
+                                                $cat = 'C: '.$finanza->famCategoria->nombre;
+                                            ?>
+											<td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
                                             <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
                                             <td>{{ $finanza->proyecto->nombre }}</td>
 											<td>{{ $finanza->descripcion }}</td>

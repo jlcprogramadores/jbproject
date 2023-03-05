@@ -71,6 +71,16 @@ class CategoriasFamiliaSeeder extends Seeder
 
         CategoriasFamilia::create([
             'familia_id' => 1,
+            'nombre' => 'RENTA TRAILA',
+            'descripcion' => 'SERVICIOS: RENTA TRAILA',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 1,
             'nombre' => 'RENTA CAMPAMENTO',
             'descripcion' => 'SERVICIOS: RENTA CAMPAMENTO',
             'usuario_edito' => 'Administrador',
@@ -323,6 +333,27 @@ class CategoriasFamiliaSeeder extends Seeder
         ]);
 
         //FAMILIA: VEHICULOS
+        
+        CategoriasFamilia::create([
+            'familia_id' => 3,
+            'nombre' => 'POLIZAS SEGUR0',
+            'descripcion' => 'VEHICULOS: POLIZAS SEGUR0',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
+        CategoriasFamilia::create([
+            'familia_id' => 3,
+            'nombre' => 'HERRAMIENTAS',
+            'descripcion' => 'VEHICULOS: HERRAMIENTAS',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
         CategoriasFamilia::create([
             'familia_id' => 3,
             'nombre' => 'REFACCIONES',
@@ -562,11 +593,11 @@ class CategoriasFamiliaSeeder extends Seeder
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
-
+        
         CategoriasFamilia::create([
             'familia_id' => 4,
-            'nombre' => 'MOBILARIO',
-            'descripcion' => 'MATERIAL: MOBILARIO',
+            'nombre' => 'MOBILIARIO',
+            'descripcion' => 'MATERIAL: MOBILIARIO',
             'usuario_edito' => 'Administrador',
             'es_activo' => 1,
             'created_at' => $dateNow,
@@ -654,6 +685,16 @@ class CategoriasFamiliaSeeder extends Seeder
             'updated_at' => $dateNow
         ]);
 
+        CategoriasFamilia::create([
+            'familia_id' => 5,
+            'nombre' => 'ALERT-ON',
+            'descripcion' => 'SERVICIO_MEDICO: ALERT-ON',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
         //FAMILIA: EQUIPO_MOVIL
         CategoriasFamilia::create([
             'familia_id' => 6,
@@ -873,6 +914,17 @@ class CategoriasFamiliaSeeder extends Seeder
             'familia_id' => 9,
             'nombre' => 'DIESEL',
             'descripcion' => 'COMBUSTIBLE: DIESEL',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        //Familia:COMBUSTIBLE
+        CategoriasFamilia::create([
+            'familia_id' => 9,
+            'nombre' => 'TRASLADO DE PERSONAL',
+            'descripcion' => 'COMBUSTIBLE: TRASLADO DE PERSONAL',
             'usuario_edito' => 'Administrador',
             'es_activo' => 1,
             'created_at' => $dateNow,
