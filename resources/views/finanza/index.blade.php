@@ -42,7 +42,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped display compact" id="table"  style="width:100%">
+                            <table class="table table-striped display compact"  style="width:100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>

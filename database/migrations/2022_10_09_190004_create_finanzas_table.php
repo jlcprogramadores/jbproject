@@ -14,7 +14,7 @@ class CreateFinanzasTable extends Migration
     public function up()
     {
         Schema::create('finanzas', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->integer('salidas_id')->nullable();
             $table->integer('entradas_id')->nullable();
             $table->integer('categoria_id')->nullable();
