@@ -14,7 +14,7 @@ class CreateEntradasTable extends Migration
     public function up()
     {
         Schema::create('entradas', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')
                 ->references('id')

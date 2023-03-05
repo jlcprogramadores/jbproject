@@ -14,7 +14,7 @@ class CreateSalidasTable extends Migration
     public function up()
     {
         Schema::create('salidas', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->integer('proveedor_id')->nullable();
             $table->string('usuario_edito');
             $table->longText('comprobante')->nullable();

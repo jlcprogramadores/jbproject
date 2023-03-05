@@ -14,7 +14,7 @@ class CreateCategoriasFamiliasTable extends Migration
     public function up()
     {
         Schema::create('categorias_familias', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->unsignedBigInteger('familia_id');
             $table->foreign('familia_id')
                 ->references('id')

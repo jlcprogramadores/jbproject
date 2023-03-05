@@ -14,7 +14,7 @@ class CreateUnidadesTable extends Migration
     public function up()
     {
         Schema::create('unidades', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('usuario_edito');

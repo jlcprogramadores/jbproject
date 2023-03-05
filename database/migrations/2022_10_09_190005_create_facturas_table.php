@@ -14,7 +14,7 @@ class CreateFacturasTable extends Migration
     public function up()
     {
         Schema::create('facturas', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->unsignedBigInteger('finanza_id');
             $table->foreign('finanza_id')
                 ->references('id')

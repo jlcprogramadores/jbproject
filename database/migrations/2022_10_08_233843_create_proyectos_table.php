@@ -14,7 +14,7 @@ class CreateProyectosTable extends Migration
     public function up()
     {
         Schema::create('proyectos', function (Blueprint $table) {
-            $table->id();
+            $table->id()->index();
             $table->integer('mina_id')->nullable();
             $table->string('nombre');
             $table->string('descripcion');
