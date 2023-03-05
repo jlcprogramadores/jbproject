@@ -99,7 +99,69 @@ class CategoriasFamiliaSeeder extends Seeder
             'updated_at' => $dateNow
         ]);
 
+        CategoriasFamilia::create([
+            'familia_id' => 1,
+            'nombre' => 'TRASLADO DE PERSONAL',
+            'descripcion' => 'SERVICIOS: TRASLADO DE PERSONAL',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
         //FAMILIA: FINANCIEROS_EGRESO
+
+        CategoriasFamilia::create([
+            'familia_id' => 2,
+            'nombre' => 'RENTA CAMPAMENTO',
+            'descripcion' => 'FINANCIEROS_EGRESO: RENTA CAMPAMENTO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]); 
+
+
+        CategoriasFamilia::create([
+            'familia_id' => 2,
+            'nombre' => 'ALIMENTOS',
+            'descripcion' => 'FINANCIEROS_EGRESO: ALIMENTOS',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 2,
+            'nombre' => 'MOBILARIO',
+            'descripcion' => 'FINANCIEROS_EGRESO: MOBILARIO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 2,
+            'nombre' => 'COMPRA ACTIVO',
+            'descripcion' => 'FINANCIEROS_EGRESO: COMPRA ACTIVO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 2,
+            'nombre' => 'INGRE$O$ RETORNO EFECTIVO',
+            'descripcion' => 'FINANCIEROS_EGRESO: INGRE$O$ RETORNO EFECTIVO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        
         CategoriasFamilia::create([
             'familia_id' => 2,
             'nombre' => 'PRESTAMOS',
@@ -341,6 +403,15 @@ class CategoriasFamiliaSeeder extends Seeder
             'updated_at' => $dateNow
         ]);
 
+        CategoriasFamilia::create([
+            'familia_id' => 3,
+            'nombre' => 'CONSUMIBLES',
+            'descripcion' => 'VEHICULOS: CONSUMIBLES',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
         //FAMILIA: MATERIAL
         CategoriasFamilia::create([
             'familia_id' => 4,
@@ -476,6 +547,36 @@ class CategoriasFamiliaSeeder extends Seeder
             'familia_id' => 4,
             'nombre' => 'CAFETERIA',
             'descripcion' => 'MATERIAL: CAFETERIA',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 4,
+            'nombre' => 'ACCESORIOS',
+            'descripcion' => 'MATERIAL: ACCESORIOS',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 4,
+            'nombre' => 'MOBILARIO',
+            'descripcion' => 'MATERIAL: MOBILARIO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 4,
+            'nombre' => 'OTROS',
+            'descripcion' => 'MATERIAL: OTROS',
             'usuario_edito' => 'Administrador',
             'es_activo' => 1,
             'created_at' => $dateNow,
@@ -705,6 +806,17 @@ class CategoriasFamiliaSeeder extends Seeder
             'updated_at' => $dateNow
         ]);
 
+        CategoriasFamilia::create([
+            'familia_id' => 7,
+            'nombre' => 'PERSONALES CEO',
+            'descripcion' => 'VIATICOS: PERSONALES CEO',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+
         //Familia: TI
         CategoriasFamilia::create([
             'familia_id' => 8,
@@ -778,6 +890,16 @@ class CategoriasFamiliaSeeder extends Seeder
         ]);
 
         //Familia:FINANCIEROS_IN
+        CategoriasFamilia::create([
+            'familia_id' => 10,
+            'nombre' => 'FINANCIEROS_IN',
+            'descripcion' => 'FINANCIEROS_IN: FINANCIEROS_IN',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
         CategoriasFamilia::create([
             'familia_id' => 10,
             'nombre' => 'INGRE$O$ FACTURA MINA',
@@ -859,6 +981,26 @@ class CategoriasFamiliaSeeder extends Seeder
         ]);
 
         //Familia: ADMIN
+        CategoriasFamilia::create([
+            'familia_id' => 11,
+            'nombre' => 'ALIMENTOS',
+            'descripcion' => 'ADMIN: ALIMENTOS',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
+        CategoriasFamilia::create([
+            'familia_id' => 11,
+            'nombre' => 'VIATICOS',
+            'descripcion' => 'ADMIN: VIATICOS',
+            'usuario_edito' => 'Administrador',
+            'es_activo' => 1,
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+
         CategoriasFamilia::create([
             'familia_id' => 11,
             'nombre' => 'CARTA NO ANTECEDENTES',
