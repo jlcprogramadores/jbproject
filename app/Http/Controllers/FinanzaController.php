@@ -39,7 +39,7 @@ class FinanzaController extends Controller
      */
     public function index()
     {
-        $finanzas = Finanza::fastPaginate();
+        $finanzas = Finanza::query()->fastPaginate();
         
         return view('finanza.index', compact('finanzas'))
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
