@@ -294,9 +294,8 @@
         $(document).ready( function () {
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
-                "pageLength": 500
-                // "lengthChange": false,
-                // paging: false,
+                "lengthChange": false,
+                paging: false,
                 responsive:true,
                 autoWidth: false,
                 order: [
