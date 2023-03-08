@@ -95,7 +95,7 @@ class Finanza extends Model
         'usuario_edito'  => 'required',
     ];
 
-    protected $perPage = 250;
+    protected $perPage = 200;
 
     /**
      * Attributes that should be mass-assignable.
