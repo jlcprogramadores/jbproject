@@ -74,203 +74,14 @@
 										<th>Comentario</th>
                                         <th>Comprobante</th>
                                         <th>Fecha Actualización</th>
-
-                                        <th>Acciones</th>
+                                        {{-- <th>Acciones</th> --}}
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($finanzas as $finanza)
-                                        <tr>
-
-                                            <td>{{ $finanza->no }}</td>
-											<td>
-                                                @if ($finanza->esta_atrasado)
-                                                    <span class="text-danger">
-                                                        {{ $finanza->fecha_entrada ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : '' }}
-                                                    </span>
-                                                    <br>
-                                                    <span class="peque text-danger">
-                                                        Atrasada
-                                                    </span>
-                                                @else
-                                                    {{ $finanza->fecha_entrada ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : '' }}
-                                                    
-                                                @endif
-                                            
-                                            </td>
-											<td>{{ $finanza->fecha_salida ? Carbon\Carbon::parse($finanza->fecha_salida)->format('Y-m-d') : '' }}</td>
-                                            <td>{{ $finanza->vence }}</td>
-											<td>{{ $dias = Carbon\Carbon::parse( strtotime($finanza->fecha_salida."+ ".$finanza->vence." days"))->format('Y-m-d') }}</td>
-                                            <?php 
-                                                $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
-                                                $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
-                                                $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
-                                                ?>
-                                            <td>{{ $diferencia_en_dias }}</td>
-                                            @if ($diferencia_en_dias <= 0)
-                                            <td><p class="badge bg-danger">Vencido</p></td>
-                                            @else
-                                            <td><p class="badge bg-warning text-dark">Por vencer</p></td>
-                                            @endif
-                                            <?php $tipoFinanza = $finanza->salidas_id ?  'Egreso' : 'Ingreso' ?>
-											<td>{{ $tipoFinanza }}</td>
-                                            <?php 
-                                                $fam = 'F: '.$finanza->famCategoria->familia->nombre;
-                                                $cat = 'C: '.$finanza->famCategoria->nombre;
-                                            ?>
-											<td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
-                                            <td>{{ $finanza->salidas_id ? $finanza->salida->proveedore->razon_social : $finanza->entrada->cliente->razon_social }}</td>
-                                            <td>{{ $finanza->proyecto->nombre }}</td>
-											<td>{{ $finanza->descripcion }}</td>
-                                            <td>
-                                                @if (!empty($finanza->factura[0]))
-                                                 @foreach($finanza->factura as $iterFactura)
-
-                                                    {{$iterFactura->referencia_factura ? $iterFactura->referencia_factura.',' : '' }}
-                                                    
-                                                        
-                                                    @endforeach
-                                                @else
-                                                    @if ($finanza->salidas_id)
-                                                        <p class="badge bg-danger">No facturado</p>
-                                                    @else
-                                                        <p class="badge bg-danger">No Recibida</p>
-                                                    @endif
-                                                @endif
-
-                                            </td>
-                                            <td>{{$finanza->salidas_id ? $finanza->salida->proveedore->nombre : $finanza->entrada->cliente->nombre}}</td>
-											<td>{{ $finanza->cantidad.' '.$finanza->unidad->nombre }}</td>
-											<td>{{ '$'. number_format($finanza->costo_unitario,2) }}</td>
-                                            <td>{{  '$'. number_format($subTotal = $finanza->costo_unitario*$finanza->cantidad,2) }}</td>
-											<td>{{ ($iva = $finanza->iva->porcentaje).'%' }}</td>
-                                            <td>{{ '$'. number_format($subTotal*$iva,2) }}</td>
-											<td>{{ '$'. number_format($montoAPagar = $finanza->monto_a_pagar,2) }}</td>
-											<td >{{$finanza->fecha_de_pago ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : ''}}</td>
-											<td>{{ $finanza->metodo_de_pago }}</td>
-                                            @if ($finanza->es_pagado == 0)
-                                                <td><p class="badge bg-danger">Pendiente Pagar</p></td>
-                                            @else
-                                                <td><p class="badge bg-success">Pagado</p></td>
-                                            @endif
-											<td>{{ $finanza->entregado_material_a }}</td>
-                                            {{-- Parte de los meses --}}
-                                            {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
-                                            <td>
-                                                <?php 
-                                                    // $hayProximo = false;
-                                                    $totalPagado = 0;    
-                                                ?>
-                                                @if (!empty($finanza->a_meses))
-                                                    @foreach ($finanza->factura as $item)
-                                                    <span class="completo text-capitalize">
-                                                        <?php 
-                                                            $mes_pago = carbon\Carbon::parse($item->mes_de_pago)
-                                                        ?>
-                                                        @if ($mes_pago->monthName == $fechaActual->monthName && $mes_pago->year == $fechaActual->year )
-                                                            @if (!is_null($item->monto) && $item->monto != 0)
-                                                                {{ $mes_pago->monthName }}
-                                                                <span class="badge bg-success">
-                                                                    Pagado
-                                                                </span>
-                                                                <br>
-                                                                <?php $totalPagado = $totalPagado + $item->monto; ?> 
-                                                            @else
-                                                                {{ $mes_pago->monthName }}
-                                                                <span class="badge bg-warning text-dark">
-                                                                    Por Vencer
-                                                                </span>
-                                                                <br>
-                                                            @endif
-                                                        @elseif($mes_pago < $fechaActual )
-                                                            @if (!is_null($item->monto) && $item->monto != 0)
-                                                               
-                                                            @else
-                                                                {{ $mes_pago->monthName }}
-                                                                <span class="badge bg-danger">
-                                                                    Vencido
-                                                                </span>
-                                                                <br>
-                                                            @endif
-                                                        @else
-                                                            {{-- php $hayProximo = true   --}}
-                                                        @endif
-                                                        
-                                                    </span>
-                                                    @endforeach
-                                                        {{-- @if ($hayProximo)
-                                                            <span class="badge bg-secondary">
-                                                                
-                                                            </span>
-                                                            <br>
-                                                        @endif --}}
-                                                    <?php $resta = $finanza->monto_a_pagar - $totalPagado ?> 
-                                                    <span class="peque">
-                                                        @if ($resta <= 0)
-                                                            Pagado
-                                                        @else
-                                                            {{ 'Resta: $'. number_format($resta,2)  }}
-                                                        @endif
-                                                    </span>
-                                                @else
-                                                    N/A
-                                                @endif
-                                            </td>
-                                            <td>{{ $finanza->fecha_facturacion ?  Carbon\Carbon::parse($finanza->fecha_facturacion)->format('Y-m-d') :'' }}</td>
-                                            <td>{{ $finanza->comentario }}</td>
-                                            @if ($finanza->salidas_id)
-                                                @if ($finanza->salida->enviado == 0)
-                                                    <td><p class="badge bg-danger">Sin Enviar</p></td>
-                                                @else
-                                                    <td><p class="badge bg-success">Enviado</p></td>
-                                                @endif
-                                            @else  
-                                                <td></td>
-                                            @endif
-                                            
-                                            <td><span class="peque">{{ $finanza->usuario_edito }}</span>  <br/> <span class="peque">{{ $finanza->updated_at }}</span></td>
-                                            <td>
-                                                <span class="completo">
-                                                    <form action="{{ route('finanzas.destroy',$finanza->id) }}" method="POST">
-                                                        @can('finanzas.confirmarpago')
-                                                        <a class="btn btn-sm btn-info" href="{{ route('finanzas.confirmarPago',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>      
-                                                        @endcan
-                                                        @if ($finanza->salidas_id)
-                                                        @can('finanzas.correo')
-                                                        <a class="btn btn-sm btn-secondary " href="{{ route('finanzas.correo',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Correo</a>      
-                                                        @endcan
-                                                        @endif
-                                                        @can('facturas.index')    
-                                                        <a class="btn btn-sm btn-warning" href="{{ route('facturas.facturafinanzas', ['id' => $finanza->id]) }}"><i class="fa fa-fw fa-edit"></i> Factura</a>
-                                                        @endcan
-                                                        @can('finanzas.show')
-                                                        <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$finanza->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                        @endcan
-                                                        @can('finanzas.edit')
-                                                            @if (!empty($finanza->a_meses))
-                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgresoMeses',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
-                                                            @elseif($finanza->salidas_id)
-                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgreso',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
-                                                            @else
-                                                                <a class="btn btn-sm btn-success" href="{{ route('finanzas.editIngreso',$finanza->id) }}"><i class="fa fa-fw fa-edit"></i>Editar</a>
-                                                            @endif
-                                                        @endcan
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        @can('finanzas.destroy')
-                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                        @endcan
-                                                    </form>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
+                                
                             </table>
                         </div>
                     </div>
                 </div>
-                {!! $finanzas->links() !!}
             </div>
         </div>
     </div>
@@ -294,8 +105,47 @@
         $(document).ready( function () {
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
             $('#table').DataTable({
-                "lengthChange": false,
-                paging: false,
+                "processing": true,
+                "serverSide": true,
+                "paging": true,
+                "pageLength": 10,
+                "ordering": false,
+                
+                "columns":[
+                    {data: 'no'},
+                    {data: 'fecha_entrada'},
+                    {data: 'fecha_salida'},
+                    {data: 'vence'},
+                    {data: 'fecha_vencimiento'},
+                    {data: 'dias'},
+                    {data: 'estado'},
+                    {data: 'tipo_i&e'},
+                    {data: 'fam_&_cat'},
+                    {data: 'razon_social'},
+                    {data: 'proyecto'},
+                    {data: 'descripción'},
+                    {data: 'factura_o_folio'},
+                    {data: 'proveedor_o_cliente'},
+                    {data: 'cantidad_&_unidad'},
+                    {data: 'costo_unitario'},
+                    {data: 'subtotal_total_mxn'},
+                    {data: 'iva'},
+                    {data: 'total_mxn'},
+                    {data: 'monto_a_pagar'},
+                    {data: 'fecha_de_pago'},
+                    {data: 'metodo_de_pago'},
+                    {data: 'estatus'},
+                    {data: 'entregado_material_a'},
+                    {data: 'a_meses'},
+                    {data: 'fecha_facturacion'},
+                    {data: 'comentario'},
+                    {data: 'comprobante'},
+                    {data: 'fecha_actualizacion'},
+                    
+                ],
+                "ajax":"{{ route('finanzas.datos') }}",
+                // "lengthChange": false,
+                // paging: false,
                 responsive:true,
                 autoWidth: false,
                 order: [
@@ -313,13 +163,13 @@
                         "previous": "Anterior"
                     }
                 },
-                columnDefs: [{
-                    // espeificamos que columna sera afectada
-                    targets: [12, 24],
-                    render: function(data, type, full, meta) {    
-                        return '<div class="truncate">' + data + '</div>';
-                    }
-                }],
+                // columnDefs: [{
+                //     // espeificamos que columna sera afectada
+                //     targets: [12, 24],
+                //     render: function(data, type, full, meta) {    
+                //         return '<div class="truncate">' + data + '</div>';
+                //     }
+                // }],
                 orderCellsTop: true,
                 fixedHeader: true,
                 initComplete: function() {

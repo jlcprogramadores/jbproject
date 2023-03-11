@@ -133,6 +133,11 @@ Route::post('/storeParoGrupo', 'App\Http\Controllers\ParoController@storeParoGru
 Route::get('/importar', 'App\Http\Controllers\EntradaController@importar')->name('paros.importar');
 Route::post('/exel', 'App\Http\Controllers\EntradaController@exel')->name('entradas.exel');
 
+// datos
+// Route::get('/datos-users', 'App\Http\Controllers\UserController@datos')->name('usuarios.datos');
+Route::get('/datos-finanzas', 'App\Http\Controllers\FinanzaController@datos')->name('finanzas.datos');
+
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes(['verify' => true]);

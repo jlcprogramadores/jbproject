@@ -20,6 +20,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ComprobanteMailable;
 use  Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -44,6 +45,91 @@ class FinanzaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
     }
 
+    public function datos(Request $request)
+    {
+        // dd($this->getTotal);
+        // print_r($request->ajax());
+        // die;
+        $finanzas = DB::select(DB::raw(" 
+                SELECT
+                f.no as'no',
+                if(f.esta_atrasado = 1 , CONCAT(f.fecha_entrada,' ','Atrasada') ,f.fecha_entrada)  as 'fecha_entrada',
+                f.fecha_salida as 'fecha_salida',
+                f.vence as 'vence',
+                @fven := DATE_ADD(f.fecha_salida, INTERVAL f.vence DAY)   'fecha_vencimiento',
+                @dias := DATEDIFF(@fven, now()) as'dias',
+                if(@dias <= 0, 'Vencido', 'Por Vencer'  ) as 'estado',
+                if(f.salidas_id is not NULL,'Egreso', 'Ingreso' ) as 'tipo_i&e',
+                CONCAT((SELECT fam.nombre 
+                from familias as fam 
+                WHERE fam.id = cf.familia_id),' - ',cf.nombre ) as 'fam_&_cat',
+                if(f.salidas_id is not NULL,p.razon_social, c.razon_social ) as 'razon_social',
+                pro.nombre as 'proyecto',
+                f.descripcion as 'descripción',
+                (SELECT GROUP_CONCAT(fac.referencia_factura)
+                FROM facturas as fac
+                WHERE fac.finanza_id = f.id) as 'factura_o_folio',
+                if(f.salidas_id is not NULL,p.nombre, c.nombre ) as 'proveedor_o_cliente',
+                CONCAT(f.cantidad,' ',u.nombre)'cantidad_&_unidad',
+                f.costo_unitario as 'costo_unitario',
+                (@subtotal := (f.costo_unitario * f.cantidad) ) as 'subtotal_total_mxn',
+                i.porcentaje as 'iva',
+                (@subtotal * i.porcentaje )'total_mxn',
+                f.monto_a_pagar as 'monto_a_pagar',
+                f.fecha_de_pago as 'fecha_de_pago',
+                f.metodo_de_pago as 'metodo_de_pago',
+                if(f.es_pagado = 0, 'Pendiente Pagar', 'Pagado') as 'estatus',
+                f.entregado_material_a as 'entregado_material_a',
+                if(f.a_meses is not NULL, 
+                    (SELECT GROUP_CONCAT( 
+                                if(DATE_FORMAT(fac.mes_de_pago, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m'), 
+                                
+                                    if (fac.monto is not NULL and fac.monto != 0,
+                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Pagado'), 
+                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Por Vencer')),
+                                            
+                                    if(fac.mes_de_pago < NOW(),
+                                        if (fac.monto is not NULL and fac.monto != 0,
+                                            '',
+                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Vencido')),
+                                            ''
+                                    )
+                                )	
+                    )
+                    FROM facturas as fac
+                    WHERE fac.finanza_id = f.id)
+                    ,'' ) 'a_meses',
+                f.fecha_facturacion as 'fecha_facturacion',
+                f.comentario as 'comentario',
+                if(s.enviado = 0, 'Sin enviar','Enviado') as 'comprobante',
+                CONCAT(f.usuario_edito,' ',	f.updated_at) as 'fecha_actualizacion',
+                if(f.a_meses is not NULL,'aMeses', if(f.salidas_id is not NULL,'Egreso', 'Ingreso' )) as 'tipo_finanza' 
+            
+            FROM
+                finanzas as f 
+            Left JOIN salidas as s ON s.id = f.salidas_id
+            Left JOIN proveedores as p ON p.id = s.proveedor_id
+            
+            Left JOIN entradas as e ON e.id = f.entradas_id
+            Left JOIN clientes as c ON c.id = e.cliente_id
+            
+            LEFT JOIN proyectos as pro ON pro.id = f.proyecto_id
+            LEFT JOIN unidades as u ON u.id = f.unidad_id
+            LEFT JOIN ivas as i ON i.id = f.iva_id
+            LEFT JOIN categorias_familias as cf ON cf.id = f.categoria_id
+            ORDER BY f.id DESC
+           "                                                    
+
+        ));
+        // return datatables()->of($finanzas)->toJson();
+        // dd(datatables($finanzas)->make(true));
+        return datatables($finanzas)->make(true);
+        // if ($request->ajax()) {
+        //     //$datas = Product::all();
+        // }  
+        // // dd($users);
+        // return  view('user.index');
+    }
     /**
      * Display a listing of the resource.
      *
