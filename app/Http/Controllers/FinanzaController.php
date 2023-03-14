@@ -46,64 +46,62 @@ class FinanzaController extends Controller
     }
 
     public function datos(Request $request)
-    {
-        // dd($this->getTotal);
-        // print_r($request->ajax());
-        // die;
+    {        
         $finanzas = DB::select(DB::raw(" 
                 SELECT
+                f.id,
+                @s_id := f.salidas_id as 'salidas_id' ,
                 f.no as'no',
-                if(f.esta_atrasado = 1 , CONCAT(f.fecha_entrada,' ','Atrasada') ,f.fecha_entrada)  as 'fecha_entrada',
-                f.fecha_salida as 'fecha_salida',
+                if(f.esta_atrasado= 1 , CONCAT(DATE_FORMAT(f.fecha_entrada, '%Y-%m-%d'),' ','Atrasada') ,DATE_FORMAT(f.fecha_entrada, '%Y-%m-%d'))  as 'fecha_entrada',
+                DATE_FORMAT(f.fecha_salida, '%Y-%m-%d')  as 'fecha_salida',
                 f.vence as 'vence',
-                @fven := DATE_ADD(f.fecha_salida, INTERVAL f.vence DAY)   'fecha_vencimiento',
+                @fven := DATE_FORMAT(DATE_ADD(f.fecha_salida, INTERVAL f.vence DAY), '%Y-%m-%d')   'fecha_vencimiento',
                 @dias := DATEDIFF(@fven, now()) as'dias',
-                if(@dias <= 0, 'Vencido', 'Por Vencer'  ) as 'estado',
-                if(f.salidas_id is not NULL,'Egreso', 'Ingreso' ) as 'tipo_i&e',
+                if(@dias <= 0, 1, 0  ) as 'estado',
+                if(@s_id is not NULL,'Egreso', 'Ingreso' ) as 'tipo_i&e',
                 CONCAT((SELECT fam.nombre 
                 from familias as fam 
                 WHERE fam.id = cf.familia_id),' - ',cf.nombre ) as 'fam_&_cat',
-                if(f.salidas_id is not NULL,p.razon_social, c.razon_social ) as 'razon_social',
+                if(@s_id is not NULL,p.razon_social, c.razon_social ) as 'razon_social',
                 pro.nombre as 'proyecto',
                 f.descripcion as 'descripción',
                 (SELECT GROUP_CONCAT(fac.referencia_factura)
                 FROM facturas as fac
                 WHERE fac.finanza_id = f.id) as 'factura_o_folio',
-                if(f.salidas_id is not NULL,p.nombre, c.nombre ) as 'proveedor_o_cliente',
+                if(@s_id is not NULL,p.nombre, c.nombre ) as 'proveedor_o_cliente',
                 CONCAT(f.cantidad,' ',u.nombre)'cantidad_&_unidad',
                 f.costo_unitario as 'costo_unitario',
                 (@subtotal := (f.costo_unitario * f.cantidad) ) as 'subtotal_total_mxn',
                 i.porcentaje as 'iva',
                 (@subtotal * i.porcentaje )'total_mxn',
                 f.monto_a_pagar as 'monto_a_pagar',
-                f.fecha_de_pago as 'fecha_de_pago',
+                DATE_FORMAT(f.fecha_de_pago, '%Y-%m-%d') as 'fecha_de_pago',
                 f.metodo_de_pago as 'metodo_de_pago',
-                if(f.es_pagado = 0, 'Pendiente Pagar', 'Pagado') as 'estatus',
+                if(f.es_pagado = 0, 1, 0) as 'estatus',
                 f.entregado_material_a as 'entregado_material_a',
                 if(f.a_meses is not NULL, 
                     (SELECT GROUP_CONCAT( 
                                 if(DATE_FORMAT(fac.mes_de_pago, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m'), 
                                 
                                     if (fac.monto is not NULL and fac.monto != 0,
-                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Pagado'), 
-                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Por Vencer')),
+                                            CONCAT('<span class=\"badge bg-success\">',DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Pagado</span>'), 
+                                            CONCAT('<span class=\"badge bg-warning text-dark\">',DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Por Vencer</span>')),
                                             
                                     if(fac.mes_de_pago < NOW(),
                                         if (fac.monto is not NULL and fac.monto != 0,
                                             '',
-                                            CONCAT(DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Vencido')),
+                                            CONCAT('<span class=\"badge bg-danger\">',DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Vencido</span>')),
                                             ''
                                     )
                                 )	
                     )
                     FROM facturas as fac
                     WHERE fac.finanza_id = f.id)
-                    ,'' ) 'a_meses',
-                f.fecha_facturacion as 'fecha_facturacion',
+                    ,'N/A' ) 'a_meses',
+                DATE_FORMAT(f.fecha_facturacion, '%Y-%m-%d') as 'fecha_facturacion',
                 f.comentario as 'comentario',
-                if(s.enviado = 0, 'Sin enviar','Enviado') as 'comprobante',
-                CONCAT(f.usuario_edito,' ',	f.updated_at) as 'fecha_actualizacion',
-                if(f.a_meses is not NULL,'aMeses', if(f.salidas_id is not NULL,'Egreso', 'Ingreso' )) as 'tipo_finanza' 
+                if(s.enviado = 0, 1, 0) as 'comprobante',
+                CONCAT(f.usuario_edito,' ',	f.updated_at) as 'fecha_actualizacion'
             
             FROM
                 finanzas as f 
@@ -121,9 +119,76 @@ class FinanzaController extends Controller
            "                                                    
 
         ));
-        // return datatables()->of($finanzas)->toJson();
-        // dd(datatables($finanzas)->make(true));
-        return datatables($finanzas)->make(true);
+        $user = auth()->user();
+        return datatables($finanzas)
+             
+                ->addColumn('estadoPintado',function($row){
+                    return $row->estado ? '<span class="badge bg-danger">Vencido</span>' : '<span class="badge bg-warning text-dark">Por vencer</span>';
+                })
+                ->addColumn('facturaPintado',function($row){
+                    if($row->factura_o_folio){
+                        return $row->factura_o_folio;
+                    }else{
+                        return $row->salidas_id ? '<span class="badge bg-danger">No facturado</span>' : '<span class="badge bg-danger">No Recibida</span>';
+                    }
+                })
+                ->addColumn('esPagadoPintado',function($row){
+                    if($row->factura_o_folio){
+                        return $row->factura_o_folio;
+                    }else{
+                        return $row->salidas_id ? '<span class="badge bg-danger">No facturado</span>' : '<span class="badge bg-danger">No Recibida</span>';
+                    }
+                })
+                ->addColumn('estatusPintado',function($row){
+                    return $row->estatus ? '<span class="badge bg-danger">Pendiente Pagar</span>' : '<span class="badge bg-success">Pagado</span>' ; 
+                })
+                ->addColumn('comprobantePintado',function($row){
+                    return $row->comprobante ? '<span class="badge bg-danger">Sin Enviar</span>' : '<span class="badge bg-success">Enviado</span>' ; 
+                })
+                ->addColumn('action',function($row) use ($user){
+                    $btns= '<span class="completo">';
+                    $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
+                    if ($user->can('finanzas.confirmarpago')) {
+                        // actualizar 
+                        $btns .='<a class="btn btn-sm btn-info"  href="'.route('finanzas.confirmarPago',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>';
+                    }
+                    if($row->salidas_id){
+                        if ($user->can('finanzas.correo')) {
+                            // correo 
+                            $btns .='<a class="btn btn-sm btn-secondary " href="'.route('finanzas.correo',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Correo</a>';
+                        }
+                    }
+                    if ($user->can('facturas.index')) {
+                        // factura 
+                        $btns .=' <a class="btn btn-sm btn-warning" href="'.route('facturas.facturafinanzas',$row->id).'"><i class="fa fa-fw fa-edit"></i> Factura</a>';
+                    }
+                    if ($user->can('finanzas.show')) {
+                        // mostrar 
+                        $btns .='<a class="btn btn-sm btn-primary " href="'.route('finanzas.show',$row->id).'"><i class="fa fa-fw fa-eye"></i> Mostrar</a>';
+                    }
+                    if ($user->can('finanzas.edit')) {
+                        if($row->a_meses){
+                            // editar a meses 
+                            $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgresoMeses',$row->id).'""><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                        }elseif($row->salidas_id){
+                            // editar egreso 
+                            $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgreso',$row->id).'" ><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                        }else{
+                            // editar ingreso 
+                            $btns .=' <a class="btn btn-sm btn-success" href="'.route('finanzas.editIngreso',$row->id).'"><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                        }
+                    }
+                    // borrar
+                    if ($user->can('finanzas.destroy')) {
+                        $btns .='<button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>';
+                    }
+                    $btns .='<input type="hidden" name="_token" value=" '.csrf_token().' ">';
+                    $btns .='</form>';
+                    $btns .='</span>';
+                    return $btns;
+                })
+            ->rawColumns(['estadoPintado','facturaPintado','estatusPintado','comprobantePintado','a_meses','action'])
+            ->make(true);
         // if ($request->ajax()) {
         //     //$datas = Product::all();
         // }  

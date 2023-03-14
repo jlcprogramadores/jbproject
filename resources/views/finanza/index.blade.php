@@ -74,7 +74,7 @@
 										<th>Comentario</th>
                                         <th>Comprobante</th>
                                         <th>Fecha Actualización</th>
-                                        {{-- <th>Acciones</th> --}}
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 
@@ -107,9 +107,8 @@
             $('#table').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "paging": true,
-                "pageLength": 10,
-                "ordering": false,
+                // "paging": true,
+                // "pageLength": 10,
                 
                 "columns":[
                     {data: 'no'},
@@ -118,13 +117,13 @@
                     {data: 'vence'},
                     {data: 'fecha_vencimiento'},
                     {data: 'dias'},
-                    {data: 'estado'},
+                    {data: 'estadoPintado'},
                     {data: 'tipo_i&e'},
                     {data: 'fam_&_cat'},
                     {data: 'razon_social'},
                     {data: 'proyecto'},
                     {data: 'descripción'},
-                    {data: 'factura_o_folio'},
+                    {data: 'facturaPintado'},
                     {data: 'proveedor_o_cliente'},
                     {data: 'cantidad_&_unidad'},
                     {data: 'costo_unitario'},
@@ -134,13 +133,14 @@
                     {data: 'monto_a_pagar'},
                     {data: 'fecha_de_pago'},
                     {data: 'metodo_de_pago'},
-                    {data: 'estatus'},
+                    {data: 'estatusPintado'},
                     {data: 'entregado_material_a'},
                     {data: 'a_meses'},
                     {data: 'fecha_facturacion'},
                     {data: 'comentario'},
-                    {data: 'comprobante'},
+                    {data: 'comprobantePintado'},
                     {data: 'fecha_actualizacion'},
+                    {data: 'action'},
                     
                 ],
                 "ajax":"{{ route('finanzas.datos') }}",

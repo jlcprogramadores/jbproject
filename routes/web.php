@@ -118,6 +118,8 @@ Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEg
 Route::get('/editEgreso/{id}', 'App\Http\Controllers\FinanzaController@editEgreso')->name('finanzas.editEgreso');
 Route::get('/editIngreso/{id}', 'App\Http\Controllers\FinanzaController@editIngreso')->name('finanzas.editIngreso');
 Route::get('/editEgresoMeses/{id}', 'App\Http\Controllers\FinanzaController@editEgresoMeses')->name('finanzas.editEgresoMeses');
+// delete 
+Route::post('/finanza_destroy/{id}', 'App\Http\Controllers\FinanzaController@destroy')->name('finanzas.destroy');
 
 // historial-altas
 Route::get('/crearporempleado/{id}', 'App\Http\Controllers\HistorialAltaController@crearporempleado')->name('historial-altas.crearporempleado');
