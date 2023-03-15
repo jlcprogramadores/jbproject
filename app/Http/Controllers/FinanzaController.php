@@ -147,8 +147,8 @@ class FinanzaController extends Controller
                 })
                 ->addColumn('action',function($row) use ($user){
                     $btns= '';
-                    // $btns= '<span class="">';
-                    // $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
+                    $btns= '<span class="completo">';
+                    $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
                     if ($user->can('finanzas.confirmarpago')) {
                         // actualizar 
                         $btns .='<a class="btn btn-sm btn-info"  href="'.route('finanzas.confirmarPago',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>';
@@ -184,8 +184,8 @@ class FinanzaController extends Controller
                         $btns .='<button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>';
                     }
                     $btns .='<input type="hidden" name="_token" value=" '.csrf_token().' ">';
-                    // $btns .='</form>';
-                    // $btns .='</span>';
+                    $btns .='</form>';
+                    $btns .='</span>';
                     return $btns;
                 })
             ->rawColumns(['estadoPintado','facturaPintado','estatusPintado','comprobantePintado','a_meses','action'])
