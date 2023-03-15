@@ -93,61 +93,96 @@
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
     <!-- Para usar los botones -->
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="   https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    
+   
+   
+    
 
 
     <!-- Para los estilos en Excel     -->
-    <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.1/js/buttons.html5.styles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.1/js/buttons.html5.styles.templates.min.js"></script>
+    
     <script type="text/javascript">
         $(document).ready( function () {
             $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
-            $('#table').DataTable({
+            var table = $('#table').DataTable({
+                dom: 'Blfrtip',
+                buttons:{
+                    dom: {
+                        button: {
+                            className: 'btn'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: "excel",
+                            text:'Exportar a Excel',
+                            className:'btn btn-outline-success',
+                        }
+                    ]            
+                },
+                "columnDefs": [
+                    { "width": "20%", "targets": 0 }
+                ],
+                orderCellsTop: true,
+                fixedHeader: true,
                 "processing": true,
                 "serverSide": true,
+                // "sScrollX": "100%",
+                scrollX: true,
+                responsive:true,
+                autoWidth: false,   
+                
+                // "bScrollCollapse": true,
+                // "scrollCollapse": false,
                 // "paging": true,
                 // "pageLength": 10,
                 
                 "columns":[
-                    {data: 'no'},
-                    {data: 'fecha_entrada'},
-                    {data: 'fecha_salida'},
-                    {data: 'vence'},
-                    {data: 'fecha_vencimiento'},
-                    {data: 'dias'},
-                    {data: 'estadoPintado'},
-                    {data: 'tipo_i&e'},
-                    {data: 'fam_&_cat'},
-                    {data: 'razon_social'},
-                    {data: 'proyecto'},
-                    {data: 'descripción'},
-                    {data: 'facturaPintado'},
-                    {data: 'proveedor_o_cliente'},
-                    {data: 'cantidad_&_unidad'},
-                    {data: 'costo_unitario'},
-                    {data: 'subtotal_total_mxn'},
-                    {data: 'iva'},
-                    {data: 'total_mxn'},
-                    {data: 'monto_a_pagar'},
-                    {data: 'fecha_de_pago'},
-                    {data: 'metodo_de_pago'},
-                    {data: 'estatusPintado'},
-                    {data: 'entregado_material_a'},
-                    {data: 'a_meses'},
-                    {data: 'fecha_facturacion'},
-                    {data: 'comentario'},
-                    {data: 'comprobantePintado'},
-                    {data: 'fecha_actualizacion'},
-                    {data: 'action'},
+                    { sWidth: '20px', data: 'no'},
+                    { sWidth: '80px', data: 'fecha_entrada'},
+                    { sWidth: '80px', data: 'fecha_salida'},
+                    { sWidth: '20px', data: 'vence'},
+                    { sWidth: '80px', data: 'fecha_vencimiento'},
+                    { sWidth: '20px', data: 'dias'},
+                    { sWidth: '20px', data: 'estadoPintado'},
+                    { sWidth: '20px', data: 'tipo_i&e'},
+                    { sWidth: '20px', data: 'fam_&_cat'},
+                    { sWidth: '20px', data: 'razon_social'},
+                    { sWidth: '20px', data: 'proyecto'},
+                    { sWidth: '20px', data: 'descripción'},
+                    { sWidth: '20px', data: 'facturaPintado'},
+                    { sWidth: '20px', data: 'proveedor_o_cliente'},
+                    { sWidth: '20px', data: 'cantidad_&_unidad'},
+                    { sWidth: '20px', data: 'costo_unitario'},
+                    { sWidth: '20px', data: 'subtotal_total_mxn'},
+                    { sWidth: '20px', data: 'iva'},
+                    { sWidth: '20px', data: 'total_mxn'},
+                    { sWidth: '20px', data: 'monto_a_pagar'},
+                    { sWidth: '20px', data: 'fecha_de_pago'},
+                    { sWidth: '20px', data: 'metodo_de_pago'},
+                    { sWidth: '20px', data: 'estatusPintado'},
+                    { sWidth: '20px', data: 'entregado_material_a'},
+                    { sWidth: '20px', data: 'a_meses'},
+                    { sWidth: '20px', data: 'fecha_facturacion'},
+                    { sWidth: '20px', data: 'comentario'},
+                    { sWidth: '20px', data: 'comprobantePintado'},
+                    { sWidth: '20px', data: 'fecha_actualizacion'},
+                    { sWidth: '400px',
+                        data: 'action'},
                     
                 ],
+                
                 "ajax":"{{ route('finanzas.datos') }}",
                 // "lengthChange": false,
                 // paging: false,
-                responsive:true,
-                autoWidth: false,
+                // responsive:true,
+                // autoWidth: false,
                 order: [
                     [0, 'desc']
                 ],   
@@ -170,8 +205,7 @@
                 //         return '<div class="truncate">' + data + '</div>';
                 //     }
                 // }],
-                orderCellsTop: true,
-                fixedHeader: true,
+                
                 initComplete: function() {
                     var api = this.api();
                     // For each column
@@ -198,51 +232,38 @@
                             });
                     });
                 },
-                dom: 'Blfrtip',
-                buttons:{
-                    dom: {
-                        button: {
-                            className: 'btn'
-                        }
-                    },
-                    buttons: [
-                        {
-                            extend: "excel",
-                            text:'Exportar a Excel',
-                            className:'btn btn-outline-success',
-                        }
-                    ]            
-                }
+                
 
             });
-        });
-        $('.show_confirm').click(function(event) {
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            Swal.fire({
-            title: '¿Estas seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'advertencia',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '¡Sí, bórralo!',
-            cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // si se cumple el formulario lanza el swal
-                    if (form.submit()) {
-                        Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Su registro ha sido eliminado.',
-                        showConfirmButton: false,
-                        timer: 1500
-                        })    
+            table.fixedHeader.disable();
+            $('.show_confirm').click(function(event) {
+                var form =  $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                Swal.fire({
+                title: '¿Estas seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'advertencia',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, bórralo!',
+                cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // si se cumple el formulario lanza el swal
+                        if (form.submit()) {
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Su registro ha sido eliminado.',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })    
+                        }
                     }
-                }
-            })
+                })
+            });
         });
     </script>
 @endpush

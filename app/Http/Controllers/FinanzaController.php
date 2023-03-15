@@ -70,11 +70,11 @@ class FinanzaController extends Controller
                 WHERE fac.finanza_id = f.id) as 'factura_o_folio',
                 if(@s_id is not NULL,p.nombre, c.nombre ) as 'proveedor_o_cliente',
                 CONCAT(f.cantidad,' ',u.nombre)'cantidad_&_unidad',
-                f.costo_unitario as 'costo_unitario',
-                (@subtotal := (f.costo_unitario * f.cantidad) ) as 'subtotal_total_mxn',
-                i.porcentaje as 'iva',
-                (@subtotal * i.porcentaje )'total_mxn',
-                f.monto_a_pagar as 'monto_a_pagar',
+                CONCAT('$', FORMAT(f.costo_unitario, 2)) as  'costo_unitario',
+                CONCAT('$', FORMAT((@subtotal := (f.costo_unitario * f.cantidad) ), 2)) as 'subtotal_total_mxn',
+                CONCAT(i.porcentaje,' ','%')  as 'iva',
+                CONCAT('$', FORMAT((@subtotal * i.porcentaje ), 2)) AS'total_mxn',
+                CONCAT('$', FORMAT(f.monto_a_pagar, 2)) as 'monto_a_pagar',
                 DATE_FORMAT(f.fecha_de_pago, '%Y-%m-%d') as 'fecha_de_pago',
                 f.metodo_de_pago as 'metodo_de_pago',
                 if(f.es_pagado = 0, 1, 0) as 'estatus',
@@ -103,19 +103,19 @@ class FinanzaController extends Controller
                 if(s.enviado = 0, 1, 0) as 'comprobante',
                 CONCAT(f.usuario_edito,' ',	f.updated_at) as 'fecha_actualizacion'
             
-            FROM
-                finanzas as f 
-            Left JOIN salidas as s ON s.id = f.salidas_id
-            Left JOIN proveedores as p ON p.id = s.proveedor_id
-            
-            Left JOIN entradas as e ON e.id = f.entradas_id
-            Left JOIN clientes as c ON c.id = e.cliente_id
-            
-            LEFT JOIN proyectos as pro ON pro.id = f.proyecto_id
-            LEFT JOIN unidades as u ON u.id = f.unidad_id
-            LEFT JOIN ivas as i ON i.id = f.iva_id
-            LEFT JOIN categorias_familias as cf ON cf.id = f.categoria_id
-            ORDER BY f.id DESC
+                FROM
+                    finanzas as f 
+                Left JOIN salidas as s ON s.id = f.salidas_id
+                Left JOIN proveedores as p ON p.id = s.proveedor_id
+                
+                Left JOIN entradas as e ON e.id = f.entradas_id
+                Left JOIN clientes as c ON c.id = e.cliente_id
+                
+                LEFT JOIN proyectos as pro ON pro.id = f.proyecto_id
+                LEFT JOIN unidades as u ON u.id = f.unidad_id
+                LEFT JOIN ivas as i ON i.id = f.iva_id
+                LEFT JOIN categorias_familias as cf ON cf.id = f.categoria_id
+                ORDER BY f.id DESC
            "                                                    
 
         ));
@@ -146,8 +146,9 @@ class FinanzaController extends Controller
                     return $row->comprobante ? '<span class="badge bg-danger">Sin Enviar</span>' : '<span class="badge bg-success">Enviado</span>' ; 
                 })
                 ->addColumn('action',function($row) use ($user){
-                    $btns= '<span class="completo">';
-                    $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
+                    $btns= '';
+                    // $btns= '<span class="">';
+                    // $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
                     if ($user->can('finanzas.confirmarpago')) {
                         // actualizar 
                         $btns .='<a class="btn btn-sm btn-info"  href="'.route('finanzas.confirmarPago',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>';
@@ -183,8 +184,8 @@ class FinanzaController extends Controller
                         $btns .='<button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>';
                     }
                     $btns .='<input type="hidden" name="_token" value=" '.csrf_token().' ">';
-                    $btns .='</form>';
-                    $btns .='</span>';
+                    // $btns .='</form>';
+                    // $btns .='</span>';
                     return $btns;
                 })
             ->rawColumns(['estadoPintado','facturaPintado','estatusPintado','comprobantePintado','a_meses','action'])
