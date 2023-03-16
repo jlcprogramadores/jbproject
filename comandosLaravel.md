@@ -62,3 +62,7 @@ Se añade al modelo user.php la linea use Spatie\Permission\Traits\HasRoles;
 
 # Comado importar excel
 composer require rap2hpoutre/fast-excel
+
+# yajra datable ajax
+composer require yajra/laravel-datatables -w
+php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
