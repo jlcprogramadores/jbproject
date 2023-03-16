@@ -145,13 +145,13 @@ class FinanzaController extends Controller
                 ->addColumn('comprobantePintado',function($row){
                     return $row->comprobante ? '<span class="badge bg-danger">Sin Enviar</span>' : '<span class="badge bg-success">Enviado</span>' ; 
                 })
-                ->addColumn('action',function($row) use ($user){
+                ->addColumn('actionSpc',function($row) use ($user){
                     $btns= '';
-                    $btns= '<span class="completo">';
                     $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
+                    
                     if ($user->can('finanzas.confirmarpago')) {
                         // actualizar 
-                        $btns .='<a class="btn btn-sm btn-info"  href="'.route('finanzas.confirmarPago',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Actualizar Pago</a>';
+                        $btns .='<a class="btn btn-sm btn-info"  href="'.route('finanzas.confirmarPago',$row->id).'" ><i class="fa fa-fw fa-eye"></i> Actualizar pago </a>';
                     }
                     if($row->salidas_id){
                         if ($user->can('finanzas.correo')) {
@@ -163,6 +163,13 @@ class FinanzaController extends Controller
                         // factura 
                         $btns .=' <a class="btn btn-sm btn-warning" href="'.route('facturas.facturafinanzas',$row->id).'"><i class="fa fa-fw fa-edit"></i> Factura</a>';
                     }
+                    $btns .='</form>';
+                    return $btns;
+                })
+                ->addColumn('action',function($row) use ($user){
+                    $btns= '';
+                    $btns .= '<form action="'.route('finanzas.destroy',$row->id).'" method="POST" >';
+                    
                     if ($user->can('finanzas.show')) {
                         // mostrar 
                         $btns .='<a class="btn btn-sm btn-primary " href="'.route('finanzas.show',$row->id).'"><i class="fa fa-fw fa-eye"></i> Mostrar</a>';
@@ -185,10 +192,10 @@ class FinanzaController extends Controller
                     }
                     $btns .='<input type="hidden" name="_token" value=" '.csrf_token().' ">';
                     $btns .='</form>';
-                    $btns .='</span>';
                     return $btns;
                 })
-            ->rawColumns(['estadoPintado','facturaPintado','estatusPintado','comprobantePintado','a_meses','action'])
+                
+            ->rawColumns(['estadoPintado','facturaPintado','estatusPintado','comprobantePintado','a_meses','action','actionSpc'])
             ->make(true);
         // if ($request->ajax()) {
         //     //$datas = Product::all();

@@ -75,6 +75,7 @@
                                         <th>Comprobante</th>
                                         <th>Fecha Actualización</th>
                                         <th>Acciones</th>
+                                        <th>Acciones Especiales</th>
                                     </tr>
                                 </thead>
                                 
@@ -91,7 +92,7 @@
 @push('scripts')
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
+    <script src="//cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
     <!-- Para usar los botones -->
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -126,23 +127,10 @@
                         }
                     ]            
                 },
-                "columnDefs": [
-                    { "width": "20%", "targets": 0 }
-                ],
                 orderCellsTop: true,
-                fixedHeader: true,
-                "processing": true,
-                "serverSide": true,
-                // "sScrollX": "100%",
-                scrollX: true,
-                responsive:true,
-                autoWidth: false,   
-                
-                // "bScrollCollapse": true,
-                // "scrollCollapse": false,
-                // "paging": true,
-                // "pageLength": 10,
-                
+                fixedHeader: false,
+                processing: true,
+                serverSide: true,
                 "columns":[
                     { data: 'no'},
                     { data: 'fecha_entrada'},
@@ -174,14 +162,10 @@
                     { data: 'comprobantePintado'},
                     { data: 'fecha_actualizacion'},
                     { data: 'action'},
+                    { data: 'actionSpc'},
                     
                 ],
-                
                 "ajax":"{{ route('finanzas.datos') }}",
-                // "lengthChange": false,
-                // paging: false,
-                // responsive:true,
-                // autoWidth: false,
                 order: [
                     [0, 'desc']
                 ],   
@@ -197,14 +181,6 @@
                         "previous": "Anterior"
                     }
                 },
-                // columnDefs: [{
-                //     // espeificamos que columna sera afectada
-                //     targets: [12, 24],
-                //     render: function(data, type, full, meta) {    
-                //         return '<div class="truncate">' + data + '</div>';
-                //     }
-                // }],
-                
                 initComplete: function() {
                     var api = this.api();
                     // For each column
@@ -234,7 +210,7 @@
                 
 
             });
-            table.fixedHeader.disable();
+            
             $('.show_confirm').click(function(event) {
                 var form =  $(this).closest("form");
                 var name = $(this).data("name");
