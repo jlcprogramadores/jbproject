@@ -122,15 +122,16 @@
                 <div class="p-1 form-group">
                     <?php 
                     $metodo = [
-                    'Efectivo' => 'Efectivo',
-                    'Cheque' => 'Cheque',
-                    'Transferencia' => 'Transferencia',
-                    'Tarjeta de débito' => 'Tarjeta de débito',
-                    'Tarjeta de credito' => 'Tarjeta de credito',
-                    'Tarjetas digitales' => 'Tarjetas digitales',
-                    'Condonación' => 'Condonación',
-                    'Cancelación' => 'Cancelación'
-                    ]; 
+                    'EFECTIVO' => 'EFECTIVO',
+                    'CHEQUE' => 'CHEQUE',
+                    'TRANSFERENCIA' => 'TRANSFERENCIA',
+                    'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+                    'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+                    'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+                    'CONDONACION' => 'CONDONACION',
+                    'CANCELADA' => 'CANCELADA',
+                    '?' => '?'
+                    ];
                     ?>
                     {{ Form::label('metodo_de_pago','Método De Pago') }}
                     {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
