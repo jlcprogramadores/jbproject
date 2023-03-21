@@ -17,7 +17,7 @@
 				<table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
 					<tr>
 						<td align="center" style="padding:40px 0 30px 0;background:#0d6efd;">
-							<img src="{{ asset('https://www.mttojbindustrial.com/images/JB.png') }}" alt="150" width="150" style="height:auto;display:block;" />
+							<img src="{{ asset('https://www.mttojbindustrial.com/images/JB-min.png') }}" alt="150" width="150" style="height:auto;display:block;" />
 						</td>
 					</tr>
 					<tr>
