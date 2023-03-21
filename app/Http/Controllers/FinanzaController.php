@@ -50,6 +50,7 @@ class FinanzaController extends Controller
         $finanzas = DB::select(DB::raw(" 
                 SELECT
                 f.id,
+                f.a_meses 't_meses',
                 @s_id := f.salidas_id as 'salidas_id' ,
                 f.no as'no',
                 if(f.esta_atrasado= 1 , CONCAT(DATE_FORMAT(f.fecha_entrada, '%Y-%m-%d'),' ','Atrasada') ,DATE_FORMAT(f.fecha_entrada, '%Y-%m-%d'))  as 'fecha_entrada',
@@ -175,7 +176,7 @@ class FinanzaController extends Controller
                         $btns .='<a class="btn btn-sm btn-primary " href="'.route('finanzas.show',$row->id).'"><i class="fa fa-fw fa-eye"></i> Mostrar</a>';
                     }
                     if ($user->can('finanzas.edit')) {
-                        if($row->a_meses){
+                        if($row->t_meses){
                             // editar a meses 
                             $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgresoMeses',$row->id).'""><i class="fa fa-fw fa-edit"></i>Editar</a>';
                         }elseif($row->salidas_id){
