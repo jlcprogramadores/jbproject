@@ -31,12 +31,12 @@ class CreateFinanzasTable extends Migration
             $table->string('descripcion');
             $table->integer('cantidad');
             $table->integer('unidad_id');
-            $table->decimal('costo_unitario', 12, 2);
-            $table->decimal('monto_a_pagar', 12, 2);
-            $table->dateTime('fecha_de_pago');
-            $table->string('metodo_de_pago');
-            $table->string('entregado_material_a');
-            $table->string('comentario');
+            $table->decimal('costo_unitario', 12, 2)->nullable();
+            $table->decimal('monto_a_pagar', 12, 2)->nullable();
+            $table->dateTime('fecha_de_pago')->nullable();
+            $table->string('metodo_de_pago')->nullable();
+            $table->string('entregado_material_a')->nullable();
+            $table->string('comentario')->nullable();
             $table->integer('a_meses')->nullable();
             $table->dateTime('fecha_primer_pago')->nullable();
             $table->string('usuario_edito');
