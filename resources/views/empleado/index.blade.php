@@ -90,10 +90,10 @@
                                                 <span class="badge bg-danger">Baja</span>
                                                 @endif
                                             </td>
-                                            @if ($empleado->fecha_fin_contrato)
+                                            @if ($empleado->fecha_fin)
                                                 <?php 
                                                     $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
-                                                    $fechaLimite = Carbon\Carbon::parse( $empleado->fecha_fin_contrato)->format('Y-m-d');
+                                                    $fechaLimite = Carbon\Carbon::parse( $empleado->fecha_fin)->format('Y-m-d');
                                                     
                                                     $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d',$fechaLimite );
                                                     $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
@@ -104,7 +104,7 @@
                                                     <p class="bg-danger text-white" >
                                                         Vencido
                                                         <br>
-                                                        {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                        {{Carbon\Carbon::parse($empleado->fecha_fin)->format('Y-m-d')}}
                                                     </p>
                                                 </td>
                                                 @else     
@@ -113,13 +113,13 @@
                                                             <p class=" bg-success text-white" >
                                                                 Restan {{$diferencia_en_dias}} días
                                                                 <br>
-                                                                {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                                {{Carbon\Carbon::parse($empleado->fecha_fin)->format('Y-m-d')}}
                                                             </p>
                                                         @elseif($diferencia_en_dias >= -1)
                                                             <p class="bg-warning text-white" >
                                                                 Restan {{$diferencia_en_dias}} días
                                                                 <br>
-                                                                {{Carbon\Carbon::parse($empleado->fecha_fin_contrato)->format('Y-m-d')}}
+                                                                {{Carbon\Carbon::parse($empleado->fecha_fin)->format('Y-m-d')}}
                                                             </p>
                                                         @endif
                                                     </td>

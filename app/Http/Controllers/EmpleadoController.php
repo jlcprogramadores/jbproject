@@ -24,10 +24,15 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::orderBy('id','desc')->paginate();
-
-        return view('empleado.index', compact('empleados'))
-            ->with('i', (request()->input('page', 1) - 1) * $empleados->perPage());
+        $empleados = DB::select(DB::raw("
+            SELECT
+                e.*,
+                ( SELECT hc.fecha_fin FROM historial_contratos hc WHERE hc.empleado_id = e.id ORDER BY hc.id DESC LIMIT 1 ) AS fecha_fin 
+            FROM
+                empleados e
+        "));
+        $i = 0;
+        return view('empleado.index', compact('empleados','i'));
     }
 
     /**
