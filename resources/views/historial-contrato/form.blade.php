@@ -3,7 +3,7 @@
         
         <div class="col-sm p-1 form-group">
             {{ Form::label('empleado_id', 'Empleado') }}
-            <?php $select = $historialContrato->empleado_id ?? [request()->id => request()->nombre]; ?>
+            <?php $select = $historialContrato->empleado_id ? [$historialContrato->empleado_id => $historialContrato->empleado->nombre] : [request()->id => request()->nombre]; ?>
             {{ Form::select('empleado_id', $select,null,['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -24,7 +24,13 @@
             {!! $errors->first('fecha_fin', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="col-sm p-1 form-group">
-            {{ Form::label('Subir Contrato') }}
+            @if ($historialContrato->contrato)
+                <label for="contrato">
+                    Contrato (<a href="{{ $historialContrato->contrato }}" target="_blank">Ver contrato anterior</a>, si subes una imgen se va a sobrescribir)
+                </label>
+            @else
+                <label for="contrato">Contrato</label>
+            @endif
             <input type="file" name="contrato" size="50" class="form-control">
         </div>
     </div>
