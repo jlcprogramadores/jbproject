@@ -15,8 +15,8 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('historial-contratos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Actulizar contrato') }}
+                                <a href="{{ route('historial-contratos.create',['id'=>$empleado_id ,'nombre'=>$nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Añadir contrato') }}
                                 </a>
                               </div>
                         </div>
