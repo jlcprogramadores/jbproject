@@ -38,7 +38,7 @@
 										<th>Fecha Inicio</th>
 										<th>Fecha Fin</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,9 +46,15 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $historialContrato->contrato }}</td>
-											<td>{{ $historialContrato->fecha_inicio }}</td>
-											<td>{{ $historialContrato->fecha_fin }}</td>
+											<td>
+                                                @if ($historialContrato->contrato)
+                                                    <a href="{{ $historialContrato->contrato }}" target="_blank">Ver contrato</a>
+                                                @else 
+                                                    No hay
+                                                @endif    
+                                            </td>
+											<td>{{ $historialContrato->fecha_inicio ?  Carbon\Carbon::parse($historialContrato->fecha_inicio)->format('Y-m-d') :'' }}</td>
+											<td>{{ $historialContrato->fecha_fin ?  Carbon\Carbon::parse($historialContrato->fecha_fin)->format('Y-m-d') :'' }}</td>
 
                                             <td>
                                                 <form action="{{ route('historial-contratos.destroy',$historialContrato->id) }}" method="POST">

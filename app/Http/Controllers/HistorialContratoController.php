@@ -48,8 +48,14 @@ class HistorialContratoController extends Controller
         request()->validate(HistorialContrato::$rules);
 
         $historialContrato = HistorialContrato::create($request->all());
-
-        return redirect()->route('historial-contratos.index')
+        if ($historialContrato->contrato != null) {
+            $nombre = 'hcontrato_'.$historialContrato->id.'_'.$historialContrato->contrato->getClientOriginalName();
+            $historialContrato->contrato->storeAs('public',$nombre);
+            $getHistorialContrato = HistorialContrato::find($historialContrato->id);
+            $getHistorialContrato->contrato = '/storage/'.$nombre;
+            $getHistorialContrato->save();
+        }
+        return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
             ->with('success', 'HistorialContrato created successfully.');
     }
 
