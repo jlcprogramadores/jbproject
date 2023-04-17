@@ -133,7 +133,7 @@
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Cambio De Estado</a>
 
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
-                                                    <a class="btn btn-sm btn-warning " href="{{ route('empleados.formContrato',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Contrato</a>
+                                                    <a class="btn btn-sm btn-warning " href="{{ route('historial-contrato.index',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Contrato</a>
                                                     @can('empleados.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
                                                     @endcan

@@ -42,6 +42,7 @@ Route::resource('entradas', App\Http\Controllers\EntradaController::class);
 Route::resource('usuarios', App\Http\Controllers\UserController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('empleados', App\Http\Controllers\EmpleadoController::class);
+Route::resource('historial-contratos', App\Http\Controllers\HistorialContratoController::class);
 Route::resource('puestos', App\Http\Controllers\PuestoController::class);
 Route::resource('paros', App\Http\Controllers\ParoController::class);
 Route::resource('expedientes', App\Http\Controllers\ExpedienteController::class);
@@ -56,6 +57,8 @@ Route::resource('historial-paros', App\Http\Controllers\HistorialParoController:
 Route::resource('documentos-candidatos', App\Http\Controllers\DocumentosCandidatoController::class);
 Route::resource('archivos', App\Http\Controllers\ArchivoController::class);
 Route::resource('accesos', App\Http\Controllers\AccesoController::class);
+// index con emplado_id
+Route::get('/historial-contrato/{id}', 'App\Http\Controllers\HistorialContratoController@index')->name('historial-contrato.index');
 
 // documentos-candidatos
 Route::get('/DocCandidato/{id}', 'App\Http\Controllers\DocumentosCandidatoController@index')->name('documentos-candidatos.doccandidato');
