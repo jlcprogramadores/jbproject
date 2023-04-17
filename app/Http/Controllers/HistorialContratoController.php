@@ -96,9 +96,23 @@ class HistorialContratoController extends Controller
     {
         request()->validate(HistorialContrato::$rules);
 
-        $historialContrato->update($request->all());
+        if ($request->contrato != null) {
+            if ($historialContrato->contrato != null) {
+                $fileImagen = base_path('storage/app/public/'.explode("/",$historialContrato->contrato)[2]);
+                if(file_exists($fileImagen)){
+                    unlink($fileImagen);
+                }
+            }
+            $nombre = 'hcontrato_'.$historialContrato->id.'_'. $request->contrato->getClientOriginalName();
+            $request->contrato->storeAs('public',$nombre);
+            $historialContrato->update($request->all());
+            $historialContrato->contrato = '/storage/'.$nombre;
+            $historialContrato->save();  
+        }else{
+            $historialContrato->update($request->all());
+        }
 
-        return redirect()->route('historial-contratos.index')
+        return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
             ->with('success', 'HistorialContrato updated successfully');
     }
 
@@ -109,9 +123,15 @@ class HistorialContratoController extends Controller
      */
     public function destroy($id)
     {
-        $historialContrato = HistorialContrato::find($id)->delete();
-
-        return redirect()->route('historial-contratos.index')
+        $historialContrato = HistorialContrato::find($id);
+        if ($historialContrato->contrato != null) {
+            $fileImagen = base_path('storage/app/public/'.explode("/",$historialContrato->contrato)[2]);
+            if(file_exists($fileImagen)){
+                unlink($fileImagen);
+            }
+        }
+        $historialContrato->delete();
+        return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
             ->with('success', 'HistorialContrato deleted successfully');
     }
 }
