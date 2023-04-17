@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\HistorialContrato;
 use App\Models\EmpleadoExpediente;
 use App\Models\HistorialAlta;
 use App\Models\Proyecto;
@@ -307,6 +308,14 @@ class EmpleadoController extends Controller
         foreach($expediente as $item){
             if ($item->archivo != null) {
                 unlink(base_path('storage/app/public/'.explode("/",$item->archivo)[2]));
+            } 
+            $item->delete();
+        }
+        // eliminar los historial contrato
+        $contrato = HistorialContrato::where('empleado_id', $id)->get();
+        foreach ($contrato as $item) {
+            if ($item->archivo != null) {
+                unlink(base_path('storage/app/public/'.explode("/",$item->contrato)[2]));
             } 
             $item->delete();
         }
