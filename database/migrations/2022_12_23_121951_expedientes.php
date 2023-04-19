@@ -15,7 +15,7 @@ class Expedientes extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->boolean('es_multiple');
             $table->string('usuario_edito');
             $table->timestamps();
