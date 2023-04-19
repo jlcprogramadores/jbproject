@@ -641,11 +641,20 @@ class FinanzaController extends Controller
         ];
 
         $correo = new ComprobanteMailable($data);
-        Mail::to($email)->send($correo,$data);
-        $salida->enviado = 1;
-        $salida->save();
-        return redirect()->route('finanzas.index')
+
+        try {
+            Mail::to($email)->send($correo,$data);
+            $salida->enviado = 1;
+            $salida->save();
+            return redirect()->route('finanzas.index')
             ->with('success', 'Correo enviado exitosamente.');
+        } catch (\Exception $e) {
+            // dd($e);
+            $salida->enviado = 0;
+            $salida->save();
+            return redirect()->route('finanzas.index')
+                ->with('danger', 'No se pudo enviar el correo.');
+        }
     }
 
     
