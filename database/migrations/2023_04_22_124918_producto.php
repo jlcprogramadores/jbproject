@@ -16,12 +16,12 @@ class Producto extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
-            $table->string('descripcion');
-            $table->string('marca');
-            $table->string('modelo');
-            $table->decimal('precio_unitario', 12, 2);
-            $table->integer('minimo');
-            $table->integer('maximo');
+            $table->string('descripcion')->nullable();
+            $table->string('marca')->nullable();
+            $table->string('modelo')->nullable();
+            $table->decimal('precio_unitario', 12, 2)->nullable();
+            $table->integer('minimo')->nullable();
+            $table->integer('maximo')->nullable();
             $table->timestamps();
         });
     }
