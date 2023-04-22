@@ -60,6 +60,9 @@ Route::resource('accesos', App\Http\Controllers\AccesoController::class);
 // Cadena de suministros
 Route::resource('productos', App\Http\Controllers\ProductoController::class);
 Route::resource('stocks', App\Http\Controllers\StockController::class);
+Route::resource('control-gasolineras', App\Http\Controllers\ControlGasolineraController::class);
+Route::resource('gasolineras', App\Http\Controllers\GasolineraController::class);
+Route::resource('destinos', App\Http\Controllers\DestinoController::class);
 // index con emplado_id
 Route::get('/historial-contrato/{id}', 'App\Http\Controllers\HistorialContratoController@index')->name('historial-contrato.index');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ControlGasolinera;
+use App\Models\Destino;
+use App\Models\Gasolinera;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,9 @@ class ControlGasolineraController extends Controller
     public function create()
     {
         $controlGasolinera = new ControlGasolinera();
-        return view('control-gasolinera.create', compact('controlGasolinera'));
+        $gasolinera = Gasolinera::pluck('nombre','id');
+        $destino = Destino::pluck('nombre','id');
+        return view('control-gasolinera.create', compact('controlGasolinera','gasolinera','destino'));
     }
 
     /**
@@ -73,8 +77,10 @@ class ControlGasolineraController extends Controller
     public function edit($id)
     {
         $controlGasolinera = ControlGasolinera::find($id);
+        $gasolinera = Gasolinera::pluck('nombre','id');
+        $destino = Destino::pluck('nombre','id');
 
-        return view('control-gasolinera.edit', compact('controlGasolinera'));
+        return view('control-gasolinera.edit', compact('controlGasolinera','gasolinera','destino'));
     }
 
     /**

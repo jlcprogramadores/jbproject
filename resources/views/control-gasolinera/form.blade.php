@@ -1,14 +1,16 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
-            {{ Form::label('gasolinera_id') }}
-            {{ Form::text('gasolinera_id', $controlGasolinera->gasolinera_id, ['class' => 'form-control' . ($errors->has('gasolinera_id') ? ' is-invalid' : ''), 'placeholder' => 'Gasolinera Id']) }}
+
+        <div class="col-sm p-1 form-group">
+            {{ Form::label('gasolinera_id', 'Gasolinera') }}
+            <br>
+            {{ Form::select('gasolinera_id',$gasolinera ,$controlGasolinera->gasolinera_id, ['class' => 'form-control' . ($errors->has('gasolinera_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
             {!! $errors->first('gasolinera_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('destino_id') }}
-            {{ Form::text('destino_id', $controlGasolinera->destino_id, ['class' => 'form-control' . ($errors->has('destino_id') ? ' is-invalid' : ''), 'placeholder' => 'Destino Id']) }}
+        <div class="col-sm p-1 form-group">
+            {{ Form::label('destino_id', 'Destino') }}
+            <br>
+            {{ Form::select('destino_id',$destino ,$controlGasolinera->destino_id, ['class' => 'form-control' . ($errors->has('destino_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
             {!! $errors->first('destino_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -41,9 +43,9 @@
             {{ Form::text('total', $controlGasolinera->total, ['class' => 'form-control' . ($errors->has('total') ? ' is-invalid' : ''), 'placeholder' => 'Total']) }}
             {!! $errors->first('total', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <div class="col-sm p-1 form-group">
             {{ Form::label('fecha') }}
-            {{ Form::text('fecha', $controlGasolinera->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {{ Form::date('fecha', $controlGasolinera->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Ingreso']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -79,6 +81,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
