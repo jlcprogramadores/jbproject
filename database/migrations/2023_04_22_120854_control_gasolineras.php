@@ -35,7 +35,7 @@ class ControlGasolineras extends Migration
             $table->string('folio_factura');
             $table->decimal('total_factura_neto', 12, 2);
             $table->boolean('es_pagado')->default(0);
-            $table->string('vale_archivo');
+            $table->string('vale_archivo')->nullable();
             $table->timestamps();
         });
     }

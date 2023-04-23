@@ -3,12 +3,12 @@
     <div class="box-body">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 p-1 form-group">
+                <div class="col-sm-6 p-1 form-group">
                     {{ Form::label('porcentaje') }}
                     {{ Form::number('porcentaje', $iva->porcentaje, ['class' => 'form-control' ,'step'=>'any' . ($errors->has('porcentaje') ? ' is-invalid' : ''), 'placeholder' => 'Porcentaje']) }}
                     {!! $errors->first('porcentaje', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <div class="col-sm-8 p-1 form-group">
+                <div class="col-sm-6 p-1 form-group">
                     {{ Form::label(__('descripcion')) }}
                     {{ Form::text('descripcion', $iva->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => __('descripcion')]) }}
                     {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}

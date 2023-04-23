@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Control Gasolinera
-@endsection
+@section('title','Crear Registro de Control Gasolinera')
+@if(Auth::check() && Auth::user()->es_activo)
+
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Control Gasolinera</span>
+                        <span class="card-title">Crear Registro de Control Gasolinera</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('control-gasolineras.store') }}"  role="form" enctype="multipart/form-data">
@@ -28,3 +28,4 @@
         </div>
     </section>
 @endsection
+@endif

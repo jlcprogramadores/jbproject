@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $controlGasolinera->name ?? 'Show Control Gasolinera' }}
-@endsection
+@section('title','Mostrar Control de Gasolinera')
+@if(Auth::check() && Auth::user()->es_activo)
+
 
 @section('content')
     <section class="content container-fluid">
@@ -11,22 +11,20 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Control Gasolinera</span>
+                            <span class="card-title">Mostrar Control de Gasolinera</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('control-gasolineras.index') }}"> Back</a>
-                        </div>
+                        
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Gasolinera Id:</strong>
-                            {{ $controlGasolinera->gasolinera_id }}
+                            <strong>Gasolinera:</strong>
+                            {{ $controlGasolinera->gasolinera->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Destino Id:</strong>
-                            {{ $controlGasolinera->destino_id }}
+                            <strong>Destino:</strong>
+                            {{ $controlGasolinera->destino->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Folio:</strong>
@@ -46,15 +44,15 @@
                         </div>
                         <div class="form-group">
                             <strong>Precio Unitario:</strong>
-                            {{ $controlGasolinera->precio_unitario }}
+                            <td>{{ '$'. number_format($controlGasolinera->precio_unitario,2) }}</td>
                         </div>
                         <div class="form-group">
                             <strong>Total:</strong>
-                            {{ $controlGasolinera->total }}
+                            <td>{{ '$'. number_format($controlGasolinera->total,2) }}</td>
                         </div>
                         <div class="form-group">
                             <strong>Fecha:</strong>
-                            {{ $controlGasolinera->fecha }}
+                            {{$controlGasolinera->fecha ? Carbon\Carbon::parse($controlGasolinera->fecha_de_pago)->format('Y-m-d') : ''}}
                         </div>
                         <div class="form-group">
                             <strong>Carga:</strong>
@@ -70,20 +68,28 @@
                         </div>
                         <div class="form-group">
                             <strong>Total Factura Neto:</strong>
-                            {{ $controlGasolinera->total_factura_neto }}
+                            <td>{{ '$'. number_format($controlGasolinera->total_factura_neto,2) }}</td>
                         </div>
                         <div class="form-group">
-                            <strong>Es Pagado:</strong>
-                            {{ $controlGasolinera->es_pagado }}
+                            <strong>Esta Pagado:</strong>
+                            @if ($controlGasolinera['es_pagado'])
+                                <td><p class="badge bg-success">Pagado</p></td>
+                            @else
+                                <td><p class="badge bg-danger">Sin Pagar</p></td>
+                            @endif
                         </div>
                         <div class="form-group">
                             <strong>Vale Archivo:</strong>
                             {{ $controlGasolinera->vale_archivo }}
                         </div>
-
+                        <br>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('control-gasolineras.index') }}"> Atrás</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+@endif
