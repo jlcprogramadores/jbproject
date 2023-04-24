@@ -41,6 +41,7 @@
 										<th>Precio Unitario</th>
 										<th>Minimo</th>
 										<th>Maximo</th>
+										<th>Fecha Actualización</th>
 
                                         <th></th>
                                     </tr>
@@ -58,6 +59,7 @@
 											<td>{{ $producto->minimo }}</td>
 											<td>{{ $producto->maximo }}</td>
 
+                                            <td><span class="peque">{{ $producto->usuario_edito }}</span>  <br/> <span class="peque">{{ $producto->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('productos.destroy',$producto->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
