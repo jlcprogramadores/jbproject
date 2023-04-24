@@ -36,10 +36,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Nombre</th>
+                                        <th>Fecha Actualización</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +48,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $gasolinera->nombre }}</td>
+                                            <td><span class="peque">{{ $gasolinera->usuario_edito }}</span>  <br/> <span class="peque">{{ $gasolinera->updated_at }}</span></td>
 
                                             <td>
                                                 <form action="{{ route('gasolineras.destroy',$gasolinera->id) }}" method="POST">

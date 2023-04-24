@@ -50,6 +50,7 @@ class ControlGasolinera extends Model
 		'total_factura_neto' => 'required',
 		'es_pagado' => 'required',
 		'vale_archivo' => 'required',
+        'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 100000;
@@ -59,7 +60,7 @@ class ControlGasolinera extends Model
      *
      * @var array
      */
-    protected $fillable = ['gasolinera_id','destino_id','folio','ticket','producto','litros','precio_unitario','total','fecha','carga','comentario','folio_factura','total_factura_neto','es_pagado','vale_archivo'];
+    protected $fillable = ['gasolinera_id','destino_id','folio','ticket','producto','litros','precio_unitario','total','fecha','carga','comentario','folio_factura','total_factura_neto','es_pagado','vale_archivo','usuario_edito'];
 
 
     /**

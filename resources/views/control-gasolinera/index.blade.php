@@ -36,7 +36,6 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Gasolinera</th>
 										<th>Destino</th>
 										<th>Folio</th>
@@ -52,7 +51,8 @@
 										<th>Total Factura Neto</th>
 										<th>Pagado</th>
 										<th>Vale Archivo</th>
-
+                                        <th>Fecha Actualización</th>
+                                        
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -81,6 +81,7 @@
                                             @endif
 											{{-- <td>{{ $controlGasolinera->es_pagado }}</td> --}}
 											<td>{{ $controlGasolinera->vale_archivo }}</td>
+                                            <td><span class="peque">{{ $controlGasolinera->usuario_edito }}</span>  <br/> <span class="peque">{{ $controlGasolinera->updated_at }}</span></td>
 
                                             <td>
                                                 <form action="{{ route('control-gasolineras.destroy',$controlGasolinera->id) }}" method="POST">

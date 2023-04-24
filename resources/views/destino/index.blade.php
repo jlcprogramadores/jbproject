@@ -35,9 +35,9 @@
                             <table class="table table-striped table-hover" id = "table">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
+                                        <th>No</th>     
 										<th>Nombre</th>
+                                        <th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -48,6 +48,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $destino->nombre }}</td>
+                                            <td><span class="peque">{{ $destino->usuario_edito }}</span>  <br/> <span class="peque">{{ $destino->updated_at }}</span></td>
 
                                             <td>
                                                 <form action="{{ route('destinos.destroy',$destino->id) }}" method="POST">

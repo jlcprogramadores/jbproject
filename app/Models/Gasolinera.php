@@ -20,6 +20,7 @@ class Gasolinera extends Model
     
     static $rules = [
 		'nombre' => 'required',
+    'usuario_edito'  => 'required',
     ];
 
     protected $perPage = 100000;
@@ -29,7 +30,7 @@ class Gasolinera extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','usuario_edito'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
