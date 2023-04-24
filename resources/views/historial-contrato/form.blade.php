@@ -39,10 +39,15 @@
                     @endif
                     <input type="file" name="contrato" size="50" class="form-control">
                 </div>
+                <div class="form-group d-none">
+                    {{ Form::label('usuario_edito') }}
+                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
             </div>
             <br>
             <div class="row d-flex justify-content-center">
-                <a href="{{ route('historial-contrato.index',$historialContrato->empleado_id) }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                <a href="{{ route('historial-contrato.index',$historialContrato->empleado_id ?? request()->id ) }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
                 <div class="col col-sm-2"></div>
                 <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
             </div>

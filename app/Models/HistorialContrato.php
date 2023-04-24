@@ -30,7 +30,7 @@ class HistorialContrato extends Model
      *
      * @var array
      */
-    protected $fillable = ['empleado_id','contrato','fecha_inicio','fecha_fin'];
+    protected $fillable = ['empleado_id','contrato','fecha_inicio','fecha_fin','usuario_edito'];
 
 
     /**
