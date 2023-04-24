@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $destino->name ?? 'Show Destino' }}
-@endsection
+@section('title','Mostrar Destino')
+@if(Auth::check() && Auth::user()->es_activo)
+
 
 @section('content')
     <section class="content container-fluid">
@@ -11,10 +11,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Destino</span>
+                            <span class="card-title">Mostrar Destino</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('destinos.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -24,10 +23,12 @@
                             <strong>Nombre:</strong>
                             {{ $destino->nombre }}
                         </div>
-
+                        <br>
+                    <a class="btn btn-primary" href="{{ route('destinos.index') }}"> Atrás</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+@endif

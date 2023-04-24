@@ -48,7 +48,7 @@ class GasolineraController extends Controller
         $gasolinera = Gasolinera::create($request->all());
 
         return redirect()->route('gasolineras.index')
-            ->with('success', 'Gasolinera created successfully.');
+            ->with('success', 'Gasolinera creada exitosamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class GasolineraController extends Controller
         $gasolinera->update($request->all());
 
         return redirect()->route('gasolineras.index')
-            ->with('success', 'Gasolinera updated successfully');
+            ->with('success', 'Gasolinera actualizada exitosamente.');
     }
 
     /**
@@ -104,6 +104,6 @@ class GasolineraController extends Controller
         $gasolinera = Gasolinera::find($id)->delete();
 
         return redirect()->route('gasolineras.index')
-            ->with('success', 'Gasolinera deleted successfully');
+            ->with('success', 'Gasolinera eliminada exitosamente.');
     }
 }

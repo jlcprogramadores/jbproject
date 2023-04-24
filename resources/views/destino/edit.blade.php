@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Update Destino
-@endsection
+@section('title','Actualizar Destino')
+@if(Auth::check() && Auth::user()->es_activo)
 
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +12,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Destino</span>
+                        <span class="card-title">Editar Destino</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('destinos.update', $destino->id) }}"  role="form" enctype="multipart/form-data">
@@ -29,3 +28,4 @@
         </div>
     </section>
 @endsection
+@endif
