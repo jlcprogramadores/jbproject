@@ -40,6 +40,7 @@
 										<th>Contrato</th>
 										<th>Fecha Inicio</th>
 										<th>Fecha Fin</th>
+										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -58,7 +59,7 @@
                                             </td>
 											<td>{{ $historialContrato->fecha_inicio ?  Carbon\Carbon::parse($historialContrato->fecha_inicio)->format('Y-m-d') :'' }}</td>
 											<td>{{ $historialContrato->fecha_fin ?  Carbon\Carbon::parse($historialContrato->fecha_fin)->format('Y-m-d') :'' }}</td>
-
+                                            <td><span class="peque">{{ $historialContrato->usuario_edito }}</span>  <br/> <span class="peque">{{ $historialContrato->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('historial-contratos.destroy',$historialContrato->id) }}" method="POST">
                                                     {{-- <a class="btn btn-sm btn-primary " href="{{ route('historial-contratos.show',$historialContrato->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a> --}}
