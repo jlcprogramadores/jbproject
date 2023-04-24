@@ -22,6 +22,7 @@ class Producto extends Migration
             $table->decimal('precio_unitario', 12, 2)->nullable();
             $table->integer('minimo')->nullable();
             $table->integer('maximo')->nullable();
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

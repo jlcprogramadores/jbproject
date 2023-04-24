@@ -16,6 +16,7 @@ class Destinos extends Migration
         Schema::create('destinos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

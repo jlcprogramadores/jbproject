@@ -21,6 +21,7 @@ class HistorialContrato extends Migration
             $table->longText('contrato')->nullable();
             $table->dateTime('fecha_inicio')->nullable();
             $table->dateTime('fecha_fin')->nullable();
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

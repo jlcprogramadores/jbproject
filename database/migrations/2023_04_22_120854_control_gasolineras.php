@@ -31,11 +31,12 @@ class ControlGasolineras extends Migration
             $table->decimal('total', 12, 2);
             $table->dateTime('fecha');
             $table->string('carga');
-            $table->string('comentario');
-            $table->string('folio_factura');
+            $table->string('comentario')->nullable();
+            $table->string('folio_factura')->nullable();
             $table->decimal('total_factura_neto', 12, 2);
             $table->boolean('es_pagado')->default(0);
             $table->string('vale_archivo')->nullable();
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }

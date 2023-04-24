@@ -16,6 +16,7 @@ class Gasolineras extends Migration
         Schema::create('gasolineras', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('usuario_edito');
             $table->timestamps();
         });
     }
