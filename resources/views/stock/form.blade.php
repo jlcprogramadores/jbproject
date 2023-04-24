@@ -42,7 +42,11 @@
             {{ Form::text('numero_documento', $stock->numero_documento, ['class' => 'form-control' . ($errors->has('numero_documento') ? ' is-invalid' : ''), 'placeholder' => 'Numero Documento']) }}
             {!! $errors->first('numero_documento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <div class="form-group d-none">
+            {{ Form::label('usuario_edito') }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>

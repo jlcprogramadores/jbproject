@@ -34,14 +34,14 @@ class Producto extends Model
 		'maximo' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['codigo','descripcion','marca','modelo','precio_unitario','minimo','maximo'];
+    protected $fillable = ['codigo','descripcion','marca','modelo','precio_unitario','minimo','maximo','usuario_edito'];
 
 
 

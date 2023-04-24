@@ -38,6 +38,11 @@
                     {{ Form::number('maximo', $producto->maximo, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''), 'placeholder' => 'Maximo']) }}
                     {!! $errors->first('maximo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+                <div class="form-group d-none">
+                    {{ Form::label('usuario_edito') }}
+                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
+                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
             </div>
             <br>
             <div class="row d-flex justify-content-center">

@@ -31,14 +31,14 @@ class Stock extends Model
 		'fecha' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 1000000;
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['producto_id','proveedor_id','destino','fecha','lote','cantidad','numero_factura','numero_documento'];
+    protected $fillable = ['producto_id','proveedor_id','destino','fecha','lote','cantidad','numero_factura','numero_documento','usuario_edito'];
 
 
     /**
