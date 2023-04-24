@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Editar Expediente')
-
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
         <div class="">
@@ -59,3 +59,4 @@
         </div>
     </section>
 @endsection
+@endif

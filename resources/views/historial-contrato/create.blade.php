@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Historial Contrato
+Create Historial Contrato
 @endsection
+@if(Auth::check() && Auth::user()->es_activo)
 
 @section('content')
     <section class="content container-fluid">
@@ -28,3 +29,4 @@
         </div>
     </section>
 @endsection
+@endif

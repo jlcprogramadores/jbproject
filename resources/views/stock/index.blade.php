@@ -3,7 +3,7 @@
 @section('template_title')
     Stock
 @endsection
-
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -83,3 +83,4 @@
         </div>
     </div>
 @endsection
+@endif

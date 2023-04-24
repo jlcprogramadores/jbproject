@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Actualizar Grupo')
+@if(Auth::check() && Auth::user()->es_activo)
 
 @section('content')
     <section class="content container-fluid">
@@ -27,3 +28,4 @@
         </div>
     </section>
 @endsection
+@endif

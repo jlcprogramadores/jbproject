@@ -1,3 +1,4 @@
+@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-success padding-1">
     <div class="box-body">
         
@@ -87,3 +88,4 @@
         $('#empleado_id').select2();
     </script>
 @endpush
+@endif

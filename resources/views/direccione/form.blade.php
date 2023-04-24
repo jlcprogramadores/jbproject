@@ -1,3 +1,4 @@
+@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="container">
@@ -160,3 +161,4 @@
         $('#tipo_de_direccione_id').select2();
     </script>
 @endpush
+@endif

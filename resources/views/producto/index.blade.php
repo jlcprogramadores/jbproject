@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','Producto')
-
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -79,3 +79,4 @@
         </div>
     </div>
 @endsection
+@endif
