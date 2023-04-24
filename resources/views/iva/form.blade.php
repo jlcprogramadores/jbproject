@@ -30,9 +30,3 @@
     </div>
 </div>
 @endif
-
-{{-- <script>
-function myFunction(){
-    document.getElementById("btn-aceptar").style.display = "none";
-};   
-</script> --}}
