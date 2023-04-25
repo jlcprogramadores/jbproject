@@ -79,8 +79,11 @@
                                             @else
                                                 <td><p class="badge bg-danger">Sin Pagar</p></td>
                                             @endif
-											{{-- <td>{{ $controlGasolinera->es_pagado }}</td> --}}
-											<td>{{ $controlGasolinera->vale_archivo }}</td>
+                                            @if ($controlGasolinera->vale_archivo)
+                                            <td><a href="{{$controlGasolinera->vale_archivo}}">Link de Vale</a></td>
+                                            @else
+                                                <td><span class="badge bg-danger">Sin Vale</span></td>
+                                            @endif 
                                             <td><span class="peque">{{ $controlGasolinera->usuario_edito }}</span>  <br/> <span class="peque">{{ $controlGasolinera->updated_at }}</span></td>
 
                                             <td>

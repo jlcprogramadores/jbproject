@@ -48,8 +48,14 @@ class ControlGasolineraController extends Controller
     public function store(Request $request)
     {
         request()->validate(ControlGasolinera::$rules);
-
         $controlGasolinera = ControlGasolinera::create($request->all());
+        if ($controlGasolinera->vale_archivo != null) {
+            $nombre = 'controlGas_'.$controlGasolinera->id.'_'.$controlGasolinera->vale_archivo->getClientOriginalName();
+            $controlGasolinera->vale_archivo->storeAs('public',$nombre);
+            $getGasolinera = ControlGasolinera::find($controlGasolinera->id);
+            $getGasolinera->vale_archivo = '/storage/'.$nombre;
+            $getGasolinera->save();
+        }
 
         return redirect()->route('control-gasolineras.index')
             ->with('success', 'Control de Gasolinera creado exitosamente.');
@@ -94,8 +100,21 @@ class ControlGasolineraController extends Controller
     {
         request()->validate(ControlGasolinera::$rules);
 
-        $controlGasolinera->update($request->all());
-
+        if ($request->vale_archivo != null) {
+            if ($controlGasolinera->vale_archivo != null) {
+                $fileGasolinera = base_path('storage/app/public/'.explode("/",$controlGasolinera->vale_archivo)[2]);
+                if(file_exists($fileGasolinera)){
+                    unlink($fileGasolinera);
+                }
+            }
+            $nombre = 'controlGas_'.$controlGasolinera->id.'_'. $request->vale_archivo->getClientOriginalName();
+            $request->vale_archivo->storeAs('public',$nombre);
+            $controlGasolinera->update($request->all());
+            $controlGasolinera->vale_archivo = '/storage/'.$nombre;
+            $controlGasolinera->save();  
+        }else{
+            $controlGasolinera->update($request->all());
+        }
         return redirect()->route('control-gasolineras.index')
             ->with('success', 'Control de Gasolinera actualizado exitosamente.');
     }
@@ -106,8 +125,15 @@ class ControlGasolineraController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $controlGasolinera = ControlGasolinera::find($id)->delete();
+    {   
+        $controlGasolinera = ControlGasolinera::find($id);
+        if ($controlGasolinera->vale_archivo != null) {
+            $fileImagen = base_path('storage/app/public/'.explode("/",$controlGasolinera->vale_archivo)[2]);
+            if(file_exists($fileImagen)){
+                unlink($fileImagen);
+            }
+        }
+        $controlGasolinera ->delete();
 
         return redirect()->route('control-gasolineras.index')
             ->with('success', 'Control de Gasolinera eliminado exitosamente.');

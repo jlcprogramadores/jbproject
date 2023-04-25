@@ -94,15 +94,14 @@
                             '0' => 'Sin Pagar', 
                         ];
                     ?>
-                    {{ Form::label('es_pagado') }}
+                    {{ Form::label('Esta Pagado') }}
                     {{ Form::select('es_pagado', $es_pagado,null ,['class' => 'form-select'. ($errors->has('es_pagado') ? ' is-invalid' : '')]) }}
                     {!! $errors->first('es_pagado', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <div class="col-sm-3 p-1 form-group">
-                    {{ Form::label('vale_archivo') }}
-                    {{ Form::text('vale_archivo', $controlGasolinera->vale_archivo, ['class' => 'form-control' . ($errors->has('vale_archivo') ? ' is-invalid' : ''), 'placeholder' => 'Vale Archivo']) }}
-                    {!! $errors->first('vale_archivo', '<div class="invalid-feedback">:message</div>') !!}
-                </div> 
+                <div class="col-sm p-1 form-group">
+                    {{ Form::label('Archivo del Vale') }}
+                    <input type="file" name="vale_archivo" size="50" class="form-control">
+                </div>
             </div>
             <br>
             <div class="form-group d-none">

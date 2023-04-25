@@ -56,7 +56,7 @@ class HistorialContratoController extends Controller
             $getHistorialContrato->save();
         }
         return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
-            ->with('success', 'HistorialContrato created successfully.');
+            ->with('success', 'Historial Contrato creado exitosamente.');
     }
 
     /**
@@ -113,7 +113,7 @@ class HistorialContratoController extends Controller
         }
 
         return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
-            ->with('success', 'HistorialContrato updated successfully');
+            ->with('success', 'Historial Contrato actualizado exitosamente.');
     }
 
     /**
@@ -132,6 +132,6 @@ class HistorialContratoController extends Controller
         }
         $historialContrato->delete();
         return redirect()->route('historial-contrato.index',$historialContrato->empleado_id)
-            ->with('success', 'HistorialContrato deleted successfully');
+            ->with('success', 'Historial Contrato elminado exitosamente.');
     }
 }

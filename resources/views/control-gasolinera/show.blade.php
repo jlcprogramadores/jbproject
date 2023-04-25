@@ -79,8 +79,11 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <strong>Vale Archivo:</strong>
-                            {{ $controlGasolinera->vale_archivo }}
+                            @if ($controlGasolinera->vale_archivo)
+                            <td><a href="{{$controlGasolinera->vale_archivo}}">Link de Vale</a></td>
+                            @else
+                                <td><span class="badge bg-danger">Sin Vale</span></td>
+                            @endif 
                         </div>
                         <br>
                         <div class="float-right">

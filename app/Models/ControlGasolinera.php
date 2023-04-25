@@ -45,11 +45,8 @@ class ControlGasolinera extends Model
 		'total' => 'required',
 		'fecha' => 'required',
 		'carga' => 'required',
-		'comentario' => 'required',
-		'folio_factura' => 'required',
 		'total_factura_neto' => 'required',
 		'es_pagado' => 'required',
-		'vale_archivo' => 'required',
         'usuario_edito'  => 'required',
     ];
 
