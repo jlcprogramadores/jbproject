@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Stock
-@endsection
+@section('title','Crear Inventario')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -13,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Stock</span>
+                        <span class="card-title">Crear Inventario</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('stocks.store') }}"  role="form" enctype="multipart/form-data">

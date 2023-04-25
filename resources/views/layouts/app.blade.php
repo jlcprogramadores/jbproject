@@ -292,6 +292,9 @@
                                         Cadena de Suministros
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('productos.index') }}">
+                                                {{ __('productos') }}
+                                            </a>
                                             <a class="dropdown-item" href="{{ route('stocks.index') }}">
                                                 {{ __('Inventario') }}
                                             </a>

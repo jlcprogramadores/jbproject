@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $stock->name ?? 'Show Stock' }}
-@endsection
+@section('title','Mostrar Inventario')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Stock</span>
+                            <span class="card-title">Mostrar Inventario</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('stocks.index') }}"> Back</a>
