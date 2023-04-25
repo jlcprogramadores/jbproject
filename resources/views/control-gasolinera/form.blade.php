@@ -51,9 +51,12 @@
                     {!! $errors->first('total', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
                 <div class="col-sm-3 p-1 form-group">
+                    <?php 
+                        $fechaControl = isset($controlGasolinera->fecha) ? Carbon\Carbon::parse($controlGasolinera->fecha)->format('Y-m-d') : $controlGasolinera->fecha;
+                    ?>
                     {{ Form::label('fecha') }}
-                    {{ Form::date('fecha', $controlGasolinera->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Ingreso']) }}
-                    {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
+                    {{ Form::date('fecha', $fechaControl, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {!! $errors->first('fecha', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
             </div>   
             
