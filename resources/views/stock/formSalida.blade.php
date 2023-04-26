@@ -3,15 +3,15 @@
         <div class="box-body">
             <div class="container">
                 <div class="row">
-                    {{-- <div class="form-group">
-                        {{ Form::label('numero_factura') }}
-                        {{ Form::text('numero_factura', $stock->numero_factura, ['class' => 'form-control' . ($errors->has('numero_factura') ? ' is-invalid' : ''), 'placeholder' => 'Numero Factura']) }}
-                        {!! $errors->first('numero_factura', '<div class="invalid-feedback">:message</div>') !!}
-                    </div> --}}
                     <div class="form-group">
-                        {{ Form::label('numero_documento') }}
-                        {{ Form::text('numero_documento', $stock->numero_documento, ['class' => 'form-control' . ($errors->has('numero_documento') ? ' is-invalid' : ''), 'placeholder' => 'Numero Documento']) }}
-                        {!! $errors->first('numero_documento', '<div class="invalid-feedback">:message</div>') !!}
+                        @if ($stock->numero_documento)
+                            <label for="numero_documento">
+                                Número Documento (<a href="{{ $stock->numero_documento }}" target="_blank">Ver Número Documento Anterior</a>, Si Subes Una Imagen Se Va A Sobrescribir)
+                            </label>
+                        @else
+                            <label for="numero_documento">Número Documento</label>
+                        @endif
+                        <input type="file" name="numero_documento" size="50" class="form-control">
                     </div>
                 </div>
                 <div class="row">
