@@ -31,12 +31,25 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createEntrada()
     {
         $stock = new Stock();
         $proveedor = Proveedore::pluck('nombre','id');
         $producto = Producto::pluck('descripcion','id');
-        return view('stock.create', compact('stock','producto','proveedor'));
+        return view('stock.createEntrada', compact('stock','producto','proveedor'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createSalida()
+    {
+        $stock = new Stock();
+        $proveedor = Proveedore::pluck('nombre','id');
+        $producto = Producto::pluck('descripcion','id');
+        return view('stock.createSalida', compact('stock','producto','proveedor'));
     }
 
     /**
