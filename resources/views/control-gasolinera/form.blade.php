@@ -33,7 +33,6 @@
                     {!! $errors->first('producto', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
-            
             <div class="row">
                 <div class=" col-sm-3 p-1 form-group">
                     {{ Form::label('litros') }}

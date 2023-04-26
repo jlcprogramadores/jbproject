@@ -6,6 +6,7 @@ use App\Models\ControlGasolinera;
 use App\Models\Destino;
 use App\Models\Gasolinera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ControlGasolineraController
@@ -137,5 +138,49 @@ class ControlGasolineraController extends Controller
 
         return redirect()->route('control-gasolineras.index')
             ->with('success', 'Control de Gasolinera eliminado exitosamente.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function graficasGasolinerasRango()
+    {   
+        $gasolinera = Gasolinera::pluck('nombre','id');
+        return view('control-gasolinera.graficasGasolinerasRango', compact('gasolinera'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function graficasRango(Request $request)
+    {   
+        $desde=$request->desde;
+        $hasta=$request->hasta;
+        $gasolinera = Gasolinera::find($request->gasolinera_id);
+        $nombreGasolinera = $gasolinera->nombre;
+        DB::statement("SET lc_time_names = 'es_ES'");
+        $egresos = DB::table('control_gasolineras')
+        ->select(DB::raw('YEAR(fecha) AS anio'),DB::raw('MONTHNAME(fecha) AS mes'), DB::raw('SUM(total_factura_neto) AS gasto_total'))
+        ->where('gasolinera_id','=',$request->gasolinera_id)
+        ->groupBy(DB::raw('YEAR(fecha)'))
+        ->groupBy(DB::raw('MONTHNAME(fecha)'))
+        ->get();
+        
+        $fecha = []; 
+        $gasto_total = []; 
+        foreach($egresos as $key => $egreso)
+        {   
+            $fechaAux = $egreso->mes . ' - ' . $egreso->anio;
+            array_push($fecha, $fechaAux);  
+            array_push($gasto_total, $egreso->gasto_total);    
+        }
+
+        return view('control-gasolinera.graficasRango', compact('fecha','gasto_total','nombreGasolinera','desde','hasta'));
     }
 }

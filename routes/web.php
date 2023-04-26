@@ -65,7 +65,8 @@ Route::resource('gasolineras', App\Http\Controllers\GasolineraController::class)
 Route::resource('destinos', App\Http\Controllers\DestinoController::class);
 Route::get('/crear-entrada', 'App\Http\Controllers\StockController@createEntrada')->name('stocks.create-entrada');
 Route::get('/crear-salida', 'App\Http\Controllers\StockController@createSalida')->name('stocks.create-salida');
-
+Route::get('/graficasGasolinerasRango', 'App\Http\Controllers\ControlGasolineraController@graficasGasolinerasRango')->name('control-gasolineras.graficasGasolinerasRango');
+Route::post('/graficasRango', 'App\Http\Controllers\ControlGasolineraController@graficasRango')->name('control-gasolineras.graficasRango');
 // index con emplado_id
 Route::get('/historial-contrato/{id}', 'App\Http\Controllers\HistorialContratoController@index')->name('historial-contrato.index');
 
