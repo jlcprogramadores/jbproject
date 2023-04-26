@@ -69,7 +69,7 @@
 											<td>{{ $controlGasolinera->litros }}</td>
                                             <td>{{ '$'. number_format($controlGasolinera->precio_unitario,2) }}</td>
                                             <td>{{ '$'. number_format($controlGasolinera->total,2) }}</td>
-                                            <td >{{$controlGasolinera->fecha ? Carbon\Carbon::parse($controlGasolinera->fecha_de_pago)->format('Y-m-d') : ''}}</td>
+                                            <td >{{$controlGasolinera->fecha ? Carbon\Carbon::parse($controlGasolinera->fecha)->format('Y-m-d') : ''}}</td>
 											<td>{{ $controlGasolinera->carga }}</td>
 											<td>{{ $controlGasolinera->comentario }}</td>
 											<td>{{ $controlGasolinera->folio_factura }}</td>

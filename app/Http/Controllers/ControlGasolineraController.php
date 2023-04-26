@@ -168,19 +168,23 @@ class ControlGasolineraController extends Controller
         $egresos = DB::table('control_gasolineras')
         ->select(DB::raw('YEAR(fecha) AS anio'),DB::raw('MONTHNAME(fecha) AS mes'), DB::raw('SUM(total_factura_neto) AS gasto_total'))
         ->where('gasolinera_id','=',$request->gasolinera_id)
+        ->whereBetween('fecha', [$desde, $hasta])
         ->groupBy(DB::raw('YEAR(fecha)'))
         ->groupBy(DB::raw('MONTHNAME(fecha)'))
         ->get();
         
         $fecha = []; 
         $gasto_total = []; 
+        $gasto_general = 0;
+
         foreach($egresos as $key => $egreso)
         {   
             $fechaAux = $egreso->mes . ' - ' . $egreso->anio;
             array_push($fecha, $fechaAux);  
-            array_push($gasto_total, $egreso->gasto_total);    
+            array_push($gasto_total,$egreso->gasto_total);
+            $gasto_general += $egreso->gasto_total;
         }
 
-        return view('control-gasolinera.graficasRango', compact('fecha','gasto_total','nombreGasolinera','desde','hasta'));
+        return view('control-gasolinera.graficasRango', compact('fecha','gasto_total','nombreGasolinera','desde','hasta','gasto_general'));
     }
 }
