@@ -48,7 +48,7 @@
 										<th>Numero Documento</th>
 										<th>Fecha Actualización</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>

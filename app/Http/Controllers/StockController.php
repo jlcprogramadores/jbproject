@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
+use App\Models\Proveedore;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,9 @@ class StockController extends Controller
     public function create()
     {
         $stock = new Stock();
-        return view('stock.create', compact('stock'));
+        $proveedor = Proveedore::pluck('nombre','id');
+        $producto = Producto::pluck('descripcion','id');
+        return view('stock.create', compact('stock','producto','proveedor'));
     }
 
     /**
