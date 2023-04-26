@@ -12,7 +12,7 @@
                             <span class="card-title">Mostrar Producto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('productos.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('productos.index') }}"> Atrás</a>
                         </div>
                     </div>
 
