@@ -60,6 +60,7 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         request()->validate(Stock::$rules);
 
         $stock = Stock::create($request->all());
