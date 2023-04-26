@@ -25,17 +25,17 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('precio_unitario') }}
-                    {{ Form::number('precio_unitario', $producto->precio_unitario, ['class' => 'form-control' . ($errors->has('precio_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Precio Unitario']) }}
+                    {{ Form::number('precio_unitario', $producto->precio_unitario, ['class' => 'form-control' . ($errors->has('precio_unitario') ? ' is-invalid' : ''),'min'=>'0', 'step'=>'any','placeholder' => 'Precio Unitario']) }}
                     {!! $errors->first('precio_unitario', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
                     {{ Form::label('minimo') }}
-                    {{ Form::number('minimo', $producto->minimo, ['class' => 'form-control' . ($errors->has('minimo') ? ' is-invalid' : ''), 'placeholder' => 'Minimo']) }}
+                    {{ Form::number('minimo', $producto->minimo, ['class' => 'form-control' . ($errors->has('minimo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Minimo']) }}
                     {!! $errors->first('minimo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group">
                     {{ Form::label('maximo') }}
-                    {{ Form::number('maximo', $producto->maximo, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''), 'placeholder' => 'Maximo']) }}
+                    {{ Form::number('maximo', $producto->maximo, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Maximo']) }}
                     {!! $errors->first('maximo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="form-group d-none">
