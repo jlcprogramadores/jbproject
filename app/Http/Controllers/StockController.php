@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Stock;
 use App\Models\Proveedore;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 /**
@@ -60,10 +61,32 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         request()->validate(Stock::$rules);
-
-        $stock = Stock::create($request->all());
+        // datos
+        $proveedor_id = $request->proveedor_id;
+        $fecha = $request->fecha;
+        $destino = $request->destino;
+        $lote = $request->lote;
+        $usuario_edito = $request->usuario_edito;
+        $productos = $request->productos;
+        $numero_factura = $request->numero_factura ?? null;
+        $dateNow = Carbon::now()->toDateTimeString();
+        // iterar los productos y guardarlos con la misma información 
+        foreach ($productos as $key => $value) {
+            $datos = [
+                'producto_id' => $key,
+                'proveedor_id' => $proveedor_id,
+                'destino' => $destino,
+                'fecha' => $fecha,
+                'lote' => $lote,
+                'cantidad' => $value['cantidad'],
+                'numero_factura' => $numero_factura,
+                'usuario_edito' => $usuario_edito,
+                'created_at' => $dateNow,
+                'updated_at' => $dateNow,
+            ];
+            $stock = Stock::create($datos);
+        }
 
         return redirect()->route('stocks.index')
             ->with('success', 'Stock created successfully.');

@@ -2,7 +2,8 @@
     <div class="box box-info padding-1">
         <div class="box-body">
             <div class="container">
-                <div class="row">
+                {{-- está comentado para cuando aviliten los documentos --}}
+                {{-- <div class="row">
                     <div class="form-group">
                         @if ($stock->numero_documento)
                             <label for="numero_documento">
@@ -13,7 +14,7 @@
                         @endif
                         <input type="file" name="numero_documento" size="50" class="form-control">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-sm p-2 form-group">
                         {{ Form::label('proveedor') }}
