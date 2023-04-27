@@ -10881,14 +10881,14 @@ td form{
 
 @media (max-width: 768px) {
   .imgjb{
-    width: 54px !important; 
-    height: 54px !important;
+    width: 46px !important; 
+    height: 46px !important;
   }
 }
 
 .imgjb{
-  width: 70px; 
-  height: 70px;
+  width: 46px !important; 
+  height: 46px !important;
 }
 
 @media (max-width: 768px) {
