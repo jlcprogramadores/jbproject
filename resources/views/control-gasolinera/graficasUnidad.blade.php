@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Costos Gasolinera Fecha')
+@section('title', 'Costos Gasolinera Unidad')
 @if (Auth::check() && Auth::user()->es_activo)
     @section('content')
         <section class="content container-fluid">
@@ -32,9 +32,8 @@
                             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
                             <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
 
-                            {{-- {{dd($fecha)}} --}}
                             <script>
-                                var fecha = <?php echo json_encode($fecha); ?>;
+                                var destino = <?php echo json_encode($destino); ?>;
                                 var gasto_total = <?php echo json_encode($gasto_total); ?>;
                                 var totalVar = <?php echo json_encode('Total gastado: ('.$desde.' a '.$hasta . ') = ' . '$'. number_format($gasto_general,2))?>;
                                 Chart.register(ChartDataLabels);
@@ -42,9 +41,9 @@
                                 const myChart = new Chart(ctx, {
                                     type: 'pie',
                                     data: {
-                                        labels: fecha,
+                                        labels: destino,
                                         datasets: [{
-                                            label: 'Costo Total:$',
+                                            // label: 'Costo Total:$',
                                             data: gasto_total,
                                             backgroundColor: [
                                                 'rgba(220,20,60, 0.8)',
@@ -98,10 +97,10 @@
                                         anchor: 'end',
                                         align: 'top',
                                         formatter: Math.round,
-                                        font: {
-                                            weight: 'bold',
-                                            size: 12
-                                        }
+                                            font: {
+                                                weight: 'bold',
+                                                size: 12
+                                            }
                                         }
                                     }
                                     }

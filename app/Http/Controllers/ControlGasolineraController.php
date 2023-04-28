@@ -158,6 +158,18 @@ class ControlGasolineraController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function graficasGasolinerasUnidad()
+    {   
+        $gasolinera = Gasolinera::pluck('nombre','id');
+        return view('control-gasolinera.graficasGasolinerasUnidad', compact('gasolinera'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function graficasRango(Request $request)
     {   
         $desde=$request->desde;
@@ -186,5 +198,49 @@ class ControlGasolineraController extends Controller
         }
 
         return view('control-gasolinera.graficasRango', compact('fecha','gasto_total','nombreGasolinera','desde','hasta','gasto_general'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function graficasUnidad(Request $request)
+    {   
+        $desde=$request->desde;
+        $hasta=$request->hasta;
+        $gasolinera = Gasolinera::find($request->gasolinera_id);
+        $nombreGasolinera = $gasolinera->nombre;
+        DB::statement("SET lc_time_names = 'es_ES'");
+        $egresos = DB::table('control_gasolineras')
+        ->join('destinos', 'destinos.id', '=', 'control_gasolineras.destino_id')
+        ->select(DB::raw('SUM(total_factura_neto) AS gasto_total'),DB::raw('destinos.nombre AS destino'))
+        ->where('gasolinera_id','=',$request->gasolinera_id)
+        ->whereBetween('fecha', [$desde, $hasta])
+        ->groupBy(DB::raw('destino_id'))
+        ->orderBy('gasto_total','desc')
+        ->get();
+
+        // dd($egresos);
+
+        $destino = []; 
+        $gasto_total = []; 
+        $gasto_general = 0;
+        $iterador = 0;
+
+        foreach($egresos as $key => $egreso){   
+            if ($iterador < 3) {
+                $iterador++;
+                $destinoAux = 'TOP ' . $iterador . ' '. $egreso->destino  . ' = $' . number_format($egreso->gasto_total,2) ;
+            }else {
+                $destinoAux = $egreso->destino  . ' = $' . number_format($egreso->gasto_total,2) ;
+            }
+            array_push($destino, $destinoAux);  
+            array_push($gasto_total,$egreso->gasto_total);
+            $gasto_general += $egreso->gasto_total;
+        }
+
+        return view('control-gasolinera.graficasUnidad', compact('destino','gasto_total','nombreGasolinera','desde','hasta','gasto_general'));
     }
 }

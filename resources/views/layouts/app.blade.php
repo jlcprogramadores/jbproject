@@ -304,6 +304,9 @@
                                             <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasRango') }}">
                                                 {{ __('Gráficar por Rango') }}
                                             </a>
+                                            <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasUnidad') }}">
+                                                {{ __('Gráficar por Unidad') }}
+                                            </a>
                                         <div class="dropdown-divider"></div>
                                         <li>
                                             <a class="dropdown-item" href="">

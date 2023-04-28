@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gráficar Gasolinera Por Fecha')
+@section('title', 'Gráficar Gasolinera Por Unidad')
 @if (Auth::check() && Auth::user()->es_activo)
     @section('content')
         <section class="content container-fluid">
@@ -8,10 +8,10 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">Gráficar Gasolinera Por Fecha</span>
+                            <span class="card-title">Gráficar Gasolinera Por Unidad</span>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('control-gasolineras.graficasRango') }}" role="form"
+                            <form method="POST" action="{{ route('control-gasolineras.graficasUnidad') }}" role="form"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="container">
