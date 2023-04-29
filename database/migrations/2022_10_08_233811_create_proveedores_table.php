@@ -16,13 +16,13 @@ class CreateProveedoresTable extends Migration
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('razon_social');
+            $table->string('razon_social')->nullable();
             $table->string('estado');
-            $table->integer('dias_de_credito');
-            $table->decimal('monto_de_credito', 12, 2);
+            $table->integer('dias_de_credito')->nullable();
+            $table->decimal('monto_de_credito', 12, 2)->nullable();
             $table->boolean('es_facturable');
-            $table->string('mail');
-            $table->string('rfc');
+            $table->string('mail')->nullable();
+            $table->string('rfc')->nullable();
             $table->boolean('es_activo');
             $table->string('usuario_edito');
             $table->timestamps();

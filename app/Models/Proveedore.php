@@ -26,13 +26,8 @@ class Proveedore extends Model
 {
     static $rules = [
 		'nombre' => 'required',
-		'razon_social' => 'required',
 		'estado' => 'required',
-		'dias_de_credito' => 'required',
-		'monto_de_credito' => 'required',
 		'es_facturable' => 'required',
-		'mail' => 'required',
-		'rfc' => 'required',
 		'es_activo' => 'required',
         'usuario_edito'  => 'required',
     ];
