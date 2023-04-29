@@ -35,7 +35,7 @@ class StockController extends Controller
      */
     public function entradas()
     {
-        $stocks = Stock::where('es_entrada',1)->paginate();
+        $stocks = Stock::where('es_entrada',1)->orderBy('id','desc')->paginate();
         
         return view('stock.entradas', compact('stocks'))
             ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
@@ -48,7 +48,7 @@ class StockController extends Controller
      */
     public function salidas()
     {
-        $stocks = Stock::where('es_entrada',0)->paginate();
+        $stocks = Stock::where('es_entrada',0)->orderBy('id','desc')->paginate();
 
         return view('stock.salidas', compact('stocks'))
             ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
@@ -77,6 +77,7 @@ class StockController extends Controller
                 p.maximo 
             FROM
                 productos AS p
+            ORDER BY p.id DESC
         "));
         $i=0;
         return view('stock.resumen', compact('query','i'));

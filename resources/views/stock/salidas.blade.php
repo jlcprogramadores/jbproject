@@ -109,9 +109,6 @@
                 },
                 orderCellsTop: true,
                 fixedHeader: true,
-                order: [
-                    [0, 'desc']
-                ],
                 initComplete: function() {
                     var api = this.api();
                     // For each column
