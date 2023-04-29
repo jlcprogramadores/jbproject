@@ -127,6 +127,11 @@ class StockController extends Controller
         $numero_factura = $request->numero_factura ?? null;
         $dateNow = Carbon::now()->toDateTimeString();
         // iterar los productos y guardarlos con la misma información 
+        if(!$productos){
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                ->with('danger', 'No Se Pudo Crear Faltaron Los Productos.');
+        }
+
         foreach ($productos as $key => $value) {
             $datos = [
                 'producto_id' => $key,
@@ -144,8 +149,8 @@ class StockController extends Controller
             $stock = Stock::create($datos);
         }
 
-        return redirect()->route('stocks.index')
-            ->with('success', 'Stock created successfully.');
+        return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+            ->with('success', 'Operación Realizasa Satisfactoriamente.');
     }
 
     /**

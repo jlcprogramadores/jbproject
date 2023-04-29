@@ -89,7 +89,7 @@
                 </div>
                 <br>
                 <div class="row d-flex justify-content-center">
-                    <a href="{{ route('stocks.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                    <a href="{{ route('stocks.salidas') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
                     <div class="col col-sm-2"></div>
                     <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
                 </div>
@@ -161,7 +161,7 @@
                     var productName = selectedProduct.text();
                     var productQuantity = parseInt($('#quantity-input').val()); // Obtener la cantidad del campo de entrada
                     
-                    if(productQuantity < 0){
+                    if(productQuantity < 1){
                         productQuantity = 1;
                     }
                     $('#quantity-input').val(1);

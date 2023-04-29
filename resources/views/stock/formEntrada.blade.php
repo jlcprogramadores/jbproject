@@ -13,7 +13,7 @@
                     <div class="col-sm p-2 form-group">
                         {{ Form::label('proveedor') }}
                         <br>
-                        {{ Form::select('proveedor_id', $proveedor,null, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''),'id'=>'proveedor_id', 'placeholder' => 'Selecciona Un Proveedor']) }}
+                        {{ Form::select('proveedor_id', $proveedor,null, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''),'id'=>'proveedor_id','required', 'placeholder' => 'Selecciona Un Proveedor']) }}
                         {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
                     <div class="col-sm p-2 form-group">
@@ -83,7 +83,7 @@
                 </div>
                 <br>
                 <div class="row d-flex justify-content-center">
-                    <a href="{{ route('stocks.index') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
+                    <a href="{{ route('stocks.entradas') }}" class="btn btn-danger col col-sm-2">{{ __('Cancelar')}}</a>    
                     <div class="col col-sm-2"></div>
                     <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary col col-sm-2">Aceptar</button>
                 </div>
@@ -155,7 +155,7 @@
                     var productName = selectedProduct.text();
                     var productQuantity = parseInt($('#quantity-input').val()); // Obtener la cantidad del campo de entrada
                     
-                    if(productQuantity < 0){
+                    if(productQuantity < 1){
                         console.log('entre');
                         productQuantity = 1;
                     }

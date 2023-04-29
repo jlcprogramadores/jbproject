@@ -33,6 +33,11 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    @if ($message = Session::get('danger'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -41,14 +46,12 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Producto Id</th>
-										<th>Proveedor Id</th>
+										<th>Proveedor</th>
 										<th>Destino</th>
 										<th>Fecha</th>
 										<th>Lote</th>
 										<th>Cantidad</th>
 										<th>Numero Factura</th>
-										<th>Numero Documento</th>
 										<th>Fecha Actualización</th>
 
                                         <th>Acciones</th>
@@ -59,23 +62,21 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $stock->producto_id }}</td>
-											<td>{{ $stock->proveedor_id }}</td>
+											<td>{{ $stock->proveedor->nombre }}</td>
 											<td>{{ $stock->destino }}</td>
-											<td>{{ $stock->fecha }}</td>
+											<td >{{$stock->fecha ? Carbon\Carbon::parse($stock->fecha)->format('Y-m-d') : ''}}</td>
 											<td>{{ $stock->lote }}</td>
 											<td>{{ $stock->cantidad }}</td>
 											<td>{{ $stock->numero_factura }}</td>
-											<td>{{ $stock->numero_documento }}</td>
 
                                             <td><span class="peque">{{ $stock->usuario_edito }}</span>  <br/> <span class="peque">{{ $stock->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('stocks.destroy',$stock->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('stocks.show',$stock->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('stocks.edit',$stock->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('stocks.show',$stock->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('stocks.edit',$stock->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

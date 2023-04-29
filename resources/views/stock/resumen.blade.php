@@ -60,8 +60,8 @@
 											<td>{{ $item->entradas }}</td>
 											<td>{{ $item->salidas }}</td>
 											<td>{{ $item->stocks }}</td>
-											<td>{{ $item->precio_unitario }}</td>
-											<td>{{ $item->importe }}</td>
+                                            <td>{{ '$'. number_format($item->precio_unitario,2) }}</td>
+                                            <td>{{ '$'. number_format( $item->importe,2) }}</td>
 											<td>{{ $item->minimo }}</td>
 											<td>{{ $item->maximo }}</td>
                                         </tr>

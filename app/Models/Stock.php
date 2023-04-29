@@ -59,6 +59,11 @@ class Stock extends Model
     {
         return $this->hasOne('App\Models\Producto', 'id', 'producto_id');
     }
+
+    public function proveedor()
+    {
+        return $this->hasOne('App\Models\Proveedore', 'id', 'proveedor_id');
+    }
     
 
 }
