@@ -179,6 +179,34 @@ class StockController extends Controller
 
         return view('stock.edit', compact('stock'));
     }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editentradas($id)
+    {
+        $stock = Stock::find($id);
+        $findprove = Proveedore::find($stock->proveedor_id);
+        $proveedor = [$stock->proveedor_id => $findprove->nombre ];
+        $findProd = Proveedore::find($stock->producto_id);
+        $producto = [$stock->producto_id => $findProd->descripcion ];
+
+        return view('stock.editentradas', compact('stock','proveedor','producto'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editsalidas($id)
+    {
+        $stock = Stock::find($id);
+
+        return view('stock.editsalidas', compact('stock'));
+    }
 
     /**
      * Update the specified resource in storage.

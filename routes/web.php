@@ -67,6 +67,10 @@ Route::resource('destinos', App\Http\Controllers\DestinoController::class);
 Route::get('/resumen', 'App\Http\Controllers\StockController@resumen')->name('stocks.resumen');
 Route::get('/entradas', 'App\Http\Controllers\StockController@entradas')->name('stocks.entradas');
 Route::get('/salidas', 'App\Http\Controllers\StockController@salidas')->name('stocks.salidas');
+// stock - editar
+Route::get('/editentradas/{id}', 'App\Http\Controllers\StockController@editentradas')->name('stocks.editentradas');
+Route::get('/editsalidas/{id}', 'App\Http\Controllers\StockController@editsalidas')->name('stocks.editsalidas');
+
 
 Route::get('/crear-entrada', 'App\Http\Controllers\StockController@createEntrada')->name('stocks.create-entrada');
 Route::get('/crear-salida', 'App\Http\Controllers\StockController@createSalida')->name('stocks.create-salida');
