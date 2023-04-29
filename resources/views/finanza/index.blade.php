@@ -170,9 +170,6 @@
                     
                 ],
                 "ajax":"{{ route('finanzas.datos') }}",
-                order: [
-                    [0, 'desc']
-                ],   
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "No se encontró nada – lo siento",
