@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Inventario')
+@section('title','Entradas')
 
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -15,16 +15,16 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Inventario') }}
+                                {{ __('Entradas') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('stocks.create-entrada') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Entrada') }}
                                 </a>
-                                <a href="{{ route('stocks.create-salida') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                {{-- <a href="{{ route('stocks.create-salida') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Salida') }}
-                                </a>
+                                </a> --}}
                               </div>
                         </div>
                     </div>
@@ -85,7 +85,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $stocks->links() !!}
             </div>
         </div>
     </div>
@@ -112,6 +111,9 @@
                 },
                 orderCellsTop: true,
                 fixedHeader: true,
+                order: [
+                    [0, 'desc']
+                ],
                 initComplete: function() {
                     var api = this.api();
                     // For each column

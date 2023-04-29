@@ -37,7 +37,7 @@ class StockController extends Controller
     {
         $stocks = Stock::where('es_entrada',1)->paginate();
         
-        return view('stock.index', compact('stocks'))
+        return view('stock.entradas', compact('stocks'))
             ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
     }
 
@@ -50,7 +50,7 @@ class StockController extends Controller
     {
         $stocks = Stock::where('es_entrada',0)->paginate();
 
-        return view('stock.index', compact('stocks'))
+        return view('stock.salidas', compact('stocks'))
             ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
     }
 
