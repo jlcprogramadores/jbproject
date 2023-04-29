@@ -295,7 +295,13 @@
                                             <a class="dropdown-item" href="{{ route('productos.index') }}">
                                                 {{ __('Productos') }}
                                             </a>
-                                            <a class="dropdown-item" href="{{ route('stocks.index') }}">
+                                            <a class="dropdown-item" href="{{ route('stocks.entradas') }}">
+                                                {{ __('Entradas') }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('stocks.salidas') }}">
+                                                {{ __('Salidas') }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('stocks.resumen') }}">
                                                 {{ __('Inventario') }}
                                             </a>
                                             <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">

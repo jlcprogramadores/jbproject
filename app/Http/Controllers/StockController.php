@@ -33,6 +33,32 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function entradas()
+    {
+        $stocks = Stock::where('es_entrada',1)->paginate();
+        
+        return view('stock.index', compact('stocks'))
+            ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function salidas()
+    {
+        $stocks = Stock::where('es_entrada',0)->paginate();
+
+        return view('stock.index', compact('stocks'))
+            ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function resumen()
     {   
         $query = DB::select(DB::raw(" 
