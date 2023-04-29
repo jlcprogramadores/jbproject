@@ -38,7 +38,18 @@ class Stock extends Model
      *
      * @var array
      */
-    protected $fillable = ['producto_id','proveedor_id','destino','fecha','lote','cantidad','numero_factura','numero_documento','usuario_edito'];
+    protected $fillable = [
+      'producto_id',
+      'proveedor_id',
+      'destino',
+      'fecha',
+      'lote',
+      'cantidad',
+      'numero_factura',
+      'numero_documento',
+      'es_entrada',
+      'usuario_edito'
+    ];
 
 
     /**

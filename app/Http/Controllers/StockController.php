@@ -7,6 +7,7 @@ use App\Models\Proveedore;
 use App\Models\Producto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class StockController
@@ -27,6 +28,33 @@ class StockController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $stocks->perPage());
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resumen()
+    {   
+        $query = DB::select(DB::raw(" 
+            SELECT
+                p.id,
+                p.codigo,
+                p.descripcion,
+                p.marca,
+                p.modelo,
+                @entradas := (SELECT COUNT(*) FROM stocks WHERE stocks.producto_id = p.id AND stocks.es_entrada = 1) entradas,
+                @salidas := (SELECT COUNT(*) FROM stocks WHERE stocks.producto_id = p.id AND stocks.es_entrada = 0) salidas,
+                @stocks := ( @entradas - @salidas ) stocks,
+                p.precio_unitario,
+                ( @stocks * p.precio_unitario ) importe,
+                p.minimo,
+                p.maximo 
+            FROM
+                productos AS p
+        "));
+        $i=0;
+        return view('stock.resumen', compact('query','i'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -69,6 +97,7 @@ class StockController extends Controller
         $lote = $request->lote;
         $usuario_edito = $request->usuario_edito;
         $productos = $request->productos;
+        $es_entrada = $request->es_entrada;
         $numero_factura = $request->numero_factura ?? null;
         $dateNow = Carbon::now()->toDateTimeString();
         // iterar los productos y guardarlos con la misma información 
@@ -82,6 +111,7 @@ class StockController extends Controller
                 'cantidad' => $value['cantidad'],
                 'numero_factura' => $numero_factura,
                 'usuario_edito' => $usuario_edito,
+                'es_entrada' => $es_entrada,
                 'created_at' => $dateNow,
                 'updated_at' => $dateNow,
             ];
