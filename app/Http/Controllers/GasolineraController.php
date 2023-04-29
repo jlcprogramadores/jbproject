@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gasolinera;
+use App\Models\ControlGasolinera;
 use Illuminate\Http\Request;
 
 /**
@@ -18,7 +19,7 @@ class GasolineraController extends Controller
      */
     public function index()
     {
-        $gasolineras = Gasolinera::paginate();
+        $gasolineras = Gasolinera::orderBy('id','desc')->paginate();
 
         return view('gasolinera.index', compact('gasolineras'))
             ->with('i', (request()->input('page', 1) - 1) * $gasolineras->perPage());
@@ -100,10 +101,15 @@ class GasolineraController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $gasolinera = Gasolinera::find($id)->delete();
-
-        return redirect()->route('gasolineras.index')
-            ->with('success', 'Gasolinera eliminada exitosamente.');
+    {   
+        $idGasolinera = ControlGasolinera::select('id')->where('gasolinera_id','=',$id)->first();
+        if(!is_null($idGasolinera)){
+            return redirect()->route('gasolineras.index')
+                ->with('danger', 'No se elimino gasolinera por que existe Control de Gasolinera relacionada.');
+        }else{
+            $gasolinera = Gasolinera::find($id)->delete();
+            return redirect()->route('gasolineras.index')
+                ->with('success', 'Gasolinera eliminada exitosamente.');
+        }
     }
 }

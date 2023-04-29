@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Destino;
+use App\Models\ControlGasolinera;
 use Illuminate\Http\Request;
 
 /**
@@ -18,8 +19,8 @@ class DestinoController extends Controller
      */
     public function index()
     {
-        $destinos = Destino::paginate();
-
+        $destinos = Destino::orderBy('id','desc')->paginate();
+        
         return view('destino.index', compact('destinos'))
             ->with('i', (request()->input('page', 1) - 1) * $destinos->perPage());
     }
@@ -100,10 +101,17 @@ class DestinoController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $destino = Destino::find($id)->delete();
-
-        return redirect()->route('destinos.index')
-            ->with('success', 'Destino eliminado exitosamente.');
+    {   
+        {   
+            $idDestino = ControlGasolinera::select('id')->where('destino_id','=',$id)->first();
+            if(!is_null($idDestino)){
+                return redirect()->route('destinos.index')
+                    ->with('danger', 'No se elimino destino por que existe Control de Gasolinera relacionada.');
+            }else{
+                $destino = Destino::find($id)->delete();
+                return redirect()->route('destinos.index')
+                    ->with('success', 'Destino eliminado exitosamente.');
+            }
+        }
     }
 }
