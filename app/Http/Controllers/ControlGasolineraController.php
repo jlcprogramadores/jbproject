@@ -21,7 +21,7 @@ class ControlGasolineraController extends Controller
      */
     public function index()
     {
-        $controlGasolineras = ControlGasolinera::paginate();
+        $controlGasolineras = ControlGasolinera::orderBy('id','desc')->paginate();
 
         return view('control-gasolinera.index', compact('controlGasolineras'))
             ->with('i', (request()->input('page', 1) - 1) * $controlGasolineras->perPage());

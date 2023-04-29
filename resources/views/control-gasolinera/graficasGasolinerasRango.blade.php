@@ -19,7 +19,7 @@
                                         <div class="col-sm p-1 form-group ">
                                             <label class="gasolinera_id" name="Ingreso_id" for="Ingreso_id">Gasolinera a Gráficar:</label>
                                             <br>
-                                            <select class="form-control" id="gasolinera_id" name="gasolinera_id">
+                                            <select class="form-control" id="gasolinera_id" name="gasolinera_id" required>
                                                 <option value="" selected="selected">Selecciona Gasolinera</option>
                                                 @foreach ($gasolinera as $val => $name)
                                                     <option value="{{ $val }}">{{ $name }}</option>
