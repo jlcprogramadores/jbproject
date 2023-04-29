@@ -72,7 +72,7 @@
                                             <td><span class="peque">{{ $stock->usuario_edito }}</span>  <br/> <span class="peque">{{ $stock->updated_at }}</span></td>
                                             <td>
                                                 <form action="{{ route('stocks.destroy',$stock->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('stocks.show',$stock->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('stocks.show',$stock->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a> --}}
                                                     <a class="btn btn-sm btn-success" href="{{ route('stocks.edit',$stock->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
