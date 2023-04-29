@@ -86,8 +86,11 @@
                                         }
                                     },
                                     plugins: {
+                                        legend: {
+                                        "position": "left",
+                                    },
                                         title: {
-                                        display: true,
+                                        // display: true,
                                         text: totalVar,
                                     },
                                         datalabels: {
@@ -99,7 +102,7 @@
                                         formatter: Math.round,
                                             font: {
                                                 weight: 'bold',
-                                                size: 12
+                                                size: 13
                                             }
                                         }
                                     }

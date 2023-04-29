@@ -192,7 +192,7 @@ class ControlGasolineraController extends Controller
         foreach($egresos as $key => $egreso)
         {   
             $fechaAux = $egreso->mes . ' - ' . $egreso->anio;
-            array_push($fecha, $fechaAux);  
+            array_push($fecha, $fechaAux  . ' = $' . number_format($egreso->gasto_total,2));  
             array_push($gasto_total,$egreso->gasto_total);
             $gasto_general += $egreso->gasto_total;
         }
@@ -221,8 +221,6 @@ class ControlGasolineraController extends Controller
         ->groupBy(DB::raw('destino_id'))
         ->orderBy('gasto_total','desc')
         ->get();
-
-        // dd($egresos);
 
         $destino = []; 
         $gasto_total = []; 
