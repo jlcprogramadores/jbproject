@@ -26,6 +26,7 @@ class Stock extends Migration
             $table->integer('cantidad')->nullable();
             $table->longText('numero_factura')->nullable();
             $table->longText('numero_documento')->nullable();
+            $table->boolean('es_entrada');
             $table->string('usuario_edito');
             $table->timestamps();
         });

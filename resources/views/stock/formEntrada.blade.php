@@ -39,6 +39,9 @@
                         {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Edito']) }}
                         {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
+                    <div class="form-group d-none">
+                        <input type="text" name="es_entrada" value="1">
+                    </div>
                 <br>
                 <div class="card">
 

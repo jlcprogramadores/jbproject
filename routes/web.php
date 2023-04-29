@@ -63,6 +63,9 @@ Route::resource('stocks', App\Http\Controllers\StockController::class);
 Route::resource('control-gasolineras', App\Http\Controllers\ControlGasolineraController::class);
 Route::resource('gasolineras', App\Http\Controllers\GasolineraController::class);
 Route::resource('destinos', App\Http\Controllers\DestinoController::class);
+// stock
+Route::get('/resumen', 'App\Http\Controllers\StockController@resumen')->name('stocks.resumen');
+
 Route::get('/crear-entrada', 'App\Http\Controllers\StockController@createEntrada')->name('stocks.create-entrada');
 Route::get('/crear-salida', 'App\Http\Controllers\StockController@createSalida')->name('stocks.create-salida');
 Route::get('/graficasGasolinerasRango', 'App\Http\Controllers\ControlGasolineraController@graficasGasolinerasRango')->name('control-gasolineras.graficasGasolinerasRango');
