@@ -45,6 +45,7 @@
                                     <tr>
                                         <th>No</th>
                                         
+										<th>Producto</th>
 										<th>Proveedor</th>
 										<th>Destino</th>
 										<th>Fecha</th>
@@ -60,6 +61,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
+											<td>{{ $stock->producto->descripcion }}</td>
 											<td>{{ $stock->proveedor->nombre }}</td>
 											<td>{{ $stock->destino }}</td>
 											<td >{{$stock->fecha ? Carbon\Carbon::parse($stock->fecha)->format('Y-m-d') : ''}}</td>
