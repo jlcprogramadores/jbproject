@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Editar Entrada')
+@section('title','Editar Salida')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
     <section class="content container-fluid">
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Editar Entrada</span>
+                        <span class="card-title">Editar Salida</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('stocks.update', $stock->id) }}"  role="form" enctype="multipart/form-data">
@@ -21,13 +21,13 @@
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="container">
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="form-group">
                                                 {{ Form::label('numero_factura') }}
                                                 {{ Form::text('numero_factura', $stock->numero_factura, ['class' => 'form-control' . ($errors->has('numero_factura') ? ' is-invalid' : ''), 'placeholder' => 'Numero Factura']) }}
                                                 {!! $errors->first('numero_factura', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="row">
                                             <div class="col-sm p-2 form-group">
                                                 {{ Form::label('proveedor') }}
