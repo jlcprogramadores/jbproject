@@ -130,43 +130,59 @@ class StockController extends Controller
         $es_entrada = $request->es_entrada;
         $numero_factura = $request->numero_factura ?? null;
         $dateNow = Carbon::now()->toDateTimeString();
-        // iterar los productos y guardarlos con la misma información 
-        if(!$productos){
-            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
-                ->with('danger', 'No Se Pudo Crear Faltaron Los Productos.');
-        }
-        // si es una salida valido si alguno no puede por la cantidad 
 
-        foreach ($productos as $key => $value) {
-            // actualizamos el campo de stock
-            $producto = Producto::find($key);
-            if ($es_entrada) {
-                $producto->stock = $producto->stock + $value['cantidad'];
-                $producto->save();
-            }else{
-                $producto->stock = $producto->stock - $value['cantidad'];
-                $producto->save();
+        DB::beginTransaction();
+        try {
+            // iterar los productos y guardarlos con la misma información 
+            if(!$productos){
+                    throw new \Exception('No Seleccionaste Productos.');
             }
+            // si es una salida valido si alguno no puede por la cantidad 
+            if (!$es_entrada) {
+                foreach ($productos as $key => $value) {
+                    $producto = Producto::find($key);
+                    if ($value['cantidad'] > $producto->stock ) {
+                        throw new \Exception('No Hay Stock Suficiente En '.$producto->descripcion.'.');
+                    }
+                }
+            }
+            
+            foreach ($productos as $key => $value) {
+                // actualizamos el campo de stock
+                $producto = Producto::find($key);
+                if ($es_entrada) {
+                    $producto->stock = $producto->stock + $value['cantidad'];
+                    $producto->save();
+                }else{
+                    $producto->stock = $producto->stock - $value['cantidad'];
+                    $producto->save();
+                }
 
 
-            $datos = [
-                'producto_id' => $key,
-                'proveedor_id' => $proveedor_id,
-                'destino' => $destino,
-                'fecha' => $fecha,
-                'lote' => $lote,
-                'cantidad' => $value['cantidad'],
-                'numero_factura' => $numero_factura,
-                'usuario_edito' => $usuario_edito,
-                'es_entrada' => $es_entrada,
-                'created_at' => $dateNow,
-                'updated_at' => $dateNow,
-            ];
-            $stock = Stock::create($datos);
+                $datos = [
+                    'producto_id' => $key,
+                    'proveedor_id' => $proveedor_id,
+                    'destino' => $destino,
+                    'fecha' => $fecha,
+                    'lote' => $lote,
+                    'cantidad' => $value['cantidad'],
+                    'numero_factura' => $numero_factura,
+                    'usuario_edito' => $usuario_edito,
+                    'es_entrada' => $es_entrada,
+                    'created_at' => $dateNow,
+                    'updated_at' => $dateNow,
+                ];
+                $stock = Stock::create($datos);
+            }
+            DB::commit();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                ->with('success', 'Operación Realizasa Satisfactoriamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                    ->with('danger', $e->getMessage());
         }
-
-        return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
-            ->with('success', 'Operación Realizasa Satisfactoriamente.');
+        
     }
 
     /**

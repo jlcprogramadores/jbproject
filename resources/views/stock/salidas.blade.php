@@ -46,7 +46,6 @@
                                         <th>No</th>
                                         
 										<th>Producto</th>
-										<th>Proveedor</th>
 										<th>Destino</th>
 										<th>Fecha</th>
 										<th>Lote</th>
@@ -62,7 +61,6 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $stock->producto->descripcion }}</td>
-											<td>{{ $stock->proveedor->nombre }}</td>
 											<td>{{ $stock->destino }}</td>
 											<td >{{$stock->fecha ? Carbon\Carbon::parse($stock->fecha)->format('Y-m-d') : ''}}</td>
 											<td>{{ $stock->lote }}</td>
