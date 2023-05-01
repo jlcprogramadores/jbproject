@@ -70,7 +70,7 @@ class StockController extends Controller
                 p.modelo,
                 @entradas := (SELECT SUM(stocks.cantidad) FROM stocks WHERE stocks.producto_id = p.id AND stocks.es_entrada = 1) entradas,
                 @salidas := (SELECT SUM(stocks.cantidad) FROM stocks WHERE stocks.producto_id = p.id AND stocks.es_entrada = 0) salidas,
-                @stocks := ( @entradas - @salidas ) stocks,
+                @stocks := p.stock stocks,
                 p.precio_unitario,
                 ( @stocks * p.precio_unitario ) importe,
                 p.minimo,
@@ -251,8 +251,13 @@ class StockController extends Controller
     public function update(Request $request, Stock $stock)
     {
         request()->validate(Stock::$rules);
+        
+
+
 
         $stock->update($request->all());
+        
+
 
         return redirect()->route('stocks.index')
             ->with('success', 'Stock updated successfully');
