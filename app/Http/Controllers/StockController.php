@@ -91,7 +91,8 @@ class StockController extends Controller
     {
         $stock = new Stock();
         $proveedor = Proveedore::pluck('nombre','id');
-        $producto = Producto::pluck('descripcion','id');
+        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (hay ', stock,')') as descripcion"), 'id')
+            ->pluck('descripcion','id');
         return view('stock.createEntrada', compact('stock','producto','proveedor'));
     }
 
@@ -104,7 +105,9 @@ class StockController extends Controller
     {
         $stock = new Stock();
         $proveedor = Proveedore::pluck('nombre','id');
-        $producto = Producto::pluck('descripcion','id');
+        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (hay ', stock,')') as descripcion"), 'id')
+            ->where('stock', '>', 0)
+            ->pluck('descripcion','id');
         return view('stock.createSalida', compact('stock','producto','proveedor'));
     }
 
@@ -132,8 +135,20 @@ class StockController extends Controller
             return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
                 ->with('danger', 'No Se Pudo Crear Faltaron Los Productos.');
         }
+        // si es una salida valido si alguno no puede por la cantidad 
 
         foreach ($productos as $key => $value) {
+            // actualizamos el campo de stock
+            $producto = Producto::find($key);
+            if ($es_entrada) {
+                $producto->stock = $producto->stock + $value['cantidad'];
+                $producto->save();
+            }else{
+                $producto->stock = $producto->stock - $value['cantidad'];
+                $producto->save();
+            }
+
+
             $datos = [
                 'producto_id' => $key,
                 'proveedor_id' => $proveedor_id,

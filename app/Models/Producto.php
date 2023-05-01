@@ -41,7 +41,7 @@ class Producto extends Model
      *
      * @var array
      */
-    protected $fillable = ['codigo','descripcion','marca','modelo','precio_unitario','minimo','maximo','usuario_edito'];
+    protected $fillable = ['codigo','descripcion','marca','modelo','precio_unitario','minimo','maximo','usuario_edito', 'stock'];
 
 
 

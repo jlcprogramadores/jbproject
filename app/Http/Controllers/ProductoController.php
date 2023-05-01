@@ -44,7 +44,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Producto::$rules);
-
+        $request->request->add(['stock'=>0]);
         $producto = Producto::create($request->all());
 
         return redirect()->route('productos.index')
