@@ -221,7 +221,7 @@ class StockController extends Controller
         $stock = Stock::find($id);
         $findprove = Proveedore::find($stock->proveedor_id);
         $proveedor = [$stock->proveedor_id => $findprove->nombre ];
-        $findProd = Proveedore::find($stock->producto_id);
+        $findProd = Producto::find($stock->producto_id);
         $producto = [$stock->producto_id => $findProd->descripcion ];
 
         return view('stock.editentradas', compact('stock','proveedor','producto'));
@@ -235,12 +235,10 @@ class StockController extends Controller
     public function editsalidas($id)
     {
         $stock = Stock::find($id);
-        $findprove = Proveedore::find($stock->proveedor_id);
-        $proveedor = [$stock->proveedor_id => $findprove->nombre ];
-        $findProd = Proveedore::find($stock->producto_id);
+        $findProd = Producto::find($stock->producto_id);
         $producto = [$stock->producto_id => $findProd->descripcion ];
 
-        return view('stock.editsalidas', compact('stock','proveedor','producto'));
+        return view('stock.editsalidas', compact('stock','producto'));
     }
 
     /**
