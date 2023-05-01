@@ -22,13 +22,11 @@
                                 <div class="box-body">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="form-group">
+                                            <div class="col-sm p-2 form-group">
                                                 {{ Form::label('numero_factura') }}
                                                 {{ Form::text('numero_factura', $stock->numero_factura, ['class' => 'form-control' . ($errors->has('numero_factura') ? ' is-invalid' : ''), 'placeholder' => 'Numero Factura']) }}
                                                 {!! $errors->first('numero_factura', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-sm p-2 form-group">
                                                 {{ Form::label('proveedor') }}
                                                 <br>

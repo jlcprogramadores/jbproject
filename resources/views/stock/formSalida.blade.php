@@ -2,33 +2,12 @@
     <div class="box box-info padding-1">
         <div class="box-body">
             <div class="container">
-                {{-- está comentado para cuando aviliten los documentos --}}
-                {{-- <div class="row">
-                    <div class="form-group">
-                        @if ($stock->numero_documento)
-                            <label for="numero_documento">
-                                Número Documento (<a href="{{ $stock->numero_documento }}" target="_blank">Ver Número Documento Anterior</a>, Si Subes Una Imagen Se Va A Sobrescribir)
-                            </label>
-                        @else
-                            <label for="numero_documento">Número Documento</label>
-                        @endif
-                        <input type="file" name="numero_documento" size="50" class="form-control">
-                    </div>
-                </div> --}}
                 <div class="row">
-                    <div class="col-sm p-2 form-group">
-                        {{ Form::label('proveedor') }}
-                        <br>
-                        {{ Form::select('proveedor_id', $proveedor,null, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''),'id'=>'proveedor_id', 'placeholder' => 'Selecciona Un Proveedor']) }}
-                        {!! $errors->first('proveedor_id', '<div class="invalid-feedback">:message</div>') !!}
-                    </div>
-                    <div class="col-sm p-2 form-group">
+                    <div class="col-sm-2 p-2 form-group">
                         {{ Form::label('fecha') }}
                         {{ Form::date('fecha', $stock->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
                         {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-sm p-2 form-group">
                         {{ Form::label('destino') }}
                         {{ Form::text('destino', $stock->destino, ['class' => 'form-control' . ($errors->has('destino') ? ' is-invalid' : ''), 'placeholder' => 'Destino']) }}
