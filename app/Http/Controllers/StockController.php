@@ -251,10 +251,13 @@ class StockController extends Controller
     public function update(Request $request, Stock $stock)
     {
         request()->validate(Stock::$rules);
+        // validar en salida si hay stock suficiente
+        // $stock->
+        // dd($stock);
+
+        // sumar o retar el stock en el producto
+        // dd();
         
-
-
-
         $stock->update($request->all());
         
 
