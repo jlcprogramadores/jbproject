@@ -176,7 +176,7 @@ class StockController extends Controller
             }
             DB::commit();
             return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
-                ->with('success', 'Operación Realizasa Satisfactoriamente.');
+                ->with('success', 'Operación Realizada Correctamente.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
@@ -263,7 +263,7 @@ class StockController extends Controller
 
 
         return redirect()->route('stocks.index')
-            ->with('success', 'Stock updated successfully');
+            ->with('success', 'Stock Actualizado Correctamente.');
     }
 
     /**
@@ -276,6 +276,6 @@ class StockController extends Controller
         $stock = Stock::find($id)->delete();
 
         return redirect()->route('stocks.index')
-            ->with('success', 'Stock deleted successfully');
+            ->with('success', 'Stock Eliminado Correctamente.');
     }
 }
