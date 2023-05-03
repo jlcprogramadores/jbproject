@@ -38,14 +38,14 @@
 										<th>Código Producto</th>
 										<th>Descripción</th>
 										<th>Marca</th>
-										<th>Model</th>
+										<th>Modelo</th>
 										<th>Entrada</th>
 										<th>Salidas</th>
 										<th>Stock Actual</th>
 										<th>Precio Unitario</th>
 										<th>Importe Inventario</th>
-                                        <th>Minimo</th>
-                                        <th>Maximo</th>
+                                        <th>Mínimo</th>
+                                        <th>Máximo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
