@@ -91,7 +91,7 @@ class StockController extends Controller
     {
         $stock = new Stock();
         $proveedor = Proveedore::pluck('nombre','id');
-        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (hay ', stock,')') as descripcion"), 'id')
+        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (Existencia ', stock,')') as descripcion"), 'id')
             ->pluck('descripcion','id');
         return view('stock.createEntrada', compact('stock','producto','proveedor'));
     }
@@ -105,7 +105,7 @@ class StockController extends Controller
     {
         $stock = new Stock();
         $proveedor = Proveedore::pluck('nombre','id');
-        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (hay ', stock,')') as descripcion"), 'id')
+        $producto = Producto::select(DB::raw("CONCAT(descripcion, ' (Existencia ', stock,')') as descripcion"), 'id')
             ->where('stock', '>', 0)
             ->pluck('descripcion','id');
         return view('stock.createSalida', compact('stock','producto','proveedor'));
