@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MinaSeeder::class);
         $this->call(SalidaSeeder::class);
         $this->call(AccesoSeeder::class);
+        $this->call(ProductoSeeder::class);
     }
 }
