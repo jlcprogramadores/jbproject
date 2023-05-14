@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 /**
@@ -101,9 +102,16 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = Producto::find($id)->delete();
-
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto Eliminado Correctamente.');
+        // no borrar productos con movimientos
+        $producto = Producto::find($id);
+        $stock = Stock::where('producto_id','=',$producto->id)->first();
+        if(!is_null($stock)){
+            return redirect()->route('productos.index')
+                ->with('danger', 'El Producto No Se Puede Eliminar Por Que Tiene Elementos Relaciondos');
+        }else{
+            $producto->delete();
+            return redirect()->route('productos.index')
+                ->with('success', 'Producto Eliminado Correctamente.');
+        }
     }
 }
