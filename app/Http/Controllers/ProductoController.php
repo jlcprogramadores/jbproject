@@ -88,7 +88,7 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         request()->validate(Producto::$rules);
-
+        
         $producto->update($request->all());
 
         return redirect()->route('productos.index')

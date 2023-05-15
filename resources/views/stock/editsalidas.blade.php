@@ -60,7 +60,7 @@
                                                 {!! $errors->first('usuario_edito', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
                                             <div class="form-group d-none">
-                                                <input type="text" name="es_entrada" value="1">
+                                                <input type="text" name="es_entrada" value="0">
                                             </div>
                                         <br>
                                         <div class="row d-flex justify-content-center">

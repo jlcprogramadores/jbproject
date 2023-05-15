@@ -251,21 +251,61 @@ class StockController extends Controller
     public function update(Request $request, Stock $stock)
     {
         request()->validate(Stock::$rules);
-        // validar en salida si hay stock suficiente
-        // $stock->
-        // dd($stock);
+        $cantidadStock = $stock->cantidad; 
+        $cantidadUpdate = $request->cantidad; 
+        $findProd = Producto::find($stock->producto_id);
 
-        // sumar o retar el stock en el producto
-        // dd();
-        
-        $stock->update($request->all());
-        
-
-
-        return redirect()->route('stocks.index')
-            ->with('success', 'Stock Actualizado Correctamente.');
+        if($stock->es_entrada){
+            $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
+            $diferencia = abs($cantidadStock - $cantidadUpdate);
+            $nuevoValor= 0;
+            if ($esSuma) {
+                $findProd->stock = $findProd->stock + $diferencia; 
+                $findProd->save();
+                $stock->update($request->all());
+                return redirect()->route('stocks.entradas')
+                    ->with('success', 'Stock Actualizado Correctamente.');
+            }else{
+                $findProd->stock = $findProd->stock - $diferencia; 
+                if($findProd->stock < 0){
+                    return redirect()->route('stocks.entradas')
+                        ->with('danger', 'No hay stock sufuciente.');
+                }else {
+                    $findProd->save();
+                    $stock->update($request->all());
+                    return redirect()->route('stocks.entradas')
+                        ->with('success', 'Stock Actualizado Correctamente.');
+                }
+            }
+        }else{
+            $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
+            $diferencia = abs($cantidadStock - $cantidadUpdate);
+            $nuevoValor= 0;
+            if (!$esSuma) {
+                $findProd->stock = $findProd->stock + $diferencia; 
+                $findProd->save();
+                $stock->update($request->all());
+                return redirect()->route('stocks.salidas')
+                    ->with('success', 'Stock Actualizado Correctamente.');
+            }else{
+                $findProd->stock = $findProd->stock - $diferencia; 
+                if($findProd->stock < 0){
+                    return redirect()->route('stocks.salidas')
+                        ->with('danger', 'No hay stock sufuciente.');
+                }else {
+                    $findProd->save();
+                    $stock->update($request->all());
+                    return redirect()->route('stocks.salidas')
+                        ->with('success', 'Stock Actualizado Correctamente.');
+                }
+            }
+        }
     }
 
+    public function esSuma($valor, $operacion)
+    {
+        return $operacion > $valor ? 1 : 0; 
+    }
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
