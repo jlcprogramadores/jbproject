@@ -48,6 +48,7 @@
 										<th>Precio Unitario</th>
 										<th>Minimo</th>
 										<th>Maximo</th>
+										<th>Rango De Semaforo</th>
 										<th>Fecha Actualización</th>
 
                                         <th></th>
@@ -65,6 +66,7 @@
 											<td>{{ $producto->precio_unitario }}</td>
 											<td>{{ $producto->minimo }}</td>
 											<td>{{ $producto->maximo }}</td>
+											<td>{{ $producto->rango_semaforo }}</td>
 
                                             <td><span class="peque">{{ $producto->usuario_edito }}</span>  <br/> <span class="peque">{{ $producto->updated_at }}</span></td>
                                             <td>

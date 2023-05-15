@@ -26,6 +26,7 @@ class ProductoSeeder extends Seeder
             'minimo' => 7,
             'maximo' => 12,
             'stock' => 0,
+            'rango_semaforo' => 2,
             'usuario_edito' => 'Carlos',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
@@ -39,6 +40,7 @@ class ProductoSeeder extends Seeder
             'minimo' => 5,
             'maximo' => 15,
             'stock' => 0,
+            'rango_semaforo' => 2,
             'usuario_edito' => 'Carlos',
             'created_at' => $dateNow,
             'updated_at' => $dateNow
@@ -52,6 +54,7 @@ class ProductoSeeder extends Seeder
             'minimo' => 1,
             'maximo' => 3,
             'stock' => 0,
+            'rango_semaforo' => 2,
             'usuario_edito' => 'Carlos',
             'created_at' => $dateNow,
             'updated_at' => $dateNow

@@ -20,6 +20,7 @@ class Producto extends Migration
             $table->string('marca')->nullable();
             $table->string('modelo')->nullable();
             $table->decimal('precio_unitario', 12, 2)->nullable();
+            $table->integer('rango_semaforo')->nullable();
             $table->integer('minimo')->nullable();
             $table->integer('maximo')->nullable();
             $table->integer('stock');

@@ -27,13 +27,13 @@
                 </div>
             </div>
             <div class="row">
-                
-                
-                <div class="col-sm form-group">
+                <div class="col-sm-4 form-group">
                     {{ Form::label('precio_unitario') }}
                     {{ Form::number('precio_unitario', $producto->precio_unitario, ['class' => 'form-control' . ($errors->has('precio_unitario') ? ' is-invalid' : ''),'min'=>'0', 'step'=>'any','placeholder' => 'Precio Unitario']) }}
                     {!! $errors->first('precio_unitario', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-sm form-group">
                     {{ Form::label('mínimo') }}
                     {{ Form::number('minimo', $producto->minimo, ['class' => 'form-control' . ($errors->has('minimo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Minimo']) }}
@@ -43,6 +43,11 @@
                     {{ Form::label('máximo') }}
                     {{ Form::number('maximo', $producto->maximo, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Maximo']) }}
                     {!! $errors->first('maximo', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class="col-sm form-group">
+                    {{ Form::label('Rango de Semaforo') }}
+                    {{ Form::number('rango_semaforo', $producto->rango_semaforo, ['class' => 'form-control' . ($errors->has('rango_semaforo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Rango']) }}
+                    {!! $errors->first('rango_semaforo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm form-group d-none">
                     {{ Form::label('usuario_edito') }}
