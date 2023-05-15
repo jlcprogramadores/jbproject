@@ -254,51 +254,52 @@ class StockController extends Controller
         $cantidadStock = $stock->cantidad; 
         $cantidadUpdate = $request->cantidad; 
         $findProd = Producto::find($stock->producto_id);
+        $es_entrada = $stock->es_entrada;
+        DB::beginTransaction();
+        try {
+            if($es_entrada){
+                $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
+                $diferencia = abs($cantidadStock - $cantidadUpdate);
+                $nuevoValor= 0;
+                if ($esSuma) {
+                    $findProd->stock = $findProd->stock + $diferencia; 
+                    $findProd->save();
+                    $stock->update($request->all());
+                }else{
+                    $findProd->stock = $findProd->stock - $diferencia; 
+                    if($findProd->stock < 0){
+                        throw new \Exception('No hay stock sufuciente.');
+                    }else {
+                        $findProd->save();
+                        $stock->update($request->all());
+                    }
+                }
+            }else{
+                $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
+                $diferencia = abs($cantidadStock - $cantidadUpdate);
+                $nuevoValor= 0;
+                if (!$esSuma) {
+                    $findProd->stock = $findProd->stock + $diferencia; 
+                    $findProd->save();
+                    $stock->update($request->all());
+                }else{
+                    $findProd->stock = $findProd->stock - $diferencia; 
+                    if($findProd->stock < 0){
+                        throw new \Exception('No hay stock sufuciente.');
+                    }else {
+                        $findProd->save();
+                        $stock->update($request->all());
+                    }
+                }
+            }
 
-        if($stock->es_entrada){
-            $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
-            $diferencia = abs($cantidadStock - $cantidadUpdate);
-            $nuevoValor= 0;
-            if ($esSuma) {
-                $findProd->stock = $findProd->stock + $diferencia; 
-                $findProd->save();
-                $stock->update($request->all());
-                return redirect()->route('stocks.entradas')
-                    ->with('success', 'Stock Actualizado Correctamente.');
-            }else{
-                $findProd->stock = $findProd->stock - $diferencia; 
-                if($findProd->stock < 0){
-                    return redirect()->route('stocks.entradas')
-                        ->with('danger', 'No hay stock sufuciente.');
-                }else {
-                    $findProd->save();
-                    $stock->update($request->all());
-                    return redirect()->route('stocks.entradas')
-                        ->with('success', 'Stock Actualizado Correctamente.');
-                }
-            }
-        }else{
-            $esSuma = $this->esSuma($cantidadStock,$cantidadUpdate);
-            $diferencia = abs($cantidadStock - $cantidadUpdate);
-            $nuevoValor= 0;
-            if (!$esSuma) {
-                $findProd->stock = $findProd->stock + $diferencia; 
-                $findProd->save();
-                $stock->update($request->all());
-                return redirect()->route('stocks.salidas')
-                    ->with('success', 'Stock Actualizado Correctamente.');
-            }else{
-                $findProd->stock = $findProd->stock - $diferencia; 
-                if($findProd->stock < 0){
-                    return redirect()->route('stocks.salidas')
-                        ->with('danger', 'No hay stock sufuciente.');
-                }else {
-                    $findProd->save();
-                    $stock->update($request->all());
-                    return redirect()->route('stocks.salidas')
-                        ->with('success', 'Stock Actualizado Correctamente.');
-                }
-            }
+            DB::commit();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                ->with('success', 'Stock Actualizado Correctamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                    ->with('danger', $e->getMessage());
         }
     }
 
@@ -313,9 +314,41 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        $stock = Stock::find($id)->delete();
+        $stock = Stock::find($id);
+        $findProd = Producto::find($stock->producto_id);
+        $es_entrada = $stock->es_entrada;
+        DB::beginTransaction();
+        try {
 
-        return redirect()->route('stocks.index')
-            ->with('success', 'Stock Eliminado Correctamente.');
+            if($stock->es_entrada){
+                $diferencia = $findProd->stock - $stock->cantidad ;
+                if ($diferencia > -1 ) {
+                    $findProd->stock = $diferencia;
+                    $findProd->save();
+                    $stock->delete();
+                } else {
+                    throw new \Exception('No hay stock sufuciente.');
+                }
+                
+            }else{
+                $diferencia = $findProd->stock + $stock->cantidad ;
+                if ($diferencia > -1 ) {
+                    $findProd->stock = $diferencia;
+                    $findProd->save();
+                    $stock->delete();
+
+                } else {
+                    throw new \Exception('No hay stock sufuciente.');
+                }
+            }
+
+            DB::commit();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                ->with('success', 'Stock Actualizado Correctamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route($es_entrada ? 'stocks.entradas' : 'stocks.salidas')
+                    ->with('danger', $e->getMessage());
+        }
     }
 }
