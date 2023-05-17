@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriasDeEntradaSeeder::class);
         $this->call(ProveedoreSeeder::class);
         $this->call(ClienteSeeder::class);
-        $this->call(EmpleadoSeeder::class);
+        // $this->call(EmpleadoSeeder::class);
         $this->call(PuestoSeeder::class);
-        $this->call(GrupoSeeder::class);
-        $this->call(ParoSeeder::class);
+        // $this->call(GrupoSeeder::class);
+        // $this->call(ParoSeeder::class);
         $this->call(ExpedienteSeeder::class);
         $this->call(MinaSeeder::class);
         $this->call(SalidaSeeder::class);

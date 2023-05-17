@@ -22,11 +22,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm p-2 form-group">
-                        {{ Form::label('destino') }}
-                        {{ Form::text('destino', $stock->destino, ['class' => 'form-control' . ($errors->has('destino') ? ' is-invalid' : ''), 'placeholder' => 'Destino']) }}
-                        {!! $errors->first('destino', '<div class="invalid-feedback">:message</div>') !!}
-                    </div>
-                    <div class="col-sm p-2 form-group">
                         {{ Form::label('lote') }}
                         {{ Form::text('lote', $stock->lote, ['class' => 'form-control' . ($errors->has('lote') ? ' is-invalid' : ''), 'placeholder' => 'Lote']) }}
                         {!! $errors->first('lote', '<div class="invalid-feedback">:message</div>') !!}
