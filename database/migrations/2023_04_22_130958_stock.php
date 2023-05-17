@@ -23,7 +23,7 @@ class Stock extends Migration
             $table->string('destino')->nullable();
             $table->dateTime('fecha');
             $table->string('lote')->nullable();
-            $table->integer('cantidad')->nullable();
+            $table->bigInteger('cantidad')->nullable();
             $table->longText('numero_factura')->nullable();
             $table->longText('numero_documento')->nullable();
             $table->boolean('es_entrada');
