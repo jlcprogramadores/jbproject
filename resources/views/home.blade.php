@@ -38,7 +38,7 @@
                         @endif
                         ¡Bievenido(a) {{ Auth::user()->name }}!
                         <a class="navbar-brand" href="{{ url('login') }}"><br>
-                            <img src="{{ asset('images/jbind_bienvenida.jpg') }}" class="img-fluid">
+                            {{-- <img src="{{ asset('images/jbind_bienvenida.jpg') }}" class="img-fluid"> --}}
                         </a>
                     </div>
                 </div>
