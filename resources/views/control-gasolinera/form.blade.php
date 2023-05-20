@@ -7,7 +7,7 @@
                 <div class="col-sm-3 p-1 form-group">
                     {{ Form::label('gasolinera_id', 'Gasolinera') }}
                     <br>
-                    {{ Form::select('gasolinera_id',$gasolinera ,$controlGasolinera->gasolinera_id, ['class' => 'form-control' . ($errors->has('gasolinera_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
+                    {{ Form::select('gasolinera_id',$gasolinera ,$controlGasolinera->gasolinera_id, ['class' => 'form-control' . ($errors->has('gasolinera_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Gasolinera']) }}
                     {!! $errors->first('gasolinera_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm-3 p-1 form-group">
@@ -68,7 +68,7 @@
                 <div class="col-sm-3 p-1 form-group">
                     {{ Form::label('destino_id', 'Destino') }}
                     <br>
-                    {{ Form::select('destino_id',$destino ,$controlGasolinera->destino_id, ['class' => 'form-control' . ($errors->has('destino_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Familia']) }}
+                    {{ Form::select('destino_id',$destino ,$controlGasolinera->destino_id, ['class' => 'form-control' . ($errors->has('destino_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona Gasolinera']) }}
                     {!! $errors->first('destino_id', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm-3 p-1 form-group">
