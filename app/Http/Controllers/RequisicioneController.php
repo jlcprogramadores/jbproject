@@ -42,13 +42,28 @@ class RequisicioneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         request()->validate(Requisicione::$rules);
+        $controlRequisiciones = Requisicione::create($request->all());
+        
+        if ($controlRequisiciones->archivo != null) {
+            $nombre = 'archivoRequi_'.$controlRequisiciones->id.'_'.$controlRequisiciones->archivo->getClientOriginalName();
+            $controlRequisiciones->archivo->storeAs('public',$nombre);
+            $getRequisiciones = Requisicione::find($controlRequisiciones->id);
+            $getRequisiciones->archivo = '/storage/'.$nombre;
+            $getRequisiciones->save();
+        }
 
-        $requisicione = Requisicione::create($request->all());
+        if ($controlRequisiciones->comprobante_aprobacion != null) {
+            $nombre = 'comprobanteRequi'.$controlRequisiciones->id.'_'.$controlRequisiciones->comprobante_aprobacion->getClientOriginalName();
+            $controlRequisiciones->comprobante_aprobacion->storeAs('public',$nombre);
+            $getRequisiciones = Requisicione::find($controlRequisiciones->id);
+            $getRequisiciones->comprobante_aprobacion = '/storage/'.$nombre;
+            $getRequisiciones->save();
+        }
 
         return redirect()->route('requisiciones.index')
-            ->with('success', 'Requisicione created successfully.');
+            ->with('success', 'Requisición creada exitosamente.');
     }
 
     /**
@@ -91,7 +106,7 @@ class RequisicioneController extends Controller
         $requisicione->update($request->all());
 
         return redirect()->route('requisiciones.index')
-            ->with('success', 'Requisicione updated successfully');
+            ->with('success', 'Requisición actualizada exitosamente.');
     }
 
     /**
@@ -104,6 +119,6 @@ class RequisicioneController extends Controller
         $requisicione = Requisicione::find($id)->delete();
 
         return redirect()->route('requisiciones.index')
-            ->with('success', 'Requisicione deleted successfully');
+            ->with('success', 'Requisición eliminada exitosamente.');
     }
 }

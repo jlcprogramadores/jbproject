@@ -316,6 +316,19 @@
                                         <div class="dropdown-divider"></div>
                                         <li>
                                             <a class="dropdown-item" href="">
+                                                {{ __('Requisiciones') }} &raquo;
+                                            </a>
+                                            <ul class="submenu dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('requisiciones.index') }}">
+                                                            {{ __('Requisiciones') }}
+                                                        </a>
+                                                    </li>
+                                            </ul>
+                                        </li>
+                                        <div class="dropdown-divider"></div>
+                                        <li>
+                                            <a class="dropdown-item" href="">
                                                 {{ __('Configuración') }} &raquo;
                                             </a>
                                             <ul class="submenu dropdown-menu">
@@ -334,43 +347,6 @@
                                     </ul>
                                 </li>
                             @endcan
-                            {{-- <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5"
-                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" v-pre>
-                                    Cadena De Suministros
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('stocks.index') }}">
-                                        {{ __('Inventario') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">
-                                        {{ __('Control de Gasolineras') }}
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                        <li>
-                                            <a class="dropdown-item" href="">
-                                                {{ __('Configuración') }} &raquo;
-                                            </a>
-                                            <ul class="submenu dropdown-menu">
-                                                @can('menu.puestos')
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('puestos.index') }}">
-                                                            {{ __('Puestos') }}
-                                                        </a>
-                                                    </li>
-                                                @endcan
-                                                @can('menu.expedientes')
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('expedientes.index') }}">
-                                                            {{ __('Documentos de Expedientes') }}
-                                                        </a>
-                                                    </li>
-                                                @endcan
-                                            </ul>
-                                        </li>
-                                </div>
-                            </li> --}}
                     </ul>
                     @endif
 

@@ -21,9 +21,9 @@ class Requisiciones extends Migration
             $table->text('justificacion');
             $table->text('archivo');
             $table->boolean('esta_aprobada');
-            $table->text('aprobada_por');
-            $table->text('aprobada_en');
-            $table->text('comprobante_aprobacion');
+            $table->text('aprobada_por')->nullable();
+            $table->text('aprobada_en')->nullable();
+            $table->text('comprobante_aprobacion')->nullable();
             $table->string('usuario_edito');
             $table->timestamps();
         });

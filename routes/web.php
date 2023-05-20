@@ -163,7 +163,6 @@ Route::post('/exel', 'App\Http\Controllers\EntradaController@exel')->name('entra
 // Route::get('/datos-users', 'App\Http\Controllers\UserController@datos')->name('usuarios.datos');
 Route::get('/datos-finanzas', 'App\Http\Controllers\FinanzaController@datos')->name('finanzas.datos');
 
-
-
+Route::resource('requisiciones', App\Http\Controllers\RequisicioneController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes(['verify' => true]);

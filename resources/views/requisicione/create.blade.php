@@ -1,30 +1,30 @@
 @extends('layouts.app')
 
-@section('template_title')
-    Create Requisicione
-@endsection
+@section('title','Crear Requisición')
+@if(Auth::check() && Auth::user()->es_activo)
 
-@section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+    @section('content')
+        <section class="content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
 
-                @includeif('partials.errors')
+                    @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Create Requisicione</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('requisiciones.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <span class="card-title">Crear Requisición</span>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('requisiciones.store') }}"  role="form" enctype="multipart/form-data">
+                                @csrf
 
-                            @include('requisicione.form')
+                                @include('requisicione.form')
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-@endsection
+        </section>
+    @endsection
+@endif
