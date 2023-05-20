@@ -95,15 +95,7 @@
 @endif
 @push('scripts')
     <script src="//code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
-    <!-- Para usar los botones -->
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="   https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
     
    
    
@@ -114,27 +106,17 @@
     
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
-            var table = $('#table').DataTable({
-                dom: 'Blfrtip',
-                buttons:{
-                    dom: {
-                        button: {
-                            className: 'btn'
-                        }
-                    },
-                    buttons: [
-                        {
-                            extend: "excel",
-                            text:'Exportar a Excel',
-                            className:'btn btn-outline-success',
-                        }
-                    ]            
-                },
-                orderCellsTop: true,
-                fixedHeader: false,
-                processing: true,
+            // $('#table thead tr').clone(true).addClass('filters').appendTo( '#table thead' );
+            $('#table').DataTable({
                 serverSide: true,
+                ajax: {
+                    url: '{{ route("finanzas.datos") }}',
+                    type: 'GET',
+                    data: function (d) {
+                        d.start = d.start || 0;
+                        d.length = d.length || 10;
+                    }
+                },
                 "columns":[
                     { data: 'no'},
                     { data: 'fecha_entrada'},
@@ -167,51 +149,40 @@
                     { data: 'fecha_actualizacion'},
                     { data: 'action'},
                     { data: 'actionSpc'},
-                    
                 ],
-                "ajax":"{{ route('finanzas.datos') }}",
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "No se encontró nada – lo siento",
-                    "info": "Página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros",
-                    "infoFiltered": "(filtered from _MAX_ total records)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
-                },
-                initComplete: function() {
+                paging: true,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                pageLength: 10,
+                processing: true,
+                serverSide: true,
+                drawCallback: function (settings) {
+                    // Actualizar el número de página en la URL para compartir enlaces
                     var api = this.api();
-                    // For each column
-                    api.columns().eq(0).each(function(colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
-                        var title = $(cell).text();
-                        $(cell).html( '<input type="text" placeholder="'+title+'" />' );
-                        // On every keypress in this input
-                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index()) )
-                            .off('keyup change')
-                            .on('keyup change', function (e) {
-                                e.stopPropagation();
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
-                                    .draw();
-                                $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-                },
-                
-
+                    var pageInfo = api.page.info();
+                    window.history.replaceState({}, '', updateQueryStringParameter('page', pageInfo.page + 1));
+                }
             });
-            
+            function updateQueryStringParameter(key, value) {
+                var baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
+                var urlQueryString = document.location.search;
+                var newParam = key + '=' + value;
+
+                // Si el parámetro ya existe, reemplazarlo
+                if (urlQueryString) {
+                    var keyRegex = new RegExp('([?&])' + key + '[^&]*');
+                    if (urlQueryString.match(keyRegex)) {
+                        newParam = '$1' + newParam;
+                        baseUrl = baseUrl.replace(keyRegex, newParam);
+                    } else {
+                        // Si no existe, agregarlo al final
+                        baseUrl = [baseUrl, newParam].join('?');
+                    }
+                } else {
+                    // Si no hay parámetros en la URL, agregar el primero
+                    baseUrl = [baseUrl, '?', newParam].join('');
+                }
+                return baseUrl;
+            }
             $('.show_confirm').click(function(event) {
                 var form =  $(this).closest("form");
                 var name = $(this).data("name");
