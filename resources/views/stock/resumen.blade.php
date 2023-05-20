@@ -59,7 +59,15 @@
 											<td>{{ $item->modelo }}</td>
 											<td>{{ $item->entradas }}</td>
 											<td>{{ $item->salidas }}</td>
-											<td>{{ $item->stocks }}</td>
+											<td>
+                                                @if ($item->stocks < $item->minimo ||$item->stocks > $item->maximo)
+                                                <p class="badge bg-danger">{{ $item->stocks }}q</p>
+                                                @elseif($item->stocks - $item->rango_semaforo <= $item->minimo ||$item->stocks + $item->rango_semaforo >= $item->maximo)
+                                                <p class="badge bg-warning">{{ $item->stocks }}w</p>
+                                                @else
+                                                {{ $item->stocks }}e
+                                                @endif
+                                            </td>
                                             <td>{{ '$'. number_format($item->precio_unitario,2) }}</td>
                                             <td>{{ '$'. number_format( $item->importe,2) }}</td>
 											<td>{{ $item->minimo }}</td>
