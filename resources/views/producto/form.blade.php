@@ -36,17 +36,17 @@
             <div class="row">
                 <div class="col-sm form-group">
                     {{ Form::label('mínimo') }}
-                    {{ Form::number('minimo', $producto->minimo, ['class' => 'form-control' . ($errors->has('minimo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Minimo']) }}
+                    {{ Form::number('minimo', $producto->minimo?? 1, ['class' => 'form-control' . ($errors->has('minimo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Minimo']) }}
                     {!! $errors->first('minimo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm form-group">
                     {{ Form::label('máximo') }}
-                    {{ Form::number('maximo', $producto->maximo, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Maximo']) }}
+                    {{ Form::number('maximo', $producto->maximo?? 1, ['class' => 'form-control' . ($errors->has('maximo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Maximo']) }}
                     {!! $errors->first('maximo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm form-group">
                     {{ Form::label('Rango de Semaforo') }}
-                    {{ Form::number('rango_semaforo', $producto->rango_semaforo, ['class' => 'form-control' . ($errors->has('rango_semaforo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Rango']) }}
+                    {{ Form::number('rango_semaforo', $producto->rango_semaforo?? 2, ['class' => 'form-control' . ($errors->has('rango_semaforo') ? ' is-invalid' : ''),'min'=>'0', 'placeholder' => 'Rango']) }}
                     {!! $errors->first('rango_semaforo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class="col-sm form-group d-none">
