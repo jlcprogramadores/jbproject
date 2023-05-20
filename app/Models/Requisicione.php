@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $esta_aprobada
  * @property $aprobada_por
  * @property $aprobada_en
- * @property $comprobante_aprobacion
  * @property $usuario_edito
  * @property $created_at
  * @property $updated_at
@@ -32,12 +31,7 @@ class Requisicione extends Model
 		'departamento' => 'required',
 		'proyecto' => 'required',
 		'justificacion' => 'required',
-		'archivo' => 'required',
 		'esta_aprobada' => 'required',
-		'aprobada_por' => 'required',
-		'aprobada_en' => 'required',
-		'comprobante_aprobacion' => 'required',
-		'usuario_edito' => 'required',
     ];
 
     protected $perPage = 20;
@@ -47,7 +41,7 @@ class Requisicione extends Model
      *
      * @var array
      */
-    protected $fillable = ['folio','departamento','proyecto','justificacion','archivo','esta_aprobada','aprobada_por','aprobada_en','comprobante_aprobacion','usuario_edito'];
+    protected $fillable = ['folio','departamento','proyecto','justificacion','archivo','esta_aprobada','aprobada_por','aprobada_en','usuario_edito'];
 
 
 

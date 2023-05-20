@@ -48,10 +48,6 @@
                                 {{ $requisicione->aprobada_en }}
                             </div>
                             <div class="form-group">
-                                <strong>Comprobante Aprobación:</strong>
-                                {{ $requisicione->comprobante_aprobacion }}
-                            </div>
-                            <div class="form-group">
                                 <strong>Usuario Edito:</strong>
                                 {{ $requisicione->usuario_edito }}
                             </div>

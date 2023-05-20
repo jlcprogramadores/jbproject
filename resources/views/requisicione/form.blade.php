@@ -46,10 +46,6 @@
                         {{ Form::text('aprobada_en', $requisicione->aprobada_en, ['class' => 'form-control' . ($errors->has('aprobada_en') ? ' is-invalid' : ''), 'placeholder' => 'Aprobada En']) }}
                         {!! $errors->first('aprobada_en', '<div class="invalid-feedback">:message</div>') !!}
                     </div>
-                    <div class="col-sm p-1 form-group">
-                        {{ Form::label('Comprobante de Aprobación') }}
-                        <input type="file" name="comprobante_aprobacion" size="50" class="form-control">
-                    </div>
                 </div>
                 <div class="form-group d-none">
                     {{ Form::label('usuario_edito') }}

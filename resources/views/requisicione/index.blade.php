@@ -48,7 +48,6 @@
                                             <th>Esta Aprobada</th>
                                             <th>Aprobada Por</th>
                                             <th>Aprobada En</th>
-                                            <th>Comprobante Aprobación</th>
                                             <th>Usuario Edito</th>
 
                                             <th></th>
@@ -63,11 +62,14 @@
                                                 <td>{{ $requisicione->departamento }}</td>
                                                 <td>{{ $requisicione->proyecto }}</td>
                                                 <td>{{ $requisicione->justificacion }}</td>
-                                                <td>{{ $requisicione->archivo }}</td>
+                                                @if ($requisicione->archivo)
+                                                <td><a href="{{$requisicione->archivo}}">Link de Archivo</a></td>
+                                                @else
+                                                    <td><span class="badge bg-danger">Sin Archivo</span></td>
+                                                @endif 
                                                 <td>{{ $requisicione->esta_aprobada }}</td>
                                                 <td>{{ $requisicione->aprobada_por }}</td>
-                                                <td>{{ $requisicione->aprobada_en }}</td>
-                                                <td>{{ $requisicione->comprobante_aprobacion }}</td>
+                                                <td>{{ $requisicione->aprobada_en }}</td> 
                                                 <td>{{ $requisicione->usuario_edito }}</td>
 
                                                 <td>

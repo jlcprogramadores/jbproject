@@ -54,14 +54,6 @@ class RequisicioneController extends Controller
             $getRequisiciones->save();
         }
 
-        if ($controlRequisiciones->comprobante_aprobacion != null) {
-            $nombre = 'comprobanteRequi'.$controlRequisiciones->id.'_'.$controlRequisiciones->comprobante_aprobacion->getClientOriginalName();
-            $controlRequisiciones->comprobante_aprobacion->storeAs('public',$nombre);
-            $getRequisiciones = Requisicione::find($controlRequisiciones->id);
-            $getRequisiciones->comprobante_aprobacion = '/storage/'.$nombre;
-            $getRequisiciones->save();
-        }
-
         return redirect()->route('requisiciones.index')
             ->with('success', 'Requisición creada exitosamente.');
     }
@@ -103,8 +95,21 @@ class RequisicioneController extends Controller
     {
         request()->validate(Requisicione::$rules);
 
-        $requisicione->update($request->all());
-
+        if ($request->archivo != null) {
+            if ($requisicione->archivo != null) {
+                $archivoRequisicion = base_path('storage/app/public/'.explode("/",$requisicione->archivo)[2]);
+                if(file_exists($archivoRequisicion)){
+                    unlink($archivoRequisicion);
+                }
+            }
+            $nombre = 'archivoRequi_'.$requisicione->id.'_'. $request->archivo->getClientOriginalName();
+            $request->archivo->storeAs('public',$nombre);
+            $requisicione->update($request->all());
+            $requisicione->archivo = '/storage/'.$nombre;
+            $requisicione->save();  
+        }else{
+            $requisicione->update($request->all());
+        }
         return redirect()->route('requisiciones.index')
             ->with('success', 'Requisición actualizada exitosamente.');
     }
@@ -115,8 +120,15 @@ class RequisicioneController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
-        $requisicione = Requisicione::find($id)->delete();
+    {   
+        $requisicione = Requisicione::find($id);
+        if ($requisicione->archivo != null) {
+            $fileRequisicione = base_path('storage/app/public/'.explode("/",$requisicione->archivo)[2]);
+            if(file_exists($fileRequisicione)){
+                unlink($fileRequisicione);
+            }
+        }
+        $requisicione ->delete();
 
         return redirect()->route('requisiciones.index')
             ->with('success', 'Requisición eliminada exitosamente.');
