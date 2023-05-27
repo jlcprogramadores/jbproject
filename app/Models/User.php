@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'es_admin' => 'required',
     );
 
-    protected $perPage = 100000;
+    protected $perPage = 20;
 
     /**
      * The attributes that are mass assignable.

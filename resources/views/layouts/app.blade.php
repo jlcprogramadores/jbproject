@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireStyles
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/JB-min.png') }}">
@@ -409,7 +410,7 @@
         };
     </script>
     @stack('scripts')
-
+    @livewireScripts
 </body>
 
 </html>

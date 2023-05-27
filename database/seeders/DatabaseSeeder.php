@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\TipoDeDireccione;
 use Illuminate\Database\Seeder;
-
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SalidaSeeder::class);
         $this->call(AccesoSeeder::class);
         $this->call(ProductoSeeder::class);
+        $users = User::factory()->count(10000)->create();
     }
 }
