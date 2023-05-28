@@ -19,7 +19,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/JB-min.png') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
