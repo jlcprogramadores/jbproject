@@ -14,11 +14,26 @@ class UsersTable extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
-    public $searchTerm = '';
-
+    public $searchId = '';
+    public $searchName = '';
+    public $searchEmail = '';
+    public $searchCreatedAt = '';
+    
     public function render()
     {
-        $users = User::search($this->searchTerm)
+        $users = User::query()
+            ->when($this->searchId, function ($query) {
+                $query->where('id', $this->searchId);
+            })
+            ->when($this->searchName, function ($query) {
+                $query->where('name', 'like', '%'.$this->searchName.'%');
+            })
+            ->when($this->searchEmail, function ($query) {
+                $query->where('email', 'like', '%'.$this->searchEmail.'%');
+            })
+            ->when($this->searchCreatedAt, function ($query) {
+                $query->whereDate('created_at', $this->searchCreatedAt);
+            })
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
 
@@ -28,5 +43,6 @@ class UsersTable extends Component
     public function performSearch()
     {
         $this->searchTerm = $this->search;
+        $this->resetPage(); 
     }
 }
