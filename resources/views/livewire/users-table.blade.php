@@ -29,7 +29,7 @@
     }
     </style>    
     <div class="row d-flex align-items-center size">
-        <div class="col-sm-2" style="width: 175px;">
+        <div class="col-sm-1" style="width: 175px;">
             <div class="input-group input-group-sm">
                 <label class="input-group-text">Mostrar:</label>
                 <select wire:model="perPage" class="form-select">
@@ -44,14 +44,14 @@
             <div class="input-group input-group-sm">
                 <label class="input-group-text">Orden por:</label>
                 <select wire:model="orderBy" class="form-select">
-                    <option value="id">ID</option>
+                    <option value="id">no</option>
                     <option value="name">Name</option>
                     <option value="email">Email</option>
                     <option value="created_at">Sign Up Date</option>
                 </select>
             </div>
         </div>
-        <div class="col-sm-2" style="width: 150px;">
+        <div class="col-sm-2">
             <div class="btn-group btn-group-sm" role="group" aria-label="Orden">
                 <input type="radio" wire:model="orderAsc" class="btn-check" name="order" id="asc" value="1">
                 <label class="btn btn-outline-secondary color" for="asc">
@@ -68,7 +68,7 @@
     <table class="table table-striped table-auto w-full mb-6">
         <thead>
             <tr class="filters">
-                <th class="px-1 py-1">
+                <th class="w py-1">
                     <input wire:model="searchId" type="text" class="form-control" placeholder="ID">
                 </th>
                 <th class="px-1 py-1">
@@ -86,9 +86,12 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $i = ($users->currentPage() - 1) * $users->perPage() + 1;
+            @endphp
             @foreach($users as $user)
                 <tr>
-                    <td class="border px-4 py-2">{{ $user->id }}</td>
+                    <td class="border px-4 py-2">{{ $i++ }}</td>
                     <td class="border px-4 py-2">{{ $user->name }}</td>
                     <td class="border px-4 py-2">{{ $user->email }}</td>
                     <td class="border px-4 py-2">{{ $user->created_at->diffForHumans() }}</td>
