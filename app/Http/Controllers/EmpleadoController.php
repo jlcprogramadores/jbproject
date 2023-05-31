@@ -25,13 +25,15 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = DB::select(DB::raw("
-            SELECT
-                e.*,
-                ( SELECT hc.fecha_fin FROM historial_contratos hc WHERE hc.empleado_id = e.id ORDER BY hc.id DESC LIMIT 1 ) AS fecha_fin 
-            FROM
-                empleados e
-        "));
+        $empleados = Empleado::select('empleados.*')
+            ->selectSub(function ($query) {
+                $query->select('fecha_fin')
+                    ->from('historial_contratos')
+                    ->whereColumn('historial_contratos.empleado_id', 'empleados.id')
+                    ->orderByDesc('id')
+                    ->limit(1);
+            }, 'fecha_fin')
+            ->get();
         $i = 0;
         return view('empleado.index', compact('empleados','i'));
     }
