@@ -67,9 +67,13 @@
     </div>
     <table class="table table-striped table-auto w-full mb-6">
         <thead>
-            <tr>
-                <th>No</th>
-                <th>Fecha Entrada</th>
+            <tr class="filters">
+                <th class="px-1 py-1">
+                    <input wire:model="no" type="text" class="form-control" placeholder="No">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="fecha_entrada" type="text" class="form-control" placeholder="Fecha Entrada">
+                </th>
                 <th>Fecha Salida</th>
                 <th>Vence</th>
                 <th>Fecha vencimiento</th>

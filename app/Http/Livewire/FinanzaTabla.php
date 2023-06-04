@@ -8,23 +8,25 @@ use Livewire\WithPagination;
 
 class FinanzaTabla extends Component
 {
+    use WithPagination;
+
     public $perPage = 10;
-    public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
-    public $searchId = '';
-    public $searchName = '';
-    public $searchEmail = '';
-    public $searchCreatedAt = '';
+    // nombres de los inputs
+    public $no = '';
+    public $fecha_entrada = '';
+
     public function render()
     {
         $finanzas = Finanza::query()
-            // ->when($this->searchId, function ($query) {
-            //     $query->where('id', $this->searchId);
-            // })
-            // ->when($this->searchName, function ($query) {
-            //     $query->where('name', 'like', '%'.$this->searchName.'%');
-            // })
+            ->when($this->no, function ($query) {
+                $query->where('id', $this->no);
+            })
+            ->when($this->fecha_entrada, function ($query) {
+                $query->where('fecha_entrada', 'like', '%'.$this->fecha_entrada.'%');
+            })
+
             // ->when($this->searchEmail, function ($query) {
             //     $query->where('email', 'like', '%'.$this->searchEmail.'%');
             // })
@@ -34,12 +36,7 @@ class FinanzaTabla extends Component
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);
 
-        return view('livewire.finanza-tabla', compact('finanzas'));
-    }
-
-    public function performSearch()
-    {
-        $this->searchTerm = $this->search;
-        $this->resetPage(); 
+        return view('livewire.finanza-tabla', compact('finanzas'))
+            ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
     }
 }
