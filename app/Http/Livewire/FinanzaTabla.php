@@ -16,6 +16,8 @@ class FinanzaTabla extends Component
     // nombres de los inputs
     public $no = '';
     public $fecha_entrada = '';
+    public $fecha_salida = '';
+    public $vence = '';
 
     public function render()
     {
@@ -25,6 +27,12 @@ class FinanzaTabla extends Component
             })
             ->when($this->fecha_entrada, function ($query) {
                 $query->where('fecha_entrada', 'like', '%'.$this->fecha_entrada.'%');
+            })
+            ->when($this->fecha_salida, function ($query) {
+                $query->where('fecha_salida', 'like', '%'.$this->fecha_salida.'%');
+            })
+            ->when($this->vence, function ($query) {
+                $query->where('vence', 'like', '%'.$this->vence.'%');
             })
 
             // ->when($this->searchEmail, function ($query) {

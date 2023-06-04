@@ -74,8 +74,12 @@
                 <th class="px-1 py-1">
                     <input wire:model="fecha_entrada" type="text" class="form-control" placeholder="Fecha Entrada">
                 </th>
-                <th>Fecha Salida</th>
-                <th>Vence</th>
+                <th class="px-1 py-1">
+                    <input wire:model="fecha_salida" type="text" class="form-control" placeholder="Fecha Entrada">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="vence" type="text" class="form-control" placeholder="Fecha Entrada">
+                </th>
                 <th>Fecha vencimiento</th>
                 <th>Días</th>
                 <th>Estado</th>
