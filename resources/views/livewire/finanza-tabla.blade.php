@@ -112,143 +112,57 @@
         <tbody>
             @foreach($finanzas as $item)
             <tr>
-                <td>{{ $item->no }}</td>
-                <td>
-                    @if ($item->esta_atrasado)
-                        <span class="text-danger">
-                            {{ $item->fecha_entrada ? Carbon\Carbon::parse($item->fecha_entrada)->format('Y-m-d') : '' }}
-                        </span>
-                        <br>
-                        <span class="peque text-danger">
-                            Atrasada
-                        </span>
-                    @else
-                        {{ $item->fecha_entrada ? Carbon\Carbon::parse($item->fecha_entrada)->format('Y-m-d') : '' }}
-                        
-                    @endif
-                
-                </td>
-                <td>{{ $item->fecha_salida ? Carbon\Carbon::parse($item->fecha_salida)->format('Y-m-d') : '' }}</td>
+                <td>{{ $item->no}}</td>
+                <td>{{ $item->fecha_entrada}}</td>
+                <td>{{ $item->fecha_salida}}</td>
                 <td>{{ $item->vence }}</td>
-                <td>{{ $dias = Carbon\Carbon::parse( strtotime($item->fecha_salida."+ ".$item->vence." days"))->format('Y-m-d') }}</td>
-                <?php 
-                    $fechaActual = Carbon\Carbon::createFromFormat('Y-m-d', date('Y-m-d'));
-                    $shippingDate = Carbon\Carbon::createFromFormat('Y-m-d', $dias);
-                    $diferencia_en_dias = $fechaActual->diffInDays($shippingDate);
-                    ?>
-                <td>{{ $diferencia_en_dias }}</td>
-                @if ($diferencia_en_dias <= 0)
-                <td><p class="badge bg-danger">Vencido</p></td>
-                @else
-                <td><p class="badge bg-warning text-dark">Por vencer</p></td>
-                @endif
-                <?php $tipoFinanza = $item->salidas_id ?  'Egreso' : 'Ingreso' ?>
-                <td>{{ $tipoFinanza }}</td>
-                <?php 
-                    $fam = 'F: '.$item->famCategoria->familia->nombre;
-                    $cat = 'C: '.$item->famCategoria->nombre;
-                ?>
-                <td> <span style=" white-space: nowrap">{{ $fam }}</span> <br/> <span style=" white-space: nowrap">{{ $cat }}</span>    </td>
-                <td>{{ $item->salidas_id ? $item->salida->proveedore->razon_social : $item->entrada->cliente->razon_social }}</td>
-                <td>{{ $item->proyecto->nombre }}</td>
+                <td>{{ $item->fecha_vencimiento }}</td>
+                <td>{{ $item->dias }}</td>
+                <td>
+                    @if ($item->dias < 0)
+                    <p class="badge bg-danger">{{ $item->estado }}</p>
+                    @else
+                    <p class="badge bg-warning text-dark">{{ $item->estado }}</p>
+                    @endif
+                </td>
+                <td>{{ $item->tipo }}</td>
+                <td>
+                    {{ $item->fam_nombre? 'F: '.$item->fam_nombre : ''}}
+                    <br>
+                    {{ $item->cf_nombre? 'C: '.$item->cf_nombre : ''}}
+                </td>
+                <td>{{ $item->salidas_id ? $item->p_razon : $item->c_razon }}</td>
+                <td>{{ $item->proyecto }}</td>
                 <td>{{ $item->descripcion }}</td>
                 <td>
-                    @if (!empty($item->factura[0]))
-                     @foreach($item->factura as $iterFactura)
-
-                        {{$iterFactura->referencia_factura ? $iterFactura->referencia_factura.',' : '' }}
-                        
-                            
-                        @endforeach
+                    @if ($item->fac_o_fol)
+                        {{$item->fac_o_fol}}
                     @else
-                        @if ($item->salidas_id)
-                            <p class="badge bg-danger">No facturado</p>
-                        @else
-                            <p class="badge bg-danger">No Recibida</p>
-                        @endif
+                    <p class="badge bg-danger">{{$item->salidas_id ? 'No facturado' : 'No Recibida' }}</p>
                     @endif
-
                 </td>
-                <td>{{$item->salidas_id ? $item->salida->proveedore->nombre : $item->entrada->cliente->nombre}}</td>
-                <td>{{ $item->cantidad.' '.$item->unidad->nombre }}</td>
-                <td>{{ '$'. number_format($item->costo_unitario,2) }}</td>
-                <td>{{  '$'. number_format($subTotal = $item->costo_unitario*$item->cantidad,2) }}</td>
-                <td>{{ ($iva = $item->iva->porcentaje).'%' }}</td>
-                <td>{{ '$'. number_format($subTotal*$iva,2) }}</td>
-                <td>{{ '$'. number_format($montoAPagar = $item->monto_a_pagar,2) }}</td>
-                <td >{{$item->fecha_de_pago ? Carbon\Carbon::parse($item->fecha_de_pago)->format('Y-m-d') : ''}}</td>
-                <td>{{ $item->metodo_de_pago }}</td>
-                @if ($item->es_pagado == 0)
+                <td>{{$item->salidas_id ? $item->pro_nombre : $item->cli_nombre}}</td>
+                <td>{{ $item->cantidad_unidad }}</td>
+
+                {{-- <td>{{ '$'. number_format($item->costo_unitario,2) }}</td> --}}
+                {{-- <td>{{  '$'. number_format($subTotal = $item->costo_unitario*$item->cantidad,2) }}</td> --}}
+                {{-- <td>{{ ($iva = $item->iva->porcentaje).'%' }}</td> --}}
+                {{-- <td>{{ '$'. number_format($subTotal*$iva,2) }}</td> --}}
+                {{-- <td>{{ '$'. number_format($montoAPagar = $item->monto_a_pagar,2) }}</td> --}}
+                {{-- <td >{{$item->fecha_de_pago ? Carbon\Carbon::parse($item->fecha_de_pago)->format('Y-m-d') : ''}}</td> --}}
+                {{-- <td>{{ $item->metodo_de_pago }}</td> --}}
+                {{-- @if ($item->es_pagado == 0)
                     <td><p class="badge bg-danger">Pendiente Pagar</p></td>
                 @else
                     <td><p class="badge bg-success">Pagado</p></td>
-                @endif
-                <td>{{ $item->entregado_material_a }}</td>
+                @endif --}}
+                {{-- <td>{{ $item->entregado_material_a }}</td> --}}
                 {{-- Parte de los meses --}}
                 {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
-                <td>
-                    <?php 
-                        // $hayProximo = false;
-                        $totalPagado = 0;    
-                    ?>
-                    @if (!empty($item->a_meses))
-                        @foreach ($item->factura as $item)
-                        <span class="completo text-capitalize">
-                            <?php 
-                                $mes_pago = carbon\Carbon::parse($item->mes_de_pago)
-                            ?>
-                            @if ($mes_pago->monthName == $fechaActual->monthName && $mes_pago->year == $fechaActual->year )
-                                @if (!is_null($item->monto) && $item->monto != 0)
-                                    {{ $mes_pago->monthName }}
-                                    <span class="badge bg-success">
-                                        Pagado
-                                    </span>
-                                    <br>
-                                    <?php $totalPagado = $totalPagado + $item->monto; ?> 
-                                @else
-                                    {{ $mes_pago->monthName }}
-                                    <span class="badge bg-warning text-dark">
-                                        Por Vencer
-                                    </span>
-                                    <br>
-                                @endif
-                            @elseif($mes_pago < $fechaActual )
-                                @if (!is_null($item->monto) && $item->monto != 0)
-                                   
-                                @else
-                                    {{ $mes_pago->monthName }}
-                                    <span class="badge bg-danger">
-                                        Vencido
-                                    </span>
-                                    <br>
-                                @endif
-                            @else
-                                {{-- php $hayProximo = true   --}}
-                            @endif
-                            
-                        </span>
-                        @endforeach
-                            {{-- @if ($hayProximo)
-                                <span class="badge bg-secondary">
-                                    
-                                </span>
-                                <br>
-                            @endif --}}
-                        <?php $resta = $item->monto_a_pagar - $totalPagado ?> 
-                        <span class="peque">
-                            @if ($resta <= 0)
-                                Pagado
-                            @else
-                                {{ 'Resta: $'. number_format($resta,2)  }}
-                            @endif
-                        </span>
-                    @else
-                        N/A
-                    @endif
-                </td>
-                <td>{{ $item->fecha_facturacion ?  Carbon\Carbon::parse($item->fecha_facturacion)->format('Y-m-d') :'' }}</td>
-                <td>{{ $item->comentario }}</td>
-                @if ($item->salidas_id)
+
+                {{-- <td>{{ $item->fecha_facturacion ?  Carbon\Carbon::parse($item->fecha_facturacion)->format('Y-m-d') :'' }}</td> --}}
+                {{-- <td>{{ $item->comentario }}</td> --}}
+                {{-- @if ($item->salidas_id)
                     @if ($item->salida->enviado == 0)
                         <td><p class="badge bg-danger">Sin Enviar</p></td>
                     @else
@@ -256,10 +170,10 @@
                     @endif
                 @else  
                     <td></td>
-                @endif
+                @endif --}}
                 
-                <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td>
-                <td>
+                {{-- <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td> --}}
+                {{-- <td>
                     <span class="completo">
                         <form action="{{ route('finanzas.destroy',$item->id) }}" method="POST">
                             @can('finanzas.confirmarpago')
@@ -292,7 +206,7 @@
                             @endcan
                         </form>
                     </span>
-                </td>
+                </td> --}}
             </tr>
             @endforeach
         </tbody>
