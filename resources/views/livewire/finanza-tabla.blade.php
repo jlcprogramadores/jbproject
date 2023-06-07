@@ -120,9 +120,9 @@
                 <td>{{ $item->dias }}</td>
                 <td>
                     @if ($item->dias < 0)
-                    <p class="badge bg-danger">{{ $item->estado }}</p>
+                        <p class="badge bg-danger">{{ $item->estado }}</p>
                     @else
-                    <p class="badge bg-warning text-dark">{{ $item->estado }}</p>
+                        <p class="badge bg-warning text-dark">{{ $item->estado }}</p>
                     @endif
                 </td>
                 <td>{{ $item->tipo }}</td>
@@ -138,42 +138,39 @@
                     @if ($item->fac_o_fol)
                         {{$item->fac_o_fol}}
                     @else
-                    <p class="badge bg-danger">{{$item->salidas_id ? 'No facturado' : 'No Recibida' }}</p>
+                        <p class="badge bg-danger">{{$item->salidas_id ? 'No facturado' : 'No Recibida' }}</p>
                     @endif
                 </td>
                 <td>{{$item->salidas_id ? $item->pro_nombre : $item->cli_nombre}}</td>
                 <td>{{ $item->cantidad_unidad }}</td>
-
-                {{-- <td>{{ '$'. number_format($item->costo_unitario,2) }}</td> --}}
-                {{-- <td>{{  '$'. number_format($subTotal = $item->costo_unitario*$item->cantidad,2) }}</td> --}}
-                {{-- <td>{{ ($iva = $item->iva->porcentaje).'%' }}</td> --}}
-                {{-- <td>{{ '$'. number_format($subTotal*$iva,2) }}</td> --}}
-                {{-- <td>{{ '$'. number_format($montoAPagar = $item->monto_a_pagar,2) }}</td> --}}
-                {{-- <td >{{$item->fecha_de_pago ? Carbon\Carbon::parse($item->fecha_de_pago)->format('Y-m-d') : ''}}</td> --}}
-                {{-- <td>{{ $item->metodo_de_pago }}</td> --}}
-                {{-- @if ($item->es_pagado == 0)
-                    <td><p class="badge bg-danger">Pendiente Pagar</p></td>
-                @else
-                    <td><p class="badge bg-success">Pagado</p></td>
-                @endif --}}
-                {{-- <td>{{ $item->entregado_material_a }}</td> --}}
-                {{-- Parte de los meses --}}
-                {{-- motrar cuantos se han pagado y motrar el valor menos el total --}}
-
-                {{-- <td>{{ $item->fecha_facturacion ?  Carbon\Carbon::parse($item->fecha_facturacion)->format('Y-m-d') :'' }}</td> --}}
-                {{-- <td>{{ $item->comentario }}</td> --}}
-                {{-- @if ($item->salidas_id)
-                    @if ($item->salida->enviado == 0)
-                        <td><p class="badge bg-danger">Sin Enviar</p></td>
+                <td>{{ $item->costo_unitario }}</td>
+                <td>{{ $item->subtotal_total_mxn }}</td>
+                <td>{{ $item->iva }}</td>
+                <td>{{ $item->total_mxn }}</td>
+                <td>{{ $item->monto_a_pagar }}</td>
+                <td>{{ $item->fecha_de_pago }}</td>
+                <td>{{ $item->metodo_de_pago }}</td>
+                <td>
+                    @if ($item->es_pagado == 'Pagado')
+                        <p class="badge bg-success">Pagado</p>
                     @else
-                        <td><p class="badge bg-success">Enviado</p></td>
+                        <p class="badge bg-danger">Pendiente</p>
                     @endif
-                @else  
-                    <td></td>
-                @endif --}}
+                </td>
+                <td>{{ $item->entregado_material_a }}</td>
+                <td>{{ $item->a_meses }}</td>
+                <td>{{ $item->fecha_facturacion }}</td>
+                <td>{{ $item->comentario }}</td>
+                <td>
+                    @if ($item->comprobante == 'Enviado')
+                        <p class="badge bg-success">Enviado</p>
+                    @else  
+                        <p class="badge bg-danger">Sin Enviar</p>
+                    @endif
+                </td>
                 
-                {{-- <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td> --}}
-                {{-- <td>
+                <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td>
+                <td>
                     <span class="completo">
                         <form action="{{ route('finanzas.destroy',$item->id) }}" method="POST">
                             @can('finanzas.confirmarpago')
@@ -206,7 +203,7 @@
                             @endcan
                         </form>
                     </span>
-                </td> --}}
+                </td>
             </tr>
             @endforeach
         </tbody>

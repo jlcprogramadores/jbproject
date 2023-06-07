@@ -44,17 +44,19 @@ class FinanzaTabla extends Component
             'proveedores.nombre as pro_nombre',
             'clientes.nombre as cli_nombre',
             DB::raw("CONCAT(finanzas.cantidad, ' ', unidades.nombre) as cantidad_unidad"),
-            'finanzas.costo_unitario',
-            'ivas.porcentaje',
-            'finanzas.monto_a_pagar',
-            'finanzas.fecha_de_pago',
+            DB::raw("CONCAT('$', FORMAT(finanzas.costo_unitario, 2)) as costo_unitario"),
+            DB::raw("CONCAT('$', FORMAT((@subtotal := (finanzas.costo_unitario * finanzas.cantidad)), 2)) as subtotal_total_mxn"),
+            DB::raw("CONCAT(ivas.porcentaje, ' ', '%') as iva"),
+            DB::raw("CONCAT('$', FORMAT((@subtotal * ivas.porcentaje), 2)) AS total_mxn"),
+            DB::raw("CONCAT('$', FORMAT(finanzas.monto_a_pagar, 2)) as monto_a_pagar"),
+            DB::raw("DATE_FORMAT(finanzas.fecha_de_pago, '%Y-%m-%d') as fecha_de_pago"),
             'finanzas.metodo_de_pago',
-            'finanzas.es_pagado',
+            DB::raw("if(finanzas.es_pagado = 0, 'Pagado', 'Pendiente') as estatus"),
             'finanzas.entregado_material_a',
-            'finanzas.fecha_primer_pago',
-            'finanzas.fecha_facturacion',
+            DB::raw("if(finanzas.a_meses is not NULL, (SELECT GROUP_CONCAT(if(DATE_FORMAT(fac.mes_de_pago, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m'), if(fac.monto is not NULL and fac.monto != 0, CONCAT('<span class=\"badge bg-success\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Pagado</span>'), CONCAT('<span class=\"badge bg-warning text-dark\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Por Vencer</span>')), if(fac.mes_de_pago < NOW(), if(fac.monto is not NULL and fac.monto != 0, '', CONCAT('<span class=\"badge bg-danger\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Vencido</span>')), ''))) FROM facturas as fac WHERE fac.finanza_id = finanzas.id), 'N/A') as a_meses"),
+            DB::raw("DATE_FORMAT(finanzas.fecha_facturacion, '%Y-%m-%d') as fecha_facturacion"),
             'finanzas.comentario',
-            'salidas.enviado',
+            DB::raw("if(salidas.enviado = 1, 'Enviado', 'Sin Enviar') as comprobante"),
             'finanzas.usuario_edito',
             'finanzas.updated_at'
         )
@@ -68,7 +70,7 @@ class FinanzaTabla extends Component
         ->leftJoin('categorias_familias', 'categorias_familias.id', '=', 'finanzas.categoria_id')
         ->leftJoin('familias', 'familias.id', '=', 'categorias_familias.id')
         ->when($this->no, function ($query) {
-            $query->where('f.no', $this->no);
+            $query->where('finanzas.no', $this->no);
         })
         ->when($this->fecha_entrada, function ($query) {
             $query->where('finanzas.fecha_entrada', 'like', '%' . $this->fecha_entrada . '%');
