@@ -80,30 +80,79 @@
                 <th class="px-1 py-1">
                     <input wire:model="vence" type="text" class="form-control" placeholder="Fecha Entrada">
                 </th>
-                <th>Fecha vencimiento</th>
-                <th>Días</th>
-                <th>Estado</th>
-                <th>Tipo I&E</th>    
-                <th>Fam & Cat</th>
-                <th>Razón social</th>
-                <th>Proyecto</th>
-                <th>Descripción</th>
-                <th>Factura o Folio</th>
-                <th>Proveedor o cliente</th>
-                <th>Cantidad & Unidad</th>
-                <th>Costo Unitario</th>
-                <th>Subtotal Total MXN</th>
-                <th>Iva</th>
-                <th>Total $MXN$</th>
-                <th>Monto A Pagar</th>
-                <th>Fecha De Pago</th>
-                <th>Metodo De Pago</th>
-                <th>$ Estatus $</th>
-                <th>Entregado Material A</th>
-                <th>A Meses</th>
-                <th>Fecha Facturacion</th>
-                <th>Comentario</th>
-                <th>Comprobante</th>
+
+                <th class="px-1 py-1">
+                    <input wire:model="fecha_vencimiento" type="text" class="form-control" placeholder="fecha Vencimiento">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="dias" type="text" class="form-control" placeholder="Días">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="estado" type="text" class="form-control" placeholder="Estado">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="tipo" type="text" class="form-control" placeholder="Tipo I&E">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="fam_cat" type="text" class="form-control" placeholder="Fam & Cat">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="razon_social" type="text" class="form-control" placeholder="Razón social">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="proyecto" type="text" class="form-control" placeholder="Proyecto">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="descripcion" type="text" class="form-control" placeholder="Descripción">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="factura_folio" type="text" class="form-control" placeholder="Factura o Folios">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="provedor_cliente" type="text" class="form-control" placeholder="Proveedor o cliente">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="cantidad_unidad" type="text" class="form-control" placeholder="Cantidad & Unidad">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="costo_unitario" type="text" class="form-control" placeholder="Costo Unitario">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="subtotal" type="text" class="form-control" placeholder="Subtotal MXN">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="iva" type="text" class="form-control" placeholder="IVA">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="total" type="text" class="form-control" placeholder="Total $MXN$">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="monto_pagar" type="text" class="form-control" placeholder="Monto A Pagar">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="fecha_pago" type="text" class="form-control" placeholder="Fecha De Pago">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="metodo_pago" type="text" class="form-control" placeholder="Metodo De Pago">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="estatus" type="text" class="form-control" placeholder="$ Estatus $">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="entregado" type="text" class="form-control" placeholder="Entregado Material A">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="a_meses" type="text" class="form-control" placeholder="A Meses">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="fecha_facturacion" type="text" class="form-control" placeholder="Fecha Facturacion">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="comentario" type="text" class="form-control" placeholder="Comentario">
+                </th>
+                <th class="px-1 py-1">
+                    <input wire:model="comprobante" type="text" class="form-control" placeholder="Comprobante">
+                </th>
                 <th>Fecha Actualización</th>
 
                 <th>Acciones</th>
@@ -126,19 +175,15 @@
                     @endif
                 </td>
                 <td>{{ $item->tipo }}</td>
-                <td>
-                    {{ $item->fam_nombre? 'F: '.$item->fam_nombre : ''}}
-                    <br>
-                    {{ $item->cf_nombre? 'C: '.$item->cf_nombre : ''}}
-                </td>
-                <td>{{ $item->salidas_id ? $item->p_razon : $item->c_razon }}</td>
+                <td>{{ $item->fam_cat}}</td>
+                <td>{{ $item->razon_social }}</td>
                 <td>{{ $item->proyecto }}</td>
                 <td>{{ $item->descripcion }}</td>
                 <td>
-                    @if ($item->fac_o_fol)
-                        {{$item->fac_o_fol}}
+                    @if ($item->fac_o_fol=='No Facturado' || $item->fac_o_fol=='No Recibido')
+                    <p class="badge bg-danger">{{$item->fac_o_fol}}</p>
                     @else
-                        <p class="badge bg-danger">{{$item->salidas_id ? 'No facturado' : 'No Recibida' }}</p>
+                    {{$item->fac_o_fol}}
                     @endif
                 </td>
                 <td>{{$item->salidas_id ? $item->pro_nombre : $item->cli_nombre}}</td>

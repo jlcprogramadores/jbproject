@@ -21,6 +21,32 @@ class FinanzaTabla extends Component
     public $fecha_salida = '';
     public $vence = '';
 
+    public $fecha_vencimiento = '';
+    public $dias = '';
+    public $estado = '';
+    public $tipo = '';
+    public $fam_cat = '';
+    public $razon_social = '';
+    public $proyecto = '';
+    public $descripcion = '';
+    public $factura_folio = '';
+
+    public $provedor_cliente = '';
+    public $cantidad_unidad = '';
+    public $costo_unitario = '';
+    public $subtotal = '';
+    public $iva = '';
+    public $total = '';
+    public $monto_pagar = '';
+    public $fecha_pago = '';
+    public $metodo_pago = '';
+    public $estatus = '';
+    public $entregado = '';
+    public $a_meses = '';
+    public $fecha_facturacion = '';
+    public $comentario = '';
+    public $comprobante = '';
+
     public function render()
 {
     $finanzas = Finanza::select(
@@ -32,14 +58,12 @@ class FinanzaTabla extends Component
             DB::raw("@dias := DATEDIFF(@fven, NOW()) as dias"),
             DB::raw("if(@dias <= 0, 'Vencido', 'Por Vencer') as estado"),
             DB::raw("if(finanzas.entradas_id is not NULL, 'Egreso', 'Ingreso') as tipo"),
-            'finanzas.entradas_id',
-            'categorias_familias.nombre as cf_nombre',
-            'familias.nombre as fam_nombre',
-            'proveedores.razon_social as p_razon',
-            'clientes.razon_social as c_razon',
+            DB::raw("CONCAT(IF(familias.nombre IS NULL, '', CONCAT('F:', familias.nombre,', ')), IF(categorias_familias.nombre IS NULL, '', CONCAT('C:', categorias_familias.nombre))) AS fam_cat"),
+            DB::raw("if(finanzas.salidas_id is not NULL, proveedores.razon_social, clientes.razon_social) as razon_social"),
             'proyectos.nombre as proyecto',
             'finanzas.descripcion as descripcion',
-            DB::raw("(SELECT GROUP_CONCAT(fac.referencia_factura) FROM facturas as fac WHERE fac.finanza_id = finanzas.id) as fac_o_fol"),
+
+            DB::raw("(SELECT COALESCE(GROUP_CONCAT(fac.referencia_factura),if(finanzas.entradas_id is not NULL, 'No Facturado', 'No Recibido')) FROM facturas as fac WHERE fac.finanza_id = finanzas.id) as fac_o_fol"),
             'finanzas.id',
             'proveedores.nombre as pro_nombre',
             'clientes.nombre as cli_nombre',
@@ -81,7 +105,36 @@ class FinanzaTabla extends Component
         ->when($this->vence, function ($query) {
             $query->where('finanzas.vence', 'like', '%' . $this->vence . '%');
         })
-        ->orderBy('finanzas.' . $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        ->when($this->fecha_vencimiento, function ($query) {
+            $query->where('finanzas.fecha_vencimiento', 'like', '%' . $this->fecha_vencimiento . '%');
+        })
+        ->when($this->dias, function ($query) {
+            $query->whereRaw("DATEDIFF(DATE_FORMAT(DATE_ADD(finanzas.fecha_salida, INTERVAL finanzas.vence DAY), '%Y-%m-%d'), NOW()) LIKE '%".$this->dias."%'");
+        })
+        ->when($this->estado, function ($query) {
+            $query->whereRaw("IF(DATEDIFF(DATE_FORMAT(DATE_ADD(finanzas.fecha_salida, INTERVAL finanzas.vence DAY), '%Y-%m-%d'), NOW()) <= 0, 'Vencido', 'Por Vencer') LIKE '%".$this->estado."%'");
+        })
+        ->when($this->tipo, function ($query) {
+            $query->whereRaw("if(finanzas.entradas_id is not NULL, 'Egreso', 'Ingreso') LIKE '%".$this->tipo."%'");
+        })
+        ->when($this->fam_cat, function ($query) {
+            $query->whereRaw("CONCAT(IF(familias.nombre IS NULL, '', CONCAT('F:', familias.nombre)), ', ', IF(categorias_familias.nombre IS NULL, '', CONCAT('F:', categorias_familias.nombre))) LIKE '%".$this->fam_cat."%'");
+        })
+        ->when($this->razon_social, function ($query) {
+            $query->whereRaw("if(finanzas.salidas_id is not NULL, proveedores.razon_social, clientes.razon_social) LIKE '%".$this->razon_social."%'");
+        })
+        ->when($this->proyecto, function ($query) {
+            $query->where('proyectos.nombre', 'like', '%' . $this->proyecto . '%');
+        })
+        ->when($this->descripcion, function ($query) {
+            $query->where('finanzas.descripcion', 'like', '%' . $this->descripcion . '%');
+        })
+        ->when($this->factura_folio, function ($query) {
+            $query->whereRaw("(SELECT COALESCE(GROUP_CONCAT(fac.referencia_factura),if(finanzas.entradas_id is not NULL, 'No Facturado', 'No Recibido')) FROM facturas as fac WHERE fac.finanza_id = finanzas.id) LIKE '%".$this->factura_folio."%'");
+        })
+        // ->orderBy('finanzas.' . $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        // ->toSql();
+        // dd($finanzas);
         ->paginate($this->perPage);
     return view('livewire.finanza-tabla', compact('finanzas'))
         ->with('i', ($finanzas->currentPage() - 1) * $finanzas->perPage());
