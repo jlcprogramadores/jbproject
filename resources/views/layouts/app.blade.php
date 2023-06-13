@@ -59,29 +59,45 @@
                                         Finanzas
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        @can('finanzas.index')
-                                            <a class="dropdown-item" href="{{ route('finanzas.index') }}">
-                                                {{ __('Finanzas') }}
+                                        <div class="dropdown-divider"></div>
+                                        <li>
+                                            <a class="dropdown-item" href="">
+                                                {{ __('Finanzas') }} &raquo;
                                             </a>
-                                        @endcan
-                                        @can('finanzas.indexEgreso')
-                                            <a class="dropdown-item" href="{{ route('finanzas.indexEgreso') }}">
-                                                {{ __('Egresos') }}
-                                            </a>
-                                        @endcan
-                                        @can('finanzas.indexIngreso')
-                                            <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
-                                                {{ __('Ingresos') }}
-                                            </a>
-                                        @endcan
+                                            <ul class="submenu dropdown-menu">
+                                                    <li>
+                                                        @can('finanzas.index')
+                                                            <a class="dropdown-item" href="{{ route('finanzas.index') }}">
+                                                                {{ __('Finanzas-General') }}
+                                                            </a>
+                                                        @endcan
+                                                    </li>
+                                                    <li>
+                                                        @can('finanzas.indexEgreso')
+                                                        <a class="dropdown-item" href="{{ route('finanzas.indexEgreso') }}">
+                                                            {{ __('Finanzas-Egresos') }}
+                                                        </a>
+                                                    @endcan
+                                                    </li> 
+                                                    <li>
+                                                        @can('finanzas.indexIngreso')
+                                                            <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
+                                                                {{ __('Finanzas-Ingresos') }}
+                                                            </a>
+                                                        @endcan
+                                                    </li>
+                                                    <li>
+                                                        @can('menu.filtros')
+                                                            <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
+                                                                {{ __('Finanzas-Filtradas   ') }}
+                                                            </a>
+                                                        @endcan
+                                                    </li>
+                                            </ul>
+                                        </li>
                                         @can('menu.top')
                                             <a class="dropdown-item" href="{{ route('finanzas.topGeneral') }}">
                                                 {{ __('Top Egresos e Ingresos') }}
-                                            </a>
-                                        @endcan
-                                        @can('menu.filtros')
-                                            <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
-                                                {{ __('Filtros') }}
                                             </a>
                                         @endcan
                                         @can('menu.graficas')
@@ -295,40 +311,63 @@
                                         Cadena de Suministros
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('productos.index') }}">
-                                                {{ __('Productos') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('stocks.entradas') }}">
-                                                {{ __('Entradas') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('stocks.salidas') }}">
-                                                {{ __('Salidas') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('stocks.resumen') }}">
-                                                {{ __('Inventario') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">
-                                                {{ __('Control de Gasolineras') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasRango') }}">
-                                                {{ __('Gráficar por Rango') }}
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasUnidad') }}">
-                                                {{ __('Gráficar consumo por Unidad') }}
-                                            </a>
+   
                                         <div class="dropdown-divider"></div>
                                         <li>
                                             <a class="dropdown-item" href="">
-                                                {{ __('Requisiciones') }} &raquo;
+                                                {{ __('Gasolineras') }} &raquo;
                                             </a>
+                                            
                                             <ul class="submenu dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="{{ route('requisiciones.index') }}">
-                                                            {{ __('Requisiciones') }}
+                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">
+                                                            {{ __('Control de Gasolineras') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasRango') }}">
+                                                            {{ __('Gráficar por Rango') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasUnidad') }}">
+                                                            {{ __('Gráficar consumo por Unidad') }}
                                                         </a>
                                                     </li>
                                             </ul>
-                                        </li>
+                                        </li>   
+                                        <div class="dropdown-divider"></div>
+                                        <li>
+                                            <a class="dropdown-item" href="">
+                                                {{ __('Inventarios') }} &raquo;
+                                            </a>
+                                            <ul class="submenu dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('stocks.resumen') }}">
+                                                            {{ __('Inventario') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('stocks.entradas') }}">
+                                                            {{ __('Entradas') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('stocks.salidas') }}">
+                                                            {{ __('Salidas') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('productos.index') }}">
+                                                            {{ __('Productos') }}
+                                                        </a>
+                                                    </li>
+                                            </ul>
+                                        </li>     
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('requisiciones.index') }}">
+                                            {{ __('Requisiciones') }}
+                                        </a>
                                         <div class="dropdown-divider"></div>
                                         <li>
                                             <a class="dropdown-item" href="">

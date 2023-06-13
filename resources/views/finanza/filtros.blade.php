@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Filtros')
+@section('title','Finanzas-Filtradas')
 @if(Auth::check() && Auth::user()->es_activo)
 @can('finanzas.filtros')
 @section('content')
@@ -12,7 +12,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Filtros</span>
+                        <span class="card-title">Finanzas-Filtradas</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('finanzas.datosfiltrados') }}" role="form"

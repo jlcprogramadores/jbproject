@@ -1,5 +1,10 @@
 @extends('layouts.app')
-@section('title','Finanzas')
+@if ($esEgreso)
+    @section('title','Egresos')
+@else
+@section('title','Ingresos')
+@endif
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">    
