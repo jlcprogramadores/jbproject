@@ -58,7 +58,7 @@
                                             @if (isset($proyecto->mina->nombre))
 											    <td>{{ $proyecto->nombre }} <br> Mina: {{ $proyecto->mina->nombre}}</td>
                                             @else
-											    <td>{{ $proyecto->nombre }} </td>
+											    <td>{{ $proyecto->nombre }} <br> <span class="badge bg-danger">Sin Mina Asignada</span> </td>
                                             @endif
 											<td>{{ $proyecto->descripcion }}</td>
 											<td>{{ $proyecto->numero_de_proyecto }}</td>
