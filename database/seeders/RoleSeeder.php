@@ -274,10 +274,11 @@ class RoleSeeder extends Seeder
 
             $permisomenuusuarios = Permission::create(['name' => 'menu.usuarios', 'description' => 'Ver Submenú Administración-Usuarios', 'nomenclatura' => 'mn-03-sb-04-pm-00'])->syncRoles($rolAdmin);
                 //Permisos
-                $permisousuariosindex = Permission::create(['name' => 'usuarios.index', 'description' => 'Usuarios:Tabla', 'nomenclatura' => 'mn-03-sb-04-pm-01'])->syncRoles($rolAdmin);
-                $permisousuariosshow = Permission::create(['name' => 'usuarios.show', 'description' => 'Usuarios:Mostrar', 'nomenclatura' => 'mn-03-sb-04-pm-02'])->syncRoles($rolAdmin);
-                $permisousuariosedit = Permission::create(['name' => 'usuarios.edit', 'description' => 'Usuarios:Editar', 'nomenclatura' => 'mn-03-sb-04-pm-03'])->syncRoles($rolAdmin);
-                $permisousuariosdestroy = Permission::create(['name' => 'usuarios.destroy', 'description' => 'Usuarios:Borrar', 'nomenclatura' => 'mn-03-sb-04-pm-04'])->syncRoles($rolAdmin);
+                $permisousuariosindex = Permission::create(['name' => 'usuarios.index', 'description' => 'Usuarios:Tabla', 'nomenclatura' => 'mn-03-sb-04-pm-01'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisousuariosacciones = Permission::create(['name' => 'usuarios.acciones', 'description' => 'Usuarios:Acciones', 'nomenclatura' => 'mn-03-sb-04-pm-01'])->syncRoles($rolAdmin);
+                // $permisousuariosshow = Permission::create(['name' => 'usuarios.show', 'description' => 'Usuarios:Mostrar', 'nomenclatura' => 'mn-03-sb-04-pm-02'])->syncRoles($rolAdmin);
+                // $permisousuariosedit = Permission::create(['name' => 'usuarios.edit', 'description' => 'Usuarios:Editar', 'nomenclatura' => 'mn-03-sb-04-pm-03'])->syncRoles($rolAdmin);
+                // $permisousuariosdestroy = Permission::create(['name' => 'usuarios.destroy', 'description' => 'Usuarios:Borrar', 'nomenclatura' => 'mn-03-sb-04-pm-04'])->syncRoles($rolAdmin);
 
             $permisomenuroles = Permission::create(['name' => 'menu.roles', 'description' => 'Ver Submenú Administración-Roles y Permisos', 'nomenclatura' => 'mn-03-sb-05-pm-00'])->syncRoles($rolAdmin);
                 //Permisos

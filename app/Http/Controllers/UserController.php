@@ -14,7 +14,16 @@ use Spatie\Permission\Models\Role;
  * @package App\Http\Controllers
  */
 class UserController extends Controller
-{
+{   
+    /**
+     * Revisa si los metodos tienen algun permiso para ser accedidos.
+     */
+    public function __construct()
+    {
+        $this->middleware('can:usuarios.index')->only(['index']);
+        $this->middleware('can:usuarios.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

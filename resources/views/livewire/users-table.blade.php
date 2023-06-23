@@ -80,9 +80,11 @@
                 <th class="px-1 py-1">
                     <input wire:model="searchCreatedAt" type="text" class="form-control" placeholder="Created At">
                 </th>
-                <th class="px-1 py-1">
-                    <input tabindex="-1" type="text" style="pointer-events: none; border: none;" class="form-control" placeholder="Acciones" readonly>
-                </th>
+                @can('usuarios.acciones')
+                    <th class="px-1 py-1">
+                        <input tabindex="-1" type="text" style="pointer-events: none; border: none;" class="form-control" placeholder="Acciones" readonly>
+                    </th>
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -95,21 +97,17 @@
                     <td class="border px-4 py-2">{{ $user->name }}</td>
                     <td class="border px-4 py-2">{{ $user->email }}</td>
                     <td class="border px-4 py-2">{{ $user->created_at->diffForHumans() }}</td>
-                    <td>
-                        <form action="{{ route('usuarios.destroy',$user->id) }}" method="POST">
-                            @can('usuarios.show')
-                            <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                            @endcan
-                            @can('usuarios.edit')
-                            <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>    
-                            @endcan
-                            @csrf
-                            @method('DELETE')
-                            @can('usuarios.destroy')    
-                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                            @endcan
-                        </form>
-                    </td>
+                    @can('usuarios.acciones')
+                        <td>
+                            <form action="{{ route('usuarios.destroy',$user->id) }}" method="POST">
+                                <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>                            
+                                @csrf
+                                @method('DELETE')  
+                                <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                            </form>
+                        </td>
+                    @endcan
                 </tr>
             @endforeach
         </tbody>
