@@ -11,7 +11,16 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class PuestoController extends Controller
-{
+{   
+    /**
+     * Revisa si los metodos tienen algun permiso para ser accedidos.
+     */
+    public function __construct()
+    {
+        $this->middleware('can:puestos.index')->only(['index']);
+        $this->middleware('can:puestos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('puestos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,13 +15,13 @@
                             <span id="card_title">
                                 {{ __('Puestos') }}
                             </span>
-                            @can('puestos.create')
                              <div class="float-right">
+                                @can('puestos.acciones')
                                 <a href="{{ route('puestos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Puesto') }}
                                 </a>
+                                @endcan
                               </div>
-                            @endcan
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -45,8 +44,10 @@
                                         
 										<th>Nombre del Puesto</th>
 										<th>Fecha Actualización</th>
-
+                                        
+                                        @can('puestos.acciones')
                                         <th></th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,20 +57,17 @@
                                             
 											<td>{{ $puesto->nombre }}</td>
 											<td>{{ $puesto->usuario_edito }} <br/> {{ $puesto->updated_at }}</td>
-
+                                            @can('puestos.acciones')
                                             <td>
                                                 <form action="{{ route('puestos.destroy',$puesto->id) }}" method="POST">
                                                     {{-- <a class="btn btn-sm btn-primary " href="{{ route('puestos.show',$puesto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a> --}}
-                                                    @can('puestos.edit')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('puestos.edit',$puesto->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
+                                                    <a class="btn btn-sm btn-success" href="{{ route('puestos.edit',$puesto->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    @can('puestos.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -82,7 +80,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
