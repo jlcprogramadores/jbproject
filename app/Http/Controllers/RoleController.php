@@ -7,16 +7,23 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
-{
+{   
+    /**
+     * Revisa si los metodos tienen algun permiso para ser accedidos.
+     */
+    public function __construct()
+    {
+        $this->middleware('can:roles.index')->only(['index']);
+        $this->middleware('can:roles.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-
-        
+    {    
         $roles = Role::where('name', '!=', 'Validador_1')->where('name', '!=', 'Validador_2')->where('name', '!=', 'Validador_3')->paginate();
         return view('rol.index', compact('roles'))
             ->with('i', (request()->input('page', 1) - 1) * $roles->perPage());
