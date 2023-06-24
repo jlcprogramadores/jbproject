@@ -12,7 +12,13 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class IncidenciaController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:incidencias.index')->only(['index']);
+        $this->middleware('can:incidencias:acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

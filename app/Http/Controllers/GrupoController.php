@@ -16,7 +16,13 @@ use Carbon\Carbon;
  * @package App\Http\Controllers
  */
 class GrupoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:grupos.index')->only(['index']);
+        $this->middleware('can:grupos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

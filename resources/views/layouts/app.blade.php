@@ -211,11 +211,11 @@
                                                 {{ __('Candidatos') }}
                                             </a>
                                         @endcan
-                                        @can('menu.empleados')
+                                        {{-- @can('menu.empleados') --}}
                                             <a class="dropdown-item" href="{{ route('empleados.index') }}">
                                                 {{ __('Empleados') }}
                                             </a>
-                                        @endcan
+                                        {{-- @endcan --}}
                                         @can('menu.empleado-expedientes')
                                             <a class="dropdown-item" href="{{ route('empleado-expedientes.index') }}">
                                                 {{ __('Expediente de Empleado') }}
