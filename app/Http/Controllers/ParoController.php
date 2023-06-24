@@ -18,7 +18,13 @@ use Carbon\Carbon;
  * @package App\Http\Controllers
  */
 class ParoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:paros.index')->only(['index']);
+        $this->middleware('can:paros.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

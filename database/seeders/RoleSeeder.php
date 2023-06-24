@@ -234,12 +234,13 @@ class RoleSeeder extends Seeder
             //Submenu paros
             $permisomenuparos= Permission::create(['name' => 'menu.paros', 'description' => 'Ver Submenú RecursosHumanos-Paros', 'nomenclatura' => 'mn-02-sb-06-pm-00'])->syncRoles($rolAdmin);
                 //Permisos paros
-                $permisoparosindex = Permission::create(['name' => 'paros.index', 'description' => 'Paros:Tabla', 'nomenclatura' => 'mn-02-sb-06-pm-01'])->syncRoles($rolAdmin);
-                $permisoparoscreate = Permission::create(['name' => 'paros.create', 'description' => 'Paros:Crear', 'nomenclatura' => 'mn-02-sb-06-pm-02'])->syncRoles($rolAdmin);
-                $permisoparoshistorial = Permission::create(['name' => 'paros.historial', 'description' => 'Paros:Historial', 'nomenclatura' => 'mn-02-sb-06-pm-04'])->syncRoles($rolAdmin);
-                $permisoparosshow = Permission::create(['name' => 'paros.show', 'description' => 'Paros:Mostrar', 'nomenclatura' => 'mn-02-sb-06-pm-05'])->syncRoles($rolAdmin);
-                $permisoparosedit = Permission::create(['name' => 'paros.edit', 'description' => 'Paros:Editar', 'nomenclatura' => 'mn-02-sb-06-pm-06'])->syncRoles($rolAdmin);
-                $permisoparosdestroy = Permission::create(['name' => 'paros.destroy', 'description' => 'Paros:Borrar', 'nomenclatura' => 'mn-02-sb-06-pm-07'])->syncRoles($rolAdmin);
+                $permisoparosindex = Permission::create(['name' => 'paros.index', 'description' => 'Paros:Tabla', 'nomenclatura' => 'mn-02-sb-06-pm-01'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoparosacciones = Permission::create(['name' => 'paros.acciones', 'description' => 'Paros:Acciones', 'nomenclatura' => 'mn-02-sb-06-pm-02'])->syncRoles($rolAdmin);
+                // $permisoparoscreate = Permission::create(['name' => 'paros.create', 'description' => 'Paros:Crear', 'nomenclatura' => 'mn-02-sb-06-pm-02'])->syncRoles($rolAdmin);
+                // $permisoparoshistorial = Permission::create(['name' => 'paros.historial', 'description' => 'Paros:Historial', 'nomenclatura' => 'mn-02-sb-06-pm-04'])->syncRoles($rolAdmin);
+                // $permisoparosshow = Permission::create(['name' => 'paros.show', 'description' => 'Paros:Mostrar', 'nomenclatura' => 'mn-02-sb-06-pm-05'])->syncRoles($rolAdmin);
+                // $permisoparosedit = Permission::create(['name' => 'paros.edit', 'description' => 'Paros:Editar', 'nomenclatura' => 'mn-02-sb-06-pm-06'])->syncRoles($rolAdmin);
+                // $permisoparosdestroy = Permission::create(['name' => 'paros.destroy', 'description' => 'Paros:Borrar', 'nomenclatura' => 'mn-02-sb-06-pm-07'])->syncRoles($rolAdmin);
 
             //Submenu poblacion
             $permisomenupoblacion= Permission::create(['name' => 'menu.poblacion', 'description' => 'Ver Submenú RecursosHumanos-Poblacion', 'nomenclatura' => 'mn-02-sb-07-pm-00'])->syncRoles($rolAdmin);

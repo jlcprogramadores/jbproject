@@ -43,7 +43,7 @@
                 @if (!$candidato->nombre)
                 <div>
                     {{ Form::label('Currículum del candidato') }}
-                    <input type="file" name="curriculum[]" class="form-control" multiple="multiple">
+                    <input type="file" name="curriculum[]" required class="form-control" multiple="multiple">
                 </div>
                 @endif
 
