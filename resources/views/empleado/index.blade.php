@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('empleados.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -17,10 +16,10 @@
                                 {{ __('Empleados') }}
                             </span>
                             <div class="float-right">
+                                @can('empleados.acciones')
                                 <a  href="{{ route('historial-altas.index') }}" class="btn btn-warning btn-sm float-right"  data-placement="left">
                                     {{ __('Historial Estado') }}
                                 </a> 
-                                 @can('empleados.create')
                                 <a href="{{ route('empleados.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Empleado') }}
                                 </a>
@@ -54,7 +53,9 @@
 										<th>Fin de contrato</th>
 										<th>Fecha Actualización</th>
 
-                                        <th>Acciones</th>
+                                        @can('empleados.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,25 +129,20 @@
                                                 <td></td>
                                             @endif
                                             <td><span class="peque">{{ $empleado->usuario_edito }}</span>  <br/> <span class="peque">{{ $empleado->updated_at }}</span></td>
+                                            @can('empleados.acciones')
                                             <td>
                                                 <form action="{{ route('empleados.destroy',$empleado->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Cambio De Estado</a>
-
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-contrato.index',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Contrato</a>
-                                                    @can('empleados.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('empleados.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
-                                                    @can('empleados.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
                                                 </form>
                                             </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -158,7 +154,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

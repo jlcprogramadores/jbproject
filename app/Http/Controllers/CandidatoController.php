@@ -15,8 +15,8 @@ class CandidatoController extends Controller
 {   
     public function __construct()
     {
-        $this->middleware('can:menu.candidatos')->only(['index']);
-        $this->middleware('can:candidatos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+        $this->middleware('can:Empleados:Tabla')->only(['index']);
+        $this->middleware('can:Empleados:Acciones')->only(['show', 'edit', 'update', 'destroy']);
     }
 
     /**

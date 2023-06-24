@@ -189,7 +189,7 @@ class RoleSeeder extends Seeder
             //Submenu expedientes
             $permisomenucandidatos= Permission::create(['name' => 'menu.candidatos', 'description' => 'Ver Submenú RecursosHumanos-Candidatos', 'nomenclatura' => 'mn-02-sb-01-pm-00'])->syncRoles($rolAdmin,$rolPrueba);
                 //Permisos expedientes
-                $permisocandidatosacciones = Permission::create(['name' => 'candidatos.acciones', 'description' => 'Candidatos:acciones', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
+                $permisocandidatosacciones = Permission::create(['name' => 'candidatos.acciones', 'description' => 'Candidatos:Acciones', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
                 // $permisocandidatoscreate = Permission::create(['name' => 'candidatos.create', 'description' => 'Candidatos:Crear', 'nomenclatura' => 'mn-02-sb-01-pm-02'])->syncRoles($rolAdmin);
                 // $permisocandidatosshow = Permission::create(['name' => 'candidatos.show', 'description' => 'Candidatos:Mostrar', 'nomenclatura' => 'mn-02-sb-01-pm-03'])->syncRoles($rolAdmin);
                 // $permisocandidatosedit = Permission::create(['name' => 'candidatos.edit', 'description' => 'Candidatos:Editar', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
@@ -198,11 +198,11 @@ class RoleSeeder extends Seeder
             //Submenu empleados
             $permisomenuempleados= Permission::create(['name' => 'menu.empleados', 'description' => 'Ver Submenú RecursosHumanos-Empleados', 'nomenclatura' => 'mn-02-sb-02-pm-00'])->syncRoles($rolAdmin);
                 //Permisos empleados
-                $permisoempleadosindex = Permission::create(['name' => 'empleados.index', 'description' => 'Empleados:Tabla', 'nomenclatura' => 'mn-02-sb-02-pm-01'])->syncRoles($rolAdmin);
-                $permisoempleadoscreate = Permission::create(['name' => 'empleados.create', 'description' => 'Empleados:Crear', 'nomenclatura' => 'mn-02-sb-02-pm-02'])->syncRoles($rolAdmin);
-                $permisoempleadosshow = Permission::create(['name' => 'empleados.show', 'description' => 'Empleados:Mostrar', 'nomenclatura' => 'mn-02-sb-02-pm-03'])->syncRoles($rolAdmin);
-                $permisoempleadosedit = Permission::create(['name' => 'empleados.edit', 'description' => 'Empleados:Editar', 'nomenclatura' => 'mn-02-sb-02-pm-04'])->syncRoles($rolAdmin);
-                $permisoempleadosdestroy = Permission::create(['name' => 'empleados.destroy', 'description' => 'Empleados:Borrar', 'nomenclatura' => 'mn-02-sb-02-pm-05'])->syncRoles($rolAdmin);
+                $permisoempleadosindex = Permission::create(['name' => 'empleados.index', 'description' => 'Empleados:Tabla', 'nomenclatura' => 'mn-02-sb-02-pm-01'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoempleadosacciones = Permission::create(['name' => 'empleados.acciones', 'description' => 'Empleados:Acciones', 'nomenclatura' => 'mn-02-sb-02-pm-02'])->syncRoles($rolAdmin);
+                // $permisoempleadosshow = Permission::create(['name' => 'empleados.show', 'description' => 'Empleados:Mostrar', 'nomenclatura' => 'mn-02-sb-02-pm-03'])->syncRoles($rolAdmin);
+                // $permisoempleadosedit = Permission::create(['name' => 'empleados.edit', 'description' => 'Empleados:Editar', 'nomenclatura' => 'mn-02-sb-02-pm-04'])->syncRoles($rolAdmin);
+                // $permisoempleadosdestroy = Permission::create(['name' => 'empleados.destroy', 'description' => 'Empleados:Borrar', 'nomenclatura' => 'mn-02-sb-02-pm-05'])->syncRoles($rolAdmin);
             
             //Submenu empleado-expedientes
             $permisomenuempleadoexpedientes= Permission::create(['name' => 'menu.empleado-expedientes', 'description' => 'Ver Submenú RecursosHumanos-Empleado-Expedientes', 'nomenclatura' => 'mn-02-sb-03-pm-00'])->syncRoles($rolAdmin);
