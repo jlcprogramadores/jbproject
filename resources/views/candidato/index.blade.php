@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('candidatos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,7 +15,7 @@
                             <span id="card_title">
                                 {{ __('Candidatos') }}
                             </span>
-                            @can('candidatos.create')
+                            @can('candidatos.acciones')
                              <div class="float-right">
                                 <a href="{{ route('candidatos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Candidato') }}
@@ -46,8 +45,9 @@
 										<th>Evaluación</th>
                                         <th>Semáforo</th>
 										<th>Fecha Actualización</th>
-
-                                        <th></th>
+                                        @can('candidatos.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,26 +129,22 @@
 
                                             
                                             <td><span class="peque">{{ $candidato->usuario_edito }}</span>  <br/> <span class="peque">{{ $candidato->updated_at }}</span></td>
-
-                                            <td>
-                                                <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
-                                                    @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
-                                                        <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
-                                                    @endif 
-                                                    <a class="btn btn-sm btn-success " href="{{ route('documentos-candidatos.doccandidato', $candidato->id) }}"><i class="fa fa-fw fa-eye"></i>   {{ __('Documentos') }}</a>
-                                                    @can('candidatos.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('candidatos.edit')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('candidatos.edit',$candidato->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    @can('candidatos.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
-                                                </form>
-                                            </td>
+                                            @can('candidatos.acciones')
+                                                <td>
+                                                    <form action="{{ route('candidatos.destroy',$candidato->id) }}" method="POST">
+                                                        @if ( Auth::user()->hasRole('Validador_1') || Auth::user()->hasRole('Validador_2') || Auth::user()->hasRole('Validador_3'))
+                                                            <a class="btn btn-sm btn-warning " href="{{ route('candidatos.evaluar',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i>Evaluar</a>
+                                                        @endif 
+                                                        <a class="btn btn-sm btn-success " href="{{ route('documentos-candidatos.doccandidato', $candidato->id) }}"><i class="fa fa-fw fa-eye"></i>   {{ __('Documentos') }}</a>
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('candidatos.show',$candidato->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('candidatos.edit',$candidato->id) }}"><i class="fa fa-fw fa-edit"></i> </a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> </button>
+                                                        
+                                                    </form>
+                                                </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -161,7 +157,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

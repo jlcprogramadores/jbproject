@@ -12,7 +12,13 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class CandidatoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:menu.candidatos')->only(['index']);
+        $this->middleware('can:candidatos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
