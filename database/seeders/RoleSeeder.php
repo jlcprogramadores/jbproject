@@ -32,7 +32,7 @@ class RoleSeeder extends Seeder
                 $permisofinanzascorreo = Permission::create(['name' => 'finanzas.correo', 'description' => 'Finanzas:Correo', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 $permisofinanzascreate = Permission::create(['name' => 'finanzas.create', 'description' => 'Finanzas:Crear', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 $permisofinanzasshow = Permission::create(['name' => 'finanzas.show', 'description' => 'Finanzas:Mostrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit', 'descrviption' => 'Finanzas:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                $permisofinanzasedit = Permission::create(['name' => 'finanzas.edit', 'description' => 'Finanzas:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 $permisofinanzasdestroy = Permission::create(['name' => 'finanzas.destroy', 'description' => 'Finanzas:Borrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 $permisofinanzasegreso = Permission::create(['name' => 'finanzas.egreso', 'description' => 'Finanzas:Crear Egreso', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 $permisofinanzasingreso = Permission::create(['name' => 'finanzas.ingreso', 'description' => 'Finanzas:Crear Ingreso', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
@@ -154,11 +154,11 @@ class RoleSeeder extends Seeder
 
             $permisomenutipodeingresos = Permission::create(['name' => 'menu.tipo-de-ingresos', 'description' => 'Ver Submenú Administración-Tipo de Ingresos', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 //Permisos
-                $permisotipodeingresosindex = Permission::create(['name' => 'tipo-de-ingresos.index', 'description' => 'Tipo de Ingresos:Tabla', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisotipodeingresoscreate = Permission::create(['name' => 'tipo-de-ingresos.create', 'description' => 'Tipo de Ingresos:Crear', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisotipodeingresosshow = Permission::create(['name' => 'tipo-de-ingresos.show', 'description' => 'Tipo de Ingresos:Mostrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisotipodeingresosedit = Permission::create(['name' => 'tipo-de-ingresos.edit', 'description' => 'Tipo de Ingresos:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisotipodeingresosdestroy = Permission::create(['name' => 'tipo-de-ingresos.destroy', 'description' => 'Tipo de Ingresos:Borrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                $permisotipodeingresosindex = Permission::create(['name' => 'tipo-de-ingresos.index', 'description' => 'Tipo de Ingresos:Tabla', 'nomenclatura' => '1'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisotipodeingresosacciones = Permission::create(['name' => 'tipo-de-ingresos.acciones', 'description' => 'Tipo de Ingresos:Acciones', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisotipodeingresosshow = Permission::create(['name' => 'tipo-de-ingresos.show', 'description' => 'Tipo de Ingresos:Mostrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisotipodeingresosedit = Permission::create(['name' => 'tipo-de-ingresos.edit', 'description' => 'Tipo de Ingresos:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisotipodeingresosdestroy = Permission::create(['name' => 'tipo-de-ingresos.destroy', 'description' => 'Tipo de Ingresos:Borrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
 
             $permisomenuunidades = Permission::create(['name' => 'menu.unidades', 'description' => 'Ver Submenú Administración-Unidades', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 //Permisos

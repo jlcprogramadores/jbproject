@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('tipo-de-ingresos.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,7 +15,7 @@
                             <span id="card_title">
                                 {{ __('Tipo De Ingreso') }}
                             </span>
-                            @can('tipo-de-ingresos.destroy')
+                            @can('tipo-de-ingresos.acciones')
                              <div class="float-right">
                                 <a href="{{ route('tipo-de-ingresos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Tipo De Ingreso') }}
@@ -45,7 +44,9 @@
 										<th>Nombre</th>
 										<th>Descripción</th>
                                         <th>Actualización</th>
-                                        <th>Acciones</th>
+                                        @can('tipo-de-ingresos.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,21 +57,17 @@
 											<td>{{ $tipoDeIngreso->nombre }}</td>
 											<td>{{ $tipoDeIngreso->descripcion }}</td>
                                             <td><span class="peque">{{ $tipoDeIngreso->usuario_edito }}</span>  <br/> <span class="peque">{{ $tipoDeIngreso->updated_at }}</span></td>
+                                            @can('tipo-de-ingresos.acciones')
                                             <td>
                                                 <form action="{{ route('tipo-de-ingresos.destroy',$tipoDeIngreso->id) }}" method="POST">
-                                                    @can('tipo-de-ingresos.show')
                                                     <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-ingresos.show',$tipoDeIngreso->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('tipo-de-ingresos.edit')
                                                     <a class="btn btn-sm btn-success" href="{{ route('tipo-de-ingresos.edit',$tipoDeIngreso->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
                                                     @csrf
                                                     @method('DELETE')
-                                                    @can('tipo-de-ingresos.destroy')
                                                     <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
                                                 </form>
                                             </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -83,7 +80,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

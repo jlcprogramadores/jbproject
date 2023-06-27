@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class TipoDeIngresoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:tipo-de-ingresos.index')->only(['index']);
+        $this->middleware('can:tipo-de-ingresos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
