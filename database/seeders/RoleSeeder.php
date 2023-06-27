@@ -72,11 +72,11 @@ class RoleSeeder extends Seeder
             
             $permisomenuclientes = Permission::create(['name' => 'menu.clientes', 'description' => 'Ver Submenú Administración-Clientes', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 //Permisos
-                $permisoclientesindex = Permission::create(['name' => 'clientes.index', 'description' => 'Clientes:Tabla', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisoclientescreate = Permission::create(['name' => 'clientes.create', 'description' => 'Clientes:Crear', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisoclientesshow = Permission::create(['name' => 'clientes.show', 'description' => 'Clientes:Mostrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisoclientesedit = Permission::create(['name' => 'clientes.edit', 'description' => 'Clientes:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
-                $permisoclientesdestroy = Permission::create(['name' => 'clientes.destroy', 'description' => 'Clientes:Borrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                $permisoclientesindex = Permission::create(['name' => 'clientes.index', 'description' => 'Clientes:Tabla', 'nomenclatura' => '1'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoclientesacciones = Permission::create(['name' => 'clientes.acciones', 'description' => 'Clientes:Acciones', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisoclientesshow = Permission::create(['name' => 'clientes.show', 'description' => 'Clientes:Mostrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisoclientesedit = Permission::create(['name' => 'clientes.edit', 'description' => 'Clientes:Editar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
+                // $permisoclientesdestroy = Permission::create(['name' => 'clientes.destroy', 'description' => 'Clientes:Borrar', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
 
             $permisomenuproveedores = Permission::create(['name' => 'menu.proveedores', 'description' => 'Ver Submenú Administración-Proveedores', 'nomenclatura' => '1'])->syncRoles($rolAdmin);
                 //Permisos

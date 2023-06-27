@@ -13,7 +13,12 @@ use App\Models\Direccione;
  * @package App\Http\Controllers
  */
 class ClienteController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:clientes.index')->only(['index']);
+        $this->middleware('can:clientes.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

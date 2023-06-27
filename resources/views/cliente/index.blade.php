@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('clientes.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,7 +15,7 @@
                             <span id="card_title">
                                 {{ __('Clientes') }}
                             </span>
-                            @can('clientes.index')
+                            @can('clientes.acciones')
                             <div class="float-right">
                                 <a href="{{ route('clientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Cliente') }}
@@ -49,9 +48,10 @@
                                         <th>Dirección</th>
                                         <th>Teléfono</th>
                                         <th>Actualización</th>
-                                        <th class="botones">Datos</th>    
-                                        <th>Acciones</th>
-                                        
+                                        @can('clientes.acciones')
+                                            <th class="botones">Datos</th>    
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,29 +94,21 @@
                                                 @endforeach
                                             </td>
                                             <td><span class="peque">{{ $cliente->usuario_edito }}</span>  <br/> <span class="peque">{{ $cliente->updated_at }}</span></td>
-                                            <td>
-                                                @can('direcciones.direccioncliente')
-                                                <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
-                                                @endcan
-                                                @can('telefonos.telefonocliente')
-                                                <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
-                                                @endcan
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
-                                                    @can('clientes.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('clientes.edit')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    @can('clientes.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan    
-                                                </form>
-                                            </td>
+                                            @can('clientes.acciones')
+                                                <td>
+                                                    <a class="btn btn-sm btn-warning" href="{{ route('direcciones.direccioncliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Dirección</a>
+                                                    <a class="btn btn-sm btn-warning" href="{{ route('telefonos.telefonocliente', ['id' => $cliente->id]) }}"><i class="fa fa-fw fa-edit"></i> Teléfono</a>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    </form>
+                                                </td>
+                                            @endcan    
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -129,7 +121,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
