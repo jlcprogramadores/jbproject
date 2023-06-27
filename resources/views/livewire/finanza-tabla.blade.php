@@ -47,10 +47,34 @@
             <div class="input-group input-group-sm">
                 <label class="input-group-text">Orden por:</label>
                 <select wire:model="orderBy" class="form-select">
-                    <option value="id">no</option>
-                    <option value="name">Name</option>
-                    <option value="email">Email</option>
-                    <option value="created_at">Sign Up Date</option>
+                    <option value="no">No</option>
+                    <option value="fecha_entrada">Fecha Entrada</option>
+                    <option value="fecha_salida">Fecha Salida</option>
+                    <option value="vence">Vence</option>
+                    <option value="fecha_vencimiento">Fecha Vencimiento</option>
+                    <option value="dias">Días</option>
+                    <option value="estado">Estado</option>
+                    <option value="tipo">Tipo I&E</option>
+                    <option value="fam_cat">Fam & Cat</option>
+                    <option value="razon_social">Razón Social</option>
+                    <option value="proyecto">Proyecto</option>
+                    <option value="descripcion">Descripción</option>
+                    <option value="factura_folio">Factora o Folio</option>
+                    <option value="provedor_cliente">Proveedor o Cliente</option>
+                    <option value="cantidad_unidad">Cantidad & Unidad</option>
+                    <option value="costo_unitario">Costo Unitario</option>
+                    <option value="subtotal">Subtotal</option>
+                    <option value="iva">IVA</option>
+                    <option value="total">Total</option>
+                    <option value="monto_pagar">Método de pago</option>
+                    <option value="fecha_pago">Fecha De Pago</option>
+                    <option value="metodo_pago">Método de pago</option>
+                    <option value="estatus">Estatus</option>
+                    <option value="entregado">Entregado Material</option>
+                    <option value="a_meses">A Meses</option>
+                    <option value="fecha_facturacion">Fecha Facturación</option>
+                    <option value="comentario">Comentario</option>
+                    <option value="comprobante">Comprobante</option>
                 </select>
             </div>
         </div>
@@ -226,7 +250,7 @@
                 <td>{{ $item->total }}</td>
                 <td>{{ $item->monto_pagar }}</td>
                 <td>{{ $item->fecha_de_pago }}</td>
-                <td>{{ $item->metodo_de_pago }}</td>
+                <td>{{ $item->metodo_pago }}</td>
                 <td>
                     @if ($item->es_pagado == 'Pagado')
                         <p class="badge bg-success">Pagado</p>

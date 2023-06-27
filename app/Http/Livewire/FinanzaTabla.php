@@ -73,7 +73,7 @@ class FinanzaTabla extends Component
             DB::raw("CONCAT('$', FORMAT(((finanzas.costo_unitario * finanzas.cantidad) * ivas.porcentaje), 2)) AS total"),
             DB::raw("CONCAT('$', FORMAT(finanzas.monto_a_pagar, 2)) as monto_pagar"),
             DB::raw("DATE_FORMAT(finanzas.fecha_de_pago, '%Y-%m-%d') as fecha_de_pago"),
-            'finanzas.metodo_de_pago',
+            'finanzas.metodo_de_pago as metodo_pago',
             DB::raw("if(finanzas.es_pagado = 0, 'Pagado', 'Pendiente') as estatus"),
             'finanzas.entregado_material_a as entregado',
             DB::raw("if(finanzas.a_meses is not NULL, (SELECT GROUP_CONCAT(if(DATE_FORMAT(fac.mes_de_pago, '%Y-%m') = DATE_FORMAT(NOW(), '%Y-%m'), if(fac.monto is not NULL and fac.monto != 0, CONCAT('<span class=\"badge bg-success\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Pagado</span>'), CONCAT('<span class=\"badge bg-warning text-dark\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Por Vencer</span>')), if(fac.mes_de_pago < NOW(), if(fac.monto is not NULL and fac.monto != 0, '', CONCAT('<span class=\"badge bg-danger\">', DATE_FORMAT(fac.mes_de_pago, '%Y-%m'), ' ', 'Vencido</span>')), ''))) FROM facturas as fac WHERE fac.finanza_id = finanzas.id), 'N/A') as a_meses"),
@@ -152,8 +152,8 @@ class FinanzaTabla extends Component
         ->when($this->monto_pagar, function ($query) {
             $query->having('monto_pagar', 'like', '%' . $this->monto_pagar . '%');
         })
-        ->when($this->monto_pagar, function ($query) {
-            $query->having('monto_pagar', 'like', '%' . $this->monto_pagar . '%');
+        ->when($this->metodo_pago, function ($query) {
+            $query->having('metodo_pago', 'like', '%' . $this->metodo_pago . '%');
         })
         ->when($this->estatus, function ($query) {
             $query->having('estatus', 'like', '%' . $this->estatus . '%');
@@ -171,7 +171,7 @@ class FinanzaTabla extends Component
             $query->having('comprobante', 'like', '%' . $this->comprobante . '%');
         })
         
-        // ->orderBy('finanzas.' . $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        ->orderBy( $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
         // ->toSql();
         // dd($finanzas);
         ->paginate($this->perPage);
