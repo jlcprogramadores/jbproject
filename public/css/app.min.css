@@ -12029,12 +12029,6 @@ td form {
     height: 46px
 }
 
-.list-group {
-    max-height: 500px;
-    margin-bottom: 10px;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch
-}
 
 .dropdown-menu .submenu {
     display: none;
@@ -12061,3 +12055,23 @@ td form {
 .completa {
     white-space: nowrap !important
 }
+.permisos-lista {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .permisos-lista li {
+    margin-bottom: 10px;
+  }
+  .permisos-container {
+    column-count: 4;
+    column-gap: 20px;
+  }
+  .list-group-item {
+    padding: 0.25rem 0.75rem !important; /* Ajusta el padding superior e inferior */
+    margin-bottom: 0.25rem !important; /* Ajusta el margen inferior */
+    font-size: 1.0rem !important; /* Ajusta el tamaño de la fuente */
+  }
+
+  

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Role as Roles;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -79,10 +80,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $rol = Role::findById($id);
-        $permissions = Permission::all()->sortBy('nomenclatura'); 
-
-        return view('rol.edit', compact('rol','permissions'));
+        $role = Role::find($id);
+        $permissions = Permission::all(); 
+        
+        return view('rol.edit', compact('role','permissions'));
     }
 
     /**
