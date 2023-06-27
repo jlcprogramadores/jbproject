@@ -162,11 +162,12 @@ class RoleSeeder extends Seeder
 
             $permisomenuunidades = Permission::create(['name' => 'menu.unidades', 'description' => 'Ver Submenú Administración-Unidades', 'nomenclatura' => 'mn-01-sb-18-pm-00'])->syncRoles($rolAdmin);
                 //Permisos
-                $permisounidadesindex = Permission::create(['name' => 'unidades.index', 'description' => 'Unidades:Tabla', 'nomenclatura' => 'mn-01-sb-18-pm-01'])->syncRoles($rolAdmin);
-                $permisounidadescreate = Permission::create(['name' => 'unidades.create', 'description' => 'Unidades:Crear', 'nomenclatura' => 'mn-01-sb-18-pm-02'])->syncRoles($rolAdmin);
-                $permisounidadesshow = Permission::create(['name' => 'unidades.show', 'description' => 'Unidades:Mostrar', 'nomenclatura' => 'mn-01-sb-18-pm-03'])->syncRoles($rolAdmin);
-                $permisounidadesedit = Permission::create(['name' => 'unidades.edit', 'description' => 'Unidades:Editar', 'nomenclatura' => 'mn-01-sb-18-pm-04'])->syncRoles($rolAdmin);
-                $permisounidadesdestroy = Permission::create(['name' => 'unidades.destroy', 'description' => 'Unidades:Borrar', 'nomenclatura' => 'mn-01-sb-18-pm-05'])->syncRoles($rolAdmin);
+                $permisounidadesindex = Permission::create(['name' => 'unidades.index', 'description' => 'Unidades:Tabla', 'nomenclatura' => 'mn-01-sb-18-pm-01'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisounidadesacciones = Permission::create(['name' => 'unidades.acciones', 'description' => 'Unidades:Acciones', 'nomenclatura' => 'mn-01-sb-18-pm-02'])->syncRoles($rolAdmin);
+                // $permisounidadescreate = Permission::create(['name' => 'unidades.create', 'description' => 'Unidades:Crear', 'nomenclatura' => 'mn-01-sb-18-pm-02'])->syncRoles($rolAdmin);
+                // $permisounidadesshow = Permission::create(['name' => 'unidades.show', 'description' => 'Unidades:Mostrar', 'nomenclatura' => 'mn-01-sb-18-pm-03'])->syncRoles($rolAdmin);
+                // $permisounidadesedit = Permission::create(['name' => 'unidades.edit', 'description' => 'Unidades:Editar', 'nomenclatura' => 'mn-01-sb-18-pm-04'])->syncRoles($rolAdmin);
+                // $permisounidadesdestroy = Permission::create(['name' => 'unidades.destroy', 'description' => 'Unidades:Borrar', 'nomenclatura' => 'mn-01-sb-18-pm-05'])->syncRoles($rolAdmin);
             
             $permisomenuunidades = Permission::create(['name' => 'menu.camposProCli', 'description' => 'Campos contenidos en Proveedores y Clientes', 'nomenclatura' => 'mn-01-sb-19-pm-00'])->syncRoles($rolAdmin);
 
@@ -189,7 +190,8 @@ class RoleSeeder extends Seeder
             //Submenu expedientes
             $permisomenucandidatos= Permission::create(['name' => 'menu.candidatos', 'description' => 'Ver Submenú RecursosHumanos-Candidatos', 'nomenclatura' => 'mn-02-sb-01-pm-00'])->syncRoles($rolAdmin,$rolPrueba);
                 //Permisos expedientes
-                $permisocandidatosacciones = Permission::create(['name' => 'candidatos.acciones', 'description' => 'Candidatos:Acciones', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
+                $permisocandidatosindex = Permission::create(['name' => 'candidatos.index', 'description' => 'Candidatos:Tabla', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin,$rolPrueba);
+                $permisocandidatosacciones = Permission::create(['name' => 'candidatos.acciones', 'description' => 'Candidatos:Acciones', 'nomenclatura' => 'mn-02-sb-01-pm-02'])->syncRoles($rolAdmin);
                 // $permisocandidatoscreate = Permission::create(['name' => 'candidatos.create', 'description' => 'Candidatos:Crear', 'nomenclatura' => 'mn-02-sb-01-pm-02'])->syncRoles($rolAdmin);
                 // $permisocandidatosshow = Permission::create(['name' => 'candidatos.show', 'description' => 'Candidatos:Mostrar', 'nomenclatura' => 'mn-02-sb-01-pm-03'])->syncRoles($rolAdmin);
                 // $permisocandidatosedit = Permission::create(['name' => 'candidatos.edit', 'description' => 'Candidatos:Editar', 'nomenclatura' => 'mn-02-sb-01-pm-01'])->syncRoles($rolAdmin);
