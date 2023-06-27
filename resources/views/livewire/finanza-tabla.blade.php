@@ -182,7 +182,7 @@
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">ooooooooooooooo</span>
-                    <input wire:model="metodo_pago" type="text" class="form-control" placeholder="Metodo De Pago">
+                    <input wire:model="metodo_pago" type="text" class="form-control" placeholder="Método De Pago">
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">ooooooooooooooo</span>
@@ -198,7 +198,7 @@
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">ooooooooooooooo</span>
-                    <input wire:model="fecha_facturacion" type="text" class="form-control" placeholder="Fecha Facturacion">
+                    <input wire:model="fecha_facturacion" type="text" class="form-control" placeholder="Fecha Facturación">
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">ooooooooooooooo</span>
