@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('tipo-de-direcciones.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -16,12 +15,12 @@
                             <span id="card_title">
                                 {{ __('Tipo De Direcciones') }}
                             </span>
-                            @can('tipo-de-direcciones.destroy')
-                             <div class="float-right">
-                                <a href="{{ route('tipo-de-direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Tipo De Dirección') }}
-                                </a>
-                              </div>
+                            @can('tipo-de-direcciones.acciones')
+                                <div class="float-right">
+                                    <a href="{{ route('tipo-de-direcciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Tipo De Dirección') }}
+                                    </a>
+                                </div>
                             @endcan
                         </div>
                     </div>
@@ -45,7 +44,9 @@
 										<th>Nombre</th>
 										<th>Es Fiscal</th>
                                         <th>Actualización</th>
-                                        <th>Acciones</th>
+                                        @can('tipo-de-direcciones.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,21 +57,17 @@
 											<td>{{ $tipoDeDireccione->nombre }}</td>
 											<td>{{ $tipoDeDireccione->es_fiscal ? 'SI' : 'NO'}}</td>
                                             <td><span class="peque">{{ $tipoDeDireccione->usuario_edito }}</span>  <br/> <span class="peque">{{ $tipoDeDireccione->updated_at }}</span></td>
-                                            <td>
-                                                <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">
-                                                    @can('tipo-de-direcciones.show')
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-direcciones.show',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    @endcan
-                                                    @can('tipo-de-direcciones.edit')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tipo-de-direcciones.edit',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                    @endcan
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    @can('tipo-de-direcciones.destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                    @endcan
-                                                </form>
-                                            </td>
+                                            @can('tipo-de-direcciones.acciones')
+                                                <td>
+                                                    <form action="{{ route('tipo-de-direcciones.destroy',$tipoDeDireccione->id) }}" method="POST">
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('tipo-de-direcciones.show',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('tipo-de-direcciones.edit',$tipoDeDireccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    </form>
+                                                </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -83,7 +80,6 @@
         </div>
     </div>
 @endsection
-@endcan
 @endif
 @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

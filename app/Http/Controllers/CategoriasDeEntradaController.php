@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
  */
 class CategoriasDeEntradaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:categorias-de-entradas.index')->only(['index']);
+        $this->middleware('can:categorias-de-entradas.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

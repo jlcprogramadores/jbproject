@@ -114,11 +114,11 @@ class RoleSeeder extends Seeder
 
             $permisomenucategoriasdeentrada = Permission::create(['name' => 'menu.categorias-de-entrada', 'description' => 'Ver Submenú Administración-Categorías de entrada', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisocategoriasdeentradasindex = Permission::create(['name' => 'categorias-de-entradas.index', 'description' => 'Categorías de entrada:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasdeentradascreate = Permission::create(['name' => 'categorias-de-entradas.create', 'description' => 'Categorías de entrada:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasdeentradasshow = Permission::create(['name' => 'categorias-de-entradas.show', 'description' => 'Categorías de entrada:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasdeentradasedit = Permission::create(['name' => 'categorias-de-entradas.edit', 'description' => 'Categorías de entrada:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasdeentradasdestroy = Permission::create(['name' => 'categorias-de-entradas.destroy', 'description' => 'Categorías de entrada:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisocategoriasdeentradasindex = Permission::create(['name' => 'categorias-de-entradas.index', 'description' => 'Categorías de entrada:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisocategoriasdeentradasacciones = Permission::create(['name' => 'categorias-de-entradas.acciones', 'description' => 'Categorías de entrada:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasdeentradasshow = Permission::create(['name' => 'categorias-de-entradas.show', 'description' => 'Categorías de entrada:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasdeentradasedit = Permission::create(['name' => 'categorias-de-entradas.edit', 'description' => 'Categorías de entrada:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasdeentradasdestroy = Permission::create(['name' => 'categorias-de-entradas.destroy', 'description' => 'Categorías de entrada:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             $permisomenucategoriasfamilias = Permission::create(['name' => 'menu.categorias-familias', 'description' => 'Ver Submenú Administración-Categorías de Familias', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
@@ -146,11 +146,11 @@ class RoleSeeder extends Seeder
 
             $permisomenutipodedirecciones = Permission::create(['name' => 'menu.tipo-de-direcciones', 'description' => 'Ver Submenú Administración- Tipo de Direcciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisotipodedireccionesindex = Permission::create(['name' => 'tipo-de-direcciones.index', 'description' => 'Tipo de Direcciones:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisotipodedireccionescreate = Permission::create(['name' => 'tipo-de-direcciones.create', 'description' => 'Tipo de Direcciones:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisotipodedireccionesshow = Permission::create(['name' => 'tipo-de-direcciones.show', 'description' => 'Tipo de Direcciones:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisotipodedireccionesedit = Permission::create(['name' => 'tipo-de-direcciones.edit', 'description' => 'Tipo de Direcciones:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisotipodedireccionesdestroy = Permission::create(['name' => 'tipo-de-direcciones.destroy', 'description' => 'Tipo de Direcciones:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisotipodedireccionesindex = Permission::create(['name' => 'tipo-de-direcciones.index', 'description' => 'Tipo de Direcciones:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisotipodedireccionesacciones = Permission::create(['name' => 'tipo-de-direcciones.acciones', 'description' => 'Tipo de Direcciones:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisotipodedireccionesshow = Permission::create(['name' => 'tipo-de-direcciones.show', 'description' => 'Tipo de Direcciones:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisotipodedireccionesedit = Permission::create(['name' => 'tipo-de-direcciones.edit', 'description' => 'Tipo de Direcciones:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisotipodedireccionesdestroy = Permission::create(['name' => 'tipo-de-direcciones.destroy', 'description' => 'Tipo de Direcciones:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             $permisomenutipodeingresos = Permission::create(['name' => 'menu.tipo-de-ingresos', 'description' => 'Ver Submenú Administración-Tipo de Ingresos', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
