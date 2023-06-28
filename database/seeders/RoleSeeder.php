@@ -122,19 +122,19 @@ class RoleSeeder extends Seeder
 
             $permisomenucategoriasfamilias = Permission::create(['name' => 'menu.categorias-familias', 'description' => 'Ver Submenú Administración-Categorías de Familias', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisocategoriasfamiliasindex = Permission::create(['name' => 'categorias-familias.index', 'description' => 'Categorías Familias:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasfamiliascreate = Permission::create(['name' => 'categorias-familias.create', 'description' => 'Categorías Familias:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasfamiliasshow = Permission::create(['name' => 'categorias-familias.show', 'description' => 'Categorías Familias:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasfamiliasedit = Permission::create(['name' => 'categorias-familias.edit', 'description' => 'Categorías Familias:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisocategoriasfamiliasdestroy = Permission::create(['name' => 'categorias-familias.destroy', 'description' => 'Categorías Familias:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisocategoriasfamiliasindex = Permission::create(['name' => 'categorias-familias.index', 'description' => 'Categorías Familias:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisocategoriasfamiliasacciones = Permission::create(['name' => 'categorias-familias.acciones', 'description' => 'Categorías Familias:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasfamiliasshow = Permission::create(['name' => 'categorias-familias.show', 'description' => 'Categorías Familias:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasfamiliasedit = Permission::create(['name' => 'categorias-familias.edit', 'description' => 'Categorías Familias:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisocategoriasfamiliasdestroy = Permission::create(['name' => 'categorias-familias.destroy', 'description' => 'Categorías Familias:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             $permisomenufamilias = Permission::create(['name' => 'menu.familias', 'description' => 'Ver Submenú Administración-Familias', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisofamiliasindex = Permission::create(['name' => 'familias.index', 'description' => 'Familias:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisofamiliascreate = Permission::create(['name' => 'familias.create', 'description' => 'Familias:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisofamiliasshow = Permission::create(['name' => 'familias.show', 'description' => 'Familias:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisofamiliasedit = Permission::create(['name' => 'familias.edit', 'description' => 'Familias:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisofamiliasdestroy = Permission::create(['name' => 'familias.destroy', 'description' => 'Familias:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisofamiliasindex = Permission::create(['name' => 'familias.index', 'description' => 'Familias:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisofamiliasacciones= Permission::create(['name' => 'familias.acciones', 'description' => 'Familias:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisofamiliasshow = Permission::create(['name' => 'familias.show', 'description' => 'Familias:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisofamiliasedit = Permission::create(['name' => 'familias.edit', 'description' => 'Familias:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisofamiliasdestroy = Permission::create(['name' => 'familias.destroy', 'description' => 'Familias:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             $permisomenuivas = Permission::create(['name' => 'menu.ivas', 'description' => 'Ver Submenú Administración-Ivas', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos

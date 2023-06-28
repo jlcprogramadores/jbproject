@@ -14,7 +14,13 @@ use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
  * @package App\Http\Controllers
  */
 class CategoriasFamiliaController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:categorias-familias.index')->only(['index']);
+        $this->middleware('can:categorias-familias.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

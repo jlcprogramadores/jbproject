@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class FamiliaController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:familias.index')->only(['index']);
+        $this->middleware('can:familias.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
