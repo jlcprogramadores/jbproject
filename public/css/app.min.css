@@ -12065,7 +12065,7 @@ td form {
     margin-bottom: 10px;
   }
   .permisos-container {
-    column-count: 4;
+    column-count: 2;
     column-gap: 20px;
   }
   .list-group-item {
