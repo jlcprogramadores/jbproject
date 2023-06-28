@@ -103,11 +103,11 @@ class RoleSeeder extends Seeder
             
             $permisomenuminas = Permission::create(['name' => 'menu.minas', 'description' => 'Ver Submenú Administración-Minas', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisominasindex = Permission::create(['name' => 'minas.index', 'description' => 'Mina:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisominascreate = Permission::create(['name' => 'minas.create', 'description' => 'Mina:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisominasshow = Permission::create(['name' => 'minas.show', 'description' => 'Mina:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisominasedit = Permission::create(['name' => 'minas.edit', 'description' => 'Mina:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisominasdestroy = Permission::create(['name' => 'minas.destroy', 'description' => 'Mina:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisominasindex = Permission::create(['name' => 'minas.index', 'description' => 'Mina:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisominasacciones = Permission::create(['name' => 'minas.acciones', 'description' => 'Mina:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisominasshow = Permission::create(['name' => 'minas.show', 'description' => 'Mina:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisominasedit = Permission::create(['name' => 'minas.edit', 'description' => 'Mina:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisominasdestroy = Permission::create(['name' => 'minas.destroy', 'description' => 'Mina:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             // configuracion
             $permisomenuconfiguracion = Permission::create(['name' => 'conf.1', 'description' => 'Configuración', 'nomenclatura' => 1])->syncRoles($rolAdmin);
@@ -138,11 +138,11 @@ class RoleSeeder extends Seeder
 
             $permisomenuivas = Permission::create(['name' => 'menu.ivas', 'description' => 'Ver Submenú Administración-Ivas', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisoivasindex = Permission::create(['name' => 'ivas.index', 'description' => 'Ivas:Tablas', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoivascreate = Permission::create(['name' => 'ivas.create', 'description' => 'Ivas:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoivasshow = Permission::create(['name' => 'ivas.show', 'description' => 'Ivas:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoivasedit = Permission::create(['name' => 'ivas.edit', 'description' => 'Ivas:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoivasdestroy = Permission::create(['name' => 'ivas.destroy', 'description' => 'Ivas:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisoivasindex = Permission::create(['name' => 'ivas.index', 'description' => 'Ivas:Tablas', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoivasacciones = Permission::create(['name' => 'ivas.acciones', 'description' => 'Ivas:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoivasshow = Permission::create(['name' => 'ivas.show', 'description' => 'Ivas:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoivasedit = Permission::create(['name' => 'ivas.edit', 'description' => 'Ivas:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoivasdestroy = Permission::create(['name' => 'ivas.destroy', 'description' => 'Ivas:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             $permisomenutipodedirecciones = Permission::create(['name' => 'menu.tipo-de-direcciones', 'description' => 'Ver Submenú Administración- Tipo de Direcciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
