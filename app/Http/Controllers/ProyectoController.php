@@ -15,7 +15,13 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class ProyectoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:proyectos.index')->only(['index']);
+        $this->middleware('can:proyectos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -80,11 +80,11 @@ class RoleSeeder extends Seeder
 
             $permisomenuproveedores = Permission::create(['name' => 'menu.proveedores', 'description' => 'Ver Submenú Administración-Proveedores', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisoproveedoresindex = Permission::create(['name' => 'proveedores.index', 'description' => 'Proveedores:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproveedorescreate = Permission::create(['name' => 'proveedores.create', 'description' => 'Proveedores:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproveedoresshow = Permission::create(['name' => 'proveedores.show', 'description' => 'Proveedores:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproveedoresedit = Permission::create(['name' => 'proveedores.edit', 'description' => 'Proveedores:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproveedoresdestroy = Permission::create(['name' => 'proveedores.destroy', 'description' => 'Proveedores:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisoproveedoresindex = Permission::create(['name' => 'proveedores.index', 'description' => 'Proveedores:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoproveedoresacciones = Permission::create(['name' => 'proveedores.acciones', 'description' => 'Proveedores:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproveedoresshow = Permission::create(['name' => 'proveedores.show', 'description' => 'Proveedores:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproveedoresedit = Permission::create(['name' => 'proveedores.edit', 'description' => 'Proveedores:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproveedoresdestroy = Permission::create(['name' => 'proveedores.destroy', 'description' => 'Proveedores:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
                 //Permisos Cuentas Bancarias 
                 $permisocuentabancariaproveedor = Permission::create(['name' => 'cuentasbancarias.cuentabancariaproveedor', 'description' => 'Cuenta Bancaria Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
@@ -95,11 +95,11 @@ class RoleSeeder extends Seeder
 
             $permisomenuproyectos = Permission::create(['name' => 'menu.proyectos', 'description' => 'Ver Submenú Administración-Proyectos', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
-                $permisoproyectosindex = Permission::create(['name' => 'proyectos.index', 'description' => 'Proyectos:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproyectoscreate = Permission::create(['name' => 'proyectos.create', 'description' => 'Proyectos:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproyectosshow = Permission::create(['name' => 'proyectos.show', 'description' => 'Proyectos:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproyectosedit = Permission::create(['name' => 'proyectos.edit', 'description' => 'Proyectos:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                $permisoproyectosdestroy = Permission::create(['name' => 'proyectos.destroy', 'description' => 'Proyectos:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                $permisoproyectosindex = Permission::create(['name' => 'proyectos.index', 'description' => 'Proyectos:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin,$rolPrueba);
+                $permisoproyectosacciones = Permission::create(['name' => 'proyectos.acciones', 'description' => 'Proyectos:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproyectosshow = Permission::create(['name' => 'proyectos.show', 'description' => 'Proyectos:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproyectosedit = Permission::create(['name' => 'proyectos.edit', 'description' => 'Proyectos:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // $permisoproyectosdestroy = Permission::create(['name' => 'proyectos.destroy', 'description' => 'Proyectos:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
             
             $permisomenuminas = Permission::create(['name' => 'menu.minas', 'description' => 'Ver Submenú Administración-Minas', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos

@@ -13,7 +13,13 @@ use App\Models\Direccione;
  * @package App\Http\Controllers
  */
 class ProveedoreController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:proveedores.index')->only(['index']);
+        $this->middleware('can:proveedores.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
