@@ -210,7 +210,10 @@
                 </th>
                 <th>Fecha Actualización</th>
 
-                <th>Acciones</th>
+                @can('finanzas.acciones')
+                    <th>Acciones</th>
+                @endcan
+                
                 <th>Acc. Especiales</th>
             </tr>
         </thead>
@@ -271,30 +274,25 @@
                 </td>
                 
                 <td><span class="peque">{{ $item->usuario_edito }}</span>  <br/> <span class="peque">{{ $item->updated_at }}</span></td>
-                <td>
-                    <span class="completo">
-                        <form action="{{ route('finanzas.destroy',$item->id) }}" method="POST">
-                           
-                            @can('finanzas.show')
-                                <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$item->id) }}"><i class="fa fa-fw fa-eye"></i></a>
-                            @endcan
-                            @can('finanzas.edit')
-                                @if (!empty($item->a_meses))
-                                    <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgresoMeses',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                @elseif($item->salidas_id)
-                                    <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgreso',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                @else
-                                    <a class="btn btn-sm btn-success" href="{{ route('finanzas.editIngreso',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                @endif
-                            @endcan
-                            @csrf
-                            @method('DELETE')
-                            @can('finanzas.destroy')
-                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
-                            @endcan
-                        </form>
-                    </span>
-                </td>
+                @can('finanzas.acciones')
+                    <td>
+                        <span class="completo">
+                            <form action="{{ route('finanzas.destroy',$item->id) }}" method="POST">
+                                    <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$item->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                    @if (!empty($item->a_meses))
+                                        <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgresoMeses',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @elseif($item->salidas_id)
+                                        <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgreso',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @else
+                                        <a class="btn btn-sm btn-success" href="{{ route('finanzas.editIngreso',$item->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endif
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                            </form>
+                        </span>
+                    </td>
+                @endcan
                 <td>
                     @can('finanzas.confirmarpago')
                         <a class="btn btn-sm btn-info" href="{{ route('finanzas.confirmarPago',$item->id) }}"><i class="fas fa-credit-card"></i> Actualizar Pago</a>      

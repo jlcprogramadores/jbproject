@@ -73,28 +73,28 @@
                                                     <li>
                                                         @can('finanzas.index')
                                                             <a class="dropdown-item" href="{{ route('finanzas.index') }}">
-                                                                {{ __('Finanzas-General') }}
+                                                                {{ __('General') }}
                                                             </a>
                                                         @endcan
                                                     </li>
                                                     <li>
                                                         @can('finanzas.indexEgreso')
                                                         <a class="dropdown-item" href="{{ route('finanzas.indexEgreso') }}">
-                                                            {{ __('Finanzas-Egresos') }}
+                                                            {{ __('Egresos') }}
                                                         </a>
                                                     @endcan
                                                     </li> 
                                                     <li>
                                                         @can('finanzas.indexIngreso')
                                                             <a class="dropdown-item" href="{{ route('finanzas.indexIngreso') }}">
-                                                                {{ __('Finanzas-Ingresos') }}
+                                                                {{ __('Ingresos') }}
                                                             </a>
                                                         @endcan
                                                     </li>
                                                     <li>
                                                         @can('menu.filtros')
                                                             <a class="dropdown-item" href="{{ route('finanzas.filtros') }}">
-                                                                {{ __('Finanzas-Filtradas   ') }}
+                                                                {{ __('Filtradas   ') }}
                                                             </a>
                                                         @endcan
                                                     </li>
