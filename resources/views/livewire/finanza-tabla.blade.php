@@ -31,11 +31,11 @@
         white-space: normal !important;
     }
     </style>    
-    <div class="row d-flex align-items-center size">
-        <div class="col-sm-1" style="width: 175px;">
+    <div class="row col-sm-10 ">
+        <div class="col-sm-2" >
             <div class="input-group input-group-sm">
                 <label class="input-group-text">Mostrar:</label>
-                <select wire:model="perPage" class="form-select">
+                <select wire:model="perPage" class="form-select w-50">
                     <option>10</option>
                     <option>25</option>
                     <option>50</option>
