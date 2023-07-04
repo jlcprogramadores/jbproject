@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('direcciones.direccioncliente')
     @section('content')
         <div class="container-fluid">
             <div class="row">
@@ -21,7 +20,7 @@
                                     <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                         {{ __('Atrás') }}
                                     </a>
-                                    @can('direcciones.create')
+                                    @can('direcciones.acciones')
                                     <a href="{{ route('direcciones.create', ['id' => $id, 'tipo' => 'cliente', 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                         {{ __('Crear Dirección') }}
                                     </a>
@@ -51,9 +50,9 @@
                                             <th>Estado</th>
                                             <th>País</th>
                                             <th>Actualización</th>
-                                            
-                                            <th>Acciones</th>
-
+                                            @can('direcciones.acciones')
+                                                <th>Acciones</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,18 +71,16 @@
                                                 <td>{{ $direccione->pais }}</td>
                                             <td><span class="peque">{{ $direccione->usuario_edito }}</span>  <br/> <span class="peque">{{ $direccione->updated_at }}</span></td>
                                                 
+                                            @can('direcciones.acciones')
                                                 <td>
                                                     <form action="{{ route('direcciones.destroy',$direccione->id) }}" method="POST">
-                                                        @can('direcciones.edit')
                                                         <a class="btn btn-sm btn-success" href="{{ route('direcciones.edit',$direccione->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                        @endcan
                                                         @csrf
                                                         @method('DELETE')
-                                                        @can('direcciones.destroy')
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                        @endcan
                                                     </form>
                                                 </td>
+                                            @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -96,7 +93,6 @@
             </div>
         </div>
     @endsection
-    @endcan
 @endif
 
 @push('scripts')

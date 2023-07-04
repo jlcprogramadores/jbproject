@@ -171,18 +171,18 @@ class RoleSeeder extends Seeder
             Permission::create(['name' => 'menu.camposProCli', 'description' => 'Campos contenidos en Proveedores y Clientes', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
                 //Permisos Direcciones 
-                Permission::create(['name' => 'direcciones.direccioncliente', 'description' => 'Dirección Cliente:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'direcciones.direccionproveedor', 'description' => 'Dirección Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'direcciones.create', 'description' => 'Dirección:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'direcciones.edit', 'description' => 'Dirección:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'direcciones.destroy', 'description' => 'Dirección:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'direcciones.direccioncliente', 'description' => 'Dirección:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'direcciones.acciones', 'description' => 'Dirección:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'direcciones.direccionproveedor', 'description' => 'Dirección Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'direcciones.edit', 'description' => 'Dirección:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'direcciones.destroy', 'description' => 'Dirección:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 
                 //Permisos Telefonos 
                 Permission::create(['name' => 'telefonos.telefonocliente', 'description' => 'Teléfono Cliente:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'telefonos.telefonoproveedor', 'description' => 'Teléfono Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'telefonos.create', 'description' => 'Teléfono:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'telefonos.edit', 'description' => 'Teléfono:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'telefonos.destroy', 'description' => 'Teléfono:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'telefonos.acciones', 'description' => 'Teléfono:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'telefonos.telefonoproveedor', 'description' => 'Teléfono Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'telefonos.edit', 'description' => 'Teléfono:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'telefonos.destroy', 'description' => 'Teléfono:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
         // VIEJO -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Permission::create(['name' => 'menu.recursoshumanos', 'description' => 'Ver Menú Recursos Humanos', 'nomenclatura' => 2])->syncRoles($rolAdmin,$rolPrueba);
         //Submenu recursos humanos

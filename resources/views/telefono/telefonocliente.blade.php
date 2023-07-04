@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 @endsection
 @if(Auth::check() && Auth::user()->es_activo)
-@can('telefonos.telefonocliente')
     @section('content')
         <div class="container-fluid">
             <div class="row">
@@ -21,7 +20,7 @@
                                     <a href="{{ route('clientes.index') }}" class="btn btn-light btn-sm float-right"  data-placement="left">
                                         {{ __('Atrás') }}
                                     </a>
-                                    @can('telefonos.create')
+                                    @can('telefonos.acciones')
                                     <a href="{{ route('telefonos.create', ['id' => $id, 'tipo' => 'cliente', 'nombre'=> $nombre ]) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                         {{ __('Crear Teléfono') }}
                                     </a>
@@ -47,7 +46,9 @@
                                             <th>Descripción</th>
 
                                             <th>Actualización</th>
-                                            <th>Acciones</th>
+                                            @can('telefonos.acciones')
+                                                <th>Acciones</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,18 +61,16 @@
                                                 <td>{{ $telefono->descripcion }}</td>
                                                 <td><span class="peque">{{ $telefono->usuario_edito }}</span>  <br/> <span class="peque">{{ $telefono->updated_at }}</span></td>
 
-                                                <td>
-                                                    <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
-                                                        @can('telefonos.edit')
-                                                        <a class="btn btn-sm btn-success" href="{{ route('telefonos.edit',$telefono->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
-                                                        @endcan
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        @can('telefonos.destroy')
-                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                        @endcan
-                                                    </form>
-                                                </td>
+                                                @can('telefonos.acciones')
+                                                    <td>
+                                                        <form action="{{ route('telefonos.destroy',$telefono->id) }}" method="POST">
+                                                            <a class="btn btn-sm btn-success" href="{{ route('telefonos.edit',$telefono->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        </form>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -84,7 +83,6 @@
             </div>
         </div>
     @endsection
-@endcan
 @endif
 
 @push('scripts')

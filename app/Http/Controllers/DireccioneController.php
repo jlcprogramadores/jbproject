@@ -13,7 +13,13 @@ use App\Models\TipoDeDireccione;
  * @package App\Http\Controllers
  */
 class DireccioneController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:direcciones.index')->only(['index']);
+        $this->middleware('can:direcciones.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

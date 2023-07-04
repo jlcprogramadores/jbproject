@@ -12,7 +12,13 @@ use App\Models\Proveedore;
  * @package App\Http\Controllers
  */
 class TelefonoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:telefonos.index')->only(['index']);
+        $this->middleware('can:telefonos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
