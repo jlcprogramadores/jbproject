@@ -87,10 +87,10 @@ class RoleSeeder extends Seeder
 
                 //Permisos Cuentas Bancarias 
                 Permission::create(['name' => 'cuentasbancarias.cuentabancariaproveedor', 'description' => 'Cuenta Bancaria Proveedor:Tabla', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'cuentasbancarias.show', 'description' => 'Cuenta Bancaria:Mostrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'cuentasbancarias.create', 'description' => 'Cuenta Bancaria:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'cuentasbancarias.edit', 'description' => 'Cuenta Bancaria:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
-                Permission::create(['name' => 'cuentasbancarias.destroy', 'description' => 'Cuenta Bancaria:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'cuentasbancarias.acciones', 'description' => 'Cuenta Bancaria:Acciones', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'cuentasbancarias.create', 'description' => 'Cuenta Bancaria:Crear', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'cuentasbancarias.edit', 'description' => 'Cuenta Bancaria:Editar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+                // Permission::create(['name' => 'cuentasbancarias.destroy', 'description' => 'Cuenta Bancaria:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             Permission::create(['name' => 'menu.proyectos', 'description' => 'Ver Submenú Administración-Proyectos', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
