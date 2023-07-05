@@ -12,8 +12,7 @@
                 1 => 'Finanzas',
                 2 => 'Recursos Humanos',
                 3 => 'Administración',
-                // 4 => 'Archivos',
-                // 5 => 'Cadena de Suministros',
+                4 => 'Cadena de Suministros',
             ];
         @endphp
         <div class="card">

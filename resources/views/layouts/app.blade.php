@@ -296,6 +296,98 @@
                                     </div>
                                 </li>
                             @endcan
+                            @can('menu.cadena')
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        v-pre>
+                                        Cadena de Suministros
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        @can('menu.gasolineras')
+                                            <div class="dropdown-divider"></div>
+                                                <li>
+                                                    <a class="dropdown-item" href="">
+                                                        {{ __('Gasolineras') }} &raquo;
+                                                    </a>
+                                                    <ul class="submenu dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">
+                                                                {{ __('Control de Gasolineras') }}
+                                                            </a>
+                                                        </li>
+                                                    <li>
+                                                    <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasRango') }}">
+                                                        {{ __('Gráficar por Rango') }}
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasUnidad') }}">
+                                                            {{ __('Gráficar consumo por Unidad') }}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>   
+                                        @endcan
+                                        @can('menu.inventarios')
+                                            <div class="dropdown-divider"></div>
+                                            <li>
+                                                <a class="dropdown-item" href="">
+                                                    {{ __('Inventarios') }} &raquo;
+                                                </a>
+                                                <ul class="submenu dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('stocks.resumen') }}">
+                                                                {{ __('Inventario') }}
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('stocks.entradas') }}">
+                                                                {{ __('Entradas') }}
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('stocks.salidas') }}">
+                                                                {{ __('Salidas') }}
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('productos.index') }}">
+                                                                {{ __('Productos') }}
+                                                            </a>
+                                                        </li>
+                                                </ul>
+                                            </li> 
+                                        @endcan    
+                                        @can('menu.requisiciones')
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ route('requisiciones.index') }}">
+                                                {{ __('Requisiciones') }}
+                                            </a>
+                                        @endcan
+                                        @can('menu.cadenaconfiguracion')
+                                        <div class="dropdown-divider"></div>
+                                            <li>
+                                                <a class="dropdown-item" href="">
+                                                    {{ __('Configuración') }} &raquo;
+                                                </a>
+                                                <ul class="submenu dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('gasolineras.index') }}">
+                                                                {{ __('Gasolineras') }}
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('destinos.index') }}">
+                                                                {{ __('Destinos') }}
+                                                            </a>
+                                                        </li> 
+                                                </ul>
+                                            </li>
+                                        @endcan
+                                    </ul>
+                                </li>
+                            @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -308,92 +400,6 @@
                                     </a>
                                 </div>
                             </li>
-                            @can('menu.recursoshumanos')
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#"
-                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        v-pre>
-                                        Cadena de Suministros
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-   
-                                        <div class="dropdown-divider"></div>
-                                        <li>
-                                            <a class="dropdown-item" href="">
-                                                {{ __('Gasolineras') }} &raquo;
-                                            </a>
-                                            
-                                            <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.index') }}">
-                                                            {{ __('Control de Gasolineras') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasRango') }}">
-                                                            {{ __('Gráficar por Rango') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('control-gasolineras.graficasGasolinerasUnidad') }}">
-                                                            {{ __('Gráficar consumo por Unidad') }}
-                                                        </a>
-                                                    </li>
-                                            </ul>
-                                        </li>   
-                                        <div class="dropdown-divider"></div>
-                                        <li>
-                                            <a class="dropdown-item" href="">
-                                                {{ __('Inventarios') }} &raquo;
-                                            </a>
-                                            <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('stocks.resumen') }}">
-                                                            {{ __('Inventario') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('stocks.entradas') }}">
-                                                            {{ __('Entradas') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('stocks.salidas') }}">
-                                                            {{ __('Salidas') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('productos.index') }}">
-                                                            {{ __('Productos') }}
-                                                        </a>
-                                                    </li>
-                                            </ul>
-                                        </li>     
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ route('requisiciones.index') }}">
-                                            {{ __('Requisiciones') }}
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <li>
-                                            <a class="dropdown-item" href="">
-                                                {{ __('Configuración') }} &raquo;
-                                            </a>
-                                            <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('gasolineras.index') }}">
-                                                            {{ __('Gasolineras') }}
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('destinos.index') }}">
-                                                            {{ __('Destinos') }}
-                                                        </a>
-                                                    </li> 
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            @endcan
                     </ul>
                     @endif
 

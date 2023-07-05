@@ -286,6 +286,17 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'roles.acciones', 'description' => 'Roles:Acciones', 'nomenclatura' => 3])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'roles.edit', 'description' => 'Roles:Editar', 'nomenclatura' => 3])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'roles.destroy', 'description' => 'Roles:Borrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);
-                // Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);           
+                // Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);     
+        
+        // Cadena De Suministros -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Permission::create(['name' => 'menu.cadena','description' => 'Ver Cadena de Suministros', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
+                //Submenu gasolineras
+                Permission::create(['name' => 'menu.gasolineras', 'description' => 'Ver Submenú Cadena Suministros-Gasolineras', 'nomenclatura' => 4])->syncRoles($rolAdmin);
+                //Submenu inventarios
+                Permission::create(['name' => 'menu.inventarios', 'description' => 'Ver Submenú Cadena Suministros-Inventarios', 'nomenclatura' => 4])->syncRoles($rolAdmin);
+                //Submenu requisiciones
+                Permission::create(['name' => 'menu.requisiciones', 'description' => 'Ver Submenú Cadena Suministros-Requisiciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
+                //Submenu configuracion-cadena
+                Permission::create(['name' => 'menu.cadenaconfiguracion', 'description' => 'Ver Submenú Cadena Suministros-Configuracion', 'nomenclatura' => 4])->syncRoles($rolAdmin);    
     }
 }
