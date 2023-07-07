@@ -403,6 +403,36 @@ class ClienteSeeder extends Seeder
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
+        Cliente::create([            
+            'nombre' => 'CBCELTI',
+            'razon_social' => 'CBCELTI',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Cliente::create([            
+            'nombre' => 'SAMADHI',
+            'razon_social' => 'SAMADHI',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Cliente::create([            
+            'nombre' => 'SAMADHI',
+            'razon_social' => 'SAMADHI',
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
         
     }
 }

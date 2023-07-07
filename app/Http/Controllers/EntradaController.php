@@ -186,7 +186,7 @@ class EntradaController extends Controller
             // creacion de entrada o salida
             $esSalida = $file[$tipoEyS] == "SALIDA";
             $idEntSal = 0;
-            print_r(' / '.$esSalida.' / ');
+            print_r(' / '.$esSalida? 'salida':'entrada'.' / ');
             print_r(' / '.$file[$proveedor].' / ');
             if($esSalida ){ //salida
                 
@@ -203,9 +203,25 @@ class EntradaController extends Controller
                 $salida = Salida::create($datosSalida);
                 $idEntSal = $salida->id;
             }else{ //entrada
+                $dbCliente = [];
                 $dbCliente = DB::table('clientes')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
-                $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                if($dbCliente){
 
+                }else{
+                    Cliente::create([            
+                        'nombre' => $file[$proveedor],
+                        'razon_social' => $file[$proveedor],
+                        'mail' => 'SIN CORREO',
+                        'rfc' => 'SIN RFC',
+                        'es_activo' => 1,
+                        'usuario_edito' => 'Administrador',
+                        'created_at' => $dateNow,
+                        'updated_at' => $dateNow
+                    ]);
+                    $dbCliente = DB::table('clientes')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
+
+                }
+           
                 $datosEntrada =[
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
                     'tipodeingreso_id' => 1,
