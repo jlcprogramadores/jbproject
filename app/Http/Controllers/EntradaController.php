@@ -186,7 +186,10 @@ class EntradaController extends Controller
             // creacion de entrada o salida
             $esSalida = $file[$tipoEyS] == "SALIDA";
             $idEntSal = 0;
+            print_r(' / '.$esSalida.' / ');
+            print_r(' / '.$file[$proveedor].' / ');
             if($esSalida ){ //salida
+                
                 $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
                 $datosSalida =[
                     'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : 1,

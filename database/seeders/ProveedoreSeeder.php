@@ -1851,6 +1851,76 @@ class ProveedoreSeeder extends Seeder
             'created_at' => $dateNow,
             'updated_at' => $dateNow
         ]);
+        Proveedore::create([            
+            'nombre' => 'TRES GUERRAS',
+            'razon_social' => 'TRES GUERRAS',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proveedore::create([            
+            'nombre' => 'MOBIL',
+            'razon_social' => 'MOBIL',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proveedore::create([            
+            'nombre' => 'JAVIER BARRIOS SERRANO',
+            'razon_social' => 'JAVIER BARRIOS SERRANO',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proveedore::create([            
+            'nombre' => 'JAVIER BARRIOS LARA',
+            'razon_social' => 'JAVIER BARRIOS LARA',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
+        Proveedore::create([            
+            'nombre' => 'INDUSTRIAL & MINING SOLUTION',
+            'razon_social' => 'INDUSTRIAL & MINING SOLUTION',
+            'estado' => 'SIN ESTADO',
+            'dias_de_credito' => 0,
+            'monto_de_credito' => 0,
+            'es_facturable' => 0,
+            'mail' => 'SIN CORREO',
+            'rfc' => 'SIN RFC',
+            'es_activo' => 1,
+            'usuario_edito' => 'Administrador',
+            'created_at' => $dateNow,
+            'updated_at' => $dateNow
+        ]);
 
     }
 }
