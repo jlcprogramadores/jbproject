@@ -12074,4 +12074,16 @@ td form {
     font-size: 1.0rem !important; /* Ajusta el tamaño de la fuente */
   }
 
-  
+.colapso {
+    display: inline-block;
+    width: 200px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: max-height .3s;
+    max-height: 3em
+}
+
+.colapso:hover {
+    max-height: none
+}
