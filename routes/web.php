@@ -165,4 +165,6 @@ Route::get('/datos-finanzas', 'App\Http\Controllers\FinanzaController@datos')->n
 
 Route::resource('requisiciones', App\Http\Controllers\RequisicioneController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// exports
+Route::get('users/export/', [UsersController::class, 'export']);
 Auth::routes(['verify' => true]);

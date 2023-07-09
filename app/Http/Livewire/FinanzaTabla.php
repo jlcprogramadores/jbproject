@@ -7,6 +7,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
+use App\Exports\FianzasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FinanzaTabla extends Component
 {
@@ -47,9 +49,13 @@ class FinanzaTabla extends Component
     public $comentario = '';
     public $comprobante = '';
 
-    public function render()
-{
-    $finanzas = Finanza::select(
+    public function export()
+    {
+        return Excel::download(new FianzasExport, 'Fianzas.xlsx');
+    }
+
+    public function render(){
+        $finanzas = Finanza::select(
             'finanzas.id',
             'finanzas.no',
             DB::raw("DATE_FORMAT(finanzas.fecha_entrada, '%Y-%m-%d') as fecha_entrada"),
@@ -172,10 +178,8 @@ class FinanzaTabla extends Component
         })
         
         ->orderBy( $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-        // ->toSql();
-        // dd($finanzas);
         ->paginate($this->perPage);
-    return view('livewire.finanza-tabla', compact('finanzas'))
-        ->with('i', ($finanzas->currentPage() - 1) * $finanzas->perPage());
-}
+        return view('livewire.finanza-tabla', compact('finanzas'))
+            ->with('i', ($finanzas->currentPage() - 1) * $finanzas->perPage());
+    }
 }

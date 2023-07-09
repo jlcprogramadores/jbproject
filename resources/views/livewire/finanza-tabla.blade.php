@@ -66,7 +66,7 @@
                     <option value="subtotal">Subtotal</option>
                     <option value="iva">IVA</option>
                     <option value="total">Total</option>
-                    <option value="monto_pagar">Método de pago</option>
+                    <option value="monto_pagar">Monto A Pagar</option>
                     <option value="fecha_pago">Fecha De Pago</option>
                     <option value="metodo_pago">Método de pago</option>
                     <option value="estatus">Estatus</option>
@@ -90,6 +90,11 @@
                     <i class="fas fa-arrow-down"></i>
                 </label>
             </div>
+        </div>
+        <div class="p-2">
+            <button class="btn btn-sm btn-outline-success color" wire:click="export">
+                Excel
+            </button>
         </div>
     </div>
     <table class="table table-sm table-striped table-auto w-full mb-6">
