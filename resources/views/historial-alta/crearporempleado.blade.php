@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Cambio De Estado')
 @if(Auth::check() && Auth::user()->es_activo)

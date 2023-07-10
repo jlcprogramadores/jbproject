@@ -1,6 +1,6 @@
 @if(Auth::check() && Auth::user()->es_activo)
 @endif
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('template_title')
     {{ $grupo->name ?? 'Show Grupo' }}

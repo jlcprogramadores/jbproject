@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('title','Crear Cuenta')
 @section('content')
 <div class="container">

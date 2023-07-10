@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Mostrar Tipo De Direccion')
 @if(Auth::check() && Auth::user()->es_activo)

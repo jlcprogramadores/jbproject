@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Mostrar Empleado')
 @if(Auth::check() && Auth::user()->es_activo)

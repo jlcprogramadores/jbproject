@@ -1,5 +1,5 @@
 @if (Auth::check() && Auth::user()->es_activo)
-    @extends('layouts.app')
+    @extends('adminlte::page')
     @section('title', 'Contrato')
     @section('content')
         <section class="content container-fluid">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('title','Cambiar Contraseña')
 @section('content')
 <div class="container">

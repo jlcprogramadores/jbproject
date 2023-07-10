@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('title','Mostar Categorías De Entrada')
 @if(Auth::check() && Auth::user()->es_activo) 
 @section('content')

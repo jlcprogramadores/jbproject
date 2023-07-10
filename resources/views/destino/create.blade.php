@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Crear Destino')
 @if(Auth::check() && Auth::user()->es_activo)

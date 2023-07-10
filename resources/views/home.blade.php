@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('title','¡Bienvenido(a)!')
 @if (Auth::check() && Auth::user()->es_activo == 0)
     @section('content')

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Compartir Archivo')
 @if(Auth::check() && Auth::user()->es_activo)

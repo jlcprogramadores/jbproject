@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title','Mostrar cuenta bancarias')
 @if(Auth::check() && Auth::user()->es_activo)

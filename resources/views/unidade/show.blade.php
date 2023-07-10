@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('title','Mostrar Unidad')
 @if(Auth::check() && Auth::user()->es_activo)
 @section('content')
