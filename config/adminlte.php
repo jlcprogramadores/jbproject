@@ -192,10 +192,10 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-indigo elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary bg-custom elevation-4',
     'classes_sidebar_nav' => 'nav-child-indent',
-    'classes_topnav' => 'navbar-white navbar-light',
-    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav' => 'navbar-white navbar-primary',
+    'classes_topnav_nav' => 'navbar-expand-md',
     'classes_topnav_container' => 'container',
 
     /*
@@ -294,17 +294,18 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
 
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
+            'class' => 'text-white',
         ],
         ['header' => 'FINANZAS'],
         [

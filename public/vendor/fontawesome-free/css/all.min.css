@@ -105,3 +105,7 @@
 .colapso:hover {
     max-height: none
 }
+
+.bg-custom {
+    background-color: #2A3F54;
+  }

@@ -1,3 +1,6 @@
 span #card_title{
     color: red;
 }
+.bg-custom {
+    background-color: #9ecdfc;
+  }
