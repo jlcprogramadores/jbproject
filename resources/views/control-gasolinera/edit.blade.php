@@ -1,8 +1,5 @@
 @extends('adminlte::page')
-
 @section('title','Actualizar Registro de Control Gasolinera')
-@if(Auth::check() && Auth::user()->es_activo)
-
 
 @section('content')
     <section class="content container-fluid">
@@ -29,4 +26,3 @@
         </div>
     </section>
 @endsection
-@endif

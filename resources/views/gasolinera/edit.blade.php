@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title','Actualizar Gasolinera')
-@if(Auth::check() && Auth::user()->es_activo)
+
 
 
 @section('content')
@@ -29,4 +29,3 @@
         </div>
     </section>
 @endsection
-@endif

@@ -1,8 +1,5 @@
 @extends('adminlte::page')
-
 @section('title','Mostrar Destino')
-@if(Auth::check() && Auth::user()->es_activo)
-
 
 @section('content')
     <section class="content container-fluid">
@@ -31,4 +28,3 @@
         </div>
     </section>
 @endsection
-@endif

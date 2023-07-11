@@ -1,4 +1,3 @@
-@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="container">
@@ -46,7 +45,3 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-</script>
-@endif

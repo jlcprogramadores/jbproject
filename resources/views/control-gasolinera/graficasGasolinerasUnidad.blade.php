@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 
 @section('title', 'Gráficar Gasolinera Por Unidad')
-@if (Auth::check() && Auth::user()->es_activo)
     @section('content')
         <section class="content container-fluid">
             <div class="row">
@@ -101,4 +100,3 @@
         });
     </script>
 @endpush
-@endif

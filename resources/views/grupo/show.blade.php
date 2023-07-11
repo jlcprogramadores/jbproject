@@ -1,4 +1,4 @@
-@if(Auth::check() && Auth::user()->es_activo)
+
 @endif
 @extends('adminlte::page')
 

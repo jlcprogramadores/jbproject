@@ -1,10 +1,8 @@
 @extends('adminlte::page')
 
 @section('title','Usuarios')
-@section('css')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-@endsection
-@if(Auth::check() && Auth::user()->es_activo)
+
+
 @can('usuarios.index')
 @section('content')
     <div class="container-fluid">
@@ -37,5 +35,3 @@
         </div>
     </div>
 @endsection
-@endcan
-@endif

@@ -3,7 +3,7 @@
 @section('template_title')
 Create Historial Contrato
 @endsection
-@if(Auth::check() && Auth::user()->es_activo)
+
 
 @section('content')
     <section class="content container-fluid">
@@ -29,4 +29,3 @@ Create Historial Contrato
         </div>
     </section>
 @endsection
-@endif

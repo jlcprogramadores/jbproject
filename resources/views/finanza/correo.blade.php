@@ -1,7 +1,6 @@
 @extends('adminlte::page')
-
 @section('title','Confirmar Envío Comprobante')
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -75,4 +74,3 @@
         </div>
     </section>
 @endsection
-@endif

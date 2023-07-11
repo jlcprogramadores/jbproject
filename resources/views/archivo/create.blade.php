@@ -3,7 +3,7 @@
 @section('template_title')
     Create Archivo
 @endsection
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -16,7 +16,8 @@
                         <span class="card-title">Create Archivo</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('archivos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('archivos.store') }}" role="form"
+                            enctype="multipart/form-data">
                             @csrf
 
                             @include('archivo.form')
@@ -28,4 +29,3 @@
         </div>
     </section>
 @endsection
-@endif

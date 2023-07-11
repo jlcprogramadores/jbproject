@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title','Finanzas')
-@if(Auth::check() && Auth::user()->es_activo)
-@can('finanzas.index')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -45,5 +44,3 @@
         </div>
     </div>
 @endsection
-@endcan
-@endif

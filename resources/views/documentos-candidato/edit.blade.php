@@ -3,7 +3,7 @@
 @section('template_title')
     Update Documentos Candidato
 @endsection
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
     <section class="content container-fluid">
         <div class="">
@@ -29,4 +29,3 @@
         </div>
     </section>
 @endsection
-@endif

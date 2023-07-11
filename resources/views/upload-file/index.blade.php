@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title','Compartir Archivo')
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
 <section class="content container-fluid">
 
@@ -127,4 +127,3 @@
 </body>
 </html>
 @endpush
-@endif

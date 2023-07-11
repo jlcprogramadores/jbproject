@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title','Actualizar Cuenta Bancaria')
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
     <section class="content container-fluid">
         <div class="">
@@ -27,4 +27,3 @@
         </div>
     </section>
 @endsection
-@endif

@@ -1,8 +1,6 @@
 @extends('adminlte::page')
-
 @section('title','Finanzas-Filtradas')
-@if(Auth::check() && Auth::user()->es_activo)
-@can('finanzas.filtros')
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -138,5 +136,3 @@
         });
     </script>
 @endpush
-@endcan
-@endif

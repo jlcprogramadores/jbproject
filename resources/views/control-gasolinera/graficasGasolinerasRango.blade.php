@@ -1,7 +1,6 @@
 @extends('adminlte::page')
-
 @section('title', 'Gráficar Gasolinera Por Fecha')
-@if (Auth::check() && Auth::user()->es_activo)
+
     @section('content')
         <section class="content container-fluid">
             <div class="row">
@@ -56,9 +55,6 @@
         </section>
 @endsection
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
-        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('#gasolinera_id').select2();
         let desdeAux = "";
@@ -101,4 +97,4 @@
         });
     </script>
 @endpush
-@endif
+

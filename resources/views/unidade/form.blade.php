@@ -1,4 +1,3 @@
-@if(Auth::check() && Auth::user()->es_activo)
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="container">
@@ -31,7 +30,6 @@
         </div>
     </div>
 </div>
-@endif
 @push('scripts')
     <script>
         function mayus(e) {

@@ -1,7 +1,6 @@
 @extends('adminlte::page')
-
 @section('title','Crear Dirección')
-@if(Auth::check() && Auth::user()->es_activo)
+
 @section('content')
     <section class="content container-fluid">
         <div class="row">
@@ -26,4 +25,3 @@
         </div>
     </section>
 @endsection
-@endif

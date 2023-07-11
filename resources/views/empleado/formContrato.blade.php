@@ -1,4 +1,3 @@
-@if (Auth::check() && Auth::user()->es_activo)
     @extends('adminlte::page')
     @section('title', 'Contrato')
     @section('content')
@@ -79,4 +78,3 @@
             </div>
         </section>
     @endsection
-@endif

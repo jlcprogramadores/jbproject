@@ -1,4 +1,4 @@
-@if(Auth::check() && Auth::user()->es_activo)
+
 <div class="box box-info padding-1">
     <div class="box-body">
         
@@ -25,4 +25,3 @@
         <button type="submit" id="btn-aceptar" onclick="myFunction();" class="btn btn-primary">Aceptar</button>
     </div>
 </div>
-@endif
