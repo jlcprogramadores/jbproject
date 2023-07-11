@@ -13,3 +13,14 @@
 .bg-custom {
     background-color: #2A3F54;
 }
+.bg-custom-content{
+    background-color: #ECF0F5;
+  }
+[class*="sidebar-dark"] {
+    .form-control-sidebar,
+    .btn-sidebar {
+        background-color: #eaeaeaee !important;
+        border: 1px solid #bebebe !important;
+        color: #1f2d3d ;
+    }
+}

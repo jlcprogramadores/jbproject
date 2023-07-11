@@ -106,6 +106,16 @@
     max-height: none
 }
 
+.nav-treeview>.nav-item>.nav-link.active {
+    background-color: #c2c7d046 !important;
+    color: #fff !important
+}
+
 .bg-custom {
-    background-color: #2A3F54;
-  }
+    background-color: #bebebe;
+}
+.card-header {
+    background-color: #357ea8 !important;
+    color: #eee;
+    font-size: large;
+}
