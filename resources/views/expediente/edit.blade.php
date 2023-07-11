@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title','Actualizar Expediente')
 
 @section('content')

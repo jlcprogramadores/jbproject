@@ -1,8 +1,5 @@
 @extends('adminlte::page')
-
 @section('title','Entradas')
-
-
 
 @section('content')
     <div class="container-fluid">

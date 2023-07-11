@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title','Teléfonos')
 
-
 @section('content')
     <div class="container-fluid">
         <div class="row">
