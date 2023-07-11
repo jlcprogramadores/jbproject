@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                         <div class="card text-white border-secondary">
-                            <div class="card-header bg-secondary">
+                            <div class="card-header">
                                 <span class="card-title-white border-secondary">Actualizar Empleado: {{$empleados[$gruposEmpleado->empleado_id]}}</span>
                             </div>
                     </div>
