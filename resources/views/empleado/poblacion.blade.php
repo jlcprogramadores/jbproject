@@ -1,13 +1,13 @@
 @extends('adminlte::page')
+
 @section('title','Población')
 
-@can('poblacion.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card border-secondary">
-                    <div class="card-header">
+                <div class="card text-white border-secondary">
+                    <div class="card-header bg-secondary">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">

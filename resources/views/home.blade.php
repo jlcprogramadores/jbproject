@@ -22,6 +22,7 @@
         </div>
     </div>
     @endsection
+@endif
 @if (Auth::check() && Auth::user()->es_activo == 1)
     @section('content')
     <div class="container">
@@ -66,6 +67,7 @@
         </div>
     </div>
     @endsection
+@endif
 
 
 <style>

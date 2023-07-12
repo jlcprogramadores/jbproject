@@ -102,7 +102,6 @@
         </div>
     </div>
 </div>
-@endif
 @push('scripts')
     <script>
         $('#estado').select2();

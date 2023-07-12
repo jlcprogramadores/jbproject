@@ -252,7 +252,7 @@ class FinanzaController extends Controller
     {   
         $tipoFinanza = $request->tipoFinanza;
         $numRegistros = $request->numRegistros;
-        // las opciones de tipo de fiananza son  0 es egreso, 1 es ingreso
+        // las opciones de tipo de finanza son  0 es egreso, 1 es ingreso
         // y si tipoFinanza == 0 es false
         if($tipoFinanza){ // ingreso
             $nombre = 'Ingreso';
@@ -263,7 +263,6 @@ class FinanzaController extends Controller
         }else{ //egreso
             $nombre = 'Egreso';
             $finanzas = Finanza::where('salidas_id','!=',null)->orderBy('monto_a_pagar', 'desc')->paginate($numRegistros);     
-            
             return view('finanza.indexTop', compact('finanzas','nombre'))
                 ->with('i', (request()->input('page', 1) - 1) * $finanzas->perPage());
 
