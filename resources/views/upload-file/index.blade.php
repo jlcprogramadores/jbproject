@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title','Compartir Archivo')
-
+@if(Auth::check() && Auth::user()->es_activo)
 @section('content')
 <section class="content container-fluid">
 
@@ -60,7 +60,7 @@
 </section>
 @endsection
 
-@push('scripts')
+@push('js')
 <!-- jQuery -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- Bootstrap JS Bundle with Popper -->
@@ -127,3 +127,4 @@
 </body>
 </html>
 @endpush
+@endif

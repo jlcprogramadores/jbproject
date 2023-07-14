@@ -2,8 +2,6 @@
 
 @section('title','Usuarios')
 
-
-@can('usuarios.index')
 @section('content')
     <div class="container-fluid">
         <div class="row">
