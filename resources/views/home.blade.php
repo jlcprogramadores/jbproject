@@ -53,7 +53,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Por favor inicia sesión') }}</div>
+                    <div class="card-header">{{ __('Por favor Inicia Sesión') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -61,6 +61,7 @@
                             </div>
                         @endif
                         ¡Aún no te has identificado!
+                        <script>window.location = "{{ route('login') }}";</script>
                     </div>
                 </div>
             </div>
