@@ -152,7 +152,7 @@
     </div>
 </div>
 
-@push('scripts')
+@push('js')
     <script>
         $('#estado').select2();
         $('#cliente_id').select2();

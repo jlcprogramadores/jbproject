@@ -79,7 +79,7 @@
         </div>
     </div>
 </div>
-@push('scripts')
+@push('js')
     <script>
         $('#empleado_id').select2();
     </script>

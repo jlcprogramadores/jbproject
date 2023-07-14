@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-@push('scripts')
+@push('js')
     <script>
         function mayus(e) {
             e.value = e.value.toUpperCase();

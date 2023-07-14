@@ -54,7 +54,7 @@
             </div>
         </section>
 @endsection
-@push('scripts')
+@push('js')
     <script>
         $('#gasolinera_id').select2();
         let desdeAux = "";

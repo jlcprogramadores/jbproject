@@ -62,7 +62,7 @@
         </div>
     </div>
 </div>
-@push('scripts')
+@push('js')
     <script>
         $('#puesto_id').select2();
     </script>

@@ -58,7 +58,7 @@
     </div>
 </div>
 
-@push('scripts')
+@push('js')
 <script>
     var cantidadDeEmpleados = 0;
     var i = 0;

@@ -103,7 +103,7 @@
     </div>
 </div>
 
-@push('scripts')
+@push('js')
 <script>
     $('#proyecto_id').select2();
     var cantidadDeEmpleados = 0;

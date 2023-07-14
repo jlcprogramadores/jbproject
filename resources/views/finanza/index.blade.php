@@ -14,7 +14,7 @@
                             </span>
 
                              <div class="float-right">
-                                @can('finanzas.create')
+                                @can('finanzas.acciones')
                                 <a href="{{ route('finanzas.egresoMeses') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Crear Egresos A Meses') }}
                                 </a> 

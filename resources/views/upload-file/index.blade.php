@@ -60,7 +60,7 @@
 </section>
 @endsection
 
-@push('scripts')
+@push('js')
 <!-- jQuery -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- Bootstrap JS Bundle with Popper -->

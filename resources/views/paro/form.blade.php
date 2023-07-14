@@ -147,7 +147,7 @@
     </div>
 </div>
 
-@push('scripts')
+@push('js')
     <script>
     // mostrar tabla de empleados
     function mostrarElemento() {

@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-@push('scripts')
+@push('js')
     <script>
         $('#proveedor_id').select2();
         $('#cliente_id').select2();

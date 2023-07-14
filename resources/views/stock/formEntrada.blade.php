@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    @push('scripts')
+    @push('js')
         <script>
             $('#proveedor_id').select2();
             $('#product-select').select2();

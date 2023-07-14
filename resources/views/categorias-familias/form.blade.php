@@ -43,7 +43,7 @@
         </div>
     </div>
 </div>
-@push('scripts')
+@push('js')
     <script>
         $('#familia_id').select2();
     </script>
