@@ -326,28 +326,28 @@ return [
                         ],
                         [
                             'text'    => 'Ingresos',
-                            'url'     => 'indexEgreso',
+                            'url'     => 'indexIngreso',
                         ],
                         [
-                            'text'    => 'Fianzas Filtradas',
+                            'text'    => 'Finanzas Filtradas',
                             'url'     => 'filtros',
                         ],
                     ],
                 ],
                 [
-                    'text'    => 'Top egresos e ingresos',
+                    'text'    => 'Top Egresos e Ingresos',
                     'url'     => 'topGeneral',
                 ],
                 [
-                    'text' => 'Gráficas por proyecto',
+                    'text' => 'Gráficas por Proyecto',
                     'url'  => 'graficasProyectos',
                 ],
                 [
-                    'text' => 'Gráficas generales',
+                    'text' => 'Gráficas Generales',
                     'url'  => 'graficasGenerales',
                 ],
                 [
-                    'text' => 'Centro de costos',
+                    'text' => 'Centro de Costos',
                     'url'  => 'centrodecostos',
                 ],
                 [
@@ -371,11 +371,11 @@ return [
                             'url'  => 'categorias-de-entradas',
                         ],
                         [
-                            'text'    => 'familia',
+                            'text'    => 'Familia',
                             'url'     => 'familias',
                         ],
                         [
-                            'text'    => 'Categorías de familias',
+                            'text'    => 'Categorías de Familias',
                             'url'     => 'categorias-familias',
                         ],
                         [
@@ -387,11 +387,11 @@ return [
                             'url'     => 'minas',
                         ],
                         [
-                            'text'    => 'Tipo de direcciones',
+                            'text'    => 'Tipo de Direcciones',
                             'url'     => 'tipo-de-direcciones',
                         ],
                         [
-                            'text'    => 'Tipo de ingresos',
+                            'text'    => 'Tipo de Ingresos',
                             'url'     => 'tipo-de-ingresos',
                         ],
                         [
@@ -404,7 +404,7 @@ return [
         ],
         ['header' => 'RECURSOS HUMANOS'],
         [
-            'text'    => 'Recursos humanos',
+            'text'    => 'Recursos Humanos',
             'icon'    => 'fas fa-user-tie',
             'submenu' => [
                 [
@@ -444,7 +444,7 @@ return [
                             'url'  => 'puestos',
                         ],
                         [
-                            'text' => 'Documentos de expedientes',
+                            'text' => 'Documentos de Expedientes',
                             'url'  => 'expedientes',
                         ],
                     ],
@@ -465,7 +465,7 @@ return [
                     'url'  => 'roles',
                 ],
                 [
-                    'text' => 'Clave de registro',
+                    'text' => 'Clave de Registro',
                     'url'  => 'accesos',
                 ],
             ],
@@ -488,7 +488,7 @@ return [
                             'url'  => 'graficasGasolinerasRango',
                         ],
                         [
-                            'text' => 'Graficar consumo por unidad',
+                            'text' => 'Graficar Consumo por Unidad',
                             'url'  => 'graficasGasolinerasUnidad',
                         ],
                     ],
