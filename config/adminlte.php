@@ -304,7 +304,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
             'class' => 'text-white',
         ],
         ['header' => 'FINANZAS'],
