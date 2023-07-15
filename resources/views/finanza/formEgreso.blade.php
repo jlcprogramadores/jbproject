@@ -149,7 +149,7 @@
             @if ($finanza->no)
                 
             @else
-                <div>
+                <div class="row">
                     <label>Factura</label>
                     <input type="button" name="answer" value="Añadir"  class="btn btn-success" onclick="mostrarDiv()" />
                     <div id="apartadoFactura"  style="display:none;">
@@ -185,7 +185,6 @@
         </div>
     </div>
 </div>
-@endif
 @push('js')
     
     <script>
