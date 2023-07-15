@@ -376,6 +376,7 @@ return [
                 [
                     'text' => 'Configuración',
                     'url'  => '#',
+                    'icon'     => 'fas fa-cog',
                     'submenu' => [
                         [
                             'text' => 'Categorías de Entradas',
@@ -423,7 +424,7 @@ return [
         ],
         [
             'text'    => 'Recursos Humanos',
-            'icon'    => 'fas fa-user-tie',
+            'icon'    => 'fas fa-users',
             'submenu' => [
                 [
                     'text' => 'Candidatos',
@@ -463,7 +464,7 @@ return [
                 [
                     'text'    => 'Configuración',
                     'url'     => '#',
-                    'can'     => 'menu.configuracion',
+                    'icon'     => 'fas fa-cog',
                     'submenu' => [
                         [
                             'text' => 'Puestos',
@@ -550,6 +551,7 @@ return [
                 [
                     'text' => 'Configuración',
                     'url'  => '#',
+                    'icon'     => 'fas fa-cog',
                     'submenu' => [
                         [
                             'text' => 'Gasolineras',
