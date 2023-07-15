@@ -8,10 +8,6 @@
     .btn-outline-secondary {
         border-color: #ced4da;
     }
-    .size {
-        max-width: 100%;
-        width: auto;
-    }
     .filters th input {
         /* border: none; */
         border-color: #cbe4ff;
@@ -28,41 +24,35 @@
         background-color: transparent;
     }
     </style>    
-    <div class="row d-flex align-items-center size">
-        <div class="col-sm-1" style="width: 175px;">
-            <div class="input-group input-group-sm">
-                <label class="input-group-text">Mostrar:</label>
-                <select wire:model="perPage" class="form-select">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                    <option>100</option>
-                </select>
-            </div>
+    <div class="row d-flex align-items-center">
+        <div class="input-group input-group-sm">
+            <label class="input-group-text size">Mostrar:</label>
+            <select wire:model="perPage" class="form-select">
+                <option>10</option>
+                <option>25</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
         </div>
-        <div class="col-sm-2">
-            <div class="input-group input-group-sm">
-                <label class="input-group-text">Orden por:</label>
-                <select wire:model="orderBy" class="form-select">
-                    <option value="id">no</option>
-                    <option value="name">Name</option>
-                    <option value="email">Email</option>
-                    <option value="created_at">Sign Up Date</option>
-                </select>
-            </div>
+        <div class="input-group input-group-sm">
+            <label class="input-group-text size">Orden por:</label>
+            <select wire:model="orderBy" class="form-select">
+                <option value="id">no</option>
+                <option value="name">Name</option>
+                <option value="email">Email</option>
+                <option value="created_at">Sign Up Date</option>
+            </select>
         </div>
-        <div class="col-sm-2">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Orden">
-                <input type="radio" wire:model="orderAsc" class="btn-check" name="order" id="asc" value="1">
-                <label class="btn btn-outline-secondary color" for="asc">
-                    <i class="fas fa-arrow-up"></i>
-                </label>
-            
-                <input type="radio" wire:model="orderAsc" class="btn-check" name="order" id="desc" value="0">
-                <label class="btn btn-outline-secondary color" for="desc">
-                    <i class="fas fa-arrow-down"></i>
-                </label>
-            </div>
+        <div class="btn-group btn-group-sm" role="group" aria-label="Orden">
+            <input type="radio" wire:model="orderAsc" class="btn-check" name="order" id="asc" value="1">
+            <label class="btn btn-outline-secondary color" for="asc">
+                <i class="fas fa-arrow-up"></i>
+            </label>
+        
+            <input type="radio" wire:model="orderAsc" class="btn-check" name="order" id="desc" value="0">
+            <label class="btn btn-outline-secondary color" for="desc">
+                <i class="fas fa-arrow-down"></i>
+            </label>
         </div>
     </div>
     <table class="table table-striped table-auto w-full mb-6">
