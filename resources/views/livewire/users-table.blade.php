@@ -8,6 +8,13 @@
     .btn-outline-secondary {
         border-color: #ced4da;
     }
+    .size {
+        max-width: 100%;
+        width: auto;
+    }
+    .filters{
+        white-space: nowrap;
+    }
     .filters th input {
         /* border: none; */
         border-color: #cbe4ff;
@@ -17,9 +24,13 @@
     .filters th input::placeholder {
         color: #007bff;
         background-color: transparent;
+
     }
     .form-control[readonly]{
         background-color: transparent;
+    }
+    .completo {
+        white-space: normal !important;
     }
 
     </style>    
