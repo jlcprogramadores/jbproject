@@ -85,6 +85,7 @@ class Empleado extends Model
 		'telefono_personal' => 'required',
 		'correo' => 'required',
 		'usuario_edito' => 'required',
+		'fecha_suceso' => 'required',
     ];
     static $rulesContrato = [
         'fecha_inicio_contrato'=> 'required',
