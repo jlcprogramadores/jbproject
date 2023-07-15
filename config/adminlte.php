@@ -307,10 +307,10 @@ return [
             'text' => 'Buscar',
             'class' => 'text-white',
         ],
-        ['header' => 'FINANZAS'],
         [
             'text'    => 'Finanzas',
             'icon'    => 'fas fa-chart-line',
+            'can'    => 'menu.finanzas',
             'submenu' => [
                 [
                     'text' => 'Finanzas',
@@ -402,7 +402,6 @@ return [
                 ],
             ],
         ],
-        ['header' => 'RECURSOS HUMANOS'],
         [
             'text'    => 'Recursos Humanos',
             'icon'    => 'fas fa-user-tie',
@@ -451,7 +450,6 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ADMINISTRACIÓN'],
         [
             'text'    => 'Administración',
             'icon'    => 'fas fa-cogs',
@@ -470,7 +468,6 @@ return [
                 ],
             ],
         ],
-        ['header' => 'CADENA DE SUMINISTROS'],
         [
             'text'    => 'Cadena de Suministros',
             'icon'    => 'fas fa-truck',
@@ -535,7 +532,6 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ARCHIVOS'],
         [
             'text'    => 'Archivos',
             'icon'    => 'fas fa-file',
