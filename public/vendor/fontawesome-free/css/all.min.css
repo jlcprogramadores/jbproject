@@ -129,3 +129,6 @@ td form {
 .float-right .btn {
     margin-left: 5px;
 }
+.select2 {
+    width:100%!important;
+}
