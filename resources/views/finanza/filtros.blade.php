@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title','Finanzas-Filtradas')
+@section('title','Finanzas Filtradas')
 
 @section('content')
     <section class="content container-fluid">
@@ -10,7 +10,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Finanzas-Filtradas</span>
+                        <span class="card-title">Finanzas Filtradas</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('finanzas.datosfiltrados') }}" role="form"
@@ -22,16 +22,17 @@
                                             <div class="col-sm p-1 form-group">
                                                 <label for="desde">Inico fecha de entrada:</label>
                                                 <br>
-                                                <input id="desde" type="date" name="desde" onchange="funcionDesde(this.value)" required>
+                                                <input id="desde" class="form-control" type="date" name="desde" onchange="funcionDesde(this.value)" required>
                                             </div>
                                             <div class="col-sm p-1 form-group">
 
                                                 <label for="hasta">Fin fecha de entrada:</label>
                                                 <br>
-                                                <input type="date" name="hasta" id="hasta" onchange="funcionHasta(this.value)" required>
+                                                <input type="date" class="form-control" name="hasta" id="hasta" onchange="funcionHasta(this.value)" required>
                                             </div>
-
-                                            <div class="col-sm p-1 form-group">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 p-1 form-group">
                                                 <label class="proyecto_id" name="Ingreso_id"
                                                     for="Ingreso_id">Proyecto:</label>
                                                 <br>
@@ -42,7 +43,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="col-sm p-1 form-group">
+                                            <div class="col-sm-4 p-1 form-group">
                                                 <label for="tipo">Tipo Finanza:</label>
                                                 <br>
                                                 <select class="form-control" id="tipo" name="tipo">
@@ -52,7 +53,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-sm p-1 form-group" id="cliente" style="display: none">
+                                            <div class="col-sm-4 p-1 form-group" id="cliente" style="display: none">
                                                 <label for="cliente_id">Cliente:</label>
                                                 <br>
                                                 <select class="form-control" id="cliente_id" name="cliente_id">
@@ -62,7 +63,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="col-sm p-1 form-group" id="proveedor" style="display: none">
+                                            <div class="col-sm-4 p-1 form-group" id="proveedor" style="display: none">
                                                 <label for="proveedor_id">Proveedor:</label>
                                                 <br>
                                                 <select class="form-control" id="proveedor_id" name="proveedor_id">
