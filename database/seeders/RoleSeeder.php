@@ -233,11 +233,9 @@ class RoleSeeder extends Seeder
                     Permission::create(['name' => 'destinos.configuracion', 'description' => 'Ver Submenú Cadena Suministros-Configuracion-Destinos', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'destinos.index', 'description' => 'Destinos:Tabla', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'destinos.acciones', 'description' => 'Destinos:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
-                    // Permission::create(['name' => 'requisiciones.acciones', 'description' => 'Requisiciones:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
         // Archivos -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             Permission::create(['name' => 'menu.archivos', 'description' => 'Ver Submenú Cadena Suministros-Archivos', 'nomenclatura' => 5])->syncRoles($rolAdmin);
                 Permission::create(['name' => 'archivos.index', 'description' => 'Archivos:Tabla', 'nomenclatura' => 5])->syncRoles($rolAdmin,$rolPrueba);
                 Permission::create(['name' => 'archivos.acciones', 'description' => 'Archivos:Acciones', 'nomenclatura' => 5])->syncRoles($rolAdmin);
-
     }
 }
