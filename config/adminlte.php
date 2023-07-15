@@ -554,10 +554,12 @@ return [
                         [
                             'text' => 'Gasolineras',
                             'url'  => 'gasolineras',
+                            'can'  => 'menu.gasolineras'
                         ],
                         [
                             'text' => 'Destinos',
                             'url'  => 'destinos',
+                            'can'  => 'menu.destinos'
                         ],
                     ],
                 ],

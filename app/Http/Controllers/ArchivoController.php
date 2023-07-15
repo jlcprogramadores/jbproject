@@ -10,7 +10,12 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class ArchivoController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:archivos.index')->only(['index']);
+        $this->middleware('can:Archivos.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -13,6 +13,7 @@
                 2 => 'Recursos Humanos',
                 3 => 'Administración',
                 4 => 'Cadena de Suministros',
+                5 => 'Archivos',
             ];
         @endphp
         <div class="card">

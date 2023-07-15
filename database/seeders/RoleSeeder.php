@@ -216,7 +216,7 @@ class RoleSeeder extends Seeder
         // Cadena De Suministros -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             Permission::create(['name' => 'menu.cadena','description' => 'Ver Cadena de Suministros', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                 //Submenu gasolineras
-                Permission::create(['name' => 'menu.gasolineras', 'description' => 'Ver Submenú Cadena Suministros-Gasolineras', 'nomenclatura' => 4])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'menu.controlgasolineras', 'description' => 'Ver Submenú Cadena Suministros-Control Gasolineras', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                 //Submenu inventarios
                 Permission::create(['name' => 'menu.inventarios', 'description' => 'Ver Submenú Cadena Suministros-Inventarios', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                 //Submenu requisiciones
@@ -224,15 +224,20 @@ class RoleSeeder extends Seeder
                     Permission::create(['name' => 'requisiciones.index', 'description' => 'Requisiciones:Tabla', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'requisiciones.acciones', 'description' => 'Requisiciones:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                 //Submenu configuracion-cadena
-                Permission::create(['name' => 'menu.cadenaconfiguracion', 'description' => 'Ver Submenú Cadena Suministros-Configuracion', 'nomenclatura' => 4])->syncRoles($rolAdmin); 
+                Permission::create(['name' => 'menu.gasolineras', 'description' => 'Ver Submenú Cadena Suministros-Configuración-Gasolineras', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                     Permission::create(['name' => 'gasolineras.configuracion', 'description' => 'Ver Submenú Cadena Suministros-Configuracion-Gasolineras', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'gasolineras.index', 'description' => 'Gasolineras:Tabla', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'gasolineras.acciones', 'description' => 'Gasolineras:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
 
+                Permission::create(['name' => 'menu.destinos', 'description' => 'Ver Submenú Cadena Suministros-Configuración-Destinos', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                     Permission::create(['name' => 'destinos.configuracion', 'description' => 'Ver Submenú Cadena Suministros-Configuracion-Destinos', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'destinos.index', 'description' => 'Destinos:Tabla', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
                     Permission::create(['name' => 'destinos.acciones', 'description' => 'Destinos:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
                     // Permission::create(['name' => 'requisiciones.acciones', 'description' => 'Requisiciones:Acciones', 'nomenclatura' => 4])->syncRoles($rolAdmin);
+        // Archivos -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Permission::create(['name' => 'menu.archivos', 'description' => 'Ver Submenú Cadena Suministros-Archivos', 'nomenclatura' => 5])->syncRoles($rolAdmin);
+                Permission::create(['name' => 'archivos.index', 'description' => 'Archivos:Tabla', 'nomenclatura' => 5])->syncRoles($rolAdmin,$rolPrueba);
+                Permission::create(['name' => 'archivos.acciones', 'description' => 'Archivos:Acciones', 'nomenclatura' => 5])->syncRoles($rolAdmin);
 
     }
 }

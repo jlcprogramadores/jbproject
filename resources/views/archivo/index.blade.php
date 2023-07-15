@@ -14,9 +14,11 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('files.index') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Subir Archivo') }}
-                                </a>
+                                @can('archivos.acciones')
+                                    <a href="{{ route('files.index') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Subir Archivo') }}
+                                    </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -36,7 +38,9 @@
 										<th>Nombre</th>
 										<th>Url</th>
 										{{-- <th>Usuario Edito</th> --}}
-                                        <th>Acciones</th>
+                                        @can('archivos.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,11 +54,11 @@
 
                                             <td>
                                                 <form action="{{ route('archivos.destroy',$archivo->id) }}" method="POST">
-                                                    {{-- <a class="btn btn-sm btn-primary " href="{{ route('archivos.show',$archivo->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a> --}}
-                                                    {{-- <a class="btn btn-sm btn-success" href="{{ route('archivos.edit',$archivo->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a> --}}
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @can('archivos.acciones')
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>
