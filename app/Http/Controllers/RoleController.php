@@ -37,10 +37,10 @@ class RoleController extends Controller
      */
     public function create()
     {   
-        $rol = new Role();
+        $role = new Role();
         $permissions = Permission::all();
         
-        return view('rol.create', compact('rol','permissions'));
+        return view('rol.create', compact('role','permissions'));
     }
 
     /**
@@ -51,9 +51,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {   
-        $request->validate;
-        $rol = Role::create($request->validate(['name' => 'required']));
-        $rol->permissions()->sync($request->permissions);
+        $role = Roles::create($request->except('permissions'));
+        $role->permissions()->sync($request->permissions);
 
         return redirect()->route('roles.index')
             ->with('success', 'Rol creado exitosamente.');
@@ -110,7 +109,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = Role::findById($id)->delete();
+        $role = Roles::findById($id)->delete();
 
         return redirect()->route('roles.index')
             ->with('success', 'Rol eliminado exitosamente.');
