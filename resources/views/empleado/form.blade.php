@@ -254,6 +254,8 @@
                             {{ Form::number('no_hijos', $empleado->no_hijos, ['class' => 'form-control' . ($errors->has('no_hijos') ? ' is-invalid' : ''), 'placeholder' => 'No Hijos']) }}
                             {!! $errors->first('no_hijos', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col form-group">
                             {{ Form::label('persona_para_tramites') }}
                             {{ Form::text('persona_para_tramites', $empleado->persona_para_tramites, ['class' => 'form-control' . ($errors->has('persona_para_tramites') ? ' is-invalid' : ''), 'placeholder' => 'Persona Para Tramites']) }}
@@ -264,7 +266,9 @@
                             {{ Form::text('beneficiarios', $empleado->beneficiarios, ['class' => 'form-control' . ($errors->has('beneficiarios') ? ' is-invalid' : ''), 'placeholder' => 'Beneficiarios']) }}
                             {!! $errors->first('beneficiarios', '<div class="invalid-feedback">:message</div>') !!}
                         </div>
-                        <div class="col form-group">
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
                             {{ Form::label('porcentaje') }}
                             {{ Form::number('porcentaje', $empleado->porcentaje, ['class' => 'form-control' . ($errors->has('porcentaje') ? ' is-invalid' : ''), 'placeholder' => 'Porcentaje']) }}
                             {!! $errors->first('porcentaje', '<div class="invalid-feedback">:message</div>') !!}
