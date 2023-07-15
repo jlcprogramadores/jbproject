@@ -21,6 +21,7 @@ class EmpleadoController extends Controller
     
     public function __construct()
     {
+        $this->middleware('can:poblacion.index')->only(['poblacion']);
         $this->middleware('can:paros.index')->only(['index']);
         $this->middleware('can:paros.acciones')->only(['show', 'edit', 'update', 'destroy']);
     }

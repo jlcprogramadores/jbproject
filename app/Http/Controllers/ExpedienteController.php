@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\DB;
  * @package App\Http\Controllers
  */
 class ExpedienteController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:expedientes.index')->only(['index']);
+        $this->middleware('can:expedientes.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

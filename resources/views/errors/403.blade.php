@@ -1,4 +1,6 @@
 @extends('adminlte::page')
+@section('title','Error 403')
+
 @section('content')
 <section class="content">
   <div class="error-page">
@@ -12,17 +14,11 @@
         Por favor contacta al administrador si crees que se trata de un error.
       </p>
       <p>
-        <a  href="{{ route('home') }}">Regresar a Home</a>.
+        <a  href="{{ route('home') }}">Regresar a Home</a>
       </p>
-
-        <!-- /.input-group -->
       </form>
     </div>
-    <!-- /.error-content -->
   </div>
-  <!-- /.error-page -->
 </section>
-<!-- /.content -->
 </div>
-
 @endsection

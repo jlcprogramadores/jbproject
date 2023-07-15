@@ -36,6 +36,13 @@ class FinanzaController extends Controller
     public function __construct()
     {
         $this->middleware('can:finanzas.index')->only(['index']);
+        $this->middleware('can:finanzas.indexEgreso')->only(['indexEgreso']);
+        $this->middleware('can:finanzas.indexIngreso')->only(['indexIngreso']);
+        $this->middleware('can:finanzas.topgeneral')->only(['topGeneral']);
+        $this->middleware('can:finanzas.graficas')->only(['graficasGenerales']);
+        $this->middleware('can:finanzas.graficas')->only(['graficasProyectos']);
+        $this->middleware('can:finanzas.centrodecostos')->only(['centrodecostos']);
+        $this->middleware('can:finanzas.filtros')->only(['filtros']);
         $this->middleware('can:finanzas.acciones')->only(['show', 'edit', 'update', 'destroy']);
     }
 

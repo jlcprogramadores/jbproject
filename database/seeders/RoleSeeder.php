@@ -286,7 +286,11 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'roles.acciones', 'description' => 'Roles:Acciones', 'nomenclatura' => 3])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'roles.edit', 'description' => 'Roles:Editar', 'nomenclatura' => 3])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'roles.destroy', 'description' => 'Roles:Borrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);
-                // Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);     
+                // Permission::create(['name' => 'roles.show', 'description' => 'Roles:Mostrar', 'nomenclatura' => 3])->syncRoles($rolAdmin);   
+            Permission::create(['name' => 'menu.accesos', 'description' => 'Ver Submenú Administración-Roles y Permisos', 'nomenclatura' => 3])->syncRoles($rolAdmin);
+                //Permisos
+                Permission::create(['name' => 'accesos.index', 'description' => 'Accesos:Tabla', 'nomenclatura' => 3])->syncRoles($rolAdmin,$rolPrueba);
+                Permission::create(['name' => 'accesos.acciones', 'description' => 'Accesos:Acciones', 'nomenclatura' => 3])->syncRoles($rolAdmin);  
         
         // Cadena De Suministros -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             Permission::create(['name' => 'menu.cadena','description' => 'Ver Cadena de Suministros', 'nomenclatura' => 4])->syncRoles($rolAdmin,$rolPrueba);
