@@ -100,6 +100,9 @@
     resumable.on('fileSuccess', function (file, response) { // trigger when file upload complete
         response = JSON.parse(response)
         document.getElementById("avisoExito").style.display = "block";
+        setTimeout(function() {
+           window.location.href = "archivos"
+       }, 3000);
     });
 
     resumable.on('fileError', function (file, response) { // trigger when there is any error

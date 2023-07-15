@@ -69,6 +69,7 @@ class UserSeeder extends Seeder
             'es_activo' => 1,
             'es_admin' => 1
         ])->assignRole('Admin');
+        
         // User::factory(100)->create();
 
     }
