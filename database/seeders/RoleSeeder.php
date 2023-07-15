@@ -109,7 +109,7 @@ class RoleSeeder extends Seeder
                 // Permission::create(['name' => 'minas.destroy', 'description' => 'Mina:Borrar', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             // configuracion
-            Permission::create(['name' => 'conf.1', 'description' => 'Configuración', 'nomenclatura' => 1])->syncRoles($rolAdmin);
+            Permission::create(['name' => 'menu.configuracion', 'description' => 'Configuración', 'nomenclatura' => 1])->syncRoles($rolAdmin);
 
             Permission::create(['name' => 'menu.categorias-de-entrada', 'description' => 'Ver Submenú Administración-Categorías de entrada', 'nomenclatura' => 1])->syncRoles($rolAdmin);
                 //Permisos
@@ -187,7 +187,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'menu.recursoshumanos', 'description' => 'Ver Menú Recursos Humanos', 'nomenclatura' => 2])->syncRoles($rolAdmin,$rolPrueba);
         //Submenu recursos humanos
             //Submenu expedientes
-            Permission::create(['name' => 'menu.candidatos', 'description' => 'Ver Submenú RecursosHumanos-Candidatos', 'nomenclatura' => 2])->syncRoles($rolAdmin,$rolPrueba);
+            Permission::create(['name' => 'menu.candidatos', 'description' => 'Ver Submenú RecursosHumanos-Candidatos', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 //Permisos expedientes
                 Permission::create(['name' => 'candidatos.index', 'description' => 'Candidatos:Tabla', 'nomenclatura' => 2])->syncRoles($rolAdmin,$rolPrueba);
                 Permission::create(['name' => 'candidatos.acciones', 'description' => 'Candidatos:Acciones', 'nomenclatura' => 2])->syncRoles($rolAdmin);
@@ -249,10 +249,6 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'poblacion.index', 'description' => 'Poblacion:Tabla', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 Permission::create(['name' => 'poblacion.detalle', 'description' => 'Poblacion:Detalle Poblacion', 'nomenclatura' => 2])->syncRoles($rolAdmin);
 
-
-            // Configuracion 
-            Permission::create(['name' => 'conf.2', 'description' => 'Configuración', 'nomenclatura' => 2])->syncRoles($rolAdmin);
-
             //Submenu expedientes
            Permission::create(['name' => 'menu.expedientes', 'description' => 'Ver Submenú RecursosHumanos-Expedientes', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 //Permisos expedientes
@@ -265,7 +261,7 @@ class RoleSeeder extends Seeder
             //Submenu puestos 
            Permission::create(['name' => 'menu.puestos', 'description' => 'Ver Submenú RecursosHumanos-Puestos', 'nomenclatura' => 2])->syncRoles($rolAdmin);
             //Permisos puestos
-                Permission::create(['name' => 'puestos.index', 'description' => 'Puestos:Tabla', 'nomenclatura' => 2])->syncRoles($rolAdmin,$rolPrueba);
+                Permission::create(['name' => 'puestos.index', 'description' => 'Puestos:Tabla', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 Permission::create(['name' => 'puestos.acciones', 'description' => 'Puestos:Acciones', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'puestos.edit', 'description' => 'Puestos:Editar', 'nomenclatura' => 2])->syncRoles($rolAdmin);
                 // Permission::create(['name' => 'puestos.destroy', 'description' => 'Puestos:Borrar', 'nomenclatura' => 2])->syncRoles($rolAdmin);    

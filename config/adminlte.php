@@ -409,34 +409,42 @@ return [
                 [
                     'text' => 'Candidatos',
                     'url'  => 'candidatos',
+                    'can'  => 'menu.candidatos'
                 ],
                 [
                     'text' => 'Empleados',
                     'url'  => 'empleados',
+                    'can'  => 'menu.empleados'
                 ],
                 [
                     'text' => 'Expedientes de Empleados',
                     'url'  => 'empleado-expedientes',
+                    'can'  => 'menu.empleado-expedientes'
                 ],
                 [
                     'text' => 'Incidencias',
                     'url'  => 'incidencias',
+                    'can'  => 'menu.incidencias'
                 ],
                 [
                     'text' => 'Grupos',
                     'url'  => 'grupos',
+                    'can'  => 'menu.grupos'
                 ],
                 [
                     'text' => 'Paros',
                     'url'  => 'paros',
+                    'can'  => 'menu.paros'
                 ],
                 [
                     'text' => 'Población',
                     'url'  => 'poblacion',
+                    'can'  => 'menu.poblacion'
                 ],
                 [
                     'text'    => 'Configuración',
                     'url'     => '#',
+                    'can'     => 'menu.configuracion',
                     'submenu' => [
                         [
                             'text' => 'Puestos',

@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SalidaSeeder::class);
         $this->call(AccesoSeeder::class);
         $this->call(ProductoSeeder::class);
-        $users = User::factory()->count(10000)->create();
+        // $users = User::factory()->count(10000)->create();
     }
 }
