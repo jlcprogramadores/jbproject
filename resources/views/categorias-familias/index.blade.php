@@ -59,11 +59,11 @@
                                             @can('categorias-familias.acciones')
                                                 <td>
                                                     <form action="{{ route('categorias-familias.destroy',$categoriasFamilia->id) }}" method="POST">
-                                                        <a class="btn btn-sm btn-primary " href="{{ route('categorias-familias.show',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                        <a class="btn btn-sm btn-success" href="{{ route('categorias-familias.edit',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('categorias-familias.show',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('categorias-familias.edit',$categoriasFamilia->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
                                                     </form>
                                                 </td>
                                             @endcan

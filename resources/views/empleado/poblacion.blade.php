@@ -53,7 +53,7 @@
                                         <td>{{$costo['total_empleados']}}</td> 
                                         <td>
                                             @can('poblacion.detalle')
-                                            <a class="btn btn-sm btn-primary " href="{{ route('empleados.poblaciondetalle',$costo['id_proyecto']) }}"><i class="fa fa-fw fa-eye"></i>  Detalle Población</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('empleados.poblaciondetalle',$costo['id_proyecto']) }}"><i class="fa fa-fw fa-eye"></i></a>
                                             @endcan
                                         </td>   
                                     </tr>

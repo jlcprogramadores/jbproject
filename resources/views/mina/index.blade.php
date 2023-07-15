@@ -61,11 +61,11 @@
                                             @can('minas.acciones')
                                             <td>
                                                 <form action="{{ route('minas.destroy',$mina->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('minas.show',$mina->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('minas.edit',$mina->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('minas.show',$mina->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('minas.edit',$mina->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                             @endcan

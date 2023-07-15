@@ -132,11 +132,11 @@
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-altas.crearporempleado',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i>Cambio De Estado</a>
                                                     <a class="btn btn-sm btn-warning " href="{{ route('empleados.capacitaciones',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Capacitaciones</a>
                                                     <a class="btn btn-sm btn-warning " href="{{ route('historial-contrato.index',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Contrato</a>
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('empleados.show',$empleado->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('empleados.edit',$empleado->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
                                                 </form>
                                             </td>
                                             @endcan

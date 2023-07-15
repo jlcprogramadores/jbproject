@@ -59,10 +59,10 @@
                                                     
                                                         <a class="btn btn btn-sm btn-primary" href="{{ route('grupos-empleado.grupoPorEmpleados', ['id' => $grupo->id]) }}"><i class="fa fa-fw fa-edit"></i> Lista de Empleados</a>
                                                         {{-- <a class="btn btn-sm btn-primary " href="{{ route('grupos.show',$grupo->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar Empleados</a> --}}
-                                                        <a class="btn btn-sm btn-success" href="{{ route('grupos.edit',$grupo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('grupos.edit',$grupo->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
                                                         
                                                     </form>
                                                 </td>
