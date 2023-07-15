@@ -35,7 +35,7 @@ class UsersTable extends Component
                 $query->where('email', 'like', '%'.$this->searchEmail.'%');
             })
             ->when($this->es_activo, function ($query) {
-                $query->whereDate('es_activo', $this->es_activo);
+                $query->where('es_activo', $this->es_activo);
             })
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);

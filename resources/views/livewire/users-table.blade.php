@@ -73,7 +73,11 @@
                     <input wire:model="searchEmail" type="text" class="form-control" placeholder="Correo">
                 </th>
                 <th class="px-1 py-1">
-                    <input wire:model="es_activo" type="text" class="form-control" placeholder="Es Activo">
+                    <select wire:model="es_activo" class="form-control" style="color: #007bff!important; border-color: #cbe4ff;">
+                        <option value="">Estado</option>
+                        <option value="1">Activado</option>
+                        <option value="0">Inactivo</option>
+                    </select>
                 </th>
                 <th class="th-azul">Roles</th>
                 @can('usuarios.acciones')
@@ -93,7 +97,7 @@
                     @if ($user->es_activo)
                                                 <td><p class="badge bg-success">Activado</p></td>
                                             @else
-                                                <td><p class="badge bg-danger">Innactivo</p></td>
+                                                <td><p class="badge bg-danger">Inactivo</p></td>
                                             @endif
                                             {{-- <td>{{$user->roles}}</td> --}}
                                             @if (isset($user->roles[0]))
