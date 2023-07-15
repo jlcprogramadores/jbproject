@@ -12,12 +12,14 @@
         max-width: 100%;
         width: auto;
     }
+    .filters{
+        white-space: nowrap;
+    }
     .filters th input {
         /* border: none; */
         border-color: #cbe4ff;
         background-color: transparent;
         color: #007bff;
-
     }
     .filters th input::placeholder {
         color: #007bff;
@@ -30,12 +32,15 @@
     .completo {
         white-space: normal !important;
     }
+    .btn-group input[type="radio"] {
+        display: none;
+    }
     </style>    
     <div class="d-flex flex-row">
         <div class="p-2">
             <div class="input-group input-group-sm">
                 <label class="input-group-text">Mostrar:</label>
-                <select wire:model="perPage" class="form-select w-50">
+                <select wire:model="perPage" class="form-select">
                     <option>10</option>
                     <option>25</option>
                     <option>50</option>

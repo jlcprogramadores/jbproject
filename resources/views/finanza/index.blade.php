@@ -15,13 +15,13 @@
 
                              <div class="float-right">
                                 @can('finanzas.acciones')
-                                <a href="{{ route('finanzas.egresoMeses') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('finanzas.egresoMeses') }}" class="btn btn-primary btn-sm p-2"  data-placement="left">
                                     {{ __('Crear Egresos A Meses') }}
                                 </a> 
-                                <a href="{{ route('finanzas.egreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('finanzas.egreso') }}" class="btn btn-primary btn-sm p-2"  data-placement="left">
                                     {{ __('Crear Egresos') }}
                                 </a> 
-                                <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('finanzas.ingreso') }}" class="btn btn-primary btn-sm p-2"  data-placement="left">
                                     {{ __('Crear Ingresos') }}
                                 </a>
                                 @endcan
