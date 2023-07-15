@@ -78,7 +78,7 @@
                         </div>
                         <div class="col form-group">
                             <label for="comentario">Comentario</label>
-                            <input type="text" name="comentario" id="comentario" class="form-control">
+                            <input type="text" name="comentario" id="comentario" class="form-control" placeholder="Comentario">
                         </div>
                     </div>
                     @endif
