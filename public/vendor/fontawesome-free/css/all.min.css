@@ -132,3 +132,9 @@ td form {
 .select2 {
     width:100%!important;
 }
+.btn-group input[type="radio"] {
+    display: none;
+}
+.th-azul{
+    color: #007bff;
+}

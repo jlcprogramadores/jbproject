@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class UsersTable extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $perPage = 10;
     public $search = '';
@@ -17,7 +18,9 @@ class UsersTable extends Component
     public $searchId = '';
     public $searchName = '';
     public $searchEmail = '';
-    public $searchCreatedAt = '';
+    public $es_activo = '';
+    public $roles = '';
+    public $acciones = '';
     
     public function render()
     {
@@ -31,8 +34,8 @@ class UsersTable extends Component
             ->when($this->searchEmail, function ($query) {
                 $query->where('email', 'like', '%'.$this->searchEmail.'%');
             })
-            ->when($this->searchCreatedAt, function ($query) {
-                $query->whereDate('created_at', $this->searchCreatedAt);
+            ->when($this->es_activo, function ($query) {
+                $query->whereDate('es_activo', $this->es_activo);
             })
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->paginate($this->perPage);

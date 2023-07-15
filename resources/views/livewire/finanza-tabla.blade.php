@@ -32,9 +32,6 @@
     .completo {
         white-space: normal !important;
     }
-    .btn-group input[type="radio"] {
-        display: none;
-    }
     </style>    
     <div class="d-flex flex-row">
         <div class="p-2">
@@ -218,13 +215,13 @@
                     <span class="invisible">---Comprobante---</span>
                     <input wire:model="comprobante" type="text" class="form-control" placeholder="Comprobante">
                 </th>
-                <th>Fecha Actualización</th>
+                <th class="th-azul">Fecha Actualización</th>
 
                 @can('finanzas.acciones')
-                    <th>Acciones</th>
+                    <th class="th-azul">Acciones</th>
                 @endcan
                 
-                <th>Acc. Especiales</th>
+                <th class="th-azul">Acc. Especiales</th>
             </tr>
         </thead>
         <tbody>
