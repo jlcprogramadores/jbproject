@@ -74,7 +74,7 @@
     <table class="table table-sm table-striped table-auto w-full mb-6">
         <thead>
             <tr class="filters">
-                <th class="px-1 py-1">
+                <th class="px-1 py-1" style="width: 50px;">
                     <input wire:model="searchId" type="text" class="form-control" placeholder="No.">
                 </th>
                 <th class="px-1 py-1">
