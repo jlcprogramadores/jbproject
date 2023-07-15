@@ -177,19 +177,19 @@ class FinanzaController extends Controller
             $btns= '';
             $btns .= '<form action="'.route('finanzas.destroy',$finanza->id).'" method="POST" >';
             if ($user->can('finanzas.show')) {
-                $btns .='<a class="btn btn-sm btn-primary " href="'.route('finanzas.show',$finanza->id).'"><i class="fa fa-fw fa-eye"></i> Mostrar</a>';
+                $btns .='<a class="btn btn-sm btn-primary " href="'.route('finanzas.show',$finanza->id).'"><i class="fa fa-fw fa-eye"></i></a>';
             }
             if ($user->can('finanzas.edit')) {
                 if($finanza->t_meses){
-                    $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgresoMeses',$finanza->id).'""><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                    $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgresoMeses',$finanza->id).'""><i class="fa fa-fw fa-edit"></i></a>';
                 }elseif($finanza->salidas_id){
-                    $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgreso',$finanza->id).'" ><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                    $btns .='<a class="btn btn-sm btn-success" href="'.route('finanzas.editEgreso',$finanza->id).'" ><i class="fa fa-fw fa-edit"></i></a>';
                 }else{
-                    $btns .=' <a class="btn btn-sm btn-success" href="'.route('finanzas.editIngreso',$finanza->id).'"><i class="fa fa-fw fa-edit"></i>Editar</a>';
+                    $btns .=' <a class="btn btn-sm btn-success" href="'.route('finanzas.editIngreso',$finanza->id).'"><i class="fa fa-fw fa-edit"></i></a>';
                 }
             }
             if ($user->can('finanzas.destroy')) {
-                $btns .='<button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>';
+                $btns .='<button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>';
             }
             $btns .='<input type="hidden" name="_token" value=" '.csrf_token().' ">';
             $btns .='</form>';

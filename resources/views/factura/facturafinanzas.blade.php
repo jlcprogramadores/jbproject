@@ -115,13 +115,13 @@
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
                                                     @can('facturas.edit')    
-                                                        <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                     @endcan
                                                     @csrf
                                                     @method('DELETE')
                                                     @can('facturas.destroy')
                                                         @if (!$es_a_meses)
-                                                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i> Borrar</button>    
+                                                            <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>    
                                                         @endif
                                                     @endcan
                                                 </form>
