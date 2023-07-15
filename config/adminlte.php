@@ -319,48 +319,59 @@ return [
                         [
                             'text' => 'General',
                             'url'  => 'finanzas',
+                            'can'  => 'menu.general'
                         ],
                         [
                             'text'    => 'Egresos',
                             'url'     => 'indexEgreso',
+                            'can'     => 'menu.egresos'
                         ],
                         [
                             'text'    => 'Ingresos',
                             'url'     => 'indexIngreso',
+                            'can'     => 'menu.ingresos'
                         ],
                         [
                             'text'    => 'Finanzas Filtradas',
                             'url'     => 'filtros',
+                            'can'     => 'menu.filtros'
                         ],
                     ],
                 ],
                 [
                     'text'    => 'Top Egresos e Ingresos',
                     'url'     => 'topGeneral',
+                    'can'     => 'menu.top'
                 ],
                 [
                     'text' => 'Gráficas por Proyecto',
                     'url'  => 'graficasProyectos',
+                    'can'  => 'menu.graficas'
                 ],
                 [
                     'text' => 'Gráficas Generales',
                     'url'  => 'graficasGenerales',
+                    'can'  => 'menu.graficas'
                 ],
                 [
                     'text' => 'Centro de Costos',
                     'url'  => 'centrodecostos',
+                    'can'  => 'menu.centrodecostos'
                 ],
                 [
                     'text' => 'Clientes',
                     'url'  => 'clientes',
+                    'can'  => 'menu.clientes'
                 ],
                 [
                     'text' => 'Proveedores',
                     'url'  => 'proveedores',
+                    'can'  => 'menu.proveedores'
                 ],
                 [
                     'text' => 'Proyectos',
                     'url'  => 'proyectos',
+                    'can'  => 'menu.proyectos'
                 ],
                 [
                     'text' => 'Configuración',
@@ -369,34 +380,42 @@ return [
                         [
                             'text' => 'Categorías de Entradas',
                             'url'  => 'categorias-de-entradas',
+                            'can'  => 'menu.categorias-de-entrada'
                         ],
                         [
                             'text'    => 'Familia',
                             'url'     => 'familias',
+                            'can'  => 'menu.familias'
                         ],
                         [
                             'text'    => 'Categorías de Familias',
                             'url'     => 'categorias-familias',
+                            'can'  => 'menu.categorias-familias'
                         ],
                         [
                             'text'    => 'IVAs',
                             'url'     => 'ivas',
+                            'can'  => 'menu.ivas'
                         ],
                         [
                             'text'    => 'Minas',
                             'url'     => 'minas',
+                            'can'  => 'menu.minas'
                         ],
                         [
                             'text'    => 'Tipo de Direcciones',
                             'url'     => 'tipo-de-direcciones',
+                            'can'  => 'menu.tipo-de-direcciones'
                         ],
                         [
                             'text'    => 'Tipo de Ingresos',
                             'url'     => 'tipo-de-ingresos',
+                            'can'  => 'menu.tipo-de-ingresos'
                         ],
                         [
                             'text'    => 'Unidades',
                             'url'     => 'unidades',
+                            'can'  => 'menu.unidades'
                         ],
                     ],
                 ],
@@ -465,14 +484,17 @@ return [
                 [
                     'text' => 'Usuarios',
                     'url'  => 'usuarios',
+                    'can'  => 'menu.usuarios'
                 ],
                 [
                     'text' => 'Roles y Permisos',
                     'url'  => 'roles',
+                    'can'  => 'menu.roles'
                 ],
                 [
                     'text' => 'Clave de Registro',
                     'url'  => 'accesos',
+                    'can'  => 'menu.accesos'
                 ],
             ],
         ],
@@ -523,6 +545,7 @@ return [
                 [
                     'text' => 'Requisiciones',
                     'url'  => 'requisiciones',
+                    'can'  => 'menu.requisiciones'
                 ],
                 [
                     'text' => 'Configuración',

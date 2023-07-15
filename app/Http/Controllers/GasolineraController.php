@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class GasolineraController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:gasolineras.index')->only(['index']);
+        $this->middleware('can:gasolineras.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

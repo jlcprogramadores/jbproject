@@ -10,7 +10,12 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  */
 class RequisicioneController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:requisiciones.index')->only(['index']);
+        $this->middleware('can:requisiciones.acciones')->only(['show', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

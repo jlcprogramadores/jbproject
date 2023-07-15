@@ -14,9 +14,11 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('destinos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Destino') }}
-                                </a>
+                                @can('destinos.acciones')
+                                    <a href="{{ route('destinos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Destino') }}
+                                    </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -38,8 +40,9 @@
                                         <th>No</th>     
 										<th>Nombre</th>
                                         <th>Fecha Actualización</th>
-
-                                        <th>Acciones</th>
+                                        @can('destinos.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,11 +55,13 @@
 
                                             <td>
                                                 <form action="{{ route('destinos.destroy',$destino->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('destinos.show',$destino->id) }}"><i class="fa fa-fw fa-eye"></i></a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('destinos.edit',$destino->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @can('destinos.acciones')
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('destinos.show',$destino->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('destinos.edit',$destino->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>

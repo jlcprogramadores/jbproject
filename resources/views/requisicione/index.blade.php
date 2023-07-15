@@ -14,9 +14,11 @@
                                 </span>
 
                                 <div class="float-right">
-                                    <a href="{{ route('requisiciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Crear Requisición') }}
-                                    </a>
+                                    @can('requisiciones.acciones')
+                                        <a href="{{ route('requisiciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                        {{ __('Crear Requisición') }}
+                                        </a>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -46,8 +48,9 @@
                                             <th>Aprobada Por</th>
                                             <th>Aprobada En</th>
                                             <th>Usuario Edito</th>
-
+                                            @can('requisiciones.acciones')
                                             <th></th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,11 +74,13 @@
 
                                                 <td>
                                                     <form action="{{ route('requisiciones.destroy',$requisicione->id) }}" method="POST">
+                                                        @can('requisiciones.acciones')
                                                         <a class="btn btn-sm btn-primary " href="{{ route('requisiciones.show',$requisicione->id) }}"><i class="fa fa-fw fa-eye"></i></a>
                                                         <a class="btn btn-sm btn-success" href="{{ route('requisiciones.edit',$requisicione->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                                                        @endcan
                                                     </form>
                                                 </td>
                                             </tr>
