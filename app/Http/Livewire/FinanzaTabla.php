@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class FinanzaTabla extends Component
 {
     use WithPagination;
-
+    protected $paginationTheme = 'bootstrap';
     public $perPage = 10;
     public $orderBy = 'id';
     public $orderAsc = true;
