@@ -39,12 +39,12 @@ class UserSeeder extends Seeder
         ])->assignRole('Admin');
 
         User::create([
-            'name' => 'Fianzas',
+            'name' => 'Finanzas',
             'email' => 'finanzas@mttoindustrialbarrios.com',
             'password' => bcrypt('Finanzas23.'),
             'es_activo' => 1,
             'es_admin' => 0
-        ])->assignRole('Fianzas');
+        ])->assignRole('Finanzas');
         
         User::create([
             'name' => 'Recursos_Humanos',
