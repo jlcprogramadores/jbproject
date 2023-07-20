@@ -14,9 +14,11 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('control-gasolineras.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Nuevo Registro') }}
-                                </a>
+                                @can('controlgasolineras.acciones')
+                                    <a href="{{ route('control-gasolineras.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Nuevo Registro') }}
+                                    </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -48,8 +50,9 @@
 										<th>Pagado</th>
 										<th>Vale Archivo</th>
                                         <th>Fecha Actualización</th>
-                                        
-                                        <th>Acciones</th>
+                                        @can('controlgasolineras.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,11 +87,13 @@
 
                                             <td>
                                                 <form action="{{ route('control-gasolineras.destroy',$controlGasolinera->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('control-gasolineras.show',$controlGasolinera->id) }}"><i class="fa fa-fw fa-eye"></i></a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('control-gasolineras.edit',$controlGasolinera->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @can('controlgasolineras.acciones')
+                                                        <a class="btn btn-sm btn-primary " href="{{ route('control-gasolineras.show',$controlGasolinera->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('control-gasolineras.edit',$controlGasolinera->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>

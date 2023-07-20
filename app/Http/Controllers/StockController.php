@@ -14,7 +14,16 @@ use Illuminate\Support\Facades\DB;
  * @package App\Http\Controllers
  */
 class StockController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:inventarios.index')->only(['resumen']);
+        $this->middleware('can:entradas.index')->only(['entradas']);
+        $this->middleware('can:entradas.acciones')->only(['createEntrada', 'editentradas']);
+        $this->middleware('can:salidas.index')->only(['salidas']);
+        $this->middleware('can:salidas.acciones')->only(['createSalida', 'editsalidas']);
+    }
+
     /**
      * Display a listing of the resource.
      *

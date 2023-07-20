@@ -17,9 +17,11 @@
                                 {{-- <a href="{{ route('stocks.create-entrada') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Entrada') }}
                                 </a> --}}
-                                <a href="{{ route('stocks.create-salida') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Salida') }}
-                                </a>
+                                @can('salidas.acciones')
+                                    <a href="{{ route('stocks.create-salida') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Crear Salida') }}
+                                    </a>
+                                @endcan
                               </div>
                         </div>
                     </div>
@@ -46,8 +48,9 @@
 										<th>Lote</th>
 										<th>Cantidad</th>
 										<th>Fecha Actualización</th>
-
-                                        <th>Acciones</th>
+                                        @can('salidas.acciones')
+                                            <th>Acciones</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,10 +68,12 @@
                                             <td>
                                                 <form action="{{ route('stocks.destroy',$stock->id) }}" method="POST">
                                                     {{-- <a class="btn btn-sm btn-primary " href="{{ route('stocks.show',$stock->id) }}"><i class="fa fa-fw fa-eye"></i></a> --}}
-                                                    <a class="btn btn-sm btn-success" href="{{ route('stocks.editsalidas',$stock->id) }}"><i class="fa fa-fw fa-edit"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @can('salidas.acciones')
+                                                        <a class="btn btn-sm btn-success" href="{{ route('stocks.editsalidas',$stock->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-fw fa-trash"></i></button>
+                                                    @endcan
                                                 </form>
                                             </td>
                                         </tr>

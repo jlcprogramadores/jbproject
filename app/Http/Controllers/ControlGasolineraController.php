@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\DB;
  * @package App\Http\Controllers
  */
 class ControlGasolineraController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('can:controlgasolineras.index')->only(['index']);
+        $this->middleware('can:controlgasolineras.acciones')->only(['show', 'edit', 'update', 'destroy']);
+        $this->middleware('can:controlgasolineras.graficaunidad')->only(['graficasGasolinerasUnidad']);
+        $this->middleware('can:controlgasolineras.graficarango')->only(['graficasGasolinerasRango']);
+    }
     /**
      * Display a listing of the resource.
      *
