@@ -425,6 +425,7 @@ return [
         [
             'text'    => 'Recursos Humanos',
             'icon'    => 'fas fa-users',
+            'can'    => 'menu.recursoshumanos',
             'submenu' => [
                 [
                     'text' => 'Candidatos',
@@ -481,6 +482,7 @@ return [
         [
             'text'    => 'Administración',
             'icon'    => 'fas fa-cogs',
+            'can'    => 'menu.administracion',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
@@ -502,6 +504,7 @@ return [
         [
             'text'    => 'Cadena de Suministros',
             'icon'    => 'fas fa-truck',
+            'can'    => 'menu.cadena',
             'submenu' => [
                 [
                     'text' => 'Gasolineras',
@@ -570,6 +573,7 @@ return [
         [
             'text'    => 'Archivos',
             'icon'    => 'fas fa-file',
+            'can'    => 'menu.archivos',
             'submenu' => [
                 [
                     'text' => 'Compartir Archivos',
