@@ -1,55 +1,27 @@
 
 <div class="box box-info padding-1">
     <div class="container">
-        <!-- estilo a partir de balsamiq  -->
-        <div class="row">
-            <div class="col-sm p-1 form-group">
-                {{ Form::label('tipodeingreso_id','Tipo de ingreso') }}
-                <br>
-                {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona tipo de ingreso']) }}
-                {!! $errors->first('tipodeingreso_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-            </div>
-            <div class="col-sm p-1 form-group">
-                {{ Form::label('proyecto_id','Proyecto') }}
-                <br>
-                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el proyecto']) }}
-                {!! $errors->first('proyecto_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-            </div>
-            <!-- para poder llenar categoria_id se requiere:
-            selecionar una familia, para que cargen las categorias de dicha familia -->
-            <div class="col-sm p-1 form-group">
-                {{ Form::label('familia_id','Familia') }}
-                <br>
-                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la familia']) }}
-                {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-            </div>
-            <div class="col-sm p-1 form-group">
-                {{ Form::label('categoria_id','Categoría') }}
-                <br>
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoría']) }}
-                {!! $errors->first('categoria_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-            </div>
+        <div class="form-group d-none">
+            {{ Form::label('entregado_material_a', 'Material entregado a') }}
+            {{ Form::text('entregado_material_a', 'N/A', ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
+            {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
         </div>
-        <br>
+        <div class="form-group d-none">
+            {{ Form::label('entregado_material_a', 'Material entregado a') }}
+            {{ Form::text('entregado_material_a', 'N/A', ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
+            {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+        </div>
+        <div class="form-group d-none">
+            {{ Form::label('usuario_edito') }}
+            {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('usuario_edito', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+        </div>
         <div class="row">
-            <!-- datos de ingreso -->
-            <div class="col-sm">
-                <div class="p-1 form-group">
-                    {{ Form::label('cliente_id','Cliente') }}
-                    {{ Form::select('cliente_id',$datoscliente, $entrada->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el cliente']) }}
-                    {!! $errors->first('cliente_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                {{-- <div class="p-1 form-group">
-                    {{ Form::label('folio') }}
-                    {{ Form::text('no', $finanza->no, ['class' => 'form-control' . ($errors->has('no') ? ' is-invalid' : ''), 'placeholder' => 'Folio']) }}
-                    {!! $errors->first('no', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div> --}}
-
+            <div class="col form-group">
                 <?php $tienePermiso = false;?>
                 @can('finanzas.formMasDias')
                     <?php $tienePermiso = true;?>
                 @endcan
-
                 @if (!$tienePermiso)
                     {{-- Dias que se cargan en el select --}}
                     <?php 
@@ -58,150 +30,184 @@
                         $dos = Carbon\Carbon::now()->subDay(2); 
                         $tres = Carbon\Carbon::now()->subDay(3); 
                     ?>
-                    <div class="p-1 form-group">
-                        <label for="fecha_entrada">Fecha Entrada</label>
-                        <select name="fecha_entrada" class="form-control">
-                            <option value="{{ Carbon\Carbon::parse($date)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($date)->format('d/m/Y') }}</option>
-                            <option value="{{ Carbon\Carbon::parse($uno)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($uno)->format('d/m/Y') }}</option>
-                            <option value="{{ Carbon\Carbon::parse($dos)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($dos)->format('d/m/Y') }}</option>
-                            <option value="{{ Carbon\Carbon::parse($tres)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($tres)->format('d/m/Y') }}</option>
-                        </select>
-                    </div>
+                    <label for="fecha_entrada">Fecha Entrada</label>
+                    <span style="color:red">*</span>
+                    <select name="fecha_entrada" class="form-control">
+                        <option value="{{ Carbon\Carbon::parse($date)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($date)->format('d/m/Y') }}</option>
+                        <option value="{{ Carbon\Carbon::parse($uno)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($uno)->format('d/m/Y') }}</option>
+                        <option value="{{ Carbon\Carbon::parse($dos)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($dos)->format('d/m/Y') }}</option>
+                        <option value="{{ Carbon\Carbon::parse($tres)->format('Y-m-d') }}">{{ Carbon\Carbon::parse($tres)->format('d/m/Y') }}</option>
+                    </select>
                 @else  
-                    <div class="p-1 form-group">
-                        <?php 
-                            $fechaEntrada = isset($finanza->fecha_entrada) ? Carbon\Carbon::parse($finanza->fecha_entrada)->format('Y-m-d') : $finanza->fecha_entrada;
-                        ?>
-                        {{ Form::label('fecha_entrada') }}
-                        {{ Form::date('fecha_entrada', $fechaEntrada, ['class' => 'form-control' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Entrada']) }}
-                        {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                    </div>
+                    {{ Form::label('fecha_entrada') }}
+                    <span style="color:red">*</span>
+                    {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'onchange' => "obtenVence()", 'placeholder' => 'Fecha Entrada']) }}
+                    {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 @endif
-                <div class="p-1 form-group">
-                    <?php 
-                        $fechaFacturacion = isset($finanza->fecha_facturacion) ? Carbon\Carbon::parse($finanza->fecha_facturacion)->format('Y-m-d') : $finanza->fecha_facturacion;
-                    ?>
-                    {{ Form::label('fecha_facturacion') }}
-                    {{ Form::date('fecha_facturacion', $fechaFacturacion, ['class' => 'form-control' . ($errors->has('fecha_facturacion') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Facturacion']) }}
-                    {!! $errors->first('fecha_facturacion', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('vence') }}
-                    {{ Form::number('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''), 'placeholder' => 'En cuantos días vence']) }}
-                    {!! $errors->first('vence', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('descripción') }}
-                    {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
-                    {!! $errors->first('descripcion', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('categorias_de_entrada_id', 'Categoria De Entrada') }}
-                    {{ Form::select('categorias_de_entrada_id',$datoscategoriasdeentrada, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoría']) }}
-                    {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div> 
-                <div class="p-1 form-group">
-                    {{ Form::label('comentario') }}
-                    {{ Form::text('comentario', $finanza->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
-                    {!! $errors->first('comentario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="p-1 form-group d-none">
-                    {{ Form::label('entregado_material_a', 'Material entregado a') }}
-                    {{ Form::text('entregado_material_a', 'N/A', ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
-                    {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
             </div>
-            <!-- datos de precio -->
-            <div class="col-sm">
-                <div class="row">
-                    <div class=" col-sm p-1 form-group">
-                        {{ Form::label('cantidad') }}
-                        {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control', 'id' => 'cantidad' , 'onchange' => "obtenCantidad(this.value)", 'step'=>'any' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad ']) }}
-                        {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            <div class="col form-group">
+                {{ Form::label('vence') }}
+                <span style="color:red">*</span>
+                {{ Form::number('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''),'onchange' => "obtenVence()", 'placeholder' => 'En cuantos días vence']) }}
+                {!! $errors->first('vence', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                {{ Form::label('fecha_salida') }}
+                {{ Form::date('fecha_salida', $finanza->fecha_salida, ['class' => 'form-control'. ($errors->has('fecha_salida') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Creacion','readonly']) }}
+                {!! $errors->first('fecha_salida', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-1 form-group">
+                {{ Form::label('familia_id','Familia') }}
+                <span style="color:red">*</span>
+                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la familia']) }}
+                {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            <div class="col p-1 form-group">
+                {{ Form::label('categoria_id','Categoría') }}
+                <span style="color:red">*</span>
+                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoría']) }}
+                {!! $errors->first('categoria_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-1 form-group">
+                {{ Form::label('proyecto_id','Proyecto') }}
+                <span style="color:red">*</span>
+                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el proyecto']) }}
+                {!! $errors->first('proyecto_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            <div class="col form-group">
+                {{ Form::label('descripcion','Descripción') }}
+                <span style="color:red">*</span>
+                {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
+                {!! $errors->first('descripcion', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                {{ Form::label('cliente_id','Cliente') }}
+                <span style="color:red">*</span>
+                {{ Form::select('cliente_id',$datoscliente, $entrada->cliente_id, ['class' => 'form-control' . ($errors->has('cliente_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el cliente']) }}
+                {!! $errors->first('cliente_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                {{ Form::label('categorias_de_entrada_id', 'Categoría De Entrada') }}
+                <span style="color:red">*</span>
+                {{ Form::select('categorias_de_entrada_id',$datoscategoriasdeentrada, $entrada->categorias_de_entrada_id, ['class' => 'form-control' . ($errors->has('categorias_de_entrada_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona la categoría']) }}
+                {!! $errors->first('categorias_de_entrada_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div> 
+            <div class="col form-group">
+                {{ Form::label('tipodeingreso_id','Tipo de Ingreso') }}
+                <span style="color:red">*</span>
+                {{ Form::select('tipodeingreso_id',$datostipodeingreso,$entrada->tipodeingreso_id, ['class' => 'form-control' . ($errors->has('tipodeingreso_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona tipo de ingreso']) }}
+                {!! $errors->first('tipodeingreso_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 form-group">
+                {{ Form::label('cantidad') }}
+                <span style="color:red">*</span>
+                {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control'  . ($errors->has('cantidad') ? ' is-invalid' : ''), 'onchange' => "obtenTotal();", 'step'=>'any', 'placeholder' => 'Cantidad ']) }}
+                {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            <div class="col-3 form-group">
+                {{ Form::label('unidad_id','Unidad') }}
+                <span style="color:red">*</span>
+                {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            <div class="col form-group">
+                {{ Form::label('costo_unitario') }}
+                <span style="color:red">*</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
                     </div>
-                    <div class=" col-sm p-2 form-group">
-                        {{ Form::label('unidad_id','Unidad') }}
-                        {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'selecciona la unidad']) }}
-                        {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                    </div>
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('costo_unitario') }}
-                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control', 'id'=>'costoUnitario', 'onchange'=>"obtenCostoUnitario(this.value);" ,'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''), 'placeholder' => 'Costo unitario']) }}
+                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control'.($errors->has('costo_unitario') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" ,'step'=>'any' , 'placeholder' => 'Costo unitario']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('iva_id','IVA') }}
-                    {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control', 'id'=>'selectIva', 'onchange'=>"obtenIva(this.value);" . ($errors->has('iva_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona IVA']) }}
-                    {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 form-group">
+                {{ Form::label('sub_total','Subtotal')}} 
+                <span style="color:red">*</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    {{ Form::number('sub_total', $finanza->costo_unitario, ['class' => 'form-control', 'step'=>'any' . ($errors->has('costo_unitario') ? ' is-invalid' : ''),'readonly'=>'true','onchange'=>"obtenSubTotal(this.value)" , 'placeholder' => 'Subtotal']) }}
+                    {!! $errors->first('sub_total', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('Sub-Total')}} 
-                    <br>
-                    <input type="number" class='form-control' readonly='true' id="sub-total" placeholder ='Sub-total' name="sub-total" onchange="obtenSubTotal(this.value)">
-                </div>
-                <div class="p-1 form-group">
-                    {{ Form::label('Total') }}
+            </div>
+            <div class="col-3 form-group">
+                {{ Form::label('iva_id','IVA') }}
+                <span style="color:red">*</span>
+                {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control'. ($errors->has('iva_id') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" , 'placeholder' => 'Selecciona una opción']) }}
+                {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            
+            <div class="col form-group">
+                {{ Form::label('Total') }}
+                <span style="color:red">*</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
                     {{ Form::number('monto_a_pagar', $finanza->monto_a_pagar, ['class' => 'form-control' , 'id'=>'total', 'readonly' => 'true','step'=>'any' . ($errors->has('monto_a_pagar') ? ' is-invalid' : ''), 'placeholder' => 'Monto a pagar']) }}
                     {!! $errors->first('monto_a_pagar', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
-                <div class="p-1 form-group">
-                    <?php 
-                        $fechaDePago = isset($finanza->fecha_de_pago) ? Carbon\Carbon::parse($finanza->fecha_de_pago)->format('Y-m-d') : $finanza->fecha_de_pago;
-                    ?>
-                    {{ Form::label('fecha_de_pago') }}
-                    {{ Form::date('fecha_de_pago', $fechaDePago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
-                    {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="p-1 form-group">
-                    <?php 
-                    $metodo = [
-                    'EFECTIVO' => 'EFECTIVO',
-                    'CHEQUE' => 'CHEQUE',
-                    'TRANSFERENCIA' => 'TRANSFERENCIA',
-                    'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
-                    'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
-                    'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
-                    'CONDONACION' => 'CONDONACION',
-                    'CANCELADA' => 'CANCELADA',
-                    '?' => '?'
-                    ];
-                    ?>
-                    {{ Form::label('metodo_de_pago','Método De Pago') }}
-                    {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
-                    {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
-                <div class="form-group d-none">
-                    {{ Form::label('usuario_edito') }}
-                    {{ Form::text('usuario_edito', Auth::user()->name, ['class' => 'form-control' . ($errors->has('usuario_edito') ? ' is-invalid' : '')]) }}
-                    {!! $errors->first('usuario_edito', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-                </div>
             </div>
-            @if ($finanza->no)
-                
-            @else
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                {{ Form::label('fecha_de_pago') }}
+                {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+            <div class="col form-group">
+                {{ Form::label('metodo_de_pago','Método De Pago') }}
+                {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
+                {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                {{ Form::label('comentario') }}
+                {{ Form::text('comentario', $finanza->comentario, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''), 'placeholder' => 'Comentario']) }}
+                {!! $errors->first('comentario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            </div>
+        </div>
+        <div class="row">
+            @if (!$finanza->no)
                 <div>
-                    <label>Factura</label>
-                    <input type="button" name="answer" value="Añadir"  class="btn btn-success" onclick="mostrarDiv()" />
+                    <input type="button" name="answer" value="Agregar Factura" class="btn btn-success ml-2" onclick="mostrarDiv()" />
                     <div id="apartadoFactura"  style="display:none;">
                         <br>
                         <table class="table table-bordered" id="dynamicAddRemove">
                             <tr>
-        
-                                <th>Referencia</th>
+                                <th>Referencia<span style="color:red">*</span></th>
+                                <th>Concepto<span style="color:red">*</span></th>
                                 <th>URL</th>
                                 <th>Comprobante</th>
-                                <th>Fecha Facturación</th>
-                                <th>Monto</th>
+                                <th>Fecha Facturación<span style="color:red">*</span></th>
+                                <th>Monto<span style="color:red">*</span></th>
                                 <th>Acción</th>
                             </tr>
                             <tr>
-                                <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control"/></td>
-                                <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
+                                <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control" placeholder="Referencia"/></td>
+                                <td><input id="concepto" type="text" step="any" name="factura[0][concepto]" class="form-control" placeholder="Concepto"/></td>
+                                <td><input id="url" type="text" name="factura[0][url]" class="form-control" placeholder="URL"/></td>
                                 <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
                                 <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
-                                <td><input id="monto" type="number"  step="any" name="factura[0][monto]" class="form-control"/></td>
-                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Añadir</button></td>
+                                <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control" placeholder="Monto"/></td>
+                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar</button></td>
                             </tr>
                         </table>
                     </div>
@@ -238,52 +244,59 @@
         let subTotalAux = "0";
         let ivaAux = "0";
         
-        function obtenCostoUnitario(val) {
-            costoUnitarioAux = val;
+        function obtenVence() {
+            let fechaSalida = document.getElementById('fecha_salida');
+            let fechaEntrada = document.getElementById('fecha_entrada');
+            let vence = document.getElementById('vence');
 
-            var cantidad = document.getElementById('cantidad');
-            var subtotal = document.getElementById('sub-total');
+            let result = new Date(fechaEntrada.value??0);
+            let diasSumados = Number(vence.value);
+
+            result.setDate(result.getDate() + (diasSumados)+1);   
             
-            subtotal.value = costoUnitarioAux * cantidad.value;
+            let ano = (result.getFullYear());
+            let mes = ((result.getMonth()+1));
+            let dia = (result.getDate());
             
-            var ivaAux = $( "#selectIva option:selected" ).text();
-            var subTotal = costoUnitarioAux * cantidad.value;
-            
-            var total = document.getElementById('total');
-            total.value = subTotal * ivaAux;
-        }
-        
-        function obtenCantidad(val) {
-            cantidadAux = val;
-            
-            var costoUnitario = document.getElementById('costoUnitario');
-            var subtotal = document.getElementById('sub-total');
-            
-            subtotal.value = cantidadAux * costoUnitario.value;
-            
-            var ivaAux = $( "#selectIva option:selected" ).text();
-            var subTotal = cantidadAux * costoUnitario.value;
-            
-            var total = document.getElementById('total');
-            total.value = subTotal * ivaAux;
+            if (mes < 10) {
+                mes = '0'+ mes
+            }
+
+            if (dia < 10) {
+                dia = '0'+ dia
+            }
+            cadFechaSalida = ano + '-' + mes + '-'  + dia;
+            fechaSalida.value = cadFechaSalida;
         }
 
-        function obtenSubTotal(val) {
-            // console.log('soy subtotal ' + val);
-        }
+        function obtenTotal() {
+            let input_cantidad = document.getElementById('cantidad');
+            let input_costo_unitario = document.getElementById('costo_unitario');
+            let input_subtotal = document.getElementById('sub_total');
+            var input_total = document.getElementById('total');
+            let input_iva = $( "#iva_id option:selected" );
+            let cantidad;
+            let costo_unitario; 
+            let subtotal;
+            let total;
 
-        function obtenIva(val) {
-            var ivaAux = $( "#selectIva option:selected" ).text();
-            var cantidad = document.getElementById('cantidad');
-            var costoUnitario = document.getElementById('costoUnitario');
-            var subtotal = document.getElementById('sub-total');
-            
-            subtotal.value = cantidad.value * costoUnitario.value;
-
-            var subTotal = cantidad.value * costoUnitario.value;
-            
-            var total = document.getElementById('total');
-            total.value = subTotal * ivaAux;
+            if (input_cantidad.value === null || typeof input_cantidad.value === 'undefined' || input_cantidad.value === '' ) {
+                cantidad = 1;
+            }else{
+                cantidad = input_cantidad.value;
+            }
+            if (input_costo_unitario.value === null || typeof input_costo_unitario.value === 'undefined' || input_costo_unitario.value === '') {
+                costo_unitario = 1;
+            }else{
+                costo_unitario = input_costo_unitario.value;
+            }
+            console.log(costo_unitario);
+            subtotal = cantidad * costo_unitario;
+            input_subtotal.value = subtotal;
+            total =subtotal * input_iva.text();
+            if (!isNaN(total)) {
+                input_total.value = total.toFixed(2);
+            }
         }
         
         function getCategoriByFamilia(id){
@@ -315,12 +328,13 @@
             ++i;
             $("#dynamicAddRemove").append(
                 '<tr>'+
-                    '<td><input type="text" name="factura['+i+'][referencia_factura]" class="form-control" required /></td>'+
-                     '<td><input type="text" name="factura['+i+'][url]" class="form-control" required /></td>'+
-                     '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control" required /></td>'+
-                     '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required /></td>'+
-                     '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" required /></td>'+
-                     '<td><button type="button" class="btn btn-outline-danger remove-input-field">Borrar</button></td>'+
+                    '<td><input type="text" name="factura['+i+'][referencia_factura]" class="form-control" placeholder="Referencia" required/></td>'+
+                     '<td><input type="text" name="factura['+i+'][concepto]" class="form-control" placeholder="concepto" required/></td>'+
+                     '<td><input type="text" name="factura['+i+'][url]" class="form-control" placeholder="URL"/></td>'+
+                     '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control"/></td>'+
+                     '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required/></td>'+
+                     '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" placeholder="Monto" required/></td>'+
+                     '<td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td>'+
                 '</tr>'
                 );
             if(i != 0){
@@ -349,17 +363,13 @@
             if (apartadoFactura.style.display === "none") {
                 apartadoFactura.style.display = "block";
                 document.getElementById('referencia_factura').required = true;
-                document.getElementById('url').required = true;
-                document.getElementById('factura_base64').required = true;
-                document.getElementById('fecha_creacion').required = true;
+                document.getElementById('concepto').required = true;
                 document.getElementById('fecha_factura').required = true;
-                document.getElementById('monto').required = true;
+                document.getElementById('monto').required = true;;
             } else {
                 apartadoFactura.style.display = "none";
                 document.getElementById('referencia_factura').required = false;
-                document.getElementById('url').required = false;
-                document.getElementById('factura_base64').required = false;
-                document.getElementById('fecha_creacion').required = false;
+                document.getElementById('concepto').required = false;
                 document.getElementById('fecha_factura').required = false;
                 document.getElementById('monto').required = false;
             }

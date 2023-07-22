@@ -165,9 +165,7 @@
             </div>
         </div>
         <div class="row">
-            @if ($finanza->no)
-                
-            @else
+            @if (!$finanza->no)
                 <input type="button" name="answer" value="Agregar Factura"  class="btn btn-success ml-2" onclick="mostrarDiv()" />
                 <div id="apartadoFactura"  style="display:none;">
                     <br>
@@ -188,7 +186,7 @@
                             <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
                             <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
                             <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control" placeholder="Monto"/></td>
-                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar</button></td>
+                            <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar</button></td>
                         </tr>
                     </table>
                 </div>
@@ -216,13 +214,6 @@
             var data = e.params.data;
             getCategoriByFamilia(data.id);           
         });
-
-        let costoUnitarioAux = "0";
-        let cantidadAux = "0";
-        let subTotalAux = "0";
-        let ivaAux = "0";
-        let venceAux = "0";
-        let fechaEntradaAux = "0";
         
         function obtenVence() {
             let fechaSalida = document.getElementById('fecha_salida');
@@ -260,12 +251,12 @@
             let subtotal;
             let total;
 
-            if (input_cantidad.value === null || typeof input_cantidad.value === 'undefined') {
+            if (input_cantidad.value === null || typeof input_cantidad.value === 'undefined' || input_cantidad.value === '') {
                 cantidad = 1;
             }else{
                 cantidad = input_cantidad.value;
             }
-            if (input_costo_unitario.value === null || typeof input_costo_unitario.value === 'undefined') {
+            if (input_costo_unitario.value === null || typeof input_costo_unitario.value === 'undefined' || input_costo_unitario.value === '') {
                 costo_unitario = 1;
             }else{
                 costo_unitario = input_costo_unitario.value;
@@ -275,7 +266,7 @@
             total =subtotal * input_iva.text();
             console.log(total);
             if (!isNaN(total)) {
-                input_total.value = total;
+                input_total.value = total.toFixed(2);
             }
         }
 

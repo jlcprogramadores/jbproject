@@ -295,7 +295,18 @@ class FinanzaController extends Controller
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.createIngreso', compact('finanza','entrada','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscliente','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
+        return view('finanza.createIngreso', compact('finanza','entrada','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscliente','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','metodo'));        
     }
     /**
      * Display a listing of the supplier.
@@ -385,12 +396,12 @@ class FinanzaController extends Controller
                     'finanza_id' => $finanza->id,
                     'referencia_factura' => $iterFactura['referencia_factura'],
                     'concepto' => $iterFactura['concepto'],
-                    'url' => $iterFactura['url'],
-                    'fecha_creacion' => $finanza->updated_at,
+                    'url' => $iterFactura['url']??null,
+                    'factura_base64' => $iterFactura['factura_base64']??null,
                     'fecha_factura' => $iterFactura['fecha_factura'],
                     'monto' => $iterFactura['monto'],
+                    'fecha_creacion' => $finanza->updated_at,
                     'usuario_edito' => $finanza->usuario_edito,
-                    'factura_base64' => $iterFactura['factura_base64'],
                 ];
                 $factura = Factura::create($crearFactura);
                 if ($factura->factura_base64 != null) {

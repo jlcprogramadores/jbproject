@@ -35,25 +35,20 @@ use function PHPSTORM_META\map;
 class Finanza extends Model
 {
     static $rulesIngreso = [
-        
-		'tipodeingreso_id' => 'required',
-		'proyecto_id' => 'required',
-		'categoria_id' => 'required',
-		'cliente_id' => 'required',
-		// 'fecha_entrada' => 'required',
-		'fecha_facturacion' => 'required',
+		'fecha_entrada' => 'required',
 		'vence' => 'required',
-		'categorias_de_entrada_id' => 'required',
-		'iva_id' => 'required',
-		// 'no' => 'required',
+		'familia_id' => 'required',
+		'categoria_id' => 'required',
+		'proyecto_id' => 'required',
 		'descripcion' => 'required',
+		'cliente_id' => 'required',
+		'categorias_de_entrada_id' => 'required',
+		'tipodeingreso_id' => 'required',
 		'cantidad' => 'required',
 		'unidad_id' => 'required',
-		// 'costo_unitario' => 'required',
-		// 'monto_a_pagar' => 'required',
-		// 'fecha_de_pago' => 'required',
-		// 'metodo_de_pago' => 'required',
-		// 'comentario' => 'required',
+		'costo_unitario' => 'required',
+		'iva_id' => 'required',
+		// 'fecha_facturacion' => 'required',
         'usuario_edito'  => 'required',
     ];
     static $rulesEgreso = [
