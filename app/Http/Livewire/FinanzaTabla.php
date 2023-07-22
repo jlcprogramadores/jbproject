@@ -64,7 +64,7 @@ class FinanzaTabla extends Component
             DB::raw("@fven := DATE_FORMAT(DATE_ADD(finanzas.fecha_salida, INTERVAL finanzas.vence DAY), '%Y-%m-%d') as fecha_vencimiento"),
             DB::raw("@dias := DATEDIFF(DATE_FORMAT(DATE_ADD(finanzas.fecha_salida, INTERVAL finanzas.vence DAY), '%Y-%m-%d'), NOW()) as dias"),
             DB::raw("if(DATEDIFF(DATE_FORMAT(DATE_ADD(finanzas.fecha_salida, INTERVAL finanzas.vence DAY), '%Y-%m-%d'), NOW())<= 0, 'Vencido', 'Por Vencer') as estado"),
-            DB::raw("if(finanzas.entradas_id is not NULL, 'Egreso', 'Ingreso') as tipo"),
+            DB::raw("if(finanzas.entradas_id is not NULL, 'Ingreso', 'Egreso') as tipo"),
             DB::raw("CONCAT(IF(familias.nombre IS NULL, '', CONCAT('F: ', familias.nombre,', ')), IF(categorias_familias.nombre IS NULL, '', CONCAT('C: ', categorias_familias.nombre))) AS fam_cat"),
             DB::raw("if(finanzas.salidas_id is not NULL, proveedores.razon_social, clientes.razon_social) as razon_social"),
             'proyectos.nombre as proyecto',
