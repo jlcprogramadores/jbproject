@@ -173,20 +173,21 @@
                     <br>
                     <table class="table table-bordered" id="dynamicAddRemove">
                         <tr>
-
-                            <th>Referencia</th>
+                            <th>Referencia<span style="color:red">*</span></th>
+                            <th>Concepto<span style="color:red">*</span></th>
                             <th>URL</th>
                             <th>Comprobante</th>
-                            <th>Fecha Facturación</th>
-                            <th>Monto</th>
+                            <th>Fecha Facturación<span style="color:red">*</span></th>
+                            <th>Monto<span style="color:red">*</span></th>
                             <th>Acción</th>
                         </tr>
                         <tr>
-                            <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control"/></td>
-                            <td><input id="url" type="text" name="factura[0][url]" class="form-control"/></td>
+                            <td><input id="referencia_factura" type="text" name="factura[0][referencia_factura]" class="form-control" placeholder="Referencia"/></td>
+                            <td><input id="concepto" type="text" step="any" name="factura[0][concepto]" class="form-control" placeholder="Concepto"/></td>
+                            <td><input id="url" type="text" name="factura[0][url]" class="form-control" placeholder="URL"/></td>
                             <td><input id="factura_base64" type="file" name="factura[0][factura_base64]"  class="form-control"/></td>
                             <td><input id="fecha_factura" type="date" name="factura[0][fecha_factura]" class="form-control"/></td>
-                            <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control"/></td>
+                            <td><input id="monto" type="number" step="any" name="factura[0][monto]" class="form-control" placeholder="Monto"/></td>
                         <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Agregar</button></td>
                         </tr>
                     </table>
@@ -308,11 +309,12 @@
             ++i;
             $("#dynamicAddRemove").append(
                 '<tr>'+
-                    '<td><input type="text" name="factura['+i+'][referencia_factura]" class="form-control" required /></td>'+
-                     '<td><input type="text" name="factura['+i+'][url]" class="form-control" required /></td>'+
-                     '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control" required /></td>'+
-                     '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required /></td>'+
-                     '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" required /></td>'+
+                    '<td><input type="text" name="factura['+i+'][referencia_factura]" class="form-control" placeholder="Referencia" required/></td>'+
+                     '<td><input type="text" name="factura['+i+'][concepto]" class="form-control" placeholder="concepto" required/></td>'+
+                     '<td><input type="text" name="factura['+i+'][url]" class="form-control" placeholder="URL"/></td>'+
+                     '<td><input type="file" name="factura['+i+'][factura_base64]"  class="form-control"/></td>'+
+                     '<td><input type="date" name="factura['+i+'][fecha_factura]" class="form-control" required/></td>'+
+                     '<td><input type="number" step="any" name="factura['+i+'][monto]" class="form-control" placeholder="Monto" required/></td>'+
                      '<td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td>'+
                 '</tr>'
                 );
@@ -341,18 +343,16 @@
             var apartadoFactura = document.getElementById('apartadoFactura');
             if (apartadoFactura.style.display === "none") {
                 apartadoFactura.style.display = "block";
+                console.log('1');
                 document.getElementById('referencia_factura').required = true;
-                document.getElementById('url').required = true;
-                document.getElementById('factura_base64').required = true;
-                document.getElementById('fecha_creacion').required = true;
+                document.getElementById('concepto').required = true;
                 document.getElementById('fecha_factura').required = true;
                 document.getElementById('monto').required = true;
             } else {
                 apartadoFactura.style.display = "none";
+                console.log('2');
                 document.getElementById('referencia_factura').required = false;
-                document.getElementById('url').required = false;
-                document.getElementById('factura_base64').required = false;
-                document.getElementById('fecha_creacion').required = false;
+                document.getElementById('concepto').required = false;
                 document.getElementById('fecha_factura').required = false;
                 document.getElementById('monto').required = false;
             }

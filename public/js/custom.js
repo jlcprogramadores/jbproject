@@ -24,3 +24,8 @@ $('.show_confirm').click(function(event) {
         }
     })
 });
+// oculata el boton de aceptar por uno segundos
+function myFunction() {
+    document.getElementById("btn-aceptar").style.visibility = "hidden";
+    setTimeout(() => document.getElementById("btn-aceptar").style.visibility = "visible", 3600);
+};

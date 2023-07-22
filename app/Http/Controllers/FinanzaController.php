@@ -384,6 +384,7 @@ class FinanzaController extends Controller
                 $crearFactura = [
                     'finanza_id' => $finanza->id,
                     'referencia_factura' => $iterFactura['referencia_factura'],
+                    'concepto' => $iterFactura['concepto'],
                     'url' => $iterFactura['url'],
                     'fecha_creacion' => $finanza->updated_at,
                     'fecha_factura' => $iterFactura['fecha_factura'],
@@ -438,15 +439,17 @@ class FinanzaController extends Controller
         if(!is_null($request->factura[0]['referencia_factura'])){
             // se iteran las facturas que se ñadieron en egresos
             foreach($request->factura as $iterFactura){
+                // dd($iterFactura);
                 $crearFactura = [
                     'finanza_id' => $finanza->id,
                     'referencia_factura' => $iterFactura['referencia_factura'],
-                    'url' => $iterFactura['url'],
-                    'fecha_creacion' => $finanza->updated_at,
+                    'concepto' => $iterFactura['concepto'],
+                    'url' => $iterFactura['url']??null,
+                    'factura_base64' => $iterFactura['factura_base64']??null,
                     'fecha_factura' => $iterFactura['fecha_factura'],
                     'monto' => $iterFactura['monto'],
+                    'fecha_creacion' => $finanza->updated_at,
                     'usuario_edito' => $finanza->usuario_edito,
-                    'factura_base64' => $iterFactura['factura_base64'],
                 ];
                 $factura = Factura::create($crearFactura);
                 if ($factura->factura_base64 != null) {
