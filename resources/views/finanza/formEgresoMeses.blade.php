@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class=" col alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Nota:</strong> Según el numero de meses se crearan las facturas correspondientes; Y estas se acceden en Finanzas/General.
+                <strong>Nota:</strong> Según el numero de meses, se crearan las facturas correspondientes; Y estas se acceden en Finanzas/General.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

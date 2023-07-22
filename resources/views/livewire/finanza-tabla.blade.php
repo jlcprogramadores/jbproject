@@ -269,7 +269,7 @@
                     @endif
                 </td>
                 <td>{{ $item->entregado }}</td>
-                <td>{{ $item->a_meses }}</td>
+                <td><span class="colapso">{{ $item->a_meses }}</span></td>
                 <td>{{ $item->fecha_facturacion }}</td>
                 <td><span class="colapso">{{ $item->comentario }}</span></td>
                 <td>
