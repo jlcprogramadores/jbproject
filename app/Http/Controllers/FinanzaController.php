@@ -417,7 +417,7 @@ class FinanzaController extends Controller
             }
         }
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
+            ->with('success', 'Finanza creada exitosamente con el folio '.str_pad($noMax, 6, '0', STR_PAD_LEFT).'.');
     }
 
     /**
@@ -476,7 +476,7 @@ class FinanzaController extends Controller
             }
         }
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
+            ->with('success', 'Finanza creada exitosamente con el folio '.str_pad($noMax, 6, '0', STR_PAD_LEFT).'.');
     }
 
     /**
@@ -531,7 +531,7 @@ class FinanzaController extends Controller
         }
 
         return redirect()->route('finanzas.index')
-            ->with('success', 'Finanza creada exitosamente con el folio '.$noMax.'.');
+            ->with('success', 'Finanza creada exitosamente con el folio '.str_pad($noMax, 6, '0', STR_PAD_LEFT).'.');
     }
 
     /**

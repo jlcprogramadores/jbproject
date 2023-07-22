@@ -227,7 +227,7 @@
         <tbody>
             @foreach($finanzas as $item)
             <tr>
-                <td>{{ $item->no}}</td>
+				<td>{{ str_pad($item->no, 6, '0', STR_PAD_LEFT)  }}</td>
                 <td>{{ $item->fecha_entrada}}</td>
                 <td>{{ $item->fecha_salida}}</td>
                 <td>{{ $item->vence }}</td>
