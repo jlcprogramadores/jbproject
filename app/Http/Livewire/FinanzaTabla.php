@@ -58,6 +58,7 @@ class FinanzaTabla extends Component
         $finanzas = Finanza::select(
             'finanzas.id',
             'finanzas.no',
+            'finanzas.salidas_id',
             DB::raw("DATE_FORMAT(finanzas.fecha_entrada, '%Y-%m-%d') as fecha_entrada"),
             DB::raw("DATE_FORMAT(finanzas.fecha_salida, '%Y-%m-%d') as fecha_salida"),
             'finanzas.vence',

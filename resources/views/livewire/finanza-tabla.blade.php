@@ -290,7 +290,7 @@
                         <span class="completo">
                             <form action="{{ route('finanzas.destroy',$item->id) }}" method="POST">
                                     <a class="btn btn-sm btn-primary " href="{{ route('finanzas.show',$item->id) }}" title="Mostrar"><i class="fa fa-fw fa-eye"></i></a>
-                                    @if (!empty($item->a_meses))
+                                    @if ($item->a_meses!='N/A')
                                         <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgresoMeses',$item->id) }}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
                                     @elseif($item->salidas_id)
                                         <a class="btn btn-sm btn-success" href="{{ route('finanzas.editEgreso',$item->id) }}" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
