@@ -11,13 +11,13 @@
             <div class="col form-group">
                 {{ Form::label('fecha_entrada') }}
                 <span style="color:red">*</span>
-                {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'onchange' => "obtenVence()", 'placeholder' => 'Fecha Entrada']) }}
+                {{ Form::date('fecha_entrada', $finanza->fecha_entrada, ['class' => 'form-control' . ($errors->has('fecha_entrada') ? ' is-invalid' : ''), 'onchange' => "obtenVence()", 'placeholder' => 'Fecha Entrada','required']) }}
                 {!! $errors->first('fecha_entrada', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
                 {{ Form::label('vence') }}
                 <span style="color:red">*</span>
-                {{ Form::number('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''), 'onchange' => "obtenVence()", 'placeholder' => 'En cuantos días vence']) }}
+                {{ Form::number('vence', $finanza->vence, ['class' => 'form-control' . ($errors->has('vence') ? ' is-invalid' : ''), 'onchange' => "obtenVence()", 'placeholder' => 'En cuantos días vence','required']) }}
                 {!! $errors->first('vence', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
@@ -32,13 +32,13 @@
             <div class="col form-group">
                 {{ Form::label('familia_id','Familia') }}
                 <span style="color:red">*</span>
-                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('familia_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
                 {{ Form::label('categoria_id','Categoría') }}
                 <span style="color:red">*</span>
-                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('categoria_id',$datoscategoriasfamilia, $finanza->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('categoria_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
@@ -46,13 +46,13 @@
             <div class="col form-group">
                 {{ Form::label('proyecto_id','Proyecto') }}
                 <span style="color:red">*</span>
-                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('proyecto_id',$datosproyecto, $finanza->proyecto_id, ['class' => 'form-control' . ($errors->has('proyecto_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('proyecto_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
                 {{ Form::label('descripción') }}
                 <span style="color:red">*</span>
-                {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
+                {{ Form::text('descripcion', $finanza->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion','required']) }}
                 {!! $errors->first('descripcion', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="col-6 form-group">
                 {{ Form::label('proveedor_id','Proveedor') }}
                 <span style="color:red">*</span>
-                {{ Form::select('proveedor_id',$datosproveedor, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('proveedor_id',$datosproveedor, $salida->proveedor_id, ['class' => 'form-control' . ($errors->has('proveedor_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('proveedor_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
@@ -68,13 +68,13 @@
             <div class="col-3 form-group">
                 {{ Form::label('cantidad') }}
                 <span style="color:red">*</span>
-                {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control'  . ($errors->has('cantidad') ? ' is-invalid' : ''), 'onchange' => "obtenTotal();", 'step'=>'any', 'placeholder' => 'Cantidad ']) }}
+                {{ Form::number('cantidad', $finanza->cantidad, ['class' => 'form-control'  . ($errors->has('cantidad') ? ' is-invalid' : ''), 'onchange' => "obtenTotal();", 'step'=>'any', 'placeholder' => 'Cantidad ','required']) }}
                 {!! $errors->first('cantidad', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col-3 form-group">
                 {{ Form::label('unidad_id','Unidad') }}
                 <span style="color:red">*</span>
-                {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('unidad_id',$datosunidad, $finanza->unidad_id, ['class' => 'form-control' . ($errors->has('unidad_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('unidad_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
@@ -84,7 +84,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">$</span>
                     </div>
-                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control'.($errors->has('costo_unitario') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" ,'step'=>'any' , 'placeholder' => 'Costo unitario']) }}
+                    {{ Form::number('costo_unitario', $finanza->costo_unitario, ['class' => 'form-control'.($errors->has('costo_unitario') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" ,'step'=>'any' , 'placeholder' => 'Costo unitario','required']) }}
                     {!! $errors->first('costo_unitario', '<div class="invalid-feedback">Campo requerido *</div>') !!}
                 </div>
             </div>
@@ -92,7 +92,6 @@
         <div class="row">
             <div class="col-3 form-group">
                 {{ Form::label('sub_total','Subtotal')}} 
-                <span style="color:red">*</span>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">$</span>
@@ -104,13 +103,12 @@
             <div class="col-3 form-group">
                 {{ Form::label('iva_id','IVA') }}
                 <span style="color:red">*</span>
-                {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control'. ($errors->has('iva_id') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" , 'placeholder' => 'Selecciona una opción']) }}
+                {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control'. ($errors->has('iva_id') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" , 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             
             <div class="col form-group">
                 {{ Form::label('Total') }}
-                <span style="color:red">*</span>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">$</span>
@@ -149,7 +147,7 @@
             <div class="col form-group">
                 {{ Form::label('entregado_material_a','Entregado Material A:') }}
                 <span style="color:red">*</span>
-                {{ Form::text('entregado_material_a', $finanza->entregado_material_a, ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material']) }}
+                {{ Form::text('entregado_material_a', $finanza->entregado_material_a, ['class' => 'form-control' . ($errors->has('entregado_material_a') ? ' is-invalid' : ''), 'placeholder' => 'Quién recibe el material','required']) }}
                 {!! $errors->first('entregado_material_a', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
