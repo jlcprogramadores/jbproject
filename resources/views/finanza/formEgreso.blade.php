@@ -343,14 +343,12 @@
             var apartadoFactura = document.getElementById('apartadoFactura');
             if (apartadoFactura.style.display === "none") {
                 apartadoFactura.style.display = "block";
-                console.log('1');
                 document.getElementById('referencia_factura').required = true;
                 document.getElementById('concepto').required = true;
                 document.getElementById('fecha_factura').required = true;
                 document.getElementById('monto').required = true;
             } else {
                 apartadoFactura.style.display = "none";
-                console.log('2');
                 document.getElementById('referencia_factura').required = false;
                 document.getElementById('concepto').required = false;
                 document.getElementById('fecha_factura').required = false;
