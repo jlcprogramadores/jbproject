@@ -242,7 +242,7 @@
                 </td>
                 <td>{{ $item->tipo }}</td>
                 <td> <span class="colapso">{{ $item->fam_cat}}</span></td>
-                <td >{{ $item->razon_social }}</td>
+                <td ><span class="colapso">{{ $item->razon_social }}</span></td>
                 <td><span class="colapso">{{ $item->proyecto }}</span></td>
                 <td><span title="{{ $item->descripcion }}" class="colapso">{{ $item->descripcion }}</span></td>
                 <td>
