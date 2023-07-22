@@ -69,23 +69,22 @@ class Finanza extends Model
 
     ];
     static $rulesEgresoMeses = [
+        'a_meses'  => 'required',
+        'fecha_primer_pago'  => 'required',
 		'proyecto_id' => 'required',
 		'categoria_id' => 'required',
 		'proveedor_id' => 'required',
         'fecha_entrada' => 'required',
 		'iva_id' => 'required',
-		// 'no' => 'required',
         'vence' => 'required',
-		'descripcion' => 'required',
 		'cantidad' => 'required',
 		'unidad_id' => 'required',
+		'familia_id' => 'required',
 		'costo_unitario' => 'required',
-		'monto_a_pagar' => 'required',
-		'fecha_de_pago' => 'required',
-		'metodo_de_pago' => 'required',
-		'comentario' => 'required',
-        'a_meses'  => 'required',
+		'iva_id' => 'required',
+		'entregado_material_a' => 'required',
         'usuario_edito'  => 'required',
+		'descripcion' => 'required',
     ];
 
     protected $perPage = 20;
