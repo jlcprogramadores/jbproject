@@ -119,4 +119,11 @@ class IvaController extends Controller
                 ->with('success', 'IVA eliminado exitosamente.');
         }
     }
+    public function getIVA(Request $request)
+    {
+        $id = $request->id;
+        $query = Iva::select('porcentaje')->where('id',$id)->first();
+        return json_encode($query);
+        
+    }
 }

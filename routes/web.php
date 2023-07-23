@@ -165,4 +165,7 @@ Route::resource('requisiciones', App\Http\Controllers\RequisicioneController::cl
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // exports
 Route::get('users/export/', [UsersController::class, 'export']);
+// 
+Route::get('getIVA', 'App\Http\Controllers\IvaController@getIVA')->name('getIVA');
+
 Auth::routes(['verify' => true]);

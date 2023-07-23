@@ -103,7 +103,7 @@
             <div class="col-3 form-group">
                 {{ Form::label('iva_id','IVA') }}
                 <span style="color:red">*</span>
-                {{ Form::select('iva_id',$datosiva, $finanza->iva_id, ['class' => 'form-control'. ($errors->has('iva_id') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" , 'placeholder' => 'Selecciona una opción','required']) }}
+                {{ Form::select('iva_id',$datosiva, $finanza->iva_id??3, ['class' => 'form-control'. ($errors->has('iva_id') ? ' is-invalid' : ''), 'onchange'=>"obtenTotal();" , 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('iva_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             
@@ -238,12 +238,12 @@
             fechaSalida.value = cadFechaSalida;
         }
         
-        function obtenTotal() {
+        async function obtenTotal() {
             let input_cantidad = document.getElementById('cantidad');
             let input_costo_unitario = document.getElementById('costo_unitario');
             let input_subtotal = document.getElementById('sub_total');
             var input_total = document.getElementById('total');
-            let input_iva = $( "#iva_id option:selected" );
+            let input_iva = $( "#iva_id" );
             let cantidad;
             let costo_unitario; 
             let subtotal;
@@ -261,8 +261,8 @@
             }
             subtotal = cantidad * costo_unitario;
             input_subtotal.value = subtotal;
-            total =subtotal * input_iva.text();
-            console.log(total);
+            let valor_iva = await getIVA(input_iva.val());
+            total = subtotal * valor_iva['porcentaje']; 
             if (!isNaN(total)) {
                 input_total.value = total.toFixed(2);
             }
@@ -291,6 +291,19 @@
                 opt.innerHTML=value['nombre'];
                 select.appendChild(opt)
             };
+        }
+
+        async function getIVA(id) {
+            try {
+                const response = await $.ajax({
+                    type: "GET",
+                    url: "/getIVA?id=" + id,
+                });
+                const respuesta = JSON.parse(response);
+                return respuesta;
+            } catch (error) {
+                return null;
+            }
         }
 
         var i = 0;
