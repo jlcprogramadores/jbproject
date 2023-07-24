@@ -32,7 +32,7 @@
             <div class="col form-group">
                 {{ Form::label('familia_id','Familia') }}
                 <span style="color:red">*</span>
-                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
+                {{ Form::select('familia_id',$datosfamilia, $familia_id??null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('familia_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
@@ -125,19 +125,6 @@
                 {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
-                <?php 
-                    $metodo = [
-                        'EFECTIVO' => 'EFECTIVO',
-                        'CHEQUE' => 'CHEQUE',
-                        'TRANSFERENCIA' => 'TRANSFERENCIA',
-                        'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
-                        'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
-                        'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
-                        'CONDONACION' => 'CONDONACION',
-                        'CANCELADA' => 'CANCELADA',
-                        '?' => '?'
-                    ];
-                ?>
                 {{ Form::label('metodo_de_pago','Método De Pago') }}
                 {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción']) }}
                 {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}

@@ -325,7 +325,18 @@ class FinanzaController extends Controller
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('descripcion','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.createEgreso', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
+        return view('finanza.createEgreso', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','metodo'));        
     }
 
     /**
@@ -795,14 +806,28 @@ class FinanzaController extends Controller
         
         $datosproyecto = Proyecto::pluck('nombre','id');
         $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        
+        // obtener opciones y datos 
         $datosfamilia = Familia::pluck('nombre','id');
-        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $familia_id = CategoriasFamilia::find($finanza->categoria_id)->familia_id;
+        $datoscategoriasfamilia = CategoriasFamilia::where('familia_id',$familia_id)->pluck('nombre','id');
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
 
-        return view('finanza.editIngreso', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+        return view('finanza.editIngreso', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','metodo','familia_id'));
     }
 
     /**
@@ -820,14 +845,16 @@ class FinanzaController extends Controller
         $datosproveedor = Proveedore::pluck('nombre','id');
 
         $datosproyecto = Proyecto::pluck('nombre','id');
-        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
+        // obtener opciones y datos 
         $datosfamilia = Familia::pluck('nombre','id');
-        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $familia_id = CategoriasFamilia::find($finanza->categoria_id)->familia_id;
+        $datoscategoriasfamilia = CategoriasFamilia::where('familia_id',$familia_id)->pluck('nombre','id');
+
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.editEgresoMeses', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+        return view('finanza.editEgresoMeses', compact('finanza', 'salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','familia_id'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -843,13 +870,26 @@ class FinanzaController extends Controller
         $salida = Salida::find($finanza->salidas_id);
         $datosproveedor = Proveedore::pluck('nombre','id');
         $datosproyecto = Proyecto::pluck('nombre','id');
+        // obtener opciones y datos 
         $datosfamilia = Familia::pluck('nombre','id');
-        $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
+        $familia_id = CategoriasFamilia::find($finanza->categoria_id)->familia_id;
+        $datoscategoriasfamilia = CategoriasFamilia::where('familia_id',$familia_id)->pluck('nombre','id');
+
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
-
-        return view('finanza.editEgreso', compact('finanza','salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva'));
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
+        return view('finanza.editEgreso', compact('finanza','salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','familia_id','metodo'));
     }
 
     /**

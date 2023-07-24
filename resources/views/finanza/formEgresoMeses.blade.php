@@ -62,7 +62,7 @@
             <div class="col form-group">
                 {{ Form::label('familia_id','Familia') }}
                 <span style="color:red">*</span>
-                {{ Form::select('familia_id',$datosfamilia, null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
+                {{ Form::select('familia_id',$datosfamilia, $familia_id??null, ['class' => 'form-control' . ($errors->has('familia_id') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
                 {!! $errors->first('familia_id', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
             <div class="col form-group">
