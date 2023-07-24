@@ -824,7 +824,7 @@ class FinanzaController extends Controller
         $datoscategoriasfamilia = CategoriasFamilia::where('familia_id',$familia_id)->pluck('nombre','id');
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
-        $datosiva = Iva::pluck('porcentaje','id');
+        $datosiva = Iva::pluck('descripcion','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
         $metodo = [
             'EFECTIVO' => 'EFECTIVO',
@@ -863,7 +863,7 @@ class FinanzaController extends Controller
 
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
-        $datosiva = Iva::pluck('porcentaje','id');
+        $datosiva = Iva::pluck('descripcion','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
         $metodo = [
             'EFECTIVO' => 'EFECTIVO',
@@ -899,7 +899,7 @@ class FinanzaController extends Controller
 
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
-        $datosiva = Iva::pluck('porcentaje','id');
+        $datosiva = Iva::pluck('descripcion','id');
         $metodo = [
             'EFECTIVO' => 'EFECTIVO',
             'CHEQUE' => 'CHEQUE',
