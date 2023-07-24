@@ -164,17 +164,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col form-group">
-                {{ Form::label('fecha_de_pago') }}
-                {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
-                {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
-            </div>
-            <div class="col form-group">
-                {{ Form::label('metodo_de_pago','Método De Pago') }}
-                {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
-                {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+            <div class="col-3 form-group">
+                {{ Form::label('es_pagado','Está pagado') }}
+                <span style="color:red">*</span>
+                {{ Form::select('es_pagado',[0 => 'No', 1 => 'Si'] ,$finanza->es_pagado, ['class' => 'form-control' . ($errors->has('es_pagado') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona una opción','required']) }}
+                {!! $errors->first('es_pagado', '<div class="invalid-feedback">Campo requerido *</div>') !!}
             </div>
         </div>
+        <span id="esta_pagado" style="display: none">
+            <div class="row">
+                <div class="col form-group">
+                    {{ Form::label('fecha_de_pago') }}
+                    <span style="color:red">*</span>
+                    {{ Form::date('fecha_de_pago', $finanza->fecha_de_pago, ['class' => 'form-control' . ($errors->has('fecha_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Fecha De Pago']) }}
+                    {!! $errors->first('fecha_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                </div>
+                <div class="col form-group">
+                    {{ Form::label('metodo_de_pago','Método De Pago') }}
+                    <span style="color:red">*</span>
+                    {{ Form::select('metodo_de_pago', $metodo, $finanza->metodo_de_pago, ['class' => 'form-control' . ($errors->has('metodo_de_pago') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona el método']) }}
+                    {!! $errors->first('metodo_de_pago', '<div class="invalid-feedback">Campo requerido *</div>') !!}
+                </div>
+            </div>
+        </span>
         <div class="row">
             <div class="col form-group">
                 {{ Form::label('comentario') }}
@@ -384,6 +396,35 @@
                 document.getElementById('concepto').required = false;
                 document.getElementById('fecha_factura').required = false;
                 document.getElementById('monto').required = false;
+            }
+        }
+
+        var carga_es_pagado = {!! json_encode($finanza->es_pagado ?? '') !!};
+        var es_editado = false;
+        $(document).ready(function() {
+            if(carga_es_pagado !== ''){
+                es_editado = true;
+                pagado(parseInt(carga_es_pagado) );
+            }
+        });
+        $('#es_pagado').on('click', function() {
+            let es_pagado = $(this).val();
+            pagado(parseInt(es_pagado));
+        });
+        function pagado(es_pagado){
+            let span_esta_pagado = document.getElementById('esta_pagado');
+            if(es_pagado === 1){
+                span_esta_pagado.style.display = 'block';
+                document.getElementById('fecha_de_pago').required = true;
+                document.getElementById('metodo_de_pago').required = true;
+            }else{
+                span_esta_pagado.style.display = 'none';
+                document.getElementById('fecha_de_pago').required = false;
+                document.getElementById('metodo_de_pago').required = false;
+                if(!es_editado){
+                    $('#metodo_de_pago').val('').trigger('change');
+                    document.getElementById('fecha_de_pago').value = '';
+                }
             }
         }
     </script>

@@ -356,7 +356,18 @@ class FinanzaController extends Controller
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('descripcion','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.createEgresoMeses', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));        
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
+        return view('finanza.createEgresoMeses', compact('finanza','salida','datosproyecto','datosfamilia','datoscategoriasfamilia','datosproveedor','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','metodo'));        
     }
 
     /**
@@ -854,7 +865,18 @@ class FinanzaController extends Controller
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
         $datosfactura = Factura ::pluck('referencia_factura','id');
-        return view('finanza.editEgresoMeses', compact('finanza', 'salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','familia_id'));
+        $metodo = [
+            'EFECTIVO' => 'EFECTIVO',
+            'CHEQUE' => 'CHEQUE',
+            'TRANSFERENCIA' => 'TRANSFERENCIA',
+            'TARJETA DE DEBITO' => 'TARJETA DE DEBITO',
+            'TARJETA DE CREDITO' => 'TARJETA DE CREDITO',
+            'TARJETAS DIGITALES' => 'TARJETAS DIGITALES',
+            'CONDONACION' => 'CONDONACION',
+            'CANCELADA' => 'CANCELADA',
+            '?' => '?'
+        ];
+        return view('finanza.editEgresoMeses', compact('finanza', 'salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura','familia_id','metodo'));
     }
     /**
      * Show the form for editing the specified resource.
