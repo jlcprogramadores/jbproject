@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ComprobanteMailable;
-use  Carbon\Carbon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
@@ -842,17 +842,14 @@ class FinanzaController extends Controller
         $esEntrada = false;
         $salida = Salida::find($finanza->salidas_id);
         $datosproveedor = Proveedore::pluck('nombre','id');
-
         $datosproyecto = Proyecto::pluck('nombre','id');
-        $datostipodeingreso = TipoDeIngreso::pluck('nombre','id');
         $datosfamilia = Familia::pluck('nombre','id');
         $datoscategoriasfamilia = CategoriasFamilia::pluck('nombre','id');
         $datoscategoriasdeentrada = CategoriasDeEntrada::pluck('nombre','id');
         $datosunidad = Unidade::pluck('nombre','id');
         $datosiva = Iva::pluck('porcentaje','id');
-        $datosfactura = Factura ::pluck('referencia_factura','id');
 
-        return view('finanza.editEgreso', compact('finanza',$esEntrada ? 'entrada': 'salida',$esEntrada ? 'datoscliente':'datosproveedor','datosproyecto','datostipodeingreso','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva','datosfactura'));
+        return view('finanza.editEgreso', compact('finanza','salida','datosproveedor','datosproyecto','datosfamilia','datoscategoriasfamilia','datoscategoriasdeentrada','datosunidad','datosiva'));
     }
 
     /**
