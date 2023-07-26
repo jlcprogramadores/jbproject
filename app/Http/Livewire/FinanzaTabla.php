@@ -178,7 +178,7 @@ class FinanzaTabla extends Component
             $query->having('comprobante', 'like', '%' . $this->comprobante . '%');
         })
         
-        ->orderBy( $this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+        ->orderBy( $this->orderBy, $this->orderAsc ? 'desc' : 'asc')
         ->paginate($this->perPage);
         return view('livewire.finanza-tabla', compact('finanzas'))
             ->with('i', ($finanzas->currentPage() - 1) * $finanzas->perPage());
