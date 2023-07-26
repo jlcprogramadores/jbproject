@@ -14,7 +14,7 @@
                         <span class="card-title">Importar</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('entradas.exel') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('entradas.excel') }}"  role="form" enctype="multipart/form-data">
                             @csrf
                             {{-- inicio form --}}
                             <div class="box box-info padding-1">

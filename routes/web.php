@@ -153,9 +153,9 @@ Route::get('/historialempleado/{id}', 'App\Http\Controllers\HistorialParoControl
 Route::get('/createParoGrupo', 'App\Http\Controllers\ParoController@createParoGrupo')->name('paros.createParoGrupo');
 Route::post('/storeParoGrupo', 'App\Http\Controllers\ParoController@storeParoGrupo')->name('paros.storeParoGrupo');
 
-// recibir en base a un exel
+// recibir en base a un excel
 Route::get('/importar', 'App\Http\Controllers\EntradaController@importar')->name('paros.importar');
-Route::post('/exel', 'App\Http\Controllers\EntradaController@exel')->name('entradas.exel');
+Route::post('/excel', 'App\Http\Controllers\EntradaController@excel')->name('entradas.excel');
 
 // datos
 // Route::get('/datos-users', 'App\Http\Controllers\UserController@datos')->name('usuarios.datos');

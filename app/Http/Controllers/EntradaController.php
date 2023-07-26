@@ -132,9 +132,10 @@ class EntradaController extends Controller
     {
         return view('entrada.importar');
     }
-    public function exel(Request $request)
+    public function excel(Request $request)
     {
         // datos de la cabezera del archivo
+        $iteradorProyecto = 0;
         $no= "NO.";
         $fechaEntrada= "FECHA ENTRADA"; 
         $fechaSalida= "FECHA SALIDA"; 
@@ -189,7 +190,24 @@ class EntradaController extends Controller
             print_r(' / '.$esSalida? 'salida':'entrada'.' / ');
             print_r(' / '.$file[$proveedor].' / ');
             if($esSalida ){ //salida
-                
+                $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                if($dbProyecto){
+
+                }else{
+                    $iteradorProyecto ++;
+                    Proyecto::create([            
+                        'nombre' => $file[$proyecto],
+                        'descripcion' => $file[$proyecto],
+                        'numero_de_proyecto' => $iteradorProyecto,
+                        'es_activo' => 1,
+                        'usuario_edito' => 'Administrador',
+                        'presupuesto' => 1,
+                        'margen' => 2,
+                        'created_at' => $dateNow,
+                        'updated_at' => $dateNow
+                    ]);   
+                    $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                }
                 $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
                 $datosSalida =[
                     'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : 1,
@@ -221,6 +239,29 @@ class EntradaController extends Controller
                     $dbCliente = DB::table('clientes')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
 
                 }
+
+                ////////////////////////////////////////////////////////////////////////////
+
+                $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                if($dbProyecto){
+
+                }else{
+                    $iteradorProyecto ++;
+                    Proyecto::create([            
+                        'nombre' => $file[$proyecto],
+                        'descripcion' => $file[$proyecto],
+                        'numero_de_proyecto' => $iteradorProyecto,
+                        'es_activo' => 1,
+                        'usuario_edito' => 'Administrador',
+                        'presupuesto' => 1,
+                        'margen' => 2,
+                        'created_at' => $dateNow,
+                        'updated_at' => $dateNow
+                    ]);   
+                    $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                }
+
+                ////////////////////////////////////////////////////////////////////////////
            
                 $datosEntrada =[
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
@@ -235,7 +276,7 @@ class EntradaController extends Controller
                 $entrada = Entrada::create($datosEntrada);
                 $idEntSal = $entrada->id;
             }
-
+            
             $dbCategoria = DB::table('categorias_familias','cf')
                 ->leftjoin(DB::raw('familias as f'), 'f.id', '=', 'cf.familia_id')
                 ->select('cf.id')
