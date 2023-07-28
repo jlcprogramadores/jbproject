@@ -10,6 +10,7 @@ use App\Models\Cliente;
 use App\Models\TipoDeIngreso;
 use App\Models\CategoriasDeEntrada;
 use App\Models\Proyecto;
+use App\Models\Proveedore;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Factura;
@@ -191,6 +192,27 @@ class EntradaController extends Controller
             print_r(' / '.$file[$proveedor].' / ');
             if($esSalida ){ //salida
                 $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
+                $dbProveedores = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
+
+                if($dbProveedores){
+
+                }else{
+                    $dbProveedores = Proveedore::create([            
+                        'nombre' => $file[$proveedor],
+                        'razon_social' => $file[$proveedor],
+                        'estado' => 'SIN ESTADO',
+                        'dias_de_credito' => 0,
+                        'monto_de_credito' => 0,
+                        'es_facturable' => 0,
+                        'mail' => 'SIN CORREO',
+                        'rfc' => 'SIN RFC',
+                        'es_activo' => 1,
+                        'usuario_edito' => 'Administrador',
+                        'created_at' => $dateNow,
+                        'updated_at' => $dateNow
+                    ]);  
+                }
+
                 if($dbProyecto){
 
                 }else{
@@ -208,9 +230,9 @@ class EntradaController extends Controller
                     ]);   
                     $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
                 }
-                $dbProveedor = DB::table('proveedores')->where('nombre',DB::raw("'".$file[$proveedor]."'"))->get()->first();
+
                 $datosSalida =[
-                    'proveedor_id' => isset($dbProveedor->id)? $dbProveedor->id : 1,
+                    'proveedor_id' => $dbProveedores->id,
                     'usuario_edito' => $usuario_edito,
                     // 'comprobante' => ,
                     'enviado' => 0,
@@ -240,8 +262,6 @@ class EntradaController extends Controller
 
                 }
 
-                ////////////////////////////////////////////////////////////////////////////
-
                 $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
                 if($dbProyecto){
 
@@ -260,8 +280,6 @@ class EntradaController extends Controller
                     ]);   
                     $dbProyecto = DB::table('proyectos')->where('nombre',DB::raw("'".$file[$proyecto]."'"))->get()->first();
                 }
-
-                ////////////////////////////////////////////////////////////////////////////
            
                 $datosEntrada =[
                     'cliente_id' => isset($dbCliente->id) ? $dbCliente->id : null,
