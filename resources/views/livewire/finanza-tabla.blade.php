@@ -252,7 +252,7 @@
                     {{$item->fac_o_fol}}
                     @endif
                 </td>
-                <td>{{$item->salidas_id ? $item->pro_nombre : $item->cli_nombre}}</td>
+                <td>{{$item->provedor_cliente}}</td>
                 <td>{{ $item->cantidad_unidad }}</td>
                 <td>{{ $item->costo_unitario }}</td>
                 <td>{{ $item->subtotal_total_mxn }}</td>

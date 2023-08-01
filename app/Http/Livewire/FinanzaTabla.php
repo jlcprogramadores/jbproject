@@ -72,7 +72,7 @@ class FinanzaTabla extends Component
             'finanzas.descripcion as descripcion',
 
             DB::raw("(SELECT COALESCE(GROUP_CONCAT(fac.referencia_factura),if(finanzas.entradas_id is not NULL, 'No Facturado', 'No Recibido')) FROM facturas as fac WHERE fac.finanza_id = finanzas.id) as fac_o_fol"),
-            DB::raw("if(finanzas.salidas_id is not NULL, proveedores.nombre, clientes.nombre) as provedor_cliente"), 
+            DB::raw("if(finanzas.salidas_id IS NOT NULL, proveedores.nombre, clientes.nombre) as provedor_cliente"), 
             DB::raw("CONCAT(finanzas.cantidad, ' ', unidades.nombre) as cantidad_unidad"),
             DB::raw("CONCAT('$', FORMAT(finanzas.costo_unitario, 2)) as costo_unitario"),
             DB::raw("CONCAT('$', FORMAT(((finanzas.costo_unitario * finanzas.cantidad)), 2)) as subtotal"),
