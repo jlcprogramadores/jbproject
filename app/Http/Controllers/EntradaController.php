@@ -330,7 +330,7 @@ class EntradaController extends Controller
                 'vence' => $file[$vence] != "" ? $file[$vence] : 0 ,
                 'proyecto_id' => isset($get_proyecto->id) ? $get_proyecto->id : 1,
                 'iva_id' => $dbIva->id,
-                'no' => $file[$no],
+                'no' => $file[$no]? $file[$no] : 999999,
                 'fecha_facturacion' => $es_salida ? null : ($file[$fechaSalida] ? Carbon::parse($file[$fechaSalida])->format('Y-m-d') : null),
                 'fecha_salida' => $es_salida ? $file[$fechaSalida] ? Carbon::parse($file[$fechaSalida])->format('Y-m-d') : null : null,
                 'fecha_entrada' => $file[$fechaEntrada] ? Carbon::parse($file[$fechaEntrada])->format('Y-m-d') : null,
