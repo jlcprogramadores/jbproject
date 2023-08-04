@@ -134,7 +134,9 @@ Route::get('/filtros', 'App\Http\Controllers\FinanzaController@filtros')->name('
 Route::post('/datosfiltrados', 'App\Http\Controllers\FinanzaController@datosfiltrados')->name('finanzas.datosfiltrados');
 Route::get('/graficasProyectos', 'App\Http\Controllers\FinanzaController@graficasProyectos')->name('finanzas.graficasProyectos');
 Route::get('/graficasGenerales', 'App\Http\Controllers\FinanzaController@graficasGenerales')->name('finanzas.graficasGenerales');
+Route::get('/gastosProveedores', 'App\Http\Controllers\FinanzaController@gastosProveedores')->name('finanzas.gastosProveedores');
 Route::post('/graficas', 'App\Http\Controllers\FinanzaController@graficas')->name('finanzas.graficas');
+Route::post('/tablaGastosProveedores', 'App\Http\Controllers\FinanzaController@tablaGastosProveedores')->name('finanzas.tablaGastosProveedores');
 Route::get('/centrodecostos', 'App\Http\Controllers\FinanzaController@centrodecostos')->name('finanzas.centrodecostos');
 Route::get('/egresoMeses', 'App\Http\Controllers\FinanzaController@egresoMeses')->name('finanzas.egresoMeses');
 Route::post('/storeEgresoMeses', 'App\Http\Controllers\FinanzaController@storeEgresoMeses')->name('finanzas.storeEgresoMeses');

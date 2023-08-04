@@ -64,7 +64,9 @@ class RoleSeeder extends Seeder
             Permission::create(['name' => 'menu.graficas', 'description' => 'Ver Submenú Finanzas-Gráficas', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);
                 //Permisos 
                 Permission::create(['name' => 'finanzas.graficas', 'description' => 'Gráficas:Tabla', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);
-
+            Permission::create(['name' => 'menu.gastosProveedores', 'description' => 'Ver Submenú Finanzas-Gastos Proveedores', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);
+                //Permisos 
+                Permission::create(['name' => 'finanzas.gastosProveedores', 'description' => 'Gastos Proveedores:Tabla', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);
             Permission::create(['name' => 'menu.centrodecostos', 'description' => 'Ver Submenú Finanzas-Centro de Costos', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);
                 //Permisos 
                 Permission::create(['name' => 'finanzas.centrodecostos', 'description' => 'Centro de Costos:Tabla', 'nomenclatura' => 1])->syncRoles($admin, $fianzas);

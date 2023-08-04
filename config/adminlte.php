@@ -354,6 +354,11 @@ return [
                     'can'  => 'menu.graficas'
                 ],
                 [
+                    'text' => 'Gastos Proveedores',
+                    'url'  => 'gastosProveedores',
+                    'can'  => 'menu.gastosProveedores'
+                ],
+                [
                     'text' => 'Centro de Costos',
                     'url'  => 'centrodecostos',
                     'can'  => 'menu.centrodecostos'

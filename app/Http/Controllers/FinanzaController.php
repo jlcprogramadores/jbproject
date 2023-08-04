@@ -41,6 +41,7 @@ class FinanzaController extends Controller
         $this->middleware('can:finanzas.topgeneral')->only(['topGeneral']);
         $this->middleware('can:finanzas.graficas')->only(['graficasGenerales']);
         $this->middleware('can:finanzas.graficas')->only(['graficasProyectos']);
+        $this->middleware('can:finanzas.gastosProveedores')->only(['gastosProveedores']);
         $this->middleware('can:finanzas.centrodecostos')->only(['centrodecostos']);
         $this->middleware('can:finanzas.filtros')->only(['filtros']);
         $this->middleware('can:finanzas.acciones')->only(['show', 'edit', 'update', 'destroy']);
@@ -580,6 +581,19 @@ class FinanzaController extends Controller
         $proyecto = Proyecto::pluck('nombre','id');
         return view('finanza.graficasProyectos', compact('proyecto'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function gastosProveedores()
+    {   
+        $proyecto = Proyecto::pluck('nombre','id');
+        return view('finanza.gastosProveedores', compact('proyecto'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -618,6 +632,25 @@ class FinanzaController extends Controller
         }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function tablaGastosProveedores(Request $request)
+    {      
+        //Aqui cuando sale de algun proyecto
+        if(is_null($request->proyecto_id) == false  ){
+            $proyecto = Proyecto::find($request->proyecto_id);
+            $nombreProyecto = $proyecto->nombre;
+
+        //Aqui pensaba dejar como en la funcion de arriba que ponga todos los proyectos reales del sistema cuando no seleccionen nada 
+        }else{  
+  
+        }
+    }
+    
     /**
      * Display the specified resource.
      *
