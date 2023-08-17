@@ -581,17 +581,58 @@ class FinanzaController extends Controller
         $proyecto = Proyecto::pluck('nombre','id');
         return view('finanza.graficasProyectos', compact('proyecto'));
     }
-
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * se carga la vista de gastosProveedores
+     * se envian los proyectos para hacerse lasa elecciones
      */
     public function gastosProveedores()
     {   
         $proyecto = Proyecto::pluck('nombre','id');
         return view('finanza.gastosProveedores', compact('proyecto'));
+    }
+
+    /**
+     * Este método carga según los proyectos seleccionados
+     * @param $request->datos contiene los ids de los proyectos
+     * @return devuelve los proveedores a mostrar en la tabla
+     */
+    public function tablaGastosProveedores(Request $request)
+    {      
+        // se decodifica el arreglo
+        $datos = json_decode($request->getContent(), true);
+
+        // detemina si hay un vacio
+        $esta_vacio = false;
+        foreach ($datos as $item) {
+            if ($item === '') {
+                $esta_vacio = true;
+                break;
+            }
+        }
+
+        if(!$esta_vacio){ // si no esta el placeholder '' se cargan los proveedores con proyectos especificos
+            $proveedores = DB::table('proveedores as p')
+            ->leftJoin('salidas as s', 's.proveedor_id', '=', 'p.id')
+            ->leftJoin('finanzas as f', 'f.salidas_id', '=', 's.id')
+            ->leftJoin('proyectos as py', 'py.id', '=', 'f.proyecto_id')
+            ->where(function ($query) use ($datos) {
+                foreach ($datos as $item) {
+                    $query->orWhere('py.id', $item);
+                }
+            })
+            ->groupBy('p.nombre')
+            ->get(['p.nombre']);
+            return json_encode($proveedores);
+            
+        }else{  // se cargan todos los provedores con proyecto
+            $proveedores = DB::table('proveedores as p')
+            ->leftJoin('salidas as s', 's.proveedor_id', '=', 'p.id')
+            ->leftJoin('finanzas as f', 'f.salidas_id', '=', 's.id')
+            ->leftJoin('proyectos as py', 'py.id', '=', 'f.proyecto_id')
+            ->groupBy('p.nombre')
+            ->get(['p.nombre']);
+            return json_encode($proveedores);
+        }
     }
 
     /**
@@ -629,25 +670,6 @@ class FinanzaController extends Controller
             $ingresos = Finanza::where('entradas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
             $egresos = Finanza::where('salidas_id','!=',null)->whereBetween('fecha_entrada', [$desde, $hasta])->sum('monto_a_pagar');
             return view('finanza.graficas', compact('ingresos','egresos','nombreProyecto','desde','hasta'));
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function tablaGastosProveedores(Request $request)
-    {      
-        //Aqui cuando sale de algun proyecto
-        if(is_null($request->proyecto_id) == false  ){
-            $proyecto = Proyecto::find($request->proyecto_id);
-            $nombreProyecto = $proyecto->nombre;
-
-        //Aqui pensaba dejar como en la funcion de arriba que ponga todos los proyectos reales del sistema cuando no seleccionen nada 
-        }else{  
-  
         }
     }
     

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Gastos Proveedores')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
         color: #000000 !important;
@@ -33,26 +34,13 @@
                             <span id="body_tabla">
                                 <div class="row">
                                     <div class="table-responsive">
-                                        <table id="table" class="table table-striped table-hover" id="table">
+                                        <table id="tabla" class="table table-striped table-hover" id="table">
                                             <thead class="thead">
                                                 <tr>
-                                                    <th>Proveedores</th>
-                                                    <th>Pagado</th>
-                                                    <th>Pendiente Pagar</th>
-                                                    <th>Total General</th>
-                                                    
+                                                    <th>nombre</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @foreach ($collection as $item) --}}
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                    
-                                                {{-- @endforeach --}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -67,10 +55,39 @@
 @push('js')
     <script>
         $('#proyecto_id').select2();
-        function cargaTabla(){
+        // hace la consulta en base a los proyectos seccionados
+        async function cargaTabla(){
             let proyectos = $('#proyecto_id').val();
-            console.log(proyectos);
+            let datos = await getDatos('tablaGastosProveedores',proyectos);
+            // console.log(datos);
+        
+            // carga data table
+            var dataTable = $('#tabla').DataTable({
+                data: datos, // Pasar el arreglo de datos
+                columns: [
+                    { data: 'nombre', name: 'nombre' },
+                ]
+            });
         }
         
+        async function getDatos(url, datos) {
+            try {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let response = await $.ajax({
+                    type: "POST",
+                    url: "/" + url,
+                    data: JSON.stringify(datos),
+                    contentType: "application/json",
+                });
+                let respuesta = JSON.parse(response);
+                return respuesta;
+            } catch (error) {
+                return null;
+            }
+        }
     </script>
 @endpush
