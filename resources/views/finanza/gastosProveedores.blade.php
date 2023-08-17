@@ -59,10 +59,11 @@
         async function cargaTabla(){
             let proyectos = $('#proyecto_id').val();
             let datos = await getDatos('tablaGastosProveedores',proyectos);
-            // console.log(datos);
-        
-            // carga data table
-            var dataTable = $('#tabla').DataTable({
+            
+            // Reinicia y carga tabla
+            let tabla = $('#tabla').DataTable();
+            await tabla.destroy();
+            tabla = $('#tabla').DataTable({
                 data: datos, // Pasar el arreglo de datos
                 columns: [
                     { data: 'nombre', name: 'nombre' },
