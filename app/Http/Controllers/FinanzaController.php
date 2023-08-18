@@ -612,8 +612,37 @@ class FinanzaController extends Controller
 
         if(!$esta_vacio){ // si no esta el placeholder '' se cargan los proveedores con proyectos especificos
             $proveedores = DB::table('proveedores as p')
+            ->selectRaw('p.nombre')
+            ->selectRaw('
+                @pagado := (
+                    SELECT 
+                        SUM(COALESCE(fi.monto_a_pagar, 0)) as pagado
+                    FROM proveedores pr
+                    LEFT JOIN salidas sa ON sa.proveedor_id = pr.id
+                    LEFT JOIN finanzas fi ON fi.salidas_id = sa.id and fi.es_pagado = 1
+                    WHERE pr.id = p.id
+                ) as pagado'
+            )
+            ->selectRaw('
+                @pendiente_pagar := (
+                    SELECT 
+                        ROUND(
+                            IF(
+                                fin.iva_id = 3, 
+                                SUM(COALESCE((fin.cantidad * fin.costo_unitario) * (fin.cantidad * fin.costo_unitario * 0.16), 0)), 
+                                SUM(COALESCE((fin.cantidad * fin.costo_unitario), 0))
+                            ),
+                            2
+                        ) as pendiente_pagar
+                    FROM proveedores pro
+                    LEFT JOIN salidas sal ON sal.proveedor_id = pro.id
+                    LEFT JOIN finanzas fin ON fin.salidas_id = sal.id and fin.es_pagado = 0
+                    WHERE pro.id = p.id
+                ) as pendiente_pagar'
+            )
+            ->selectRaw('ROUND((@pagado + @pendiente_pagar), 2) as total_general')
             ->leftJoin('salidas as s', 's.proveedor_id', '=', 'p.id')
-            ->leftJoin('finanzas as f', 'f.salidas_id', '=', 's.id')
+            ->leftJoin('finanzas as f','f.salidas_id', '=', 's.id' )
             ->leftJoin('proyectos as py', 'py.id', '=', 'f.proyecto_id')
             ->where(function ($query) use ($datos) {
                 foreach ($datos as $item) {
@@ -621,16 +650,45 @@ class FinanzaController extends Controller
                 }
             })
             ->groupBy('p.nombre')
-            ->get(['p.nombre']);
+            ->get();
             return json_encode($proveedores);
             
         }else{  // se cargan todos los provedores con proyecto
             $proveedores = DB::table('proveedores as p')
+            ->selectRaw('p.nombre')
+            ->selectRaw('
+                @pagado := (
+                    SELECT 
+                        SUM(COALESCE(fi.monto_a_pagar, 0)) as pagado
+                    FROM proveedores pr
+                    LEFT JOIN salidas sa ON sa.proveedor_id = pr.id
+                    LEFT JOIN finanzas fi ON fi.salidas_id = sa.id and fi.es_pagado = 1
+                    WHERE pr.id = p.id
+                ) as pagado'
+            )
+            ->selectRaw('
+                @pendiente_pagar := (
+                    SELECT 
+                        ROUND(
+                            IF(
+                                fin.iva_id = 3, 
+                                SUM(COALESCE((fin.cantidad * fin.costo_unitario) * (fin.cantidad * fin.costo_unitario * 0.16), 0)), 
+                                SUM(COALESCE((fin.cantidad * fin.costo_unitario), 0))
+                            ),
+                            2
+                        ) as pendiente_pagar
+                    FROM proveedores pro
+                    LEFT JOIN salidas sal ON sal.proveedor_id = pro.id
+                    LEFT JOIN finanzas fin ON fin.salidas_id = sal.id and fin.es_pagado = 0
+                    WHERE pro.id = p.id
+                ) as pendiente_pagar'
+            )
+            ->selectRaw('ROUND((@pagado + @pendiente_pagar), 2) as total_general')
             ->leftJoin('salidas as s', 's.proveedor_id', '=', 'p.id')
-            ->leftJoin('finanzas as f', 'f.salidas_id', '=', 's.id')
+            ->leftJoin('finanzas as f','f.salidas_id', '=', 's.id' )
             ->leftJoin('proyectos as py', 'py.id', '=', 'f.proyecto_id')
             ->groupBy('p.nombre')
-            ->get(['p.nombre']);
+            ->get();
             return json_encode($proveedores);
         }
     }

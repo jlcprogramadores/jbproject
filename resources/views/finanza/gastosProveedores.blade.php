@@ -37,7 +37,10 @@
                                         <table id="tabla" class="table table-striped table-hover" id="table">
                                             <thead class="thead">
                                                 <tr>
-                                                    <th>nombre</th>
+                                                    <th>Nombre</th>
+                                                    <th>Pagado</th>
+                                                    <th>Pendiente Pagar</th>
+                                                    <th>Total General</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -66,7 +69,10 @@
             tabla = $('#tabla').DataTable({
                 data: datos, // Pasar el arreglo de datos
                 columns: [
-                    { data: 'nombre', name: 'nombre' },
+                    { data: 'nombre', name: 'Nombre' },
+                    { data: 'pagado', name: 'Pagado' },
+                    { data: 'pendiente_pagar', name: 'Pendiente Pagar' },
+                    { data: 'total_general', name: 'Total General' },
                 ]
             });
         }
@@ -90,5 +96,10 @@
                 return null;
             }
         }
+
+        // se ejecuta al iniciar
+        $(document).ready(function() {
+            cargaTabla();
+        });
     </script>
 @endpush
