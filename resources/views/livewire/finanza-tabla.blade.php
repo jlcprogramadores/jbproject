@@ -120,8 +120,8 @@
                 </th>
 
                 <th class="px-1 py-1">
-                    <span class="invisible">---fecha Vencimiento---</span>
-                    <input wire:model="fecha_vencimiento" type="text" class="form-control" placeholder="fecha Vencimiento">
+                    <span class="invisible">---Fecha Vencimiento---</span>
+                    <input wire:model="fecha_vencimiento" type="text" class="form-control" placeholder="Fecha Vencimiento">
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">---Días---</span>
@@ -156,8 +156,8 @@
                     <input wire:model="factura_folio" type="text" class="form-control" placeholder="Factura/Folio">
                 </th>
                 <th class="px-1 py-1">
-                    <span class="invisible">---Proveedor/cliente---</span>
-                    <input wire:model="provedor_cliente" type="text" class="form-control" placeholder="Proveedor/cliente">
+                    <span class="invisible">---Proveedor/Cliente---</span>
+                    <input wire:model="provedor_cliente" type="text" class="form-control" placeholder="Proveedor/Cliente">
                 </th>
                 <th class="px-1 py-1">
                     <span class="invisible">---Cantidad & Unidad---</span>

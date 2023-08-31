@@ -14,7 +14,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ $nombre }}
+                                {{ $nombre.'s' }}
                             </span>
 
                         </div>

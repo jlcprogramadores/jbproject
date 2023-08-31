@@ -51,7 +51,7 @@ class FinanzaTabla extends Component
 
     public function export()
     {
-        return Excel::download(new FianzasExport, 'Fianzas.xlsx');
+        return Excel::download(new FianzasExport, 'Finanzas.xlsx');
     }
 
     public function render(){
